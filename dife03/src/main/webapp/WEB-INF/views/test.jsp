@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 연동 Test
+ 연동 Test2
 </body>
 </html>
