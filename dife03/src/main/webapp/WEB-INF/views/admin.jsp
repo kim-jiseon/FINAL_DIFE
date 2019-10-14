@@ -249,7 +249,7 @@
                        
                        <div id="content-center-center-button">
                            <span id="content-bottom-update">
-                            <a href="admin_update.html"><button type="submit" style="margin-right: 10px;">수정</button></a>
+                            <a href="admin_update"><button type="submit" style="margin-right: 10px;">수정</button></a>
                             <button type="submit">삭제</button>
                            </span>
                        

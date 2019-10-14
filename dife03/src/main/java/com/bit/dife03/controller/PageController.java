@@ -13,4 +13,44 @@ public class PageController {
 	public void admin() {
 		
 	}
+	
+	@RequestMapping("/admin_update")
+	public void admin_update() {
+		
+	}
+	
+	@RequestMapping("/pilot")
+	public void pilot() {
+		
+	}
+	
+	@RequestMapping("/basket")
+	public void basket() {
+		
+	}
+	
+	@RequestMapping("/orders")
+	public void orders() {
+		
+	}
+	
+	@RequestMapping("/ordersDetail")
+	public void ordersDetail() {
+		
+	}
+	
+	@RequestMapping("/payment")
+	public void payment() {
+		
+	}
+	
+	@RequestMapping("/signIn")
+	public void signIn() {
+		
+	}
+	
+	@RequestMapping("/signUp")
+	public void signUp() {
+		
+	}
 }

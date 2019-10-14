@@ -1,0 +1,58 @@
+@charset "UTF-8";
+#content1  {
+    height: auto;
+}
+
+.container-login> #login-row> #login-column, #login-box {
+    padding: 50px 130px;
+}
+
+.btn{
+    border-radius: 4px;
+    background-color: #1F2124;
+    border-color: #ffffff;
+    color: #ffffff;
+    width: 80px;
+    height: 33px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.text-center{
+    font-weight: bold;
+    font-size: 25px;
+}
+#register-link{
+    text-align: right;
+    margin-top: -25px;
+    padding: 15px;
+}
+
+#found{
+    text-align: right;
+    margin-top: -55px;
+}
+
+.form-group{
+    padding: 25px;
+}
+.form-group > .text-info1{
+    float: left ! important;
+    margin-left: 70px;
+}
+#username{
+    padding: 5px;
+    width: 400px;
+    border-radius: 4px;
+}
+
+#password{
+    padding: 5px;
+    width: 400px;
+    border-radius: 4px;
+}
+

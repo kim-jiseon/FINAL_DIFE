@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+
+.form-group{
+    margin: 15px;
+}
+
+.entry-title{
+    padding: 50px;    
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.form-control{
+    width: 400px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.control-label{
+    margin-left: -350px;
+}
+
+#id_check {
+    position: absolute;
+    width: 120px;
+    height: 32px;
+    margin-left: 20px;
+}
+/*
+input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 1;
+    filter: alpha(opacity=1);    
+}
+*/
+.ui-datepicker{
+    z-index: 4 !important;
+}
+#datepicker {
+    height: 30px;
+    border-radius: 4px;
+    width: 400px;
+}
+/*
+.control-label {
+    color: white;
+    font-size: 14px;
+    padding: 20px;
+}
+*/
+#submit{
+    border-radius: 4px;
+    background-color: #1F2124;
+    border-color: #ffffff;
+    color: #ffffff;
+    width: 80px;
+    height: 33px;
+    font-weight: bold;
+}
+
+#submit:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.text-danger{
+    color: red;
+}
