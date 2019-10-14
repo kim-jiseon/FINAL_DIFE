@@ -1,0 +1,74 @@
+--CREATE
+
+CREATE TABLE orders (				
+	ord_no 	varchar2(20) 	primary key,	
+	mem_no 	varchar2(20) 		NOT NULL,
+	ord_amount 	number 		NOT NULL,
+	ord_price 	number 		NOT NULL,
+	ord_sale 	number 		NULL,
+	ord_fin_price	number 		NOT NULL,
+	ord_date	date		NOT NULL,
+	ord_pay_state	number(1)		NOT NULL
+	
+	
+				
+);	
+
+ALTER TABLE orders			
+       ADD  ( FOREIGN KEY (mem_no)			
+                             REFERENCES member ) ;		
+
+CREATE TABLE ordersDetail (				
+	det_no 	varchar2(20) 	primary key,	
+	ord_no 	varchar2(20) 		NOT NULL,
+	pos_no 	varchar2(20) 		NOT NULL,
+	det_amount 	number 		NOT NULL,
+	det_price 	number 		NOT NULL,
+	det_rental 	date 		NOT NULL,
+	det_return 	date 		NOT NULL
+);				
+
+ALTER TABLE ordersDetail			
+       ADD  ( FOREIGN KEY (ord_no)			
+                             REFERENCES orders ) ;			
+			
+ALTER TABLE ordersDetail			
+       ADD  ( FOREIGN KEY (pos_no)			
+                             REFERENCES possesion ) ;		
+
+
+
+--INSERT(오더 ,주문디테일 인설트시작부분)
+
+insert into orders values('O0001','M0004',2,300000,15000,285000,sysdate,0);									
+insert into orders values('O0002','M0010',2,200000,10000,290000,sysdate,0);									
+insert into orders values('O0003','M0012',3,600000,30000,570000,sysdate,0);									
+insert into orders values('O0004','M0014',1,100000,5000,95000,sysdate,0);									
+insert into orders values('O0005','M0013',1,100000,5000,95000,sysdate,0);									
+insert into orders values('O0007','M0022',1,100000,5000,95000,sysdate,0);									
+insert into orders values('O0008','M0019',2,600000,30000,570000,sysdate,0);									
+insert into orders values('O0010','M0001',2,700000,35000,665000,sysdate,0);									
+insert into orders values('O0012','M0006',1,300000,15000,285000,sysdate,0);									
+insert into orders values('O0013','M0021',1,200000,10000,190000,sysdate,0);									
+insert into orders values('O0014','M0005',3,700000,35000,665000,sysdate,0);									
+insert into orders values('O0015','M0007',2,350000,17500,335000,sysdate,0);									
+insert into orders values('O0016','M0008',1,200000,10000,190000,sysdate,0);	
+
+
+insert into ordersDetail values('DET0001', 'O0001', 'PS0001', 1, 95000, '2019/09/01', '2019/09/03',0);													
+insert into ordersDetail values('DET0002', 'O0001', 'PS0011', 1, 190000, '2019/09/01', '2019/09/03',1);													
+insert into ordersDetail values('DET0003', 'O0002', 'PS0017', 2, 190000, '2019/06/24', '2019/06/25', 2);													
+insert into ordersDetail values('DET0004', 'O0003', 'PS0011', 3, 570000, '2019/01/23', '2019/01/27', 3);													
+insert into ordersDetail values('DET0006', 'O0005', 'PS0020', 1, 95000, '2019/04/04', '2019/04/09', 0);													
+insert into ordersDetail values('DET0008', 'O0007', 'PS0029', 1, 95000, '2019/10/10', '2019/10/12', 0);													
+insert into ordersDetail values('DET0009', 'O0008', 'PS0006', 2, 570000, '2019/02/25', '2019/02/28', 1);													
+insert into ordersDetail values('DET0011', 'O0010', 'PS0022', 1, 475000, '2019/03/01', '2019/03/05', 1);													
+insert into ordersDetail values('DET0012', 'O0010', 'PS0002', 1, 190000, '2019/03/01', '2019/03/05', 1);													
+insert into ordersDetail values('DET0014', 'O0012', 'PS0006', 1, 285000, '2019/12/12', '2019/12/12', 2);													
+insert into ordersDetail values('DET0015', 'O0013', 'PS0011', 1, 190000, '2019/01/05', '2019/01/08', 0);													
+insert into ordersDetail values('DET0016', 'O0014', 'PS0001', 1, 95000, '2019/04/15', '2019/04/20', 0);													
+insert into ordersDetail values('DET0017', 'O0012', 'PS0006', 2, 570000, '2019/04/15', '2019/04/20', 3);													
+insert into ordersDetail values('DET0018', 'O0015', 'PS0002', 1, 190000, '2019/07/07', '2019/07/09', 1);													
+insert into ordersDetail values('DET0019', 'O0015', 'PS0015', 1, 142500, '2019/07/07', '2019/07/09', 2);													
+insert into ordersDetail values('DET0020', 'O0016', 'PS0011', 1, 190000, '2019/11/01', '2019/11/05', 1);			
+	
