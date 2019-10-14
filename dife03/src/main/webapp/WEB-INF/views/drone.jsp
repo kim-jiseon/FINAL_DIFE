@@ -22,8 +22,7 @@ $(function(){
 				var nowPage = $(this).attr("dataPage");
 				getItems(nowPage,itemsPerPage);
 			});
-		}
-		
+		}	
 	});
 	
 	// 페이징 처리 : 드론 초기화면 전체 목록 select
