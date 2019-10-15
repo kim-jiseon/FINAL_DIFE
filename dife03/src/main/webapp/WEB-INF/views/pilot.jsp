@@ -18,6 +18,32 @@
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	$.ajax({url:"", success:function(data){
+    		$.each(data, function(idx, item){
+    			var ul = $("<ul></ul>").addClass("pil-list");
+    			var li = $("<li></li>");
+    			
+    			var hr = $("<hr/>");
+    			var img = $("<img/>").attr("src", "img/"+item.fname).addClass("pil-list-img");
+    			
+    			var dd_img = $("<dd></dd>").append(img);
+    			var title = $("<a></a>").html(item.title).attr("href","pilotDetail");
+    			var dd_title = $("<dd></dd>").addClass("pil-list-title");
+    			$(dd_title).append(title);
+    			var dd_name = $("<dd></dd>").html(item.name).attr("id", "pil-name").addClass("pil-list-info");
+    			var dd_loc = $("<dd></dd>").html(item.loc).attr("id","pil-loc").addClass("pil-list-info");
+    			var dd_info = $("<dd></dd>").html(item.info).attr("id", "pil-info").addClass("pil-list-info");
+    			var dd_star = $("<dd></dd>").html(item.star).attr("id", "pil-star").addClass("pil-list-info");
+    			
+    			$(li).append(dd_img, dd_title, dd_name, dd_loc, dd_info, dd_star);
+    			$(ul).append(li);
+    			$(".container").append(ul);
+    		})
+    	}})
+    })
+    </script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
