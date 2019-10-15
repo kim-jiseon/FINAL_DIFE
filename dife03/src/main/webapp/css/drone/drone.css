@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* 검색 */
+.container .search1{
+    font-size: 17px;
+    padding-left: 35px;
+    padding-right: 15px;
+}
+
+/* 상품이미지 */
+#grid{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-template-rows: 400px 400px 400px 400px;
+}
+
+/* 가격정보 ul 표시제거 */
+ul{
+	list-style: none;
+}
+
+/* 상품정보 */
+.container .content2 .block{
+	font-size: 19px;
+    color: black;
+    margin: 10px;
+}
+
+/*
+.content2{
+	background-color: lightgray;
+	width: 300px;
+	height: auto;
+	border: 2px solid black;
+	margin: 20px;
+	display: inline-block;
+	float: left;
+	position: absolute;
+    padding: 0 22px 22px 0;
+    box-sizing: border-box;
+}
+*/
+
+.content2 .block .name{
+    color: #231F20;
+    font-weight: bold;
+}
+.content2 .block .item{
+    font-size: 15px;
+    color: #1C1C1C;
+    padding: 5px 0px 5px 0px;
+}
+.content2 .block a img{
+    width: 250px;
+    height: 260px;
+}
+
+/* 컨테이너 */
+.container {
+    width: 1300px;
+    margin: 0 auto;
+    height: auto;
+    background: rgba(255, 255, 255, 0.3);
+}
