@@ -1,5 +1,66 @@
 @charset "UTF-8";
 
+body{
+    background-color: black;
+}
+
+/* 달력 */
+// width and height in pixels
+width: 280,
+height: 280,
+
+// z-inde property
+zIndex: 1,
+
+// selector or element
+trigger: null,
+
+// offset
+offset: [0, 1],
+
+// custom CSS class
+customClass: '',
+
+// date or month
+view: 'date',
+
+// current date  
+date: new Date(),
+
+// date format
+format: 'yyyy/mm/dd',
+
+// start of week
+startWeek: 0,
+
+// day of the week
+weekArray: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+
+// month
+monthArray: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+
+// date range
+// [new Date(), null] or ['2015/11/23']
+selectedRang: null,
+
+// custom events
+data: null,
+
+// shows labels
+// {m} view mode，{d}date，{v}value
+// false = disable
+label: '{d}\n{v}',
+
+// next / prev signs
+prev: '&lt;',
+next: '&gt;',
+
+// callbacks
+viewChange: $.noop,
+onSelected: function(view, date, value) {},
+onMouseenter: $.noop,
+onClose: $.noop
+
 /* 검색 */
 .container .search1{
     font-size: 17px;
@@ -57,7 +118,7 @@ ul{
 
 /* 컨테이너 */
 .container {
-    width: 1300px;
+    width: auto;
     margin: 0 auto;
     height: auto;
     background: rgba(255, 255, 255, 0.3);
