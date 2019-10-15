@@ -37,6 +37,7 @@
     			var dd_info = $("<dd></dd>").html(item.info).attr("id", "pil-info").addClass("pil-list-info");
     			var dd_star = $("<dd></dd>").html(item.star).attr("id", "pil-star").addClass("pil-list-info");
     			
+    			
     			$(li).append(dd_img, dd_title, dd_name, dd_loc, dd_info, dd_star);
     			$(ul).append(li);
     			$(".container").append(ul);
