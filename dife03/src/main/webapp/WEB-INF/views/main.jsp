@@ -32,8 +32,11 @@
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
+                        <a href="admin" id="category-1-admin" class="cl-effect-1" >관리자</a>
                     </span>
-                     <span id="category-2" class="animated fadeInUp">
+                    
+
+                   		<span id="category-2" class="animated fadeInUp">
                         <a href="signIn" class="cl-effect-1">LOGIN</a>
                         <a href="#" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
@@ -49,7 +52,7 @@
              <!-- Swiper -->
           <div class="swiper-container">
             <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="img/main/drone_main06.png" alt=""></div>
+              <div class="swiper-slide"><img src="img/main/drone_main06.png" alt=""></div>jsp 날씨 위젯
               <div class="swiper-slide">Slide 2</div>
               <div class="swiper-slide">Slide 3</div>
               <div class="swiper-slide">Slide 4</div>
@@ -58,6 +61,51 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
           </div>
+          
+          	<!-- wiget 화면 -->
+          	<div id="contents-wiget">
+          		<div class="grid-wiget">
+          			<div class="grid-cell1"><img src="css/main/people.png" width="150px" height="150px"><br>
+          				방문자 수<br>
+          				<h1>888명</h1>
+          			</div>
+          			<div class="grid-cell1"><img src="css/main/pilot.png" width="150px" height="150px"><br>
+          				파일럿 수 
+          				<br>
+          				<h1>54명</h1>
+          			</div>
+          			<div class="grid-cell1"><img src="css/main/drone.png" width="150px" height="150px"><br>
+          				드론 수<br>
+          				<h1>10981대</h1>
+          			</div>
+          			<div class="grid-cell1"><img src="css/main/weather.png" width="150px" height="150px"><br>
+          				날씨<br>
+          				<h1>21℃</h1>
+          				<h4>맑음</h4>
+          			</div>
+          		</div>
+          	</div>
+          	
+          	<!-- sns 화면 -->
+          	<div id="contents-sns">
+          		<div class="grid-sns">
+          			<div class="grid-cell2"><img src="css/main/photo1.jpg" width="350px" height="500px"><br>
+          				cslim 와 <br>
+          				hahaha 그림 같음<br>
+          			</div>
+          			<div class="grid-cell2"><img src="css/main/photo2.jpg" width="350px" height="500px"><br>
+          				jskim 저기에서 낮술 먹고 수영하고싶다. <br>
+          				zzzkka 저기서 소개팅 하실래여?<br>
+          				jskim 좋아요(엑스맨) :)
+          			</div>
+          			<div class="grid-cell2"><img src="css/main/photo3.jpg" width="350px" height="500px"><br>
+          				huck 저건 뭔 폭발인가요 ? <br>
+          				lee 펑펑 더 터져라<br></div>
+          			<div class="grid-cell2"><img src="css/main/photo4.jpg" width="350px" height="500px"><br>
+          				ccccccs 늑대 나오겄네 <br>
+          				ssssssc 그르게<br></div>
+          		</div>
+          	</div>
             
         </div>
         <!-- //contents -->

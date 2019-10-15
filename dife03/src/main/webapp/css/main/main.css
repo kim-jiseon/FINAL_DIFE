@@ -25,6 +25,7 @@
     #category-1 > a:hover{
         color: white;
     }
+    
 
     #category-2{
         float: right;
@@ -147,7 +148,44 @@
     /*콘텐츠-높이는 자유롭게 설정하세요*/
     #contents{
         height: 2000px;
+        
     }
+
+	#contents-wiget{
+		height: 300px;
+		margin-bottom: 50px;
+		
+	}
+	
+	.grid-wiget{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-gap: 2vw;
+		padding: 25px;
+	}
+	
+	.grid-cell1{
+		height: 250px;
+		text-align:center;
+	}
+	
+	
+	#contents-sns{
+		height: 500px;
+	}
+	
+	.grid-sns{
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-gap: 2vw;
+		
+		padding: 25px;
+	}
+	
+	.grid-cell2{
+		height: 450px;
+		text-align:left;
+	}
 
     /* 하단 */
     #footer_info1{

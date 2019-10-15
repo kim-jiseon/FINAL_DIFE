@@ -33,7 +33,9 @@
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
+                        <a href="admin" id="category-1-admin" class="cl-effect-1" >관리자</a>
                     </span>
+                    
                      <span id="category-2" class="animated fadeInUp">
                         <a href="signIn" class="cl-effect-1">LOGIN</a>
                         <a href="#" class="cl-effect-1">MYPAGE</a>
