@@ -3,6 +3,7 @@
 --create
 
 
+
 CREATE TABLE member (				
 	mem_no 	varchar2(20) 	primary key,	
 	mem_lev 	number 		NOT NULL,
