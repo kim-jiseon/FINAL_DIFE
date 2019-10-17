@@ -1,32 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<title>Insert title here</title>
-<link rel="icon" type="image/png" href="http://example.com/myicon.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-<title>DIFE.com</title>
-<!-- 웹폰트 -->
-<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-<!-- fadeIn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-<!-- 기본 링크 -->
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/layout.css">
+ <title>Insert title here</title>
+    <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+    <title>DIFE.com</title>
+    <!-- 웹폰트 -->
+    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+    <!-- fadeIn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- 기본 링크 -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/drone/drone.css">
+    <!-- 달력 -->
+    <link rel="stylesheet" href="css/calendar/dist/calendar.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="css/calendar/src/calendar.js"></script>
+<!-- 카테고리 검색 아이콘 -->
 <link rel="stylesheet" href="css/drone/drone.css">
-<!-- 달력 -->
-<link rel="stylesheet" href="css/calendar/dist/calendar.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="css/calendar/src/calendar.js"></script>
-
-<script type="text/javascript">
-$(function() {
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <script type="text/javascript">
+        $(function() {
             var itemsPerPage = 8;
-
+            
+           
             $('#container').calendar({
                 data: [{
                         date: '2019/12/24',
@@ -123,52 +125,104 @@ $(function() {
 <body>
     <div id="wrap">
         <div id="header">
-            <div class="header-light">
-                <a href="signIn.html">로그인 <i class="fas fa-user"></i></a>
-                <a href="payment.html">마이페이지 <i class="fas fa-clipboard-list"></i></a>
-                <a href="basket.html">장바구니 <i class="fas fa-shopping-basket"></i></a>
-            </div>
-            <div class="header-left">
-                <div class="title"><a href="main.html"><img src="img/logo/logo_white.png" alt="디프로고"></a></div>
-                <div class="category">
-                    <a href="drone.jsp">드론</a>
-                    <a href="pilot.jsp">파일럿</a>
-                    <a href="#">지역 및 날씨</a>
-                    <a href="#">고객지원</a>
-                    <a href="board.html">커뮤니티</a>
+            <div id="header-top" class="header-top">
+                <div class="header-right">
+                    <a href="signIn.html">로그인 <i class="fas fa-user" aria-hidden="true"></i></a>
+                    <a href="payment.html">마이페이지 <i class="fas fa-clipboard-list" aria-hidden="true"></i></a>
+                    <a href="basket.html">장바구니 <i class="fas fa-shopping-basket" aria-hidden="true"></i></a>
+                </div>
+                <div class="header-left">
+                    <div class="title"><a href="main.html"><img src="img/logo/logo_white.png" alt="디프로고"></a></div>
+                    <div class="category">
+                        <a href="drone.jsp">드론</a>
+                        <a href="pilot.jsp">파일럿</a>
+                        <a href="#">지역 및 날씨</a>
+                        <a href="#">고객지원</a>
+                        <a href="board.html">커뮤니티</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- 상세검색 -->
         <div id="header-nav">
-            <div class="container">
-                <!-- 대여일 -->
-                <span id="calendar" class="search1">대여일</span>
-                <input type="text" id="dt" placeholder="대여일을 선택하세요.">
-                <div id="dd"></div>
-
-                <!-- 시리즈명 -->
-                <span id="ops" class="search1">시리즈명</span>
-                <select id="operS" name="operS" style="width: 150px; height: 30px; border-radius: 3px; font-size: 14px;">
-                    <option value="dro_series_null">선택안함</option>
-                    <option value="dro_series_mav">매빅</option>
-                    <option value="dro_series_bb">비밥</option>
-                    <option value="dro_series_sp">스파크</option>
-                    <option value="dro_series_ins">인스파이어</option>
-                    <option value="dro_series_pt">팬텀</option>
-                </select>
-                <!-- 가격 -->
-                <span id="opp" class="search1">가격</span>
-                <select id="operP" name="operP" style="width: 150px; height: 30px; border-radius: 3px; font-size: 14px;">
-                    <option value="pos_price_null">선택안함</option>
-                    <option value="pos_price_low">50만 원 미만</option>
-                    <option value="pos_price_mid">50만 원 ~ 100만 원</option>
-                    <option value="pos_price_high">100만 원 이상</option>
-                </select>
-                <button class="btnSch" style="width: 60px; height: 30px; border-radius: 5px; background-color: #231F20; color: white">검색</button>
+            <div class="container">            
+                <ul id="search">
+                    <!-- 대여일 -->
+                    <span id="calendar" class="search1">대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
+                    <input type="text" id="dt" placeholder="대여일을 선택하세요.">
+                        <div id="dd"></div>
+                   
+                    <li class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
+                        <div class="sub-menu-1">
+                            <ul>
+                                <li class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    <div class="sub-menu-2">
+                                        <ul>
+                                            <li>MAVIC 2 PRO</li>
+                                            <li>MAVIC PRO</li>
+                                            <li>MAVIC 2 ENTERPRISE UNIVERSAL</li>
+                                            <li>MAVIC 2 ENTERPRISE DUAL</li>
+                                            <li>MAVIC AIR</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    <div class="sub-menu-2">
+                                        <ul>
+                                            <li>BEBOP 2 SINGLE</li>
+                                            <li>BEBOP 2+SKY CONTROLLER</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    <div class="sub-menu-2">
+                                        <ul>
+                                            <li>MINI SPARK</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="hover-dro">인스파이어<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    <div class="sub-menu-2">
+                                        <ul>
+                                            <li>INSPIRE 1V2 1인</li>
+                                            <li>INSPIRE 1V2 2인</li>
+                                            <li>INSPIRE 1 PRO 1인</li>
+                                            <li>INSPIRE 1 PRO 2인</li>
+                                            <li>INSPIRE 2 ZENMUSE X5S 1인</li>
+                                            <li>INSPIRE 2 ZENMUSE X5S 2인</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="hover-dro">팬텀<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    <div class="sub-menu-2">
+                                        <ul>
+                                            <li>PHANTOM 4</li>
+                                            <li>PHANTOM 4 PRO</li>
+                                            <li>PHANTOM 3 ADVANCED</li>
+                                            <li>PHANTOM 3 PROFESSIONAL</li>
+                                        </ul>
+                                    </div>
+                                </li>                       
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
+                        <div class="sub-menu-1">
+                            <ul>
+                                <li class="hover-dro">50만원 미만</li>
+                                <li class="hover-dro">50만원 이상~100만원 미만</li>
+                                <li class="hover-dro">100만원 이상</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <button id="btnSch" class="search1" style="width: 100px; height: 35px; border-radius: 5px; background-color: #231F20; color: white">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
+                </ul>
             </div>
         </div>
+ 
+                
+       
 
         <!-- 상세검색결과 목록 -->
         <div id="content2"></div>
@@ -200,5 +254,4 @@ $(function() {
             </div>
         </div>
     </div>
-</body>
-</html>
+</body></html>
