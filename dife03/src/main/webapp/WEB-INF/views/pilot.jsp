@@ -95,14 +95,14 @@
             </div>
             <div id="header-nav">
                <span id="pil-search">
-                    <select>
-                        <option value="촬영">촬영</option>
-                        <option value="교육">교육</option>
+                    <select name="pil-category" id="pil-category">
+                    	<option value="2">선택</option>
+                        <option value="1">촬영</option>
+                        <option value="0">교육</option>
                     </select>
-                    <!-- 제이쿼리 사용해야 함 -->
+                    <!-- 제이쿼리 사용 -->
                     <span>지역</span>
-                    <select>
-                        <option value="서울">서울</option>
+                    <select id="pil-location" name="pil-location">
                     </select>
                 </span>
                 <button id="pil-search-btn">검색</button>
