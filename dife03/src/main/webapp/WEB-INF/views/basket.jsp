@@ -35,6 +35,8 @@
 		});
     	$(".amountMinus").click(function(){
     		alert("Mok"+amount)
+    		
+    		
     	});
     	/*수량 처리 end  */
     	
