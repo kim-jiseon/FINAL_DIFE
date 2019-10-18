@@ -24,6 +24,11 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/drone")
+	public void drone() {
+		
+	}
+	
 	@RequestMapping("/basket")
 	public void basket() {
 		

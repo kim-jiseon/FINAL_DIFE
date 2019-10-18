@@ -70,7 +70,7 @@ $(function(){
 			<div class="header-left">
 				<div class="title"><a href="main.html"><img src="img/logo/logo_white.png" alt="디프로고"></a></div>
 				<div class="category">
-					<a href="drone.jsp">드론</a>
+					<a href="drone">드론</a>
 					<a href="pilot01.html">파일럿</a>
 					<a href="#">지역 및 날씨</a>
 					<a href="#">고객지원</a>

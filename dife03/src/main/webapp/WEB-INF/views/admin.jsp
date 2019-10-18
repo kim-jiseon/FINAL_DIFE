@@ -256,7 +256,16 @@
                            </span>
                        
                            <span id="content-bottom-count">
-                               1  2  3  4  5  [다음]
+                               
+                       			<ul class="pagination" style="padding-left: 50px;">
+                            	<a href="#">이전</a>
+	                            <a href="#">1</a>
+	                            <a href="#">2</a>
+	                            <a href="#">3</a>
+	                            <a href="#">4</a>
+	                            <a href="#">5</a>
+	                            <a href="#">다음</a>
+                        		</ul>
                            </span>
                        </div>
                 </div>
