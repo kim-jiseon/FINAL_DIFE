@@ -30,6 +30,7 @@
     	
     	//검색버튼 클릭시
     	$("#pil-search-btn").click(function(){
+    		$(".container").empty();
     		var category = $("select[name=pil-category]").val();
     		var location = $("select[name=pil-location]").val();
     		$.getJSON("sel_pilOne",
