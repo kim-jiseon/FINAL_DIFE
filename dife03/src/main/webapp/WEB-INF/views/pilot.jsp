@@ -20,27 +20,53 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
-    	$.ajax({url:"", success:function(data){
-    		$.each(data, function(idx, item){
-    			var ul = $("<ul></ul>").addClass("pil-list");
+    	var arr = ['선택','서울','인천','경기','세종','강원','대구','대전','광주','울산','부산','제주'];
+    	$.each(arr, function(idx, loc){
+    		//alert(arr[idx]);
+    		var search_loc = $("<option></option>").attr("value",arr[idx]).html(arr[idx]);
+    		$("#pil-location").append(search_loc);
+    	})
+    	
+    	$("#pil-search-btn").click(function(){
+    		var category = $("select[name=pil-category]").val();
+    		var location = $("select[name=pil-location]").val();
+    		$.getJSON("sel_pilOne",
+    				{
+    				"category": category,
+    				"location": location
+    				},
+    				function(r){
+    			alert(r);
+    		})
+    	})
+    	
+    	
+    	$.ajax({url:"selectPil_info", success:function(data){
+    		var list = eval(data);
+    		$.each(list, function(idx, item){
+    			//var arr = [item.mem_name, item.pil_title, item.pil_profile, item.pil_locInfo, item.pil_info, item.pil_star];
+    			//alert(arr);
+    			//alert(item.pil_cateInfo);
+    			
     			var li = $("<li></li>");
-    			
+    			var ul = $("<ul></ul>").addClass("pil-list");
     			var hr = $("<hr/>");
-    			var img = $("<img/>").attr("src", "img/"+item.fname).addClass("pil-list-img");
     			
+    			var img = $("<img/>").addClass("pil-list-img").attr("src",item.pil_profile);
+    			var title = $("<a></a>").html(item.pil_title).attr("href","pil_detail");
+    			
+    			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
+    			var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
+    			var info = $("<dd></dd>").html("한줄소개: "+item.pil_info).attr("id","pil-info").addClass("pil-list-info");
+    			var star = $("<dd></dd>").html("평점: "+item.pil_star+".0").attr("id","pil-star").addClass("pil-list-info");
     			var dd_img = $("<dd></dd>").append(img);
-    			var title = $("<a></a>").html(item.title).attr("href","pilotDetail");
-    			var dd_title = $("<dd></dd>").addClass("pil-list-title");
-    			$(dd_title).append(title);
-    			var dd_name = $("<dd></dd>").html(item.name).attr("id", "pil-name").addClass("pil-list-info");
-    			var dd_loc = $("<dd></dd>").html(item.loc).attr("id","pil-loc").addClass("pil-list-info");
-    			var dd_info = $("<dd></dd>").html(item.info).attr("id", "pil-info").addClass("pil-list-info");
-    			var dd_star = $("<dd></dd>").html(item.star).attr("id", "pil-star").addClass("pil-list-info");
+    			var dd_title = $("<dd></dd>").addClass("pil-list-title").append(title);
     			
-    			
-    			$(li).append(dd_img, dd_title, dd_name, dd_loc, dd_info, dd_star);
+    			$(li).append(dd_img, dd_title, name, loc, info, star);
     			$(ul).append(li);
     			$(".container").append(ul);
+    			$(".container").append(hr);
+    			
     		})
     	}})
     })
@@ -87,6 +113,7 @@
         <!-- contents -->
         <div id="contents">
             <div class="container">
+            <!-- 
                 <ul class="pil-list">
                     <li>
                             <dd><img class="pil-list-img" src="img/pilot/visit_cnt.png" ></dd>
@@ -97,6 +124,7 @@
                             <dd class="pil-list-info" id="pil-star">별점</dd>
                     </li>
                 </ul><hr>
+                 -->
             </div>
         </div>
         <!-- //contents -->
