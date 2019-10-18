@@ -20,6 +20,7 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
+    	//지역 검색
     	var arr = ['선택','서울','인천','경기','세종','강원','대구','대전','광주','울산','부산','제주'];
     	$.each(arr, function(idx, loc){
     		//alert(arr[idx]);
@@ -27,20 +28,38 @@
     		$("#pil-location").append(search_loc);
     	})
     	
+    	//검색버튼 클릭시
     	$("#pil-search-btn").click(function(){
     		var category = $("select[name=pil-category]").val();
     		var location = $("select[name=pil-location]").val();
     		$.getJSON("sel_pilOne",
-    				{
-    				"category": category,
-    				"location": location
-    				},
-    				function(r){
-    			alert(r);
+    			{"category": category, "location": location},
+    			function(data){
+    				//이부분을 메소드로 만들어서 할 수 있을까?
+					$.each(data, function(idx, item){
+						var li = $("<li></li>");
+		    			var ul = $("<ul></ul>").addClass("pil-list");
+		    			var hr = $("<hr/>");
+		    			
+		    			var img = $("<img/>").addClass("pil-list-img").attr("src",item.pil_profile);
+		    			var title = $("<a></a>").html(item.pil_title).attr("href","pil_detail");
+		    			
+		    			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
+		    			var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
+		    			var info = $("<dd></dd>").html("한줄소개: "+item.pil_info).attr("id","pil-info").addClass("pil-list-info");
+		    			var star = $("<dd></dd>").html("평점: "+item.pil_star+".0").attr("id","pil-star").addClass("pil-list-info");
+		    			var dd_img = $("<dd></dd>").append(img);
+		    			var dd_title = $("<dd></dd>").addClass("pil-list-title").append(title);
+		    			
+		    			$(li).append(dd_img, dd_title, name, loc, info, star);
+		    			$(ul).append(li);
+		    			$(".container").append(ul);
+		    			$(".container").append(hr);
+					})    			
     		})
     	})
     	
-    	
+    	//전체 페이지 출력
     	$.ajax({url:"selectPil_info", success:function(data){
     		var list = eval(data);
     		$.each(list, function(idx, item){
@@ -95,14 +114,14 @@
             </div>
             <div id="header-nav">
                <span id="pil-search">
-                    <select>
-                        <option value="촬영">촬영</option>
-                        <option value="교육">교육</option>
+                    <select name="pil-category" id="pil-category">
+                    	<option value="2">선택</option>
+                        <option value="1">촬영</option>
+                        <option value="0">교육</option>
                     </select>
-                    <!-- 제이쿼리 사용해야 함 -->
+                    <!-- 제이쿼리 사용 -->
                     <span>지역</span>
-                    <select>
-                        <option value="서울">서울</option>
+                    <select id="pil-location" name="pil-location">
                     </select>
                 </span>
                 <button id="pil-search-btn">검색</button>
