@@ -3,9 +3,13 @@ package com.bit.dife03.db;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Handler;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -14,7 +18,7 @@ import com.bit.dife03.vo.PilInfoVo;
 
 public class PilotManager {
 	public static SqlSessionFactory factory;
-	
+	public static SqlSession session;
 	static {
 		try {
 			Reader reader = Resources.getResourceAsReader("com/bit/dife03/db/dbConfig.xml");
@@ -32,7 +36,11 @@ public class PilotManager {
 		map.put("location", location);
 		System.out.println(category+", "+location);
 		List<PilInfoVo> list = null;
-		SqlSession session = factory.openSession();
+		
+		String id = "pilInfo.sel_pil";
+		
+		sqlTest(map, id);
+		//SqlSession session = factory.openSession();
 		list = session.selectList("pilInfo.sel_pil", map);
 		session.close();
 		return list;
@@ -44,5 +52,23 @@ public class PilotManager {
 		list = session.selectList("pilInfo.selectPil_info");
 		session.close();
 		return list;
+	}
+	
+	public static void sqlTest(Map map, String id) {
+		
+		session = factory.openSession();
+		BoundSql sql = session.getConfiguration().getMappedStatement(id).getBoundSql(map);
+		String sql2 = sql.getSql();
+		List<ParameterMapping> paramMapping = sql.getParameterMappings();
+		String value = "";
+		for (ParameterMapping mapping : paramMapping) {
+			String propValue = mapping.getProperty();
+			value = map.get(propValue).toString();
+			System.out.println("value값:"+value);
+			sql2 = sql2.replaceFirst("\\?", "'"+value+"'");
+			
+		}
+		
+		System.out.println("sql:"+sql2);
 	}
 }
