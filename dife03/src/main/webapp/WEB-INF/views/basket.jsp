@@ -26,6 +26,7 @@
     <script type="text/javascript">
     $(function(){
     	
+    	
     	/* 수량처리에 대한 스크립트,제이쿼리문 및 전역변수 */
     	var amount = $("#car_table[span]").text();
     	console.log(amount);
