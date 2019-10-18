@@ -18,13 +18,13 @@ public class pilotController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/sel_pilOne")
-	public String sel_pilOne(String category, String location) {
+	@RequestMapping("/sel_pil")
+	public String sel_pil(String category, String location) {
 		String str = "";
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			str = mapper.writeValueAsString(dao.sel_pil(category, location));
-			System.out.println("pilOne: "+str);
+			System.out.println("select: "+str);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());

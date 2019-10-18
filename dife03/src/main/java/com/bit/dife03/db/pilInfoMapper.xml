@@ -3,31 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pilInfo">
-<!-- 파일럿 검색조건 설정 -->
+<!-- 파일럿 검색조건 1가지 -->
 <select id="sel_pil" resultType="pilInfoVo">
 	select m.mem_name, pi.* from pil_information pi, member m, pilot p 
     where p.pil_no = pi.pil_no and p.mem_no = m.mem_no
-    <!-- 
-    <choose>
-    	<when test="category != '2' and location == '선택'">
-    		and pil_cateInfo = #{category}
-    	</when>
-    	<when test="category == '2' and location != '선택'">
-    		and pil_locInfo like '%' || #{location} || '%'
-    	</when>
-    	
-    </choose>
-     -->
-     <if test="category == '2' and location != '선택'">
+   
+   <!-- 지역으로만 검색 (안됨)-->
+     <if test="category == '2' and !location.equals('선택')">
 		and pil_locInfo like '%' || #{location} || '%'
     </if>
-    <if test="category != '2' and location == '선택'">
+    <!-- 카테고리로만 검색 -->
+    <if test="category != '2' and location.equals('선택')">
 		and pil_cateInfo = #{category}
     </if>
-    <if test="category != '2' and location != '선택'">
+    <!-- 지역 및 카테고리 검색 -->
+    <if test="category != '2' and !location.equals('선택')">
     	and pil_cateInfo = #{category} and  pil_locInfo like '%' || #{location} || '%' 
     </if>
-    
+    <!-- 검색조건 없을 시 (안됨)-->
+    <if test="category == '2' and location.equals('선택')">
+    	and pi.pil_no in (select pil_no from possesion where pil_no is not null)
+    </if>
      
 </select>
 
