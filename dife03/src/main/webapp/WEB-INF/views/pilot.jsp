@@ -24,7 +24,7 @@
     	var arr = ['선택','서울','인천','경기','세종','강원','대구','대전','광주','울산','부산','제주'];
     	$.each(arr, function(idx, loc){
     		//alert(arr[idx]);
-    		var search_loc = $("<option></option>").attr("value",arr[idx]).html(arr[idx]);
+    		var search_loc = $("<option></option>").attr({"value":arr[idx], "idx":idx}).html(arr[idx]);
     		$("#pil-location").append(search_loc);
     	})
     	
@@ -33,7 +33,7 @@
     		$(".container").empty();
     		var category = $("select[name=pil-category]").val();
     		var location = $("select[name=pil-location]").val();
-    		$.getJSON("sel_pilOne",
+    		$.getJSON("sel_pil",
     			{"category": category, "location": location},
     			function(data){
     				//이부분을 메소드로 만들어서 할 수 있을까?
@@ -42,7 +42,7 @@
 		    			var ul = $("<ul></ul>").addClass("pil-list");
 		    			var hr = $("<hr/>");
 		    			
-		    			var img = $("<img/>").addClass("pil-list-img").attr("src",item.pil_profile);
+		    			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_profile);
 		    			var title = $("<a></a>").html(item.pil_title).attr("href","pil_detail");
 		    			
 		    			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
@@ -72,7 +72,7 @@
     			var ul = $("<ul></ul>").addClass("pil-list");
     			var hr = $("<hr/>");
     			
-    			var img = $("<img/>").addClass("pil-list-img").attr("src",item.pil_profile);
+    			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_profile);
     			var title = $("<a></a>").html(item.pil_title).attr("href","pil_detail");
     			
     			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");

@@ -26,14 +26,14 @@ public class PilotManager {
 		}
 	}
 	
-	public static List<PilInfoVo> sel_pilOne(String category, String location){
+	public static List<PilInfoVo> sel_pil(String category, String location){
 		HashMap map = new HashMap();
 		map.put("category", category);
 		map.put("location", location);
 		System.out.println(category+", "+location);
 		List<PilInfoVo> list = null;
 		SqlSession session = factory.openSession();
-		list = session.selectList("pilInfo.sel_pilOne", map);
+		list = session.selectList("pilInfo.sel_pil", map);
 		session.close();
 		return list;
 	}

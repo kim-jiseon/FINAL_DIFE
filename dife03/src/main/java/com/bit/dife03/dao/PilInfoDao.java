@@ -9,8 +9,8 @@ import com.bit.dife03.vo.PilInfoVo;
 
 @Repository
 public class PilInfoDao {
-	public List<PilInfoVo> sel_pilOne(String category, String location){
-		return PilotManager.sel_pilOne(category, location);
+	public List<PilInfoVo> sel_pil(String category, String location){
+		return PilotManager.sel_pil(category, location);
 	}
 	
 	public List<PilInfoVo> selectPil_info(){
