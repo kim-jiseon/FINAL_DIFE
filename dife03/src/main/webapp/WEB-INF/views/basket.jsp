@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <!--JSTL 사용  -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>layout</title>
+
+    
     <!-- 웹폰트 -->
     <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
     <!-- fadeIn -->
@@ -18,6 +24,12 @@
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script type="text/javascript">
+    $(function(){
+
+    });
+    
+    </script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
@@ -43,27 +55,11 @@
             <div id="header-nav"></div>
         </div>
         <!-- //header -->
-
         <!-- //contents -->
         <div id="contents">
-       
-    
-<!--
-        <div id="content-top">
-           
-            <div class="container" style="color: black">
-                <div class='top_info'>
-                     <p style='font-size:15px; color: black; font-weight: 300; text-align: left;'>DIFE > 마이페이지 > 장바구니</p>
-             
-              
-               
-                </div>
--->
-        </div>
         <!-- 세션 영역        -->
         <div id="content-session">
             <div class="container" style="color: black">
-                
                 <div class='main-session'>
                    <p style=" font-size: 20px; color:white;">상품 목록</p><br>
                 <!--테이블 영역      -->
@@ -88,205 +84,63 @@
                             <th scope="col">주문금액<br/>(적립예정)</th>
                             <th scope="col">주문관리</th>
                         </thead>
-                            <!--테이블 리스트 뽑기용 Ajax  -->
-                            <script>
-                                $(function(){
-                                    $.getJSON("",function(data){
-                                        
-                                        var arr = data;
-                                        $.each(arr,function(index,item){
-                                            var tr = $("<tbody></tbody>");
-                                            var bas_no = $("<td>"+item.bas_no+"</td>");
-                                            var td2 = $("<td></td>");
-                                            var input = $("<input type='checkbox' name='cart_no' checked='checked'></input>");
-                                            td2.appendChild(input);
-                                        });
-                                    })
-                                    
-                                    
-                                });
-                            </script>
-                              <tbody>
-                            <td>1</td>
+                        <tbody>
+                      	<c:forEach items="${list }" var="c">
+ 						<!-- vo에서 가져온 Date값을 dateString 으로 바꾸기 위한 jstl-->
+                      	  <fmt:formatDate value="${ c.bas_rental}" var='regDate1' pattern="yyyy-MM-dd" />
+                          <fmt:formatDate value="${ c.bas_return }" var='regDate2' pattern="yyyy-MM-dd" />
+						<c:choose>
+						    <c:when test="${c.dro_name != null}">
+                      			<tr class="trselect">
+                            <td>${c.bas_no }</td>
                             <td><input type="checkbox" name="cart_no" checked="checked"></td>
                             <td>
                                 <div class="product_img">
                                     <img src="img/drone.png" width="62" height="68">
-                                    
                                 </div>
-                                
-                            </td>
-                            <td>
-                                <span style="font-size:15px; font-weight: 700;">드론/시리즈명/구매일</span><br>
-                                <span style='font-color:#898484; font-size:10px;'>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span><button style='border-radius: 1px; width: 20px;'>+</button><button style='padding-right: 2px; border-radius: 1px; width: 20px;'>-</button>
-                            </td>
-                            
-                            <td>
-                                <span style='font-weight: 700'>90000</span><br>
-                                5740
-                            </td>
-                            
-                            <td>
-                                <button style='padding: 5px; border-radius: 5px;'>삭제</button>
-                                
-                            </td>
-                        </tbody>
-                        
-                        
-                            <tbody>
-                            <td>2</td>
+         					</td>
+                            <td><span style="font-size:15px; font-weight: 700;">${c.dro_name }/${c.dro_series }</span><br><span style='font-color:#898484; font-size:10px;'>
+                           	대여일:${regDate1 }
+                    		반납일:${regDate2 }
+                            </span></td>
+                            <td><span class="txt_origin_price">${c.pos_price}</span><br>${c.bas_price }</td>
+                            <td><button style='border-radius: 1px; width: 20px;'>+</button><span style="padding:7px">${c.bas_amount }</span><button style='padding-right: 2px; border-radius: 1px; width: 20px;'>-</button></td> 
+                            <td><span style='font-weight: 700'>${c.bas_price }</span><br>${c.point }</td>
+                            <td><button style='padding: 5px; border-radius: 5px;'>삭제</button></td>
+                      			</tr>
+						    </c:when>
+						    <c:otherwise>
+                      			<tr class="trselect">  	
+                             <td>${c.bas_no }</td>
                             <td><input type="checkbox" name="cart_no" checked="checked"></td>
                             <td>
                                 <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
+                                    <img src="img/${c.dro_photo }" width="62" height="68">
                                 </div>
-                                
-                            </td>
-                            <td>
-                                <span style="font-size:15px; font-weight: 700;">드론/시리즈명/구매일</span><br>
-                                <span style='font-color:#898484; font-size:10px;'>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span><button style='border-radius: 1px; width: 10px;'>+</button><button style='padding-right: 2px; border-radius: 1px; width: 10px;'>-</button>
-                            </td>
-                            
-                            <td>
-                                <span style='font-weight: 700'>90000</span><br>
-                                5740
-                            </td>
-                            
-                            <td>
-                                <button style='padding: 5px; border-radius: 5px;'>삭제</button>
-                                
-                            </td>
-                        </tbody>
-                        
-                        
-                            <tbody>
-                            <td>3</td>
-                            <td><input type="checkbox" name="cart_no" checked="checked"></td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span style="font-size:15px; font-weight: 700;">드론/시리즈명/구매일</span><br>
-                                <span style='font-color:#898484; font-size:10px;'>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span><button style='border-radius: 1px; width: 20px;'>+</button><button style='padding-right: 2px; border-radius: 1px; width: 20px;'>-</button>
-                            </td>
-                            
-                            <td>
-                                <span style='font-weight: 700'>90000</span><br>
-                                5740
-                            </td>
-                            
-                            <td>
-                                <button style='padding: 5px; border-radius: 5px;'>삭제</button>
-                                
-                            </td>
-
-                        </tbody>
-                        
-                        
-                            <tbody >
-                            <td>4</td>
-                            <td><input type="checkbox" name="cart_no" checked="checked"></td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span style="font-size:15px; font-weight: 700;">드론/시리즈명/구매일</span><br>
-                                <span style='font-color:#898484; font-size:10px;'>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span><button style='border-radius: 1px; width: 20px;'>+</button><button style='padding-right: 2px; border-radius: 1px; width: 20px;'>-</button>
-                            </td>
-                            
-                            <td>
-                                <span style='font-weight: 700'>90000</span><br>
-                                5740
-                            </td>
-                            
-                            <td>
-                                <button style='padding: 5px; border-radius: 5px;'>삭제</button>
-                                
-                            </td>
-
-                        </tbody>
-             
-                            <tbody >
-                            <td>5</td>
-                            <td><input type="checkbox" name="cart_no" checked="checked"></td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span style="font-size:15px; font-weight: 700;">드론/시리즈명/구매일</span><br>
-                                <span style='font-color:#898484; font-size:10px;'>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span><button style='border-radius: 1px; width: 20px;'>+</button><button style='padding-right: 2px; border-radius: 1px; width: 20px;'>-</button>
-                            </td>
-                            
-                            <td>
-                                <span style='font-weight: 700'>90000</span><br>
-                                5740
-                            </td>
-                            
-                            <td>
-                                <button style='padding: 5px; border-radius: 5px;'>삭제</button>
-                                
-                            </td>
-                        </tbody>
+         					</td>
+                            <td><span style="font-size:15px; font-weight: 700;">${c.mem_name }/${c.pil_loc }/${c.pil_career}년 </span><br><span style='font-color:#898484; font-size:10px;'>
+                    		대여일:${regDate1 }
+                    		반납일:${regDate2 }
+                            </span></td>
+                            <td><span class="txt_origin_price">${c.pos_price}</span><br>${c.bas_price }</td>
+                            <td><button style='border-radius: 1px; width: 20px;'>+</button><span style="padding:7px">${c.bas_amount }</span><button style=' border-radius: 1px; width: 20px;'>-</button></td> 
+                            <td><span style='font-weight: 700'>${c.bas_price} </span><br>${c.point }</td>
+                            <td><button style='padding: 5px; border-radius: 5px;'>삭제</button></td>
+                      			</tr>
+						    </c:otherwise> 
+						</c:choose>
+                      	</c:forEach>
+                      		</tbody>
                     </table>
                     <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="del_chk" class="a_btn"><font color="black">선택삭제</font></a>
 					<a href="orders" id="order" class="a_btn"><font color="black">주문하기</font></a>
 				</div>
-                
-                    
+                        </div>
                 </div>
             </div>
         </div>
 <!--    //table-->
-       
           <!--    content_footer-->
        <div id='content_footer'>
             <div class="container" style="color: white">
@@ -296,7 +150,7 @@
                 
                </div>
                 <div class="total_product">
-                    <span class="info">적립금</span><span class="info">880 원</span>
+                    <span class="info">적립금</span><span class="info"> 원</span>
                     
                 </div>
                  <div class="total_product">
@@ -329,10 +183,8 @@
 
 <script>
 window.onscroll = function() {myFunction()};
-
 var header = document.getElementById("header");
 var sticky = header.offsetTop;
-
 function myFunction() {
   if (window.pageYOffset > sticky) {
     header.classList.add("sticky");
