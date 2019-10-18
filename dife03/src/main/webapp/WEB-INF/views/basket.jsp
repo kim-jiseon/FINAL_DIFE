@@ -26,9 +26,19 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
-
+    	
+    	/* 수량처리에 대한 스크립트,제이쿼리문 및 전역변수 */
+    	var amount = $("#car_table[span]").text();
+    	console.log(amount);
+		$(".amountAdd").click(function(){
+			alert("Aok"+amount)
+		});
+    	$(".amountMinus").click(function(){
+    		alert("Mok"+amount)
+    	});
+    	/*수량 처리 end  */
+    	
     });
-    
     </script>
 </head>
 <body>
@@ -45,10 +55,10 @@
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
-                     <span id="category-2" class="animated fadeInUp">
+                     	<span id="category-2" class="animated fadeInUp">
                         <a href="signIn" class="cl-effect-1">LOGIN</a>
                         <a href="#" class="cl-effect-1">MYPAGE</a>
-                        <a href="basket" class="cl-effect-1">RESERVATION</a>
+                        <a href="basket.do" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>
@@ -63,7 +73,7 @@
                 <div class='main-session'>
                    <p style=" font-size: 20px; color:white;">상품 목록</p><br>
                 <!--테이블 영역      -->
-                        <table class='cart_table' style="color:white;">
+                        <table class='cart_table' style="color:white;" id="car_table">
                              <colgroup>
                                  <col width='8%'>
                                  <col width="5%">
@@ -104,7 +114,7 @@
                     		반납일:${regDate2 }
                             </span></td>
                             <td><span class="txt_origin_price">${c.pos_price}</span><br>${c.bas_price }</td>
-                            <td><button style='border-radius: 1px; width: 20px;'>+</button><span style="padding:7px">${c.bas_amount }</span><button style='padding-right: 2px; border-radius: 1px; width: 20px;'>-</button></td> 
+                            <td><button style='border-radius: 1px; width: 20px;' class="amountAdd">+</button><span style="padding:7px" class="p_amount">${c.bas_amount }</span><button style='padding-right: 2px; border-radius: 1px; width: 20px;' class="amountMinus">-</button></td> 
                             <td><span style='font-weight: 700'>${c.bas_price }</span><br>${c.point }</td>
                             <td><button style='padding: 5px; border-radius: 5px;'>삭제</button></td>
                       			</tr>
@@ -123,7 +133,7 @@
                     		반납일:${regDate2 }
                             </span></td>
                             <td><span class="txt_origin_price">${c.pos_price}</span><br>${c.bas_price }</td>
-                            <td><button style='border-radius: 1px; width: 20px;'>+</button><span style="padding:7px">${c.bas_amount }</span><button style=' border-radius: 1px; width: 20px;'>-</button></td> 
+                            <td><button style='border-radius: 1px; width: 20px;' class="amountAdd">+</button><span style="padding:7px" class="p_amount">${c.bas_amount }</span><button style=' border-radius: 1px; width: 20px;' class="amountMinus">-</button></td> 
                             <td><span style='font-weight: 700'>${c.bas_price} </span><br>${c.point }</td>
                             <td><button style='padding: 5px; border-radius: 5px;'>삭제</button></td>
                       			</tr>
