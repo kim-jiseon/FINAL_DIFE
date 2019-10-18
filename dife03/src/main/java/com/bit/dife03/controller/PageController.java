@@ -18,11 +18,7 @@ public class PageController {
 	public void admin_update() {
 		
 	}
-	
-	@RequestMapping("/pilot")
-	public void pilot() {
-		
-	}
+
 	
 	@RequestMapping("/basket")
 	public void basket() {
