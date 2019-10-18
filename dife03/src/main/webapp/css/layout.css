@@ -57,19 +57,19 @@
     }
     
     #logo{
-        width: 100px;
+        width: 90px;
         height: auto;
         float: left;
-        margin: 20px 0px;
+        margin: 22px 0px;
     }
     
     #category-1{
         float: left;
-        margin: 0px 40px;
+        margin: 0px 30px;
     }
 
     #category-1 > a{
-        padding: 20px;
+        padding: 15px;
         color: white;
     }
 
@@ -79,15 +79,16 @@
 
     #category-2{
         float: right;
-        margin: 0px 40px;
+        margin: 0px 30px;
     }
 
     #category-2 > a{
         color: white;
         text-transform: uppercase;
         text-shadow: 0 0 1px rgba(255,255,255,0.3);
-        padding: 0px 20px;
+        padding: 0px 15px;
     }
+    
     
     
     /*상단 버튼 효과*/
