@@ -9,19 +9,19 @@
     where p.pil_no = pi.pil_no and p.mem_no = m.mem_no
    
    <!-- 지역으로만 검색 (안됨)-->
-     <if test="category == '2' and !location.equals('선택')">
+     <if test="category == 2 and !location.equals('선택')">
 		and pil_locInfo like '%' || #{location} || '%'
     </if>
     <!-- 카테고리로만 검색 -->
-    <if test="category != '2' and location.equals('선택')">
+    <if test="category != 2 and location.equals('선택')">
 		and pil_cateInfo = #{category}
     </if>
     <!-- 지역 및 카테고리 검색 -->
-    <if test="category != '2' and !location.equals('선택')">
+    <if test="category != 2 and !location.equals('선택')">
     	and pil_cateInfo = #{category} and  pil_locInfo like '%' || #{location} || '%' 
     </if>
     <!-- 검색조건 없을 시 (안됨)-->
-    <if test="category == '2' and location.equals('선택')">
+    <if test="category == 2 and location.equals('선택')">
     	and pi.pil_no in (select pil_no from possesion where pil_no is not null)
     </if>
      

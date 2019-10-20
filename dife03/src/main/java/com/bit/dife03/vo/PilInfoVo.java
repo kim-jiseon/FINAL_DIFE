@@ -1,6 +1,7 @@
 package com.bit.dife03.vo;
 
 public class PilInfoVo {
+	private int info_no;
 	private String pil_no;
 	private String mem_name;
 	private String pil_title;
@@ -14,9 +15,10 @@ public class PilInfoVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PilInfoVo(String pil_no, String mem_name, String pil_title, int pil_cateInfo, String pil_profile,
-			String pil_locInfo, String pil_info, int pil_star) {
+	public PilInfoVo(int info_no, String pil_no, String mem_name, String pil_title, int pil_cateInfo,
+			String pil_profile, String pil_locInfo, String pil_info, int pil_star) {
 		super();
+		this.info_no = info_no;
 		this.pil_no = pil_no;
 		this.mem_name = mem_name;
 		this.pil_title = pil_title;
@@ -25,6 +27,12 @@ public class PilInfoVo {
 		this.pil_locInfo = pil_locInfo;
 		this.pil_info = pil_info;
 		this.pil_star = pil_star;
+	}
+	public int getInfo_no() {
+		return info_no;
+	}
+	public void setInfo_no(int info_no) {
+		this.info_no = info_no;
 	}
 	public String getPil_no() {
 		return pil_no;

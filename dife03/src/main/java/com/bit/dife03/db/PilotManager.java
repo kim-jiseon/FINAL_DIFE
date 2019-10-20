@@ -41,7 +41,7 @@ public class PilotManager {
 		
 		sqlTest(map, id);
 		//SqlSession session = factory.openSession();
-		list = session.selectList("pilInfo.sel_pil", map);
+		list = session.selectList(id, map);
 		session.close();
 		return list;
 	}
@@ -54,21 +54,20 @@ public class PilotManager {
 		return list;
 	}
 	
+	//쿼리문 콘솔 출력 메소드
 	public static void sqlTest(Map map, String id) {
-		
 		session = factory.openSession();
 		BoundSql sql = session.getConfiguration().getMappedStatement(id).getBoundSql(map);
 		String sql2 = sql.getSql();
 		List<ParameterMapping> paramMapping = sql.getParameterMappings();
 		String value = "";
-		for (ParameterMapping mapping : paramMapping) {
-			String propValue = mapping.getProperty();
-			value = map.get(propValue).toString();
-			System.out.println("value값:"+value);
-			sql2 = sql2.replaceFirst("\\?", "'"+value+"'");
-			
-		}
-		
+			for (ParameterMapping mapping : paramMapping) {
+				String propValue = mapping.getProperty();
+				value = map.get(propValue).toString();
+				System.out.println("value값:"+value);
+				sql2 = sql2.replaceFirst("\\?", "'"+value+"'");
+				
+			}
 		System.out.println("sql:"+sql2);
 	}
 }

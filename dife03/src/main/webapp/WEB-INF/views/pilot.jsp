@@ -43,7 +43,7 @@
 		    			var hr = $("<hr/>");
 		    			
 		    			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_profile);
-		    			var title = $("<a></a>").html(item.pil_title).attr("href","pil_detail");
+		    			var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail","id":"pil-list-title"});
 		    			
 		    			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
 		    			var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
@@ -56,7 +56,8 @@
 		    			$(ul).append(li);
 		    			$(".container").append(ul);
 		    			$(".container").append(hr);
-					})    			
+		    			
+				})    			
     		})
     	})
     	
@@ -73,7 +74,7 @@
     			var hr = $("<hr/>");
     			
     			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_profile);
-    			var title = $("<a></a>").html(item.pil_title).attr("href","pil_detail");
+    			var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail?info="+item.info_no,"id":"pil-list-title"});
     			
     			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
     			var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
@@ -89,6 +90,8 @@
     			
     		})
     	}})
+    	
+    	
     })
     </script>
 </head>

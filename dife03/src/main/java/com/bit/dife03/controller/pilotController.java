@@ -47,6 +47,11 @@ public class pilotController {
 		return str;
 	}
 	
+	@RequestMapping("/pilotDetail")
+	public void pilotDetail() {
+		
+	}
+	
 	@RequestMapping("/pilot")
 	public void pilot() {
 		
