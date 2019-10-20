@@ -30,6 +30,15 @@ public class PilotManager {
 		}
 	}
 	
+	public static PilInfoVo sel_pil_detail(int info){
+		PilInfoVo infoVo = null;
+		SqlSession session = factory.openSession();
+		infoVo = session.selectOne("pilot.sel_pil_detail", info);
+		session.close();
+		System.out.println("detail:"+infoVo.toString());
+		return infoVo;
+	}
+	
 	public static List<PilInfoVo> sel_pil(String category, String location){
 		HashMap map = new HashMap();
 		map.put("category", category);
@@ -37,7 +46,7 @@ public class PilotManager {
 		System.out.println(category+", "+location);
 		List<PilInfoVo> list = null;
 		
-		String id = "pilInfo.sel_pil";
+		String id = "pilot.sel_pil";
 		
 		sqlTest(map, id);
 		//SqlSession session = factory.openSession();
@@ -49,7 +58,7 @@ public class PilotManager {
 	public static List<PilInfoVo> selectPil_info() {
 		List<PilInfoVo> list = null;
 		SqlSession session = factory.openSession();
-		list = session.selectList("pilInfo.selectPil_info");
+		list = session.selectList("pilot.selectPil_info");
 		session.close();
 		return list;
 	}

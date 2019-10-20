@@ -20,15 +20,17 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
-	var img = $("<img/>").attr({"src":"img/pilot/"+fname, "id":pil-img});
-	var name = $("<dd></dd>").addClass("pil-name").html(mem_name);
+	var img = $("<img/>").attr({"src":"img/pilot/"+'${info.pil_profile}', "id":pil-img});
+	var title = $("<dd></dd>").addClass("pil-title").html('${info.pil_title}');
+	var name = $("<dd></dd>").addClass("pil-name").html('${info.mem_name}');
 	var career = $("<dd></dd>").html("경력 "+pil_career+"년");
-	var loc = $("<dd></dd>").html("지역: "+pil_locInfo);
-	var intro = $("<dd></dd>").html("한줄 소개: "+pil_intro);
+	var loc = $("<dd></dd>").html("지역: "+'${info.pil_locInfo}');
+	var intro = $("<dd></dd>").html("한줄 소개: "+'${info.pil_info}');
 	
-	var dl = $("<dl></dl>").append(img, name, career, loc, intro);
+	var dl = $("<dl></dl>").append(img, name, title, career, loc, intro);
 	var li = $("<li></li>").append(dl);
 	$(".top").append(li);
+
 });
 </script>
 </head>

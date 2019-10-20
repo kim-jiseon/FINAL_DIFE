@@ -1,9 +1,12 @@
 package com.bit.dife03.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.PilInfoDao;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,8 +51,12 @@ public class pilotController {
 	}
 	
 	@RequestMapping("/pilotDetail")
-	public void pilotDetail() {
-		
+	public ModelAndView pilotDetail(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		int info = Integer.parseInt(request.getParameter("info"));
+		mav.addObject("info",dao.sel_pil_detail(info));
+		//System.out.println("번호:"+info);
+		return mav;
 	}
 	
 	@RequestMapping("/pilot")

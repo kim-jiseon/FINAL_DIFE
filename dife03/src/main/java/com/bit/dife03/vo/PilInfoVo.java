@@ -82,4 +82,11 @@ public class PilInfoVo {
 	public void setPil_star(int pil_star) {
 		this.pil_star = pil_star;
 	}
+	@Override
+	public String toString() {
+		return "PilInfoVo [info_no=" + info_no + ", pil_no=" + pil_no + ", mem_name=" + mem_name + ", pil_title="
+				+ pil_title + ", pil_cateInfo=" + pil_cateInfo + ", pil_profile=" + pil_profile + ", pil_locInfo="
+				+ pil_locInfo + ", pil_info=" + pil_info + ", pil_star=" + pil_star + "]";
+	}
+	
 }
