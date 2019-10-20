@@ -34,6 +34,11 @@
     font-size: 20px;
     padding: 20px;
 }
+
+#pil-title{
+	font-size:17px;
+	font-weight: bold;
+}
 /*캘린더 및 상담버튼*/
 #block5{
     color: white;

@@ -3,14 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pilot">
-<select id="sel_pil_detail" resultType="pilInfoVo">
+<select id="sel_pil_detail" resultType="pilListVo">
 	select m.mem_name, pi.* from pil_information pi, member m, pilot p 
     where p.pil_no = pi.pil_no and p.mem_no = m.mem_no and 
     pi.info_no = #{info}
 </select>
 
 <!-- 파일럿 검색조건 1가지 -->
-<select id="sel_pil" resultType="pilInfoVo">
+<select id="sel_pil" resultType="pilListVo">
 	select m.mem_name, pi.* from pil_information pi, member m, pilot p 
     where p.pil_no = pi.pil_no and p.mem_no = m.mem_no
    
@@ -34,7 +34,7 @@
 </select>
 
 <!-- 전체 파일럿 홍보 테이블 셀렉 -->
-  <select id="selectPil_info" resultType="pilInfoVo">
+  <select id="selectPil_list" resultType="pilListVo">
     select m.mem_name, pi.* from pil_information pi, member m, pilot p 
     where p.pil_no = pi.pil_no and p.mem_no = m.mem_no and 
     pi.pil_no in (select pil_no from possesion where pil_no is not null)

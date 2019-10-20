@@ -14,7 +14,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.bit.dife03.vo.PilInfoVo;
+import com.bit.dife03.vo.PilListVo;
 
 public class PilotManager {
 	public static SqlSessionFactory factory;
@@ -30,8 +30,8 @@ public class PilotManager {
 		}
 	}
 	
-	public static PilInfoVo sel_pil_detail(int info){
-		PilInfoVo infoVo = null;
+	public static PilListVo sel_pil_detail(int info){
+		PilListVo infoVo = null;
 		SqlSession session = factory.openSession();
 		infoVo = session.selectOne("pilot.sel_pil_detail", info);
 		session.close();
@@ -39,12 +39,12 @@ public class PilotManager {
 		return infoVo;
 	}
 	
-	public static List<PilInfoVo> sel_pil(String category, String location){
+	public static List<PilListVo> sel_pil(String category, String location){
 		HashMap map = new HashMap();
 		map.put("category", category);
 		map.put("location", location);
 		System.out.println(category+", "+location);
-		List<PilInfoVo> list = null;
+		List<PilListVo> list = null;
 		
 		String id = "pilot.sel_pil";
 		
@@ -55,10 +55,10 @@ public class PilotManager {
 		return list;
 	}
 	
-	public static List<PilInfoVo> selectPil_info() {
-		List<PilInfoVo> list = null;
+	public static List<PilListVo> selectPil_list() {
+		List<PilListVo> list = null;
 		SqlSession session = factory.openSession();
-		list = session.selectList("pilot.selectPil_info");
+		list = session.selectList("pilot.selectPil_list");
 		session.close();
 		return list;
 	}

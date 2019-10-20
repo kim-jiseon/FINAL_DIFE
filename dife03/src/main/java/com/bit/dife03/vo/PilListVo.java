@@ -1,38 +1,38 @@
 package com.bit.dife03.vo;
 
-public class PilInfoVo {
-	private int info_no;
+public class PilListVo {
+	private int list_no;
 	private String pil_no;
 	private String mem_name;
 	private String pil_title;
 	private int pil_cateInfo;
-	private String pil_profile;
+	private String pil_photo;
 	private String pil_locInfo;
 	private String pil_info;
 	private int pil_star;
 	
-	public PilInfoVo() {
+	public PilListVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PilInfoVo(int info_no, String pil_no, String mem_name, String pil_title, int pil_cateInfo,
-			String pil_profile, String pil_locInfo, String pil_info, int pil_star) {
+	public PilListVo(int list_no, String pil_no, String mem_name, String pil_title, int pil_cateInfo, String pil_photo,
+			String pil_locInfo, String pil_info, int pil_star) {
 		super();
-		this.info_no = info_no;
+		this.list_no = list_no;
 		this.pil_no = pil_no;
 		this.mem_name = mem_name;
 		this.pil_title = pil_title;
 		this.pil_cateInfo = pil_cateInfo;
-		this.pil_profile = pil_profile;
+		this.pil_photo = pil_photo;
 		this.pil_locInfo = pil_locInfo;
 		this.pil_info = pil_info;
 		this.pil_star = pil_star;
 	}
-	public int getInfo_no() {
-		return info_no;
+	public int getList_no() {
+		return list_no;
 	}
-	public void setInfo_no(int info_no) {
-		this.info_no = info_no;
+	public void setList_no(int list_no) {
+		this.list_no = list_no;
 	}
 	public String getPil_no() {
 		return pil_no;
@@ -58,11 +58,11 @@ public class PilInfoVo {
 	public void setPil_cateInfo(int pil_cateInfo) {
 		this.pil_cateInfo = pil_cateInfo;
 	}
-	public String getPil_profile() {
-		return pil_profile;
+	public String getPil_photo() {
+		return pil_photo;
 	}
-	public void setPil_profile(String pil_profile) {
-		this.pil_profile = pil_profile;
+	public void setPil_photo(String pil_photo) {
+		this.pil_photo = pil_photo;
 	}
 	public String getPil_locInfo() {
 		return pil_locInfo;
@@ -84,9 +84,8 @@ public class PilInfoVo {
 	}
 	@Override
 	public String toString() {
-		return "PilInfoVo [info_no=" + info_no + ", pil_no=" + pil_no + ", mem_name=" + mem_name + ", pil_title="
-				+ pil_title + ", pil_cateInfo=" + pil_cateInfo + ", pil_profile=" + pil_profile + ", pil_locInfo="
+		return "PilInfoVo [list_no=" + list_no + ", pil_no=" + pil_no + ", mem_name=" + mem_name + ", pil_title="
+				+ pil_title + ", pil_cateInfo=" + pil_cateInfo + ", pil_photo=" + pil_photo + ", pil_locInfo="
 				+ pil_locInfo + ", pil_info=" + pil_info + ", pil_star=" + pil_star + "]";
 	}
-	
 }

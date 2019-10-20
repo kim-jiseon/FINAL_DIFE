@@ -36,12 +36,12 @@ public class pilotController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/selectPil_info")
+	@RequestMapping("/selectPil_list")
 	public String selectPil_info() {
 		String str = "";
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			str = mapper.writeValueAsString(dao.selectPil_info());
+			str = mapper.writeValueAsString(dao.selectPil_list());
 			System.out.println("controller"+str);
 		} catch (Exception e) {
 			// TODO: handle exception

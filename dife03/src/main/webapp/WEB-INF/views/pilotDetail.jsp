@@ -20,6 +20,7 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
+	/*
 	var img = $("<img/>").attr({"src":"img/pilot/"+'${info.pil_profile}', "id":pil-img});
 	var title = $("<dd></dd>").addClass("pil-title").html('${info.pil_title}');
 	var name = $("<dd></dd>").addClass("pil-name").html('${info.mem_name}');
@@ -30,7 +31,7 @@ $(function(){
 	var dl = $("<dl></dl>").append(img, name, title, career, loc, intro);
 	var li = $("<li></li>").append(dl);
 	$(".top").append(li);
-
+	*/
 });
 </script>
 </head>
@@ -67,11 +68,12 @@ $(function(){
                     <ul class="top">
                         <li>
                             <dl>
-                               <img src="img/pilot/visit_cnt.png">
-                                <dd class="pil-name">홍길동 강사</dd>
+                               <img src="img/pilot/${info.pil_profile}">
+                                <dd class="pil-name">${info.mem_name} 강사</dd>
+                                <dd id="pil-title">${info.pil_title}</dd>
                                 <dd>경력 5년</dd>
-                                <dd>지역: 서울/인천</dd>
-                                <dd>한줄 소개: 드론 교육에 대한 모든 것을 알려드립니다!</dd>
+                                <dd>지역: ${info.pil_locInfo}</dd>
+                                <dd>한줄 소개: ${info.pil_info}</dd>
                             </dl>
                         </li>
                     </ul>
@@ -98,8 +100,8 @@ $(function(){
                            <li>
                                <dl>
                                    <dd class="info_det"><i class="far fa-file-alt"></i> 기본 정보</dd>
-                                   <dd>경력: 5년</dd>
-                                   <dd>지역: 서울/인천</dd>
+                                   <dd>경력: ${info_detail.pil_career }년</dd>
+                                   <dd>지역: ${info.pil_locInfo}</dd>
                                    <dd>연락 가능 시간: 오전 9시 - 오후 6시</dd>
                                    <dd></dd>
                                </dl>
@@ -111,8 +113,8 @@ $(function(){
                            <li>
                                <dl>
                                    <dd class="info_det"><i class="far fa-file-alt"></i> 상세 정보</dd>
-                                   <dd>자격증: 보유</dd>
-                                   <dd>보유드론: mavic pro2</dd>
+                                   <dd>자격증: ${info_detail.pil_drone }</dd>
+                                   <dd>보유드론: ${info_detail.pil_drone }</dd>
                                    <dd></dd>
                                </dl>
                            </li>
@@ -124,7 +126,7 @@ $(function(){
                            <li>
                                <dl>
                                    <dd>포트폴리오</dd>
-                                   <dd><img src="img/%EB%93%9C%EB%A1%A02.PNG" alt="" class="pil-portfolio"></dd>
+                                   <dd><img src="img/pilot/${info_detail.pil_portfolio }" class="pil-portfolio"></dd>
                                </dl>
                            </li>
                        </ul>

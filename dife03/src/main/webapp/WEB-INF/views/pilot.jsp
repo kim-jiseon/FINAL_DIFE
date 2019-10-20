@@ -42,8 +42,8 @@
 		    			var ul = $("<ul></ul>").addClass("pil-list");
 		    			var hr = $("<hr/>");
 		    			
-		    			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_profile);
-		    			var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail","id":"pil-list-title"});
+		    			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_photo);
+		    			var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail?info="+item.list_no,"id":"pil-list-title"});
 		    			
 		    			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
 		    			var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
@@ -62,7 +62,7 @@
     	})
     	
     	//전체 페이지 출력
-    	$.ajax({url:"selectPil_info", success:function(data){
+    	$.ajax({url:"selectPil_list", success:function(data){
     		var list = eval(data);
     		$.each(list, function(idx, item){
     			//var arr = [item.mem_name, item.pil_title, item.pil_profile, item.pil_locInfo, item.pil_info, item.pil_star];
@@ -73,8 +73,8 @@
     			var ul = $("<ul></ul>").addClass("pil-list");
     			var hr = $("<hr/>");
     			
-    			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_profile);
-    			var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail?info="+item.info_no,"id":"pil-list-title"});
+    			var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_photo);
+    			var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail?info="+item.list_no,"id":"pil-list-title"});
     			
     			var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
     			var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
@@ -90,8 +90,6 @@
     			
     		})
     	}})
-    	
-    	
     })
     </script>
 </head>
