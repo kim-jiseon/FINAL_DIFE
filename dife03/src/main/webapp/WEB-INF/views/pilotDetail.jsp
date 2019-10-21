@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/pilot/pilotDetail.css">
+    <!-- datepicker -->
+    <link href="dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="dist/js/datepicker.min.js"></script>
+        <!-- Include English language -->
+        <script src="dist/js/i18n/datepicker.en.js"></script>
+ 
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -73,9 +79,13 @@ $(function(){
                   <div id="block5">
                        <div id="calendar">
                         교육 및 촬영일&nbsp;&nbsp;
+                        <!-- 
                             <input id="datepicker" type="text" name="sel_date" style="color: black;">
-                                    
-                           <!-- 
+                             -->
+							<input type="text" data-range="true"
+								data-multiple-dates-separator=" - " data-language="en"
+								class="datepicker-here" />
+							<!-- 
                            <input type="text" id="datepicker">
                             <script src="pikaday.js"></script>
                             <script>
@@ -154,6 +164,14 @@ function myFunction() {
     header.classList.remove("sticky");
   }
 }
+</script>
+<script type="text/javascript">
+$(function(){
+	// Initialization
+	$('#my-element').datepicker([options])
+	// Access instance of plugin
+	$('#my-element').data('datepicker')
+})
 </script>
 </body>
 </html>
