@@ -30,3 +30,7 @@ button:hover{
     background-color: #ffffff;
     color: #000000;
 }
+hr{
+    background-color: #a4a4a4;
+    border-color: #a4a4a4;
+}

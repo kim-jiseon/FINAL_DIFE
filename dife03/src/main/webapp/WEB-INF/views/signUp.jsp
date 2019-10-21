@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/signUp.css">
+<link rel="stylesheet" href="css/member/signUp.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -328,7 +328,7 @@ $(function(){
 									<span style="color: white">회원가입</span>
 								</h1>
 								
-<form action="signUp.do" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
+								<form action="signUp.do" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
 									<div class="form-group">
 										<label class="control-label col-sm-3">이메일 
 											<span class="text-danger">*</span>
@@ -410,6 +410,7 @@ $(function(){
                                                <button id="btnAuth">확인</button>
                                             </div>
 										</div>
+										<p id="msg"></p>
 									</div>
 									
 									
@@ -483,6 +484,24 @@ $(function(){
 	</script>
 	<script type="text/javascript">
 		$(function(){
+			var authNumber;
+			$("#sendAuth").click(function(){
+				var data = {tel:$("#mem_tel").val()};
+				$.post("sendAuthNumber", data, function(data){
+					authNumber = data;
+				});
+			});
+			$("#btnAuth").click(function(){
+				var checkAuth = $("#checkAuth").val();
+				if(authNumber = checkAuth) {
+					$("#mem_tel").val($("#checkAuth").val());
+					$("#msg").html("인증되었습니다.");
+				}
+				else {
+					$("#msg").html("인증에 실패하였습니다.")
+				}
+			});
+
 			$("#submit").click(function(){
 				var check = $('input:checkbox[id="agree"]').is(':checked');
 				if(check == false) {
@@ -491,8 +510,8 @@ $(function(){
 				}
 				else
 					return true;
+				});
 			});
-		});
-	</script>
+		</script>
 </body>
 </html>
