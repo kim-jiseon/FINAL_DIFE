@@ -28,7 +28,6 @@ $(function() {
     $("#datepicker2").datepicker();
 });
 
-
 </script>
 </head>
 <body>

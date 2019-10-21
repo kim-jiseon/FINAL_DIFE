@@ -28,8 +28,7 @@
 $(function() {
 	var itemsPerPage = 8;
             
-           
-            
+              
            
           
              /* Demo purposes only */
