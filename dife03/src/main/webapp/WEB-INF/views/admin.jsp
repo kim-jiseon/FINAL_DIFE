@@ -98,59 +98,10 @@
                                       <th scope="col">E-MAIL</th>
                                    </thead>
 
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>admin</td>
-                                   <td>administrator</td>
-                                   <td>-</td>
-                                   <td>-</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>cslim</td>
-                                   <td>임창성</td>
-                                   <td>31</td>
-                                   <td>cslim@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>hahaha</td>
-                                   <td>하찬준</td>
-                                   <td>31</td>
-                                   <td>hahaha@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>jskim</td>
-                                   <td>김지선</td>
-                                   <td>28</td>
-                                   <td>jskim@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>choi</td>
-                                   <td>최민우</td>
-                                   <td>27</td>
-                                   <td>choi@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>limje</td>
-                                   <td>임정은</td>
-                                   <td>31</td>
-                                   <td>limje@gmail.com</td>
-                                   </tbody>
+								<tbody class="member-info">
+								
+								</tbody>
+                                   
                                    </table>
                                </dd>
 
@@ -325,5 +276,42 @@
     </script>
     <!-- //탭 메뉴 스크립트 -->
     
+    <!-- admin 페이지 회원 List -->
+    <script>
+    	$(function(){
+    		$.ajax({url:"AdminList", success:function(data){
+    			var list = eval(data);
+    			$.each(list, function(idx, item){
+    				var td = $("<td></td>");
+    				var input = $("<input/>").attr("type", "checkbox");
+    				var check = $(td).append(input);
+    				var id = $("<td></td>").html(item.id);
+    				var name = $("<td></td>").html(item.name);
+    				var age = $("<td></td>").html(item.age);
+    				var email = $("<td></td>").html(item.email);
+    				
+    				$(".member-info").append(check,id,name,age,email);
+    			});
+    		}})
+    		/*
+    		$.getJson("AdminList",function(data){
+    			alert(data);
+    			$.each(data,function(idx, item){
+    				var td = $("<td></td>");
+    				var input = $("<input/>").attr("type", "checkbox");
+    				var check = $(td).append(input);
+    				var id = $("<td></td>").html(item.id);
+    				var name = $("<td></td>").html(item.name);
+    				var age = $("<td></td>").html(item.age);
+    				var email = $("<td></td>").html(item.email);
+    				
+    				$(".member-info").append(check,id,name,age,email);
+    			});
+    		});
+    		*/
+    	});
+    
+    </script>
+    <!-- //admin 페이지 회원 List -->
 </body>
 </html>
