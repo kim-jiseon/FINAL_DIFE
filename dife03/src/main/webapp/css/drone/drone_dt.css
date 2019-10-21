@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* 전체 레이아웃 */
+#wrap {
+	clear: both;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
+#header {
+    height: 120px;
+}
+
+/* 정보 ul 표시제거 */
+ul{
+	list-style: none;
+}
+
+/* 상단 상품이미지 */
+.content1 .block1{
+	display: inline-block;
+	float: left;
+	width: 500px;
+	margin-left: 300px;
+	padding: 100px;
+	
+}
+
+/* 상단 상품가격,선택칸 */
+.content1 .block2{
+	display: inline-block;
+	text-align: center;
+	width: 350px;
+	margin: 100px;
+	margin-right: 300px;
+	padding: 50px;
+}
+
+/* 상품선택칸 문자열 */
+li{
+	text-align: center;	
+}
+
+/* 캘린더 */
+.form-group1 { 
+    margin-left: -20px;
+    margin-top: -10px;
+}
+.form-group2 {
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 10px;
+}
+.ui-datepicker{
+    z-index: 4 !important;
+}
+.control-label {
+    color:#333333;
+    font-size: 14px;
+    padding: 20px;
+}
+
+/* 버튼 */
+.block2 button{
+	margin-top: 20px;
+}
+
+.block2 button{
+	margin-top: 10px;
+}
+
+.block2 button{
+	margin-top: 10px;
+}
+
+.content2 .block{
+	display: inline-block;
+	margin-top: 20px;
+	padding: 0px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place / position: sticky 은 고정시킨다. */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */                          
+}
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 컨테이너 */
+.container {
+    width: 1100px;
+    margin: 0 auto;
+    height: auto;
+    background: rgba(255, 255, 255, 0.3);
+}
