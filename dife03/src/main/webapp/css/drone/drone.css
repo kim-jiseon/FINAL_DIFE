@@ -1,87 +1,19 @@
 @charset "UTF-8";
-body{
-    background-color: black;
-}
-
-/* 전체 레이아웃 */
-#wrap {
-	clear: both;
-    font-size: 20px;
-    color: #fff;
-    text-align: center;
-}
 #header{
     height: 120px;
 }
-#header-top {
-    height: 70px;
-   /* line-height: 70px;*/
-    margin: 0px 260px;
-}
+
 #header-nav{
     height: 50px;
     line-height: 50px;
     background-color: #1F2124;
 }
 
-/* 상단 타이틀 및 카테고리 */
-.header-top{
-    line-height: 65px;
-}
-.header-top .header-left{
-}
-.header-top .header-left .title a img{
-    float: left;
-    width: 120px;
-    height: auto;
-    margin-top: 8px;
-}
-.header-top .header-left .category{
-    float: left;
-}
-.header-top .header-left .category a{
-    font-size: 14px;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px 15px 15px 20px;
-}
-.header-top .header-left .category a:hover{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
-}
-.header-top .header-left .category a:active{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B;
-}
-
-/* 상단 로그인 및 마이페이지 */
-.header-top .header-right {
-    float: right;
-}
-.header-top .header-right a{
-    font-size: 14px;
-    color: #fff;
-    padding: 10px 15px 20px 15px;
-}
-.header-top .header-right a:hover{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
-}
-.header-top .header-right a:active{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B;
+body{
+    background-color: black;
 }
 
 /* 달력 */
-#dt{
-    width: auto;
-    height: 35px;
-    margin: auto;
-}
 #dd{
 	/* width and height in pixels */
 	width: 280,
@@ -143,75 +75,8 @@ body{
 /* 검색 */
 .container .search1{
     font-size: 17px;
-    font-weight: bold;
-    margin: 0 20px 0 20px;
-}
-#search1 #btnSch{    
-    margin: 20px 0 0 0;
-}
-#header-nav .container{
-    background: #000;
-    text-align: center;
-}
-.container #search{
-    display: inline-flex;
-    list-style: none;
-    color: #fff;
-}
-#search li{
-    width: 200px;
-    margin: 0px;
-    padding: 0px;
-}
-#search .fa{
-    margin-left: 8px;
-}
-.sub-menu-1{
-    display: none;
-}
-.sub-menu-2 li{
-    font-size: 13px;
-}
-ul li:hover .sub-menu-1{
-    display: block;
-    position: absolute;
-    background-color: #424242;
-    margin-top: 5px;
-    margin-left: -5px;   
-}
-ul li:hover .sub-menu-1 ul{
-    display: block;
-    margin: 10px;
-}
-ul li:hover .sub-menu-1 ul li{
-    width: 150px;
-    padding: 10px;
-    border-bottom: 1px dotted #fff;
-    text-align: left;
-}
-ul li:hover .sub-menu-1 ul li:last-child{
-    border-bottom: none;
-}
-ul li:hover .sub-menu-1 ul li:hover{
-    color: #fff;    
-    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
-}
-.fa angle-right{
-    float: right;
-}
-.sub-menu-2{
-    display: none;
-}
-.hover-dro:hover .sub-menu-2{
-    position: absolute;
-    display: block;
-    margin-top: -50px;
-    margin-left: 150px;
-    background-color: #000;
-}
-.sub-menu-2 ul li:hover{
-    background-color: #03A9F4;
-    border-radius: 10px;
+    padding-left: 35px;
+    padding-right: 15px;
 }
 
 /* 상품이미지 */
@@ -233,6 +98,21 @@ ul{
     margin: 10px;
 }
 
+/*
+.content2{
+	background-color: lightgray;
+	width: 300px;
+	height: auto;
+	border: 2px solid black;
+	margin: 20px;
+	display: inline-block;
+	float: left;
+	position: absolute;
+    padding: 0 22px 22px 0;
+    box-sizing: border-box;
+}
+*/
+
 .content2 .block .name{
     color: #231F20;
     font-weight: bold;
@@ -253,19 +133,4 @@ ul{
     margin: 0 auto;
     height: auto;
     background: rgba(255, 255, 255, 0.3);
-}
-
-#footer {
-    text-align: center;
-    height: 180px;
-}
-
-/* 하단 정보 */
-.container .info{
-    height: 140px;
-    padding-top: 10px;
-}
-.container .info li dl .txt{
-    font-size: 12px;
-    color: #a4a4a4;
 }
