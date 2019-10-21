@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>layout</title>
     <!-- 웹폰트 -->
+    <!-- 
     <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+     -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- fadeIn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- 기본 링크 -->
@@ -67,7 +70,7 @@
     		$.each(list, function(idx, item){
     			//var arr = [item.mem_name, item.pil_title, item.pil_profile, item.pil_locInfo, item.pil_info, item.pil_star];
     			//alert(arr);
-    			//alert(item.pil_cateInfo);
+    			//alert(item.pil_cateInfo);de
     			
     			var li = $("<li></li>");
     			var ul = $("<ul></ul>").addClass("pil-list");
@@ -116,6 +119,7 @@
             </div>
             <div id="header-nav">
                <span id="pil-search">
+              	 <span>카테고리</span>
                     <select name="pil-category" id="pil-category">
                     	<option value="2">선택</option>
                         <option value="1">촬영</option>

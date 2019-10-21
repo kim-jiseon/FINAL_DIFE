@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>layout</title>
     <!-- 웹폰트 -->
+     <!-- 
     <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+     -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- fadeIn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- 기본 css -->
@@ -20,18 +23,7 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
-	/*
-	var img = $("<img/>").attr({"src":"img/pilot/"+'${info.pil_profile}', "id":pil-img});
-	var title = $("<dd></dd>").addClass("pil-title").html('${info.pil_title}');
-	var name = $("<dd></dd>").addClass("pil-name").html('${info.mem_name}');
-	var career = $("<dd></dd>").html("경력 "+pil_career+"년");
-	var loc = $("<dd></dd>").html("지역: "+'${info.pil_locInfo}');
-	var intro = $("<dd></dd>").html("한줄 소개: "+'${info.pil_info}');
-	
-	var dl = $("<dl></dl>").append(img, name, title, career, loc, intro);
-	var li = $("<li></li>").append(dl);
-	$(".top").append(li);
-	*/
+
 });
 </script>
 </head>
@@ -68,10 +60,10 @@ $(function(){
                     <ul class="top">
                         <li>
                             <dl>
-                               <img src="img/pilot/${info.pil_profile}">
+                               <img src="img/pilot/${info.pil_photo}">
                                 <dd class="pil-name">${info.mem_name} 강사</dd>
                                 <dd id="pil-title">${info.pil_title}</dd>
-                                <dd>경력 5년</dd>
+                                <dd>경력 ${info.pil_career}년</dd>
                                 <dd>지역: ${info.pil_locInfo}</dd>
                                 <dd>한줄 소개: ${info.pil_info}</dd>
                             </dl>
@@ -100,9 +92,9 @@ $(function(){
                            <li>
                                <dl>
                                    <dd class="info_det"><i class="far fa-file-alt"></i> 기본 정보</dd>
-                                   <dd>경력: ${info_detail.pil_career }년</dd>
+                                   <dd>경력:${info.pil_career }년</dd>
                                    <dd>지역: ${info.pil_locInfo}</dd>
-                                   <dd>연락 가능 시간: 오전 9시 - 오후 6시</dd>
+                                   <dd>연락 가능 시간: ${info.pil_contact }</dd>
                                    <dd></dd>
                                </dl>
                            </li>
@@ -113,8 +105,8 @@ $(function(){
                            <li>
                                <dl>
                                    <dd class="info_det"><i class="far fa-file-alt"></i> 상세 정보</dd>
-                                   <dd>자격증: ${info_detail.pil_drone }</dd>
-                                   <dd>보유드론: ${info_detail.pil_drone }</dd>
+                                   <dd>자격증: ${info.pil_qualification }</dd>
+                                   <dd>보유드론: ${info.pil_drone }</dd>
                                    <dd></dd>
                                </dl>
                            </li>
@@ -126,7 +118,7 @@ $(function(){
                            <li>
                                <dl>
                                    <dd>포트폴리오</dd>
-                                   <dd><img src="img/pilot/${info_detail.pil_portfolio }" class="pil-portfolio"></dd>
+                                   <dd><img src="img/pilot/${info.pil_portfolio }" class="pil-portfolio"></dd>
                                </dl>
                            </li>
                        </ul>
