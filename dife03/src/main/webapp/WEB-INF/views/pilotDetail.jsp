@@ -21,6 +21,12 @@
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+        <!-- datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="js/datepicker/datepicker.js"></script>
+        <!-- Include language -->
+        <script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <script type="text/javascript">
 $(function(){
 
@@ -73,9 +79,13 @@ $(function(){
                   <div id="block5">
                        <div id="calendar">
                         교육 및 촬영일&nbsp;&nbsp;
+                        <!-- 
                             <input id="datepicker" type="text" name="sel_date" style="color: black;">
-                                    
-                           <!-- 
+                            --> 
+                            <input type="text" data-range="true"
+								data-multiple-dates-separator=" - " data-language="ko"
+								class="datepicker-here" style="width:180px; height: 25px;"/>
+							<!-- 
                            <input type="text" id="datepicker">
                             <script src="pikaday.js"></script>
                             <script>
@@ -154,6 +164,11 @@ function myFunction() {
     header.classList.remove("sticky");
   }
 }
+</script>
+<script type="text/javascript">
+$(function(){
+	//$('.my-datepicker').datepicker([options])
+})
 </script>
 </body>
 </html>
