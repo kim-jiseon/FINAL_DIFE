@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="css/drone/drone.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    
+   
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
