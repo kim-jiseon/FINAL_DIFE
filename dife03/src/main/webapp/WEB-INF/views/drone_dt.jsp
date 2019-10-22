@@ -30,13 +30,12 @@ $(function() {
     $("#datepicker2").datepicker();
 });
 
-=======
-<script type="text/javascript">
+
 $(function() {
     $("#datepicker1").datepicker();
     $("#datepicker2").datepicker();
 });
->>>>>>> refs/heads/asummerz
+
 
 </script>
 </head>

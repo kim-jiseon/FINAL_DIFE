@@ -31,14 +31,7 @@
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
-            
-              
-           
-<<<<<<< HEAD
-            
-           
-=======
->>>>>>> refs/heads/asummerz
+
           
              /* Demo purposes only */
   $(".hover").mouseleave(
