@@ -24,14 +24,21 @@
 <link rel="stylesheet" href="css/drone/drone.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    
+<<<<<<< HEAD
    
+=======
+>>>>>>> refs/heads/asummerz
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
             
+              
            
+<<<<<<< HEAD
             
            
+=======
+>>>>>>> refs/heads/asummerz
           
              /* Demo purposes only */
   $(".hover").mouseleave(
