@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<<<<<<< HEAD
  <title>Insert title here</title>
     <link rel="icon" type="image/png" href="http://example.com/myicon.png">
     <meta charset="UTF-8">
@@ -23,41 +24,45 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="css/calendar/src/calendar.js"></script>
+=======
+<html>
+<head>
+<title>Insert title here</title>
+<link rel="icon" type="image/png" href="http://example.com/myicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<title>DIFE.com</title>
+<!-- 웹폰트 -->
+<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+<!-- fadeIn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<!-- 기본 링크 -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/drone/drone.css">
+<!-- 달력 -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 <!-- 카테고리 검색 아이콘 -->
 <link rel="stylesheet" href="css/drone/drone.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    
-    <script type="text/javascript">
-        $(function() {
-            var itemsPerPage = 8;
-            
+<script type="text/javascript">
+$(function() {
+	var itemsPerPage = 8;
+
+          
+             /* Demo purposes only */
+  $(".hover").mouseleave(
+    function () {
+      $(this).removeClass("hover");
+    }
+  );
+
            
-            $('#container').calendar({
-                data: [{
-                        date: '2019/12/24',
-                        value: 'Christmas Eve'
-                    },
-                    {
-                        date: '2019/12/25',
-                        value: 'Merry Christmas ◀:D'
-                    },
-                    {
-                        date: '2020/01/01',
-                        value: 'Happy New Year!'
-                    }
-                ]
-            });
-
-            $('#dd').calendar({
-                trigger: '#dt',
-            });
-
-            // set date
-            //$element.calendar(setDate, value)
-
-            // set data
-            //$element.calendar(setData, value)
-
+/* 
             // 페이징 처리 : 페이지버튼 추가
             $.get("GetTotalDroneCount", function(data) {
                 var totalItem = Number(data);
@@ -102,7 +107,7 @@
 
             // selectRentalDate 메서드 만들기
             // 대여일 캘린더
-            /*$("#datepicker").dialog({
+            $("#datepicker").dialog({
             	buttons:{
             		submit:function(){
             			var data = $("#header-nav").serialize();
@@ -149,12 +154,15 @@
 
         <!-- 상세검색 -->
         <div id="header-nav">
-            <div class="container">            
+            <div class="container" style="color: #242424; width: 1100px;">            
                 <ul id="search">
                     <!-- 대여일 -->
                     <span id="calendar" class="search1">대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
-                    <input type="text" id="dt" placeholder="대여일을 선택하세요.">
-                        <div id="dd"></div>
+						<input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="대여일을 선택하세요 :D">
+               				<script src="pikaday.js"></script>
+                   			<script>
+                       			var picker = new Pikaday({ field: document.getElementById('datepicker') });
+                       	</script>
                    
                     <li class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
                         <div class="sub-menu-1">
@@ -213,24 +221,228 @@
                     <li class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
                         <div class="sub-menu-1">
                             <ul>
-                                <li class="hover-dro">50만원 미만</li>
-                                <li class="hover-dro">50만원 이상~100만원 미만</li>
-                                <li class="hover-dro">100만원 이상</li>
+                                <li class="hover-dro">~ 10만원</li>
+                                <li class="hover-dro">10 ~ 20만원</li>
+                                <li class="hover-dro">20만원 ~</li>
                             </ul>
                         </div>
                     </li>
-                    <button id="btnSch" class="search1" style="width: 100px; height: 35px; border-radius: 5px; background-color: #231F20; color: white">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
+                    <button id="btnSch" class="search1" style="width: 100px; height: 40px; border-radius: 5px; background-color: #231F20; color: white; margin-top: auto; margin-bottom: auto;">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
                 </ul>
             </div>
         </div>
- 
-                
-       
-
+        
         <!-- 상세검색결과 목록 -->
-        <div id="content2"></div>
-        <!-- 페이징 처리 -->
-        <div id="btnPaging"></div>
+		<div id="content2">
+		    <div class="container">
+			<div class="content2" style="color: black; font-size: 18px;">
+				<div id="grid">
+					<!-- 1번째 단락 -->
+	                <div class="block">
+                        <figure class="block">
+                            <img src="img/drone/D0001.png" alt="매빅2프로"/>
+                              <figcaption>
+                              <p>1인치 센서 탑재 / 전 방향 장애물 회피 센서 탑재 / APAS 2.0 탑재<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                              <!-- <p>DJI</p><br>
+                              <p>270,000원</p> -->
+                                <div class="heading">
+                                  <h2><span>MAVIC</span> 2 PRO</h2>
+                                </div>
+                              </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>		              
+	                </div>
+	                <div class="block">
+                        <figure class="block">
+                            <img src="img/drone/D0002.png" alt="매빅프로" />
+                                <figcaption>
+                                  <p>가격대비 최고의 성능을 자랑하는 입문용 or 중급자용 드론<span> / 200,000<i class="fas fa-won-sign"></i></span></p>
+                                  <!-- <p>DJI</p><br>
+                                  <p>270,000원</p> -->
+                                    <div class="heading">
+                                      <h2><span>MAVIC</span> PRO</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>       
+	                </div>
+	                <div class="block">
+                        <figure class="block">
+                            <img src="img/drone/D0003.png" alt="팬텀4" />
+                                <figcaption>
+                                    <p>4K촬영 / 장애물 자동 회피 기능 / 인텔리전트한 비행 기능 탑재<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>PHANTOM</span> 4</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>            
+	                </div>
+	                <div class="block">
+                        <figure class="block">
+                            <img src="img/drone/D0004.png" alt="팬텀4프로" />
+                                <figcaption>
+                                    <p>1인치 20 메가픽셀 Exmor R CMOS 센서를 탑재한 새로운 DJI 팬텀 카메라 / 길어진 비행시간 / 더욱 스마트한 기능들<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>PHANTOM</span> 4 PRO</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>              
+	                </div>
+	          
+	                <!-- 2번째 단락 -->
+	                <div class="block">
+	                    <figure class="block">
+                            <img src="img/drone/D0005.png" alt="팬텀3어드밴스드" />
+                                <figcaption>
+                                    <p>FULL-HD 촬영이 가능하며 비전 프로비저닝 센서로 실내에서도 쉽게 조종가능한 DJI 팬텀3 어드밴스드<span> / 250,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>PHANTOM</span> 3 ADVANCED</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>           
+	                </div>                
+	                <div class="block">	                
+	                   <figure class="block">
+                            <img src="img/drone/D0006.png" alt="팬텀3프로페셔널" />
+                                <figcaption>
+                                    <p>4K 카메라, 실시간 HD영상, 완벽한 비행 제어, 초보자들의 안전 비행을 위한 비기너 모드, 비젼 포지셔닝 시스템<span> / 300,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>PHANTOM</span> 3 PROFESSIONAL</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>               
+	                </div>	                
+	                <div class="block">.
+	                    <figure class="block">
+                            <img src="img/drone/D0007.png" alt="미니스파크" />
+                                <figcaption>
+                                    <p>셀피 or 미니 레이싱 드론, 2축 짐벌 탑재! 2KM 조종 가능, DJI 고글 호환 가능(배터리와 가방이 추가된 FLY MORE COMBO 세트)<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>SPARK</span> MINI</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>             
+	                </div>	                
+	                <div class="block">
+	                    <figure class="block">
+                            <img src="img/drone/D0008.png" alt="매빅2엔터프라이즈 유니버셜" />
+                                <figcaption>
+                                    <p>추가 기기를 연결시켜주는 확장 포트와 함께 다양한 중요 업무의 효율성을 높여보세요!<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>MAVIC</span> 2 ENTERPRISE UNIVERSAL</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>            
+	                </div>
+	                
+	                <!-- 3번째 단락 -->
+	                <div class="block">
+	                    <figure class="block">
+                            <img src="img/drone/D0009.png" alt="매빅2엔터프라이즈 듀얼" />
+                                <figcaption>
+                                    <p>FLIR 열화상 카메라가 장식된 기업용 매빅2 엔터프라이즈<span> / 200,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>MAVIC</span> 2 ENTERPRISE DUAL</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>          
+	                </div>                
+	                <div class="block">
+	                    <figure class="block">
+                            <img src="img/drone/D0010.png" alt="매빅AIR"/>
+                                <figcaption>
+                                    <p>접이식 디자인으로 휴대성 UP! 보다 가볍고 세련된 디자인으로 새롭게 출시된 DJI의 최신 드론<span> / 250,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>MAVIC</span> AIR</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>            
+	                </div>	                
+	                <div class="block">
+	                    <figure class="block">
+                            <img src="img/drone/D0011.png" alt="인스파이어1V2 1인"/>
+                                <figcaption>
+                                    <p>4K(UHD) 화질의 영상, 1200만 화소, 흔들림을 잡아주는 더욱 안정된 전문 항공촬영 드론<span> / 130,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>INSPIRE</span> 1V2 1인</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>            
+	                </div>	                
+	                <div class="block">
+	                   <figure class="block">
+                            <img src="img/drone/D0012.png" alt="인스파이어1V2 2인"/>
+                                <figcaption>
+                                    <p>4K(UHD) 화질의 영상, 1200만 화소, 흔들림을 잡아주는 더욱 안정된 전문 항공촬영 2인 조종 패키지, 비행과 영상촬영은 1명씩 가능<span> / 160,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                    <div class="heading">
+                                        <h2><span>INSPIRE</span> 1V2 2인</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>           
+	                </div>
+	                
+	                <!-- 4번째 단락 -->
+	                <!--<div class="block">
+	                    <figure class="block">
+                            <img src="img/drone/D0013.png" alt="인스파이어1PRO 1인"/>
+                                <figcaption>
+                                    <p>인스파이어 1 프로 블랙에디션. PIX4D 15일 무료이용권 증정!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                      <!-- <p>DJI</p><br>
+                                      <p>270,000원</p> -->
+                                   <!-- <div class="heading">
+                                        <h2><span>INSPIRE</span> 1PRO 1인</h2>
+                                    </div>
+                                </figcaption>
+                            <a href="drone_dt.html"></a>
+                        </figure>           
+	                </div> -->
+	               
+	            </div>
+			</div>
+		</div>
+		
+		<!-- 페이징 처리 -->
+		<div class="btnPaging">
+                        <ul class="pagination" style="font-size: 15px;">
+                            <li><a href="#">이전</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">다음</a></li>
+                        </ul>
+                    </div>
 
         <div id="footer">
             <!-- 드래그 비교 생성하기 -->
@@ -256,5 +468,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body></html>
