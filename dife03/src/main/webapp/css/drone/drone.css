@@ -1,17 +1,29 @@
 @charset "UTF-8";
+body{
+    background-color: black;
+}
+
+/* 전체 레이아웃 */
+#wrap {
+	clear: both;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
 #header{
     height: 120px;
 }
-
+#header-top {
+    height: 70px;
+   /* line-height: 70px;*/
+    margin: 0px 260px;
+}
 #header-nav{
     height: 50px;
     line-height: 50px;
     background-color: #1F2124;
 }
 
-body{
-    background-color: black;
-}
 /* 상단 타이틀 및 카테고리 */
 .header-top{
     line-height: 65px;
@@ -43,13 +55,8 @@ body{
     color: #fff;
     font-weight: bold;
     text-shadow: 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B;
->>>>>>> refs/heads/asummerz
 }
 */
-
-<<<<<<< HEAD
-
-=======
 /* 상단 로그인 및 마이페이지 */
 .header-top .header-right {
     float: right;
@@ -72,68 +79,10 @@ body{
 }
 */
 /* 달력 */
-#dd{
-	/* width and height in pixels */
-	width: 280,
-	height: 280,
-	
-	/* z-inde property */
-	zIndex: 1,
-	
-	/* selector or element */
-	trigger: null,
-	
-	/* offset */
-	offset: [0, 1],
-	
-	/* custom CSS class */
-	customClass: '',
-	
-	/* date or month */
-	view: 'date',
-	
-	/* current date */ 
-	date: new Date(),
-	
-	/* date format */
-	format: 'yyyy/mm/dd',
-	
-	/* start of week */
-	startWeek: 0,
-	
-	/* day of the week */
-	weekArray: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-	
-	/* month */
-	monthArray: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-	
-	/* date range */
-	/* [new Date(), null] or ['2015/11/23'] */
-	selectedRang: null,
-	
-	/* custom events */
-	data: null,
-	
-	/* shows labels */
-	/* {m} view mode，{d}date，{v}value */
-	/* false = disable */
-	label: '{d}\n{v}',
-	
-	/* next / prev signs */
-	prev: '&lt;',
-	next: '&gt;',
-	
-	/* callbacks */
-	viewChange: $.noop,
-	onSelected: function(view, date, value) {},
-	onMouseenter: $.noop,
-	onClose: $.noop
-=======
 #calendar{
     width: auto;
     height: 35px;
     margin: auto;
->>>>>>> refs/heads/asummerz
 }
 
 /* 검색 */
@@ -143,10 +92,6 @@ body{
 }
 .container .search1{
     font-size: 17px;
-<<<<<<< HEAD
-    padding-left: 35px;
-    padding-right: 15px;
-=======
     font-weight: bold;
     margin: 0 20px 0 20px;
     z-index: 999;
@@ -217,7 +162,6 @@ ul li:hover .sub-menu-1 ul li:hover{
 .sub-menu-2 ul li:hover{
     background-color: #03A9F4;
     border-radius: 10px;
->>>>>>> refs/heads/asummerz
 }
 
 /* 상품이미지 */
@@ -365,26 +309,7 @@ ul{
     color: black;
     margin: 10px;
 }
-<<<<<<< HEAD
-
-/*
-.content2{
-	background-color: lightgray;
-	width: 300px;
-	height: auto;
-	border: 2px solid black;
-	margin: 20px;
-	display: inline-block;
-	float: left;
-	position: absolute;
-    padding: 0 22px 22px 0;
-    box-sizing: border-box;
-}
 */
-
-=======
-*/
->>>>>>> refs/heads/asummerz
 .content2 .block .name{
     color: #fff;
     font-weight: bold;
@@ -404,9 +329,6 @@ ul{
     width: auto;
     margin: 0 auto;
     height: auto;
-<<<<<<< HEAD
-    background: rgba(255, 255, 255, 0.3);
-=======
     background: #000;
 }
 
@@ -423,5 +345,4 @@ ul{
 .container .info li dl .txt{
     font-size: 12px;
     color: #a4a4a4;
->>>>>>> refs/heads/asummerz
 }
