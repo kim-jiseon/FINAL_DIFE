@@ -39,6 +39,7 @@ $(function(){
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
 	var birthJ = false;
 
+	$("#submit").hide();
 	// 아이디 중복확인
 	$("#mem_id").blur(function(){
 		if($("#mem_id").val()=="") {
@@ -291,6 +292,36 @@ $(function(){
 			$("#tel_check").css("color", "red");
 		}
 	});
+		
+	var authNumber;
+	$("#sendAuth").click(function(){
+		var data = {tel:$("#mem_tel").val()};
+		$.post("sendAuthNumber", data, function(data){
+			authNumber = data;
+		});
+	});
+	$("#btnAuth").click(function(){
+		var checkAuth = $("#checkAuth").val();
+		if(authNumber == checkAuth) {
+			$("#mem_tel").val($("#checkAuth").val());
+			$("#msg").html("인증되었습니다.");
+			$("#submit").show();
+		}
+		else {
+			$("#msg").html("인증에 실패하였습니다.")
+			$("#submit").hide();
+		}
+	});
+
+	$("#submit").click(function(){
+		var check = $('input:checkbox[id="agree"]').is(':checked');
+		if(check == false) {
+			alert("약관에 동의하셔야 합니다.");
+			return false;
+		}
+		else
+			return true;
+		});
 });
 </script>
 </head>
@@ -404,19 +435,17 @@ $(function(){
 										</label>
 										<div class="col-md-5 col-sm-8">
 											<input type="text" class="form-control" name="mem_tel" id="mem_tel" placeholder="'-'제외" required="required">
-											<button id="sendAuth">인증번호 전송</button>
+											<button id="sendAuth" type="button">인증번호 전송</button>
 											<div class="check_font" id="tel_check"></div>
 											
 											<div class="col-md-5 col-sm-8">
                                                <input type="text" id="checkAuth" class="form-control" placeholder="인증번호를 입력하세요.">
-                                               <button id="btnAuth">확인</button>
+                                               <button id="btnAuth" type="button">확인</button>
                                             </div>
 										</div>
 										<p id="msg"></p>
 									</div>
 									
-									
-
 									<div class="form-group">
 										<label class="control-label col-sm-3" style="margin-left: -285px;">포트폴리오(파일럿)</label>
 										<div class="col-md-5 col-sm-8">
@@ -428,11 +457,11 @@ $(function(){
 											<span class="text-danger">*</span>
 										</label>
 											<input type="checkBox" class="form-control" id="agree">
-											<button id="btnAgree" onclick="popup()">약관보기</button>
+											<button id="btnAgree" onclick="popup()" type="button">약관보기</button>
 									</div>
 									<div class="form-group">
 										<div class="col-xs-offset-2 col-xs-8">
-											<input type="submit" value="회원가입" id="submit">
+											<button id="submit" type="button">회원가입</button>
 										</div>
 									</div>
 								</form>
@@ -484,36 +513,5 @@ $(function(){
 		    window.open('policy.do', 'policy', 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
 		}
 	</script>
-	<script type="text/javascript">
-		$(function(){
-			var authNumber;
-			$("#sendAuth").click(function(){
-				var data = {tel:$("#mem_tel").val()};
-				$.post("sendAuthNumber", data, function(data){
-					authNumber = data;
-				});
-			});
-			$("#btnAuth").click(function(){
-				var checkAuth = $("#checkAuth").val();
-				if(authNumber = checkAuth) {
-					$("#mem_tel").val($("#checkAuth").val());
-					$("#msg").html("인증되었습니다.");
-				}
-				else {
-					$("#msg").html("인증에 실패하였습니다.")
-				}
-			});
-
-			$("#submit").click(function(){
-				var check = $('input:checkbox[id="agree"]').is(':checked');
-				if(check == false) {
-					alert("약관에 동의하셔야 합니다.");
-					return false;
-				}
-				else
-					return true;
-				});
-			});
-		</script>
 </body>
 </html>

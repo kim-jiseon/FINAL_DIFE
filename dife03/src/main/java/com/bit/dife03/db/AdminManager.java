@@ -14,7 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bit.dife03.vo.AdminVo;
 
-public class DBManager {
+public class AdminManager {
 	public static SqlSessionFactory factory;
 	public static SqlSession session;
     static {        
