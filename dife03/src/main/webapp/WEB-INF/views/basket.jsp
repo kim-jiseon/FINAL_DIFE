@@ -25,20 +25,133 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
-    	
-    	
+    	var tr;
+    	/* 날자를 포맷하기위한 function */
+    	function date_to_str(format)
+		{
+		    var year = format.getFullYear();
+		    var month = format.getMonth() + 1;
+		    if(month<10) month = '0' + month;
+		    var date = format.getDate();
+		    if(date<10) date = '0' + date;
+		    return year + "-" + month + "-" + date;
+		}
+    	/*list를 처리하는 function*/
+    	function getList(){
+	    	$.getJSON("/basketList.do",function(data){
+	    		
+	    		$.each(data,function(idx,item){
+	    			tr=$("<tr></tr>");
+	    			var td1=$("<td></td>").html(item.bas_no);
+	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked'></td>");
+	    			var td3;
+	    			var td4;
+	    			var td5;
+	    			var td6;
+	    			var td7;
+	    			var td8;
+	    			var product_img;
+	    			var p1;
+	    			var p2;
+	    			var p3;
+	    			var p4;
+	    			var p5;
+	    			var p6;
+	    			var rental = new Date(item.bas_rental);
+	    			var re_date = new Date(item.bas_return);
+	    			rental = date_to_str(rental);
+	    			re_date=date_to_str(re_date);
+	    			if(item.dro_name !== null)
+	    				{
+	    					td3=$("<td></td>");
+	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+	    					$(td3).append(product_img);
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+	    					td4=$("<td></td>");
+	    					$(td4).append(p1,p2);
+	    					td5=$("<td></td>");
+	    					p3 = $("<p></p>").html(item.bas_price);
+	    					$(td5).append(p3);
+	    					p4= $("<p></p>").html(item.bas_amount);
+	    					td6=$("<td></td>");
+	    					$(td6).append(p4);
+	    					td7=$("<td></td>");
+	    					p5=$("<p></p>").html(item.bas_price);
+	    					p6=$("<p></p>").html(item.point);
+	    					$(td7).append(p5,p6);
+	    					td8 = $("<td><button onclick='event.cancelBubble = true;' style='padding: 5px; border-radius: 5px;'>삭제</button></td>");
+	    					
+	    					
+	    					
+	    				}
+	    			else
+	    				{
+	    			/* 	td3=$("<td></td>");
+    					dro_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+    					$(td3).append(dro_img);
+    					td4=$("<td></td>");
+    					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_);
+	    				p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).css();
+    					$(td4).append(p1,p2);
+    					td5=$("<td></td>");
+    					p3 = $("<p></p>").html(item.bas_price);
+    					$(td5).append(p3);
+    					p4= $("<p></p>").html(item.bas_amount);
+    					td6=$("<td></td>");
+    					$(td6).append(p4);
+    					td7=$("<td></td>");
+    					p5=$("<p></p>").html(item.bas_price);
+    					p6=$("<p></p>").html(item.point);
+    					$(td7).append(p5,p6);
+    					td8 = $("<td><button onclick="event.cancelBubble = true;" style='padding: 5px; border-radius: 5px;'>삭제</button></td>"); */
+	    				}
+	   
+	    			$(tr).append(td1,td2,td3,td4,td5,td6,td7,td8);
+	    			$("#table_content").append(tr);
+	    			
+	    			/* delete 처리*/
+	    			$(tr).click(function(){
+	    	    		var str = "";
+	    	    		var tdArr = new Array();
+	    	    		
+	    	    		//현재 클릭된 row
+	    	    		var row=$(this);
+	    	    		var td = row.children();
+	    	    		td.each(function(i){
+	    	    			tdArr.push(td.eq(0).text());
+	    	    		});
+	    	    		alert(tdArr)
+	    	    		
+		    		});
+	    			/*delete처리 end */
+	    			
+	  				
+	    		}); 
+	    	
+    	})
+	  
+    	}
+    	/*list를 처리하는 function getList end  */
+    	getList();
     	/* 수량처리에 대한 스크립트,제이쿼리문 및 전역변수 */
-    	var amount = $("#car_table[span]").text();
-    	console.log(amount);
+    	var arr = $("table").find("p_amount")
 		$(".amountAdd").click(function(){
 			alert("Aok"+amount)
 		});
     	$(".amountMinus").click(function(){
     		alert("Mok"+amount)
-    		
     	});
     	/*수량 처리 end  */
     	
+    	/*delete 처리 */
+    
+    	/* delete end*/
+    	
+    	/*insert orders,ordersdetail 처리*/
+    	
+    	/* orders insert,ordersdetial insert end */
+    	/**/
     });
     </script>
 </head>
@@ -74,7 +187,7 @@
                 <div class='main-session'>
                    <p style=" font-size: 20px; color:white;">상품 목록</p><br>
                 <!--테이블 영역      -->
-                        <table class='cart_table' style="color:white;" id="car_table">
+                        <table id='cart_table' style="color:white;" id="car_table">
                              <colgroup>
                                  <col width='8%'>
                                  <col width="5%">
@@ -95,8 +208,8 @@
                             <th scope="col">주문금액<br/>(적립예정)</th>
                             <th scope="col">주문관리</th>
                         </thead>
-                        <tbody>
-                      	<c:forEach items="${list }" var="c">
+                        <tbody id="table_content">
+                      	<%-- <c:forEach items="${list }" var="c">
  						<!-- vo에서 가져온 Date값을 dateString 으로 바꾸기 위한 jstl-->
                       	  <fmt:formatDate value="${ c.bas_rental}" var='regDate1' pattern="yyyy-MM-dd" />
                           <fmt:formatDate value="${ c.bas_return }" var='regDate2' pattern="yyyy-MM-dd" />
@@ -140,7 +253,7 @@
                       			</tr>
 						    </c:otherwise> 
 						</c:choose>
-                      	</c:forEach>
+                      	</c:forEach> --%>
                       		</tbody>
                     </table>
                     <div class="delete-btn-area">
