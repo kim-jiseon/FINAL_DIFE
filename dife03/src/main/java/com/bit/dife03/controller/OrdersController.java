@@ -1,4 +1,3 @@
-/*
 package com.bit.dife03.controller;
 
 
@@ -51,8 +50,9 @@ public class OrdersController {
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
 		}
+		System.out.println(str);
 		return str;
 	}
 }
-*/

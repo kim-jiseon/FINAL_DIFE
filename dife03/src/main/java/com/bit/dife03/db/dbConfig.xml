@@ -7,6 +7,7 @@
 <typeAliases>
 	<typeAlias type="com.bit.dife03.vo.PilListVo" alias="pilListVo"/>
 	<typeAlias type="com.bit.dife.vo.MemberVo" alias="memberVo"/>
+	<typeAlias type="com.bit.dife03.vo.BasketVo" alias="basketVo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -22,5 +23,6 @@
   <mappers>
     <mapper resource="com/bit/dife03/db/pilotMapper.xml"/>
     <mapper resource="com/bit/dife/db/memberMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/ordersMapper.xml"/>
   </mappers>
 </configuration>
