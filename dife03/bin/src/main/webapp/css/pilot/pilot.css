@@ -1,0 +1,47 @@
+@charset "utf-8";
+#header{
+    height: 120px;
+}
+
+#header-nav{
+    height: 50px;
+    line-height: 50px;
+    background-color: #1F2124;
+}
+
+#pil-search > select{
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    margin: 0px 50px 0px 20px;
+}
+
+#pil-search-btn{
+   
+}
+
+.container > ul > li > dd{
+    
+}
+
+.pil-list{
+    width: 1100px;
+    height: 150px;
+    text-align: left;
+    padding: 10px;
+    line-height: 30px;
+}
+.pil-list-img{
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+
+.pil-list-title{
+    font-size: 20px;
+    padding: 0px 0px 0px 200px;   
+}
+
+.pil-list-info{
+    padding: 0px 0px 0px 200px;
+}
