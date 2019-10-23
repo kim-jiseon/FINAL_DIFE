@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 .form-group{
     margin: 15px;
 }
@@ -20,49 +19,68 @@
 .control-label{
     margin-left: -350px;
 }
-
-#id_check {
+/*
+#idBtn_check {
     position: absolute;
     width: 120px;
     height: 32px;
     margin-left: 20px;
 }
-/*
-input.upload {
+*/
+#agree {
     position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    cursor: pointer;
-    opacity: 1;
-    filter: alpha(opacity=1);    
-}
-*/
-.ui-datepicker{
-    z-index: 4 !important;
-}
-#datepicker {
+    width: 20px;
     height: 30px;
-    border-radius: 4px;
-    width: 400px;
+    margin-left: 10px;
+    
 }
-/*
-.control-label {
-    color: white;
-    font-size: 14px;
-    padding: 20px;
+#btnAgree {
+    margin-left: 50px;
+    width: 80px;
+    height: 30px;
 }
-*/
 #submit{
     border-radius: 4px;
     background-color: #1F2124;
     border-color: #ffffff;
     color: #ffffff;
-    width: 80px;
-    height: 33px;
+    width: 400px;
+    height: 50px;
     font-weight: bold;
+    font-size: 1.5rem;
+}
+#mem_tel{
+    float: left;
+    margin-left: 335px;
+    width: 290px;
+}
+#sendAuth {
+    border-radius: 4px;
+    background-color: #1F2124;
+    border-color: #ffffff;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: -320px;
+    width: 100px;
+    height: 35px;
+}
+#checkAuth {
+    margin: 10px;
+    float: left;
+    margin-left: 335px;
+    width: 290px;
+    height: 30px;
+}
+#btnAuth {
+    border-radius: 4px;
+    background-color: #1F2124;
+    border-color: #ffffff;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 10px;
+    margin-left: -320px;
+    width: 100px;
+    height: 35px;
 }
 
 #submit:hover{

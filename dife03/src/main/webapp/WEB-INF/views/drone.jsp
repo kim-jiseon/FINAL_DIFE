@@ -1,6 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<<<<<<< HEAD
+ <title>Insert title here</title>
+    <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+    <title>DIFE.com</title>
+    <!-- 웹폰트 -->
+     <!-- 
+    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+     -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <!-- fadeIn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- 기본 링크 -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/drone/drone.css">
+    <!-- 달력 -->
+    <link rel="stylesheet" href="css/calendar/dist/calendar.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="css/calendar/src/calendar.js"></script>
+=======
 <html>
 <head>
 <title>Insert title here</title>
@@ -20,6 +44,7 @@
 <!-- 달력 -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
 <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 <!-- 카테고리 검색 아이콘 -->
 <link rel="stylesheet" href="css/drone/drone.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

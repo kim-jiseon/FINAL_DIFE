@@ -5,8 +5,8 @@
 }
 
 body, input, textarea, button, table{
-	font-family: 'RixGo L';
-	font-size: 14px; line-height: 1.5;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-size: 14px;
 }
 
 ul{
@@ -29,4 +29,8 @@ button{
 button:hover{
     background-color: #ffffff;
     color: #000000;
+}
+hr{
+    background-color: #a4a4a4;
+    border-color: #a4a4a4;
 }

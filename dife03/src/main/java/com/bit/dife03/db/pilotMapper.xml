@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pilot">
+<select id="sel_pil_detail" resultType="pilListVo">
+	select m.mem_name,p.*, pl.* from pil_list pl, member m, pilot p 
+    where p.pil_no = pl.pil_no and p.mem_no = m.mem_no and 
+    pl.list_no = #{info}
+</select>
+
+<!-- 파일럿 검색조건 1가지 -->
+<select id="sel_pil" resultType="pilListVo">
+	select m.mem_name, pl.* from pil_list pl, member m, pilot p 
+    where p.pil_no = pl.pil_no and p.mem_no = m.mem_no
+   
+   <!-- 지역으로만 검색 (안됨)-->
+     <if test="category == 2 and !location.equals('선택')">
+		and pil_locInfo like '%' || #{location} || '%'
+    </if>
+    <!-- 카테고리로만 검색 -->
+    <if test="category != 2 and location.equals('선택')">
+		and pil_cateInfo = #{category}
+    </if>
+    <!-- 지역 및 카테고리 검색 -->
+    <if test="category != 2 and !location.equals('선택')">
+    	and pil_cateInfo = #{category} and  pil_locInfo like '%' || #{location} || '%' 
+    </if>
+    <!-- 검색조건 없을 시 (안됨)-->
+    <if test="category == 2 and location.equals('선택')">
+    	and pl.pil_no in (select pil_no from possesion where pil_no is not null)
+    </if>
+     
+</select>
+
+<!-- 전체 파일럿 홍보 테이블 셀렉 -->
+  <select id="selectPil_list" resultType="pilListVo">
+    select m.mem_name, pl.* from pil_list pl, member m, pilot p 
+    where p.pil_no = pl.pil_no and p.mem_no = m.mem_no and 
+    pl.pil_no in (select pil_no from possesion where pil_no is not null)
+  </select>
+</mapper>
