@@ -21,6 +21,12 @@
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+        <!-- datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="js/datepicker/datepicker.js"></script>
+        <!-- Include language -->
+        <script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <script type="text/javascript">
 $(function(){
 
@@ -63,9 +69,9 @@ $(function(){
                                <img src="img/pilot/${info.pil_photo}">
                                 <dd class="pil-name">${info.mem_name} 강사</dd>
                                 <dd id="pil-title">${info.pil_title}</dd>
-                                <dd>경력 ${info.pil_career}년</dd>
-                                <dd>지역: ${info.pil_locInfo}</dd>
-                                <dd>한줄 소개: ${info.pil_info}</dd>
+                                <dd>경력:&nbsp; ${info.pil_career}년</dd>
+                                <dd>지역:&nbsp; ${info.pil_locInfo}</dd>
+                                <dd>한줄 소개:&nbsp; ${info.pil_info}</dd>
                             </dl>
                         </li>
                     </ul>
@@ -73,15 +79,9 @@ $(function(){
                   <div id="block5">
                        <div id="calendar">
                         교육 및 촬영일&nbsp;&nbsp;
-                            <input id="datepicker" type="text" name="sel_date" style="color: black;">
-                                    
-                           <!-- 
-                           <input type="text" id="datepicker">
-                            <script src="pikaday.js"></script>
-                            <script>
-                                var picker = new Pikaday({ field: document.getElementById('datepicker') });
-                            </script>
-                            -->
+                            <input type="text" data-range="true"
+								data-multiple-dates-separator=" - " data-language="ko"
+								class="datepicker-here" style="width:180px; height: 25px;"/>
                         </div>
                     <a href="#"><button id="pil_btn">파일럿과 상담하기</button></a>
                   </div>
@@ -91,10 +91,10 @@ $(function(){
                        <ul class="mid1">
                            <li>
                                <dl>
-                                   <dd class="info_det"><i class="far fa-file-alt"></i> 기본 정보</dd>
-                                   <dd>경력:${info.pil_career }년</dd>
-                                   <dd>지역: ${info.pil_locInfo}</dd>
-                                   <dd>연락 가능 시간: ${info.pil_contact }</dd>
+                                   <dd class="info_det" style="color: #a4a4a4;"><i class="far fa-file-alt"></i> 기본 정보</dd>
+                                   <dd class="pil-information">경력:&nbsp; ${info.pil_career }년</dd>
+                                   <dd class="pil-information">지역:&nbsp; ${info.pil_locInfo}</dd>
+                                   <dd class="pil-information">연락 가능 시간:&nbsp; ${info.pil_contact }</dd>
                                    <dd></dd>
                                </dl>
                            </li>
@@ -104,9 +104,9 @@ $(function(){
                        <ul class="mid1">
                            <li>
                                <dl>
-                                   <dd class="info_det"><i class="far fa-file-alt"></i> 상세 정보</dd>
-                                   <dd>자격증: ${info.pil_qualification }</dd>
-                                   <dd>보유드론: ${info.pil_drone }</dd>
+                                   <dd class="info_det" style="color: #a4a4a4;"><i class="far fa-file-alt"></i> 상세 정보</dd>
+                                   <dd class="pil-information">자격증:&nbsp; ${info.pil_qualification }</dd>
+                                   <dd class="pil-information">보유드론:&nbsp; ${info.pil_drone }</dd>
                                    <dd></dd>
                                </dl>
                            </li>

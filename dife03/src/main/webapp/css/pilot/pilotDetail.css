@@ -55,7 +55,7 @@
 }
 #pil_btn{
     font-size: 16px;
-    width: 200px;
+    width: 160px;
     height: auto;
     padding: 5px 10px;
     margin: 15px;
@@ -78,10 +78,13 @@
     text-align: left;
 }
 .mid1 li dl dd{
-    padding: 5px;
     font-size: 15px;
 }
+.pil-information{
+	padding: 5px 20px;
+}
 .mid1 .info_det{
+	padding: 5px;
     font-size: 20px;
 }
 
