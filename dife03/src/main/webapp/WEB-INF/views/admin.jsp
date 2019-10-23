@@ -78,7 +78,7 @@
                 <div id="content-center-center">
                       
                        <div id="content-center-center-top">
-                           <p style="text-align: right">총 회원수: 5명</p><br>
+                           <p style="text-align: right">총 회원수: &nbsp; ${admin }명</p><br>
                            
                             <!-- 탭메뉴 만들기 -->
                             <dl>
@@ -131,61 +131,9 @@
                                       <th scope="col">답변유무</th>
                                    </thead>
                                    
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>1</td>
-                                       <td>공지사항</td>
-                                       <td>관리자</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>답변완료</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>2</td>
-                                       <td>공지사항</td>
-                                       <td>관리자</td>
-                                       <td>2019.10.11</td>
-                                       <td>2</td>
-                                       <td>미답변</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>3</td>
-                                       <td>삼겹살에 소주</td>
-                                       <td>임창성</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>답변완료</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>4</td>
-                                       <td>피자에 소주</td>
-                                       <td>하찬준</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>답변완료</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>5</td>
-                                       <td>갈비에 소주</td>
-                                       <td>김지선</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>미답변</td>
-                                       </tbody>
+                                   <tbody class="board-info">
+								
+									</tbody>
 
                                    </table>
                                </dd>
@@ -285,36 +233,46 @@
     		$.ajax({url:"AdminList", success:function(data){
     			var list = eval(data);
     			$.each(list, function(idx, item){
+    				var tr = $("<tr></tr>");
     				var td = $("<td></td>");
     				var input = $("<input/>").attr("type", "checkbox");
     				var check = $(td).append(input);
-    				var id = $("<td></td>").html(item.id);
-    				var name = $("<td></td>").html(item.name);
-    				var age = $("<td></td>").html(item.age);
-    				var email = $("<td></td>").html(item.email);
+    				var id = $("<td></td>").html(item.mem_id);
+    				var name = $("<td></td>").html(item.mem_name);
+    				var age = $("<td></td>").html(item.mem_birth);
+    				var email = $("<td></td>").html(item.mem_email);
     				
-    				$(".member-info").append(check,id,name,age,email);
+    				$(tr).append(check,id,name,age,email);
+    				$(".member-info").append(tr);
     			});
-    		}})
-    		/*
-    		$.getJson("AdminList",function(data){
-    			alert(data);
-    			$.each(data,function(idx, item){
-    				var td = $("<td></td>");
-    				var input = $("<input/>").attr("type", "checkbox");
-    				var check = $(td).append(input);
-    				var id = $("<td></td>").html(item.id);
-    				var name = $("<td></td>").html(item.name);
-    				var age = $("<td></td>").html(item.age);
-    				var email = $("<td></td>").html(item.email);
-    				
-    				$(".member-info").append(check,id,name,age,email);
-    			});
-    		});
-    		*/
+    		}}) 		
     	});
-    
     </script>
     <!-- //admin 페이지 회원 List -->
+    
+    <!-- admin 페이지 게시판 List -->
+    <script>
+    	$(function(){
+    		$.ajax({url:"BoardList", success:function(data){
+    			var list = eval(data);
+    			$.each(list, function(idx, item){
+    				var tr = $("<tr></tr>");
+    				var td = $("<td></td>");
+    				var input = $("<input/>").attr("type", "checkbox");
+    				var check = $(td).append(input);
+    				var no = $("<td></td>").html(item.boa_no);
+    				var title = $("<td></td>").html(item.boa_title);
+    				var first = $("<td></td>").html(item.first);
+    				var regdate = $("<td></td>").html(item.boa_regdate);
+    				var view = $("<td></td>").html(item.boa_view);
+    				var answer = $("<td></td>").html(item.boa_answer);
+    				
+    				$(tr).append(check,no,title,first,regdate,view,answer);
+    				$(".board-info").append(tr);
+    			});
+    		}}) 		
+    	});
+    </script>
+    <!-- //admin 페이지 게시판 List -->
 </body>
 </html>

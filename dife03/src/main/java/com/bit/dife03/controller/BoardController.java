@@ -1,29 +1,27 @@
 package com.bit.dife03.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.bit.dife03.dao.AdminDao;
+
+import com.bit.dife03.dao.BoardDao;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
-public class AdminController {
+public class BoardController {
 	
 	@Autowired
-	private AdminDao dao;
+	private BoardDao dao;
 	
-	public void setDao(AdminDao dao) {
+	public void setDao(BoardDao dao) {
 		this.dao = dao;
 	}
 
 	@ResponseBody
-	@RequestMapping("/AdminList")
-	public String listAdmin() {
+	@RequestMapping("/BoardList")
+	public String listBoard() {
 		String str = "";
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -32,15 +30,11 @@ public class AdminController {
 			// TODO: handle exception
 			System.out.println("예외발생2"+e.getMessage());
 		}
+		System.out.println(str);
 		return str;
 	}
 	
-	@RequestMapping("/mem_cnt")
-	public ModelAndView mem_cnt() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("admin",dao.mem_cnt());
-		return mav;
-	}
+	
 	
 
 }

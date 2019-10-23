@@ -6,4 +6,8 @@
   <select id="selectAll" resultType="adminVo">
     select * from member
   </select>
+  
+  <select id="mem_cnt" resultType="java.lang.Integer">
+  	select count(mem_id) from member
+  </select>
 </mapper>

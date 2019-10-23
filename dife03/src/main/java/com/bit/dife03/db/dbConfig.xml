@@ -2,31 +2,13 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<<<<<<< HEAD
-<configuration>
-  <properties resource="com/bit/dife03/db/dife.properties"/>
-  <typeAliases>
-    <typeAlias type="com.bit.dife03.vo.AdminVo" alias="adminVo"/>
-  </typeAliases>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${user}"/>
-        <property name="password" value="${pwd}"/>
-      </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-    <mapper resource="com/bit/dife03/db/adminMapper.xml"/>
-=======
 <configuration>
 <properties resource="com/bit/dife03/db/db.properties"/>
 <typeAliases>
 	<typeAlias type="com.bit.dife03.vo.PilListVo" alias="pilListVo"/>
-	<typeAlias type="com.bit.dife.vo.MemberVo" alias="memberVo"/>
+	<typeAlias type="com.bit.dife03.vo.MemberVo" alias="memberVo"/>
+	  <typeAlias type="com.bit.dife03.vo.AdminVo" alias="adminVo"/>
+	  <typeAlias type="com.bit.dife03.vo.BoardVo" alias="boardVo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -41,7 +23,8 @@
   </environments>
   <mappers>
     <mapper resource="com/bit/dife03/db/pilotMapper.xml"/>
-    <mapper resource="com/bit/dife/db/memberMapper.xml"/>
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+    <mapper resource="com/bit/dife03/db/memberMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/adminMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/boardMapper.xml"/>
   </mappers>
 </configuration>

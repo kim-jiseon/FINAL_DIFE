@@ -12,11 +12,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.bit.dife03.vo.AdminVo;
-import com.bit.dife03.vo.BoardVo;
-import com.bit.dife03.vo.PilListVo;
 
-public class AdminManager {
+import com.bit.dife03.vo.BoardVo;
+
+public class BoardManager {
 	public static SqlSessionFactory factory;
 	public static SqlSession session;
     static {        
@@ -30,25 +29,17 @@ public class AdminManager {
         }
     }
     
-    public static List<AdminVo> listAdmin(){
-    	List<AdminVo> list = null;
+    public static List<BoardVo> listBoard(){
+    	List<BoardVo> list = null;
     	SqlSession session = factory.openSession();
-    	list = session.selectList("admin.selectAll");
+    	list = session.selectList("board.selectAll");
     	session.close();
     	HashMap map = null;
     	String id = "";
 //    	sqlTest(map, id);
+    	System.out.println("list"+list);
     	return list;	
     }
-    
-    public static int mem_cnt(){
-    	int cnt = 0;
-		SqlSession session = factory.openSession();
-		cnt = session.selectOne("admin.mem_cnt");
-		session.close();
-		System.out.println(cnt);
-		return cnt;
-	}
     
 //  	쿼리문 콘솔 출력 메소드
 //  	public static void sqlTest(Map map, String id) {
