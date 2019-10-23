@@ -14,11 +14,6 @@ public class PageController {
 		
 	}
 	
-	@RequestMapping("/drone")
-	public void drone() {
-		
-	}
-	
 	@RequestMapping("/admin_update")
 	public void admin_update() {
 		

@@ -110,87 +110,6 @@ $(function() {
 <<<<<<< HEAD
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
-=======
-
-	<div id="wrap">
-		<div id="header">
-			<div class="header-light">
-				<a href="signIn.html">로그인 <i class="fas fa-user"></i></a>
-       			<a href="payment.html">마이페이지 <i class="fas fa-clipboard-list"></i></a>
-       			<a href="basket.html">장바구니 <i class="fas fa-shopping-basket"></i></a>
-			</div>
-			<div class="header-left">
-				<div class="title"><a href="main.html"><img src="img/logo/logo_white.png" alt="디프로고"></a></div>
-				<div class="category">
-					<a href="drone">드론</a>
-					<a href="pilot01.html">파일럿</a>
-					<a href="#">지역 및 날씨</a>
-					<a href="#">고객지원</a>
-					<a href="board.html">커뮤니티</a>
-				</div>
-			</div>
-		</div>
-		
-		<!-- 상세검색 -->
-		<div id="header-nav">
-			<div class="container" style="color: #242424; width: 1100px;">
-				<!-- 대여일 -->
-				<span id="calendar" class="search1">대여일</span>
-					<input><!-- 수업내용 참고해서 사용하기 pikaday.js -->
-				<!-- 시리즈명 -->
-				<span id="ops" class="search1">시리즈명</span>
-					<select id="operS" name="operS" style="width: 150px; height: 30px; border-radius: 3px; font-size: 14px;">
-						<option value="dro_series_null">선택안함</option>
-						<option value="dro_series_mav">매빅</option>
-						<option value="dro_series_bb">비밥</option>
-						<option value="dro_series_sp">스파크</option>
-						<option value="dro_series_ins">인스파이어</option>
-						<option value="dro_series_pt">팬텀</option>
-					</select>
-				<!-- 가격 -->
-				<span id="opp" class="search1">가격</span>
-					<select id="operP" name="operP" style="width: 150px; height: 30px; border-radius: 3px; font-size: 14px;">
-						<option value="pos_price_null">선택안함</option>
-						<option value="pos_price_low">50만 원 미만</option>
-						<option value="pos_price_mid">50만 원 ~ 100만 원</option>
-						<option value="pos_price_high">100만 원 이상</option>
-					</select>
-				<button class="btnSch" style="width: 60px; height: 30px; border-radius: 5px; background-color: #231F20; color: white">검색</button>
-			</div>
-		</div>
-		
-		<!-- 상세검색결과 목록 -->
-		<div id="content2"></div>
-		<!-- 페이징 처리 -->
-		<div id="btnPaging"></div>
-		
-		<div id="footer">
-	        <div id="footer-nav">
-	            <div class="container"></div>
-	        </div>
-	        <div id="footer-info">
-	            <div class="container">
-	            <ul class="info">
-	                <li>
-	                    <dl>
-	                        <dd class="txt" style="font-size: 14px; color: black">회사소개</dd>
-	                        <dd class="txt">(주)비트캠프:DIFE</dd>
-	                        <dd class="txt">서울특별시 마포구 백범로 23 구프라자 3층</dd>
-	                        <dd class="txt">02-707-1480</dd>
-	                        <dd class="txt"><a href="#" style="color: #a4a4a4;">고객센터</a></dd>
-	                        <dd class="txt"><a href="#" style="color: #a4a4a4;">이용안내</a></dd>
-	                    </dl>
-	                </li>
-	            </ul>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-</body>
-</html>
-
-    <div id="wrap">
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
         <div id="header">
             <div id="header-top">
                <div id="category">
@@ -508,7 +427,7 @@ $(function() {
                     </div>
 
         <div id="footer">
-            <!-- 드래그 비교 생성하기 -->
+             <!-- 드래그 비교 생성하기 -->
             <div id="compareChatDrone"></div>
 
             <div id="footer-nav">
@@ -532,16 +451,6 @@ $(function() {
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-</body>
-</html>
-
-=======
     </div>
     </div>
 </body></html>
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
