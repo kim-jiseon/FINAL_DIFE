@@ -128,7 +128,7 @@
     }
     /*콘텐츠-높이는 자유롭게 설정하세요*/
     #contents{
-        height: 1000px;
+        height: auto;
     }
     
     .container{

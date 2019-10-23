@@ -50,7 +50,7 @@
         </div>
         <!-- //header -->
 
-        <!-- contents -->
+        <!-- contents -->q
         <div id="contents">
              <!-- Swiper -->
           <div class="swiper-container">
@@ -69,23 +69,43 @@
           	<!-- wiget 화면 -->
           	<div id="contents-wiget">
           		<div class="grid-wiget">
+
+          			<div class="grid-cell1">방문자<br>
+          				<img src="img/main/people.png" width="150px" height="150px"><br>
+
           			<div class="grid-cell1"><img src="img/main/people.png" width="150px" height="150px"><br>
           				방문자 수<br>
+
           				<h1>888명</h1>
           			</div>
+
+          			<div class="grid-cell1">파일럿<br>
+          				<img src="img/main/pilot.png" width="150px" height="150px"><br>
+
           			<div class="grid-cell1"><img src="img/main/pilot.png" width="150px" height="150px"><br>
           				파일럿 수 
           				<br>
+
           				<h1>54명</h1>
           			</div>
+
+          			<div class="grid-cell1">드론<br>
+          				<img src="img/main/drone.png" width="150px" height="150px"><br>
+
           			<div class="grid-cell1"><img src="img/main/drone.png" width="150px" height="150px"><br>
           				드론 수<br>
+
           				<h1>10981대</h1>
           			</div>
+
+          			<div class="grid-cell1">날씨<br>
+          				<img src="img/main/weather.png" width="150px" height="150px"><br>
+
           			<div class="grid-cell1"><img src="img/main/weather.png" width="150px" height="150px"><br>
           				날씨<br>
+
           				<h1>21℃</h1>
-          				<h4>맑음</h4>
+          				<h4>화요일(맑음)</h4>
           			</div>
           		</div>
           	</div>

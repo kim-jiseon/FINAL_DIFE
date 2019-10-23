@@ -49,14 +49,14 @@
     padding: 10px;
 }
 
-/* 탭 안에 화면 */
+/* �꺆 �븞�뿉 �솕硫� */
 dl {
   position: relative;
   width: 1050px;
   height: 450px;
 }
 
-/* 탭 메뉴 */
+/* �꺆 硫붾돱 */
 dt {
   height: 30px;
   float: left;
@@ -67,7 +67,7 @@ dt {
   background: #1F2124;
 }
 
-/* 탭 전체 틀 */
+/* �꺆 �쟾泥� �� */
 dd {
   position: absolute;
   padding-top: 30px;
@@ -77,7 +77,13 @@ dd {
   margin: 0;
 }
 
-/* 탭 숨김 기능 */
+/* �꺆 �닲源� 湲곕뒫 */
 dd.hidden {
    display: none;
+}
+
+
+.pagination{
+    width: 200px;
+    text-align: right;
 }
