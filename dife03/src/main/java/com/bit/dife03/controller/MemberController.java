@@ -61,7 +61,7 @@ public class MemberController {
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public ModelAndView signUpInsertSubmit(MemberVo vo, HttpSession session, HttpServletRequest request) {
 		
-		ModelAndView mav = new ModelAndView("redirect : /signIn.do");
+		ModelAndView mav = new ModelAndView("redirect : /signIn");
 		
 		String path = request.getRealPath("img");
 		System.out.println(path);
