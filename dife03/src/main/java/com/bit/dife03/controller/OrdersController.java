@@ -43,6 +43,7 @@ public class OrdersController {
 ////		mav.addObject("list", dao.basketList("hong"));
 //		
 //		return mav;
+		System.out.println("컨트롤러 진입");
 		String str="";
 		ObjectMapper ob = new ObjectMapper();
 		try {

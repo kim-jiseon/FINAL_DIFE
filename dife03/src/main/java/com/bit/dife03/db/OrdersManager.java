@@ -17,8 +17,11 @@ public class OrdersManager {
 	
 	static {
 		try {
+			System.out.println("static 진입");
 			Reader reader = Resources.getResourceAsReader("com/bit/dife03/db/dbConfig.xml");
+			System.out.println("리더생성"+reader);
 			factory = new SqlSessionFactoryBuilder().build(reader);
+			System.out.println("factory:"+factory);
 			reader.close();
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -30,7 +33,7 @@ public class OrdersManager {
 	public static List<BasketVo> basketList(String mem_id)
 	{
 		List<BasketVo> list=null;
-		
+		System.out.println("진입");
 		SqlSession session = factory.openSession();
 		list = session.selectList("orders.selectBasket",mem_id);
 		session.close();

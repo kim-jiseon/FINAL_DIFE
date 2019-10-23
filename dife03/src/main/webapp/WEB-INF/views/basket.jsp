@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>layout</title>
@@ -28,7 +27,7 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
-    	var tr;
+    	var bas_no;
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -62,6 +61,7 @@
 	    			var p6;
 	    			var rental = new Date(item.bas_rental);
 	    			var re_date = new Date(item.bas_return);
+	    			var btn_del;
 	    			rental = date_to_str(rental);
 	    			re_date=date_to_str(re_date);
 	    			if(item.dro_name !== null)
@@ -83,7 +83,9 @@
 	    					p5=$("<p></p>").html(item.bas_price);
 	    					p6=$("<p></p>").html(item.point);
 	    					$(td7).append(p5,p6);
-	    					td8 = $("<td><button onclick='event.cancelBubble = true;' style='padding: 5px; border-radius: 5px;'>삭제</button></td>");
+	    					td8 = $("<td></td>");
+	    					btn_del= $("<button onclick='event.cancelBubble = true;' style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
+	    					$(td8).append(btn_del);
 	    					
 	    					
 	    					
@@ -116,7 +118,7 @@
 	    			$("#table_content").append(tr);
 	    			
 	    			/* delete 처리*/
-	    			$(tr).click(function(){
+	    		/* 	$(tr).click(function(){
 	    	    		var str = "";
 	    	    		var tdArr = new Array();
 	    	    		
@@ -128,14 +130,29 @@
 	    	    		});
 	    	    		alert(tdArr)
 	    	    		
-		    		});
+		    		}); */
+	    			$(".btn_del").click(function(){ 
+	    				
+	    				var btn_del = $(this);
+	    				
+	    				// checkBtn.parent() : checkBtn의 부모는 <td>이다.
+	    				// checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+	    				var tr = btn_del.parent().parent();
+	    				var td = tr.children();
+	    				bas_no = td.eq(0).text();
+	    				$.ajax({url:"",data:{"bas_no":bas_no},success:function(data){
+	    					alert(bas_no);
+	    				}});
+	    			});
 	    			/*delete처리 end */
 	    			
 	  				
-	    		}); 
+	    			}); 
+	    		/* foreach종료 */
 	    	
     	})
-	  
+    	/*json 종료  */
+	  	
     	}
     	/*list를 처리하는 function getList end  */
     	getList();
@@ -150,7 +167,6 @@
     	/*수량 처리 end  */
     	
     	/*delete 처리 */
-    
     	/* delete end*/
     	
     	/*insert orders,ordersdetail 처리*/
