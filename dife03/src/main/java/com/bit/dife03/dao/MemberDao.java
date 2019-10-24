@@ -16,4 +16,8 @@ public class MemberDao {
 	public int idCheck(String mem_id) {
 		return MemberManager.memberIdCheck(mem_id);
 	}
+	// 로그인
+	public int isMember(String mem_id, String mem_pwd) {
+		return MemberManager.isMember(mem_id, mem_pwd);
+	}
 }

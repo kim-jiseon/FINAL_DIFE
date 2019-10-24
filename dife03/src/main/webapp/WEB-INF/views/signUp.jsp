@@ -303,7 +303,7 @@ $(function(){
 	$("#btnAuth").click(function(){
 		var checkAuth = $("#checkAuth").val();
 		if(authNumber == checkAuth) {
-			$("#mem_tel").val($("#checkAuth").val());
+			$("#mem_tel").val($("#mem_tel").val());
 			$("#msg").html("인증되었습니다.");
 			$("#submit").show();
 		}
@@ -321,7 +321,7 @@ $(function(){
 		}
 		else
 			return true;
-		});
+	});
 });
 </script>
 </head>
@@ -332,15 +332,15 @@ $(function(){
 			<div id="header-top">
 				<div id="category">
 					<span id="category-1" class="animated fadeInUp"> 
-					    <a href="main.html"><img src="img/logo/logo_white.png" id="logo"></a> 
+					    <a href="main"><img src="img/logo/logo_white.png" id="logo"></a> 
 						<a href="#" class="cl-effect-1">드론</a> 
-						<a href="pilot.jsp" class="cl-effect-1">파일럿</a> 
+						<a href="pilot" class="cl-effect-1">파일럿</a> 
 						<a href="#" class="cl-effect-1">지역 및 날씨</a> 
 						<a href="#" class="cl-effect-1">고객지원</a>
 						<a href="#" class="cl-effect-1">커뮤니티</a>
 					</span> 
 					<span id="category-2" class="animated fadeInUp"> 
-					    <a href="signIn.jsp" class="cl-effect-1">LOGIN</a> 
+					    <a href="signIn" class="cl-effect-1">LOGIN</a> 
 						<a href="#" class="cl-effect-1">MYPAGE</a> 
 						<a href="#" class="cl-effect-1">RESERVATION</a>
 					</span>
@@ -461,7 +461,7 @@ $(function(){
 									</div>
 									<div class="form-group">
 										<div class="col-xs-offset-2 col-xs-8">
-											<button id="submit" type="button">회원가입</button>
+											<button id="submit" type="submit">회원가입</button>
 										</div>
 									</div>
 								</form>

@@ -1,6 +1,7 @@
 package com.bit.dife03.db;
 
 import java.io.Reader;
+import java.util.HashMap;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -37,6 +38,17 @@ public class MemberManager {
 		SqlSession session = factory.openSession();
 		re = session.selectOne("member.checkId", mem_id);
 		System.out.println(re);
+		session.close();
+		return re;
+	}
+	// 로그인
+	public static int isMember(String mem_id, String mem_pwd) {
+		int re = 0;
+		HashMap map = new HashMap();
+		map.put("mem_id", mem_id);
+		map.put("mem_pwd", mem_pwd);
+		SqlSession session = factory.openSession();
+		re = session.selectOne("member.isMember", map);
 		session.close();
 		return re;
 	}
