@@ -29,15 +29,24 @@ public class OrdersManager {
 		}
 	}
 	
-//	장바구니 리스트
+	//	장바구니 리스트
 	public static List<BasketVo> basketList(String mem_id)
 	{
 		List<BasketVo> list=null;
-		System.out.println("진입");
 		SqlSession session = factory.openSession();
 		list = session.selectList("orders.selectBasket",mem_id);
 		session.close();
-		System.out.println("리턴됨");
 		return list;
+	}
+	//주문 삭제 버튼 삭제시 tr값을 삭제하는 메소드
+	public static int delBas(String bas_no)
+	{
+		int re = -1;
+		SqlSession session = factory.openSession();
+		re = session.insert("orders.delBas",bas_no);
+		session.commit();
+		session.close();
+		
+		return re;
 	}
 }

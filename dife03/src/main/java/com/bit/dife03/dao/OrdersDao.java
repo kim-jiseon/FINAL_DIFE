@@ -12,9 +12,10 @@ public class OrdersDao {
 
 	public List<BasketVo> basketList(String mem_id)
 	{
-		
 		return OrdersManager.basketList(mem_id);
-		
-		
+	}
+	public int  delBas(String bas_no)
+	{
+		return OrdersManager.delBas(bas_no);
 	}
 }

@@ -28,6 +28,7 @@
     <script type="text/javascript">
     $(function(){
     	var bas_no;
+    	var btn_del;
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -39,8 +40,8 @@
 		    return year + "-" + month + "-" + date;
 		}
     	/*list를 처리하는 function*/
-    	function getList(){
-	    	$.getJSON("/basketList.do",function(data){
+     	function getList(){ 
+     		$.ajax({url:"/basketList.do",dataType:"json",async:false,success:function(data){
 	    		
 	    		$.each(data,function(idx,item){
 	    			tr=$("<tr></tr>");
@@ -61,7 +62,6 @@
 	    			var p6;
 	    			var rental = new Date(item.bas_rental);
 	    			var re_date = new Date(item.bas_return);
-	    			var btn_del;
 	    			rental = date_to_str(rental);
 	    			re_date=date_to_str(re_date);
 	    			if(item.dro_name !== null)
@@ -131,31 +131,18 @@
 	    	    		alert(tdArr)
 	    	    		
 		    		}); */
-	    			$(".btn_del").click(function(){ 
-	    				
-	    				var btn_del = $(this);
-	    				
-	    				// checkBtn.parent() : checkBtn의 부모는 <td>이다.
-	    				// checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
-	    				var tr = btn_del.parent().parent();
-	    				var td = tr.children();
-	    				bas_no = td.eq(0).text();
-	    				$.ajax({url:"",data:{"bas_no":bas_no},success:function(data){
-	    					alert(bas_no);
-	    				}});
-	    			});
-	    			/*delete처리 end */
+		    	
 	    			
 	  				
 	    			}); 
 	    		/* foreach종료 */
 	    	
-    	})
-    	/*json 종료  */
+	    	}})
+    	/*ajax 종료  */
 	  	
-    	}
+    	 } 
     	/*list를 처리하는 function getList end  */
-    	getList();
+     	getList(); 
     	/* 수량처리에 대한 스크립트,제이쿼리문 및 전역변수 */
     	var arr = $("table").find("p_amount")
 		$(".amountAdd").click(function(){
@@ -167,6 +154,23 @@
     	/*수량 처리 end  */
     	
     	/*delete 처리 */
+    	/*장바구니 삭제버튼 클릭시.*/
+	    			 $(".btn_del").click(function(){ 
+	    				alert("삭제")
+	    				var btn_del = $(this);
+	    				
+	    				// checkBtn.parent() : checkBtn의 부모는 <td>이다.
+	    				// checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+	    				var tr = btn_del.parent().parent();
+	    				var td = tr.children();
+	    				bas_no = td.eq(0).text(); 
+	    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
+	    					getList();
+	    				}})
+	    				
+	    				
+	    			});
+	    			/*delete처리 end */
     	/* delete end*/
     	
     	/*insert orders,ordersdetail 처리*/

@@ -43,7 +43,7 @@ public class OrdersController {
 ////		mav.addObject("list", dao.basketList("hong"));
 //		
 //		return mav;
-		System.out.println("컨트롤러 진입");
+		
 		String str="";
 		ObjectMapper ob = new ObjectMapper();
 		try {
@@ -51,9 +51,24 @@ public class OrdersController {
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
-		System.out.println(str);
+		return str;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/deleteBasket.do")
+	public String deleteBasket(String bas_no)
+	{
+		System.out.println(bas_no);
+		String str="";
+		ObjectMapper ob = new ObjectMapper();
+		try {
+			str = ob.writeValueAsString(dao.delBas(bas_no));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		return str;
 	}
 }
