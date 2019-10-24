@@ -13,11 +13,30 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class pilotController {
+	//한페이지 당 게시글 수
+	int pageRecord = 5;
+	
+	//총 게시글 수
+	int totalRecord = 0;
+	
+	//전체페이지수 (default=1)
+	int totalPage = 1;
+	
 	@Autowired
 	private PilInfoDao dao;
 
 	public void setDao(PilInfoDao dao) {
 		this.dao = dao;
+	}
+	
+	public void paging(int pageNUM) {
+		totalRecord = dao.sel_pil_cnt();
+		totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);
+		
+		
+		//해당페이지의 시작글번호, 끝번호
+		int start = (pageNUM-1)*pageRecord+1;
+		int end = start+pageRecord-1;
 	}
 	
 	@ResponseBody

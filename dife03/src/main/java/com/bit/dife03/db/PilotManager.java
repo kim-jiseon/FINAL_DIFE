@@ -30,6 +30,15 @@ public class PilotManager {
 		}
 	}
 	
+	public static int sel_pil_cnt() {
+		int cnt = 0;
+		SqlSession session = factory.openSession();
+		cnt = session.selectOne("pilot.sel_pil_cnt");
+		session.close();
+		System.out.println(cnt);
+		return cnt;
+	}
+	
 	public static PilListVo sel_pil_detail(int info){
 		PilListVo infoVo = null;
 		SqlSession session = factory.openSession();

@@ -33,7 +33,7 @@
     	
     	//검색버튼 클릭시
     	$("#pil-search-btn").click(function(){
-    		$(".container").empty();
+    		$(".pilot-container").empty();
     		var category = $("select[name=pil-category]").val();
     		var location = $("select[name=pil-location]").val();
     		$.getJSON("sel_pil",
@@ -57,12 +57,11 @@
 		    			
 		    			$(li).append(dd_img, dd_title, name, loc, info, star);
 		    			$(ul).append(li);
-		    			$(".container").append(ul);
-		    			$(".container").append(hr);
-		    			
-				})    			
-    		})
-    	})
+		    			$(".pilot-container").append(ul);
+		    			$(".pilot-container").append(hr);
+					})    			
+	    		})
+	    	})
     	
     	//전체 페이지 출력
     	$.ajax({url:"selectPil_list", success:function(data){
@@ -88,9 +87,8 @@
     			
     			$(li).append(dd_img, dd_title, name, loc, info, star);
     			$(ul).append(li);
-    			$(".container").append(ul);
-    			$(".container").append(hr);
-    			
+    			$(".pilot-container").append(ul);
+    			$(".pilot-container").append(hr);
     		})
     	}})
     })
@@ -138,6 +136,7 @@
         <!-- contents -->
         <div id="contents">
             <div class="container">
+                <div class="pilot-container">
             <!-- 
                 <ul class="pil-list">
                     <li>
@@ -150,6 +149,17 @@
                     </li>
                 </ul><hr>
                  -->
+                 </div>
+                 <div id="pilot-paging">
+                     <span class="inner_paging">
+                     	<a href="#" class="link-page-prev">이전</a>
+                     	<a href="#" class="link-page"><span>1</span></a>
+                     	<a href="#" class="link-page"><span>1</span></a>
+                     	<a href="#" class="link-page"><span>1</span></a>
+                     	<a href="#" class="link-page"><span>1</span></a>
+                     	<a href="#" class="link-page-next">다음</a>
+                     </span>
+                 </div>
             </div>
         </div>
         <!-- //contents -->
