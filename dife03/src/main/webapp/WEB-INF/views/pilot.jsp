@@ -156,7 +156,7 @@
 
         <!-- footer -->
         <div id="footer">
-            <div id="footer-nav">footer-nav</div>
+            <div id="footer-nav"></div>
             <div id="footer-info">(주)비트캠프:DIFE
                 <div id="footer_info1">
                     <p>서울특별시 마포구 백범로 23 구프라자 3층</p>

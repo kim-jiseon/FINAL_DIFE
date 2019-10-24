@@ -78,7 +78,7 @@
                 <div id="content-center-center">
                       
                        <div id="content-center-center-top">
-                           <p style="text-align: right">총 회원수: 5명</p><br>
+                           <p style="text-align: right">총 회원수: &nbsp; ${admin }명</p><br>
                            
                             <!-- 탭메뉴 만들기 -->
                             <dl>
@@ -101,59 +101,10 @@
                                       <th scope="col">E-MAIL</th>
                                    </thead>
 
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>admin</td>
-                                   <td>administrator</td>
-                                   <td>-</td>
-                                   <td>-</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>cslim</td>
-                                   <td>임창성</td>
-                                   <td>31</td>
-                                   <td>cslim@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>hahaha</td>
-                                   <td>하찬준</td>
-                                   <td>31</td>
-                                   <td>hahaha@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>jskim</td>
-                                   <td>김지선</td>
-                                   <td>28</td>
-                                   <td>jskim@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>choi</td>
-                                   <td>최민우</td>
-                                   <td>27</td>
-                                   <td>choi@gmail.com</td>
-                                   </tbody>
-
-                                   <!-- 회원정보 -->
-                                   <tbody class="member-info">
-                                   <td><input type="checkbox"></td>
-                                   <td>limje</td>
-                                   <td>임정은</td>
-                                   <td>31</td>
-                                   <td>limje@gmail.com</td>
-                                   </tbody>
+								<tbody class="member-info">
+								
+								</tbody>
+                                   
                                    </table>
                                </dd>
 
@@ -180,61 +131,9 @@
                                       <th scope="col">답변유무</th>
                                    </thead>
                                    
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>1</td>
-                                       <td>공지사항</td>
-                                       <td>관리자</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>답변완료</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>2</td>
-                                       <td>공지사항</td>
-                                       <td>관리자</td>
-                                       <td>2019.10.11</td>
-                                       <td>2</td>
-                                       <td>미답변</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>3</td>
-                                       <td>삼겹살에 소주</td>
-                                       <td>임창성</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>답변완료</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>4</td>
-                                       <td>피자에 소주</td>
-                                       <td>하찬준</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>답변완료</td>
-                                       </tbody>
-                                       
-                                       <!-- 게시판정보 -->
-                                       <tbody class="board-info">
-                                       <td><input type="checkbox"></td>
-                                       <td>5</td>
-                                       <td>갈비에 소주</td>
-                                       <td>김지선</td>
-                                       <td>2019.10.11</td>
-                                       <td>1</td>
-                                       <td>미답변</td>
-                                       </tbody>
+                                   <tbody class="board-info">
+								
+									</tbody>
 
                                    </table>
                                </dd>
@@ -259,7 +158,16 @@
                            </span>
                        
                            <span id="content-bottom-count">
-                               1  2  3  4  5  [다음]
+                               
+                       			<ul class="pagination" style="padding-left: 50px;">
+                            	<a href="#">이전</a>
+	                            <a href="#">1</a>
+	                            <a href="#">2</a>
+	                            <a href="#">3</a>
+	                            <a href="#">4</a>
+	                            <a href="#">5</a>
+	                            <a href="#">다음</a>
+                        		</ul>
                            </span>
                        </div>
                 </div>
@@ -268,7 +176,7 @@
         </div>
         </div>
         <!-- //contents -->
-
+ x
         <!-- footer -->
         <div id="footer">
             <div id="footer-nav"></div>
@@ -319,5 +227,52 @@
     </script>
     <!-- //탭 메뉴 스크립트 -->
     
+    <!-- admin 페이지 회원 List -->
+    <script>
+    	$(function(){
+    		$.ajax({url:"AdminList", success:function(data){
+    			var list = eval(data);
+    			$.each(list, function(idx, item){
+    				var tr = $("<tr></tr>");
+    				var td = $("<td></td>");
+    				var input = $("<input/>").attr("type", "checkbox");
+    				var check = $(td).append(input);
+    				var id = $("<td></td>").html(item.mem_id);
+    				var name = $("<td></td>").html(item.mem_name);
+    				var age = $("<td></td>").html(item.mem_birth);
+    				var email = $("<td></td>").html(item.mem_email);
+    				
+    				$(tr).append(check,id,name,age,email);
+    				$(".member-info").append(tr);
+    			});
+    		}}) 		
+    	});
+    </script>
+    <!-- //admin 페이지 회원 List -->
+    
+    <!-- admin 페이지 게시판 List -->
+    <script>
+    	$(function(){
+    		$.ajax({url:"BoardList", success:function(data){
+    			var list = eval(data);
+    			$.each(list, function(idx, item){
+    				var tr = $("<tr></tr>");
+    				var td = $("<td></td>");
+    				var input = $("<input/>").attr("type", "checkbox");
+    				var check = $(td).append(input);
+    				var no = $("<td></td>").html(item.boa_no);
+    				var title = $("<td></td>").html(item.boa_title);
+    				var first = $("<td></td>").html(item.first);
+    				var regdate = $("<td></td>").html(item.boa_regdate);
+    				var view = $("<td></td>").html(item.boa_view);
+    				var answer = $("<td></td>").html(item.boa_answer);
+    				
+    				$(tr).append(check,no,title,first,regdate,view,answer);
+    				$(".board-info").append(tr);
+    			});
+    		}}) 		
+    	});
+    </script>
+    <!-- //admin 페이지 게시판 List -->
 </body>
 </html>

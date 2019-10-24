@@ -39,34 +39,16 @@
 }
 
 @media (min-width:376px){
-    /*헤더 고정(sticky header)*/
+/*헤더 고정(sticky header)*/
     .sticky {
       position: fixed;
       z-index: 2;
       top: 0;
       width: 100%;
     }
+
     .sticky + .contents {
       padding-top: 102px;
-    }
-    
-    /* 메인 슬라이더 */
-    .swiper-slide {
-      text-align: center;
-      background: #1F2124;
-      /* Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
     }
     
      /* 상단 카테고리 */
@@ -76,19 +58,19 @@
     }
     
     #logo{
-        width: 90px;
+        width: 100px;
         height: auto;
         float: left;
-        margin: 22px 0px;
+        margin: 20px 0px;
     }
     
     #category-1{
         float: left;
-        margin: 0px 30px;
+        margin: 0px 50px;
     }
 
     #category-1 > a{
-        padding: 15px;
+        padding: 20px;
         color: white;
     }
 
@@ -98,7 +80,7 @@
 
     #category-2{
         float: right;
-        margin: 0px 30px;
+        margin: 0px 50px;
     }
 
     #category-2 > a{
@@ -107,7 +89,6 @@
         text-shadow: 0 0 1px rgba(255,255,255,0.3);
         padding: 0px 15px;
     }
-    
     
     
     /*상단 버튼 효과*/
@@ -145,17 +126,15 @@
         -moz-transform: translateX(0px);
         transform: translateX(0px);
     }
-    
+   
     /*콘텐츠-높이는 자유롭게 설정하세요*/
     #contents{
         height: 2000px;
-        
     }
 
 	#contents-wiget{
 		height: 300px;
 		margin-bottom: 50px;
-		
 	}
 	
 	.grid-wiget{
@@ -170,7 +149,6 @@
 		text-align:center;
 	}
 	
-	
 	#contents-sns{
 		height: 500px;
 	}
@@ -179,7 +157,6 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		grid-gap: 2vw;
-		
 		padding: 25px;
 	}
 	
