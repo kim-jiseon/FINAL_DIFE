@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +7,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
-<!-- À¥ÆùÆ® -->
+<!-- ì›¹í°íŠ¸ -->
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-<!-- ±âº» ¸µÅ© -->
+<!-- ê¸°ë³¸ ë§í¬ -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/drone/drone_dt.css">
-<!-- ´Þ·Â -->
+<!-- ë‹¬ë ¥ -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -41,18 +41,18 @@ $(function() {
 		<div id="header">
 			<div id="header-top" class="header-top">
 				<div class="header-right">
-					<a href="#">·Î±×ÀÎ</a>
-					<a href="#">¸¶ÀÌÆäÀÌÁö</a>
-					<a href="basket.html">Àå¹Ù±¸´Ï</a>
+					<a href="#">ë¡œê·¸ì¸</a>
+					<a href="#">ë§ˆì´íŽ˜ì´ì§€</a>
+					<a href="basket.html">ìž¥ë°”êµ¬ë‹ˆ</a>
 				</div>
 				<div class="header-left">
 					<div class="title"><a href="main.html"><img src="img/DIFE_logo2.png" alt=""></a></div>
 					<div class="category">
-						<a href="listDrone.html">µå·Ð</a>
-						<a href="pilot01.html">ÆÄÀÏ·µ</a>
-						<a href="#">Áö¿ª ¹× ³¯¾¾</a>
-						<a href="#">°í°´Áö¿ø</a>
-						<a href="board.html">Ä¿¹Â´ÏÆ¼</a>
+						<a href="listDrone.html">ë“œë¡ </a>
+						<a href="pilot01.html">íŒŒì¼ëŸ¿</a>
+						<a href="#">ì§€ì—­ ë° ë‚ ì”¨</a>
+						<a href="#">ê³ ê°ì§€ì›</a>
+						<a href="board.html">ì»¤ë®¤ë‹ˆí‹°</a>
 					</div>
 				</div>
 			</div>
@@ -62,21 +62,21 @@ $(function() {
 			</div>
 		</div>
 		
-		<!-- µå·Ð »ó¼¼ »ó´Ü -->
+		<!-- ë“œë¡  ìƒì„¸ ìƒë‹¨ -->
 		<div id="contents">
-	       <!--»óÇ° »ó¼¼°æ·Î <section class="index-section">
+	       <!--ìƒí’ˆ ìƒì„¸ê²½ë¡œ <section class="index-section">
 	           <div class="section-container">
 	               <ul class="index-ul">
 	                   <li class="index-li-item">
-	                       <a href="main.html">¸ÞÀÎ</a>
+	                       <a href="main.html">ë©”ì¸</a>
 	                   </li>
                         <li class="index-li-item">
                            ::before
-	                       <a href="drone.html">µå·Ð</a>
+	                       <a href="drone.html">ë“œë¡ </a>
 	                   </li>
 	                   <li class="index-li-item">
                            ::before
-	                       "¸Åºò2ÇÁ·Î"
+	                       "ë§¤ë¹…2í”„ë¡œ"
 	                   </li>
 	               </ul>
 	           </div>
@@ -95,35 +95,35 @@ $(function() {
 					
 					<div id="block2">
 						<ul style="color: white; font-size: 14px;">
-							<li><p>µå·Ð¸í : <strong>¸ÅºòPRO</strong></p></li>
+							<li><p>ë“œë¡ ëª… : <strong>ë§¤ë¹…PRO</strong></p></li>
 							<hr>	
-							<li><p>°¡°Ý : <strong>200,000¿ø</strong></p></li>
+							<li><p>ê°€ê²© : <strong>200,000ì›</strong></p></li>
 							<hr>
-							<li><p>½Ã¸®Áî¸í : <strong>MAVIC</strong></p></li>
-							<li><p>Á¦Á¶»ç¸í : <strong>DJI</strong></p></li>
+							<li><p>ì‹œë¦¬ì¦ˆëª… : <strong>MAVIC</strong></p></li>
+							<li><p>ì œì¡°ì‚¬ëª… : <strong>DJI</strong></p></li>
 							<hr>
-							<li><p>´ë¿©Á¡ : 
+							<li><p>ëŒ€ì—¬ì  : 
 								<span id="opr">
 									<select id="operR" name="operR" style="width: 150px; height: 30px;">
-										<option value="R0001">ÆÄÁÖÁ¡</option>
-										<option value="R0002">Àá½ÇÁ¡</option>
-										<option value="R0003">¼­±ÍÆ÷Á¡</option>
-										<option value="R0004">ÇØ¿î´ëÁ¡</option>
-										<option value="R0005">µÐ»êÁ¡</option>
-										<option value="R0006">°­¸ªÁ¡</option>
-										<option value="R0007">ºÎ»êÁ¡</option>
-										<option value="R0008">´ë±¸Á¡</option>
-										<option value="R0009">¿ï»êÁ¡</option>
-										<option value="R0010">¿©¼öÁ¡</option>
-										<option value="R0011">¸ñÆ÷Á¡</option>
-										<option value="R0012">¿À»êÁ¡</option>
-										<option value="R0013">¼ÓÃÊÁ¡</option>
-										<option value="R0014">Æ÷Ç×Á¡</option>
-										<option value="R0015">±èÆ÷Á¡</option>
+										<option value="R0001">íŒŒì£¼ì </option>
+										<option value="R0002">ìž ì‹¤ì </option>
+										<option value="R0003">ì„œê·€í¬ì </option>
+										<option value="R0004">í•´ìš´ëŒ€ì </option>
+										<option value="R0005">ë‘”ì‚°ì </option>
+										<option value="R0006">ê°•ë¦‰ì </option>
+										<option value="R0007">ë¶€ì‚°ì </option>
+										<option value="R0008">ëŒ€êµ¬ì </option>
+										<option value="R0009">ìš¸ì‚°ì </option>
+										<option value="R0010">ì—¬ìˆ˜ì </option>
+										<option value="R0011">ëª©í¬ì </option>
+										<option value="R0012">ì˜¤ì‚°ì </option>
+										<option value="R0013">ì†ì´ˆì </option>
+										<option value="R0014">í¬í•­ì </option>
+										<option value="R0015">ê¹€í¬ì </option>
 									</select>
 								</span>
 							</p></li>
-							<li><p>¼ö    ·® :							 
+							<li><p>ìˆ˜    ëŸ‰ :							 
 								<span id="opa">
 									<select id="operA" name="operA" style="width: 150px; height: 30px;">
 										<option value="amt1">1</option>
@@ -131,16 +131,16 @@ $(function() {
 										<option value="amt3">3</option>
 										<option value="amt4">4</option>
 										<option value="amt5">5</option>
-										<option value="amt0">6°³ ÀÌ»ó(º°µµ ¹®ÀÇ)</option>
-										<!-- 5°³ ÀÌ»ó ¿É¼Ç¼±ÅÃ ½Ã ´ë¿©¼ö·® µû·Î ±âÀç or ¹®ÀÇ±Û ³²±âµµ·Ï À¯µµ? -->
+										<option value="amt0">6ê°œ ì´ìƒ(ë³„ë„ ë¬¸ì˜)</option>
+										<!-- 5ê°œ ì´ìƒ ì˜µì…˜ì„ íƒ ì‹œ ëŒ€ì—¬ìˆ˜ëŸ‰ ë”°ë¡œ ê¸°ìž¬ or ë¬¸ì˜ê¸€ ë‚¨ê¸°ë„ë¡ ìœ ë„? -->
 									</select>
 								</span>
 							</p></li>
 							<hr>
 							
-							<!-- Ä¶¸°´õ -->						
+							<!-- ìº˜ë¦°ë” -->						
 							<div id="form-group1">
-                                 <span class="control-label" for="datepicker"><strong style="color: white;">´ë¿©ÀÏ : </strong><span class="text-danger">*</span>
+                                 <span class="control-label" for="datepicker"><strong style="color: white;">ëŒ€ì—¬ì¼ : </strong><span class="text-danger">*</span>
                                  <!-- <div class="col-xs-1"> --> 
                                      <input id="datepicker1" type="text" name="mem_birth">
                                  <!-- </div> --> 
@@ -148,7 +148,7 @@ $(function() {
                             </div>
                                  
 							<div id="form-group2">
-                                 <span class="control-label" for="datepicker"><strong style="color: white;">¹Ý³³ÀÏ : </strong><span class="text-danger">*</span>
+                                 <span class="control-label" for="datepicker"><strong style="color: white;">ë°˜ë‚©ì¼ : </strong><span class="text-danger">*</span>
                                  <!-- <div class="col-xs-1"> --> 
                                      <input id="datepicker2" type="text" name="mem_birth">
                                  <!-- </div> --> 
@@ -158,7 +158,7 @@ $(function() {
                             <!--  
                             <li>							
 							<div>
-								<span id="calendar" class="search1"><strong>´ë¿©ÀÏ : </strong></span>
+								<span id="calendar" class="search1"><strong>ëŒ€ì—¬ì¼ : </strong></span>
 								<input type="text" id="datepicker1" style="width: 150px; height: 30px;">
 	               				<script src="pikaday.js"></script>
 	                   			<script>
@@ -168,7 +168,7 @@ $(function() {
                        		</li>
 							<li>       							
 							<div>
-								<span id="calendar" class="search1"><strong>¹Ý³³ÀÏ : </strong></span>
+								<span id="calendar" class="search1"><strong>ë°˜ë‚©ì¼ : </strong></span>
 								<input type="text" id="datepicker2" style="width: 150px; height: 30px;">
 	               				<script src="pikaday.js"></script>
 	                   			<script>
@@ -183,20 +183,20 @@ $(function() {
 							<li>
 							<li>						
 							<a href="payment.html">
-								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>ÁÖ¹®ÇÏ±â</strong></button>
+								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>ì£¼ë¬¸í•˜ê¸°</strong></button>
 							</a>
 							</li>
 							<li>
-							<!-- Àå¹Ù±¸´Ï ´ã±â Å¬¸¯½Ã ¸ð´Þ -->	                                             
+							<!-- ìž¥ë°”êµ¬ë‹ˆ ë‹´ê¸° í´ë¦­ì‹œ ëª¨ë‹¬ -->	                                             
 	                            <!-- Trigger/Open The Modal -->
 	                            
-							    <button id="myBtn" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>Àå¹Ù±¸´Ï ´ã±â</strong></button>						 
+							    <button id="myBtn" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>ìž¥ë°”êµ¬ë‹ˆ ë‹´ê¸°</strong></button>						 
 							    <!-- The Modal -->
 							    <div id="myModal" class="modal">						 
 							      <!-- Modal content -->
 							      <div class="modal-content">
 							        <span class="close">&times;</span>                                                               
-							        <p>Àå¹Ù±¸´Ï ´ã±â ¼º°ø :-)</p>
+							        <p>ìž¥ë°”êµ¬ë‹ˆ ë‹´ê¸° ì„±ê³µ :-)</p>
 							      </div>						 
 							    </div>
 							    <script>
@@ -229,7 +229,7 @@ $(function() {
 	                        </li>
 							<li>
 							<a href="drone.html">
-								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>¼îÇÎ °è¼ÓÇÏ±â</strong></button>
+								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>ì‡¼í•‘ ê³„ì†í•˜ê¸°</strong></button>
 							</a>
 							</li>
 						</ul>
@@ -237,7 +237,7 @@ $(function() {
 				</div>
 			<hr>
 			
-			<!-- µå·Ð »ó¼¼ Á¤º¸ -->
+			<!-- ë“œë¡  ìƒì„¸ ì •ë³´ -->
 			<div class="content2">
 				<div class="block">
 					<img src="img/drone/dro_dt.png">
@@ -253,12 +253,12 @@ $(function() {
 		            <ul class="info">
 		                <li>
 		                    <dl>
-		                        <dd class="txt" style="font-size: 14px; color: #a4a4a4">È¸»ç¼Ò°³</dd>
-		                        <dd class="txt">(ÁÖ)ºñÆ®Ä·ÇÁ:DIFE</dd>
-		                        <dd class="txt">¼­¿ïÆ¯º°½Ã ¸¶Æ÷±¸ ¹é¹ü·Î 23 ±¸ÇÁ¶óÀÚ 3Ãþ</dd>
+		                        <dd class="txt" style="font-size: 14px; color: #a4a4a4">íšŒì‚¬ì†Œê°œ</dd>
+		                        <dd class="txt">(ì£¼)ë¹„íŠ¸ìº í”„:DIFE</dd>
+		                        <dd class="txt">ì„œìš¸íŠ¹ë³„ì‹œ ë§ˆí¬êµ¬ ë°±ë²”ë¡œ 23 êµ¬í”„ë¼ìž 3ì¸µ</dd>
 		                        <dd class="txt">02-707-1480</dd>
-		                        <dd class="txt"><a href="#" style="color: #a4a4a4;">°í°´¼¾ÅÍ</a></dd>
-		                        <dd class="txt"><a href="#" style="color: #a4a4a4;">ÀÌ¿ë¾È³»</a></dd>
+		                        <dd class="txt"><a href="#" style="color: #a4a4a4;">ê³ ê°ì„¼í„°</a></dd>
+		                        <dd class="txt"><a href="#" style="color: #a4a4a4;">ì´ìš©ì•ˆë‚´</a></dd>
 		                    </dl>
 		                </li>
 		            </ul>
