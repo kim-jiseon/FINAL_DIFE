@@ -9,6 +9,16 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/mypage_orders")
+	public void mypage_orders() {
+		
+	}
+	
+	@RequestMapping("/mypage_emoney")
+	public void mypage_emoney() {
+		
+	}
+	
 	@RequestMapping("/admin")
 	public void admin() {
 		

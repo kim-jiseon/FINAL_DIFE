@@ -41,7 +41,7 @@
 
                    		<span id="category-2" class="animated fadeInUp">
                         <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
