@@ -96,17 +96,22 @@
     	*/
     	
     	//전체 페이지번호 출력해보기
-    	
+    	/*
     	var totalPage = "${totalPage}";
+    	var startPage = "${startPage}";
+    	var endPage = "${endPage}";
     	var pageStr = "";
-    	for(var i = 1; i <= totalPage; i++){
+    	for(var i = startPage; i <= endPage; i++){
     		var span = $("<span></span>").html(i);
     		var a = $("<a></a>").attr("href","pilot?pageNUM="+i).addClass("link-page").append(span);
-    		$(".inner_paging").append(a);
     		
+    		$(".inner_paging").append(a);
     	}
-    	var num = totalPage/5;
-    	
+    	if(totalPage > 5){
+    		var next = $("<a></a>").attr("href", "pilot?pageNUM="+(i+1)).addClass("link-page-next").html("다음");	
+    		$(".inner_pageing").append(next);
+    	}
+    	*/
     })
     </script>
 </head>
@@ -178,17 +183,10 @@
                 </ul><hr>
                   -->
                  </div>
-                 <!-- 동적으로 생성되어야 함 -->
+                 <!-- 페이징처리 -->
                  <div id="pilot-paging">
                      <span class="inner_paging">
-                     <!-- 
-                     	<a href="#" class="link-page-prev">이전</a>
-                     	<a href="pilot" class="link-page"><span>1</span></a>
-                     	<a href="#" class="link-page"><span>2</span></a>
-                     	<a href="#" class="link-page"><span>3</span></a>
-                     	<a href="#" class="link-page"><span>4</span></a>
-                     	<a href="#" class="link-page-next">다음</a>
-                     	 -->
+              			${page }
                      </span>
                  </div>
             </div>

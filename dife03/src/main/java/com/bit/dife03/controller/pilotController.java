@@ -51,6 +51,37 @@ public class pilotController {
 		map.put("start", start);
 		map.put("end", end);
 		mav.addObject("list", dao.selectPil_list(map));
+		
+		//시작페이지 및 끝페이지 번호 구하기(1~5/6~10/... 5단위로 보여주기)
+		//보고있는 페이지의 번호가 전체 페이지보다 클 떄
+		if(totalPage < pageNUM) {
+			pageNUM = totalPage;
+		}
+		int pageCount = 5;
+		int startPage = ((pageNUM-1)/pageCount)*pageCount+1;
+		int endPage = startPage+pageCount-1;
+		
+		//끝페이지가 총페이지 수보다 크게 계산될 때
+		if(endPage > totalPage) {
+			endPage = totalPage;
+		}
+		
+		System.out.println(startPage);
+		System.out.println(endPage);
+		
+		String page = "";
+		
+		if(startPage > 1) {
+			page = page +"<a href='pilot?pageNUM="+(pageNUM-1)+"' class='link-page-prev'>이전</a>";
+		}
+		for (int i = startPage; i <= endPage; i++) {
+			page = page + "<a href='pilot?pageNUM="+i+"' class='link-page'>"+i+"</a>";
+		}
+		if (endPage < totalPage) {
+			page = page + "<a href='pilot?pageNUM="+(endPage+1)+"' class='link-page-next'>다음</a>";
+		}
+		mav.addObject("page", page);
+		
 		return mav;
 	}
 	
