@@ -1,5 +1,6 @@
 package com.bit.dife03.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -21,7 +22,7 @@ public class PilInfoDao {
 		return PilotManager.sel_pil(category, location);
 	}
 	
-	public List<PilListVo> selectPil_list(){
-		return PilotManager.selectPil_list();
+	public List<PilListVo> selectPil_list(HashMap map){
+		return PilotManager.selectPil_list(map);
 	}
 }

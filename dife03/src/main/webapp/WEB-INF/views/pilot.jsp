@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,12 +65,13 @@
 	    	})
     	
     	//전체 페이지 출력
+    	/*
     	$.ajax({url:"selectPil_list", success:function(data){
     		var list = eval(data);
     		$.each(list, function(idx, item){
     			//var arr = [item.mem_name, item.pil_title, item.pil_profile, item.pil_locInfo, item.pil_info, item.pil_star];
     			//alert(arr);
-    			//alert(item.pil_cateInfo);de
+    			//alert(item.pil_cateInfo);
     			
     			var li = $("<li></li>");
     			var ul = $("<ul></ul>").addClass("pil-list");
@@ -91,6 +93,25 @@
     			$(".pilot-container").append(hr);
     		})
     	}})
+    	*/
+    	
+    	//전체 페이지번호 출력해보기
+    	/*
+    	var totalPage = "${totalPage}";
+    	var startPage = "${startPage}";
+    	var endPage = "${endPage}";
+    	var pageStr = "";
+    	for(var i = startPage; i <= endPage; i++){
+    		var span = $("<span></span>").html(i);
+    		var a = $("<a></a>").attr("href","pilot?pageNUM="+i).addClass("link-page").append(span);
+    		
+    		$(".inner_paging").append(a);
+    	}
+    	if(totalPage > 5){
+    		var next = $("<a></a>").attr("href", "pilot?pageNUM="+(i+1)).addClass("link-page-next").html("다음");	
+    		$(".inner_pageing").append(next);
+    	}
+    	*/
     })
     </script>
 </head>
@@ -137,7 +158,19 @@
         <div id="contents">
             <div class="container">
                 <div class="pilot-container">
-            <!-- 
+             	<c:forEach var="p" items="${list }">
+	             	<ul class="pil-list">
+	                    <li>
+	                            <dd><img class="pil-list-img" src="img/pilot/${p.pil_photo }" ></dd>
+	                            <dd class="pil-list-title"><a href="pilotDetail?info=${p.list_no }" id="pil-list-title">${p.pil_title }</a></dd>
+	                            <dd class="pil-list-info" id="pil-name">강사명:&nbsp; ${p.mem_name }</dd>
+	                            <dd class="pil-list-info" id="pil-loc">지역:&nbsp; ${p.pil_locInfo }</dd>
+	                            <dd class="pil-list-info" id="pil-info">강의 정보:&nbsp; ${p.pil_info }</dd>
+	                            <dd class="pil-list-info" id="pil-star">별점:&nbsp; ${p.pil_star }.0</dd>
+	                    </li>
+	                </ul><hr>
+             	</c:forEach>
+             	<!-- 
                 <ul class="pil-list">
                     <li>
                             <dd><img class="pil-list-img" src="img/pilot/visit_cnt.png" ></dd>
@@ -148,16 +181,12 @@
                             <dd class="pil-list-info" id="pil-star">별점</dd>
                     </li>
                 </ul><hr>
-                 -->
+                  -->
                  </div>
+                 <!-- 페이징처리 -->
                  <div id="pilot-paging">
                      <span class="inner_paging">
-                     	<a href="#" class="link-page-prev">이전</a>
-                     	<a href="#" class="link-page"><span>1</span></a>
-                     	<a href="#" class="link-page"><span>1</span></a>
-                     	<a href="#" class="link-page"><span>1</span></a>
-                     	<a href="#" class="link-page"><span>1</span></a>
-                     	<a href="#" class="link-page-next">다음</a>
+              			${page }
                      </span>
                  </div>
             </div>
