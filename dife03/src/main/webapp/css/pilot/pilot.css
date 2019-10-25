@@ -46,6 +46,10 @@
     padding: 0px 0px 0px 200px;
 }
 
+.inner_paging > a{
+	padding: 10px;
+	margin-top: 10px;
+}
 /*페이징처리
 #pilot-paging{
     text-align: center;
