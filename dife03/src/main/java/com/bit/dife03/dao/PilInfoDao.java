@@ -9,6 +9,10 @@ import com.bit.dife03.vo.PilListVo;
 
 @Repository
 public class PilInfoDao {
+	public int sel_pil_cnt() {
+		return PilotManager.sel_pil_cnt();
+	}
+	
 	public PilListVo sel_pil_detail(int info) {
 		return PilotManager.sel_pil_detail(info);
 	}
