@@ -6,15 +6,12 @@
 <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-<title>layout</title>
+<title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- 
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
--->
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-<!-- 기본 css -->
+<!-- 기본 링크 -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
@@ -27,7 +24,6 @@
 
 <script type="text/javascript">
 $(function() {
-	/* 이미지 확대 */
     var scale = $('.scale');
     var zoom = scale.data('zoom');
     
