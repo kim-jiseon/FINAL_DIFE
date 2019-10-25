@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body{
     background-color: black;
+    overflow-y: hidden;
 }
 
 /* 전체 레이아웃 */
@@ -10,6 +11,7 @@ body{
     color: #fff;
     text-align: center;
 }
+
 #header {
     height: 120px;
 }
@@ -23,7 +25,6 @@ body{
     line-height: 50px;
     background-color: #1F2124;
 }
-
 /* 상단 타이틀 및 카테고리 */
 .header-top{
     line-height: 65px;
@@ -189,7 +190,32 @@ li{
 }
 
 /* 마우스오버 시 이미지 확대 */
-https://inforyou.tistory.com/18
+.scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out; /* 부드러운 모션을 위해 추가*/
+}
+.scale:hover {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+.img {
+    overflow:hidden } /* 부모를 벗어나지 않고 내부 이미지만 확대 */
+/*
+.magnifier {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 100%;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85), 0 0 3px 3px rgba(0, 0, 0, 0.25);
+    display: none;
+}*/
 
 /* 주문하기 시 Modal */
 .modal {

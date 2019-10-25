@@ -6,16 +6,19 @@
 <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-<title>DIFE.com</title>
+<title>layout</title>
 <!-- 웹폰트 -->
+<!-- 
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+-->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-<!-- 기본 링크 -->
+<!-- 기본 css -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/drone/drone_dt.css">
+<link rel="stylesheet" href="css/drone/droneDetail.css">
 <!-- 달력 -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -24,20 +27,58 @@
 
 <script type="text/javascript">
 $(function() {
-    $("#datepicker1").datepicker();
-    $("#datepicker2").datepicker();
-});
+	/* 이미지 확대 */
+    var scale = $('.scale');
+    var zoom = scale.data('zoom');
+    
+    $('.img').on('mousemove',magnify).prepend('<div class="magnifier"></div>').children('.magnifier').css({
+        "backgroun":"url('"+scale.attr('src')+"')no-repeat","background-size":scale.width()*zoom+"px "+scale.height()*zoom+"px"
+    });
+    
+    var magnifier = $('.magnifier');
+    function magnify(e){
+        // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
+        var mouseX = e.pageX - $(this).offset().left;
+        var mouseY = e.pageY - $(this).offset().top;
+        // 컨테이너 밖으로 마우스가 벗어나면 돋보기를 없앤다.
+        if(mouseX < $(this).width() && mouseY < $(this).height() && mouseX > 0 && mouseY > 0){
+            magnifier.fadeIn(100);
+        }
+        else{
+            magnifier.fadeOut(100);
+        }
+        
+        // 돋보기가 존재할 때
+        if(magnifier.is(":visible")){
+            // 마우스 좌표 확대될 이미지 좌표를 일치시킨다.
+            var rx = -(mouseX * zoom - magnifier.width() /2 );
+            var ry = -(mouseY * zoom - magnifier.height() /2 );
 
+          //돋보기를 마우스 위치에 따라 움직인다.
+          //돋보기의 width, height 절반을 마우스 좌표에서 차감해 마우스와 돋보기 위치를 일치시킨다.
+          var px = mouseX - magnifier.width() / 2;
+          var py = mouseY - magnifier.height() / 2;
+
+          //적용
+          magnifier.css({
+            left: px,
+            top: py,
+            backgroundPosition: rx + "px " + ry + "px"
+          });
+        }
+      }
+    };
+});
 </script>
 </head>
 <body>
-<div id="wrap">
+<div id="wrap" class="animated fadeIn">
 		<div id="header">
 			<div id="header-top" class="header-top">
 				<div class="header-right">
-					<a href="#">로그인</a>
-					<a href="#">마이페이지</a>
-					<a href="basket.html">장바구니</a>
+					<a href="#">LOGIN</a>
+					<a href="#">MYPAGE</a>
+					<a href="basket.html">RESERVATION</a>
 				</div>
 				<div class="header-left">
 					<div class="title"><a href="main.html"><img src="img/DIFE_logo2.png" alt=""></a></div>
@@ -52,7 +93,7 @@ $(function() {
 			</div>
 			
 			<div id="header-nav">
-				<div class="container">header-nav</div>
+				<div class="container"></div>
 			</div>
 		</div>
 		
@@ -80,8 +121,8 @@ $(function() {
 					<div id="block1">
 						<ul>
 							<li>
-								<li id="border">
-									<img src="img/drone/D0001.png" width="450" height="490">
+								<li id="border" class="img">
+									<img class="scale" src="img/drone/D0001.png" width="450" height="490">
 								</li>
                             </li>
                         </ul>
@@ -133,21 +174,21 @@ $(function() {
 							<hr>
 							
 							<!-- 캘린더 -->						
-							<div id="form-group1">
+							<!--<div id="form-group1">
                                  <span class="control-label" for="datepicker"><strong style="color: white;">대여일 : </strong><span class="text-danger">*</span>
-                                 <!-- <div class="col-xs-1"> --> 
-                                     <input id="datepicker1" type="text" name="mem_birth">
+                                 <!-- <div class="col-xs-1"> -->
+                                     <!-- <input id="datepicker1" type="text" name="mem_birth">
                                  <!-- </div> --> 
-                                </span> 
-                            </div>
+                                <!-- </span> 
+                            </div> -->
                                  
-							<div id="form-group2">
+							<!--<div id="form-group2">
                                  <span class="control-label" for="datepicker"><strong style="color: white;">반납일 : </strong><span class="text-danger">*</span>
                                  <!-- <div class="col-xs-1"> --> 
-                                     <input id="datepicker2" type="text" name="mem_birth">
+                                    <!-- <input id="datepicker2" type="text" name="mem_birth">
                                  <!-- </div> --> 
-                                </span> 
-                            </div>
+                                <!-- </span> 
+                            </div> 
 							
                             <!--  
                             <li>							
@@ -172,9 +213,6 @@ $(function() {
                        		</li>
                        		-->
                        		 
-							<li>
-							<hr>
-							<li>
 							<li>						
 							<a href="payment.html">
 								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>주문하기</strong></button>
@@ -185,41 +223,7 @@ $(function() {
 	                            <!-- Trigger/Open The Modal -->
 	                            
 							    <button id="myBtn" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>장바구니 담기</strong></button>						 
-							    <!-- The Modal -->
-							    <div id="myModal" class="modal">						 
-							      <!-- Modal content -->
-							      <div class="modal-content">
-							        <span class="close">&times;</span>                                                               
-							        <p>장바구니 담기 성공 :-)</p>
-							      </div>						 
-							    </div>
-							    <script>
-								    // Get the modal
-							        var modal = document.getElementById('myModal');
-							 
-							        // Get the button that opens the modal
-							        var btn = document.getElementById("myBtn");
-							 
-							        // Get the <span> element that closes the modal
-							        var span = document.getElementsByClassName("close")[0];                                          
-							 
-							        // When the user clicks on the button, open the modal 
-							        btn.onclick = function() {
-							            modal.style.display = "block";
-							        }
-							 
-							        // When the user clicks on <span> (x), close the modal
-							        span.onclick = function() {
-							            modal.style.display = "none";
-							        }
-							 
-							        // When the user clicks anywhere outside of the modal, close it
-							        window.onclick = function(event) {
-							            if (event.target == modal) {
-							                modal.style.display = "none";
-							            }
-							        }
-							    </script>                                                                               
+							                                                                  
 	                        </li>
 							<li>
 							<a href="drone.html">
@@ -240,7 +244,7 @@ $(function() {
 		
 			<div id="footer">
 		        <div id="footer-nav">
-		            <div class="container">footer-nav</div>
+		            <div class="container"></div>
 		        </div>
 		        <div id="footer-info">
 		            <div class="container">
