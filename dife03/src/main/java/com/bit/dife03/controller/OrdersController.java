@@ -1,4 +1,3 @@
-/*
 package com.bit.dife03.controller;
 
 
@@ -18,22 +17,15 @@ public class OrdersController {
 	
 	@Autowired
 	private OrdersDao dao;
-	
-	
-
 	public void setDao(OrdersDao dao) {
 		this.dao = dao;
 	}
-	
-
 //	//Basket 리스트 출력 ModelAndView 사용
 //	@RequestMapping("/basket")
 //	public void basket()
 //	{
 //		
 //	}
-	
-	
 	@ResponseBody
 	@RequestMapping("/basketList.do")
 	public String listBasket()
@@ -43,7 +35,7 @@ public class OrdersController {
 ////		ModelAndView mav = new ModelAndView();
 ////		mav.addObject("list", dao.basketList("hong"));
 //		
-//		return mav;
+//		return mav;	
 		String str="";
 		ObjectMapper ob = new ObjectMapper();
 		try {
@@ -54,5 +46,22 @@ public class OrdersController {
 		}
 		return str;
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping("/deleteBasket.do")   
+	public String deleteBasket(String bas_no)
+	{
+		System.out.println(bas_no);
+		String str="";
+		ObjectMapper ob = new ObjectMapper();
+		try {
+			str = ob.writeValueAsString(dao.delBas(bas_no));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return str;
+	}
 }
-*/
