@@ -12,7 +12,6 @@
     }
     #contents{
         height: auto;
-        background-color: aquamarine;
     }
     #footer{
         height: 150px;
@@ -20,21 +19,17 @@
     /*header*/
     #header-top{
         height: 90px;
-        background-color: deepskyblue;
     }
     #header-nav{
         height: 50px;
-        background-color: cadetblue;
     }
     /*contents*/
     /*footer*/
     #footer-nav{
         height: 50px;
-        background-color: cadetblue;
     }
     #footer-info{
         height: 100px;
-        background-color: deepskyblue;
     }
 }
 
@@ -58,7 +53,7 @@
     }
     
     #footer{
-        height: 180px;
+        height: 140px;
     }
     /*header*/
     #header-top{
@@ -75,7 +70,7 @@
     /*contents*/
     /*footer*/
     #footer-nav{
-        height: 50px;
+        height: 10px;
         background-color: #1F2124;
     }
     #footer-info{

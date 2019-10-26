@@ -168,7 +168,7 @@
 	                            <dd class="pil-list-info" id="pil-info">강의 정보:&nbsp; ${p.pil_info }</dd>
 	                            <dd class="pil-list-info" id="pil-star">별점:&nbsp; ${p.pil_star }.0</dd>
 	                    </li>
-	                </ul><hr>
+	                </ul>
              	</c:forEach>
              	<!-- 
                 <ul class="pil-list">
