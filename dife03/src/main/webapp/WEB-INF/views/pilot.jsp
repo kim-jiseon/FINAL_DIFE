@@ -32,7 +32,13 @@
     		$("#pil-location").append(search_loc);
     	})
     	
+    	
+    	//검색 고정
+    	$("#pil-category").val($("#hidden-category").val());
+    	$("#pil-location").val($("#hidden-location").val());
+    
     	//검색버튼 클릭시
+    	/*
     	$("#pil-search-btn").click(function(){
     		$(".pilot-container").empty();
     		var category = $("select[name=pil-category]").val();
@@ -63,6 +69,7 @@
 					})    			
 	    		})
 	    	})
+	    	*/
     	
     	//전체 페이지 출력
     	/*
@@ -137,19 +144,22 @@
                 </div>
             </div>
             <div id="header-nav">
+            <form action="pilot" id="pilot-nav">
                <span id="pil-search">
               	 <span>카테고리</span>
-                    <select name="pil-category" id="pil-category">
+                    <select name="category" id="pil-category">
                     	<option value="2">선택</option>
                         <option value="1">촬영</option>
                         <option value="0">교육</option>
                     </select>
                     <!-- 제이쿼리 사용 -->
                     <span>지역</span>
-                    <select id="pil-location" name="pil-location">
+                    <select name="location" id="pil-location">
                     </select>
+                    <button id="pil-search-btn">검색</button>
                 </span>
-                <button id="pil-search-btn">검색</button>
+                
+                </form>
             </div>
         </div>
         <!-- //header -->
@@ -170,18 +180,6 @@
 	                    </li>
 	                </ul>
              	</c:forEach>
-             	<!-- 
-                <ul class="pil-list">
-                    <li>
-                            <dd><img class="pil-list-img" src="img/pilot/visit_cnt.png" ></dd>
-                            <dd class="pil-list-title"><a href="#">파일럿 교육 강의합니다!</a></dd>
-                            <dd class="pil-list-info" id="pil-name">강사명: 홍길동</dd>
-                            <dd class="pil-list-info" id="pil-loc">지역: 서울/인천</dd>
-                            <dd class="pil-list-info" id="pil-info">강의 정보: 드론 자격증을 위한 기초반 강의</dd>
-                            <dd class="pil-list-info" id="pil-star">별점</dd>
-                    </li>
-                </ul><hr>
-                  -->
                  </div>
                  <!-- 페이징처리 -->
                  <div id="pilot-paging">
@@ -221,5 +219,7 @@ function myFunction() {
   }
 }
 </script>
+<input type="hidden" value="${category }" id="hidden-category">
+<input type="hidden" value="${location }" id="hidden-location">
 </body>
 </html>
