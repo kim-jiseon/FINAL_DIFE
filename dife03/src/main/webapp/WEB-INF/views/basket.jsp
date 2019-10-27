@@ -48,6 +48,7 @@
     	         else  $("input:checkbox[name=cart_no]").prop('checked',false);
     	         console.log($('input:checkbox[name=cart_no]').length); 
     	     	/* 각 상품 체크박스 변환 checked*/
+    	     	
     	     	$(".cart_no").change(function(){
     	     		alert("체인지");
 
