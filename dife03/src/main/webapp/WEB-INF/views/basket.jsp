@@ -22,9 +22,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/orders/basket.css">
-
-
-	
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -42,15 +39,45 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
+    	/*체크박스 변환 */
+    	
+    	 	$(".chk_all").change(function(){
+    	 		var select=$(this).children();
+    	 		 var chk = $(this).is(":checked");//.attr('checked');
+    	         if(chk) $("input:checkbox[name=cart_no]").prop('checked', true);
+    	         else  $("input:checkbox[name=cart_no]").prop('checked',false);
+    	         console.log($('input:checkbox[name=cart_no]').length); 
+    	     	/* 각 상품 체크박스 변환 checked*/
+    	     	$(".cart_no").change(function(){
+    	     		alert("체인지");
+
+    	     		
+    	     	});
+    	     	
+    	    	 	
+    	 	});
+    	
+    	$("#table_content tr td input").click(function(){
+    		
+    	 });
+    	
+    	/* 각 상품 체크박스 변환 checked*/
+   /*  	$(".cart_no").change(function(){
+    		alert("체인지");
+
+    		
+    	});  */
+    	
+    	/* 체크박스 선택된 노드들 삭제. */
+    	
     	/*list를 처리하는 function*/
         	function getList(){    
-     		
      		$.ajax({url:"/basketList.do",async : false,dataType:"json",success:function(data){
      			$("#table_content").empty();
 	    		$.each(data,function(idx,item){
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
-	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked'></td>");
+	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no'></td>");
 	    			var td3;
 	    			var td4;
 	    			var td5;
@@ -89,11 +116,7 @@
 	    					$(td7).append(p5,p6);
 	    					td8 = $("<td></td>");
 	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
-	    					$(td8).append(btn_del);
-	    					
-	    					
-	    					
-	    					
+	    					$(td8).append(btn_del);	
 	    					
 	    				}
 	    			else
@@ -119,7 +142,6 @@
     					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
     					$(td8).append(btn_del);
 	    				}
-	   
 	    			$(tr).append(td1,td2,td3,td4,td5,td6,td7,td8);
 	    			$("#table_content").append(tr);
 	    			/*딜리트 버튼  */
@@ -152,7 +174,7 @@
 	  	
     	    }    
         /*list를 처리하는 function getList end  */
- 		  getList();   
+ 		getList();   
     	/* 수량처리에 대한 스크립트,제이쿼리문 및 전역변수 */
     	var arr = $("table").find("p_amount")
 		$(".amountAdd").click(function(){
@@ -165,27 +187,24 @@
     	
     	/*장바구니 삭제버튼 클릭시.*/
     
-	    			 $(".btn_del").click(function(){ 
-	    			
+	    		 $(".btn_del").click(function(){ 
 	    				var btn_del = $(this);
-	    			
 	    				//btn_del.parent() : btn_del의 부모는 <td>이다.
 	    				// btn_del.parent().parent() : <td>의 부모이므로 <tr>이다.
 	    				var tr = btn_del.parent().parent();
 	    				var td = tr.children();
 	    				bas_no = td.eq(0).text(); 
 	    				var check = confirm("정말로 삭제하시겠습니까?");
- 	    				if(check == true)
- 	    					{
+ 	    		if(check == true)
+ 	    			{
  	    						
-	    				 $.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
+	    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 	    					if(data == "1")
 	    						{
 	    						tr.remove();
 	    						}
-	    					
-	    						}})
- 	    					}
+	    				}})
+ 	    			}
 	    				
 	    				
 	    			}); 
@@ -246,7 +265,7 @@
                              </colgroup>  
                         <thead style="font-size: 25px;; font-weight:800;">
                             <th scope="col">번호</th>
-                            <th scope="col"   style="cursor: pointer"><input type="checkbox" class="chk_all" checked></th>
+                            <th scope="col"   style="cursor: pointer"><input type="checkbox" class="chk_all" checked='checked'></th>
                             <th scope="col"></th>
                             <th scope="col">상품명</th>
                             <th scope="col">판매가</th>
