@@ -1,6 +1,8 @@
 package com.bit.dife03.controller;
 
 import java.io.FileOutputStream;
+import java.lang.ProcessBuilder.Redirect;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +41,22 @@ public class MemberController {
 	public void signInInsertForm() {
 		
 	}
+	@RequestMapping(value = "/signIn.do", method = RequestMethod.POST)
+	public ModelAndView signInSubmit(String mem_id, String mem_pwd, HttpSession session) {
+		ModelAndView mav = new ModelAndView("redirect:/main");
+
+		int re = dao.isMember(mem_id, mem_pwd);
+		
+		if(re != 1) {
+			mav.setViewName("redirect:/signIn");
+		}
+		else {
+			session.setAttribute("mem_id", mem_id);
+			session.setAttribute("mem_pwd", mem_pwd);
+		}
+		return mav;
+	}
+	
 	
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
 	public void signUpinsertForm() {
@@ -61,7 +79,7 @@ public class MemberController {
 	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
 	public ModelAndView signUpInsertSubmit(MemberVo vo, HttpSession session, HttpServletRequest request) {
 		
-		ModelAndView mav = new ModelAndView("redirect : /signIn");
+		ModelAndView mav = new ModelAndView("redirect:/signIn");
 		
 		String path = request.getRealPath("img");
 		System.out.println(path);
@@ -101,7 +119,6 @@ public class MemberController {
 		
 		String smsID= "rola";	
 		String smsPW="bit123400";
-	
 		
 		ServiceSMSSoapProxy sendsms = new ServiceSMSSoapProxy();
 		try{

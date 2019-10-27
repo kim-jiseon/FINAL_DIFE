@@ -65,11 +65,11 @@
     
     #category-1{
         float: left;
-        margin: 0px 40px;
+        margin: 0px 50px;
     }
 
     #category-1 > a{
-        padding: 20px;
+        padding: 15px;
         color: white;
     }
 
@@ -79,14 +79,14 @@
 
     #category-2{
         float: right;
-        margin: 0px 40px;
+        margin: 0px 50px;
     }
 
     #category-2 > a{
         color: white;
         text-transform: uppercase;
         text-shadow: 0 0 1px rgba(255,255,255,0.3);
-        padding: 0px 20px;
+        padding: 0px 15px;
     }
     
     
@@ -127,7 +127,7 @@
     }
     /*콘텐츠-높이는 자유롭게 설정하세요*/
     #contents{
-        height: 1000px;
+        height: auto;
     }
     
     .container{

@@ -50,22 +50,22 @@
       padding-top: 102px;
     }
     
-      /* 상단 카테고리 */
+     /* 상단 카테고리 */
     #category{
         font-size: 14px;
         line-height: 70px;
     }
     
     #logo{
-        width: 90px;
+        width: 100px;
         height: auto;
         float: left;
-        margin: 22px 0px;
+        margin: 20px 0px;
     }
     
     #category-1{
         float: left;
-        margin: 0px 30px;
+        margin: 0px 50px;
     }
 
     #category-1 > a{
@@ -79,7 +79,7 @@
 
     #category-2{
         float: right;
-        margin: 0px 30px;
+        margin: 0px 50px;
     }
 
     #category-2 > a{
@@ -88,7 +88,6 @@
         text-shadow: 0 0 1px rgba(255,255,255,0.3);
         padding: 0px 15px;
     }
-    
     
     
     /*상단 버튼 효과*/
@@ -128,7 +127,7 @@
     }
     /*콘텐츠-높이는 자유롭게 설정하세요*/
     #contents{
-        height: 1000px;
+        height: auto;
     }
     
     .container{

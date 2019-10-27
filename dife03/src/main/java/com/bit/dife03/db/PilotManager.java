@@ -30,6 +30,15 @@ public class PilotManager {
 		}
 	}
 	
+	public static int sel_pil_cnt() {
+		int cnt = 0;
+		SqlSession session = factory.openSession();
+		cnt = session.selectOne("pilot.sel_pil_cnt");
+		session.close();
+		System.out.println(cnt);
+		return cnt;
+	}
+	
 	public static PilListVo sel_pil_detail(int info){
 		PilListVo infoVo = null;
 		SqlSession session = factory.openSession();
@@ -55,10 +64,10 @@ public class PilotManager {
 		return list;
 	}
 	
-	public static List<PilListVo> selectPil_list() {
+	public static List<PilListVo> selectPil_list(HashMap map) {
 		List<PilListVo> list = null;
 		SqlSession session = factory.openSession();
-		list = session.selectList("pilot.selectPil_list");
+		list = session.selectList("pilot.selectPil_list", map);
 		session.close();
 		return list;
 	}
