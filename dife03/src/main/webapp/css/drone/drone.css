@@ -1,27 +1,13 @@
 @charset "UTF-8";
 body{
-    background-color: black;
-}
-
-/* 전체 레이아웃 */
-#wrap {
-	clear: both;
-    font-size: 20px;
-    color: #fff;
-    text-align: center;
-}
-#header{
-    height: 120px;
-}
-#header-top {
-    height: 70px;
-   /* line-height: 70px;*/
-    margin: 0px 260px;
+    background-color: #1F2124;
 }
 #header-nav{
     height: 50px;
-    line-height: 50px;
     background-color: #1F2124;
+}
+#contents{
+    height: auto;
 }
 
 /* 상단 타이틀 및 카테고리 */
@@ -45,77 +31,65 @@ body{
     font-weight: bold;
     padding: 10px 15px 15px 20px;
 }
-/*
-.header-top .header-left .category a:hover{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
-}
-.header-top .header-left .category a:active{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B;
-}
-*/
 
-/* 상단 로그인 및 마이페이지 */
-.header-top .header-right {
-    float: right;
-}
-.header-top .header-right a{
-    font-size: 14px;
-    color: #fff;
-    padding: 10px 15px 20px 15px;
-}
-/*
-.header-top .header-right a:hover{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
-}
-.header-top .header-right a:active{
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B, 0 0 5px #FFD74B;
-}
-*/
 /* 달력 */
+#block{
+    color: white;
+    height: 180px;
+    text-align: end;
+}
 #calendar{
-    width: auto;
-    height: 35px;
-    margin: auto;
+    font-size: 15px;
+    padding: 60px 15px 0px 0px;
+}
+#datepicker{
+    width: 150px;
+    height: 25px;
+}
+
+/* 정보 ul 표시제거 */
+li{
+	list-style: none;
 }
 
 /* 검색 */
-#search span{
+#header-nav .container{
+    background: #000;
+    text-align: center; 
+}
+.search{
+    line-height: 50px;
+    font-size: 16px;
+}
+.search1 {
     margin-right: 10px;
     margin-bottom: 13px;
 }
-.container .search1{
+.container #calendar,.search1{
     font-size: 17px;
     font-weight: bold;
     margin: 0 20px 0 20px;
     z-index: 999;
 }
-#search1 #btnSch{    
-    margin: 20px 0 0 0;
+#btnSch{
+    width: 120px;
+    height: 40px;
+    padding: 5px;
+    font-size: 17px;
+    font-weight: bold;
 }
-#header-nav .container{
-    background: #000;
-    text-align: center;
-}
-.container #search{
+.container .search{
     display: inline-flex;
     list-style: none;
     color: #fff;
 }
-#search li{
+.search li{
     width: 200px;
     margin: 0px;
     padding: 0px;
 }
-#search .fa{
-    margin-left: 8px;
+.search .fa{
+    margin-left: 10px;
 }
 .sub-menu-1{
     display: none;
@@ -123,21 +97,23 @@ body{
 .sub-menu-2 li{
     font-size: 13px;
 }
-ul li:hover .sub-menu-1{
+
+ul li:hover .sub-menu-1 {
     display: block;
     position: absolute;
-    background-color: #424242;
+    background-color: #1F2124;
     margin-top: 5px;
-    margin-left: -5px;   
+    margin-left: -5px;
+    z-index: 9999;
+    padding: 0px 5px;
 }
 ul li:hover .sub-menu-1 ul{
     display: block;
     margin: 10px;
 }
 ul li:hover .sub-menu-1 ul li{
-    width: 150px;
-    padding: 10px;
-    border-bottom: 1px dotted #fff;
+    width: 170px;
+    border-bottom: 0.5px dotted #fff;
     text-align: left;
 }
 ul li:hover .sub-menu-1 ul li:last-child{
@@ -158,22 +134,22 @@ ul li:hover .sub-menu-1 ul li:hover{
     display: block;
     margin-top: -50px;
     margin-left: 150px;
-    background-color: #000;
+    background-color: #2d2c2c;
 }
 .sub-menu-2 ul li:hover{
     background-color: #03A9F4;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 
 /* 상품이미지 */
-#grid{
+#drone-grid{
 	display: grid;
 	grid-template-columns: repeat(4,1fr);
 	/* grid-template-rows: 400px 400px 400px 400px; */
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 /* 상품이미지 */
@@ -323,7 +299,11 @@ ul{
 .content2 .block a img{
     width: 250px;
     height: 260px;
-}    
+}
+
+.btnPaging li {
+    text-align: center;    
+}
 
 /* 컨테이너 */
 .container {
@@ -332,7 +312,6 @@ ul{
     height: auto;
     background: #000;
 }
-
 #footer {
     text-align: center;
     height: 180px;

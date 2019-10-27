@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,28 +8,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
-<!-- ì›¹í°íŠ¸ -->
+<!-- À¥ÆùÆ® -->
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-<!-- ê¸°ë³¸ ë§í¬ -->
+<!-- ±âº» ¸µÅ© -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/drone/drone.css">
-<!-- ë‹¬ë ¥ -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
-<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-<!-- ì¹´í…Œê³ ë¦¬ ê²€ìƒ‰ ì•„ì´ì½˜ -->
+<!-- ´Þ·Â -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="js/datepicker/datepicker.js"></script>
+<!-- Include language -->
+<script src="js/datepicker/i18n/datepicker-ko.js"></script>
+<!-- Ä«Å×°í¸® °Ë»ö ¾ÆÀÌÄÜ -->
 <link rel="stylesheet" href="css/drone/drone.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
-            
-              
-           
           
              /* Demo purposes only */
   $(".hover").mouseleave(
@@ -37,14 +37,12 @@ $(function() {
       $(this).removeClass("hover");
     }
   );
-
            
 /* 
-            // íŽ˜ì´ì§• ì²˜ë¦¬ : íŽ˜ì´ì§€ë²„íŠ¼ ì¶”ê°€
+            // ÆäÀÌÂ¡ Ã³¸® : ÆäÀÌÁö¹öÆ° Ãß°¡
             $.get("GetTotalDroneCount", function(data) {
                 var totalItem = Number(data);
                 var totalPage = Math.ceil(totalItem / itemsPerPage);
-
                 for (var i = 1; i <= totalPage; i++) {
                     var addPage = $("<li/>").html(i).attr("dataPage", i);
                     $("#btnPaging").append(addPage);
@@ -54,11 +52,9 @@ $(function() {
                     });
                 }
             });
-
-            // íŽ˜ì´ì§• ì²˜ë¦¬ : ë“œë¡  ì´ˆê¸°í™”ë©´ ì „ì²´ ëª©ë¡ select
+            // ÆäÀÌÂ¡ Ã³¸® : µå·Ð ÃÊ±âÈ­¸é ÀüÃ¼ ¸ñ·Ï select
             function getItems(nowPage, itemsPerPage) {
                 $("#content2").empty();
-
                 $.getJSON("GetDroneList", {
                     nowPage: nowPage,
                     perPage: itemsPerPage
@@ -73,7 +69,6 @@ $(function() {
                         var name = $("<p></p>").html(item.dro_name);
                         var sName = $("<p></p>").html(item.dro_series);
                         var price = $("<p></p>").html(item.pos_price);
-
                         $(div).append(fname, name, sName, price);
                         $("#content2").append(div);
                     });
@@ -81,9 +76,8 @@ $(function() {
                 $("#content2").show();
             }
             getItems(1, itemsPerPage);
-
-            // selectRentalDate ë©”ì„œë“œ ë§Œë“¤ê¸°
-            // ëŒ€ì—¬ì¼ ìº˜ë¦°ë”
+            // selectRentalDate ¸Þ¼­µå ¸¸µé±â
+            // ´ë¿©ÀÏ Ä¶¸°´õ
             $("#datepicker").dialog({
             	buttons:{
             		submit:function(){
@@ -93,10 +87,10 @@ $(function() {
             			}});
             		},
             		reset:function(){
-            			alert("ëª¨ë‘ ì§€ì›€");
+            			alert("¸ðµÎ Áö¿ò");
             		},
             		cancle:function(){
-            			alert("ì·¨ì†Œ");
+            			alert("Ãë¼Ò");
             		},
             	},
             	modal:false
@@ -108,43 +102,52 @@ $(function() {
 </head>
 
 <body>
-    <div id="wrap">
+    <div id="wrap" class="animated fadeIn">
+       <!-- header -->
         <div id="header">
-            <div id="header-top" class="header-top">
-                <div class="header-right">
-                    <a href="signIn.html">ë¡œê·¸ì¸ <i class="fas fa-user" aria-hidden="true"></i></a>
-                    <a href="payment.html">ë§ˆì´íŽ˜ì´ì§€ <i class="fas fa-clipboard-list" aria-hidden="true"></i></a>
-                    <a href="basket.html">ìž¥ë°”êµ¬ë‹ˆ <i class="fas fa-shopping-basket" aria-hidden="true"></i></a>
-                </div>
-                <div class="header-left">
-                    <div class="title"><a href="main.html"><img src="img/logo/logo_white.png" alt="ë””í”„ë¡œê³ "></a></div>
-                    <div class="category">
-                        <a href="drone.jsp">ë“œë¡ </a>
-                        <a href="pilot.jsp">íŒŒì¼ëŸ¿</a>
-                        <a href="#">ì§€ì—­ ë° ë‚ ì”¨</a>
-                        <a href="#">ê³ ê°ì§€ì›</a>
-                        <a href="board.html">ì»¤ë®¤ë‹ˆí‹°</a>
-                    </div>
+            <div id="header-top">
+               <div id="category">
+                    <span id="category-1" class="animated fadeInUp">
+                        <a href="layout.html"><img src="img/logo/logo_white.png" id="logo"></a>
+                        <a href="#" class="cl-effect-1">µå·Ð</a>
+                        <a href="#" class="cl-effect-1">ÆÄÀÏ·µ</a>
+                        <a href="#" class="cl-effect-1">Áö¿ª ¹× ³¯¾¾</a>
+                        <a href="#" class="cl-effect-1">°í°´Áö¿ø</a>
+                        <a href="#" class="cl-effect-1">Ä¿¹Â´ÏÆ¼</a>
+                    </span>
+                     <span id="category-2" class="animated fadeInUp">
+                        <a href="#" class="cl-effect-1">LOGIN</a>
+                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a href="#" class="cl-effect-1">RESERVATION</a>
+                   </span>
                 </div>
             </div>
         </div>
-
-        <!-- ìƒì„¸ê²€ìƒ‰ -->
+        <!-- //header -->
+        
+        <!-- »ó¼¼°Ë»ö -->
         <div id="header-nav">
-            <div class="container" style="color: #242424; width: 1100px;">            
-                <ul id="search">
-                    <!-- ëŒ€ì—¬ì¼ -->
-                    <span id="calendar" class="search1">ëŒ€ì—¬ì¼<i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
-						<input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="ëŒ€ì—¬ì¼ì„ ì„ íƒí•˜ì„¸ìš” :D">
+            <div class="container" style="color: #242424; width: 1100px;">
+                <ul class="search">
+                    <div class="block">
+                        <div id="calendar">
+                            ´ë¿©ÀÏ ¹× ¹Ý³³ÀÏ&nbsp;&nbsp;
+                                <input type="text" data-range="true"
+                                            data-multiple-dates-separator=" - " data-language="ko"
+                                            class="datepicker-here" style="width:180px; height: 25px;"/>
+                        </div>
+                    </div>
+             
+						<!-- <input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="´ë¿©ÀÏÀ» ¼±ÅÃÇÏ¼¼¿ä :D">
                				<script src="pikaday.js"></script>
                    			<script>
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
-                       	</script>
-                   
-                    <li class="search1">ì‹œë¦¬ì¦ˆëª…<i class="fa fa-plane" aria-hidden="true"></i>
+                       	</script> -->
+                       	
+                    <li class="search1">½Ã¸®Áî¸í<i class="fa fa-plane" aria-hidden="true"></i>
                         <div class="sub-menu-1">
                             <ul>
-                                <li class="hover-dro">ë§¤ë¹…<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">¸Åºò<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul>
                                             <li>MAVIC 2 PRO</li>
@@ -155,7 +158,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">ë¹„ë°¥<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">ºñ¹ä<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul>
                                             <li>BEBOP 2 SINGLE</li>
@@ -163,26 +166,26 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">ìŠ¤íŒŒí¬<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">½ºÆÄÅ©<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul>
                                             <li>MINI SPARK</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">ì¸ìŠ¤íŒŒì´ì–´<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">ÀÎ½ºÆÄÀÌ¾î<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul>
-                                            <li>INSPIRE 1V2 1ì¸</li>
-                                            <li>INSPIRE 1V2 2ì¸</li>
-                                            <li>INSPIRE 1 PRO 1ì¸</li>
-                                            <li>INSPIRE 1 PRO 2ì¸</li>
-                                            <li>INSPIRE 2 ZENMUSE X5S 1ì¸</li>
-                                            <li>INSPIRE 2 ZENMUSE X5S 2ì¸</li>
+                                            <li>INSPIRE 1V2 1ÀÎ</li>
+                                            <li>INSPIRE 1V2 2ÀÎ</li>
+                                            <li>INSPIRE 1 PRO 1ÀÎ</li>
+                                            <li>INSPIRE 1 PRO 2ÀÎ</li>
+                                            <li>INSPIRE 2 ZENMUSE X5S 1ÀÎ</li>
+                                            <li>INSPIRE 2 ZENMUSE X5S 2ÀÎ</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">íŒ¬í…€<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">ÆÒÅÒ<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul>
                                             <li>PHANTOM 4</li>
@@ -195,33 +198,32 @@ $(function() {
                             </ul>
                         </div>
                     </li>
-                    <li class="search1">ê°€ê²©<i class="fa fa-tags" aria-hidden="true"></i>
+                    <li class="search1">°¡°Ý<i class="fa fa-tags" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul>
-                                <li class="hover-dro">~ 10ë§Œì›</li>
-                                <li class="hover-dro">10 ~ 20ë§Œì›</li>
-                                <li class="hover-dro">20ë§Œì› ~</li>
+                            <ul id="sub-menu">
+                                <li class="hover-dro">~ 10¸¸¿ø</li>
+                                <li class="hover-dro">10 ~ 20¸¸¿ø</li>
+                                <li class="hover-dro">20¸¸¿ø ~</li>
                             </ul>
                         </div>
-                    </li>
-                    <button id="btnSch" class="search1" style="width: 100px; height: 40px; border-radius: 5px; background-color: #231F20; color: white; margin-top: auto; margin-bottom: auto;">ê²€ìƒ‰<i class="fa fa-search" aria-hidden="true"></i></button>             
+                    </li>                  
+                    <button id="btnSch">°Ë»ö<i class="fa fa-search" aria-hidden="true"></i></button>             
                 </ul>
             </div>
         </div>
         
-        <!-- ìƒì„¸ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ -->
-		<div id="content2">
-		    <div class="container">
-			<div class="content2" style="color: black; font-size: 18px;">
-				<div id="grid">
-					<!-- 1ë²ˆì§¸ ë‹¨ë½ -->
+        <!-- »ó¼¼°Ë»ö°á°ú ¸ñ·Ï -->
+        <div id="contents" class="container">
+		    
+				<div id="drone-grid">
+					<!-- 1¹øÂ° ´Ü¶ô -->
 	                <div class="block">
                         <figure class="block">
-                            <img src="img/drone/D0001.png" alt="ë§¤ë¹…2í”„ë¡œ"/>
+                            <img src="img/drone/D0001.png" alt="¸Åºò2ÇÁ·Î"/>
                               <figcaption>
-                              <p>1ì¸ì¹˜ ì„¼ì„œ íƒ‘ìž¬ / ì „ ë°©í–¥ ìž¥ì• ë¬¼ íšŒí”¼ ì„¼ì„œ íƒ‘ìž¬ / APAS 2.0 íƒ‘ìž¬<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                              <p>1ÀÎÄ¡ ¼¾¼­ Å¾Àç / Àü ¹æÇâ Àå¾Ö¹° È¸ÇÇ ¼¾¼­ Å¾Àç / APAS 2.0 Å¾Àç<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
                               <!-- <p>DJI</p><br>
-                              <p>270,000ì›</p> -->
+                              <p>270,000¿ø</p> -->
                                 <div class="heading">
                                   <h2><span>MAVIC</span> 2 PRO</h2>
                                 </div>
@@ -231,11 +233,11 @@ $(function() {
 	                </div>
 	                <div class="block">
                         <figure class="block">
-                            <img src="img/drone/D0002.png" alt="ë§¤ë¹…í”„ë¡œ" />
+                            <img src="img/drone/D0002.png" alt="¸ÅºòÇÁ·Î" />
                                 <figcaption>
-                                  <p>ê°€ê²©ëŒ€ë¹„ ìµœê³ ì˜ ì„±ëŠ¥ì„ ìžëž‘í•˜ëŠ” ìž…ë¬¸ìš© or ì¤‘ê¸‰ìžìš© ë“œë¡ <span> / 200,000<i class="fas fa-won-sign"></i></span></p>
+                                  <p>°¡°Ý´ëºñ ÃÖ°íÀÇ ¼º´ÉÀ» ÀÚ¶ûÇÏ´Â ÀÔ¹®¿ë or Áß±ÞÀÚ¿ë µå·Ð<span> / 200,000<i class="fas fa-won-sign"></i></span></p>
                                   <!-- <p>DJI</p><br>
-                                  <p>270,000ì›</p> -->
+                                  <p>270,000¿ø</p> -->
                                     <div class="heading">
                                       <h2><span>MAVIC</span> PRO</h2>
                                     </div>
@@ -245,11 +247,11 @@ $(function() {
 	                </div>
 	                <div class="block">
                         <figure class="block">
-                            <img src="img/drone/D0003.png" alt="íŒ¬í…€4" />
+                            <img src="img/drone/D0003.png" alt="ÆÒÅÒ4" />
                                 <figcaption>
-                                    <p>4Kì´¬ì˜ / ìž¥ì• ë¬¼ ìžë™ íšŒí”¼ ê¸°ëŠ¥ / ì¸í…”ë¦¬ì „íŠ¸í•œ ë¹„í–‰ ê¸°ëŠ¥ íƒ‘ìž¬<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>4KÃÔ¿µ / Àå¾Ö¹° ÀÚµ¿ È¸ÇÇ ±â´É / ÀÎÅÚ¸®ÀüÆ®ÇÑ ºñÇà ±â´É Å¾Àç<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>PHANTOM</span> 4</h2>
                                     </div>
@@ -259,11 +261,11 @@ $(function() {
 	                </div>
 	                <div class="block">
                         <figure class="block">
-                            <img src="img/drone/D0004.png" alt="íŒ¬í…€4í”„ë¡œ" />
+                            <img src="img/drone/D0004.png" alt="ÆÒÅÒ4ÇÁ·Î" />
                                 <figcaption>
-                                    <p>1ì¸ì¹˜ 20 ë©”ê°€í”½ì…€ Exmor R CMOS ì„¼ì„œë¥¼ íƒ‘ìž¬í•œ ìƒˆë¡œìš´ DJI íŒ¬í…€ ì¹´ë©”ë¼ / ê¸¸ì–´ì§„ ë¹„í–‰ì‹œê°„ / ë”ìš± ìŠ¤ë§ˆíŠ¸í•œ ê¸°ëŠ¥ë“¤<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>1ÀÎÄ¡ 20 ¸Þ°¡ÇÈ¼¿ Exmor R CMOS ¼¾¼­¸¦ Å¾ÀçÇÑ »õ·Î¿î DJI ÆÒÅÒ Ä«¸Þ¶ó / ±æ¾îÁø ºñÇà½Ã°£ / ´õ¿í ½º¸¶Æ®ÇÑ ±â´Éµé<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>PHANTOM</span> 4 PRO</h2>
                                     </div>
@@ -272,14 +274,14 @@ $(function() {
                         </figure>              
 	                </div>
 	          
-	                <!-- 2ë²ˆì§¸ ë‹¨ë½ -->
+	                <!-- 2¹øÂ° ´Ü¶ô -->
 	                <div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0005.png" alt="íŒ¬í…€3ì–´ë“œë°´ìŠ¤ë“œ" />
+                            <img src="img/drone/D0005.png" alt="ÆÒÅÒ3¾îµå¹ê½ºµå" />
                                 <figcaption>
-                                    <p>FULL-HD ì´¬ì˜ì´ ê°€ëŠ¥í•˜ë©° ë¹„ì „ í”„ë¡œë¹„ì €ë‹ ì„¼ì„œë¡œ ì‹¤ë‚´ì—ì„œë„ ì‰½ê²Œ ì¡°ì¢…ê°€ëŠ¥í•œ DJI íŒ¬í…€3 ì–´ë“œë°´ìŠ¤ë“œ<span> / 250,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>FULL-HD ÃÔ¿µÀÌ °¡´ÉÇÏ¸ç ºñÀü ÇÁ·ÎºñÀú´× ¼¾¼­·Î ½Ç³»¿¡¼­µµ ½±°Ô Á¶Á¾°¡´ÉÇÑ DJI ÆÒÅÒ3 ¾îµå¹ê½ºµå<span> / 250,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>PHANTOM</span> 3 ADVANCED</h2>
                                     </div>
@@ -289,11 +291,11 @@ $(function() {
 	                </div>                
 	                <div class="block">	                
 	                   <figure class="block">
-                            <img src="img/drone/D0006.png" alt="íŒ¬í…€3í”„ë¡œíŽ˜ì…”ë„" />
+                            <img src="img/drone/D0006.png" alt="ÆÒÅÒ3ÇÁ·ÎÆä¼Å³Î" />
                                 <figcaption>
-                                    <p>4K ì¹´ë©”ë¼, ì‹¤ì‹œê°„ HDì˜ìƒ, ì™„ë²½í•œ ë¹„í–‰ ì œì–´, ì´ˆë³´ìžë“¤ì˜ ì•ˆì „ ë¹„í–‰ì„ ìœ„í•œ ë¹„ê¸°ë„ˆ ëª¨ë“œ, ë¹„ì ¼ í¬ì§€ì…”ë‹ ì‹œìŠ¤í…œ<span> / 300,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>4K Ä«¸Þ¶ó, ½Ç½Ã°£ HD¿µ»ó, ¿Ïº®ÇÑ ºñÇà Á¦¾î, ÃÊº¸ÀÚµéÀÇ ¾ÈÀü ºñÇàÀ» À§ÇÑ ºñ±â³Ê ¸ðµå, ºñÁ¯ Æ÷Áö¼Å´× ½Ã½ºÅÛ<span> / 300,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>PHANTOM</span> 3 PROFESSIONAL</h2>
                                     </div>
@@ -303,11 +305,11 @@ $(function() {
 	                </div>	                
 	                <div class="block">.
 	                    <figure class="block">
-                            <img src="img/drone/D0007.png" alt="ë¯¸ë‹ˆìŠ¤íŒŒí¬" />
+                            <img src="img/drone/D0007.png" alt="¹Ì´Ï½ºÆÄÅ©" />
                                 <figcaption>
-                                    <p>ì…€í”¼ or ë¯¸ë‹ˆ ë ˆì´ì‹± ë“œë¡ , 2ì¶• ì§ë²Œ íƒ‘ìž¬! 2KM ì¡°ì¢… ê°€ëŠ¥, DJI ê³ ê¸€ í˜¸í™˜ ê°€ëŠ¥(ë°°í„°ë¦¬ì™€ ê°€ë°©ì´ ì¶”ê°€ëœ FLY MORE COMBO ì„¸íŠ¸)<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>¼¿ÇÇ or ¹Ì´Ï ·¹ÀÌ½Ì µå·Ð, 2Ãà Áü¹ú Å¾Àç! 2KM Á¶Á¾ °¡´É, DJI °í±Û È£È¯ °¡´É(¹èÅÍ¸®¿Í °¡¹æÀÌ Ãß°¡µÈ FLY MORE COMBO ¼¼Æ®)<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>SPARK</span> MINI</h2>
                                     </div>
@@ -317,11 +319,11 @@ $(function() {
 	                </div>	                
 	                <div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0008.png" alt="ë§¤ë¹…2ì—”í„°í”„ë¼ì´ì¦ˆ ìœ ë‹ˆë²„ì…œ" />
+                            <img src="img/drone/D0008.png" alt="¸Åºò2¿£ÅÍÇÁ¶óÀÌÁî À¯´Ï¹ö¼È" />
                                 <figcaption>
-                                    <p>ì¶”ê°€ ê¸°ê¸°ë¥¼ ì—°ê²°ì‹œì¼œì£¼ëŠ” í™•ìž¥ í¬íŠ¸ì™€ í•¨ê»˜ ë‹¤ì–‘í•œ ì¤‘ìš” ì—…ë¬´ì˜ íš¨ìœ¨ì„±ì„ ë†’ì—¬ë³´ì„¸ìš”!<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>Ãß°¡ ±â±â¸¦ ¿¬°á½ÃÄÑÁÖ´Â È®Àå Æ÷Æ®¿Í ÇÔ²² ´Ù¾çÇÑ Áß¿ä ¾÷¹«ÀÇ È¿À²¼ºÀ» ³ô¿©º¸¼¼¿ä!<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>MAVIC</span> 2 ENTERPRISE UNIVERSAL</h2>
                                     </div>
@@ -330,14 +332,14 @@ $(function() {
                         </figure>            
 	                </div>
 	                
-	                <!-- 3ë²ˆì§¸ ë‹¨ë½ -->
+	                <!-- 3¹øÂ° ´Ü¶ô -->
 	                <div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0009.png" alt="ë§¤ë¹…2ì—”í„°í”„ë¼ì´ì¦ˆ ë“€ì–¼" />
+                            <img src="img/drone/D0009.png" alt="¸Åºò2¿£ÅÍÇÁ¶óÀÌÁî µà¾ó" />
                                 <figcaption>
-                                    <p>FLIR ì—´í™”ìƒ ì¹´ë©”ë¼ê°€ ìž¥ì‹ëœ ê¸°ì—…ìš© ë§¤ë¹…2 ì—”í„°í”„ë¼ì´ì¦ˆ<span> / 200,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>FLIR ¿­È­»ó Ä«¸Þ¶ó°¡ Àå½ÄµÈ ±â¾÷¿ë ¸Åºò2 ¿£ÅÍÇÁ¶óÀÌÁî<span> / 200,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>MAVIC</span> 2 ENTERPRISE DUAL</h2>
                                     </div>
@@ -347,11 +349,11 @@ $(function() {
 	                </div>                
 	                <div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0010.png" alt="ë§¤ë¹…AIR"/>
+                            <img src="img/drone/D0010.png" alt="¸ÅºòAIR"/>
                                 <figcaption>
-                                    <p>ì ‘ì´ì‹ ë””ìžì¸ìœ¼ë¡œ íœ´ëŒ€ì„± UP! ë³´ë‹¤ ê°€ë³ê³  ì„¸ë ¨ëœ ë””ìžì¸ìœ¼ë¡œ ìƒˆë¡­ê²Œ ì¶œì‹œëœ DJIì˜ ìµœì‹  ë“œë¡ <span> / 250,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>Á¢ÀÌ½Ä µðÀÚÀÎÀ¸·Î ÈÞ´ë¼º UP! º¸´Ù °¡º±°í ¼¼·ÃµÈ µðÀÚÀÎÀ¸·Î »õ·Ó°Ô Ãâ½ÃµÈ DJIÀÇ ÃÖ½Å µå·Ð<span> / 250,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
                                         <h2><span>MAVIC</span> AIR</h2>
                                     </div>
@@ -361,13 +363,13 @@ $(function() {
 	                </div>	                
 	                <div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0011.png" alt="ì¸ìŠ¤íŒŒì´ì–´1V2 1ì¸"/>
+                            <img src="img/drone/D0011.png" alt="ÀÎ½ºÆÄÀÌ¾î1V2 1ÀÎ"/>
                                 <figcaption>
-                                    <p>4K(UHD) í™”ì§ˆì˜ ì˜ìƒ, 1200ë§Œ í™”ì†Œ, í”ë“¤ë¦¼ì„ ìž¡ì•„ì£¼ëŠ” ë”ìš± ì•ˆì •ëœ ì „ë¬¸ í•­ê³µì´¬ì˜ ë“œë¡ <span> / 130,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>4K(UHD) È­ÁúÀÇ ¿µ»ó, 1200¸¸ È­¼Ò, Èçµé¸²À» Àâ¾ÆÁÖ´Â ´õ¿í ¾ÈÁ¤µÈ Àü¹® Ç×°øÃÔ¿µ µå·Ð<span> / 130,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
-                                        <h2><span>INSPIRE</span> 1V2 1ì¸</h2>
+                                        <h2><span>INSPIRE</span> 1V2 1ÀÎ</h2>
                                     </div>
                                 </figcaption>
                             <a href="drone_dt.html"></a>
@@ -375,54 +377,56 @@ $(function() {
 	                </div>	                
 	                <div class="block">
 	                   <figure class="block">
-                            <img src="img/drone/D0012.png" alt="ì¸ìŠ¤íŒŒì´ì–´1V2 2ì¸"/>
+                            <img src="img/drone/D0012.png" alt="ÀÎ½ºÆÄÀÌ¾î1V2 2ÀÎ"/>
                                 <figcaption>
-                                    <p>4K(UHD) í™”ì§ˆì˜ ì˜ìƒ, 1200ë§Œ í™”ì†Œ, í”ë“¤ë¦¼ì„ ìž¡ì•„ì£¼ëŠ” ë”ìš± ì•ˆì •ëœ ì „ë¬¸ í•­ê³µì´¬ì˜ 2ì¸ ì¡°ì¢… íŒ¨í‚¤ì§€, ë¹„í–‰ê³¼ ì˜ìƒì´¬ì˜ì€ 1ëª…ì”© ê°€ëŠ¥<span> / 160,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>4K(UHD) È­ÁúÀÇ ¿µ»ó, 1200¸¸ È­¼Ò, Èçµé¸²À» Àâ¾ÆÁÖ´Â ´õ¿í ¾ÈÁ¤µÈ Àü¹® Ç×°øÃÔ¿µ 2ÀÎ Á¶Á¾ ÆÐÅ°Áö, ºñÇà°ú ¿µ»óÃÔ¿µÀº 1¸í¾¿ °¡´É<span> / 160,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                     <div class="heading">
-                                        <h2><span>INSPIRE</span> 1V2 2ì¸</h2>
+                                        <h2><span>INSPIRE</span> 1V2 2ÀÎ</h2>
                                     </div>
                                 </figcaption>
                             <a href="drone_dt.html"></a>
                         </figure>           
 	                </div>
 	                
-	                <!-- 4ë²ˆì§¸ ë‹¨ë½ -->
+	                <!-- 4¹øÂ° ´Ü¶ô -->
 	                <!--<div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0013.png" alt="ì¸ìŠ¤íŒŒì´ì–´1PRO 1ì¸"/>
+                            <img src="img/drone/D0013.png" alt="ÀÎ½ºÆÄÀÌ¾î1PRO 1ÀÎ"/>
                                 <figcaption>
-                                    <p>ì¸ìŠ¤íŒŒì´ì–´ 1 í”„ë¡œ ë¸”ëž™ì—ë””ì…˜. PIX4D 15ì¼ ë¬´ë£Œì´ìš©ê¶Œ ì¦ì •!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>ÀÎ½ºÆÄÀÌ¾î 1 ÇÁ·Î ºí·¢¿¡µð¼Ç. PIX4D 15ÀÏ ¹«·áÀÌ¿ë±Ç ÁõÁ¤!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000ì›</p> -->
+                                      <p>270,000¿ø</p> -->
                                    <!-- <div class="heading">
-                                        <h2><span>INSPIRE</span> 1PRO 1ì¸</h2>
+                                        <h2><span>INSPIRE</span> 1PRO 1ÀÎ</h2>
                                     </div>
                                 </figcaption>
                             <a href="drone_dt.html"></a>
                         </figure>           
 	                </div> -->
 	               
-	            </div>
+	            
 			</div>
 		</div>
 		
-		<!-- íŽ˜ì´ì§• ì²˜ë¦¬ -->
+		<!-- ÆäÀÌÂ¡ Ã³¸® -->
 		<div class="btnPaging">
-                        <ul class="pagination" style="font-size: 15px;">
-                            <li><a href="#">ì´ì „</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">ë‹¤ìŒ</a></li>
+                        <ul class="pagination" style="font-size: 17px;">
+                            <li>
+                                <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </li>
                         </ul>
                     </div>
 
         <div id="footer">
-            <!-- ë“œëž˜ê·¸ ë¹„êµ ìƒì„±í•˜ê¸° -->
+             <!-- µå·¡±× ºñ±³ »ý¼ºÇÏ±â -->
             <div id="compareChatDrone"></div>
 
             <div id="footer-nav">
@@ -433,12 +437,12 @@ $(function() {
                     <ul class="info">
                         <li>
                             <dl>
-                                <dd class="txt" style="font-size: 14px; color: #a4a4a4;">íšŒì‚¬ì†Œê°œ</dd>
-                                <dd class="txt">(ì£¼)ë¹„íŠ¸ìº í”„:DIFE</dd>
-                                <dd class="txt">ì„œìš¸íŠ¹ë³„ì‹œ ë§ˆí¬êµ¬ ë°±ë²”ë¡œ 23 êµ¬í”„ë¼ìž 3ì¸µ</dd>
+                                <dd class="txt" style="font-size: 14px; color: #a4a4a4;">È¸»ç¼Ò°³</dd>
+                                <dd class="txt">(ÁÖ)ºñÆ®Ä·ÇÁ:DIFE</dd>
+                                <dd class="txt">¼­¿ïÆ¯º°½Ã ¸¶Æ÷±¸ ¹é¹ü·Î 23 ±¸ÇÁ¶óÀÚ 3Ãþ</dd>
                                 <dd class="txt">02-707-1480</dd>
-                                <dd class="txt"><a href="#" style="color: #a4a4a4;">ê³ ê°ì„¼í„°</a></dd>
-                                <dd class="txt"><a href="#" style="color: #a4a4a4;">ì´ìš©ì•ˆë‚´</a></dd>
+                                <dd class="txt"><a href="#" style="color: #a4a4a4;">°í°´¼¾ÅÍ</a></dd>
+                                <dd class="txt"><a href="#" style="color: #a4a4a4;">ÀÌ¿ë¾È³»</a></dd>
                             </dl>
                         </li>
                     </ul>
@@ -446,5 +450,5 @@ $(function() {
             </div>
         </div>
     </div>
-    </div>
+
 </body></html>
