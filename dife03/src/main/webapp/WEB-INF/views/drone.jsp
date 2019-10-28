@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+>>>>>>> refs/remotes/origin/master
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +14,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
+<<<<<<< HEAD
 <!-- ¿•∆˘∆Æ -->
+=======
+<!-- ÏõπÌè∞Ìä∏ -->
+<!-- 
+>>>>>>> refs/remotes/origin/master
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+ -->
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<<<<<<< HEAD
 <!-- ±‚∫ª ∏µ≈© -->
+=======
+    <!-- Í∏∞Î≥∏ ÎßÅÌÅ¨ -->
+>>>>>>> refs/remotes/origin/master
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/drone/drone.css">
+<<<<<<< HEAD
 <!-- ¥ﬁ∑¬ -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
@@ -25,21 +42,57 @@
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <!-- ƒ´≈◊∞Ì∏Æ ∞Àªˆ æ∆¿Ãƒ‹ -->
 <link rel="stylesheet" href="css/drone/drone.css">
+=======
+    <!-- Ï†úÏù¥ÏøºÎ¶¨ ÌîåÎü¨Í∑∏Ïù∏ -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="js/datepicker/datepicker.js"></script>
+<!-- Include language -->
+<script src="js/datepicker/i18n/datepicker-ko.js"></script>
+<!-- ƒ´ÔøΩ◊∞ÔøΩ ÔøΩÀªÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ -->
+>>>>>>> refs/remotes/origin/master
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+  
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
           
+<<<<<<< HEAD
              /* Demo purposes only */
   $(".hover").mouseleave(
     function () {
       $(this).removeClass("hover");
     }
   );
+=======
+    /* ƒ´ÔøΩ◊∞ÔøΩ(ÔøΩ√∏ÔøΩÔøΩÔøΩÔøΩ) ÔøΩÔøΩÔøΩÏΩ∫ hover */
+    $(".hover").mouseleave(function () {
+        $(this).removeClass("hover");
+    });
+    
+    /* ƒ´ÔøΩ◊∞ÔøΩ(ÔøΩ√∏ÔøΩÔøΩÔøΩÔøΩ,ÔøΩÔøΩÔøΩÔøΩ) ≈¨ÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ */
+    var searchSp = document.getElementById("search1");
+    var listSp = document.getElementById("sub-menu");
+    
+    listSp.style.display = "none";
+    searchSp.addEventListener("click",(event){
+        if(listSp.style.display == "none"){
+            listSp.style.display = "block";
+        }
+        else{
+            listSp.style.display = "none";
+        }
+    });
+>>>>>>> refs/remotes/origin/master
            
 /* 
+<<<<<<< HEAD
             // ∆‰¿Ã¬° √≥∏Æ : ∆‰¿Ã¡ˆπˆ∆∞ √ﬂ∞°
+=======
+            // ÔøΩÔøΩÔøΩÔøΩ¬° √≥ÔøΩÔøΩ : ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ∆∞ ÔøΩﬂ∞ÔøΩ
+>>>>>>> refs/remotes/origin/master
             $.get("GetTotalDroneCount", function(data) {
                 var totalItem = Number(data);
                 var totalPage = Math.ceil(totalItem / itemsPerPage);
@@ -52,7 +105,11 @@ $(function() {
                     });
                 }
             });
+<<<<<<< HEAD
             // ∆‰¿Ã¬° √≥∏Æ : µÂ∑– √ ±‚»≠∏È ¿¸√º ∏Ò∑œ select
+=======
+            // ÔøΩÔøΩÔøΩÔøΩ¬° √≥ÔøΩÔøΩ : ÔøΩÔøΩÔøΩ ÔøΩ ±ÔøΩ»≠ÔøΩÔøΩ ÔøΩÔøΩ√º ÔøΩÔøΩÔøΩ select
+>>>>>>> refs/remotes/origin/master
             function getItems(nowPage, itemsPerPage) {
                 $("#content2").empty();
                 $.getJSON("GetDroneList", {
@@ -76,8 +133,13 @@ $(function() {
                 $("#content2").show();
             }
             getItems(1, itemsPerPage);
+<<<<<<< HEAD
             // selectRentalDate ∏ﬁº≠µÂ ∏∏µÈ±‚
             // ¥Îø©¿œ ƒ∂∏∞¥ı
+=======
+            // selectRentalDate ÔøΩﬁºÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩ
+            // ÔøΩÎø©ÔøΩÔøΩ ƒ∂ÔøΩÔøΩÔøΩÔøΩ
+>>>>>>> refs/remotes/origin/master
             $("#datepicker").dialog({
             	buttons:{
             		submit:function(){
@@ -87,10 +149,18 @@ $(function() {
             			}});
             		},
             		reset:function(){
+<<<<<<< HEAD
             			alert("∏µŒ ¡ˆøÚ");
+=======
+            			alert("ÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ");
+>>>>>>> refs/remotes/origin/master
             		},
             		cancle:function(){
+<<<<<<< HEAD
             			alert("√Îº“");
+=======
+            			alert("ÔøΩÔøΩÔøΩ");
+>>>>>>> refs/remotes/origin/master
             		},
             	},
             	modal:false
@@ -108,6 +178,7 @@ $(function() {
             <div id="header-top">
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
+<<<<<<< HEAD
                         <a href="layout.html"><img src="img/logo/logo_white.png" id="logo"></a>
                         <a href="#" class="cl-effect-1">µÂ∑–</a>
                         <a href="#" class="cl-effect-1">∆ƒ¿œ∑µ</a>
@@ -119,14 +190,32 @@ $(function() {
                         <a href="#" class="cl-effect-1">LOGIN</a>
                         <a href="#" class="cl-effect-1">MYPAGE</a>
                         <a href="#" class="cl-effect-1">RESERVATION</a>
+=======
+                        <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
+                        <a href="#" class="cl-effect-1">ÎìúÎ°†</a>
+                        <a href="pilot" class="cl-effect-1">ÌååÏùºÎüø</a>
+                        <a href="#" class="cl-effect-1">ÏßÄÏó≠ Î∞è ÎÇ†Ïî®</a>
+                        <a href="#" class="cl-effect-1">Í≥†Í∞ùÏßÄÏõê</a>
+                        <a href="#" class="cl-effect-1">Ïª§ÎÆ§ÎãàÌã∞</a>
+                    </span>
+                     <span id="category-2" class="animated fadeInUp">
+                        <a href="signIn" class="cl-effect-1">LOGIN</a>
+                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a href="basket" class="cl-effect-1">RESERVATION</a>
+>>>>>>> refs/remotes/origin/master
                    </span>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
         <!-- //header -->
         
         <!-- ªÛºº∞Àªˆ -->
+=======
+        
+>>>>>>> refs/remotes/origin/master
         <div id="header-nav">
+<<<<<<< HEAD
             <div class="container" style="color: #242424; width: 1100px;">
                 <ul class="search">
                     <div class="block">
@@ -139,15 +228,37 @@ $(function() {
                     </div>
              
 						<!-- <input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="¥Îø©¿œ¿ª º±≈√«œººø‰ :D">
+=======
+                <ul class="search">
+                    <div class="block">
+                        <div id="calendar">
+                           ÎåÄÏó¨Ïùº<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                <input type="text" data-range="true"
+                                            data-multiple-dates-separator=" - " data-language="ko"
+                                            class="datepicker-here" style="width:180px; height: 25px;"/>
+                        </div>
+                    </div>
+             
+						<!-- <input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="ÔøΩÎø©ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩœºÔøΩÔøΩÔøΩ :D">
+>>>>>>> refs/remotes/origin/master
                				<script src="pikaday.js"></script>
                    			<script>
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
+<<<<<<< HEAD
                     <li class="search1">Ω√∏Æ¡Ó∏Ì<i class="fa fa-plane" aria-hidden="true"></i>
+=======
+                    <li class="search1">ÏãúÎ¶¨Ï¶àÎ™Ö<i class="fa fa-plane" aria-hidden="true"></i>
+>>>>>>> refs/remotes/origin/master
                         <div class="sub-menu-1">
+<<<<<<< HEAD
                             <ul>
                                 <li class="hover-dro">∏≈∫Ú<i class="fa fa-angle-right" aria-hidden="true"></i>
+=======
+                            <ul id="sub-menu">
+                                <li class="hover-dro">Îß§ÎπÖ<i class="fa fa-angle-right" aria-hidden="true"></i>
+>>>>>>> refs/remotes/origin/master
                                     <div class="sub-menu-2">
                                         <ul>
                                             <li>MAVIC 2 PRO</li>
@@ -194,29 +305,48 @@ $(function() {
                                             <li>PHANTOM 3 PROFESSIONAL</li>
                                         </ul>
                                     </div>
-                                </li>                       
+                                </li>                                             
                             </ul>
                         </div>
                     </li>
                     <li class="search1">∞°∞›<i class="fa fa-tags" aria-hidden="true"></i>
                         <div class="sub-menu-1">
                             <ul id="sub-menu">
+<<<<<<< HEAD
                                 <li class="hover-dro">~ 10∏∏ø¯</li>
                                 <li class="hover-dro">10 ~ 20∏∏ø¯</li>
                                 <li class="hover-dro">20∏∏ø¯ ~</li>
+=======
+                                <li class="hover-dro">~ 10ÎßåÏõê</li>
+                                <li class="hover-dro">10 ~ 20ÎßåÏõê</li>
+                                <li class="hover-dro">20ÎßåÏõê ~</li>
+>>>>>>> refs/remotes/origin/master
                             </ul>
                         </div>
                     </li>                  
+<<<<<<< HEAD
                     <button id="btnSch">∞Àªˆ<i class="fa fa-search" aria-hidden="true"></i></button>             
+=======
+                    <button id="btnSch">Í≤ÄÏÉâ<i class="fa fa-search" aria-hidden="true"></i></button>             
+>>>>>>> refs/remotes/origin/master
                 </ul>
-            </div>
         </div>
+<<<<<<< HEAD
         
         <!-- ªÛºº∞Àªˆ∞·∞˙ ∏Ò∑œ -->
         <div id="contents" class="container">
 		    
 				<div id="drone-grid">
 					<!-- 1π¯¬∞ ¥‹∂Ù -->
+=======
+        </div>
+          <!-- //header -->
+        <!-- contents -->
+        <div id="contents">
+        	<div class="container">
+				<div id="drone-grid">
+					<!-- 1Î≤àÏß∏ Îã®ÎùΩ -->
+>>>>>>> refs/remotes/origin/master
 	                <div class="block">
                         <figure class="block">
                             <img src="img/drone/D0001.png" alt="∏≈∫Ú2«¡∑Œ"/>
@@ -245,7 +375,7 @@ $(function() {
                             <a href="drone_dt.html"></a>
                         </figure>       
 	                </div>
-	                <div class="block">
+	              <div class="block">
                         <figure class="block">
                             <img src="img/drone/D0003.png" alt="∆“≈“4" />
                                 <figcaption>
@@ -303,7 +433,7 @@ $(function() {
                             <a href="drone_dt.html"></a>
                         </figure>               
 	                </div>	                
-	                <div class="block">.
+	                <div class="block">
 	                    <figure class="block">
                             <img src="img/drone/D0007.png" alt="πÃ¥œΩ∫∆ƒ≈©" />
                                 <figcaption>
@@ -390,28 +520,58 @@ $(function() {
                         </figure>           
 	                </div>
 	                
+<<<<<<< HEAD
 	                <!-- 4π¯¬∞ ¥‹∂Ù -->
+=======
+	                <!-- 4ÔøΩÔøΩ¬∞ ÔøΩ‹∂ÔøΩ -->
+>>>>>>> refs/remotes/origin/master
 	                <!--<div class="block">
 	                    <figure class="block">
+<<<<<<< HEAD
                             <img src="img/drone/D0013.png" alt="¿ŒΩ∫∆ƒ¿ÃæÓ1PRO 1¿Œ"/>
+=======
+                            <img src="img/drone/D0013.png" alt="ÔøΩŒΩÔøΩÔøΩÔøΩÔøΩÃæÔøΩ1PRO 1ÔøΩÔøΩ"/>
+>>>>>>> refs/remotes/origin/master
                                 <figcaption>
+<<<<<<< HEAD
                                     <p>¿ŒΩ∫∆ƒ¿ÃæÓ 1 «¡∑Œ ∫Ì∑¢ø°µº«. PIX4D 15¿œ π´∑·¿ÃøÎ±« ¡ı¡§!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+=======
+                                    <p>ÔøΩŒΩÔøΩÔøΩÔøΩÔøΩÃæÔøΩ 1 ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ. PIX4D 15ÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÃøÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+>>>>>>> refs/remotes/origin/master
                                       <!-- <p>DJI</p><br>
+<<<<<<< HEAD
                                       <p>270,000ø¯</p> -->
+=======
+                                      <p>270,000ÔøΩÔøΩ</p> -->
+>>>>>>> refs/remotes/origin/master
                                    <!-- <div class="heading">
+<<<<<<< HEAD
                                         <h2><span>INSPIRE</span> 1PRO 1¿Œ</h2>
+=======
+                                        <h2><span>INSPIRE</span> 1PRO 1ÔøΩÔøΩ</h2>
+>>>>>>> refs/remotes/origin/master
                                     </div>
                                 </figcaption>
                             <a href="drone_dt.html"></a>
                         </figure>           
 	                </div> -->
+<<<<<<< HEAD
 	               
 	            
 			</div>
 		</div>
+=======
+				</div>
+>>>>>>> refs/remotes/origin/master
 		
+<<<<<<< HEAD
 		<!-- ∆‰¿Ã¬° √≥∏Æ -->
 		<div class="btnPaging">
+=======
+		
+				<!-- ÌéòÏù¥Ïßï -->
+					<div class="btnPaging">
+>>>>>>> refs/remotes/origin/master
                         <ul class="pagination" style="font-size: 17px;">
                             <li>
                                 <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
@@ -424,6 +584,7 @@ $(function() {
                             </li>
                         </ul>
                     </div>
+<<<<<<< HEAD
 
         <div id="footer">
              <!-- µÂ∑°±◊ ∫Ò±≥ ª˝º∫«œ±‚ -->
@@ -431,7 +592,10 @@ $(function() {
 
             <div id="footer-nav">
                 <div class="container"></div>
+=======
+>>>>>>> refs/remotes/origin/master
             </div>
+<<<<<<< HEAD
             <div id="footer-info">
                 <div class="container">
                     <ul class="info">
@@ -452,3 +616,32 @@ $(function() {
     </div>
 
 </body></html>
+=======
+            <!-- //container -->
+		</div>
+		<!-- //contents -->
+		<!-- footer -->
+		<div id="footer">
+			<div id="footer-nav">
+				<!-- ÎìúÎ°† ÎπÑÍµêÌïòÎäî Í±¥ footer-navÏóêÏÑú ÎßåÎì§Î©¥ Îê†Í±∞ Í∞ôÏäµÎãàÎã§!! cssÎèÑ footer-nav ÎÜíÏù¥ ÏÑ§Ï†ïÌïòÏÖîÏÑú ÌïòÏãúÎ©¥ Îê†Í±∞ Í∞ôÏïÑÏöî. -->
+				<div id="compareChatDrone"></div>
+			</div>
+			<div id="footer-info">
+				(Ï£º)ÎπÑÌä∏Ï∫†ÌîÑ:DIFE
+				<div id="footer_info1">
+					<p>ÏÑúÏö∏ÌäπÎ≥ÑÏãú ÎßàÌè¨Íµ¨ Î∞±Î≤îÎ°ú 23 Íµ¨ÌîÑÎùºÏûê 3Ï∏µ</p>
+					<p>02-707-1480</p>
+					<p>
+						<a href="#">Í≥†Í∞ùÏÑºÌÑ∞</a>
+					</p>
+					<p>
+						<a href="#">Ïù¥Ïö©ÏïàÎÇ¥</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- //footer -->
+	</div>
+</body>
+</html>
+>>>>>>> refs/remotes/origin/master
