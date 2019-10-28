@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+.form-group{
+    margin: 15px;
+}
+
+.entry-title{
+    padding: 50px;    
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.form-control{
+    width: 400px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.control-label{
+    margin-left: -350px;
+}
+/*
+#idBtn_check {
+    position: absolute;
+    width: 120px;
+    height: 32px;
+    margin-left: 20px;
+}
+*/
+#agree {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    margin-left: 10px;
+    
+}
+#btnAgree {
+    margin-left: 50px;
+    width: 80px;
+    height: 30px;
+}
+#submit{
+    border-radius: 4px;
+    background-color: #1F2124;
+    border-color: #ffffff;
+    color: #ffffff;
+    width: 400px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+#mem_tel{
+    float: left;
+    margin-left: 335px;
+    width: 290px;
+}
+#sendAuth {
+    border-radius: 4px;
+    background-color: #1F2124;
+    border-color: #ffffff;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: -320px;
+    width: 100px;
+    height: 35px;
+}
+#checkAuth {
+    margin: 10px;
+    float: left;
+    margin-left: 335px;
+    width: 290px;
+    height: 30px;
+}
+#btnAuth {
+    border-radius: 4px;
+    background-color: #1F2124;
+    border-color: #ffffff;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 10px;
+    margin-left: -320px;
+    width: 100px;
+    height: 35px;
+}
+
+#submit:hover{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.text-danger{
+    color: red;
+}
