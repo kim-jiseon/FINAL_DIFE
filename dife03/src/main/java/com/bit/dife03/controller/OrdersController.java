@@ -2,12 +2,20 @@ package com.bit.dife03.controller;
 
 
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.dife03.dao.OrdersDao;
+import com.bit.dife03.vo.BasketVo;
+import com.bit.dife03.vo.MemberVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -63,5 +71,36 @@ public class OrdersController {
 			e.printStackTrace();
 		}
 		return str;
+	}
+	// 장바구니 리스트 삭제
+	@ResponseBody
+	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
+	public int deleteCart(HttpSession session,
+	     @RequestParam(value = "cart_no[]") List<String> chArr, BasketVo bas) throws Exception {
+	
+	 
+		/*
+		 * MemberVo member = (MemberVO)session.getAttribute("member"); String userId =
+		 * member.getUserId();
+		 */
+		String member = null;
+		
+		member= "hong";
+	 
+	 int result = 0;
+	 String bas_no = "";
+	 
+	 
+	 if(member != null) {
+	  bas.setMem_name(member);
+	  
+	  for(String i : chArr) {   
+	   bas_no = i;
+	   bas.setBas_no(bas_no);
+	   dao.delBas(bas_no);
+	  }   
+	  result = 1;
+	 }  
+	 return result;  
 	}
 }

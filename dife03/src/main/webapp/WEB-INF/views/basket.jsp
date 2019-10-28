@@ -29,6 +29,7 @@
     $(function(){
     	var bas_no;
     	var btn_del;
+    	 var chk;
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -39,46 +40,30 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
-    	/*체크박스 변환 */
+    		/*체크박스 변환 */
     	
     	 	$(".chk_all").change(function(){
-    	 		var select=$(this).children();
-    	 		 var chk = $(this).is(":checked");//.attr('checked');
+    	 		 chk = $(this).is(":checked");//.attr('checked');
     	         if(chk) $("input:checkbox[name=cart_no]").prop('checked', true);
     	         else  $("input:checkbox[name=cart_no]").prop('checked',false);
     	         console.log($('input:checkbox[name=cart_no]').length); 
-    	     	/* 각 상품 체크박스 변환 checked*/
-    	     	
-    	     	$(".cart_no").change(function(){
-    	     		alert("체인지");
-
-    	     		
-    	     	});
-    	     	
-    	    	 	
+    	     	/* 각 상품 체크박스 변환 checked*/ 	
     	 	});
-    	
-    	$("#table_content tr td input").click(function(){
-    		
-    	 });
-    	
-    	/* 각 상품 체크박스 변환 checked*/
-   /*  	$(".cart_no").change(function(){
-    		alert("체인지");
-
-    		
-    	});  */
-    	
-    	/* 체크박스 선택된 노드들 삭제. */
     	
     	/*list를 처리하는 function*/
         	function getList(){    
      		$.ajax({url:"/basketList.do",async : false,dataType:"json",success:function(data){
      			$("#table_content").empty();
+     			
 	    		$.each(data,function(idx,item){
+	    			
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
-	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no'></td>");
+	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
+	    			$(".cart_no").click(function(){
+	    				
+	    					  $(".chk_all").prop("checked", false);	
+	    	     	});
 	    			var td3;
 	    			var td4;
 	    			var td5;
@@ -145,6 +130,8 @@
 	    				}
 	    			$(tr).append(td1,td2,td3,td4,td5,td6,td7,td8);
 	    			$("#table_content").append(tr);
+	    		
+	    	
 	    			/*딜리트 버튼  */
 	    			/*   $(".btn_del").click(function(){ 
 	 	    				var check = confirm("정말로 삭제하시겠습니까?");
@@ -167,8 +154,10 @@
 		    			}); 
 	    			   */
 	    			  /* 딜리트 */
+	    		
 	    			}); 
 	    		/* foreach종료 */
+	    	
 	    	
 	    	}})
     	/*ajax 종료  */
@@ -210,8 +199,25 @@
 	    				
 	    			}); 
    
-	    			/*delete처리 end */
-    	
+	    			/*checkbox delete처리 end */
+    			/* checkbox list*/
+    			$("#del_chk").click(function(){
+					 	var confirm_val = confirm("정말 삭제하시겠습니까?");
+
+						if(confirm_val) {
+							var checkArr = new Array();
+
+				  		$("input[name='cart_no']:checked").each(function(){
+				    		checkArr.push($(this).attr("data-cartNum"));
+				   
+						});
+				  		$.ajax({url:"",data:{"checkArr":checkArr},type:"post",success:function(){
+				  			
+				  		}});
+						}
+    			});
+
+    			/*  */
     	/*insert orders,ordersdetail 처리*/
     	
     	/* orders insert,ordersdetial insert end */
