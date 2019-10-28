@@ -14,18 +14,17 @@ body{
 .header-top{
     line-height: 65px;
 }
-.header-top .header-left{
-}
 .header-top .header-left .title a img{
     float: left;
     width: 120px;
     height: auto;
+    margin-top: 8px;
 }
 .header-top .header-left .category{
     float: left;
 }
 .header-top .header-left .category a{
-    font-size: 14px;
+    font-size: 15px;
     color: #fff;
     font-weight: bold;
     padding: 10px 15px 15px 20px;
@@ -36,10 +35,6 @@ body{
     color: white;
     height: 180px;
     text-align: end;
-}
-#calendar{
-    font-size: 15px;
-    padding: 60px 15px 0px 0px;
 }
 #datepicker{
     width: 150px;
@@ -54,41 +49,41 @@ li{
 /* 검색 */
 #header-nav .container{
     background: #000;
-    text-align: center; 
+    text-align: center;
 }
 .search{
     line-height: 50px;
     font-size: 16px;
+    padding: 45px 15px 0px 0px;
 }
 .search1 {
-    line-height: 50px;
-}
-#search span{
     margin-right: 10px;
     margin-bottom: 13px;
 }
+.container #calendar,.search1,#btnSch{
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0 20px 0 20px;
+    z-index: 999;   
+}
 #btnSch{
     width: 120px;
-    height: auto;
+    height: 40px;
     padding: 5px;
     font-size: 17px;
     font-weight: bold;
+    margin-top: 5px;
 }
-.search1{
-    font-size: 16px;
-}
-.container #search{
+.container .search{
     display: inline-flex;
     list-style: none;
+    color: #fff;
 }
 .search li{
     width: 200px;
+    margin: 0px;
 }
-<<<<<<< HEAD
 .search .fa{
-=======
-#search .fa{
->>>>>>> refs/remotes/origin/master
     margin-left: 10px;
 }
 .sub-menu-1{
@@ -98,11 +93,7 @@ li{
     font-size: 13px;
 }
 
-<<<<<<< HEAD
 ul li:hover .sub-menu-1 {
-=======
-ul li:hover .sub-menu-1{
->>>>>>> refs/remotes/origin/master
     display: block;
     position: absolute;
     background-color: #1F2124;
@@ -117,11 +108,7 @@ ul li:hover .sub-menu-1 ul{
 }
 ul li:hover .sub-menu-1 ul li{
     width: 170px;
-<<<<<<< HEAD
     border-bottom: 0.5px dotted #fff;
-=======
-    border-bottom: 0.5px dotted #383A3F;
->>>>>>> refs/remotes/origin/master
     text-align: left;
 }
 ul li:hover .sub-menu-1 ul li:last-child{
@@ -154,14 +141,9 @@ ul li:hover .sub-menu-1 ul li:hover{
 	display: grid;
 	grid-template-columns: repeat(4,1fr);
 	/* grid-template-rows: 400px 400px 400px 400px; */
-<<<<<<< HEAD
     padding-left: 25px;
     padding-right: 25px;
-=======
-    padding-left: 80px;
-    padding-right: 80px;
->>>>>>> refs/remotes/origin/master
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 50px;
 }
 
@@ -172,11 +154,12 @@ figure.block {
   position: relative;
   overflow: hidden;
   margin: 10px;
-  margin-bottom: 50px;
+    margin-bottom: 50px;
   min-width: 220px;
   max-width: 320px;
   max-height: 450px;
   width: 100%;
+  background: #000;
   color: #fff;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -283,6 +266,13 @@ figcaption p span{
     width: 300px;
     height: 500px;
 }
+
+/* 가격정보 ul 표시제거 */
+ul{
+	list-style: none;
+}
+
+/* 상품정보 */
 .content2 .block .name{
     color: #fff;
     font-weight: bold;
@@ -297,6 +287,7 @@ figcaption p span{
     height: 260px;
 }
 
+/* 페이징처리 */
 .btnPaging li {
     text-align: center;    
 }
@@ -306,7 +297,6 @@ figcaption p span{
     width: auto;
     margin: 0 auto;
     height: auto;
-<<<<<<< HEAD
     background: #000;
 }
 #footer {
@@ -322,6 +312,4 @@ figcaption p span{
 .container .info li dl .txt{
     font-size: 12px;
     color: #a4a4a4;
-=======
->>>>>>> refs/remotes/origin/master
 }

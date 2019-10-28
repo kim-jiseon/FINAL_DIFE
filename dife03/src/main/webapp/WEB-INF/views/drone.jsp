@@ -31,12 +31,24 @@
 $(function() {
 	var itemsPerPage = 8;
           
-             /* Demo purposes only */
-  $(".hover").mouseleave(
-    function () {
-      $(this).removeClass("hover");
-    }
-  );
+    /* 카테고리(시리즈명) 마우스 hover */
+    $(".hover").mouseleave(function () {
+        $(this).removeClass("hover");
+    });
+    
+    /* 카테고리(시리즈명,가격) 클릭 시 상태유지 */
+    var searchSp = document.getElementById("search1");
+    var listSp = document.getElementById("sub-menu");
+    
+    listSp.style.display = "none";
+    searchSp.addEventListener("click",(event){
+        if(listSp.style.display == "none"){
+            listSp.style.display = "block";
+        }
+        else{
+            listSp.style.display = "none";
+        }
+    });
            
 /* 
             // 페이징 처리 : 페이지버튼 추가
@@ -131,7 +143,7 @@ $(function() {
                 <ul class="search">
                     <div class="block">
                         <div id="calendar">
-                            대여일 및 반납일&nbsp;&nbsp;
+                            대여일 및 반납일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -146,7 +158,7 @@ $(function() {
                        	
                     <li class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul>
+                            <ul id="sub-menu">
                                 <li class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul>
@@ -450,5 +462,5 @@ $(function() {
             </div>
         </div>
     </div>
-
-</body></html>
+</body>
+</html>
