@@ -30,7 +30,7 @@
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <!-- ī�װ� �˻� ������ -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+  
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
@@ -125,7 +125,7 @@ $(function() {
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="drone" class="cl-effect-1">드론</a>
+                        <a href="#" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
@@ -133,7 +133,7 @@ $(function() {
                     </span>
                      <span id="category-2" class="animated fadeInUp">
                         <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
+                        <a href="#" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
