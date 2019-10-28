@@ -19,11 +19,11 @@
 
     #category-1 > a{
         padding:0px 6px;
-        color: white;
+        color: black;
     }
 
     #category-1 > a:hover{
-        color: white;
+        color: black;
     }
 
     #category-2{
@@ -32,7 +32,7 @@
     }
 
     #category-2 > a{
-        color: white;
+        color: black;
         padding: 3px;
     }
 }
@@ -52,7 +52,8 @@
     
      /* 상단 카테고리 */
     #category{
-        font-size: 14px;
+        font-size: 15px;
+        font-weight: 600;
         line-height: 70px;
     }
     
@@ -69,12 +70,12 @@
     }
 
     #category-1 > a{
-        padding: 15px;
-        color: white;
+        padding: 13px;
+        color: #323232;
     }
 
     #category-1 > a:hover{
-        color: white;
+        color: #323232;
     }
 
     #category-2{
@@ -83,10 +84,10 @@
     }
 
     #category-2 > a{
-        color: white;
+        color: #323232;
         text-transform: uppercase;
         text-shadow: 0 0 1px rgba(255,255,255,0.3);
-        padding: 0px 15px;
+        padding: 0px 13px;
     }
     
     
@@ -139,11 +140,11 @@
     /* 하단 */
     #footer_info1{
         font-size: 11px;
-        color: white;
+        color: #a4a4a4;
     }
     
     #footer_info1 > p > a{
-        color: white;
+        color: #a4a4a4;
     }
 
 }

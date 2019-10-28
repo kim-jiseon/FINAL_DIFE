@@ -1,315 +1,294 @@
 @charset "UTF-8";
-body{
-    background-color: #1F2124;
-}
-#header-nav{
-    height: 50px;
-    background-color: #1F2124;
-}
-#contents{
-    height: auto;
+
+#header {
+	height: 120px;
 }
 
-/* 상단 타이틀 및 카테고리 */
-.header-top{
-    line-height: 65px;
+#header-nav {
+	height: 50px;
+	line-height: 50px;
+	background-color: #7EBDC2;
+	vertical-align: middle;
 }
-.header-top .header-left .title a img{
-    float: left;
-    width: 120px;
-    height: auto;
-    margin-top: 8px;
-}
-.header-top .header-left .category{
-    float: left;
-}
-.header-top .header-left .category a{
-    font-size: 15px;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px 15px 15px 20px;
-}
-
 /* 달력 */
-#block{
-    color: white;
-    height: 180px;
-    text-align: end;
-}
-#datepicker{
-    width: 150px;
-    height: 25px;
+#block {
+	color: white;
+	height: 180px;
+	text-align: end;
 }
 
-/* 정보 ul 표시제거 */
-li{
-	list-style: none;
+#datepicker {
+	width: 150px;
+	height: 25px;
 }
 
 /* 검색 */
-#header-nav .container{
-    background: #000;
-    text-align: center;
+.search {
+	font-size: 16px;
+	display: inline-flex;
+	list-style: none;
+	color: white;
+	padding: 0px 10px;
 }
-.search{
-    line-height: 50px;
-    font-size: 16px;
-    padding: 45px 15px 0px 0px;
+
+#calendar, .search1 {
+	padding: 0px 10px;
+	font-size: 16px;
+	font-weight: 600;
 }
-.search1 {
-    margin-right: 10px;
-    margin-bottom: 13px;
+
+#btnSch {
+	margin-top: 7px;
 }
-.container #calendar,.search1,#btnSch{
-    font-size: 17px;
-    font-weight: bold;
-    margin: 0 20px 0 20px;
-    z-index: 999;   
+
+.search li {
+	width: 180px;
 }
-#btnSch{
-    width: 120px;
-    height: 40px;
-    padding: 5px;
-    font-size: 17px;
-    font-weight: bold;
-    margin-top: 5px;
+
+.search .fa {
+	margin-left: 10px;
+	margin-top: 4px;
 }
-.container .search{
-    display: inline-flex;
-    list-style: none;
-    color: #fff;
+
+.sub-menu-1 {
+	display: none;
 }
-.search li{
-    width: 200px;
-    margin: 0px;
-}
-.search .fa{
-    margin-left: 10px;
-}
-.sub-menu-1{
-    display: none;
-}
-.sub-menu-2 li{
-    font-size: 13px;
+
+.sub-menu-2 li {
+	font-size: 13px;
 }
 
 ul li:hover .sub-menu-1 {
-    display: block;
-    position: absolute;
-    background-color: #1F2124;
-    margin-top: 5px;
-    margin-left: -5px;
-    z-index: 9999;
-    padding: 0px 5px;
-}
-ul li:hover .sub-menu-1 ul{
-    display: block;
-    margin: 10px;
-}
-ul li:hover .sub-menu-1 ul li{
-    width: 170px;
-    border-bottom: 0.5px dotted #fff;
-    text-align: left;
-}
-ul li:hover .sub-menu-1 ul li:last-child{
-    border-bottom: none;
-}
-ul li:hover .sub-menu-1 ul li:hover{
-    color: #fff;    
-    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
-}
-.fa angle-right{
-    float: right;
-}
-.sub-menu-2{
-    display: none;
-}
-.hover-dro:hover .sub-menu-2{
-    position: absolute;
-    display: block;
-    margin-top: -50px;
-    margin-left: 150px;
-    background-color: #2d2c2c;
-}
-.sub-menu-2 ul li:hover{
-    background-color: #03A9F4;
-    border-radius: 7px;
+	display: block;
+	position: absolute;
+	background-color: white;
+	margin-top: 0px;
+	margin-left: 0px;
+	z-index: 9999;
+	padding: 0px 10px;
 }
 
-/* 상품이미지 */
-#drone-grid{
-	display: grid;
-	grid-template-columns: repeat(4,1fr);
-	/* grid-template-rows: 400px 400px 400px 400px; */
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 100px;
-    padding-bottom: 50px;
+ul li:hover .sub-menu-1 ul {
+	display: block;
+	margin: 5px;
 }
 
-/* 상품이미지 */
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
-figure.block {
-  font-family: 'Raleway', Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-  margin: 10px;
-    margin-bottom: 50px;
-  min-width: 220px;
-  max-width: 320px;
-  max-height: 450px;
-  width: 100%;
-  background: #000;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-  font-size: 16px;
-}
-figure.block * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.45s ease-in-out;
-  transition: all 0.45s ease-in-out;
-}
-figure.block img {
-  max-width: 100%;
-  position: relative;
-  opacity: 0.9;
-}
-figure.block figcaption {
-  position: absolute;
-  top: 45%;
-  left: 7%;
-  right: 7%;
-  bottom: 45%;
-  border: 1px solid white;
-  border-width: 1px 1px 0;
-}
-figure.block .heading {
-  overflow: hidden;
-  -webkit-transform: translateY(50%);
-  transform: translateY(50%);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-figure.block h2 {
-  display: table;
-  margin: 0 auto;
-  padding: 0 10px;
-  position: relative;
-  text-align: center;
-  width: auto;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-figure.block h2 span {
-  font-weight: 800;
-}
-figure.block h2:before,
-figure.block h2:after {
-  position: absolute;
-  display: block;
-  width: 1000%;
-  height: 1px;
-  content: '';
-  background: white;
-  top: 50%;
-}
-figure.block h2:before {
-  left: -1000%;
-}
-figure.block h2:after {
-  right: -1000%;
-}
-figure.block p {
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  position: absolute;
-  width: 100%;
-  padding: 0 20px;
-  margin: 0;
-  opacity: 0;
-  line-height: 1.6em;
-  font-size: 0.9em;
-}
-figure.block a {
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  z-index: 1;
-}
-figure.block:hover img,
-figure.block.hover img {
-  opacity: 0.25;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-figure.block:hover figcaption,
-figure.block.hover figcaption {
-  top: 7%;
-  bottom: 7%;
-}
-figure.block:hover p,
-figure.block.hover p {
-  opacity: 1;
-  -webkit-transition-delay: 0.35s;
-  transition-delay: 0.35s;
-}
-figcaption p span{
-    font-weight: bold;
-}
-.block img{
-    width: 300px;
-    height: 500px;
+ul li:hover .sub-menu-1 ul li {
+	width: 200px;
+	border-bottom: 0.5px dotted #7EBDC2;
+	text-align: left;
 }
 
-/* 가격정보 ul 표시제거 */
-ul{
-	list-style: none;
+ul li:hover .sub-menu-1 ul li:last-child {
+	border-bottom: none;
 }
 
-/* 상품정보 */
-.content2 .block .name{
-    color: #fff;
-    font-weight: bold;
-}
-.content2 .block .item{
-    font-size: 13px;
-    color: #fff;
-    padding: 5px 0px 5px 0px;
-}
-.content2 .block a img{
-    width: 250px;
-    height: 260px;
+ul li:hover .sub-menu-1 ul li:hover {
+	color: #fff;
+	text-shadow: 0 0 2px #7EBDC2, 0 0 2px #7EBDC2, 0 0 2px #7EBDC2, 0 0 2px
+		#7EBDC2;
 }
 
-/* 페이징처리 */
-.btnPaging li {
-    text-align: center;    
+.fa angle-right {
+	float: right;
+}
+
+.sub-menu-2 {
+	display: none;
+	color: white;
+	padding: 0px 10px;
+}
+
+.hover-dro:hover .sub-menu-2 {
+	position: absolute;
+	display: block;
+	margin-top: -55px;
+	margin-left: 210px;
+	background-color: white;
+}
+
+.sub-menu-2 ul li:hover {
+	/*background-color: #03A9F4;*/
+	border-radius: 7px;
 }
 
 /* 컨테이너 */
 .container {
-    width: auto;
-    margin: 0 auto;
-    height: auto;
-    background: #000;
+	width: auto;
+	max-width: 1300px;
+	margin: 0 auto;
+	height: auto;
 }
-#footer {
-    text-align: center;
-    height: 180px;
+/* 상품이미지 */
+#drone-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	/* grid-template-rows: 400px 400px 400px 400px; */
+	padding: 60px 10px 40px 10px;
 }
 
-/* 하단 정보 */
-.container .info{
-    height: 140px;
-    padding-top: 10px;
+/* 상품이미지 */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800)
+	;
+
+figure.block {
+	font-family: 'Raleway', Arial, sans-serif;
+	position: relative;
+	overflow: hidden;
+	margin-left: 10px;
+	margin-bottom: 50px;
+	min-width: 220px;
+	max-width: 300px;
+	max-height: 450px;
+	width: 100%;
+	/*최대한 살리려고 했는데 background색 때문에 부득이하게 조금 변경된 부분이 있습니다.*/
+	background: #000;
+	color: #fff;
+	text-align: center;
+	box-shadow: 0 0 px rgba(0, 0, 0, 0.15);
+	font-size: 16px;
 }
-.container .info li dl .txt{
-    font-size: 12px;
-    color: #a4a4a4;
+
+figure.block * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.45s ease-in-out;
+	transition: all 0.45s ease-in-out;
+}
+
+figure.block img {
+	max-width: 100%;
+	position: relative;
+	opacity: 0.9;
+}
+
+figure.block figcaption {
+	position: absolute;
+	top: 45%;
+	left: 7%;
+	right: 7%;
+	bottom: 45%;
+	border: 1px solid white;
+	border-width: 1px 1px 0;
+}
+
+figure.block .heading {
+	overflow: hidden;
+	-webkit-transform: translateY(50%);
+	transform: translateY(50%);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+figure.block h2 {
+	display: table;
+	margin: 0 auto;
+	padding: 0 10px;
+	position: relative;
+	text-align: center;
+	width: auto;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+figure.block h2 span {
+	font-weight: 800;
+}
+
+figure.block h2:before, figure.block h2:after {
+	position: absolute;
+	display: block;
+	width: 1000%;
+	height: 1px;
+	content: '';
+	background: white;
+	top: 50%;
+}
+
+figure.block h2:before {
+	left: -1000%;
+}
+
+figure.block h2:after {
+	right: -1000%;
+}
+
+figure.block p {
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	position: absolute;
+	width: 100%;
+	padding: 0 20px;
+	margin: 0;
+	opacity: 0;
+	line-height: 1.6em;
+	font-size: 0.9em;
+}
+
+figure.block a {
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	z-index: 1;
+}
+
+figure.block:hover img, figure.block.hover img {
+	opacity: 0.25;
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+figure.block:hover figcaption, figure.block.hover figcaption {
+	top: 7%;
+	bottom: 7%;
+}
+
+figure.block:hover p, figure.block.hover p {
+	opacity: 1;
+	-webkit-transition-delay: 0.35s;
+	transition-delay: 0.35s;
+}
+
+figcaption p span {
+	font-weight: bold;
+}
+
+.block img {
+	width: 300px;
+	height: 500px;
+}
+
+/* 상품정보 */
+.content2 .block .name {
+	color: #fff;
+	font-weight: bold;
+}
+
+.content2 .block .item {
+	font-size: 13px;
+	color: #fff;
+	padding: 5px 0px 5px 0px;
+}
+
+.content2 .block a img {
+	width: 250px;
+	height: 260px;
+}
+
+/* 페이징처리 */
+.btnPaging {
+	padding: 10px;
+}
+
+.btnPaging li {
+	text-align: center;
+}
+
+/* 드론 비교하는건 여기서 설정하시면 됩니다. */
+#footer-nav {
+	
 }
