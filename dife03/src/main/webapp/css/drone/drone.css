@@ -4,6 +4,7 @@
 }
 
 #header-nav{
+	font-family: 'Nanum Gothic', sans-serif !important;
     height: 50px;
     line-height: 50px;
     background-color: #7EBDC2;
@@ -22,7 +23,7 @@
 
 /* 검색 */
 .search{
-    font-size: 16px;
+    font-size: 15px;
     display: inline-flex;
     list-style: none;
     color: white;
@@ -30,21 +31,19 @@
 }
 #calendar,.search1{
     padding: 0px 10px;
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 15px;
 }
 #btnSch{
     width: 120px;
     padding: 5px;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 15px;
     margin-top: 7px;
 }
 
 .search li{
     width: 180px;
 }
-.search  .fa{
+.search .fa{
     margin-left: 10px;
     margin-top: 4px;
 }
@@ -52,7 +51,7 @@
     display: none;
 }
 .sub-menu-2 li{
-    font-size: 13px;
+    font-size: 14px;
 }
 
 ul li:hover .sub-menu-1 {
@@ -263,4 +262,7 @@ figcaption p span{
 /* 드론 비교하는건 여기서 설정하시면 됩니다. */
 #footer-nav{
 	
+}
+#footer-info{
+	font-family: 'Nanum Gothic', sans-serif !important;
 }

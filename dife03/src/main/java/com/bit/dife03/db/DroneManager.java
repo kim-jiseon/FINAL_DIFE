@@ -15,7 +15,7 @@ public class DroneManager {
 	public static SqlSessionFactory factory;
 	static {
 		try {
-			Reader reader = Resources.getResourceAsReader("com/dife/difeTest/db/dbConfig.xml");
+			Reader reader = Resources.getResourceAsReader("com/bit/dife03/db/dbConfig.xml");
 			factory = new SqlSessionFactoryBuilder().build(reader);
 			reader.close();
 			

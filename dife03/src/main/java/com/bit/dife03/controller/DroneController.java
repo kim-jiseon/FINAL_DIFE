@@ -16,7 +16,7 @@ public class DroneController {
 	public void setDao(DroneDao dao) {
 		this.dao = dao;
 	}
-	
+	/*
 	@RequestMapping("/drone.do")
 	public void drone() {}
 	

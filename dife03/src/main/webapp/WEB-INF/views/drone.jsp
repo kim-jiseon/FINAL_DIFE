@@ -28,9 +28,9 @@
     <script src="js/datepicker/datepicker.js"></script>
 <!-- Include language -->
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
-<!-- ī�װ� �˻� ������ -->
+<!-- ī�װ� �˻� ������ 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+  -->
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
