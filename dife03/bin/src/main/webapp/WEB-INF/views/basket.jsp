@@ -40,6 +40,8 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
+    	
+    	
     		/*체크박스 변환 */
     	
     	 	$(".chk_all").change(function(){
@@ -61,6 +63,7 @@
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
 	    			$(".cart_no").click(function(){
+	    				
 	    				
 	    					  $(".chk_all").prop("checked", false);	
 	    	     	});

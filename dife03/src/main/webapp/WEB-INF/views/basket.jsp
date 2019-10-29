@@ -30,6 +30,7 @@
     	var bas_no;
     	var btn_del;
     	 var chk;
+    	 var sum;
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -84,6 +85,12 @@
 	    			var re_date = new Date(item.bas_return);
 	    			rental = date_to_str(rental);
 	    			re_date=date_to_str(re_date);
+	    			/* sum 할인률 및 하단 정보 관련 처리 */
+	    			sum +=item.bas_price;
+	    			
+	    			/*  */
+	    			
+	    			
 	    			if(item.dro_name !== null)
 	    				{
 	    					td3=$("<td></td>");
@@ -212,15 +219,24 @@
 
 				  		$("input[name='cart_no']:checked").each(function(){
 				    		checkArr.push($(this).attr("data-cartNum"));
-				   
 						});
-				  		$.ajax({url:"",data:{"checkArr":checkArr},type:"post",success:function(){
+				  		console.log(checkArr.length);
+				  		$.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
+				  			if(data === 1)
+				  				{
+				  				location.href="basket";
+				  				}
 				  			
-				  		}});
+				  		}})
 						}
     			});
 
     			/*  */
+    			
+    			/*가격처리*/
+    			
+    			/*  */
+    			
     	/*insert orders,ordersdetail 처리*/
     	
     	/* orders insert,ordersdetial insert end */

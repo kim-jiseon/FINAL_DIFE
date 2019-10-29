@@ -74,33 +74,29 @@ public class OrdersController {
 	}
 	// 장바구니 리스트 삭제
 	@ResponseBody
-	@RequestMapping(value = "/deleteCart", method = RequestMethod.POST)
-	public int deleteCart(HttpSession session,
-	     @RequestParam(value = "cart_no[]") List<String> chArr, BasketVo bas) throws Exception {
-	
-	 
+	@RequestMapping(value="/deleteListBasket.do",method = RequestMethod.POST)
+	public int deleteListBasket(HttpSession session,
+	     @RequestParam(value = "checkList[]") List<String> chArr, BasketVo bas) {
 		/*
-		 * MemberVo member = (MemberVO)session.getAttribute("member"); String userId =
-		 * member.getUserId();
+		 * MemberVo member = (MemberVo)session.getAttribute("mem_id"); String mem_id =
+		 * member.getMem_id();
 		 */
-		String member = null;
-		
-		member= "hong";
-	 
-	 int result = 0;
-	 String bas_no = "";
+		System.out.println("진입");
+		  	String member1= "hong";
+		  	int result = 0;
+		  	String bas_no = "";
 	 
 	 
-	 if(member != null) {
-	  bas.setMem_name(member);
+	 if(member1 != null) {
+	  bas.setMem_name(member1);
 	  
 	  for(String i : chArr) {   
-	   bas_no = i;
-	   bas.setBas_no(bas_no);
-	   dao.delBas(bas_no);
+		  	bas_no = i;
+			bas.setBas_no(bas_no);
+			dao.delBas(i);
 	  }   
 	  result = 1;
 	 }  
-	 return result;  
+	 return result;
 	}
 }

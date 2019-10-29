@@ -19,9 +19,9 @@ public class OrdersManager {
 		try {
 			System.out.println("static 진입");
 			Reader reader = Resources.getResourceAsReader("com/bit/dife03/db/dbConfig.xml");
-			System.out.println("리더생성"+reader);
+			/* System.out.println("리더생성"+reader); */
 			factory = new SqlSessionFactoryBuilder().build(reader);
-			System.out.println("factory:"+factory);
+			/* System.out.println("factory:"+factory); */
 			reader.close();
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -46,6 +46,10 @@ public class OrdersManager {
 		re = session.insert("orders.delBas",bas_no);
 		session.commit();
 		session.close();
+		
+		
+		
+		
 		
 		return re;
 	}
