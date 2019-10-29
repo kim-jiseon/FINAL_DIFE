@@ -64,6 +64,7 @@
 	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
 	    			$(".cart_no").click(function(){
 	    				
+	    				
 	    					  $(".chk_all").prop("checked", false);	
 	    	     	});
 	    			var td3;
