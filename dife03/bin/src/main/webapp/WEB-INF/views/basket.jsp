@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>layout</title>
@@ -28,7 +27,9 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
-    	var tr;
+    	var bas_no;
+    	var btn_del;
+    	 var chk;
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -39,14 +40,30 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
+    		/*체크박스 변환 */
+    	
+    	 	$(".chk_all").change(function(){
+    	 		 chk = $(this).is(":checked");//.attr('checked');
+    	         if(chk) $("input:checkbox[name=cart_no]").prop('checked', true);
+    	         else  $("input:checkbox[name=cart_no]").prop('checked',false);
+    	         console.log($('input:checkbox[name=cart_no]').length); 
+    	     	/* 각 상품 체크박스 변환 checked*/ 	
+    	 	});
+    	
     	/*list를 처리하는 function*/
-    	function getList(){
-	    	$.getJSON("/basketList.do",function(data){
-	    		
+        	function getList(){    
+     		$.ajax({url:"/basketList.do",async : false,dataType:"json",success:function(data){
+     			$("#table_content").empty();
+     			
 	    		$.each(data,function(idx,item){
+	    			
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
-	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked'></td>");
+	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
+	    			$(".cart_no").click(function(){
+	    				
+	    					  $(".chk_all").prop("checked", false);	
+	    	     	});
 	    			var td3;
 	    			var td4;
 	    			var td5;
@@ -83,19 +100,19 @@
 	    					p5=$("<p></p>").html(item.bas_price);
 	    					p6=$("<p></p>").html(item.point);
 	    					$(td7).append(p5,p6);
-	    					td8 = $("<td><button onclick='event.cancelBubble = true;' style='padding: 5px; border-radius: 5px;'>삭제</button></td>");
-	    					
-	    					
+	    					td8 = $("<td></td>");
+	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
+	    					$(td8).append(btn_del);	
 	    					
 	    				}
 	    			else
 	    				{
-	    			/* 	td3=$("<td></td>");
-    					dro_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
-    					$(td3).append(dro_img);
+	    				td3=$("<td></td>");
+    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+    					$(td3).append(product_img);
+    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td4=$("<td></td>");
-    					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_);
-	    				p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).css();
     					$(td4).append(p1,p2);
     					td5=$("<td></td>");
     					p3 = $("<p></p>").html(item.bas_price);
@@ -107,36 +124,47 @@
     					p5=$("<p></p>").html(item.bas_price);
     					p6=$("<p></p>").html(item.point);
     					$(td7).append(p5,p6);
-    					td8 = $("<td><button onclick="event.cancelBubble = true;" style='padding: 5px; border-radius: 5px;'>삭제</button></td>"); */
+    					td8 = $("<td></td>");
+    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
+    					$(td8).append(btn_del);
 	    				}
-	   
 	    			$(tr).append(td1,td2,td3,td4,td5,td6,td7,td8);
 	    			$("#table_content").append(tr);
-	    			
-	    			/* delete 처리*/
-	    			$(tr).click(function(){
-	    	    		var str = "";
-	    	    		var tdArr = new Array();
-	    	    		
-	    	    		//현재 클릭된 row
-	    	    		var row=$(this);
-	    	    		var td = row.children();
-	    	    		td.each(function(i){
-	    	    			tdArr.push(td.eq(0).text());
-	    	    		});
-	    	    		alert(tdArr)
-	    	    		
-		    		});
-	    			/*delete처리 end */
-	    			
-	  				
-	    		}); 
+	    		
 	    	
-    	})
-	  
-    	}
-    	/*list를 처리하는 function getList end  */
-    	getList();
+	    			/*딜리트 버튼  */
+	    			/*   $(".btn_del").click(function(){ 
+	 	    				var check = confirm("정말로 삭제하시겠습니까?");
+	 	    				if(check == true)
+	 	    					{
+		    				var btn_del = $(this);
+		    				
+		    				//btn_del.parent() : btn_del의 부모는 <td>이다.
+		    				// btn_del.parent().parent() : <td>의 부모이므로 <tr>이다.
+		    				var tr = btn_del.parent().parent();
+		    				var td = tr.children();
+		    				bas_no = td.eq(0).text(); 
+		    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
+		    					if(data == "1")
+		    						{
+		    							location.href="/basket";
+		    						}
+		    				}})	
+	 	    					}
+		    			}); 
+	    			   */
+	    			  /* 딜리트 */
+	    		
+	    			}); 
+	    		/* foreach종료 */
+	    	
+	    	
+	    	}})
+    	/*ajax 종료  */
+	  	
+    	    }    
+        /*list를 처리하는 function getList end  */
+ 		getList();   
     	/* 수량처리에 대한 스크립트,제이쿼리문 및 전역변수 */
     	var arr = $("table").find("p_amount")
 		$(".amountAdd").click(function(){
@@ -147,15 +175,56 @@
     	});
     	/*수량 처리 end  */
     	
-    	/*delete 처리 */
+    	/*장바구니 삭제버튼 클릭시.*/
     
-    	/* delete end*/
-    	
+	    		 $(".btn_del").click(function(){ 
+	    				var btn_del = $(this);
+	    				//btn_del.parent() : btn_del의 부모는 <td>이다.
+	    				// btn_del.parent().parent() : <td>의 부모이므로 <tr>이다.
+	    				var tr = btn_del.parent().parent();
+	    				var td = tr.children();
+	    				bas_no = td.eq(0).text(); 
+	    				var check = confirm("정말로 삭제하시겠습니까?");
+ 	    		if(check == true)
+ 	    			{
+ 	    						
+	    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
+	    					if(data == "1")
+	    						{
+	    						tr.remove();
+	    						}
+	    				}})
+ 	    			}
+	    				
+	    				
+	    			}); 
+   
+	    			/*checkbox delete처리 end */
+    			/* checkbox list*/
+    			$("#del_chk").click(function(){
+					 	var confirm_val = confirm("정말 삭제하시겠습니까?");
+
+						if(confirm_val) {
+							var checkArr = new Array();
+
+				  		$("input[name='cart_no']:checked").each(function(){
+				    		checkArr.push($(this).attr("data-cartNum"));
+				   
+						});
+				  		$.ajax({url:"",data:{"checkArr":checkArr},type:"post",success:function(){
+				  			
+				  		}});
+						}
+    			});
+
+    			/*  */
     	/*insert orders,ordersdetail 처리*/
     	
     	/* orders insert,ordersdetial insert end */
     	/**/
+	    			  
     });
+
     </script>
 </head>
 <body>
@@ -188,9 +257,9 @@
         <div id="content-session">
             <div class="container" style="color: black">
                 <div class='main-session'>
-                   <p style=" font-size: 20px; color:white;">상품 목록</p><br>
+                   <p style=" font-size: 40px; color:white; font-weight: 1000">상품 목록</p><br>
                 <!--테이블 영역      -->
-                        <table id='cart_table' style="color:white;" id="car_table">
+                        <table id='cart_table' style="color:white;">
                              <colgroup>
                                  <col width='8%'>
                                  <col width="5%">
@@ -200,10 +269,10 @@
                                  <col width='20%'>
                                  <col width='19%'>
                                  <col width='10%'>
-                             </colgroup>
-                        <thead>
+                             </colgroup>  
+                        <thead style="font-size: 25px;; font-weight:800;">
                             <th scope="col">번호</th>
-                            <th scope="col"   style="cursor: pointer"><input type="checkbox" class="chk_all" checked></th>
+                            <th scope="col"   style="cursor: pointer"><input type="checkbox" class="chk_all" checked='checked'></th>
                             <th scope="col"></th>
                             <th scope="col">상품명</th>
                             <th scope="col">판매가</th>
@@ -212,51 +281,6 @@
                             <th scope="col">주문관리</th>
                         </thead>
                         <tbody id="table_content">
-                      	<%-- <c:forEach items="${list }" var="c">
- 						<!-- vo에서 가져온 Date값을 dateString 으로 바꾸기 위한 jstl-->
-                      	  <fmt:formatDate value="${ c.bas_rental}" var='regDate1' pattern="yyyy-MM-dd" />
-                          <fmt:formatDate value="${ c.bas_return }" var='regDate2' pattern="yyyy-MM-dd" />
-						<c:choose>
-						    <c:when test="${c.dro_name != null}">
-                      			<tr class="trselect">
-                            <td>${c.bas_no }</td>
-                            <td><input type="checkbox" name="cart_no" checked="checked"></td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                </div>
-         					</td>
-                            <td><span style="font-size:15px; font-weight: 700;">${c.dro_name }/${c.dro_series }</span><br><span style='font-color:#898484; font-size:10px;'>
-                           	대여일:${regDate1 }
-                    		반납일:${regDate2 }
-                            </span></td>
-                            <td><span class="txt_origin_price">${c.pos_price}</span><br>${c.bas_price }</td>
-                            <td><button style='border-radius: 1px; width: 20px;' class="amountAdd">+</button><span style="padding:7px" class="p_amount">${c.bas_amount }</span><button style='padding-right: 2px; border-radius: 1px; width: 20px;' class="amountMinus">-</button></td> 
-                            <td><span style='font-weight: 700'>${c.bas_price }</span><br>${c.point }</td>
-                            <td><button style='padding: 5px; border-radius: 5px;'>삭제</button></td>
-                      			</tr>
-						    </c:when>
-						    <c:otherwise>
-                      			<tr class="trselect">  	
-                             <td>${c.bas_no }</td>
-                            <td><input type="checkbox" name="cart_no" checked="checked"></td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/${c.dro_photo }" width="62" height="68">
-                                </div>
-         					</td>
-                            <td><span style="font-size:15px; font-weight: 700;">${c.mem_name }/${c.pil_loc }/${c.pil_career}년 </span><br><span style='font-color:#898484; font-size:10px;'>
-                    		대여일:${regDate1 }
-                    		반납일:${regDate2 }
-                            </span></td>
-                            <td><span class="txt_origin_price">${c.pos_price}</span><br>${c.bas_price }</td>
-                            <td><button style='border-radius: 1px; width: 20px;' class="amountAdd">+</button><span style="padding:7px" class="p_amount">${c.bas_amount }</span><button style=' border-radius: 1px; width: 20px;' class="amountMinus">-</button></td> 
-                            <td><span style='font-weight: 700'>${c.bas_price} </span><br>${c.point }</td>
-                            <td><button style='padding: 5px; border-radius: 5px;'>삭제</button></td>
-                      			</tr>
-						    </c:otherwise> 
-						</c:choose>
-                      	</c:forEach> --%>
                       		</tbody>
                     </table>
                     <div class="delete-btn-area">
@@ -295,7 +319,7 @@
        
         <!-- footer -->
         <div id="footer">
-            <div id="footer-nav">footer-nav</div>
+            <div id="footer-nav"></div>
             <div id="footer-info">(주)비트캠프:DIFE
                 <div id="footer_info1">
                     <p>서울특별시 마포구 백범로 23 구프라자 3층</p>

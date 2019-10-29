@@ -1,70 +1,75 @@
 @charset "UTF-8";
+#header{
+    height: 120px;
+}
 
 #header-nav{
+	font-family: 'Nanum Gothic', sans-serif !important;
     height: 50px;
-    background-color: #1F2124;
-}
-#contents{
-    height: auto;
+    line-height: 50px;
+    background-color: #7EBDC2;
+    vertical-align: middle;
 }
 /* 달력 */
-#calendar{
-    width: auto;
-    height: 35px;
-    margin: auto;
+#block{
+    color: white;
+    height: 180px;
+    text-align: end;
+}
+#datepicker{
+    width: 150px;
+    height: 25px;
 }
 
 /* 검색 */
-#search{
-    line-height: 50px;
+.search{
+    font-size: 15px;
+    display: inline-flex;
+    list-style: none;
+    color: white;
+    padding: 0px 10px;
 }
-#search span{
-    margin-right: 10px;
-    margin-bottom: 13px;
+#calendar,.search1{
+    padding: 0px 10px;
+    font-size: 15px;
 }
 #btnSch{
     width: 120px;
-    height: auto;
     padding: 5px;
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 15px;
+    margin-top: 7px;
 }
-.search1{
-    font-size: 16px;
+
+.search li{
+    width: 180px;
 }
-.container #search{
-    display: inline-flex;
-    list-style: none;
-}
-#search li{
-    width: 200px;
-}
-#search .fa{
+.search .fa{
     margin-left: 10px;
+    margin-top: 4px;
 }
 .sub-menu-1{
     display: none;
 }
 .sub-menu-2 li{
-    font-size: 13px;
+    font-size: 14px;
 }
 
-ul li:hover .sub-menu-1{
+ul li:hover .sub-menu-1 {
     display: block;
     position: absolute;
-    background-color: #1F2124;
-    margin-top: 5px;
-    margin-left: -5px;
+    background-color: white;
+    margin-top: 0px;
+    margin-left: 0px;
     z-index: 9999;
-    padding: 0px 5px;
+    padding: 0px 10px;
 }
 ul li:hover .sub-menu-1 ul{
     display: block;
-    margin: 10px;
+    margin: 5px;
 }
 ul li:hover .sub-menu-1 ul li{
-    width: 170px;
-    border-bottom: 0.5px dotted #383A3F;
+    width: 200px;
+    border-bottom: 0.5px dotted #7EBDC2;
     text-align: left;
 }
 ul li:hover .sub-menu-1 ul li:last-child{
@@ -72,52 +77,61 @@ ul li:hover .sub-menu-1 ul li:last-child{
 }
 ul li:hover .sub-menu-1 ul li:hover{
     color: #fff;    
-    text-shadow: 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4, 0 0 5px #03A9F4;
+    text-shadow: 0 0 2px #7EBDC2, 0 0 2px #7EBDC2, 0 0 2px #7EBDC2, 0 0 2px #7EBDC2;
 }
 .fa angle-right{
     float: right;
 }
 .sub-menu-2{
     display: none;
+    color: white;
+    padding: 0px 10px;
 }
 .hover-dro:hover .sub-menu-2{
     position: absolute;
     display: block;
-    margin-top: -50px;
-    margin-left: 150px;
-    background-color: #2d2c2c;
+    margin-top: -55px;
+    margin-left: 210px;
+    background-color: white;
 }
 .sub-menu-2 ul li:hover{
-    background-color: #03A9F4;
+    /*background-color: #03A9F4;*/
     border-radius: 7px;
 }
 
+/* 컨테이너 */
+.container{
+    width: auto;
+    max-width: 1300px;
+    margin: 0 auto;
+    height: auto;
+}
 /* 상품이미지 */
 #drone-grid{
 	display: grid;
 	grid-template-columns: repeat(4,1fr);
 	/* grid-template-rows: 400px 400px 400px 400px; */
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 60px 10px 40px 10px;
 }
 
 /* 상품이미지 */
+
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 figure.block {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
   overflow: hidden;
-  margin: 10px;
+  margin-left: 10px;
   margin-bottom: 50px;
   min-width: 220px;
-  max-width: 320px;
+  max-width: 300px;
   max-height: 450px;
   width: 100%;
+  /*최대한 살리려고 했는데 background색 때문에 부득이하게 조금 변경된 부분이 있습니다.*/
+    background: #000;
   color: #fff;
   text-align: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 px rgba(0, 0, 0, 0.15);
   font-size: 16px;
 }
 figure.block * {
@@ -221,6 +235,8 @@ figcaption p span{
     width: 300px;
     height: 500px;
 }
+
+/* 상품정보 */
 .content2 .block .name{
     color: #fff;
     font-weight: bold;
@@ -233,11 +249,20 @@ figcaption p span{
 .content2 .block a img{
     width: 250px;
     height: 260px;
-}    
+}
 
-/* 컨테이너 */
-.container {
-    width: auto;
-    margin: 0 auto;
-    height: auto;
+/* 페이징처리 */
+.btnPaging{
+    padding: 10px;
+}
+.btnPaging li {
+    text-align: center;    
+}
+
+/* 드론 비교하는건 여기서 설정하시면 됩니다. */
+#footer-nav{
+	
+}
+#footer-info{
+	font-family: 'Nanum Gothic', sans-serif !important;
 }

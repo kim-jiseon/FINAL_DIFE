@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,41 +10,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
+<!-- 
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+ -->
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-<!-- 기본 링크 -->
+    <!-- 기본 링크 -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/drone.css">
-<!-- 달력 -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
-<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-
-<!-- 카테고리 검색 아이콘 -->
 <link rel="stylesheet" href="css/drone/drone.css">
+    <!-- 제이쿼리 플러그인 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- datepicker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="js/datepicker/datepicker.js"></script>
+<!-- Include language -->
+<script src="js/datepicker/i18n/datepicker-ko.js"></script>
+<!-- ī�װ� �˻� ������ 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+  -->
 <script type="text/javascript">
 $(function() {
 	var itemsPerPage = 8;
-
           
-             /* Demo purposes only */
-  $(".hover").mouseleave(
-    function () {
-      $(this).removeClass("hover");
-    }
-  );
-
+    /* ī�װ�(�ø����) ���콺 hover */
+    $(".hover").mouseleave(function () {
+        $(this).removeClass("hover");
+    });
+    
+    /* ī�װ�(�ø����,����) Ŭ�� �� �������� */
+    var searchSp = document.getElementById("search1");
+    var listSp = document.getElementById("sub-menu");
+    
+    listSp.style.display = "none";
+    searchSp.addEventListener("click",(event){
+        if(listSp.style.display == "none"){
+            listSp.style.display = "block";
+        }
+        else{
+            listSp.style.display = "none";
+        }
+    });
            
 /* 
-            // 페이징 처리 : 페이지버튼 추가
+            // ����¡ ó�� : ��������ư �߰�
             $.get("GetTotalDroneCount", function(data) {
                 var totalItem = Number(data);
                 var totalPage = Math.ceil(totalItem / itemsPerPage);
-
                 for (var i = 1; i <= totalPage; i++) {
                     var addPage = $("<li/>").html(i).attr("dataPage", i);
                     $("#btnPaging").append(addPage);
@@ -53,11 +68,9 @@ $(function() {
                     });
                 }
             });
-
-            // 페이징 처리 : 드론 초기화면 전체 목록 select
+            // ����¡ ó�� : ��� �ʱ�ȭ�� ��ü ��� select
             function getItems(nowPage, itemsPerPage) {
                 $("#content2").empty();
-
                 $.getJSON("GetDroneList", {
                     nowPage: nowPage,
                     perPage: itemsPerPage
@@ -72,7 +85,6 @@ $(function() {
                         var name = $("<p></p>").html(item.dro_name);
                         var sName = $("<p></p>").html(item.dro_series);
                         var price = $("<p></p>").html(item.pos_price);
-
                         $(div).append(fname, name, sName, price);
                         $("#content2").append(div);
                     });
@@ -80,9 +92,8 @@ $(function() {
                 $("#content2").show();
             }
             getItems(1, itemsPerPage);
-
-            // selectRentalDate 메서드 만들기
-            // 대여일 캘린더
+            // selectRentalDate �޼��� �����
+            // �뿩�� Ķ����
             $("#datepicker").dialog({
             	buttons:{
             		submit:function(){
@@ -92,10 +103,10 @@ $(function() {
             			}});
             		},
             		reset:function(){
-            			alert("모두 지움");
+            			alert("��� ����");
             		},
             		cancle:function(){
-            			alert("취소");
+            			alert("���");
             		},
             	},
             	modal:false
@@ -107,45 +118,47 @@ $(function() {
 </head>
 
 <body>
-<<<<<<< HEAD
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
         <div id="header">
             <div id="header-top">
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
-                        <a href="layout.html"><img src="img/logo/logo_white.png" id="logo"></a>
+                        <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
                         <a href="#" class="cl-effect-1">드론</a>
-                        <a href="#" class="cl-effect-1">파일럿</a>
+                        <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="#" class="cl-effect-1">LOGIN</a>
+                        <a href="signIn" class="cl-effect-1">LOGIN</a>
                         <a href="#" class="cl-effect-1">MYPAGE</a>
-                        <a href="#" class="cl-effect-1">RESERVATION</a>
+                        <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>
-        </div>
-        <!-- //header -->
         
-        <!-- 상세검색 -->
         <div id="header-nav">
-            <div class="container">            
-                <ul id="search">
-                    <!-- 대여일 -->
-                    <span id="calendar" class="search1">대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
-						<input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="대여일을 선택하세요 :D">
+                <ul class="search">
+                    <div class="block">
+                        <div id="calendar">
+                           대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                                <input type="text" data-range="true"
+                                            data-multiple-dates-separator=" - " data-language="ko"
+                                            class="datepicker-here" style="width:180px; height: 25px;"/>
+                        </div>
+                    </div>
+             
+						<!-- <input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="�뿩���� �����ϼ��� :D">
                				<script src="pikaday.js"></script>
                    			<script>
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
-                       	</script>
-                   
+                       	</script> -->
+                       	
                     <li class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul>
+                            <ul id="sub-menu">
                                 <li class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul>
@@ -193,31 +206,27 @@ $(function() {
                                             <li>PHANTOM 3 PROFESSIONAL</li>
                                         </ul>
                                     </div>
-                                </li>                       
+                                </li>                                             
                             </ul>
                         </div>
                     </li>
                     <li class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul>
+                            <ul id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
                                 <li class="hover-dro">10 ~ 20만원</li>
                                 <li class="hover-dro">20만원 ~</li>
                             </ul>
                         </div>
-                    </li>
-                    <li>
+                    </li>                  
                     <button id="btnSch">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
-                    </li>
                 </ul>
-            </div>
         </div>
-        
-        <!-- 상세검색결과 목록 -->
+        </div>
+          <!-- //header -->
+        <!-- contents -->
         <div id="contents">
-		<div id="content2">
-		    <div class="container">
-			<div class="content2">
+        	<div class="container">
 				<div id="drone-grid">
 					<!-- 1번째 단락 -->
 	                <div class="block">
@@ -248,7 +257,7 @@ $(function() {
                             <a href="drone_dt.html"></a>
                         </figure>       
 	                </div>
-	                <div class="block">
+	              <div class="block">
                         <figure class="block">
                             <img src="img/drone/D0003.png" alt="팬텀4" />
                                 <figcaption>
@@ -306,7 +315,7 @@ $(function() {
                             <a href="drone_dt.html"></a>
                         </figure>               
 	                </div>	                
-	                <div class="block">.
+	                <div class="block">
 	                    <figure class="block">
                             <img src="img/drone/D0007.png" alt="미니스파크" />
                                 <figcaption>
@@ -393,64 +402,63 @@ $(function() {
                         </figure>           
 	                </div>
 	                
-	                <!-- 4번째 단락 -->
+	                <!-- 4��° �ܶ� -->
 	                <!--<div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0013.png" alt="인스파이어1PRO 1인"/>
+                            <img src="img/drone/D0013.png" alt="�ν����̾�1PRO 1��"/>
                                 <figcaption>
-                                    <p>인스파이어 1 프로 블랙에디션. PIX4D 15일 무료이용권 증정!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>�ν����̾� 1 ���� �������. PIX4D 15�� �����̿�� ����!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
+                                      <p>270,000��</p> -->
                                    <!-- <div class="heading">
-                                        <h2><span>INSPIRE</span> 1PRO 1인</h2>
+                                        <h2><span>INSPIRE</span> 1PRO 1��</h2>
                                     </div>
                                 </figcaption>
                             <a href="drone_dt.html"></a>
                         </figure>           
 	                </div> -->
-	               
-	            </div>
-			</div>
-		</div>
+				</div>
 		
-		<!-- 페이징 처리 -->
-		<div class="btnPaging">
-                        <ul class="pagination" style="font-size: 15px;">
-                            <li><a href="#">이전</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">다음</a></li>
+		
+				<!-- 페이징 -->
+					<div class="btnPaging">
+                        <ul class="pagination" style="font-size: 17px;">
+                            <li>
+                                <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                <a href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </li>
                         </ul>
                     </div>
-
-        <div id="footer">
-             <!-- 드래그 비교 생성하기 -->
-            <div id="compareChatDrone"></div>
-
-            <div id="footer-nav">
-                <div class="container"></div>
             </div>
-            <div id="footer-info">
-                <div class="container">
-                    <ul class="info">
-                        <li>
-                            <dl>
-                                <dd class="txt" style="font-size: 14px; color: #a4a4a4;">회사소개</dd>
-                                <dd class="txt">(주)비트캠프:DIFE</dd>
-                                <dd class="txt">서울특별시 마포구 백범로 23 구프라자 3층</dd>
-                                <dd class="txt">02-707-1480</dd>
-                                <dd class="txt"><a href="#" style="color: #a4a4a4;">고객센터</a></dd>
-                                <dd class="txt"><a href="#" style="color: #a4a4a4;">이용안내</a></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-</body></html>
+            <!-- //container -->
+		</div>
+		<!-- //contents -->
+		<!-- footer -->
+		<div id="footer">
+			<div id="footer-nav">
+				<!-- 드론 비교하는 건 footer-nav에서 만들면 될거 같습니다!! css도 footer-nav 높이 설정하셔서 하시면 될거 같아요. -->
+				<div id="compareChatDrone"></div>
+			</div>
+			<div id="footer-info">
+				(주)비트캠프:DIFE
+				<div id="footer_info1">
+					<p>서울특별시 마포구 백범로 23 구프라자 3층</p>
+					<p>02-707-1480</p>
+					<p>
+						<a href="#">고객센터</a>
+					</p>
+					<p>
+						<a href="#">이용안내</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- //footer -->
+	</div>
+</body>
+</html>

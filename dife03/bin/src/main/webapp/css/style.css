@@ -12,7 +12,6 @@
     }
     #contents{
         height: auto;
-        background-color: aquamarine;
     }
     #footer{
         height: 150px;
@@ -20,21 +19,17 @@
     /*header*/
     #header-top{
         height: 90px;
-        background-color: deepskyblue;
     }
     #header-nav{
         height: 50px;
-        background-color: cadetblue;
     }
     /*contents*/
     /*footer*/
     #footer-nav{
         height: 50px;
-        background-color: cadetblue;
     }
     #footer-info{
         height: 100px;
-        background-color: deepskyblue;
     }
 }
 
@@ -54,16 +49,18 @@
     
     #contents{
         height: auto;
-        background-color: #1F2124;
+        background-color: white;
     }
     
     #footer{
-        height: 180px;
+        height: 140px;
+        border-top: 1px solid #e1e1e1;
     }
     /*header*/
     #header-top{
         height: 70px;
-        background-color: #1F2124;
+        background-color: white;
+        border-bottom: 1px solid #e1e1e1;
     }
     /* 네비 부분은 필요할 경우에 사용 */
     /* 
@@ -73,15 +70,18 @@
     }
     */
     /*contents*/
+    
     /*footer*/
     #footer-nav{
-        height: 50px;
-        background-color: #1F2124;
+        height: 10px;
+        background-color: white;
     }
     #footer-info{
         height: 130px;
         line-height: 20px;
-        color: white;
-        background-color: #1F2124;
+        font-size: 14px;
+        font-weight:700;
+        color: #323232;
+        background-color: white;
     }
 }

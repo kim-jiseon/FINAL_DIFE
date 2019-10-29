@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="drone">
+
+<!-- sql 전체 수정예정 -->
+	<!-- 보류! ord_sale : 0원, ord_date : 해당일로 설정함 -->
+	<insert id="in_droOrder">
+		insert into orders values(#{ord_no},#{mem_no},#{ord_amount},#{ord_price},0,#{ord_fin_price},sysdate,#{ord_pay_state})
+	</insert>
+  
+	<select id="selectAll_dro" resultType="droneVo">
+	    select dro_photo, dro_name, dro_series, pos_price from drone d, possesion p where d.dro_no=p.dro_no order by d.first_time
+	</select>
+  
+  	<select id="sel_droDetail" resultType="droneVo">
+		select * from drone d, rental r, possesion p where d.#{dro_no}=p.#{dro_no} and r.#{ren_no}=p.#{ren_no}
+	</select>
+	
+	<select id="getDroneCount" resultType="java.lang.Integer">
+		select count(*) from drone
+	</select>
+	
+	
+  
+</mapper>
