@@ -46,11 +46,6 @@ public class OrdersManager {
 		re = session.insert("orders.delBas",bas_no);
 		session.commit();
 		session.close();
-		
-		
-		
-		
-		
 		return re;
 	}
 }

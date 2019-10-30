@@ -10,6 +10,7 @@
 	<typeAlias type="com.bit.dife03.vo.AdminVo" alias="adminVo"/>
 	<typeAlias type="com.bit.dife03.vo.BoardVo" alias="boardVo"/>
 	<typeAlias type="com.bit.dife03.vo.BasketVo" alias="basketVo"/>
+	
 </typeAliases>
   <environments default="development">
     <environment id="development">
