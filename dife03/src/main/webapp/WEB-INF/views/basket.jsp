@@ -46,15 +46,11 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
-    	
-    	
     		/*체크박스 변환 */
-    	
     	 	$(".chk_all").change(function(){
     	 		 chk = $(this).is(":checked");//.attr('checked');
     	         if(chk) $("input:checkbox[name=cart_no]").prop('checked', true);
     	         else  $("input:checkbox[name=cart_no]").prop('checked',false);
-    	         console.log($('input:checkbox[name=cart_no]').length); 
     	     	/* 각 상품 체크박스 변환 checked*/ 	
     	 	});
     	
@@ -64,11 +60,12 @@
      			$("#table_content").empty();
      			
 	    		$.each(data,function(idx,item){
-	    			if(idx ===1)
+	    			
+	    			if(idx == 1)
 	    				{
+	    					
 	    					mem_point = Number(item.mem_point);
 	    				}
-	    		
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
@@ -151,7 +148,7 @@
 	    			}); 
 	    		/* foreach종료 */
 	    		/*가격처리*/
-    			("#fin_price").text(sum+"원");
+    			$("#fin_price").text(sum+"원");
     			/*  */
 	    	}})
     	/*ajax 종료  */
@@ -225,7 +222,9 @@
     		
     			
     	/*insert orders,ordersdetail 처리*/
-    	
+    	$("#order").click(function(){
+    		alert("ok");
+    	});
     	/* orders insert,ordersdetial insert end */
     	/**/
 	    			  console.log(sum);

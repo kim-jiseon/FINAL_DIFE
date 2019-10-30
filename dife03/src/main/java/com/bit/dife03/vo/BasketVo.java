@@ -17,6 +17,14 @@ public class BasketVo {
 	private String dro_photo;
 	private int pos_price;
 	private int point;
+	private int mem_point;
+	
+	public int getMem_point() {
+		return mem_point;
+	}
+	public void setMem_point(int mem_point) {
+		this.mem_point = mem_point;
+	}
 	public String getBas_no() {
 		return bas_no;
 	}
@@ -103,7 +111,7 @@ public class BasketVo {
 	}
 	public BasketVo(String bas_no, String dro_name, String mem_name, int bas_amount, int bas_price, Date bas_rental,
 			Date bas_return, Date bas_time, String dro_series, String pil_career, String pil_loc, String dro_photo,
-			int pos_price, int point) {
+			int pos_price, int point, int mem_point) {
 		super();
 		this.bas_no = bas_no;
 		this.dro_name = dro_name;
@@ -119,8 +127,8 @@ public class BasketVo {
 		this.dro_photo = dro_photo;
 		this.pos_price = pos_price;
 		this.point = point;
+		this.mem_point = mem_point;
 	}
-	
 	public BasketVo() {
 		// TODO Auto-generated constructor stub
 	}
