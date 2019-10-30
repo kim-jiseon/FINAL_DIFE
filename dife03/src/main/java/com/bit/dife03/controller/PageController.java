@@ -19,6 +19,11 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/drone")
+	public void drone() {
+		
+	}	
+	
 	@RequestMapping("/pilot")
 	public void pilot() {
 		
