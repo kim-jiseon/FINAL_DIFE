@@ -28,22 +28,11 @@ public class OrdersController {
 	public void setDao(OrdersDao dao) {
 		this.dao = dao;
 	}
-//	//Basket 리스트 출력 ModelAndView 사용
-//	@RequestMapping("/basket")
-//	public void basket()
-//	{
-//		
-//	}
+
 	@ResponseBody
 	@RequestMapping("/basketList.do")
 	public String listBasket()
 	{	
-//		HttpSession session = request.getSession();
-//		String mem_id=(String)session.getAttribute("mem_id");
-////		ModelAndView mav = new ModelAndView();
-////		mav.addObject("list", dao.basketList("hong"));
-//		
-//		return mav;	
 		String str="";
 		ObjectMapper ob = new ObjectMapper();
 		try {
@@ -55,7 +44,7 @@ public class OrdersController {
 		return str;
 	}
 	
-	
+	//버튼 클릭시 삭제.
 	@ResponseBody
 	@RequestMapping("/deleteBasket.do")   
 	public String deleteBasket(String bas_no)
@@ -98,5 +87,14 @@ public class OrdersController {
 	  result = 1;
 	 }  
 	 return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
+	public int insertJumun()
+	{
+		int re=0;
+		
+		
+		return re;
 	}
 }
