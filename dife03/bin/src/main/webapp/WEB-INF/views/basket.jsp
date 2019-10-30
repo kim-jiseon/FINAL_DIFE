@@ -30,6 +30,7 @@
     	var bas_no;
     	var btn_del;
     	 var chk;
+    	 var sum = 0;
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -63,8 +64,6 @@
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
 	    			$(".cart_no").click(function(){
-	    				
-	    				
 	    					  $(".chk_all").prop("checked", false);	
 	    	     	});
 	    			var td3;
@@ -84,6 +83,12 @@
 	    			var re_date = new Date(item.bas_return);
 	    			rental = date_to_str(rental);
 	    			re_date=date_to_str(re_date);
+	    			/* sum 할인률 및 하단 정보 관련 처리 */
+	    			sum +=Number(item.bas_price);
+	    			
+	    			/*  */
+	    			
+	    			
 	    			if(item.dro_name !== null)
 	    				{
 	    					td3=$("<td></td>");
@@ -133,35 +138,11 @@
 	    				}
 	    			$(tr).append(td1,td2,td3,td4,td5,td6,td7,td8);
 	    			$("#table_content").append(tr);
-	    		
-	    	
-	    			/*딜리트 버튼  */
-	    			/*   $(".btn_del").click(function(){ 
-	 	    				var check = confirm("정말로 삭제하시겠습니까?");
-	 	    				if(check == true)
-	 	    					{
-		    				var btn_del = $(this);
-		    				
-		    				//btn_del.parent() : btn_del의 부모는 <td>이다.
-		    				// btn_del.parent().parent() : <td>의 부모이므로 <tr>이다.
-		    				var tr = btn_del.parent().parent();
-		    				var td = tr.children();
-		    				bas_no = td.eq(0).text(); 
-		    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
-		    					if(data == "1")
-		    						{
-		    							location.href="/basket";
-		    						}
-		    				}})	
-	 	    					}
-		    			}); 
-	    			   */
-	    			  /* 딜리트 */
-	    		
 	    			}); 
 	    		/* foreach종료 */
-	    	
-	    	
+	    		/*가격처리*/
+    			("#fin_price").text(sum+"원");
+    			/*  */
 	    	}})
     	/*ajax 종료  */
 	  	
@@ -186,18 +167,20 @@
 	    				// btn_del.parent().parent() : <td>의 부모이므로 <tr>이다.
 	    				var tr = btn_del.parent().parent();
 	    				var td = tr.children();
-	    				bas_no = td.eq(0).text(); 
+	    				bas_no = td.eq(0).text();
+	    				price = td.eq(4).text();
+	    				console.log(price);
 	    				var check = confirm("정말로 삭제하시겠습니까?");
- 	    		if(check == true)
- 	    			{
- 	    						
-	    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
-	    					if(data == "1")
-	    						{
-	    						tr.remove();
-	    						}
-	    				}})
- 	    			}
+		 	    		if(check == true)
+		 	    			{			
+			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
+			    					if(data == "1")
+			    						{
+			    						sum -=price;
+			    						tr.remove();
+			    						}
+			    				}})
+		 	    			}
 	    				
 	    				
 	    			}); 
@@ -212,20 +195,27 @@
 
 				  		$("input[name='cart_no']:checked").each(function(){
 				    		checkArr.push($(this).attr("data-cartNum"));
-				   
 						});
-				  		$.ajax({url:"",data:{"checkArr":checkArr},type:"post",success:function(){
-				  			
-				  		}});
-						}
+				  		console.log(checkArr.length);
+				  		$.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
+				  			if(data === 1)
+				  				{
+				  				location.href="basket";
+				  				}
+				  		}})
+					}
     			});
 
     			/*  */
+    			
+    		
+    			
     	/*insert orders,ordersdetail 처리*/
     	
     	/* orders insert,ordersdetial insert end */
     	/**/
-	    			  
+	    			  console.log(sum);
+	 	
     });
 
     </script>
@@ -314,7 +304,7 @@
                     <span class="info">할인금액</span><span class="info">50,000원</span>
                 </div>
                  <div class="total_product" style="border-bottom: 0;">
-                    <span class="info">최종 결제금액</span><span class="info">393,000원</span>
+                    <span class="info">최종 결제금액</span><span class="info" id="fin_price"></span>
                 </div>
            </div>
        </div>
