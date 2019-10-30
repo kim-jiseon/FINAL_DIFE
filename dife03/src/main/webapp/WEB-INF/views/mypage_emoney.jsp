@@ -6,8 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>layout</title>
-    <!-- 웹폰트 -->
+ <!-- 웹폰트 -->
+     <!-- 
     <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+     -->
+     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- fadeIn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="css/reset.css">
@@ -53,7 +56,7 @@
                     </div>
                     <div class="mypage-top-nav">적립<i class="fas fa-angle-right" id="arrow"></i></div>
                     <div class="mypage-top-nav">쿠폰<i class="fas fa-angle-right" id="arrow"></i></div>
-                </div><hr>
+                </div>
                 <div id="mypage-bottom" class="mypage-grid-nav">
                     <div id="mypage-bottom-left">
                         <nav>
@@ -66,8 +69,8 @@
                         </nav>
                     </div>
                     <div id="mypage-bottom-right">
-                       <div>
-                        <div id="mypage-emoney">보유 적립금</div><hr>
+                       <div class="mypage-bottom-right">
+                        <div id="mypage-emoney">보유 적립금</div><hr id="hr">
                         <div id="emoney">적립금&nbsp;&nbsp;&nbsp;<span id="emoney-amount">1000</span> 원</div>
                          <table class="mypage-table">
                             <thead>
@@ -87,8 +90,9 @@
                             </tbody>
                         </table>
                         </div>
-                        <div>
-                        <div id="mypage-coupon">보유 쿠폰</div><hr>
+                        <div class="mypage-bottom-right">
+                        <div id="mypage-coupon">보유 쿠폰</div><hr id="hr">
+                        <div id="emoney">쿠폰&nbsp;&nbsp;&nbsp;<span id="emoney-amount">2</span> 장</div>
                         <table class="mypage-table">
                             <thead>
                                 <tr>
