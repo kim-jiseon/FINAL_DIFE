@@ -94,14 +94,14 @@
 	    			all_amount += Number(item.bas_amount);
 	    			reserve_fund += Number(item.point);
 	    			/*  */
-	    			
+	    		
 	    			
 	    			if(item.dro_name !== null)
 	    				{
 	    					td3=$("<td></td>");
 	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td3).append(product_img);
-	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
 	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
 	    					td4=$("<td></td>");
 	    					$(td4).append(p1,p2);
@@ -118,6 +118,7 @@
 	    					td8 = $("<td></td>");
 	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
 	    					$(td8).append(btn_del);	
+	    					hidden1 = $("<input type='hidden' name='pos_no'>")
 	    					
 	    				}
 	    			else
@@ -125,7 +126,8 @@
 	    				td3=$("<td></td>");
     					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
     					$(td3).append(product_img);
-    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
+    					
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
@@ -150,9 +152,31 @@
 	    		/*가격처리*/
     			$("#fin_price").text(sum+"원");
     			/*  */
+    			
+    			/*insert orders,ordersdetail 처리*/
+    	    	$("#order").click(function(){
+    	    		var Jumun = new Array();
+
+    		  		$("input[name='cart_no']:checked").each(function(){
+    		  			
+    		  			Jumun.push($(this).attr({"bas_no":"data-cartNum","pos_no":"data-pos"}));
+    				});
+    		  		console.log(Jumun.length);
+    		  		console.log(Jumun);
+    		  		
+    		  		/* $.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
+    		  			if(data === 1)
+    		  				{
+    		  				location.href="basket";
+    		  				}
+    		  		}}) */
+    	    	});
+    	    	/* orders insert,ordersdetial insert end */
+
 	    	}})
     	/*ajax 종료  */
 	  	
+    	
     	    }    
         /*list를 처리하는 function getList end  */
  		getList();   
@@ -200,18 +224,19 @@
     			/* checkbox list*/
     			$("#del_chk").click(function(){
 					 	var confirm_val = confirm("정말 삭제하시겠습니까?");
-
+						
 						if(confirm_val) {
 							var checkArr = new Array();
 
 				  		$("input[name='cart_no']:checked").each(function(){
+				  			
 				    		checkArr.push($(this).attr("data-cartNum"));
 						});
 				  		console.log(checkArr.length);
 				  		$.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
 				  			if(data === 1)
 				  				{
-				  				location.href="basket";
+				  				location.href="basket";  
 				  				}
 				  		}})
 					}
@@ -221,12 +246,7 @@
     			
     		
     			
-    	/*insert orders,ordersdetail 처리*/
-    	$("#order").click(function(){
-    		alert("ok");
-    	});
-    	/* orders insert,ordersdetial insert end */
-    	/**/
+        	/**/
 	    			  console.log(sum);
     				  console.log(all_amount);
     				  console.log(reserve_fund);
