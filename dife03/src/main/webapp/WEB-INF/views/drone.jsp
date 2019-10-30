@@ -28,7 +28,9 @@
     <script src="js/datepicker/datepicker.js"></script>
 <!-- Include language -->
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
-<!-- ī�װ� �˻� ������ 
+
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<!--
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   -->
 <script type="text/javascript">
@@ -143,7 +145,7 @@ $(function() {
                 <ul class="search">
                     <div class="block">
                         <div id="calendar">
-                           대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                           대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -156,7 +158,7 @@ $(function() {
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
-                    <li class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
+                    <li class="search1">시리즈명<i class="fa fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul id="sub-menu">
                                 <li class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -210,7 +212,7 @@ $(function() {
                             </ul>
                         </div>
                     </li>
-                    <li class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
+                    <li class="search1">가격<i class="fa fa-tags"></i>
                         <div class="sub-menu-1">
                             <ul id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
@@ -219,7 +221,7 @@ $(function() {
                             </ul>
                         </div>
                     </li>                  
-                    <button id="btnSch">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
+                    <button id="btnSch">검색</button>             
                 </ul>
         </div>
         </div>
@@ -422,15 +424,15 @@ $(function() {
 		
 				<!-- 페이징 -->
 					<div class="btnPaging">
-                        <ul class="pagination" style="font-size: 17px;">
+                        <ul class="pagination">
                             <li>
-                                <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fas fa-arrow-left"></i></a>
                                 <a href="#">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#">4</a>
                                 <a href="#">5</a>
-                                <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fas fa-arrow-right"></i></a>
                             </li>
                         </ul>
                     </div>

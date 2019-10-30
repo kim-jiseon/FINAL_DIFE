@@ -22,6 +22,9 @@
 }
 
 /* 검색 */
+svg{
+	padding-left: 10px;
+}
 .search{
     font-size: 15px;
     display: inline-flex;
@@ -34,7 +37,7 @@
     font-size: 15px;
 }
 #btnSch{
-    width: 120px;
+   
     padding: 5px;
     font-size: 15px;
     margin-top: 7px;
@@ -43,10 +46,12 @@
 .search li{
     width: 180px;
 }
+/*
 .search .fa{
     margin-left: 10px;
     margin-top: 4px;
 }
+*/
 .sub-menu-1{
     display: none;
 }
@@ -258,11 +263,13 @@ figcaption p span{
 .btnPaging li {
     text-align: center;    
 }
-
+.pagination > li > a{
+	font-size: 14px; 
+	font-weight: 700;
+	padding: 10px;
+	margin: 0px 5px;
+}
 /* 드론 비교하는건 여기서 설정하시면 됩니다. */
 #footer-nav{
 	
-}
-#footer-info{
-	font-family: 'Nanum Gothic', sans-serif !important;
 }

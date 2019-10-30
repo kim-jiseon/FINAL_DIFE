@@ -15,7 +15,11 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
 	<delete id="delBas">
 		delete basket where bas_no=#{bas_no}
 	</delete>
+  <!-- orders insert 및 ordersDetail insert transaction -->
   
-  
+  <!--  orders max(getNextNo) -->
+  	<select id="getOrd" resultType="java.lang.Integer">
+  		select nvl(max(ord_no),0)+1 from orders
+  	</select>
 
 </mapper>

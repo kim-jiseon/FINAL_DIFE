@@ -10,6 +10,7 @@
 	<typeAlias type="com.bit.dife03.vo.AdminVo" alias="adminVo"/>
 	<typeAlias type="com.bit.dife03.vo.BoardVo" alias="boardVo"/>
 	<typeAlias type="com.bit.dife03.vo.BasketVo" alias="basketVo"/>
+	<typeAlias type="com.bit.dife03.vo.DroneVo" alias="droneVo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -28,5 +29,6 @@
     <mapper resource="com/bit/dife03/db/adminMapper.xml"/>
     <mapper resource="com/bit/dife03/db/boardMapper.xml"/>
     <mapper resource="com/bit/dife03/db/ordersMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/droneMapper.xml"/>
   </mappers>
 </configuration>
