@@ -30,7 +30,12 @@
     	var bas_no;
     	var btn_del;
     	 var chk;
+    	 //insert를 위한 변수준비
     	 var sum = 0;
+    	 var all_amount= 0;
+    	 var mem_point= 1;
+    	 var reserve_fund=0;
+    	 
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -59,7 +64,11 @@
      			$("#table_content").empty();
      			
 	    		$.each(data,function(idx,item){
-	    			
+	    			if(idx ===1)
+	    				{
+	    					mem_point = Number(item.mem_point);
+	    				}
+	    		
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
@@ -85,7 +94,8 @@
 	    			re_date=date_to_str(re_date);
 	    			/* sum 할인률 및 하단 정보 관련 처리 */
 	    			sum +=Number(item.bas_price);
-	    			
+	    			all_amount += Number(item.bas_amount);
+	    			reserve_fund += Number(item.point);
 	    			/*  */
 	    			
 	    			
@@ -169,6 +179,8 @@
 	    				var td = tr.children();
 	    				bas_no = td.eq(0).text();
 	    				price = td.eq(4).text();
+	    				amount=td.eq(3).text();
+	    				point = td.eq(14).text();
 	    				console.log(price);
 	    				var check = confirm("정말로 삭제하시겠습니까?");
 		 	    		if(check == true)
@@ -176,7 +188,9 @@
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
-			    						sum -=price;
+			    						reserve_fund -= point;
+			    						all_amount -= amount;
+			    						sum -= price;
 			    						tr.remove();
 			    						}
 			    				}})
@@ -215,6 +229,9 @@
     	/* orders insert,ordersdetial insert end */
     	/**/
 	    			  console.log(sum);
+    				  console.log(all_amount);
+    				  console.log(reserve_fund);
+    				  console.log(mem_point);
 	 	
     });
 
@@ -270,7 +287,7 @@
                             <th scope="col">상품명</th>
                             <th scope="col">판매가</th>
                             <th scope="col">수량</th>
-                            <th scope="col">주문금액<br/>(적립예정)</th>
+                            <th scope="col">주문금액<br/>(적립금)</th>
                             <th scope="col">주문관리</th>
                         </thead>
                         <tbody id="table_content">
@@ -278,7 +295,7 @@
                     </table>
                     <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="del_chk" class="a_btn"><font color="black">선택삭제</font></a>
-					<a href="orders" id="order" class="a_btn"><font color="black">주문하기</font></a>
+					<a href="javascript:void(0)" id="order" class="a_btn"><font color="black">주문하기</font></a>
 				</div>
                         </div>
                 </div>
@@ -288,11 +305,11 @@
           <!--    content_footer-->
        <div id='content_footer'>
             <div class="container" style="color: white">
-               <div class="total_product">
+              <!--  <div class="total_product">
                 <span class="info">쿠폰 사용 여부</span> <input type="checkbox" style="border:10px; padding: 5px; margin: 5px;"><span class="info">쿠폰 선택</span>
                 <select style="margin: 5px; width: 500px;"></select><br>
                 
-               </div>
+               </div> -->
                 <div class="total_product">
                     <span class="info">적립금</span><span class="info"> 원</span>
                     
