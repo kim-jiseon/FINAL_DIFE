@@ -69,4 +69,8 @@ public class PageController {
 	public void signUp() {
 		
 	}
+	@RequestMapping("/payCacao")
+	public void pay() {
+		
+	}
 }

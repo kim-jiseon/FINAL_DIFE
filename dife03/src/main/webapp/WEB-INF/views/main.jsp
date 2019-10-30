@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,6 +88,7 @@
 
         <!-- contents -->
         <div id="contents">
+        	<div class="container">
              <!-- Swiper -->
               <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -97,30 +99,32 @@
                 </div>
 				<!-- Add Pagination -->
 				<div class="swiper-pagination"></div>
-				<!-- Add Arrows -->
+				<!-- Add Arrows
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
+                 -->
               </div>
 
           	<!-- wiget 화면 -->
           	<div id="contents-wiget">
           		<div class="grid-wiget">
           			    <div class="grid-cell1">
-                            <img src="img/main/people.png" width="150px" height="150px"><br>
+                            <img src="img/main/people.png"><br>
           		            방문자 수<br>
           				    <h1>888명</h1>
           			    </div>
           			    <div class="grid-cell1">
-                            <img src="img/main/pilot.png" width="150px" height="150px"><br>
+                            <img src="img/main/pilot.png"><br>
                             파일럿 수<br>
                             <h1>54명</h1>
           			    </div>
                         <div class="grid-cell1">
-                            <img src="img/main/drone.png" width="150px" height="150px"><br>
+                            <img src="img/main/drone.png"><br>
                                 드론 수<br>
                                 <h1>10981대</h1>
                         </div>
-                        <div class="grid-cell1"><img src="img/main/weather.png" width="150px" height="150px"><br>
+                        <div class="grid-cell1">
+                        	<img src="img/main/weather.png"><br>
                             날씨<br>
                             <h1>21℃</h1>
                             <h4>화요일(맑음)</h4>
@@ -130,24 +134,88 @@
           	<!-- sns 화면 -->
           	<div id="contents-sns">
           		<div class="grid-sns">
-          			<div class="grid-cell2"><img src="img/main/photo1.jpg" width="350px" height="500px"><br>
-          				cslim 와 <br>
-          				hahaha 그림 같음<br>
+          			<div class="grid-cell2">
+          				<div class="sns-top">
+          				<img alt="" src="img/main/photo1.jpg" class="user-photo">
+          				</div>
+          				<div class="sns-bottom">
+          				    <div class="user-info">
+          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p>
+          				      </div>
+          				    <div class="user-like">
+                                <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
+                                <!-- 
+                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
+                                -->
+                                <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
+          				    </div>
+          				</div>
+          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
           			</div>
-          			<div class="grid-cell2"><img src="img/main/photo2.jpg" width="350px" height="500px"><br>
-          				jskim 저기에서 낮술 먹고 수영하고싶다. <br>
-          				zzzkka 저기서 소개팅 하실래여?<br>
-          				jskim 좋아요(엑스맨) :)
+          			
+          			<div class="grid-cell2">
+          				<div class="sns-top">
+          				<img alt="" src="img/main/photo2.jpg" class="user-photo">
+          				</div>
+          				<div class="sns-bottom">
+          				    <div class="user-info">
+          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p>
+          				      </div>
+          				    <div class="user-like">
+                                <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
+                                <!-- 
+                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
+                                -->
+                                <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
+          				    </div>
+          				</div>
+          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
           			</div>
-          			<div class="grid-cell2"><img src="img/main/photo3.jpg" width="350px" height="500px"><br>
-          				huck 저건 뭔 폭발인가요 ? <br>
-          				lee 펑펑 더 터져라<br>
-          		    </div>
-          			<div class="grid-cell2"><img src="img/main/photo4.jpg" width="350px" height="500px"><br>
-          				ccccccs 늑대 나오겄네 <br>
-          				ssssssc 그르게<br>
-          		    </div>
+          			
+          			<div class="grid-cell2">
+          				<div class="sns-top">
+          				<img alt="" src="img/main/photo3.jpg" class="user-photo">
+          				</div>
+          				<div class="sns-bottom">
+          				    <div class="user-info">
+          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p>
+          				      </div>
+          				    <div class="user-like">
+                                <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
+                                <!-- 
+                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
+                                -->
+                                <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
+          				    </div>
+          				</div>
+          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
+          			</div>
+          			
+          			<div class="grid-cell2">
+          				<div class="sns-top">
+          				<img alt="" src="img/main/photo4.jpg" class="user-photo">
+          				</div>
+          				<div class="sns-bottom">
+          				    <div class="user-info">
+          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p>
+          				      </div>
+          				    <div class="user-like">
+                                <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
+                                <!-- 
+                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
+                                -->
+                                <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
+          				    </div>
+          				</div>
+          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
+          			</div>
+          			
           		</div>
+          	</div>
           	</div>
         </div>
         <!-- //contents -->

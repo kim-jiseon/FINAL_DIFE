@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +25,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
+    
 $(function(){
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
@@ -323,6 +325,7 @@ $(function(){
 			return true;
 	});
 });
+
 </script>
 </head>
 <body>
@@ -358,7 +361,7 @@ $(function(){
 						<div class="col-md-8">
 							<section>
 								<h1 class="entry-title">
-									<span style="color: white">회원가입</span>
+									<span>회원가입</span>
 								</h1>
 								
 								<form action="signUp.do" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
@@ -421,10 +424,10 @@ $(function(){
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-md-3 col-sm-3" id="gender">
-											<label style="color: white; padding-right: 10px;"> 
+											<label style="padding-right: 10px;"> 
 											    <input name="mem_gender" type="radio" value="Male"> 남성
 											</label>     
-											<label style="color: white;">
+											<label>
 												<input name="mem_gender" type="radio" value="Female"> 여성
 											</label>
 										</div>
@@ -475,7 +478,7 @@ $(function(){
 
 		<!-- footer -->
         <div id="footer">
-            <div id="footer-nav">footer-nav</div>
+            <div id="footer-nav"></div>
             <div id="footer-info">(주)비트캠프:DIFE
                 <div id="footer_info1">
                     <p>서울특별시 마포구 백범로 23 구프라자 3층</p>
