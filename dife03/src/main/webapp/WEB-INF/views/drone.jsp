@@ -142,8 +142,8 @@ $(function() {
         <div id="header-nav">
                 <ul class="search">
                     <div class="block">
-                        <div id="calendar">
-                           대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                        <div id="calendar" name="calendar">
+                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -156,12 +156,12 @@ $(function() {
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
-                    <li class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
+                    <li name="series" class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul id="sub-menu">
-                                <li class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <ul name="sub_series_01" id="sub-menu">
+                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
+                                        <ul name="sub_series_02">
                                             <li>MAVIC 2 PRO</li>
                                             <li>MAVIC PRO</li>
                                             <li>MAVIC 2 ENTERPRISE UNIVERSAL</li>
@@ -170,24 +170,24 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
+                                        <ul name="sub_series_02">
                                             <li>BEBOP 2 SINGLE</li>
                                             <li>BEBOP 2+SKY CONTROLLER</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
+                                        <ul name="sub_series_02">
                                             <li>MINI SPARK</li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li class="hover-dro">인스파이어<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
+                                        <ul name="sub_series_02">
                                             <li>INSPIRE 1V2 1인</li>
                                             <li>INSPIRE 1V2 2인</li>
                                             <li>INSPIRE 1 PRO 1인</li>
@@ -199,7 +199,7 @@ $(function() {
                                 </li>
                                 <li class="hover-dro">팬텀<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
+                                        <ul name="sub_series_02">
                                             <li>PHANTOM 4</li>
                                             <li>PHANTOM 4 PRO</li>
                                             <li>PHANTOM 3 ADVANCED</li>
@@ -210,9 +210,9 @@ $(function() {
                             </ul>
                         </div>
                     </li>
-                    <li class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
+                    <li name="price" class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul id="sub-menu">
+                            <ul name="sub_price" id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
                                 <li class="hover-dro">10 ~ 20만원</li>
                                 <li class="hover-dro">20만원 ~</li>
