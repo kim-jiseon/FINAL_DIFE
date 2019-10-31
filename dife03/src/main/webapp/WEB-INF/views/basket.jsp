@@ -120,7 +120,7 @@
 	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td3).append(product_img);
 	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
-	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).attr({"ren_date":item.bas_rental,"ret_date":item.bas_return});
 	    					td4=$("<td></td>");
 	    					$(td4).append(p1,p2);
 	    					td5=$("<td></td>");
@@ -146,7 +146,7 @@
     					$(td3).append(product_img);
     					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
     					
-    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).attr({"ren_date":item.bas_rental,"ret_date":item.bas_return});
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
     					td5=$("<td></td>");
@@ -180,8 +180,10 @@
     		  		$("input[name='cart_no']:checked").each(function(){
     		  			pos_no = $(this).attr("pos_no");
     					mem_no = $(this).attr("mem_no");
+    					ren_date = $(this).attr("ren_date");
+    				
     		  		
-    		  			obj={"mem_no":mem_no,"pos_no":pos_no};
+    		  			obj={"mem_no":mem_no,"pos_no":pos_no,"rental":ren_date};
     		  			jumun.push(obj);
     				});
     		  		console.log(jumun);
