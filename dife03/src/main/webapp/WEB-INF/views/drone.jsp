@@ -54,7 +54,7 @@ $(function() {
         else{
             listSp.style.display = "none";
         }
-    });
+    })
            
 /* 
             // ����¡ ó�� : ��������ư �߰�
