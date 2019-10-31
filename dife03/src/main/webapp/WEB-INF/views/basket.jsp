@@ -81,10 +81,11 @@
 	    					
 	    					mem_point = Number(item.mem_point);
 	    				}
+	    			console.log(item.pos_no);
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td></td>");
-	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr("pos_no","1");
+	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no});
 	    			$(td2).append(input);
 	    			$(input).click(function(){
 	    					  $(".chk_all").prop("checked", false);	
@@ -175,10 +176,10 @@
     	    		var jumun = new Array();
 					var tr=$(this).parent().parent();
 					var td=tr.children();
-					pos_no = $(this).attr("pos_no");
-					mem_no = $(this).attr("mem_no");
+					
     		  		$("input[name='cart_no']:checked").each(function(){
-    		  			
+    		  			pos_no = $(this).attr("pos_no");
+    					mem_no = $(this).attr("mem_no");
     		  		
     		  			obj={"mem_no":mem_no,"pos_no":pos_no};
     		  			jumun.push(obj);
