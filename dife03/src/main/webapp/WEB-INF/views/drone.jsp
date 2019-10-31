@@ -4,28 +4,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<!-- 
 <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+ -->
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
 <!-- 
 <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
  -->
 <!-- fadeIn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <!-- 기본 링크 -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<!-- 기본 링크 -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/drone/drone.css">
-    <!-- 제이쿼리 플러그인 -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <!-- datepicker -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
-    <script src="js/datepicker/datepicker.js"></script>
+<!-- 제이쿼리 플러그인 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- datepicker -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="css/datepicker/datepicker.min.css" rel="stylesheet"
+	type="text/css">
+<script src="js/datepicker/datepicker.js"></script>
 <!-- Include language -->
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <!-- ī�װ� �˻� ������ 
@@ -33,6 +37,22 @@
   -->
 <script type="text/javascript">
 $(function() {
+	
+	//로그인 로그아웃 전환
+	var mem_id = "${mem_id}";
+	alert(mem_id);
+	if(mem_id != '' && mem_id != null){
+		//var login = $("#category-2").find("a:first").html();
+		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+		//$("#category-2").append(logout);
+		$("#sign").attr("href","logout").html("LOGOUT");
+	}
+	if(mem_id == '' || mem_id == null){
+		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+		//$("#category-2").append(login);
+		$("#sign").attr("href","signIn").html("LOGIN");
+	}
+	
 	var itemsPerPage = 8;
           
     /* ī�װ�(�ø����) ���콺 hover */
@@ -125,15 +145,15 @@ $(function() {
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="#" class="cl-effect-1">드론</a>
+                        <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>

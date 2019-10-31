@@ -59,18 +59,21 @@ public class PageController {
 	public void payment() {
 		
 	}
-	
-	@RequestMapping("/signIn")
-	public void signIn() {
-		
-	}
-	
-	@RequestMapping("/signUp")
-	public void signUp() {
-		
-	}
+
 	@RequestMapping("/payCacao")
 	public void pay() {
 		
 	}
+
+//	
+//	@RequestMapping("/signIn")
+//	public void signIn() {
+//		
+//	}
+//	
+//	@RequestMapping("/signUp")
+//	public void signUp() {
+//		
+//	}
+
 }

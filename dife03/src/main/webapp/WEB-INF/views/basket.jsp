@@ -27,6 +27,21 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
+    	
+    	//로그인 로그아웃 전환
+    	var mem_id = "${mem_id}";
+    	if(mem_id != '' && mem_id != null){
+    		//var login = $("#category-2").find("a:first").html();
+    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+    		//$("#category-2").append(logout);
+    		$("#sign").attr("href","logout").html("LOGOUT");
+    	}
+    	if(mem_id == '' || mem_id == null){
+    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+    		//$("#category-2").append(login);
+    		$("#sign").attr("href","signIn").html("LOGIN");
+    	}
+    	
     	var bas_no;
     	var btn_del;
     	 var chk;
@@ -66,10 +81,13 @@
 	    					
 	    					mem_point = Number(item.mem_point);
 	    				}
+	    			console.log(item.pos_no);
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
-	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
-	    			$(".cart_no").click(function(){
+	    			var td2=$("<td></td>");
+	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no});
+	    			$(td2).append(input);
+	    			$(input).click(function(){
 	    					  $(".chk_all").prop("checked", false);	
 	    	     	});
 	    			var td3;
@@ -101,8 +119,8 @@
 	    					td3=$("<td></td>");
 	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td3).append(product_img);
-	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
-	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).attr({"ren_date":item.bas_rental,"ret_date":item.bas_return});
 	    					td4=$("<td></td>");
 	    					$(td4).append(p1,p2);
 	    					td5=$("<td></td>");
@@ -126,9 +144,9 @@
 	    				td3=$("<td></td>");
     					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
     					$(td3).append(product_img);
-    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
+    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
     					
-    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).attr({"ren_date":item.bas_rental,"ret_date":item.bas_return});
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
     					td5=$("<td></td>");
@@ -155,14 +173,21 @@
     			
     			/*insert orders,ordersdetail 처리*/
     	    	$("#order").click(function(){
-    	    		var Jumun = new Array();
-
+    	    		var jumun = new Array();
+					var tr=$(this).parent().parent();
+					var td=tr.children();
+					
     		  		$("input[name='cart_no']:checked").each(function(){
-    		  			
-    		  			Jumun.push($(this).attr({"bas_no":"data-cartNum","pos_no":"data-pos"}));
+    		  			pos_no = $(this).attr("pos_no");
+    					mem_no = $(this).attr("mem_no");
+    					ren_date = $(this).attr("ren_date");
+    				
+    		  		
+    		  			obj={"mem_no":mem_no,"pos_no":pos_no,"rental":ren_date};
+    		  			jumun.push(obj);
     				});
-    		  		console.log(Jumun.length);
-    		  		console.log(Jumun);
+    		  		console.log(jumun);
+    		  	
     		  		
     		  		/* $.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
     		  			if(data === 1)
@@ -264,15 +289,15 @@
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="#" class="cl-effect-1">드론</a>
+                        <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      	<span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
                         <a href="basket.do" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
