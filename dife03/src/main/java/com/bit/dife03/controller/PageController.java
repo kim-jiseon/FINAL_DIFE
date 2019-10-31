@@ -54,14 +54,14 @@ public class PageController {
 	public void payment() {
 		
 	}
-	
-	@RequestMapping("/signIn")
-	public void signIn() {
-		
-	}
-	
-	@RequestMapping("/signUp")
-	public void signUp() {
-		
-	}
+//	
+//	@RequestMapping("/signIn")
+//	public void signIn() {
+//		
+//	}
+//	
+//	@RequestMapping("/signUp")
+//	public void signUp() {
+//		
+//	}
 }

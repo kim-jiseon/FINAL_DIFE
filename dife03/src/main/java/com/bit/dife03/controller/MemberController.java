@@ -33,15 +33,19 @@ public class MemberController {
 	public void setDao(MemberDao dao) {
 		this.dao = dao;
 	}
-	@RequestMapping("/main.do")
-	public void main() {
-		
-	}
-	@RequestMapping(value = "/signIn.do", method = RequestMethod.GET)
+//	
+//	@RequestMapping("/main")
+//	public void main() {
+//		
+//	}
+	
+	//로그인페이지 이동
+	@RequestMapping(value = "/signIn", method = RequestMethod.GET)
 	public void signInInsertForm() {
 		
 	}
-	@RequestMapping(value = "/signIn.do", method = RequestMethod.POST)
+	//로그인시
+	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
 	public ModelAndView signInSubmit(String mem_id, String mem_pwd, HttpSession session) {
 		ModelAndView mav = new ModelAndView("redirect:/main");
 
@@ -56,12 +60,22 @@ public class MemberController {
 		}
 		return mav;
 	}
-	
-	
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.GET)
-	public void signUpinsertForm() {
-		
+	//로그아웃
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String mem_id = (String) session.getAttribute("mem_id");
+		System.out.println(mem_id);
+		String msg = "";
+		if(mem_id != "" && mem_id != null) {
+			session.invalidate();
+			mav.setViewName("redirect:/main");
+		}else {
+			
+		}
+		return mav;
 	}
+
 
 	// 이용약관 이동
 	@RequestMapping("/policy.do")
@@ -74,9 +88,16 @@ public class MemberController {
 	public int idCheck(@RequestParam("mem_id") String mem_id) {
 		return dao.idCheck(mem_id);
 	}
+	
+	//회원가입페이지 이동
+	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
+	public void signUpinsertForm() {
+		
+	}
+	
 	// 회원가입
 	@ResponseBody
-	@RequestMapping(value = "/signUp.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
 	public ModelAndView signUpInsertSubmit(MemberVo vo, HttpSession session, HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView("redirect:/signIn");

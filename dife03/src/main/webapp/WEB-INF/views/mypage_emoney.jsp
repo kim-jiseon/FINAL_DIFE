@@ -3,23 +3,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-    <title>layout</title>
- <!-- 웹폰트 -->
-     <!-- 
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<title>layout</title>
+<!-- 웹폰트 -->
+<!-- 
     <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
      -->
-     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <!-- fadeIn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/mypage/mypage.css">
-    <link rel="stylesheet" href="css/mypage/mypage_emoney.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
+<!-- fadeIn -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/mypage/mypage.css">
+<link rel="stylesheet" href="css/mypage/mypage_emoney.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//로그인 로그아웃 전환
+		var mem_id = "${mem_id}";
+		alert(mem_id);
+		if (mem_id != '' && mem_id != null) {
+			//var login = $("#category-2").find("a:first").html();
+			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+			//$("#category-2").append(logout);
+			$("#sign").attr("href", "logout").html("LOGOUT");
+		}
+		if (mem_id == '' || mem_id == null) {
+			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+			//$("#category-2").append(login);
+			$("#sign").attr("href", "signIn").html("LOGIN");
+		}
+	})
+</script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
@@ -36,9 +58,9 @@
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
+                        <a id="sign" class="cl-effect-1"></a>
                         <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                        <a href="#" class="cl-effect-1">RESERVATION</a>
+                        <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>
