@@ -15,17 +15,17 @@
  -->
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <!-- 기본 링크 -->
+<!-- 기본 링크 -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/drone/drone.css">
-    <!-- 제이쿼리 플러그인 -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <!-- datepicker -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
-    <script src="js/datepicker/datepicker.js"></script>
+<!-- 제이쿼리 플러그인 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- datepicker -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="js/datepicker/datepicker.js"></script>
 <!-- Include language -->
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <!-- ī�װ� �˻� ������ 

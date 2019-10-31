@@ -1,11 +1,10 @@
 @charset "UTF-8";
 body{
-    background-color: black;
     overflow-y: hidden;
 }
 #header-nav{
     height: 50px;
-    background-color: #1F2124;
+    /*background-color: #1F2124;*/
 }
 #contents{
     height: auto;
@@ -141,7 +140,7 @@ li{
 }
 
 .text-danger{
-    color: #fff;
+    color: red;
 }
 
 .control-label{
@@ -149,14 +148,10 @@ li{
 }
 
 /* 캘린더 */
-#block5{
+#block{
     color: white;
     height: 180px;
     text-align: end;
-}
-#calendar{
-    font-size: 15px;
-    padding: 60px 15px 0px 0px;
 }
 #datepicker{
     width: 150px;
