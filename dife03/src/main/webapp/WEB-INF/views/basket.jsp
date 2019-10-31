@@ -176,7 +176,7 @@
     	    		var jumun = new Array();
 					var tr=$(this).parent().parent();
 					var td=tr.children();
-					
+				
     		  		$("input[name='cart_no']:checked").each(function(){
     		  			pos_no = $(this).attr("pos_no");
     					mem_no = $(this).attr("mem_no");
