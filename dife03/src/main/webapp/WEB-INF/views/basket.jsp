@@ -30,7 +30,6 @@
     	
     	//로그인 로그아웃 전환
     	var mem_id = "${mem_id}";
-    	alert(mem_id);
     	if(mem_id != '' && mem_id != null){
     		//var login = $("#category-2").find("a:first").html();
     		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -84,8 +83,10 @@
 	    				}
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
-	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
-	    			$(".cart_no").click(function(){
+	    			var td2=$("<td></td>");
+	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr("pos_no","1");
+	    			$(td2).append(input);
+	    			$(input).click(function(){
 	    					  $(".chk_all").prop("checked", false);	
 	    	     	});
 	    			var td3;
@@ -117,7 +118,7 @@
 	    					td3=$("<td></td>");
 	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td3).append(product_img);
-	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
 	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
 	    					td4=$("<td></td>");
 	    					$(td4).append(p1,p2);
@@ -142,7 +143,7 @@
 	    				td3=$("<td></td>");
     					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
     					$(td3).append(product_img);
-    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
+    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
     					
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td4=$("<td></td>");
@@ -171,14 +172,19 @@
     			
     			/*insert orders,ordersdetail 처리*/
     	    	$("#order").click(function(){
-    	    		var Jumun = new Array();
-
+    	    		var jumun = new Array();
+					var tr=$(this).parent().parent();
+					var td=tr.children();
+					pos_no = $(this).attr("pos_no");
+					mem_no = $(this).attr("mem_no");
     		  		$("input[name='cart_no']:checked").each(function(){
     		  			
-    		  			Jumun.push($(this).attr({"bas_no":"data-cartNum","pos_no":"data-pos"}));
+    		  		
+    		  			obj={"mem_no":mem_no,"pos_no":pos_no};
+    		  			jumun.push(obj);
     				});
-    		  		console.log(Jumun.length);
-    		  		console.log(Jumun);
+    		  		console.log(jumun);
+    		  	
     		  		
     		  		/* $.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
     		  			if(data === 1)

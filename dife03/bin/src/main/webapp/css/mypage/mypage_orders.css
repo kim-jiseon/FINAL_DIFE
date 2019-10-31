@@ -3,7 +3,12 @@
     background-color: #7EBDC2;
     border-color: #7EBDC2;
 }
+hr{ 
+	background-color: #e1e1e1;
+    border-color: #e1e1e1;
+}
 #mypage-orders{
+	color: #2f6064;
     text-align: left;
     font-size: 25px;
     padding: 5px 10px;
@@ -12,7 +17,7 @@
     margin: 30px 0px;
     padding: 20px 20px;
     text-align: left;
-    border: 0.3px solid #a4a4a4;
+    border: 0.3px solid #e1e1e1;
 }
 .mypage-orders-title{
     font-size: 20px;
@@ -33,10 +38,11 @@
     float: right;
     font-size: 14px;
     border: 1px solid #7EBDC2;
-    background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;  
+   /* background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;  
     -webkit-appearance: none;
     -moz-appearance: none;
         appearance: none;
+        */
     border-radius: 0px;
     background-color: white;
 }

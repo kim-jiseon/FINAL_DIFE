@@ -39,32 +39,61 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script>
-	        $(function() {
-            //모든 datepicker에 대한 공통 옵션 설정
-            $.datepicker.setDefaults({
-                dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-                ,changeYear: true //콤보박스에서 년 선택 가능
-                ,changeMonth: true //콤보박스에서 월 선택 가능                        
-                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
-            });
- 
-            //input을 datepicker로 선언
-            $("#datepicker").datepicker();                    
-            $("#datepicker2").datepicker();
-            
-            //From의 초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-            //To의 초기값을 내일로 설정
-            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        });
+	  
+	$(function() {
+		//로그인 로그아웃 전환
+		var mem_id = "${mem_id}";
+
+		if (mem_id != '' && mem_id != null) {
+			//var login = $("#category-2").find("a:first").html();
+			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+			//$("#category-2").append(logout);
+			$("#sign").attr("href", "logout").html("LOGOUT");
+		}
+		if (mem_id == '' || mem_id == null) {
+			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+			//$("#category-2").append(login);
+			$("#sign").attr("href", "signIn").html("LOGIN");
+		}
+
+		//모든 datepicker에 대한 공통 옵션 설정
+		$.datepicker.setDefaults({
+			dateFormat : 'yy-mm-dd' //Input Display Format 변경
+			,
+			showOtherMonths : true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+			,
+			showMonthAfterYear : true //년도 먼저 나오고, 뒤에 월 표시
+			,
+			changeYear : true //콤보박스에서 년 선택 가능
+			,
+			changeMonth : true //콤보박스에서 월 선택 가능                        
+			,
+			yearSuffix : "년" //달력의 년도 부분 뒤에 붙는 텍스트
+			,
+			monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8', '9',
+					'10', '11', '12' ] //달력의 월 부분 텍스트
+			,
+			monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+					'9월', '10월', '11월', '12월' ] //달력의 월 부분 Tooltip 텍스트
+			,
+			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ] //달력의 요일 부분 텍스트
+			,
+			dayNames : [ '일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일' ] //달력의 요일 부분 Tooltip 텍스트
+			,
+			minDate : "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+			,
+			maxDate : "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
+		});
+
+		//input을 datepicker로 선언
+		$("#datepicker").datepicker();
+		$("#datepicker2").datepicker();
+
+		//From의 초기값을 오늘 날짜로 설정
+		$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+		//To의 초기값을 내일로 설정
+		$('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+	});
 </script>
 </head>
 <body>
@@ -75,15 +104,15 @@
 				<div id="category">
 					<span id="category-1" class="animated fadeInUp"> 
 					    <a href="main"><img src="img/logo/logo_white.png" id="logo"></a> 
-						<a href="#" class="cl-effect-1">드론</a> 
+						<a href="drone" class="cl-effect-1">드론</a> 
 						<a href="pilot" class="cl-effect-1">파일럿</a> 
 						<a href="#" class="cl-effect-1">지역 및 날씨</a> 
 						<a href="#" class="cl-effect-1">고객지원</a>
 						<a href="#" class="cl-effect-1">커뮤니티</a>
 					</span> 
 					<span id="category-2" class="animated fadeInUp"> 
-					    <a href="signIn" class="cl-effect-1">LOGIN</a> 
-						<a href="#" class="cl-effect-1">MYPAGE</a> 
+					    <a id="sign" class="cl-effect-1"></a> 
+						<a href="mypage_orders" class="cl-effect-1">MYPAGE</a> 
 						<a href="basket" class="cl-effect-1">RESERVATION</a>
 					</span>
 				</div>
