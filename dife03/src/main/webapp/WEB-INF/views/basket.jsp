@@ -27,6 +27,22 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
+    	
+    	//로그인 로그아웃 전환
+    	var mem_id = "${mem_id}";
+    	alert(mem_id);
+    	if(mem_id != '' && mem_id != null){
+    		//var login = $("#category-2").find("a:first").html();
+    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+    		//$("#category-2").append(logout);
+    		$("#sign").attr("href","logout").html("LOGOUT");
+    	}
+    	if(mem_id == '' || mem_id == null){
+    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+    		//$("#category-2").append(login);
+    		$("#sign").attr("href","signIn").html("LOGIN");
+    	}
+    	
     	var bas_no;
     	var btn_del;
     	 var chk;
@@ -264,15 +280,15 @@
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="#" class="cl-effect-1">드론</a>
+                        <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      	<span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
                         <a href="basket.do" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>

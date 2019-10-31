@@ -21,6 +21,24 @@
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	//로그인 로그아웃 전환
+    	var mem_id = "${mem_id}";
+    	alert(mem_id);
+    	if(mem_id != '' && mem_id != null){
+    		//var login = $("#category-2").find("a:first").html();
+    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+    		//$("#category-2").append(logout);
+    		$("#sign").attr("href","logout").html("LOGOUT");
+    	}
+    	if(mem_id == '' || mem_id == null){
+    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+    		//$("#category-2").append(login);
+    		$("#sign").attr("href","signIn").html("LOGIN");
+    	}
+    })
+    </script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
@@ -37,9 +55,9 @@
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
+                        <a id="sign" class="cl-effect-1"></a>
                         <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                        <a href="#" class="cl-effect-1">RESERVATION</a>
+                        <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>
