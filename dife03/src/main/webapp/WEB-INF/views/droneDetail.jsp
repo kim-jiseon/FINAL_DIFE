@@ -18,11 +18,13 @@
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/drone/droneDetail.css">
 <!-- 달력 -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="js/datepicker/datepicker.js"></script>
+<!-- Include language -->
+<script src="js/datepicker/i18n/datepicker-ko.js"></script>
+<!-- 아이콘 -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 <script type="text/javascript">
 $(function() {
@@ -33,7 +35,7 @@ $(function() {
     $('.img').on('mousemove',magnify).prepend('<div class="magnifier"></div>').children('.magnifier').css({
         "backgroun":"url('"+scale.attr('src')+"')no-repeat","background-size":scale.width()*zoom+"px "+scale.height()*zoom+"px"
     });
-    
+    /*
     var magnifier = $('.magnifier');
     function magnify(e){
         // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
@@ -99,7 +101,7 @@ document.onkeydown = evt => {
   evt = evt || window.event;
   evt.keyCode === 27 ? closeModal() : false;
 };
-
+*/
 
 });
 </script>
@@ -161,14 +163,23 @@ document.onkeydown = evt => {
 					
 					<div id="block2">
 						<ul style="color: white; font-size: 20px;">
-							<li><p>드론명 : <strong>매빅PRO</strong></p></li>
+							<li name="droD_name"><p>드론명 : <strong>매빅PRO</strong></p></li>
 							<hr>	
-							<li><p>가격 : <strong>200,000원</strong></p></li>
+							<li name="droD_price"><p>가격 : <strong>200,000원</strong></p></li>
 							<hr>
-							<li><p>시리즈명 : <strong>MAVIC</strong></p></li>
-							<li><p>제조사명 : <strong>DJI</strong></p></li>
+							<li name="droD_series"><p>시리즈명 : <strong>MAVIC</strong></p></li>
+							<li name="droD_made"><p>제조사명 : <strong>DJI</strong></p></li>
 							<hr>
-							<li><p>대여점 : 
+							
+							<!-- 캘린더 css 추가예정 -->
+							
+							<div id="calendar">대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;                     			 
+                               	<input type="text" data-range="true"
+                                           data-multiple-dates-separator=" - " data-language="ko"
+                                           class="datepicker-here" style="width:180px; height: 25px;"/>
+                       		</div>
+							<hr>
+							<li name="droD_ren"><p>대여점 : 
 								<span id="opr">
 									<select id="operR" name="operR" style="width: 150px; height: 30px;">
 										<option value="R0001">파주점</option>
@@ -189,7 +200,7 @@ document.onkeydown = evt => {
 									</select>
 								</span>
 							</p></li>
-							<li><p>수    량 :							 
+							<li name="droD_amount"><p>수    량 :							 
 								<span id="opa">
 									<select id="operA" name="operA" style="width: 150px; height: 30px;">
 										<option value="amt1">1</option>

@@ -28,9 +28,7 @@
     <script src="js/datepicker/datepicker.js"></script>
 <!-- Include language -->
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
-
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-<!--
+<!-- ī�װ� �˻� ������ 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   -->
 <script type="text/javascript">
@@ -42,7 +40,7 @@ $(function() {
         $(this).removeClass("hover");
     });
     
-    /* ī�װ�(�ø����,����) Ŭ�� �� �������� */
+    /* ī�װ�(�ø����,����) Ŭ�� �� �������� 
     var searchSp = document.getElementById("search1");
     var listSp = document.getElementById("sub-menu");
     
@@ -116,7 +114,7 @@ $(function() {
         $("#calendar").datepicker();*/
         
         })
-    </script>
+</script>
 </head>
 
 <body>
@@ -144,8 +142,8 @@ $(function() {
         <div id="header-nav">
                 <ul class="search">
                     <div class="block">
-                        <div id="calendar">
-                           대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
+                        <div id="calendar" name="calendar">
+                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -158,70 +156,70 @@ $(function() {
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
-                    <li class="search1">시리즈명<i class="fa fa-plane"></i>
+                    <li name="series" class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul id="sub-menu">
-                                <li class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <ul name="sub_series_01" id="sub-menu">
+                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>MAVIC 2 PRO</li>
-                                            <li>MAVIC PRO</li>
-                                            <li>MAVIC 2 ENTERPRISE UNIVERSAL</li>
-                                            <li>MAVIC 2 ENTERPRISE DUAL</li>
-                                            <li>MAVIC AIR</li>
+                                        <ul name="sub_series_02">
+                                            <li>매빅 2 PRO</li>
+                                            <li>매빅 PRO</li>
+                                            <li>매빅 2 엔터프라이즈 유니버셜</li>
+                                            <li>매빅 2 엔터프라이즈 듀얼</li>
+                                            <li>매빅 AIR</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>BEBOP 2 SINGLE</li>
-                                            <li>BEBOP 2+SKY CONTROLLER</li>
+                                        <ul name="sub_series_02">
+                                            <li>비밥 2 SINGLE</li>
+                                            <li>비밥 2+SKY CONTROLLER</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>MINI SPARK</li>
+                                        <ul name="sub_series_02">
+                                            <li>스파크 미니</li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li class="hover-dro">인스파이어<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>INSPIRE 1V2 1인</li>
-                                            <li>INSPIRE 1V2 2인</li>
-                                            <li>INSPIRE 1 PRO 1인</li>
-                                            <li>INSPIRE 1 PRO 2인</li>
-                                            <li>INSPIRE 2 ZENMUSE X5S 1인</li>
-                                            <li>INSPIRE 2 ZENMUSE X5S 2인</li>
+                                        <ul name="sub_series_02">
+                                            <li>인스파이어 1V2 1인</li>
+                                            <li>인스파이어 1V2 2인</li>
+                                            <li>인스파이어 1 PRO 1인</li>
+                                            <li>인스파이어 1 PRO 2인</li>
+                                            <li>인스파이어 2 ZENMUSE X5S 1인</li>
+                                            <li>인스파이어 2 ZENMUSE X5S 2인</li>
                                         </ul>
                                     </div>
                                 </li>
                                 <li class="hover-dro">팬텀<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>PHANTOM 4</li>
-                                            <li>PHANTOM 4 PRO</li>
-                                            <li>PHANTOM 3 ADVANCED</li>
-                                            <li>PHANTOM 3 PROFESSIONAL</li>
+                                        <ul name="sub_series_02">
+                                            <li>팬텀 4</li>
+                                            <li>팬텀 4 PRO</li>
+                                            <li>팬텀 3 ADVANCED</li>
+                                            <li>팬텀 3 PROFESSIONAL</li>
                                         </ul>
                                     </div>
                                 </li>                                             
                             </ul>
                         </div>
                     </li>
-                    <li class="search1">가격<i class="fa fa-tags"></i>
+                    <li name="price" class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
                         <div class="sub-menu-1">
-                            <ul id="sub-menu">
+                            <ul name="sub_price" id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
                                 <li class="hover-dro">10 ~ 20만원</li>
                                 <li class="hover-dro">20만원 ~</li>
                             </ul>
                         </div>
                     </li>                  
-                    <button id="btnSch">검색</button>             
+                    <button id="btnSch">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
                 </ul>
         </div>
         </div>
@@ -424,15 +422,15 @@ $(function() {
 		
 				<!-- 페이징 -->
 					<div class="btnPaging">
-                        <ul class="pagination">
+                        <ul class="pagination" style="font-size: 17px;">
                             <li>
-                                <a href="#"><i class="fas fa-arrow-left"></i></a>
+                                <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                                 <a href="#">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#">4</a>
                                 <a href="#">5</a>
-                                <a href="#"><i class="fas fa-arrow-right"></i></a>
+                                <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             </li>
                         </ul>
                     </div>
