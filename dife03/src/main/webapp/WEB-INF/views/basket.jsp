@@ -30,7 +30,12 @@
     	var bas_no;
     	var btn_del;
     	 var chk;
+    	 //insert를 위한 변수준비
     	 var sum = 0;
+    	 var all_amount= 0;
+    	 var mem_point= 1;
+    	 var reserve_fund=0;
+    	 
     	/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -41,15 +46,11 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
-    	
-    	
     		/*체크박스 변환 */
-    	
     	 	$(".chk_all").change(function(){
     	 		 chk = $(this).is(":checked");//.attr('checked');
     	         if(chk) $("input:checkbox[name=cart_no]").prop('checked', true);
     	         else  $("input:checkbox[name=cart_no]").prop('checked',false);
-    	         console.log($('input:checkbox[name=cart_no]').length); 
     	     	/* 각 상품 체크박스 변환 checked*/ 	
     	 	});
     	
@@ -60,6 +61,11 @@
      			
 	    		$.each(data,function(idx,item){
 	    			
+	    			if(idx == 1)
+	    				{
+	    					
+	    					mem_point = Number(item.mem_point);
+	    				}
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td><input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+"></td>");
@@ -85,16 +91,17 @@
 	    			re_date=date_to_str(re_date);
 	    			/* sum 할인률 및 하단 정보 관련 처리 */
 	    			sum +=Number(item.bas_price);
-	    			
+	    			all_amount += Number(item.bas_amount);
+	    			reserve_fund += Number(item.point);
 	    			/*  */
-	    			
+	    		
 	    			
 	    			if(item.dro_name !== null)
 	    				{
 	    					td3=$("<td></td>");
 	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td3).append(product_img);
-	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
 	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
 	    					td4=$("<td></td>");
 	    					$(td4).append(p1,p2);
@@ -111,6 +118,7 @@
 	    					td8 = $("<td></td>");
 	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
 	    					$(td8).append(btn_del);	
+	    					hidden1 = $("<input type='hidden' name='pos_no'>")
 	    					
 	    				}
 	    			else
@@ -118,7 +126,8 @@
 	    				td3=$("<td></td>");
     					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
     					$(td3).append(product_img);
-    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).attr("data-pos","item.pos_no");
+    					
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
@@ -141,11 +150,33 @@
 	    			}); 
 	    		/* foreach종료 */
 	    		/*가격처리*/
-    			("#fin_price").text(sum+"원");
+    			$("#fin_price").text(sum+"원");
     			/*  */
+    			
+    			/*insert orders,ordersdetail 처리*/
+    	    	$("#order").click(function(){
+    	    		var Jumun = new Array();
+
+    		  		$("input[name='cart_no']:checked").each(function(){
+    		  			
+    		  			Jumun.push($(this).attr({"bas_no":"data-cartNum","pos_no":"data-pos"}));
+    				});
+    		  		console.log(Jumun.length);
+    		  		console.log(Jumun);
+    		  		
+    		  		/* $.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
+    		  			if(data === 1)
+    		  				{
+    		  				location.href="basket";
+    		  				}
+    		  		}}) */
+    	    	});
+    	    	/* orders insert,ordersdetial insert end */
+
 	    	}})
     	/*ajax 종료  */
 	  	
+    	
     	    }    
         /*list를 처리하는 function getList end  */
  		getList();   
@@ -169,6 +200,8 @@
 	    				var td = tr.children();
 	    				bas_no = td.eq(0).text();
 	    				price = td.eq(4).text();
+	    				amount=td.eq(3).text();
+	    				point = td.eq(14).text();
 	    				console.log(price);
 	    				var check = confirm("정말로 삭제하시겠습니까?");
 		 	    		if(check == true)
@@ -176,7 +209,9 @@
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
-			    						sum -=price;
+			    						reserve_fund -= point;
+			    						all_amount -= amount;
+			    						sum -= price;
 			    						tr.remove();
 			    						}
 			    				}})
@@ -189,18 +224,19 @@
     			/* checkbox list*/
     			$("#del_chk").click(function(){
 					 	var confirm_val = confirm("정말 삭제하시겠습니까?");
-
+						
 						if(confirm_val) {
 							var checkArr = new Array();
 
 				  		$("input[name='cart_no']:checked").each(function(){
+				  			
 				    		checkArr.push($(this).attr("data-cartNum"));
 						});
 				  		console.log(checkArr.length);
 				  		$.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
 				  			if(data === 1)
 				  				{
-				  				location.href="basket";
+				  				location.href="basket";  
 				  				}
 				  		}})
 					}
@@ -210,11 +246,11 @@
     			
     		
     			
-    	/*insert orders,ordersdetail 처리*/
-    	
-    	/* orders insert,ordersdetial insert end */
-    	/**/
+        	/**/
 	    			  console.log(sum);
+    				  console.log(all_amount);
+    				  console.log(reserve_fund);
+    				  console.log(mem_point);
 	 	
     });
 
@@ -270,7 +306,7 @@
                             <th scope="col">상품명</th>
                             <th scope="col">판매가</th>
                             <th scope="col">수량</th>
-                            <th scope="col">주문금액<br/>(적립예정)</th>
+                            <th scope="col">주문금액<br/>(적립금)</th>
                             <th scope="col">주문관리</th>
                         </thead>
                         <tbody id="table_content">
@@ -278,7 +314,7 @@
                     </table>
                     <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="del_chk" class="a_btn"><font color="black">선택삭제</font></a>
-					<a href="orders" id="order" class="a_btn"><font color="black">주문하기</font></a>
+					<a href="javascript:void(0)" id="order" class="a_btn"><font color="black">주문하기</font></a>
 				</div>
                         </div>
                 </div>
@@ -288,11 +324,11 @@
           <!--    content_footer-->
        <div id='content_footer'>
             <div class="container" style="color: white">
-               <div class="total_product">
+              <!--  <div class="total_product">
                 <span class="info">쿠폰 사용 여부</span> <input type="checkbox" style="border:10px; padding: 5px; margin: 5px;"><span class="info">쿠폰 선택</span>
                 <select style="margin: 5px; width: 500px;"></select><br>
                 
-               </div>
+               </div> -->
                 <div class="total_product">
                     <span class="info">적립금</span><span class="info"> 원</span>
                     

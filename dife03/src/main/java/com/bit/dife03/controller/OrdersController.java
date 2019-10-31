@@ -90,7 +90,9 @@ public class OrdersController {
 	}
 	@ResponseBody
 	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
-	public int insertJumun()
+	public int insertJumun(
+			@RequestParam(value = "checkList[]") List<String> chArr,
+			BasketVo bas)
 	{
 		int re=0;
 		
