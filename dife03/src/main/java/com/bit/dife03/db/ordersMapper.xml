@@ -11,6 +11,7 @@ select bas_no,p.pos_no,mem_no,bas_amount,bas_price,bas_rental,bas_return,bas_tim
  (select mem_no from member where mem_id=#{mem_id})) b,possesion p where b.pos_no = p.pos_no)
 ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no) order by bas_no
   </select>
+  
   <!-- 주문삭제 버튼 클릭시 장바구니 삭제 -->
 	<delete id="delBas">
 		delete basket where bas_no=#{bas_no}
