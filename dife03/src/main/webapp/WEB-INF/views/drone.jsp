@@ -244,7 +244,7 @@ $(function() {
                                   <h2><span>MAVIC</span> 2 PRO</h2>
                                 </div>
                               </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>		              
 	                </div>
 	                <div class="block">
@@ -258,7 +258,7 @@ $(function() {
                                       <h2><span>MAVIC</span> PRO</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>       
 	                </div>
 	              <div class="block">
@@ -272,7 +272,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 4</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>
 	                <div class="block">
@@ -286,7 +286,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 4 PRO</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>              
 	                </div>
 	          
@@ -302,7 +302,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 3 ADVANCED</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>           
 	                </div>                
 	                <div class="block">	                
@@ -316,7 +316,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 3 PROFESSIONAL</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>               
 	                </div>	                
 	                <div class="block">
@@ -330,7 +330,7 @@ $(function() {
                                         <h2><span>SPARK</span> MINI</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>             
 	                </div>	                
 	                <div class="block">
@@ -344,7 +344,7 @@ $(function() {
                                         <h2><span>MAVIC</span> 2 ENTERPRISE UNIVERSAL</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>
 	                
@@ -360,7 +360,7 @@ $(function() {
                                         <h2><span>MAVIC</span> 2 ENTERPRISE DUAL</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>          
 	                </div>                
 	                <div class="block">
@@ -374,7 +374,7 @@ $(function() {
                                         <h2><span>MAVIC</span> AIR</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>	                
 	                <div class="block">
@@ -388,7 +388,7 @@ $(function() {
                                         <h2><span>INSPIRE</span> 1V2 1인</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>	                
 	                <div class="block">
@@ -402,25 +402,25 @@ $(function() {
                                         <h2><span>INSPIRE</span> 1V2 2인</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>           
 	                </div>
 	                
-	                <!-- 4��° �ܶ� -->
-	                <!--<div class="block">
+	                <!-- 다음페이지 -->
+	                <div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0013.png" alt="�ν����̾�1PRO 1��"/>
+                            <img src="img/drone/D0013.png" alt="인스파이어 1 PRO 1인"/>
                                 <figcaption>
-                                    <p>�ν����̾� 1 ���� �������. PIX4D 15�� �����̿�� ����!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>4K(UHD) 화질의 영상, 1200만 화소, 흔들림을 잡아주는 더욱 안정된 전문 항공촬영 2인 조종 패키지<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
                                       <p>270,000��</p> -->
-                                   <!-- <div class="heading">
-                                        <h2><span>INSPIRE</span> 1PRO 1��</h2>
+                                  	<div class="heading">
+                                        <h2><span>INSPIRE</span> 1PRO 1인</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>           
-	                </div> -->
+	                </div>
 				</div>
 		
 		
