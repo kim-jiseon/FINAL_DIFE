@@ -48,7 +48,6 @@
     	 //insert를 위한 변수준비
     	 var final_sum = 0;
     	 var sum= 0;
-    	 var node_sum=0;
     	 var all_amount= 0;
     	 var mem_point= 1;
     	 var reserve_fund=0;
@@ -68,12 +67,12 @@
     	 		 chk = $(this).is(":checked");//.attr('checked');
     	         if(chk) {$("input:checkbox[name=cart_no]").prop('checked', true);
     	         sum=final_sum;
-    	         node_sum=0;
+    	      
     	         $("#sum_price").text("주문금액: "+sum+"원");
     	         }
     	         else {$("input:checkbox[name=cart_no]").prop('checked',false);
     	         sum=0;
-    	         node_sum=0;
+    	       
     	         $("#sum_price").text("주문금액: 0원");
     	         }	
     	 	});
