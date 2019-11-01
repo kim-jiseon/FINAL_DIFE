@@ -330,38 +330,39 @@
         <div id="contents">
         <!-- 세션 영역        -->
         <div id="content-session">
-            <div class="container" style="color: black">
+            <div class="container">
+                 <div class="container-top">장바구니</div>
                 <div class='main-session'>
-                   <p style=" font-size: 40px; color:white; font-weight: 1000">상품 목록</p><br>
+                   <p style="font-size: 20px; font-weight: 700;">상품 목록</p><br>
                 <!--테이블 영역      -->
-                        <table id='cart_table' style="color:white;">
+                        <table id='cart_table'>
                              <colgroup>
-                                 <col width='8%'>
-                                 <col width="5%">
-                                 <col width="10%">
-                                 <col width="23%">
-                                 <col width='10%'>
-                                 <col width='20%'>
-                                 <col width='19%'>
-                                 <col width='10%'>
-                             </colgroup>  
-                        <thead style="font-size: 25px;; font-weight:800;">
-                            <th scope="col">번호</th>
-                            <th scope="col"   style="cursor: pointer"><input type="checkbox" class="chk_all" checked='checked'></th>
-                            <th scope="col"></th>
-                            <th scope="col">상품명</th>
-                            <th scope="col">판매가</th>
-                            <th scope="col">수량</th>
-                            <th scope="col">주문금액<br/>(적립금)</th>
-                            <th scope="col">주문관리</th>
+                                 <col>
+                                 <col>
+                                 <col>
+                                 <col width="35%">
+                                 <col width="20%">
+                                 <col>
+                                 <col>
+                                 <col>
+                             </colgroup>
+			<thead>
+                            <th>번호</th>
+                            <th style="cursor: pointer"><input type="checkbox" class="chk_all" checked='checked'></th>
+                            <th></th>
+                            <th>상품명</th>
+                            <th>판매가</th>
+                            <th>수량</th>
+                            <th>주문금액&nbsp;(적립금)</th>
+                            <th>주문관리</th>
                         </thead>
                         <tbody id="table_content">
                       		</tbody>
                     </table>
                     <div class="delete-btn-area">
                     <span id="sum_price"></span>
-					<a href="javascript:void(0)" id="del_chk" class="a_btn"><font color="black">선택삭제</font></a>
-					<a href="javascript:void(0)" id="order" class="a_btn"><font color="black">주문하기</font></a>
+					<a href="javascript:void(0)" id="del_chk" class="a_btn">선택삭제</a>
+					<a href="javascript:void(0)" id="order" class="a_btn">주문하기</a>
 				</div>
                         </div>
                 </div>
