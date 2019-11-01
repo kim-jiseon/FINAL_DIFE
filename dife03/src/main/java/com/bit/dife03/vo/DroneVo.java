@@ -3,7 +3,6 @@ package com.bit.dife03.vo;
 import java.util.Date;
 
 public class DroneVo {
-	private int dro_list_no;
 	private String dro_no;
 	private String dro_name;
 	private String dro_series;
@@ -23,11 +22,10 @@ public class DroneVo {
 	private Date first_time;
 	private String last;
 	private Date last_time;
-	public DroneVo(int dro_list_no, String dro_no, String dro_name, String dro_series, String dro_series_no, String dro_made,
+	public DroneVo(String dro_no, String dro_name, String dro_series, String dro_series_no, String dro_made,
 			String dro_photo, Date bas_rental, Date bas_return, int pos_price, String ren_no, String ren_name,
 			String ren_loc, String pos_amount, String first, Date first_time, String last, Date last_time) {
 		super();
-		this.dro_list_no = dro_list_no;
 		this.dro_no = dro_no;
 		this.dro_name = dro_name;
 		this.dro_series = dro_series;
@@ -49,12 +47,6 @@ public class DroneVo {
 	public DroneVo() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	public int getDro_list_no() {
-		return dro_list_no;
-	}
-	public void setDro_list_no(int dro_list_no) {
-		this.dro_list_no = dro_list_no;
 	}
 	public String getDro_no() {
 		return dro_no;
