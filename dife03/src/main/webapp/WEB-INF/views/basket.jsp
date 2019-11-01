@@ -46,7 +46,8 @@
     	var btn_del;
     	 var chk;
     	 //insert를 위한 변수준비
-    	 var sum = 0;
+    	 var final_sum = 0;
+    	 var sum= 0;
     	 var all_amount= 0;
     	 var mem_point= 1;
     	 var reserve_fund=0;
@@ -64,10 +65,18 @@
     		/*체크박스 변환 */
     	 	$(".chk_all").change(function(){
     	 		 chk = $(this).is(":checked");//.attr('checked');
-    	         if(chk) $("input:checkbox[name=cart_no]").prop('checked', true);
-    	         else  $("input:checkbox[name=cart_no]").prop('checked',false);
-    	     	/* 각 상품 체크박스 변환 checked*/ 	
+    	         if(chk) {$("input:checkbox[name=cart_no]").prop('checked', true);
+    	         sum=final_sum;
+    	      
+    	         $("#sum_price").text("주문금액: "+sum+"원");
+    	         }
+    	         else {$("input:checkbox[name=cart_no]").prop('checked',false);
+    	         sum=0;
+    	       
+    	         $("#sum_price").text("주문금액: 0원");
+    	         }	
     	 	});
+    		/* 각 상품 체크박스 변환 checked*/ 
     		
     		$(".cart_no").click(function(){
     			price=$(this).attr("price");
@@ -177,6 +186,30 @@
 	    		/* foreach종료 */
 	    		/*가격처리*/
     			$("#sum_price").text("주문금액: "+sum+"원");
+    			final_sum=sum;
+    			console.log(node_sum);
+    			/*  */
+    			
+    			/* check node 처리 */
+    			
+    			$("input[name='cart_no']").click(function(){
+    				
+    				$(this).each(function(){
+    					 price_node=Number($(this).attr("price"));
+    					if($(this).is(":checked"))
+    						{
+    							sum = sum +price_node;
+    						}
+    					else{
+    						sum =sum - price_node;
+    					}
+    					
+    					 $("#sum_price").text("주문금액: "+sum+"원"); 
+    					
+    					
+    				});
+    				
+    			});
     			/*  */
     			
     			/*insert orders,ordersdetail 처리*/
@@ -198,7 +231,7 @@
        				  	 console.log(reserve_fund);
        				 	 console.log(mem_point);
        				 	all_amount += amount;
-       				 	sum += price;
+       				 	final_sum += price;
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
     		  			jumun.push(jumunlist);
     				});
@@ -252,7 +285,6 @@
 	    				bas_no = td.eq(0).text();
 	    				price = td.eq(4).text();
 	    				amount=td.eq(3).text();
-	    				point = td.eq(14).text();
 	    				var check = confirm("정말로 삭제하시겠습니까?");
 		 	    		if(check == true)
 		 	    			{			
@@ -260,9 +292,10 @@
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
-			    						all_amount -= amount;
-			    						sum -= price;
 			    						tr.remove();
+			    						all_amount -= amount;
+			    						node_price -= price;
+			    						
 			    						}
 			    				}})
 		 	    			}
@@ -293,7 +326,9 @@
     			});
 
     			/*  */
-    			
+    			/* 초기 page 변수값 설정 */
+    			$("#sum_price").text("주문금액: "+final_sum+"원");
+    			/*  */
     		
     			
         	/**/
