@@ -192,6 +192,7 @@
     					mem_no = $(this).attr("mem_no");
     					ren_date = $(this).attr("ren_date");
     					ret_date = $(this).attr("ret_date");
+    					
     					 console.log(sum);
        				  	 console.log(all_amount);
        				  	 console.log(reserve_fund);
