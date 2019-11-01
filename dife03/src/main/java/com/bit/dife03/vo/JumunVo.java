@@ -7,4 +7,5 @@ public class JumunVo {
 	private int sum;
 	
 	
+	
 }
