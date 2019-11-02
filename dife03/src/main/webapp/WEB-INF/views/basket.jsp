@@ -403,7 +403,7 @@
                         </div>
                 </div>
             </div>
-        </div>
+        
 <!--    //table-->
           <!--    content_footer-->
        <div id='content_footer'>
@@ -428,6 +428,8 @@
                     <span class="info">최종 결제금액</span><span class="info" id="fin_price"></span>
                 </div> -->
            </div>
+       </div>
+       </div>
        </div>
     <!-- //contents -->
        
