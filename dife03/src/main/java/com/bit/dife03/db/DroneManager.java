@@ -43,7 +43,7 @@ public class DroneManager {
 	}
 	
 	// 드론 개수 카운트
-	public static int get_droCount() {
+	public static int get_droCount1() {
 		int re = 0;
 		SqlSession session = factory.openSession();
 		re = session.selectOne("drone.get_droCount1");
