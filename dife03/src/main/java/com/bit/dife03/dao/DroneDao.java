@@ -20,7 +20,7 @@ public class DroneDao {
 
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return DroneManager.getDroneCount();
+		return DroneManager.get_droCount1();
 	}
 	
 	
