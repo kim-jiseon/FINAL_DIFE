@@ -77,4 +77,16 @@ public class OrdersDetailVo {
 	public OrdersDetailVo() {
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "OrdersDetailVo [det_no=" + det_no + ", ord_no=" + ord_no + ", pos_no=" + pos_no + ", det_amount="
+				+ det_amount + ", det_price=" + det_price + ", det_rental=" + det_rental + ", det_return=" + det_return
+				+ ", det_rental_stat=" + det_rental_stat + ", getDet_price()=" + getDet_price() + ", getDet_no()="
+				+ getDet_no() + ", getOrd_no()=" + getOrd_no() + ", getPos_no()=" + getPos_no() + ", getDet_amount()="
+				+ getDet_amount() + ", getDet_rental()=" + getDet_rental() + ", getDet_return()=" + getDet_return()
+				+ ", getDet_rental_stat()=" + getDet_rental_stat() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 }

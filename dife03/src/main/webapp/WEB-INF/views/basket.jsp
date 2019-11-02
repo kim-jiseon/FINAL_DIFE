@@ -226,32 +226,36 @@
     					ren_date = $(this).attr("ren_date");
     					ret_date = $(this).attr("ret_date");
     					
-    					 console.log(sum);
-       				  	 console.log(all_amount);
+    					 console.log("수량:"+amount);
+    					 console.log("합계: "+sum);
+       				  	 console.log("총 수량:"+all_amount);
        				  	 console.log(reserve_fund);
-       				 	 console.log(mem_point);
+       				 	 console.log("포인트: "+mem_point);
        				 	all_amount += amount;
        				 	final_sum += price;
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
     		  			jumun.push(jumunlist);
+    		  
     				});
     		  		obj ={"jumun":jumun,"ord_price":sum,"ord_amount":all_amount,"mem_no":mem_no}
-    		  		console.log(obj)
+    		  		console.log("obj:"+obj)
     		  		
     		  		if(jumun.length == 0)
 		  			{
 		  				alert("물품을 선택해주세요.");
 		  			}
     		  		else{
-    		  			 $.ajax({url:"/jumunInsert.do",type:"post",data:{"JumunVo":obj},success:function(data){
-    		  				 alert("ajax통신");
+    		  			$.post(){}
+    		  			// $.ajax({url:"/jumunInsert.do",type:"post",data:{"JumunVo":obj},success:function(data){
+    		  				 //alert(obj.jumun[0].pos_no);
+    		  			//	 alert(obj.ord_price);
     		  			/* if(data === 1)
     		  				{
     		  				location.href="basket";
     		  				} */
-    		  		}}) 
+    		  		//}}) 
     		  		}
-    		  		console.log(jumun);
+    		  		console.log("jumun:"+jumun);
     		  	
     		  		
     		  	

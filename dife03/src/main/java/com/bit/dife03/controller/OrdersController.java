@@ -2,6 +2,7 @@ package com.bit.dife03.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -94,7 +95,7 @@ public class OrdersController {
 	@ResponseBody
 	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
 	public int insertJumun(
-			JumunVo jumun,
+			JumunVo obj,
 			OrdersVo ord,
 			OrdersDetailVo od)
 	{
@@ -102,10 +103,14 @@ public class OrdersController {
 		
 		
 		int re=0;
-		String mem_no =jumun.getMem_no();
-		int amount=jumun.getOrd_amount();
-		int price=jumun.getOrd_price();
-		System.out.println(mem_no);
+		String mem_no =obj.getMem_no();
+		int amount=obj.getOrd_amount();
+		int price=obj.getOrd_price();
+		ArrayList<OrdersDetailVo> list = obj.getJumun();
+//		for (OrdersDetailVo vo : list) {
+//			System.out.println(vo.getPos_no()+vo.getDet_rental()+vo.getDet_return());
+//		}
+		System.out.println(mem_no+","+amount+","+price);
 		/*
 		 * System.out.println(amount); System.out.println(price);
 		 */
