@@ -99,6 +99,7 @@ public class OrdersController {
 			OrdersDetailVo od)
 	{
 		
+		
 		int re=0;
 		String mem_no =jumun.getMem_no();
 		int amount=jumun.getOrd_amount();
