@@ -41,7 +41,6 @@
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
     	}
-    	
     	var bas_no;
     	var btn_del;
     	 var chk;
@@ -67,21 +66,18 @@
     	 		 chk = $(this).is(":checked");//.attr('checked');
     	         if(chk) {$("input:checkbox[name=cart_no]").prop('checked', true);
     	         sum=final_sum;
-    	      
     	         $("#sum_price").text("주문금액: "+sum+"원");
     	         }
     	         else {$("input:checkbox[name=cart_no]").prop('checked',false);
     	         sum=0;
-    	       
     	         $("#sum_price").text("주문금액: 0원");
-    	         }	
+    	         }
     	 	});
     		/* 각 상품 체크박스 변환 checked*/ 
     		
     		$(".cart_no").click(function(){
     			price=$(this).attr("price");
 				amount=$(this).attr("amount");
-    			
     		})
     	
     	/*list를 처리하는 function*/
@@ -100,7 +96,6 @@
 	    				}
 	    			console.log(item.pos_no);
 	    			tr=$("<tr></tr>");
-	    			
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td></td>");
 	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
@@ -121,7 +116,6 @@
 	    			var p4;
 	    			var p5;
 	    			var p6;
-	    			
 	    			rental = date_to_str(rental);
 	    			re_date=date_to_str(re_date);
 	    			/* sum 할인률 및 하단 정보 관련 처리 */
@@ -129,8 +123,6 @@
 	    			all_amount += Number(item.bas_amount);
 	    			reserve_fund += Number(item.point);
 	    			/*  */
-	    		
-	    			
 	    			if(item.dro_name !== null)
 	    				{
 	    					td3=$("<td></td>");
@@ -154,7 +146,6 @@
 	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
 	    					$(td8).append(btn_del);	
 	    					hidden1 = $("<input type='hidden' name='pos_no'>")
-	    					
 	    				}
 	    			else
 	    				{
@@ -162,7 +153,6 @@
     					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
     					$(td3).append(product_img);
     					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
-    					
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
@@ -215,7 +205,7 @@
     			/*insert orders,ordersdetail 처리*/
     	    	$("#order").click(function(){
     	    		var jumun = new Array();
-					
+					orders_sum = 0;
 				
     		  		$("input[name='cart_no']:checked").each(function(){
     					price=Number($(this).attr("price"));
@@ -225,30 +215,25 @@
     					mem_no = $(this).attr("mem_no");
     					ren_date = $(this).attr("ren_date");
     					ret_date = $(this).attr("ret_date");
-    					
-    					 console.log(sum);
-       				  	 console.log(all_amount);
-       				  	 console.log(reserve_fund);
-       				 	 console.log(mem_point);
        				 	all_amount += amount;
-       				 	final_sum += price;
+       				 	orders_sum += price;
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
     		  			jumun.push(jumunlist);
-    				});
-    		  		obj ={"jumun":jumun,"ord_price":sum,"ord_amount":all_amount,"mem_no":mem_no}
-    		  		console.log(obj)
+    				})
+    		  		JumunVo ={"jumun":jumun,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no}
+    		  		console.log(JumunVo);
     		  		
     		  		if(jumun.length == 0)
 		  			{
 		  				alert("물품을 선택해주세요.");
 		  			}
     		  		else{
-    		  			 $.ajax({url:"/jumunInsert.do",type:"post",data:{"JumunVo":obj},success:function(data){
+    		  			 $.ajax({url:"/jumunInsert.do",type:"post",dataType:"json",data:{"JumunVo":JumunVo},success:function(data){
     		  				 alert("ajax통신");
-    		  			/* if(data === 1)
+    		  			 if(data === 1)
     		  				{
     		  				location.href="basket";
-    		  				} */
+    		  				} 
     		  		}}) 
     		  		}
     		  		console.log(jumun);
@@ -260,8 +245,6 @@
 
 	    	}})
     	/*ajax 종료  */
-	  	
-    	
     	    }    
         /*list를 처리하는 function getList end  */
  		getList();   
@@ -276,7 +259,6 @@
     	/*수량 처리 end  */
     	
     	/*장바구니 삭제버튼 클릭시.*/
-    
 	    		 $(".btn_del").click(function(){ 
 	    				var btn_del = $(this);
 	    				//btn_del.parent() : btn_del의 부모는 <td>이다.
@@ -289,7 +271,6 @@
 	    				var check = confirm("정말로 삭제하시겠습니까?");
 		 	    		if(check == true)
 		 	    			{			
-		 	    			
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
@@ -300,11 +281,8 @@
 			    						}
 			    				}})
 		 	    			}
-	    				
-	    				
-	    			}); 
-   
-	    			/*checkbox delete처리 end */
+	    			});
+	    		/*checkbox delete처리 end */
     			/* checkbox list*/
     			$("#del_chk").click(function(){
 					 	var confirm_val = confirm("정말 삭제하시겠습니까?");
@@ -330,10 +308,7 @@
     			/* 초기 page 변수값 설정 */
     			$("#sum_price").text("주문금액: "+final_sum+"원");
     			/*  */
-    		
-    			
-        	/**/
-	    			 
+        	/**/			 
     });
 
     </script>

@@ -108,8 +108,8 @@
                                 <span>대여일:2019/09/05 반납일:2019/09/09</span>
                             </td>
                             <td>
-                                <span class="txt_origin_price">150000</span><br>120000
-                                
+                                <span class="txt_origin_price">150000</span>
+                                <br>120000
                             </td>
                             <td>
                                 <span>수량</span>

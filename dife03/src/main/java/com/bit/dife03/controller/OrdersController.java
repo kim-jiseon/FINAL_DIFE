@@ -2,6 +2,7 @@ package com.bit.dife03.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -90,6 +91,7 @@ public class OrdersController {
 	  result = 1;
 	 }  
 	 return result;
+	 
 	}
 	@ResponseBody
 	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
@@ -98,17 +100,17 @@ public class OrdersController {
 			OrdersVo ord,
 			OrdersDetailVo od)
 	{
-		
+		System.out.println("controller 진입");
 		
 		
 		int re=0;
-		String mem_no =jumun.getMem_no();
+		String mem_no = jumun.getMem_no();
 		int amount=jumun.getOrd_amount();
 		int price=jumun.getOrd_price();
 		System.out.println(mem_no);
-		/*
-		 * System.out.println(amount); System.out.println(price);
-		 */
+	
+		System.out.println(amount); System.out.println(price);
+		 
 		
 		return re;
 	}
