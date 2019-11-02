@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.dife03.dao.OrdersDao;
 import com.bit.dife03.vo.BasketVo;
+import com.bit.dife03.vo.JumunVo;
 import com.bit.dife03.vo.MemberVo;
 import com.bit.dife03.vo.OrdersDetailVo;
 import com.bit.dife03.vo.OrdersVo;
@@ -93,12 +94,18 @@ public class OrdersController {
 	@ResponseBody
 	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
 	public int insertJumun(
-			@RequestParam(value = "jumun[]") List<String> Jumun,
+			JumunVo jumun,
 			OrdersVo ord,
 			OrdersDetailVo od)
 	{
 		int re=0;
-		
+		String mem_no =jumun.getMem_no();
+		int amount=jumun.getOrd_amount();
+		int price=jumun.getOrd_price();
+		System.out.println(mem_no);
+		/*
+		 * System.out.println(amount); System.out.println(price);
+		 */
 		
 		return re;
 	}

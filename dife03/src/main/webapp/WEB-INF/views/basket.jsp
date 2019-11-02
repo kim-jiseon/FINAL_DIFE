@@ -187,7 +187,7 @@
 	    		/*가격처리*/
     			$("#sum_price").text("주문금액: "+sum+"원");
     			final_sum=sum;
-    			console.log(node_sum);
+    	
     			/*  */
     			
     			/* check node 처리 */
@@ -235,7 +235,7 @@
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
     		  			jumun.push(jumunlist);
     				});
-    		  		obj ={"jumun":jumun,"ord_price":sum,"ord_amount":all_amount}
+    		  		obj ={"jumun":jumun,"ord_price":sum,"ord_amount":all_amount,"mem_no":mem_no}
     		  		console.log(obj)
     		  		
     		  		if(jumun.length == 0)
@@ -243,12 +243,13 @@
 		  				alert("물품을 선택해주세요.");
 		  			}
     		  		else{
-    		  			/* $.ajax({url:"/insertjumun",type:"post",data:{"Jumun":jumun},success:function(data){
-    		  			if(data === 1)
+    		  			 $.ajax({url:"/jumunInsert.do",type:"post",data:{"JumunVo":obj},success:function(data){
+    		  				 alert("ajax통신");
+    		  			/* if(data === 1)
     		  				{
     		  				location.href="basket";
-    		  				}
-    		  		}}) */
+    		  				} */
+    		  		}}) 
     		  		}
     		  		console.log(jumun);
     		  	
@@ -294,8 +295,8 @@
 			    						{
 			    						tr.remove();
 			    						all_amount -= amount;
-			    						node_price -= price;
-			    						
+			    						sum -= price;
+			    						$("#sum_price").text("주문금액:"+sum+"원");
 			    						}
 			    				}})
 		 	    			}
