@@ -48,6 +48,7 @@
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
+
         <div id="header">
             <div id="header-top">
                 <div id="category">
@@ -72,10 +73,9 @@
             </div>
             <div id="header-nav"></div>
         </div>
+
         <!-- //header -->
         
-
-       
        <div id="contents">
        
         <!-- contents -->
@@ -202,17 +202,7 @@
         <!-- //contents -->
  x
         <!-- footer -->
-        <div id="footer">
-            <div id="footer-nav"></div>
-            <div id="footer-info">(주)비트캠프:DIFE
-                <div id="footer_info1">
-                    <p>서울특별시 마포구 백범로 23 구프라자 3층</p>
-                    <p>02-707-1480</p>
-                    <p><a href="#">고객센터</a></p>
-                    <p><a href="#">이용안내</a></p>
-                </div>
-            </div>
-        </div>
+         <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
        <!-- Swiper JS -->
@@ -226,20 +216,7 @@
       },
     });
   </script>
-    <script>
-    window.onscroll = function() {myFunction()};
-
-    var header = document.getElementById("header");
-    var sticky = header.offsetTop;
-
-    function myFunction() {
-      if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-      } else {
-        header.classList.remove("sticky");
-      }
-    }
-    </script>
+   
     
     <!-- 탭 메뉴 스크립트 -->
     <script>

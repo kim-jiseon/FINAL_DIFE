@@ -49,6 +49,7 @@ $(function(){
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
+<<<<<<< HEAD
         <div id="header">
             <div id="header-top">
                <div id="category">
@@ -69,6 +70,9 @@ $(function(){
             </div>
             <div id="header-nav"></div>
         </div>
+=======
+         <jsp:include page="header.jsp"></jsp:include>
+>>>>>>> refs/heads/song
         <!-- //header -->
 
         <!-- contents -->
@@ -145,32 +149,9 @@ $(function(){
         <!-- //contents -->
 
         <!-- footer -->
-        <div id="footer">
-            <div id="footer-nav">footer-nav</div>
-            <div id="footer-info">(주)비트캠프:DIFE
-                <div id="footer_info1">
-                    <p>서울특별시 마포구 백범로 23 구프라자 3층</p>
-                    <p>02-707-1480</p>
-                    <p><a href="#">고객센터</a></p>
-                    <p><a href="#">이용안내</a></p>
-                </div>
-            </div>
-        </div>
+        <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
-<script>
-window.onscroll = function() {myFunction()};
 
-var header = document.getElementById("header");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-</script>
 </body>
 </html>
