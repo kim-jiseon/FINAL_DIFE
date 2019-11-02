@@ -40,6 +40,7 @@
     		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
+    		
     	}
     	var bas_no;
     	var btn_del;
@@ -82,9 +83,12 @@
     	
     	/*list를 처리하는 function*/
         	function getList(){    
-     		$.ajax({url:"/basketList.do",async : false,dataType:"json",success:function(data){
+    			
+     		$.ajax({url:"/basketList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
      			$("#table_content").empty();
-     			
+     			if(mem_id == '' || mem_id == null){
+    				location.href("/signIn");
+    			}
 	    		$.each(data,function(idx,item){
 	    			
 	    			var rental = new Date(item.bas_rental);
@@ -343,7 +347,7 @@
                      	<span id="category-2" class="animated fadeInUp">
                         <a id="sign" class="cl-effect-1"></a>
                         <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                        <a href="basket.do" class="cl-effect-1">RESERVATION</a>
+                        <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>
