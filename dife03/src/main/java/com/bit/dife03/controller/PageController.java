@@ -34,6 +34,11 @@ public class PageController {
 	public void drone() {
 		
 	}
+
+//	@RequestMapping("/droneDetail")
+//	public void droneDetail() {
+//		
+//	}
 	
 	@RequestMapping("/basket")
 	public void basket() {
@@ -54,24 +59,17 @@ public class PageController {
 	public void payment() {
 		
 	}
-	
-	@RequestMapping("/signIn")
-	public void signIn() {
-		
-	}
-	
-	@RequestMapping("/signUp")
-	public void signUp() {
-		
-	}
+
 	@RequestMapping("/payCacao")
 	public void pay() {
 		
 	}
+
 	@RequestMapping("/droneDetail")
 	public void droneDetail() {
 		
 	}
+
 
 //	
 //	@RequestMapping("/signIn")

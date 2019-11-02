@@ -105,6 +105,18 @@ public class OrdersController {
 		
 		int re=0;
 
+		ArrayList<OrdersDetailVo> list=	jumun.getJumun();
+		for(OrdersDetailVo b : list)
+		{
+			od.setDet_amount(b.getDet_amount());
+			od.setDet_price(b.getDet_price());
+			od.setDet_rental(b.getDet_rental());
+			od.setDet_return(b.getDet_return());
+			re ++;
+		}
+
+		
+
 		String mem_no = jumun.getMem_no();
 		int amount=jumun.getOrd_amount();
 		int price=jumun.getOrd_price();

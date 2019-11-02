@@ -11,16 +11,6 @@
 <!-- 
     <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
      -->
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <!-- fadeIn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/orders/orders.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
@@ -61,15 +51,15 @@
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="#" class="cl-effect-1">드론</a>
+                        <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
@@ -118,8 +108,8 @@
                                 <span>대여일:2019/09/05 반납일:2019/09/09</span>
                             </td>
                             <td>
-                                <span class="txt_origin_price">150000</span><br>120000
-                                
+                                <span class="txt_origin_price">150000</span>
+                                <br>120000
                             </td>
                             <td>
                                 <span>수량</span>

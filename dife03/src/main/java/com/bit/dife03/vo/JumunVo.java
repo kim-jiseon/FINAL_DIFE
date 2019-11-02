@@ -35,6 +35,7 @@ public class JumunVo {
 	public JumunVo() {
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
 }
