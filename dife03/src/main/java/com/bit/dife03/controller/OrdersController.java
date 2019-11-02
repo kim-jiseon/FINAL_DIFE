@@ -91,30 +91,28 @@ public class OrdersController {
 	  result = 1;
 	 }  
 	 return result;
+	 
 	}
 	@ResponseBody
 	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
 	public int insertJumun(
-			JumunVo obj,
+			JumunVo jumun,
 			OrdersVo ord,
 			OrdersDetailVo od)
 	{
-		
+		System.out.println("controller 진입");
 		
 		
 		int re=0;
-		String mem_no =obj.getMem_no();
-		int amount=obj.getOrd_amount();
-		int price=obj.getOrd_price();
-		ArrayList<OrdersDetailVo> list = obj.getJumun();
-//		for (OrdersDetailVo vo : list) {
-//			System.out.println(vo.getPos_no()+vo.getDet_rental()+vo.getDet_return());
-//		}
-		System.out.println(mem_no+","+amount+","+price);
-		/*
-		 * System.out.println(amount); System.out.println(price);
-		 */
-		
+
+		String mem_no = jumun.getMem_no();
+		int amount=jumun.getOrd_amount();
+		int price=jumun.getOrd_price();
+		System.out.println(mem_no);
+	
+		System.out.println(amount); System.out.println(price);
+		 
+	
 		return re;
 	}
 }
