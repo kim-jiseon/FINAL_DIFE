@@ -100,8 +100,6 @@ public class OrdersController {
 			OrdersVo ord,
 			OrdersDetailVo od)
 	{
-		
-		
 		System.out.println("controller 진입");
 		
 		
