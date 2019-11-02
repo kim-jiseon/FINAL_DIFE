@@ -24,7 +24,7 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
   	</select>
   	<!-- insert orders,ordersdetail insert -->
   	<insert id="insertOrders">
-  	 insert into orders values(#{ord_no},#{mem_no},#{ord_amount},#{ord_price},sysdate,1);
+  	 insert into orders values(#{ord_no},#{mem_no},#{ord_amount},#{ord_price},sysdate,0);
   	</insert>
   	<insert id="ordersDetail">
   	insert into ordersdetail values(#{det_no},#{ord_no},#{pos_no},#{det_amount},#{det_price},#{det_return},0);
