@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/orders/orders.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 <body>

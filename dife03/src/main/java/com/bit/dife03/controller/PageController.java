@@ -68,4 +68,8 @@ public class PageController {
 	public void pay() {
 		
 	}
+	@RequestMapping("/droneDetail")
+	public void droneDetail() {
+		
+	}
 }
