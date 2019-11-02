@@ -16,24 +16,18 @@
 	<!-- 전체 레코드 수 집계는 1,2 중 결정할 예정 -->
 	<!-- 전체 레코드 수 집계 1 -->
 	<select id="get_droCount1" resultType="java.lang.Integer">
-		select count(*) from drone
-	</select>
-	
-	<!-- 전체 레코드 수 집계 2 -->
-	<select id="get_droCount2" resultType="java.lang.Integer">
-		select count(dro_list_no) from drone d, dro_list dl, possesion p, rental r 
-		where d.dro_no=dl.dro_no and d.dro_no=p.dro_no and r.ren_no=p.ren_no  
+		select count(*) from ( select rownum rn, dro_no from drone )A 
 		<choose>
 			<!-- 대여일(반납일 포함)로만 검색 -->
 			<when test="calendar != null and series == null and price == null">
-				and bas_rental >= #{sysdate} and bas_return > bas_rental
+				where bas_rental >= #{sysdate} and bas_return > bas_rental 
 			</when>
 			<!-- 시리즈명으로만 검색 -->
 			<when test="series != null and calendar == null and price == null">
 				and dro_series=#{series} 
 				<!-- 서브메뉴도 검색 -->
 				<if test="sub_series_01 != null and sub_series_02 != null">
-					and dro_name like substring(#{sub_series_02},1,2) ||'%'
+					and dro_name like substring(#{sub_series_02},1,2) ||'%' 
 				</if>
 			</when>
 			<!-- 가격으로만 검색 -->
@@ -60,7 +54,11 @@
 				and dro_series=#{series} pos_price and =#{price}
 			</otherwise>
 		</choose>
+		and A.rn between #{start} and #{end};
 	</select>
+	
+	
+	
   	
   	<!-- 상세페이지 -->  	
   	<select id="sel_droDetail" resultType="droneVo">
