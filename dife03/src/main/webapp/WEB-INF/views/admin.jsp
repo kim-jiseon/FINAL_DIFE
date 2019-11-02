@@ -3,25 +3,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-    <title>DIFE.com</title>
-    <!-- 웹폰트 -->
-     <!-- 
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<title>DIFE.com</title>
+<!-- 웹폰트 -->
+<!-- 
     <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
      -->
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <!-- fadeIn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <!-- 기본 링크 -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/admin/admin.css">
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="css/swiper/swiper.min.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
+<!-- fadeIn -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<!-- 기본 링크 -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/admin/admin.css">
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="css/swiper/swiper.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//로그인 로그아웃 전환
+		var mem_id = "${mem_id}";
+
+		if (mem_id != '' && mem_id != null) {
+			//var login = $("#category-2").find("a:first").html();
+			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+			//$("#category-2").append(logout);
+			$("#sign").attr("href", "logout").html("LOGOUT");
+		}
+		if (mem_id == '' || mem_id == null) {
+			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+			//$("#category-2").append(login);
+			$("#sign").attr("href", "signIn").html("LOGIN");
+		}
+	})
+</script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
@@ -31,18 +53,20 @@
                 <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="#" class="cl-effect-1">드론</a>
+                        <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
+                        <!-- 
                         <a href="admin" id="category-1-admin" class="cl-effect-1" >관리자</a>
+                         -->
                     </span>
                     
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
-                        <a href="#" class="cl-effect-1">RESERVATION</a>
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
+                        <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>

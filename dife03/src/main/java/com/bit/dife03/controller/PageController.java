@@ -72,4 +72,16 @@ public class PageController {
 	public void droneDetail() {
 		
 	}
+
+//	
+//	@RequestMapping("/signIn")
+//	public void signIn() {
+//		
+//	}
+//	
+//	@RequestMapping("/signUp")
+//	public void signUp() {
+//		
+//	}
+
 }

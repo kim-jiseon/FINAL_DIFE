@@ -29,7 +29,20 @@
         <script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <script type="text/javascript">
 $(function(){
-
+	//로그인 로그아웃 전환
+	var mem_id = "${mem_id}";
+	
+	if(mem_id != '' && mem_id != null){
+		//var login = $("#category-2").find("a:first").html();
+		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+		//$("#category-2").append(logout);
+		$("#sign").attr("href","logout").html("LOGOUT");
+	}
+	if(mem_id == '' || mem_id == null){
+		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+		//$("#category-2").append(login);
+		$("#sign").attr("href","signIn").html("LOGIN");
+	}
 });
 </script>
 </head>
@@ -41,15 +54,15 @@ $(function(){
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="#" class="cl-effect-1">드론</a>
+                        <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
@@ -91,7 +104,7 @@ $(function(){
                        <ul class="mid1">
                            <li>
                                <dl>
-                                   <dd class="info_det" style="color: #a4a4a4;"><i class="far fa-file-alt"></i> 기본 정보</dd>
+                                   <dd class="info_det"><i class="far fa-file-alt"></i> 기본 정보</dd>
                                    <dd class="pil-information">경력:&nbsp; ${info.pil_career }년</dd>
                                    <dd class="pil-information">지역:&nbsp; ${info.pil_locInfo}</dd>
                                    <dd class="pil-information">연락 가능 시간:&nbsp; ${info.pil_contact }</dd>
@@ -104,7 +117,7 @@ $(function(){
                        <ul class="mid1">
                            <li>
                                <dl>
-                                   <dd class="info_det" style="color: #a4a4a4;"><i class="far fa-file-alt"></i> 상세 정보</dd>
+                                   <dd class="info_det"><i class="far fa-file-alt"></i> 상세 정보</dd>
                                    <dd class="pil-information">자격증:&nbsp; ${info.pil_qualification }</dd>
                                    <dd class="pil-information">보유드론:&nbsp; ${info.pil_drone }</dd>
                                    <dd></dd>
@@ -117,8 +130,12 @@ $(function(){
                        <ul>
                            <li>
                                <dl>
-                                   <dd>포트폴리오</dd>
+                                   <dd class="info_det">포트폴리오</dd>
                                    <dd><img src="img/pilot/${info.pil_portfolio }" class="pil-portfolio"></dd>
+                                   <dd class="info_det" id="pil-intro">강사 소개</dd>
+                                   <dd class="pil-information">${info.pil_intro }</dd>
+                                   <dd class="info_det" id="pil-intro">강의 정보</dd>
+                                   <dd class="pil-information">${info.pil_intro }</dd>
                                </dl>
                            </li>
                        </ul>

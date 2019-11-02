@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,22 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
+	//로그인 로그아웃 전환
+	var mem_id = "${mem_id}";
+	
+	if(mem_id != '' && mem_id != null){
+		//var login = $("#category-2").find("a:first").html();
+		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+		//$("#category-2").append(logout);
+		$("#sign").attr("href","logout").html("LOGOUT");
+	}
+	if(mem_id == '' || mem_id == null){
+		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+		//$("#category-2").append(login);
+		$("#sign").attr("href","signIn").html("LOGIN");
+	}
+	
+	
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
 	//아이디 정규식
@@ -323,6 +340,7 @@ $(function(){
 			return true;
 	});
 });
+
 </script>
 </head>
 <body>
@@ -333,16 +351,16 @@ $(function(){
 				<div id="category">
 					<span id="category-1" class="animated fadeInUp"> 
 					    <a href="main"><img src="img/logo/logo_white.png" id="logo"></a> 
-						<a href="#" class="cl-effect-1">드론</a> 
+						<a href="drone" class="cl-effect-1">드론</a> 
 						<a href="pilot" class="cl-effect-1">파일럿</a> 
 						<a href="#" class="cl-effect-1">지역 및 날씨</a> 
 						<a href="#" class="cl-effect-1">고객지원</a>
 						<a href="#" class="cl-effect-1">커뮤니티</a>
 					</span> 
 					<span id="category-2" class="animated fadeInUp"> 
-					    <a href="signIn" class="cl-effect-1">LOGIN</a> 
-						<a href="#" class="cl-effect-1">MYPAGE</a> 
-						<a href="#" class="cl-effect-1">RESERVATION</a>
+					    <a id="sign" class="cl-effect-1"></a> 
+						<a href="mypage_orders" class="cl-effect-1">MYPAGE</a> 
+						<a href="basket" class="cl-effect-1">RESERVATION</a>
 					</span>
 				</div>
 			</div>
@@ -358,7 +376,7 @@ $(function(){
 						<div class="col-md-8">
 							<section>
 								<h1 class="entry-title">
-									<span style="color: white">회원가입</span>
+									<span>회원가입</span>
 								</h1>
 								
 								<form action="signUp.do" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
@@ -421,10 +439,10 @@ $(function(){
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-md-3 col-sm-3" id="gender">
-											<label style="color: white; padding-right: 10px;"> 
+											<label style="padding-right: 10px;"> 
 											    <input name="mem_gender" type="radio" value="Male"> 남성
 											</label>     
-											<label style="color: white;">
+											<label>
 												<input name="mem_gender" type="radio" value="Female"> 여성
 											</label>
 										</div>
@@ -475,7 +493,7 @@ $(function(){
 
 		<!-- footer -->
         <div id="footer">
-            <div id="footer-nav">footer-nav</div>
+            <div id="footer-nav"></div>
             <div id="footer-info">(주)비트캠프:DIFE
                 <div id="footer_info1">
                     <p>서울특별시 마포구 백범로 23 구프라자 3층</p>

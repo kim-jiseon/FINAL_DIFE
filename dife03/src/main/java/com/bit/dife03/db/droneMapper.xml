@@ -3,25 +3,73 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="drone">
-
-<!-- sql 전체 수정예정 -->
-	<!-- 보류! ord_sale : 0원, ord_date : 해당일로 설정함 -->
-	<insert id="in_droOrder">
-		insert into orders values(#{ord_no},#{mem_no},#{ord_amount},#{ord_price},0,#{ord_fin_price},sysdate,#{ord_pay_state})
-	</insert>
-  
-	<select id="selectAll_dro" resultType="droneVo">
-	    select dro_photo, dro_name, dro_series, pos_price from drone d, possesion p where d.dro_no=p.dro_no order by d.first_time
+  	<!-- 회원/비회원 꼭 나눠야하는 명령문은?? -->  	
+  	
+  	<!-- 최초 전체 목록, 검색결과 -->
+	<select id="sel_droAll" resultType="droneVo">
+	    select d.dro_no, dro_photo, dro_name, dro_series, pos_price from drone d, possesion p where d.dro_no=p.dro_no order by d.first_time
+		<if test="">
+		
+		</if>
 	</select>
-  
+	
+	<!-- 전체 레코드 수 집계는 1,2 중 결정할 예정 -->
+	<!-- 전체 레코드 수 집계 1 -->
+	<select id="get_droCount1" resultType="java.lang.Integer">
+		select count(*) from ( select rownum rn, dro_no from drone )A 
+		<choose>
+			<!-- 대여일(반납일 포함)로만 검색 -->
+			<when test="calendar != null and series == null and price == null">
+				where bas_rental >= #{sysdate} and bas_return > bas_rental 
+			</when>
+			<!-- 시리즈명으로만 검색 -->
+			<when test="series != null and calendar == null and price == null">
+				and dro_series=#{series} 
+				<!-- 서브메뉴도 검색 -->
+				<if test="sub_series_01 != null and sub_series_02 != null">
+					and dro_name like substring(#{sub_series_02},1,2) ||'%' 
+				</if>
+			</when>
+			<!-- 가격으로만 검색 -->
+			<when test="price != null and calendar == null and series == null">
+				and pos_price=#{sub_price} 
+			</when>
+			<!-- 대여일(반납일 포함), 시리즈명으로 검색 -->
+			<when test="calendar != null and series != null and price == null">
+				and  bas_rental >= #{sysdate} and bas_return > bas_rental 
+				and dro_series=#{series} 
+			</when>
+			<!-- 대여일(반납일 포함), 가격으로 검색 -->
+			<when test="calendar != null and price != null and series == null">
+				and bas_rental >= #{sysdate} and bas_return > bas_rental 
+				and pos_price=#{sub_price} 
+			</when>
+			<!-- 시리즈명, 가격으로 검색 -->
+			<when test="series != null and price != null and calendar == null">
+				and dro_series=#{series} and pos_price=#{sub_price} 
+			</when>
+			<!-- 모든 조건(대여일(반납일 포함),시리즈명,가격)으로 검색 -->
+			<otherwise>
+				and bas_rental >= #{sysdate} and bas_return > bas_rental 
+				and dro_series=#{series} pos_price and =#{price}
+			</otherwise>
+		</choose>
+		and A.rn between #{start} and #{end};
+	</select>
+	
+	
+	
+  	
+  	<!-- 상세페이지 -->  	
   	<select id="sel_droDetail" resultType="droneVo">
-		select * from drone d, rental r, possesion p where d.#{dro_no}=p.#{dro_no} and r.#{ren_no}=p.#{ren_no}
+		select d.*, dl.* from drone d, dro_list dl, possesion p, rental r 
+		where d.dro_no=p.dro_no and r.ren_no=p.ren_no 
 	</select>
 	
-	<select id="getDroneCount" resultType="java.lang.Integer">
-		select count(*) from drone
-	</select>
-	
-	
+	<!-- 대여일, 반납일 추가해서 수정예정 -->
+	<!-- 장바구니담기 -->
+	<insert id="in_droBasket">
+		insert into orders values(#{droD_name},#{droD_price},#{droD_series},#{droD_made},#{droD_ren},#{droD_amount})
+	</insert>
   
 </mapper>
