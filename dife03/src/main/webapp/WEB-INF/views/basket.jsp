@@ -215,28 +215,41 @@
     					mem_no = $(this).attr("mem_no");
     					ren_date = $(this).attr("ren_date");
     					ret_date = $(this).attr("ret_date");
+    					
+    					 console.log("수량:"+amount);
+    					 console.log("합계: "+sum);
+       				  	 console.log("총 수량:"+all_amount);
+       				  	 console.log(reserve_fund);
+       				 	 console.log("포인트: "+mem_point);
+
        				 	all_amount += amount;
        				 	orders_sum += price;
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
     		  			jumun.push(jumunlist);
+
     				})
     		  		JumunVo ={"jumun":jumun,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no}
     		  		console.log(JumunVo);
-    		  		
+	  		
     		  		if(jumun.length == 0)
 		  			{
 		  				alert("물품을 선택해주세요.");
 		  			}
     		  		else{
+
     		  			 $.ajax({url:"/jumunInsert.do",type:"post",dataType:"json",data:{"JumunVo":JumunVo},success:function(data){
     		  				 alert("ajax통신");
     		  			 if(data === 1)
+
     		  				{
     		  				location.href="basket";
+
     		  				} 
-    		  		}}) 
+
+    		  				} 
+    		  		}) 
     		  		}
-    		  		console.log(jumun);
+    		  		console.log("jumun:"+jumun);
     		  	
     		  		
     		  	
@@ -378,7 +391,7 @@
                         </div>
                 </div>
             </div>
-        </div>
+        
 <!--    //table-->
           <!--    content_footer-->
        <div id='content_footer'>
@@ -403,6 +416,8 @@
                     <span class="info">최종 결제금액</span><span class="info" id="fin_price"></span>
                 </div> -->
            </div>
+       </div>
+       </div>
        </div>
     <!-- //contents -->
        

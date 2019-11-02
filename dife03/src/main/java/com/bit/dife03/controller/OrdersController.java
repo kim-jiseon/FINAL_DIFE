@@ -104,6 +104,7 @@ public class OrdersController {
 		
 		
 		int re=0;
+
 		ArrayList<OrdersDetailVo> list=	jumun.getJumun();
 		for(OrdersDetailVo b : list)
 		{
@@ -113,6 +114,7 @@ public class OrdersController {
 			od.setDet_return(b.getDet_return());
 			re ++;
 		}
+
 		String mem_no = jumun.getMem_no();
 		int amount=jumun.getOrd_amount();
 		int price=jumun.getOrd_price();
@@ -120,7 +122,7 @@ public class OrdersController {
 	
 		System.out.println(amount); System.out.println(price);
 		 
-		
+	
 		return re;
 	}
 }
