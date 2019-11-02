@@ -154,7 +154,7 @@ public class MemberController {
 		}catch(Exception e){
 		System.out.println("Exception in main:" +e);
 		}
-
+		
 		return str;
 	}
 }
