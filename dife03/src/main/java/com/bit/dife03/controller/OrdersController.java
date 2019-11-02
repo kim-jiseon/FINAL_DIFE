@@ -2,6 +2,7 @@ package com.bit.dife03.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.dife03.dao.OrdersDao;
 import com.bit.dife03.vo.BasketVo;
+import com.bit.dife03.vo.JumunVo;
 import com.bit.dife03.vo.MemberVo;
+import com.bit.dife03.vo.OrdersDetailVo;
+import com.bit.dife03.vo.OrdersVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -87,16 +91,40 @@ public class OrdersController {
 	  result = 1;
 	 }  
 	 return result;
+	 
 	}
 	@ResponseBody
 	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
 	public int insertJumun(
-			@RequestParam(value = "checkList[]") List<String> chArr,
-			BasketVo bas)
+			JumunVo jumun,
+			OrdersVo ord,
+			OrdersDetailVo od)
 	{
+		System.out.println("controller 진입");
+		
+		
 		int re=0;
+
+		ArrayList<OrdersDetailVo> list=	jumun.getJumun();
+		for(OrdersDetailVo b : list)
+		{
+			od.setDet_amount(b.getDet_amount());
+			od.setDet_price(b.getDet_price());
+			od.setDet_rental(b.getDet_rental());
+			od.setDet_return(b.getDet_return());
+			re ++;
+		}
+
 		
-		
+
+		String mem_no = jumun.getMem_no();
+		int amount=jumun.getOrd_amount();
+		int price=jumun.getOrd_price();
+		System.out.println(mem_no);
+	
+		System.out.println(amount); System.out.println(price);
+		 
+	
 		return re;
 	}
 }

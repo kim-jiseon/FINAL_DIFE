@@ -6,7 +6,6 @@
     
 </head>
 <body>
-
         <!-- footer -->
         <div id="footer">
             <div id="footer-nav">footer-nav</div>
@@ -21,7 +20,6 @@
         </div>
         <!-- //footer -->
     </div>
-
 </script>
 </body>
 </html>

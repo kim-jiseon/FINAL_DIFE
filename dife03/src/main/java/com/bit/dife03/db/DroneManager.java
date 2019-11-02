@@ -43,10 +43,12 @@ public class DroneManager {
 	}
 	
 	// 드론 개수 카운트
-	public static int getDroneCount() {
+	public static int get_droCount1() {
 		int re = 0;
 		SqlSession session = factory.openSession();
-		re = session.selectOne("drone.getDroneCount");
+		re = session.selectOne("drone.get_droCount1");
+		// calendar 출력값이 null 로 표시되는지 확인한 후 mapper 작성하기
+		System.out.println(re);
 		session.close();
 		return re;
 	}

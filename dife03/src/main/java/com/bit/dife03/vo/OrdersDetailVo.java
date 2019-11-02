@@ -2,14 +2,22 @@ package com.bit.dife03.vo;
 
 import java.util.Date;
 
-public class OrdersDetail {
+public class OrdersDetailVo {
 	private String det_no;
 	private String ord_no;
 	private String pos_no;
 	private int det_amount;
+	private int det_price;
 	private Date det_rental;
 	private Date det_return;
 	private int det_rental_stat;
+	
+	public int getDet_price() {
+		return det_price;
+	}
+	public void setDet_price(int det_price) {
+		this.det_price = det_price;
+	}
 	public String getDet_no() {
 		return det_no;
 	}
@@ -19,6 +27,7 @@ public class OrdersDetail {
 	public String getOrd_no() {
 		return ord_no;
 	}
+	
 	public void setOrd_no(String ord_no) {
 		this.ord_no = ord_no;
 	}
@@ -52,18 +61,32 @@ public class OrdersDetail {
 	public void setDet_rental_stat(int det_rental_stat) {
 		this.det_rental_stat = det_rental_stat;
 	}
-	public OrdersDetail(String det_no, String ord_no, String pos_no, int det_amount, Date det_rental, Date det_return,
-			int det_rental_stat) {
+
+	public OrdersDetailVo(String det_no, String ord_no, String pos_no, int det_amount, int det_price, Date det_rental,
+			Date det_return, int det_rental_stat) {
 		super();
 		this.det_no = det_no;
 		this.ord_no = ord_no;
 		this.pos_no = pos_no;
 		this.det_amount = det_amount;
+		this.det_price = det_price;
 		this.det_rental = det_rental;
 		this.det_return = det_return;
 		this.det_rental_stat = det_rental_stat;
 	}
-	public OrdersDetail() {
+	public OrdersDetailVo() {
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "OrdersDetailVo [det_no=" + det_no + ", ord_no=" + ord_no + ", pos_no=" + pos_no + ", det_amount="
+				+ det_amount + ", det_price=" + det_price + ", det_rental=" + det_rental + ", det_return=" + det_return
+				+ ", det_rental_stat=" + det_rental_stat + ", getDet_price()=" + getDet_price() + ", getDet_no()="
+				+ getDet_no() + ", getOrd_no()=" + getOrd_no() + ", getPos_no()=" + getPos_no() + ", getDet_amount()="
+				+ getDet_amount() + ", getDet_rental()=" + getDet_rental() + ", getDet_return()=" + getDet_return()
+				+ ", getDet_rental_stat()=" + getDet_rental_stat() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 }

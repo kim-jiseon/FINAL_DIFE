@@ -2,11 +2,9 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-   
+<head>   
 </head>
 <body>
-
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
         <div id="header">
@@ -30,7 +28,6 @@
             <div id="header-nav"></div>
         </div>
         <!-- //header -->
-
          </div>
 <script>
 window.onscroll = function() {myFunction()};

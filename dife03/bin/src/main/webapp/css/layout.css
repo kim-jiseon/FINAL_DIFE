@@ -52,6 +52,7 @@
     
      /* 상단 카테고리 */
     #category{
+    	font-weight: 600;
         font-size: 15px;
         line-height: 70px;
     }

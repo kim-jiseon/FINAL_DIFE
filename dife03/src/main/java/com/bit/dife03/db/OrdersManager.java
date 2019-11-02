@@ -11,10 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.bit.dife03.vo.BasketVo;
 
 public class OrdersManager {
-	
 
 	public static SqlSessionFactory factory;
-	
 	static {
 		try {
 			System.out.println("static 진입");
@@ -28,7 +26,6 @@ public class OrdersManager {
 			System.out.println(e.getMessage());
 		}
 	}
-	
 	//	장바구니 리스트
 	public static List<BasketVo> basketList(String mem_id)
 	{
