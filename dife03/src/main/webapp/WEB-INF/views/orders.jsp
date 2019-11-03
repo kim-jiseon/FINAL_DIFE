@@ -39,7 +39,99 @@
 			//$("#category-2").append(login);
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
-	})
+		//로그인 로그아웃 end
+		/*list를 처리하는 function*/
+        function getList(){ 
+        	$.ajax({url:"/basketList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
+     			$("#table_content").empty();
+     			if(mem_id == '' || mem_id == null){
+    				location.href("/signIn");
+    			}
+	    		$.each(data,function(idx,item){
+	    			
+	    			var rental = new Date(item.bas_rental);
+	    			var re_date = new Date(item.bas_return);
+	    			if(idx == 1)
+	    				{
+	    					
+	    					mem_point = Number(item.mem_point);
+	    				}
+	    			console.log(item.pos_no);
+	    			tr=$("<tr></tr>");
+	    			var td1=$("<td></td>").html(item.bas_no);
+	    			var td2=$("<td></td>").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
+	    			var td3;
+	    			var td4;
+	    			var td5;
+	    			var td6;
+	    			var product_img;
+	    			var p1;
+	    			var p2;
+	    			var p3;
+	    			var p4;
+	    			var p5;
+	    			var p6;
+	    			rental = date_to_str(rental);
+	    			re_date=date_to_str(re_date);
+	    			/* sum 할인률 및 하단 정보 관련 처리 */
+	    			sum +=Number(item.bas_price);
+	    			all_amount += Number(item.bas_amount);
+	    			reserve_fund += Number(item.point);
+	    			/*  */
+	    			if(item.dro_name !== null)
+	    				{
+	    					
+	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+	    					$(td2).append(product_img);
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+	    					td3=$("<td></td>");
+	    					$(td3).append(p1,p2);
+	    					td4=$("<td></td>");
+	    					p3 = $("<p></p>").html(item.bas_price);
+	    					$(td4).append(p3);
+	    					p4= $("<p></p>").html(item.bas_amount);
+	    					td5=$("<td></td>");
+	    					$(td5).append(p4);
+	    					td6=$("<td></td>");
+	    					p5=$("<p></p>").html(item.bas_price);
+	    					p6=$("<p></p>").html(item.point);
+	    					$(td6).append(p5,p6);
+	    				
+	    				}
+	    			else
+	    				{
+	    				product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+    					$(td2).append(product_img);
+    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+    					td3=$("<td></td>");
+    					$(td3).append(p1,p2);
+    					td4=$("<td></td>");
+    					p3 = $("<p></p>").html(item.bas_price);
+    					$(td4).append(p3);
+    					p4= $("<p></p>").html(item.bas_amount);
+    					td5=$("<td></td>");
+    					$(td5).append(p4);
+    					td6=$("<td></td>");
+    					p5=$("<p></p>").html(item.bas_price);
+    					p6=$("<p></p>").html(item.point);
+    					$(td6).append(p5,p6);
+	    				}
+	    			$(tr).append(td1,td2,td3,td4,td5,td6);
+	    			$("#table_content").append(tr);
+	    			}); 
+	    		/* foreach종료 */
+	    	}})
+    	/*ajax 종료  */
+    	    }    
+			/* getList종료 */
+			getList();
+	});	
+		
+    			
+     		
+	
 </script>
 </head>
 <body>
@@ -76,7 +168,9 @@
                             <th scope="col">수량</th>
                             <th scope="col">주문금액<br/>(적립예정)</th>
                         </thead>
-                              <tbody>
+                         <tbody id="table_content">
+                      		</tbody>
+                             <!--  <tbody>
                             <td>1</td>
                             <td>
                                 <div class="product_img">
@@ -216,7 +310,7 @@
                                 <span>90000</span><br>
                                 5740
                             </td>
-                        </tbody>
+                        </tbody> -->
                     </table>
               
                 
@@ -301,6 +395,7 @@
                 </ul>
                  <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="order" class="a_btn">결제하기</a>
+					<a href="javascript:void(0)" id="orderCancle" class="a_btn">주문취소</a>
 				</div>
        </div>
     </div>

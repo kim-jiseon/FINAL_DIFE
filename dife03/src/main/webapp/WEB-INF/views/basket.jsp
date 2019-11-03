@@ -149,7 +149,6 @@
 	    					td8 = $("<td></td>");
 	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
 	    					$(td8).append(btn_del);	
-	    					hidden1 = $("<input type='hidden' name='pos_no'>")
 	    				}
 	    			else
 	    				{
@@ -249,7 +248,6 @@
     		  				location.href="basket";
 
     		  				} 
-
     		  				} 
     		  		}) 
     		  		}
