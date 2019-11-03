@@ -54,11 +54,12 @@
     <div id="contents">
         <!-- 세션 영역        -->
         <div id="content-session">
-            <div class="container" style="color: white; font-size:20px;">
+            <div class="container">
+               <div class="container-top">주문</div>
                 <div class='main-session'>
-                   <p>주문</p><br>
+                  
                 <!--테이블 영역      -->
-                        <table class='cart_table' style="color: white;">
+                        <table class='cart_table'>
                              <colgroup>
                                  <col width='150px'>
                                  <col width="100px">
@@ -75,7 +76,7 @@
                             <th scope="col">수량</th>
                             <th scope="col">주문금액<br/>(적립예정)</th>
                         </thead>
-                              <tbody style="border-top: 1px solid #000">
+                              <tbody>
                             <td>1</td>
                             <td>
                                 <div class="product_img">
@@ -104,7 +105,7 @@
                         </tbody>
                         
                         
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>2</td>
                             <td>
                                 <div class="product_img">
@@ -133,7 +134,7 @@
                         </tbody>
                         
                         
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>3</td>
                             <td>
                                 <div class="product_img">
@@ -163,7 +164,7 @@
                         </tbody>
                         
                         
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>4</td>
                             <td>
                                 <div class="product_img">
@@ -191,7 +192,7 @@
 
                         </tbody>
              
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>5</td>
                             <td>
                                 <div class="product_img">
@@ -227,7 +228,7 @@
        
           <!--    content_footer-->
        <div id='content_footer'>
-            <div class="container" style="color: white">
+            <div class="container">
                 <span>결제 방식</span><br>
 <!--
                 <div class="">
@@ -241,9 +242,13 @@
                 </div>
 -->
                 <ul class="payment_container" >
-                    <li><span>결제 수단 <input type="radio" class="payment" checked="checked" name="payment"><label>카드</label>
-                    <input type="radio" class="payment"  name="payment"><label>무통장</label>
-                    <input type="radio" class="payment"  name="payment"><label>카카오페이</label></span></li>
+                    <li>
+                    <span>결제 수단</span>
+                        <input type="radio" class="payment" checked="checked" name="payment"><label style="padding: 0px 10px;">카드</label>
+                        <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">무통장</label>
+                        <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">카카오페이</label>
+                    </li>
+                    
                     <li id="payment_style">결제 안내
                         <select>
                             <option>은행선택</option>
@@ -255,8 +260,8 @@
                     <li>
                         <span>총 금액</span><span>430000원</span>
                     </li>
-                    <li><span>주문자 동의</span> <input type="checkbox" checked="checked"><label style="padding: 10px; padding-bottom: 40px;">동의</label><br>
-                        <textarea rows="10%" cols="150%" disabled style="background-color: white;" >제1조(목적)
+                    <li><span>주문자 동의</span> <input type="checkbox" checked="checked"><label>동의</label><br>
+                        <textarea rows="10%" cols="100%">제1조(목적)
 
 이 약관은 'DIFE(주)'(전자거래 사업자)이 운영하는 DIFE(주) 온라인 쇼핑몰(이하 "DIFE 온라인 쇼핑몰"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다. ※ 「PC통신등을 이용하는 전자거래에 대해서도 그 성질에 반하지 않는한 이 약관을 준용합니다」
 
@@ -297,11 +302,11 @@
                  <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="order" class="a_btn">결제하기</a>
 				</div>
-           
        </div>
     </div>
 </div>
     <!-- //contents -->
+
 
 
         <!-- footer -->
