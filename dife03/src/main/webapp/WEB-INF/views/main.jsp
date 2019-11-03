@@ -8,12 +8,7 @@
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -89,10 +84,10 @@
              <!-- Swiper -->
               <div class="swiper-container">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide"><img src="img/main/drone_main06.png"></div>
-                  <div class="swiper-slide"><img src="img/main/drone_main7.jpg"></div>
-                  <div class="swiper-slide"><img src="img/main/drone_main8.JPG"></div>
-                  <div class="swiper-slide"><img src="img/main/drone_main7.jpg"></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main06.png"></a></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main7.jpg"></a></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main8.JPG"></a></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main5.JPG"></a></div>
                 </div>
 				<!-- Add Pagination -->
 				<div class="swiper-pagination"></div>

@@ -52,7 +52,7 @@
                <div  class="mypage-grid">
                 <div id="mypage-top" class="mypage-top">
                     <div class="mypage-top-nav"><img src="img/pilot/visit_cnt.png" id="mem-img">
-                        <span id="mem-name">임수정 님</span>
+                        <span id="mem-name">${mem_id } 님</span>
                     </div>
                     <div class="mypage-top-nav">적립<i class="fas fa-angle-right" id="arrow"></i></div>
                     <div class="mypage-top-nav">쿠폰<i class="fas fa-angle-right" id="arrow"></i></div>
@@ -80,21 +80,21 @@
                            </span>
                         </div><hr id="hr">
                         <div class="mypage-orders-list">
-                            <a href="#"><div class="mypage-orders-title">[2019.07.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
+                            <a href="ordersDetail"><div class="mypage-orders-title">[2019.07.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
                             <div class="mypage-orders-info">
                                 <ul>
                                     <li>주문번호&nbsp;&nbsp;&nbsp; 156928405958</li>
-                                    <li>결제금액&nbsp;&nbsp;&nbsp; 100,000 원</li>
+                                    <li>결제금액&nbsp;&nbsp;&nbsp; 55,000 원</li>
                                     <li>주문상태&nbsp;&nbsp;&nbsp; 반납완료</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="mypage-orders-list">
-                            <a href="#"><div class="mypage-orders-title">[2019.10.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
+                            <a href="ordersDetail"><div class="mypage-orders-title">[2019.10.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
                             <div class="mypage-orders-info">
                                 <ul>
                                     <li>주문번호&nbsp;&nbsp;&nbsp; 1569888755958</li>
-                                    <li>결제금액&nbsp;&nbsp;&nbsp; 100,000 원</li>
+                                    <li>결제금액&nbsp;&nbsp;&nbsp; 55,000 원</li>
                                     <li>주문상태&nbsp;&nbsp;&nbsp; 대여중</li>
                                 </ul>
                             </div>
