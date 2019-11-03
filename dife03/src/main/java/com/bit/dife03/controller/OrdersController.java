@@ -138,7 +138,7 @@ public class OrdersController {
 	}
 	//주문상세 리스트
 	@ResponseBody
-	@RequestMapping("/basketList.do")
+	@RequestMapping("/ordersList.do")
 	public String listOrders(String mem_id)
 	{	
 		String str="";

@@ -1,140 +1,101 @@
 @charset "utf-8";
 
-@media (max-width: 375px) {
-    #category{
-        font-size: 14px;
-        line-height: 70px;
-        text-align: center;
-    }
-    
-    #category-3 > a > img{
-        width: 100px;
-        height: 30px;
-    }
-    #category-1{
-        font-size: 12px;
-        padding: 30px 0px;
-        float: left;
-    }
-
-    #category-1 > a{
-        padding:0px 6px;
-        color: white;
-    }
-
-    #category-1 > a:hover{
-        color: white;
-    }
-
-    #category-2{
-        float: right;
-        padding: 30px 0px;
-    }
-
-    #category-2 > a{
-        color: white;
-        padding: 3px;
-    }
-}
-
 @media (min-width:376px){
-    /*콘텐츠-높이는 자유롭게 설정하세요*/
-    #contents{
-        height: auto;
-    }
-    
     .container{
+        padding: 40px 0px;
+        color: black;
         width: 1100px;
         margin: 0 auto;
         height: auto;
-        background-color: #1F2124;
     }
-    
-      /*컨텐츠 정보*/
-	.container .top_info{
-	    margin-bottom: 15px;
-	 	border: 1px solid #222121;
-	
-	}
-	.main-session{
-	    padding-bottom: 10px;
-	}
-	/*컨텐츠 하단*/
-	.container .total_product{
-	    margin: 0;
-	    padding: 0; 
-	    
-	}
-	.container .total_product .info{
-	    padding: 5px;
-	    margin:5px;
-	}
-/*테이블*/
-	.cart_table{
-	    border-top: 1px solid white; border-spacing: 0; border-collapse: collapse; border-bottom: 1px solid white;
-	    text-align: center;
-	    padding-bottom: 30px;
-	    background-color: #1F2124;
-	}
-	.cart_table caption{
-	    caption-side: bottom; display: none;
-	}
-	.txt_origin_price{
-	    text-decoration:line-through;
-	}
-	tbody{
-	        border-top:1px solid white;
-	}
-    /*컨텐트 레이아웃 */
-    #content-top {
-    height: 50px;
-    line-height: 50px;
-    background-color: #1F2124;
-	}
+    .container-top{
+        font-size: 30px;
+        line-height: 100px;
+        background-color: azure;
+    }
+.main-session{
+    padding: 30px 0px;
+}
 
-	#content-session{
-	    height:auto;
-	    background-color: #1F2124;
-	    
-	}
-	#content_footer{
-	    height:500px;
-	    line-height: 35px;
-	    background-color: #1F2124;
-	     
-	}
+/*테이블*/
+.cart_table{
+    width: 100%;
+    border-top: 1px solid black;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.txt_origin_price{
+    text-decoration:line-through;
+    font-weight: 1000;
+    font-size: 15px;
+}
+td{
+    border-bottom: 1px solid black;
+}
+th{
+    padding: 7px 5px;
+}
+tbody{
+    border-top:1px solid black;
+}
+    
+/*컨텐트 레이아웃 */
+#content-session{
+    height:auto;
+    
+}
+#content_footer{
+    font-size: 18px;
+    padding: 30px 70px;
+    height:600px;
+    line-height: 40px;
+    vertical-align: middle;
+}
 
    /*버튼*/
-	.a_btn{
-	    display: inline-block;
-	    width: 115px;
-	    height: 25px;
-	    line-height: 25px;
-	    background: #E3E6E4;;
-	    padding: 10px;
-	    
-	    text-align: center;
-	    border-radius: 5px;
-	    color: black;
-	    font-weight: bold;
-	    margin-top: 10px;
-	}
-	.delete-btn-area{
-	    text-align: right;
-	}
+.a_btn{
+    border-radius: 4px;
+    display: inline-block;
+    width: 150px;
+    height: 35px;
+    padding: 5px 0px;
+    line-height: 34px;
+    text-align: center;
+    margin-top: 10px;
+    border:0 none;
+	background-color: #7EBDC2;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+.delete-btn-area{
+	   text-align: center;
+}
 
-     select{
-        margin: 5px; width: 100px;
-        border-radius: 5px;
-         text-align: center;
-    }
-    textarea{
-        border-radius: 2px;
-    }
-    .payment_container>li>span{
-        font-size:20px;
-    }
-    #payment_style{
-        font-size: 20px;
-    }
+select{
+    margin: 5px; 
+    width: 120px;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+}
+    
+textarea{
+    border-radius: 2px;
+    width: 1000px;
+    margin: 10px;
+    padding: 10px;
+    line-height: 22px;
+}
+.payment_container > li > span{
+    font-size:18px;
+    padding: 10px;
+}
+#payment_style{
+    font-size: 18px;
+}
+
 }
