@@ -3,16 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 
-<link rel="icon" type="image/png" href="http://example.com/myicon.png">
- -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- 
-<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
- -->
+ <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <!-- 기본 링크 -->
@@ -28,9 +23,8 @@
 <script src="js/datepicker/datepicker.js"></script>
 <!-- Include language -->
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
-<!-- ī�װ� �˻� ������ 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  -->
+<!-- fontawesome -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function() {
 	//로그인 로그아웃 전환
@@ -158,12 +152,12 @@ $(function() {
                    </span>
                 </div>
             </div>
-        
+        <!-- header-nav -->
         <div id="header-nav">
                 <ul class="search">
                     <div class="block">
                         <div id="calendar" name="calendar">
-                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                          	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -176,10 +170,10 @@ $(function() {
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
-                    <li name="series" class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
+                    <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>매빅 2 PRO</li>
@@ -190,7 +184,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li name="hover-dro" class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>비밥 2 SINGLE</li>
@@ -198,14 +192,14 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li name="hover-dro" class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">스파크<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>스파크 미니</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">인스파이어<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">인스파이어<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>인스파이어 1V2 1인</li>
@@ -217,7 +211,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">팬텀<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">팬텀<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>팬텀 4</li>
@@ -230,7 +224,7 @@ $(function() {
                             </ul>
                         </div>
                     </li>
-                    <li name="price" class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
+                    <li name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_price" id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
@@ -239,11 +233,13 @@ $(function() {
                             </ul>
                         </div>
                     </li>                  
-                    <button id="btnSch">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
+                    <button id="btnSch">검색</button>             
                 </ul>
-        </div>
+        	</div>
+        <!-- //header-nav -->
         </div>
           <!-- //header -->
+          
         <!-- contents -->
         <div id="contents">
         	<div class="container">
@@ -444,13 +440,13 @@ $(function() {
 					<div class="btnPaging">
                         <ul class="pagination" style="font-size: 17px;">
                             <li>
-                                <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fas fa-arrow-left"></i></a>
                                 <a href="#">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#">4</a>
                                 <a href="#">5</a>
-                                <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fas fa-arrow-right"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -458,6 +454,7 @@ $(function() {
             <!-- //container -->
 		</div>
 		<!-- //contents -->
+		
 		<!-- footer -->
 		<div id="footer">
 			<div id="footer-nav">
