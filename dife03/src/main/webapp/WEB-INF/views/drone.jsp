@@ -28,6 +28,21 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function() {
+	//로그인 로그아웃 전환
+	var mem_id = "${mem_id}";
+	alert(mem_id);
+	if(mem_id != '' && mem_id != null){
+		//var login = $("#category-2").find("a:first").html();
+		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+		//$("#category-2").append(logout);
+		$("#sign").attr("href","logout").html("LOGOUT");
+	}
+	if(mem_id == '' || mem_id == null){
+		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+		//$("#category-2").append(login);
+		$("#sign").attr("href","signIn").html("LOGIN");
+	}
+	
 	// 드론, 대여점 배열에 넣기
 	
 	var itemsPerPage = 12;
@@ -113,9 +128,10 @@ $(function() {
         });
         $("#calendar").datepicker();
         */
-	})
+        })
 </script>
 </head>
+
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
@@ -124,25 +140,25 @@ $(function() {
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="#" class="cl-effect-1">드론</a>
+                        <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
-                        <a href="#" class="cl-effect-1">커뮤니티</a>
+                        <a href="board" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                        <a href="#" class="cl-effect-1">MYPAGE</a>
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>
-        
+        <!-- header-nav -->
         <div id="header-nav">
                 <ul class="search">
                     <div class="block">
                         <div id="calendar" name="calendar">
-                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+                          	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -155,10 +171,10 @@ $(function() {
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
-                    <li name="series" class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
+                    <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>매빅 2 PRO</li>
@@ -169,7 +185,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li name="hover-dro" class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>비밥 2 SINGLE</li>
@@ -177,14 +193,14 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li name="hover-dro" class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">스파크<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>스파크 미니</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">인스파이어<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">인스파이어<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>인스파이어 1V2 1인</li>
@@ -196,7 +212,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">팬텀<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">팬텀<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>팬텀 4</li>
@@ -209,7 +225,7 @@ $(function() {
                             </ul>
                         </div>
                     </li>
-                    <li name="price" class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
+                    <li name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_price" id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
@@ -218,17 +234,20 @@ $(function() {
                             </ul>
                         </div>
                     </li>                  
-                    <button id="btnSch">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
+                    <button id="btnSch">검색</button>             
                 </ul>
-       		</div>
+        	</div>
+        <!-- //header-nav -->
         </div>
-        <!-- //header -->
+          <!-- //header -->
+          
         <!-- contents -->
         <div id="contents">
         	<div class="container">
 				<div id="drone-grid">
+					<!-- 1번째 단락 -->
 	                <div class="block">
-	                <c:forEach var="d" items="${list }">
+                        <c:forEach var="d" items="${list }">
                         <figure id="block" class="block">
                             <img id="dro_photo" class="dro-list-img" src="img/drone/${d.dro_photo }" alt="${d.dro_name }"/>
                               <figcaption>
@@ -239,30 +258,28 @@ $(function() {
                               </figcaption>
                               <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
                         </figure>
-                    </c:forEach>		              
+                    </c:forEach>		             
 	                </div>
-                </div>
-			</div>
-		
-		
+	               </div>
 				<!-- 페이징 -->
 					<div class="btnPaging">
                         <ul class="pagination" style="font-size: 17px;">
                             <li>
-                                <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fas fa-arrow-left"></i></a>
                                 <a href="#">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#">4</a>
                                 <a href="#">5</a>
-                                <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fas fa-arrow-right"></i></a>
                             </li>
                         </ul>
                     </div>
-            </div>
+            	</div>
             <!-- //container -->
 		</div>
 		<!-- //contents -->
+		
 		<!-- footer -->
 		<div id="footer">
 			<div id="footer-nav">

@@ -8,9 +8,6 @@
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
@@ -27,6 +24,24 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//로그인 로그아웃 전환
+	var mem_id = "${mem_id}";
+	
+	if(mem_id != '' && mem_id != null){
+		//var login = $("#category-2").find("a:first").html();
+		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+		//$("#category-2").append(logout);
+		$("#sign").attr("href","logout").html("LOGOUT");
+	}
+	if(mem_id == '' || mem_id == null){
+		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+		//$("#category-2").append(login);
+		$("#sign").attr("href","signIn").html("LOGIN");
+	}
+})
+</script>
 </head>
 <body>
 	<div id="wrap" class="animated fadeIn">

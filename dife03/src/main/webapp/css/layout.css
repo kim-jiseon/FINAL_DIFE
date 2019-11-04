@@ -142,7 +142,9 @@
         font-size: 11px;
         color: #a4a4a4;
     }
-    
+    #footer_info1 > p{
+    	margin: 0 auto !important; 
+    }
     #footer_info1 > p > a{
         color: #a4a4a4;
     }

@@ -56,10 +56,6 @@ $(function(){
 				var pop = window.open("/pilot_popup?date="+date,"pop","width = 840, height = 650");	
 			}
 		}
-		
-		
-
-		
 	})
 	
 	

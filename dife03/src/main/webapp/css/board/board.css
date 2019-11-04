@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .container{
-    height: 700px;
+    height: auto;
+    padding: 50px 0px;
 }
 #content1  {
     color: #323232;
