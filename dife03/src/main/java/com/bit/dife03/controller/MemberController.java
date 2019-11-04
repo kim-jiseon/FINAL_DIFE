@@ -1,11 +1,13 @@
 package com.bit.dife03.controller;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,21 +35,22 @@ public class MemberController {
 	public void setDao(MemberDao dao) {
 		this.dao = dao;
 	}
-//	
-//	@RequestMapping("/main")
-//	public void main() {
-//		
-//	}
 	
 	//로그인페이지 이동
 	@RequestMapping(value = "/signIn", method = RequestMethod.GET)
-	public void signInInsertForm() {
-		
+	public void signInInsertForm(HttpServletRequest request) {
+		String referer = request.getHeader("referer");
+		System.out.println(referer);
+		request.getSession().setAttribute("redirectURI", referer);
 	}
 	//로그인시
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
 	public ModelAndView signInSubmit(String mem_id, String mem_pwd, HttpSession session) {
-		ModelAndView mav = new ModelAndView("redirect:/main");
+		//로그인시 이전페이지로 돌아가기: referer
+		String referer = (String) session.getAttribute("redirectURI");
+		String URI = referer.substring(referer.lastIndexOf("/")+1);
+		System.out.println("URI"+URI);
+		ModelAndView mav = new ModelAndView("redirect:/"+URI);
 
 		int re = dao.isMember(mem_id, mem_pwd);
 		
