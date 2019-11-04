@@ -6,22 +6,20 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-<title>layout</title>
+<title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<!-- 기본 링크 -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/orders/payment.css">
+<!-- 제이쿼리 플러그인 -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- fontawesome -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -45,30 +43,9 @@
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
-<<<<<<< HEAD
-        <div id="header">
-            <div id="header-top">
-               <div id="category">
-                    <span id="category-1" class="animated fadeInUp">
-                        <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="drone" class="cl-effect-1">드론</a>
-                        <a href="pilot" class="cl-effect-1">파일럿</a>
-                        <a href="#" class="cl-effect-1">지역 및 날씨</a>
-                        <a href="#" class="cl-effect-1">고객지원</a>
-                        <a href="#" class="cl-effect-1">커뮤니티</a>
-                    </span>
-                     <span id="category-2" class="animated fadeInUp">
-                        <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                        <a href="basket" class="cl-effect-1">RESERVATION</a>
-                   </span>
-                </div>
-            </div>
-            <div id="header-nav"></div>
-        </div>
-=======
+
         <jsp:include page="header.jsp"></jsp:include>
->>>>>>> refs/heads/song
+
         <!-- //header -->
 
         <!-- contents -->

@@ -2,9 +2,12 @@ package com.bit.dife03.controller;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +38,20 @@ public class OrdersController {
 
 	@ResponseBody
 	@RequestMapping("/basketList.do")
-	public String listBasket()
+	public String listBasket(String mem_id)
 	{	
 		String str="";
+		
+		if(mem_id != null)
+		{
+		
 		ObjectMapper ob = new ObjectMapper();
 		try {
-		str =	ob.writeValueAsString(dao.basketList("hong"));
+		str =	ob.writeValueAsString(dao.basketList(mem_id));
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
 		}
 		return str;
 	}
@@ -93,6 +101,7 @@ public class OrdersController {
 	 return result;
 	 
 	}
+	//주문 인설트,주문상세 인설트
 	@ResponseBody
 	@RequestMapping(value="/jumunInsert.do",method = RequestMethod.POST)
 	public int insertJumun(
@@ -126,5 +135,25 @@ public class OrdersController {
 		 
 	
 		return re;
+	}
+	//주문상세 리스트
+	@ResponseBody
+	@RequestMapping("/ordersList.do")
+	public String listOrders(String mem_id)
+	{	
+		String str="";
+		
+		if(mem_id != null)
+		{
+		
+		ObjectMapper ob = new ObjectMapper();
+		try {
+		str =	ob.writeValueAsString(dao.basketList(mem_id));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		return str;
 	}
 }

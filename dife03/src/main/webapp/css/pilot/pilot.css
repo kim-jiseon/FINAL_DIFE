@@ -6,7 +6,7 @@
 #header-nav{
     height: 50px;
     line-height: 50px;
-    background-color: #7EBDC2;
+    background-color: #383A3F;
     vertical-align: middle;
 }
     
@@ -20,7 +20,7 @@
 #pil-search > select{
     width: 200px;
     height: 30px;
-    font-size: 14px;
+    font-size: 15px;
     margin: 0px 20px 0px 20px;
 }
 

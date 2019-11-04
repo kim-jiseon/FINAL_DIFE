@@ -134,7 +134,7 @@
         margin: 0px 0px;
     }
     /*슬라이드 배너*/
-    .swiper-slide > img{
+    .swiper-slide > a > img{
 		max-width: 100%;
 		height: 600px;
 		overflow: hidden;

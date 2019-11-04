@@ -17,12 +17,6 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
 		delete basket where bas_no=#{bas_no}
 	</delete>
   <!-- orders insert 및 ordersDetail insert transaction -->
-  
-  <!--  orders max(getNextNo) -->
-  	<select id="getOrd" resultType="java.lang.Integer">
-  		select nvl(max(ord_no),0)+1 from orders
-  	</select>
-  	<!-- insert orders,ordersdetail insert -->
   	<insert id="insertOrders">
 
   	 insert into orders values(#{ord_no},#{mem_no},#{ord_amount},#{ord_price},sysdate,0);
@@ -31,6 +25,9 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
   	<insert id="ordersDetail">
   	insert into ordersdetail values(#{det_no},#{ord_no},#{pos_no},#{det_amount},#{det_price},#{det_return},0);
   	</insert>
+  	<!-- ordersList -->
+  	<select id="selectOrdersDetail" resultType="ordersDetailVo">
   	
+  	</select>
 
 </mapper>
