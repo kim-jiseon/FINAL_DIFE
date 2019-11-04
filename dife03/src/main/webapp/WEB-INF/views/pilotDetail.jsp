@@ -5,11 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-    <title>layout</title>
+    <title>DIFE.com</title>
     <!-- 웹폰트 -->
-     <!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- fadeIn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -43,6 +40,25 @@ $(function(){
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
+	
+	//파일럿과 상담하기 버튼 활성화
+	$("#pil_btn").click(function(){
+		//datepicker값 가져오기
+		var date = $(".datepicker-here").val();
+		if (mem_id == '' || mem_id == null) {
+			alert("로그인을 해주세요.");
+			location.href="/signIn";
+		} else {
+			if (date == null || date == "") {
+				alert("날짜를 선택해주세요.");
+			}
+			else{
+				var pop = window.open("/pilot_popup?date="+date,"pop","width = 840, height = 650");	
+			}
+		}
+	})
+	
+	
 });
 </script>
 </head>
@@ -75,7 +91,7 @@ $(function(){
                         교육 및 촬영일&nbsp;&nbsp;
                             <input type="text" data-range="true"
 								data-multiple-dates-separator=" - " data-language="ko"
-								class="datepicker-here" style="width:180px; height: 25px;"/>
+								class="datepicker-here" style="width:200px; height: 25px;"/>
                         </div>
                     <a href="#"><button id="pil_btn">파일럿과 상담하기</button></a>
                   </div>
@@ -116,7 +132,7 @@ $(function(){
                                    <dd class="info_det" id="pil-intro">강사 소개</dd>
                                    <dd class="pil-information">${info.pil_intro }</dd>
                                    <dd class="info_det" id="pil-intro">강의 정보</dd>
-                                   <dd class="pil-information">${info.pil_intro }</dd>
+                                   <dd class="pil-information">${info.pil_detInfo }</dd>
                                </dl>
                            </li>
                        </ul>

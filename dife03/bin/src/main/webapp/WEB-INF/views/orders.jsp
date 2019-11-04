@@ -46,26 +46,7 @@
 
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
-        <div id="header">
-            <div id="header-top">
-               <div id="category">
-                    <span id="category-1" class="animated fadeInUp">
-                        <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="drone" class="cl-effect-1">드론</a>
-                        <a href="pilot" class="cl-effect-1">파일럿</a>
-                        <a href="#" class="cl-effect-1">지역 및 날씨</a>
-                        <a href="#" class="cl-effect-1">고객지원</a>
-                        <a href="#" class="cl-effect-1">커뮤니티</a>
-                    </span>
-                     <span id="category-2" class="animated fadeInUp">
-                        <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                        <a href="basket" class="cl-effect-1">RESERVATION</a>
-                   </span>
-                </div>
-            </div>
-            <div id="header-nav"></div>
-        </div>
+        <jsp:include page="header.jsp"></jsp:include>
         <!-- //header -->
 
         <!-- contents -->
@@ -73,11 +54,12 @@
     <div id="contents">
         <!-- 세션 영역        -->
         <div id="content-session">
-            <div class="container" style="color: white; font-size:20px;">
+            <div class="container">
+               <div class="container-top">주문</div>
                 <div class='main-session'>
-                   <p>주문</p><br>
+                  
                 <!--테이블 영역      -->
-                        <table class='cart_table' style="color: white;">
+                        <table class='cart_table'>
                              <colgroup>
                                  <col width='150px'>
                                  <col width="100px">
@@ -94,7 +76,7 @@
                             <th scope="col">수량</th>
                             <th scope="col">주문금액<br/>(적립예정)</th>
                         </thead>
-                              <tbody style="border-top: 1px solid #000">
+                              <tbody>
                             <td>1</td>
                             <td>
                                 <div class="product_img">
@@ -108,8 +90,8 @@
                                 <span>대여일:2019/09/05 반납일:2019/09/09</span>
                             </td>
                             <td>
-                                <span class="txt_origin_price">150000</span><br>120000
-                                
+                                <span class="txt_origin_price">150000</span>
+                                <br>120000
                             </td>
                             <td>
                                 <span>수량</span>
@@ -123,7 +105,7 @@
                         </tbody>
                         
                         
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>2</td>
                             <td>
                                 <div class="product_img">
@@ -152,7 +134,7 @@
                         </tbody>
                         
                         
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>3</td>
                             <td>
                                 <div class="product_img">
@@ -182,7 +164,7 @@
                         </tbody>
                         
                         
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>4</td>
                             <td>
                                 <div class="product_img">
@@ -210,7 +192,7 @@
 
                         </tbody>
              
-                            <tbody style="border-top: 1px solid #000">
+                            <tbody>
                             <td>5</td>
                             <td>
                                 <div class="product_img">
@@ -246,7 +228,7 @@
        
           <!--    content_footer-->
        <div id='content_footer'>
-            <div class="container" style="color: white">
+            <div class="container">
                 <span>결제 방식</span><br>
 <!--
                 <div class="">
@@ -260,9 +242,13 @@
                 </div>
 -->
                 <ul class="payment_container" >
-                    <li><span>결제 수단 <input type="radio" class="payment" checked="checked" name="payment"><label>카드</label>
-                    <input type="radio" class="payment"  name="payment"><label>무통장</label>
-                    <input type="radio" class="payment"  name="payment"><label>카카오페이</label></span></li>
+                    <li>
+                    <span>결제 수단</span>
+                        <input type="radio" class="payment" checked="checked" name="payment"><label style="padding: 0px 10px;">카드</label>
+                        <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">무통장</label>
+                        <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">카카오페이</label>
+                    </li>
+                    
                     <li id="payment_style">결제 안내
                         <select>
                             <option>은행선택</option>
@@ -274,8 +260,8 @@
                     <li>
                         <span>총 금액</span><span>430000원</span>
                     </li>
-                    <li><span>주문자 동의</span> <input type="checkbox" checked="checked"><label style="padding: 10px; padding-bottom: 40px;">동의</label><br>
-                        <textarea rows="10%" cols="150%" disabled style="background-color: white;" >제1조(목적)
+                    <li><span>주문자 동의</span> <input type="checkbox" checked="checked"><label>동의</label><br>
+                        <textarea rows="10%" cols="100%">제1조(목적)
 
 이 약관은 'DIFE(주)'(전자거래 사업자)이 운영하는 DIFE(주) 온라인 쇼핑몰(이하 "DIFE 온라인 쇼핑몰"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다. ※ 「PC통신등을 이용하는 전자거래에 대해서도 그 성질에 반하지 않는한 이 약관을 준용합니다」
 
@@ -316,40 +302,17 @@
                  <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="order" class="a_btn">결제하기</a>
 				</div>
-           
        </div>
     </div>
 </div>
     <!-- //contents -->
 
 
+
         <!-- footer -->
-        <div id="footer">
-            <div id="footer-nav">footer-nav</div>
-            <div id="footer-info">(주)비트캠프:DIFE
-                <div id="footer_info1">
-                    <p>서울특별시 마포구 백범로 23 구프라자 3층</p>
-                    <p>02-707-1480</p>
-                    <p><a href="#">고객센터</a></p>
-                    <p><a href="#">이용안내</a></p>
-                </div>
-            </div>
-        </div>
+        <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
-<script>
-window.onscroll = function() {myFunction()};
 
-var header = document.getElementById("header");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-</script>
 </body>
 </html>
