@@ -1,121 +1,93 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-    <title>DIFE.com</title>
-    <!-- 웹폰트 -->
-    <!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <!-- fadeIn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <!-- 기본 링크 -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/main/main.css">
-    <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="css/swiper/swiper.min.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <script type="text/javascript">
-    $(function(){
-    	//로그인 로그아웃 전환
-    	var mem_id = "${mem_id}";
-    	alert(mem_id);
-    	if(mem_id != '' && mem_id != null){
-    		//var login = $("#category-2").find("a:first").html();
-    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-    		//$("#category-2").append(logout);
-    		$("#sign").attr("href","logout").html("LOGOUT");
-    	}
-    	if(mem_id == '' || mem_id == null){
-    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-    		//$("#category-2").append(login);
-    		$("#sign").attr("href","signIn").html("LOGIN");
-    	}
-    	
-    	/*
-    	var swiper = $(".swiper-container").find("ul");
-    	//var slide_img = $(".swiper-slide").find("img");
-    
-    	var layerWidth = $(swiper).children().outerWidth();
-    	var layerHeight = $(swiper).children().outerHeight();
-    	var layerLength = $(swiper).children().length;
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<title>DIFE.com</title>
+<!-- 웹폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<!-- fadeIn -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<!-- 기본 링크 -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/main/main.css">
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="css/swiper/swiper.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<script type="text/javascript">
+	$(function() {
+		
+		//로그인 로그아웃 전환
+		var mem_id = "${mem_id}";
+		alert(mem_id);
+		if(mem_id != '' && mem_id != null){
+			//var login = $("#category-2").find("a:first").html();
+			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
+			//$("#category-2").append(logout);
+			$("#sign").attr("href","logout").html("LOGOUT");
+		}
+		if(mem_id == '' || mem_id == null){
+			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+			//$("#category-2").append(login);
+			$("#sign").attr("href","signIn").html("LOGIN");
+		}
+		
+		
+		/*
+		var swiper = $(".swiper-container").find("ul");
+		//var slide_img = $(".swiper-slide").find("img");
+		
+		var layerWidth = $(swiper).children().outerWidth();
+		var layerHeight = $(swiper).children().outerHeight();
+		var layerLength = $(swiper).children().length;
 
-    	var interval;
- 
-    	interval = setInterval(function(){
-    		slide()
-    		},5000);
-    	
-    	function slide(){
-    		$(swiper).css("width", layerWidth*layerLength + "px");
-    		$(swiper).css("height", layerHeight+"px");
-   
-    		$(swiper).animate({left:"-"+layerWidth+"px"},1500,function(){
-    			
-    			$(this).append("<li class='swiper-slide'>" + $(this).find("li:first").html() + "</li>");
-  				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
-  				$(this).find("li:first").remove();
-  				//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
-  				$(this).css("left", 0);
-  				//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
-    		 });    
-    		} 
-    	
-    	*/
-    	
-    })
-    </script>
+		var interval;
+		
+		interval = setInterval(function(){
+			slide()
+			},5000);
+		
+		function slide(){
+			$(swiper).css("width", layerWidth*layerLength + "px");
+			$(swiper).css("height", layerHeight+"px");
+		
+			$(swiper).animate({left:"-"+layerWidth+"px"},1500,function(){
+				
+				$(this).append("<li class='swiper-slide'>" + $(this).find("li:first").html() + "</li>");
+				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
+				$(this).find("li:first").remove();
+				//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
+				$(this).css("left", 0);
+				//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
+			 });    
+			} 
+		
+		 */
+
+	})
+</script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
-        <div id="header">
-            <div id="header-top">
-                <div id="category">
-                    <span id="category-1" class="animated fadeInUp">
-                        <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="drone" class="cl-effect-1">드론</a>
-                        <a href="pilot" class="cl-effect-1">파일럿</a>
-                        <a href="#" class="cl-effect-1">지역 및 날씨</a>
-                        <a href="#" class="cl-effect-1">고객지원</a>
-                        <a href="#" class="cl-effect-1">커뮤니티</a>
-                        <!--  
-                        <a href="admin" id="category-1-admin" class="cl-effect-1" >관리자</a>
-                        -->
-                    </span>
-                   	<span id="category-2" class="animated fadeInUp">
-                   	<!-- 
-                        <a href="signIn" class="cl-effect-1">LOGIN</a>
-                         -->
-                         	 
-                        <a id="sign" class="cl-effect-1"></a>
-                        
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                        <a href="basket" class="cl-effect-1">RESERVATION</a>
-                   </span>
-                </div>
-            </div>
-            <div id="header-nav"></div>
-        </div>
+       <jsp:include page="header.jsp"></jsp:include>
         <!-- //header -->
 
         <!-- contents -->
         <div id="contents">
-        	<div class="container">
              <!-- Swiper -->
               <div class="swiper-container">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide"><img src="img/main/drone_main06.png"></div>
-                  <div class="swiper-slide"><img src="img/main/drone_main7.jpg"></div>
-                  <div class="swiper-slide"><img src="img/main/drone_main8.JPG"></div>
-                  <div class="swiper-slide"><img src="img/main/drone_main7.jpg"></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main06.png"></a></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main7.jpg"></a></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main8.JPG"></a></div>
+                  <div class="swiper-slide"><a href="drone"><img src="img/main/drone_main5.JPG"></a></div>
                 </div>
 				<!-- Add Pagination -->
 				<div class="swiper-pagination"></div>
@@ -129,23 +101,23 @@
           	<div id="contents-wiget">
           		<div class="grid-wiget">
           			    <div class="grid-cell1">
-                            <img src="img/main/people.png"><br>
-          		            방문자 수<br>
+                            <img src="img/main/group.png">
+          		            <p>방문자 수</p>
           				    <h1>888명</h1>
           			    </div>
           			    <div class="grid-cell1">
-                            <img src="img/main/pilot.png"><br>
-                            파일럿 수<br>
+                            <img src="img/main/cap.png">
+                            <p>파일럿 수</p>
                             <h1>54명</h1>
           			    </div>
                         <div class="grid-cell1">
-                            <img src="img/main/drone.png"><br>
-                                드론 수<br>
-                                <h1>10981대</h1>
+                            <img src="img/main/drone%202.png">
+                            <p>드론 수</p>
+                            <h1>10981대</h1>
                         </div>
                         <div class="grid-cell1">
-                        	<img src="img/main/weather.png"><br>
-                            날씨<br>
+                        	<img src="img/main/wheather.png">
+                            <p>날씨</p>
                             <h1>21℃</h1>
                             <h4>화요일(맑음)</h4>
                         </div>
@@ -236,23 +208,13 @@
           			
           		</div>
           	</div>
-          	</div>
         </div>
         <!-- //contents -->
 
         <!-- footer -->
-        <div id="footer">
-            <div id="footer-nav">footer-nav</div>
-            <div id="footer-info">(주)비트캠프:DIFE
-                <div id="footer_info1">
-                    <p>서울특별시 마포구 백범로 23 구프라자 3층</p>
-                    <p>02-707-1480</p>
-                    <p><a href="#">고객센터</a></p>
-                    <p><a href="#">이용안내</a></p>
-                </div>
-            </div>
-        </div>
+       <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
+        
     </div>
        <!-- Swiper JS -->
     <script src="js/swiper/swiper.min.js"></script>
@@ -276,19 +238,6 @@
     });
   </script>
 
-    <script>
-    window.onscroll = function() {myFunction()};
-
-    var header = document.getElementById("header");
-    var sticky = header.offsetTop;
-
-    function myFunction() {
-      if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-      } else {
-        header.classList.remove("sticky");
-      }
-    }
-    </script>
+    
 </body>
 </html>

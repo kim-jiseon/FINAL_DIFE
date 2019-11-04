@@ -16,11 +16,17 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/drone/droneDetail.css">
+<!-- 제이쿼리 플러그인 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- 달력 -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="js/datepicker/datepicker.js"></script>
+<!-- Include language -->
+<script src="js/datepicker/i18n/datepicker-ko.js"></script>
+<!-- 아이콘 -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
 <script type="text/javascript">
 $(function() {
 	//로그인 로그아웃 전환
@@ -45,7 +51,7 @@ $(function() {
     $('.img').on('mousemove',magnify).prepend('<div class="magnifier"></div>').children('.magnifier').css({
         "backgroun":"url('"+scale.attr('src')+"')no-repeat","background-size":scale.width()*zoom+"px "+scale.height()*zoom+"px"
     });
-    
+    /*
     var magnifier = $('.magnifier');
     function magnify(e){
         // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
@@ -111,34 +117,33 @@ document.onkeydown = evt => {
   evt = evt || window.event;
   evt.keyCode === 27 ? closeModal() : false;
 };
-
+*/
 
 });
 </script>
 </head>
 <body>
-<div id="wrap" class="animated fadeIn">
-       <!-- header -->
-        <div id="header">
-            <div id="header-top">
-               <div id="category">
-                    <span id="category-1" class="animated fadeInUp">
-                        <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="drone" class="cl-effect-1">드론</a>
-                        <a href="pilot" class="cl-effect-1">파일럿</a>
-                        <a href="#" class="cl-effect-1">지역 및 날씨</a>
-                        <a href="#" class="cl-effect-1">고객지원</a>
-                        <a href="#" class="cl-effect-1">커뮤니티</a>
-                    </span>
-                     <span id="category-2" class="animated fadeInUp">
-                        <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                        <a href="basket" class="cl-effect-1">RESERVATION</a>
-                   </span>
-                </div>
-            </div>
-            <div id="header-nav"></div>
-        </div>
+	<div id="wrap" class="animated fadeIn">
+		<!-- header -->
+		<div id="header">
+          <div id="header-top">
+             <div id="category">
+                  <span id="category-1" class="animated fadeInUp">
+                      <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
+                      <a href="drone" class="cl-effect-1">드론</a>
+                      <a href="pilot" class="cl-effect-1">파일럿</a>
+                      <a href="#" class="cl-effect-1">지역 및 날씨</a>
+                      <a href="#" class="cl-effect-1">고객지원</a>
+                      <a href="#" class="cl-effect-1">커뮤니티</a>
+                  </span>
+                  <span id="category-2" class="animated fadeInUp">
+                      <a id="sign" class="cl-effect-1"></a>
+                      <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
+                      <a href="basket" class="cl-effect-1">RESERVATION</a>
+				</span>
+              </div>
+          </div>
+      </div>
 		
 		<!-- 드론 상세 상단 -->
 		<div id="contents">
@@ -159,6 +164,7 @@ document.onkeydown = evt => {
 	               </ul>
 	           </div>
 	       </section>-->
+	       <div id="header-nav">
 			<div class="content1">
 				<div class="grid">
 					<div id="block1">
@@ -172,15 +178,27 @@ document.onkeydown = evt => {
 					</div>
 					
 					<div id="block2">
-						<ul style="color: white; font-size: 20px;">
-							<li><p>드론명 : <strong>매빅PRO</strong></p></li>
+						<ul style="color: black; font-size: 20px;">
+							<li name="droD_name"><p>드론명 : <strong>매빅PRO</strong></p></li>
 							<hr>	
-							<li><p>가격 : <strong>200,000원</strong></p></li>
+							<li name="droD_price"><p>가격 : <strong>200,000원</strong></p></li>
 							<hr>
-							<li><p>시리즈명 : <strong>MAVIC</strong></p></li>
-							<li><p>제조사명 : <strong>DJI</strong></p></li>
+							<li name="droD_series"><p>시리즈명 : <strong>MAVIC</strong></p></li>
+							<li name="droD_made"><p>제조사명 : <strong>DJI</strong></p></li>
 							<hr>
-							<li><p>대여점 : 
+						<!-- 캘린더 선택 시 위에 대여일과 반납일을 선택하세요. 문구뜨도록 설정하기 -->
+						<!-- 캘린더 -->	
+		                <ul class="search">
+		                    <div class="block">
+		                        <div id="calendar" name="calendar">
+		                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+		                        	<input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ko"
+		                            class="datepicker-here" style="width:180px; height: 25px;"/>               
+		                        </div>
+		                    </div>
+		                </ul>
+							<hr>
+							<li name="droD_ren"><p>대여점 : 
 								<span id="opr">
 									<select id="operR" name="operR" style="width: 150px; height: 30px;">
 										<option value="R0001">파주점</option>
@@ -201,7 +219,7 @@ document.onkeydown = evt => {
 									</select>
 								</span>
 							</p></li>
-							<li><p>수    량 :							 
+							<li name="droD_amount"><p>수    량 :							 
 								<span id="opa">
 									<select id="operA" name="operA" style="width: 150px; height: 30px;">
 										<option value="amt1">1</option>
@@ -311,14 +329,18 @@ document.onkeydown = evt => {
 						</ul>
 					</div>		
 				</div>
+			</div>
 			<hr>
 			
+			<!-- 추가한 컬럼 추가하기 -->
 			<!-- 드론 상세 정보 -->
 			<div class="content2">
 				<div class="block">
 					<img src="img/drone/dro_dt.png">
 				</div>
 			</div>
+			
+			<!-- 질문, 후기게시판 불러오는지? -->
 		
 			<div id="footer">
 		        <div id="footer-nav">

@@ -2,6 +2,8 @@ package com.bit.dife03.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVo {
 	private String boa_no;
 	private String mem_no;
@@ -22,6 +24,7 @@ public class BoardVo {
 	private Date first_time;
 	private String last;
 	private Date last_time;
+	private MultipartFile upload;
 	
 	public BoardVo() {
 		super();
@@ -30,7 +33,8 @@ public class BoardVo {
 
 	public BoardVo(String boa_no, String mem_no, String boa_title, String boa_contents, String boa_pwd, int boa_rating,
 			Date boa_regdate, int boa_view, String boa_answer, String boa_sort, String boa_category, String boa_fname,
-			int boa_ref, int boa_level, int boa_step, String first, Date first_time, String last, Date last_time) {
+			int boa_ref, int boa_level, int boa_step, String first, Date first_time, String last, Date last_time,
+			MultipartFile upload) {
 		super();
 		this.boa_no = boa_no;
 		this.mem_no = mem_no;
@@ -51,6 +55,7 @@ public class BoardVo {
 		this.first_time = first_time;
 		this.last = last;
 		this.last_time = last_time;
+		this.upload = upload;
 	}
 
 	public String getBoa_no() {
@@ -204,6 +209,13 @@ public class BoardVo {
 	public void setLast_time(Date last_time) {
 		this.last_time = last_time;
 	}
-	
+
+	public MultipartFile getUpload() {
+		return upload;
+	}
+
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
 	
 }
