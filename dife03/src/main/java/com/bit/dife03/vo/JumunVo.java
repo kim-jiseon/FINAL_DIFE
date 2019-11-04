@@ -1,19 +1,14 @@
 package com.bit.dife03.vo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class JumunVo {
 	
-	private ArrayList<OrdersDetailVo> jumun;
+	private List<OrdersDetailVo> jumun;
 	private String mem_no;
 	private int ord_amount;
 	private int ord_price;
-	public ArrayList<OrdersDetailVo> getJumun() {
-		return jumun;
-	}
-	public void setJumun(ArrayList<OrdersDetailVo> jumun) {
-		this.jumun = jumun;
-	}
+	
 	public String getMem_no() {
 		return mem_no;
 	}
@@ -35,7 +30,28 @@ public class JumunVo {
 	public JumunVo() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public List<OrdersDetailVo> getJumun() {
+		return jumun;
+	}
+	public void setJumun(List<OrdersDetailVo> jumun) {
+		this.jumun = jumun;
+	}
+	
+	public JumunVo(List<OrdersDetailVo> jumun, String mem_no, int ord_amount, int ord_price) {
+		super();
+		this.jumun = jumun;
+		this.mem_no = mem_no;
+		this.ord_amount = ord_amount;
+		this.ord_price = ord_price;
+	}
+	@Override
+	public String toString() {
+		return "JumunVo [jumun=" + jumun + ", mem_no=" + mem_no + ", ord_amount=" + ord_amount + ", ord_price="
+				+ ord_price + "]";
+	}
 
+	
 	
 	
 }

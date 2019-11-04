@@ -27,7 +27,6 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
-    	
     	//로그인 로그아웃 전환
     	var mem_id = "${mem_id}";
     	if(mem_id != '' && mem_id != null){
@@ -40,7 +39,6 @@
     		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
-    		
     	}
     	var bas_no;
     	var btn_del;
@@ -51,8 +49,7 @@
     	 var all_amount= 0;
     	 var mem_point= 1;
     	 var reserve_fund=0;
-    	 
-    	/* 날자를 포맷하기위한 function */
+    	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
     	function date_to_str(format)
 		{
 		    var year = format.getFullYear();
@@ -61,6 +58,14 @@
 		    var date = format.getDate();
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
+		}
+    	/* 날자를 SQL문에 맞춰 포맷하기 위한 function */
+    	function date_to_sql(format)
+		{
+		    var year = format.getFullYear();
+		    var month = format.getMonth() + 1;
+		    var date = format.getDate();
+		    return year + "/" + month + "/" + date;
 		}
     		/*체크박스 변환 */
     	 	$(".chk_all").change(function(){
@@ -90,19 +95,19 @@
     				location.href("/signIn");
     			}
 	    		$.each(data,function(idx,item){
-	    			
 	    			var rental = new Date(item.bas_rental);
 	    			var re_date = new Date(item.bas_return);
+	    			rental = date_to_str(rental);
+	    			re_date=date_to_str(re_date);
 	    			if(idx == 1)
-	    				{
-	    					
+	    				{	
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			console.log(item.pos_no);
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td></td>");
-	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
+	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":item.bas_rental,"ret_date":item.bas_return,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
 	    			$(td2).append(input);
 	    			$(input).click(function(){
 	    					  $(".chk_all").prop("checked", false);	
@@ -120,11 +125,8 @@
 	    			var p4;
 	    			var p5;
 	    			var p6;
-	    			rental = date_to_str(rental);
-	    			re_date=date_to_str(re_date);
 	    			/* sum 할인률 및 하단 정보 관련 처리 */
 	    			sum +=Number(item.bas_price);
-	    			all_amount += Number(item.bas_amount);
 	    			reserve_fund += Number(item.point);
 	    			/*  */
 	    			if(item.dro_name !== null)
@@ -186,7 +188,6 @@
     			/* check node 처리 */
     			
     			$("input[name='cart_no']").click(function(){
-    				
     				$(this).each(function(){
     					 price_node=Number($(this).attr("price"));
     					if($(this).is(":checked"))
@@ -196,18 +197,14 @@
     					else{
     						sum =sum - price_node;
     					}
-    					
     					 $("#sum_price").text("주문금액: "+sum+"원"); 
-    					
-    					
     				});
-    				
     			});
     			/*  */
     			
     			/*insert orders,ordersdetail 처리*/
     	    	$("#order").click(function(){
-    	    		var jumun = new Array();
+    	    		var jumun1 = new Array();
 					orders_sum = 0;
 				
     		  		$("input[name='cart_no']:checked").each(function(){
@@ -218,43 +215,35 @@
     					mem_no = $(this).attr("mem_no");
     					ren_date = $(this).attr("ren_date");
     					ret_date = $(this).attr("ret_date");
-    					
-    					 console.log("수량:"+amount);
-    					 console.log("합계: "+sum);
-       				  	 console.log("총 수량:"+all_amount);
-       				  	 console.log(reserve_fund);
-       				 	 console.log("포인트: "+mem_point);
-
        				 	all_amount += amount;
        				 	orders_sum += price;
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
-    		  			jumun.push(jumunlist);
-
+    		  			jumun1.push(jumunlist);
+    		  			/*리스트 데이터값 넣어주기  */
+        			/*  */
     				})
-    		  		JumunVo ={"jumun":jumun,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no}
-    		  		console.log(JumunVo);
+    		  		JumunVo ={"jumun":jumun1,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no};
+    		  		
+    		  	 	var json_data = JSON.stringify(JumunVo);
+    		  		console.log(json_data); 
 	  		
-    		  		if(jumun.length == 0)
+    		  		if(jumun1.length == 0)
 		  			{
 		  				alert("물품을 선택해주세요.");
 		  			}
-    		  		else{
-
-    		  			 $.ajax({url:"/jumunInsert.do",type:"post",dataType:"json",data:{"JumunVo":JumunVo},success:function(data){
-    		  				 alert("ajax통신");
+    		  		
+					console.log("ajax전:"+jumun1)
+					console.log(jumun1)
+    		  		 $.ajax({url:"/jumunInsert.do",type:"post",traditional:true,contentType: 'application/json',data:json_data,success:function(data){
+    		  				 alert(data);
     		  			 if(data === 1)
 
     		  				{
     		  				location.href="basket";
 
     		  				} 
-    		  				} 
+    		  			} 
     		  		}) 
-    		  		}
-    		  		console.log("jumun:"+jumun);
-    		  	
-    		  		
-    		  	
     	    	});
     	    	/* orders insert,ordersdetial insert end */
 
@@ -320,6 +309,7 @@
     			});
 
     			/*  */
+    	
     			/* 초기 page 변수값 설정 */
     			$("#sum_price").text("주문금액: "+final_sum+"원");
     			/*  */
@@ -379,6 +369,11 @@
             </div>
         
 <!--    //table-->
+		<input tpye="text" id="pos_no">
+		<input tpye="text" id="det_amount">
+		<input tpye="text" id="det_price">
+		<input tpye="text" id="det_rental">
+		<input tpye="text" id="det_return">
           <!--    content_footer-->
        <div id='content_footer'>
             <div class="container" style="color: white">
