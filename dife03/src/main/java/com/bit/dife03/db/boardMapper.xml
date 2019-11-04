@@ -3,7 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board">
+
+  <!-- 게시판 모두보기 -->
   <select id="selectAll" resultType="boardVo">
-    select * from board
+    select * from board order by boa_ref desc, boa_step
   </select>
 </mapper>
