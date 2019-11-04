@@ -11,7 +11,7 @@
 	<typeAlias type="com.bit.dife03.vo.BoardVo" alias="boardVo"/>
 	<typeAlias type="com.bit.dife03.vo.BasketVo" alias="basketVo"/>
 	<typeAlias type="com.bit.dife03.vo.DroneVo" alias="droneVo"/>
-	<typeAlias type="com.bit.dife03.vo.OrdersVo" alias="ordersVo"/>
+	<typeAlias type="com.bit.dife03.vo.OrdersVo" alias="orderVo"/>
 	<typeAlias type="com.bit.dife03.vo.OrdersDetailVo" alias="ordersDetailVo"/>
 	<typeAlias type="com.bit.dife03.vo.JumunVo" alias="jumunVo"/>
 </typeAliases>

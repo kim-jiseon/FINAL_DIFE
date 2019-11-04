@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,87 +28,72 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function() {
-	//로그인 로그아웃 전환
-	var mem_id = "${mem_id}";
-	alert(mem_id);
-	if(mem_id != '' && mem_id != null){
-		//var login = $("#category-2").find("a:first").html();
-		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-		//$("#category-2").append(logout);
-		$("#sign").attr("href","logout").html("LOGOUT");
-	}
-	if(mem_id == '' || mem_id == null){
-		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-		//$("#category-2").append(login);
-		$("#sign").attr("href","signIn").html("LOGIN");
-	}
+	// 드론, 대여점 배열에 넣기
 	
-	
-	// 드론, 대여점, 가격 배열에 넣기
-	
-	
-	
-	var itemsPerPage = 8;
-          
-    /* ī�װ�(�ø����) ���콺 hover */
-    $(".hover").mouseleave(function () {
-        $(this).removeClass("hover");
-    });
-    
-    /* ī�װ�(�ø����,����) Ŭ�� �� �������� 
-    var searchSp = document.getElementById("search1");
-    var listSp = document.getElementById("sub-menu");
-    
-    listSp.style.display = "none";
-    searchSp.addEventListener("click",(event){
-        if(listSp.style.display == "none"){
-            listSp.style.display = "block";
-        }
-        else{
-            listSp.style.display = "none";
-        }
-    })*/
-           
-/* 
-            // ����¡ ó�� : ��������ư �߰�
-            $.get("GetTotalDroneCount", function(data) {
-                var totalItem = Number(data);
-                var totalPage = Math.ceil(totalItem / itemsPerPage);
-                for (var i = 1; i <= totalPage; i++) {
-                    var addPage = $("<li/>").html(i).attr("dataPage", i);
-                    $("#btnPaging").append(addPage);
-                    $(addPage).click(function() {
-                        var nowPage = $(this).attr("dataPage");
-                        getItems(nowPage, itemsPerPage);
-                    });
-                }
-            });
-            // ����¡ ó�� : ��� �ʱ�ȭ�� ��ü ��� select
-            function getItems(nowPage, itemsPerPage) {
-                $("#content2").empty();
-                $.getJSON("GetDroneList", {
-                    nowPage: nowPage,
-                    perPage: itemsPerPage
-                }, function(data) {
-                    $.each(data, function(idx, item) {
-                        var div = $("<div></div>").addClass("item");
-                        var fname = $("<img/>").attr({
-                            "src": "img/drone/" + item.dro_photo,
-                            width: "100",
-                            height: "250"
-                        });
-                        var name = $("<p></p>").html(item.dro_name);
-                        var sName = $("<p></p>").html(item.dro_series);
-                        var price = $("<p></p>").html(item.pos_price);
-                        $(div).append(fname, name, sName, price);
-                        $("#content2").append(div);
-                    });
-                });
-                $("#content2").show();
+	var itemsPerPage = 12;
+	          
+    /* 페이징처리 및 전체 목록 */     
+    $.get("get_droCount", function(data) {
+        var totalItem = Number(data);
+        var totalPage = Math.ceil(totalItem / itemsPerPage);
+        for (var i = 1; i <= totalPage; i++) {
+            var addPage = $("<li/>").html(i).attr("dataPage", i);
+            $("#btnPaging").append(addPage);
+            $(addPage).click(function() {
+                var nowPage = $(this).attr("dataPage");
+                getItems(nowPage, itemsPerPage);
+            });            
+            if(totalPage < nowPage){
+            	nowPage = totalPage;
             }
-            getItems(1, itemsPerPage);
-            // selectRentalDate �޼��� �����
-            // �뿩�� Ķ����
+        }
+    });          
+    
+    function getItems(nowPage, itemsPerPage){
+		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
+		$("#contents").empty();
+		$("#contents").hide(500);
+	    // 전체 목록
+	    // 컨트롤러에서 모델앤뷰로 바꾼후 $.get 으로 변경하기
+	    $.getJSON("droListPage",{nowPage:nowPage,perPage:itemsPerPage},function(data){
+	     	//var arr = data;
+	     	$.each(data, function(idx, item){
+	     		//console.log(item.dro_name);
+	     		var div = $("<div></div>").addClass("item");
+				var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
+				var dro_info = $("<p></p>").html(item.dro_info);
+				var dro_price = $("<p></p>").html(item.dro_price);
+				var dro_series = $("<h2></h2>").html(item.dro_series);
+				
+				$(div).append(dro_photo,dro_info,dro_price,dro_series);
+				$("#contents").append(div);
+	       	})           	
+	    });
+      	$("#contents").show(500);
+     }
+     getItems(1,itemsPerPage);
+     
+     /* 카테고리(시리즈명) 마우스 hover */
+     $(".hover").mouseleave(function () {
+         $(this).removeClass("hover");
+     });    
+     
+     /*	카테고리(시리즈명,가격) 클릭 시 상태유지
+     var searchSp = document.getElementById("search1");
+     var listSp = document.getElementById("sub-menu"); 
+     listSp.style.display = "none";
+     searchSp.addEventListener("click",(event){
+         if(listSp.style.display == "none"){
+             listSp.style.display = "block";
+         }
+         else{
+             listSp.style.display = "none";
+         }
+     }); */
+            
+            /*
+            // selectRentalDate
+            // 대여일 캘린더
             $("#datepicker").dialog({
             	buttons:{
             		submit:function(){
@@ -117,20 +103,19 @@ $(function() {
             			}});
             		},
             		reset:function(){
-            			alert("��� ����");
+            			alert("모두 지움");
             		},
             		cancle:function(){
-            			alert("���");
+            			alert("취소");
             		},
             	},
             	modal:false
         });
-        $("#calendar").datepicker();*/
-        
-        })
+        $("#calendar").datepicker();
+        */
+	})
 </script>
 </head>
-
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
@@ -139,25 +124,25 @@ $(function() {
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
                         <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                        <a href="drone" class="cl-effect-1">드론</a>
+                        <a href="#" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
                         <a href="#" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
-                        <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
+                        <a href="signIn" class="cl-effect-1">LOGIN</a>
+                        <a href="#" class="cl-effect-1">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
             </div>
-        <!-- header-nav -->
+        
         <div id="header-nav">
                 <ul class="search">
                     <div class="block">
                         <div id="calendar" name="calendar">
-                          	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
+                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -170,10 +155,10 @@ $(function() {
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
-                    <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
+                    <li name="series" class="search1">시리즈명<i class="fa fa-plane" aria-hidden="true"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fas fa-angle-right"></i>
+                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>매빅 2 PRO</li>
@@ -184,7 +169,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
+                                <li name="hover-dro" class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>비밥 2 SINGLE</li>
@@ -192,14 +177,14 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li name="hover-dro" class="hover-dro">스파크<i class="fas fa-angle-right"></i>
+                                <li name="hover-dro" class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>스파크 미니</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">인스파이어<i class="fas fa-angle-right"></i>
+                                <li class="hover-dro">인스파이어<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>인스파이어 1V2 1인</li>
@@ -211,7 +196,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">팬텀<i class="fas fa-angle-right"></i>
+                                <li class="hover-dro">팬텀<i class="fa fa-angle-right" aria-hidden="true"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
                                             <li>팬텀 4</li>
@@ -224,7 +209,7 @@ $(function() {
                             </ul>
                         </div>
                     </li>
-                    <li name="price" class="search1">가격<i class="fas fa-tags"></i>
+                    <li name="price" class="search1">가격<i class="fa fa-tags" aria-hidden="true"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_price" id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
@@ -233,220 +218,44 @@ $(function() {
                             </ul>
                         </div>
                     </li>                  
-                    <button id="btnSch">검색</button>             
+                    <button id="btnSch">검색<i class="fa fa-search" aria-hidden="true"></i></button>             
                 </ul>
-        	</div>
-        <!-- //header-nav -->
+       		</div>
         </div>
-          <!-- //header -->
-          
+        <!-- //header -->
         <!-- contents -->
         <div id="contents">
         	<div class="container">
 				<div id="drone-grid">
-					<!-- 1번째 단락 -->
 	                <div class="block">
-                        <figure class="block">
-                            <img src="img/drone/D0001.png" alt="매빅2프로"/>
+	                <c:forEach var="d" items="${list }">
+                        <figure id="block" class="block">
+                            <img id="dro_photo" class="dro-list-img" src="img/drone/${d.dro_photo }" alt="${d.dro_name }"/>
                               <figcaption>
-                              <p>1인치 센서 탑재 / 전 방향 장애물 회피 센서 탑재 / APAS 2.0 탑재<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
-                              <!-- <p>DJI</p><br>
-                              <p>270,000원</p> -->
+                              <p id="dro_info" class="dro-list-info">${d.dro_info }<span> / ${d.dro_price }<i class="fas fa-won-sign"></i></span></p>          
                                 <div class="heading">
-                                  <h2><span>MAVIC</span> 2 PRO</h2>
+                                  <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span> 2 PRO</h2>
                                 </div>
                               </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>		              
+                              <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
+                        </figure>
+                    </c:forEach>		              
 	                </div>
-	                <div class="block">
-                        <figure class="block">
-                            <img src="img/drone/D0002.png" alt="매빅프로" />
-                                <figcaption>
-                                  <p>가격대비 최고의 성능을 자랑하는 입문용 or 중급자용 드론<span> / 200,000<i class="fas fa-won-sign"></i></span></p>
-                                  <!-- <p>DJI</p><br>
-                                  <p>270,000원</p> -->
-                                    <div class="heading">
-                                      <h2><span>MAVIC</span> PRO</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>       
-	                </div>
-	              <div class="block">
-                        <figure class="block">
-                            <img src="img/drone/D0003.png" alt="팬텀4" />
-                                <figcaption>
-                                    <p>4K촬영 / 장애물 자동 회피 기능 / 인텔리전트한 비행 기능 탑재<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>PHANTOM</span> 4</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>            
-	                </div>
-	                <div class="block">
-                        <figure class="block">
-                            <img src="img/drone/D0004.png" alt="팬텀4프로" />
-                                <figcaption>
-                                    <p>1인치 20 메가픽셀 Exmor R CMOS 센서를 탑재한 새로운 DJI 팬텀 카메라 / 길어진 비행시간 / 더욱 스마트한 기능들<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>PHANTOM</span> 4 PRO</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>              
-	                </div>
-	          
-	                <!-- 2번째 단락 -->
-	                <div class="block">
-	                    <figure class="block">
-                            <img src="img/drone/D0005.png" alt="팬텀3어드밴스드" />
-                                <figcaption>
-                                    <p>FULL-HD 촬영이 가능하며 비전 프로비저닝 센서로 실내에서도 쉽게 조종가능한 DJI 팬텀3 어드밴스드<span> / 250,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>PHANTOM</span> 3 ADVANCED</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>           
-	                </div>                
-	                <div class="block">	                
-	                   <figure class="block">
-                            <img src="img/drone/D0006.png" alt="팬텀3프로페셔널" />
-                                <figcaption>
-                                    <p>4K 카메라, 실시간 HD영상, 완벽한 비행 제어, 초보자들의 안전 비행을 위한 비기너 모드, 비젼 포지셔닝 시스템<span> / 300,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>PHANTOM</span> 3 PROFESSIONAL</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>               
-	                </div>	                
-	                <div class="block">
-	                    <figure class="block">
-                            <img src="img/drone/D0007.png" alt="미니스파크" />
-                                <figcaption>
-                                    <p>셀피 or 미니 레이싱 드론, 2축 짐벌 탑재! 2KM 조종 가능, DJI 고글 호환 가능(배터리와 가방이 추가된 FLY MORE COMBO 세트)<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>SPARK</span> MINI</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>             
-	                </div>	                
-	                <div class="block">
-	                    <figure class="block">
-                            <img src="img/drone/D0008.png" alt="매빅2엔터프라이즈 유니버셜" />
-                                <figcaption>
-                                    <p>추가 기기를 연결시켜주는 확장 포트와 함께 다양한 중요 업무의 효율성을 높여보세요!<span> / 150,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>MAVIC</span> 2 ENTERPRISE UNIVERSAL</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>            
-	                </div>
-	                
-	                <!-- 3번째 단락 -->
-	                <div class="block">
-	                    <figure class="block">
-                            <img src="img/drone/D0009.png" alt="매빅2엔터프라이즈 듀얼" />
-                                <figcaption>
-                                    <p>FLIR 열화상 카메라가 장식된 기업용 매빅2 엔터프라이즈<span> / 200,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>MAVIC</span> 2 ENTERPRISE DUAL</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>          
-	                </div>                
-	                <div class="block">
-	                    <figure class="block">
-                            <img src="img/drone/D0010.png" alt="매빅AIR"/>
-                                <figcaption>
-                                    <p>접이식 디자인으로 휴대성 UP! 보다 가볍고 세련된 디자인으로 새롭게 출시된 DJI의 최신 드론<span> / 250,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>MAVIC</span> AIR</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>            
-	                </div>	                
-	                <div class="block">
-	                    <figure class="block">
-                            <img src="img/drone/D0011.png" alt="인스파이어1V2 1인"/>
-                                <figcaption>
-                                    <p>4K(UHD) 화질의 영상, 1200만 화소, 흔들림을 잡아주는 더욱 안정된 전문 항공촬영 드론<span> / 130,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>INSPIRE</span> 1V2 1인</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>            
-	                </div>	                
-	                <div class="block">
-	                   <figure class="block">
-                            <img src="img/drone/D0012.png" alt="인스파이어1V2 2인"/>
-                                <figcaption>
-                                    <p>4K(UHD) 화질의 영상, 1200만 화소, 흔들림을 잡아주는 더욱 안정된 전문 항공촬영 2인 조종 패키지, 비행과 영상촬영은 1명씩 가능<span> / 160,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000원</p> -->
-                                    <div class="heading">
-                                        <h2><span>INSPIRE</span> 1V2 2인</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>           
-	                </div>
-	                
-	                <!-- 다음페이지 -->
-	                <div class="block">
-	                    <figure class="block">
-                            <img src="img/drone/D0013.png" alt="인스파이어 1 PRO 1인"/>
-                                <figcaption>
-                                    <p>4K(UHD) 화질의 영상, 1200만 화소, 흔들림을 잡아주는 더욱 안정된 전문 항공촬영 2인 조종 패키지<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
-                                      <!-- <p>DJI</p><br>
-                                      <p>270,000��</p> -->
-                                  	<div class="heading">
-                                        <h2><span>INSPIRE</span> 1PRO 1인</h2>
-                                    </div>
-                                </figcaption>
-                            <a href="droneDetail.jsp"></a>
-                        </figure>           
-	                </div>
-				</div>
+                </div>
+			</div>
 		
 		
 				<!-- 페이징 -->
 					<div class="btnPaging">
                         <ul class="pagination" style="font-size: 17px;">
                             <li>
-                                <a href="#"><i class="fas fa-arrow-left"></i></a>
+                                <a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                                 <a href="#">1</a>
                                 <a href="#">2</a>
                                 <a href="#">3</a>
                                 <a href="#">4</a>
                                 <a href="#">5</a>
-                                <a href="#"><i class="fas fa-arrow-right"></i></a>
+                                <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -454,7 +263,6 @@ $(function() {
             <!-- //container -->
 		</div>
 		<!-- //contents -->
-		
 		<!-- footer -->
 		<div id="footer">
 			<div id="footer-nav">

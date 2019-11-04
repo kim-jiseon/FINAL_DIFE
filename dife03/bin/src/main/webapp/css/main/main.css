@@ -130,16 +130,11 @@
    
     /*콘텐츠-높이는 자유롭게 설정하세요*/
     #contents{
-        height: 2000px;
-    }
-    .container{
-	   	width: auto;
-	    max-width: 1300px;
-	    margin: 0 auto;
-	    height: auto;
+        height: auto;
+        margin: 0px 0px;
     }
     /*슬라이드 배너*/
-    .swiper-slide > img{
+    .swiper-slide > a > img{
 		max-width: 100%;
 		height: 600px;
 		overflow: hidden;
@@ -152,31 +147,36 @@
 	
 	/* 위젯 부분 */
 	#contents-wiget{
-		height: 300px;
-		margin-bottom: 50px;
-		color: #323232;
+		height: 200px;
+		margin: 100px 0px;
+        padding: 70px 100px;
+		color: #343434;
+       
 	}
 	
 	.grid-wiget{
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
-		grid-gap: 2vw;
-		padding: 25px;
+		/*grid-gap: 3.5vw;*/
 	}
 	
 	.grid-cell1{
-		height: 250px;
+		height: 200px;
+        padding: 10px;
 		text-align:center;
 	}
+    
 	.grid-cell1 > img{
-		width: 150px;
-		height: 150px;
+		width: 100px;
+		height: 100px;
+        padding: 20px;
 	}
 	
     /* sns형 게시판 */
-   
 	#contents-sns{
 		height: 500px;
+        padding: 50px 0px;
+        background-color: #e1e1e1;
 	}
 	
 	.grid-sns{
@@ -189,6 +189,7 @@
 	.grid-cell2{
 		height: 450px;
 		text-align:left;
+        background-color: white;
         border: 1px solid #e1e1e1;
 	}
     .sns-top{
@@ -204,8 +205,8 @@
     }
     
     .user-photo{
-        width: 290px;
-        height: 290px;
+        width: 320px;
+        height: 300px;
         overflow: hidden;
     }
     .user-info{
