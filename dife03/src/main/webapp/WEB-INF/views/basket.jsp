@@ -59,14 +59,6 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
-    	/* 날자를 SQL문에 맞춰 포맷하기 위한 function */
-    	function date_to_sql(format)
-		{
-		    var year = format.getFullYear();
-		    var month = format.getMonth() + 1;
-		    var date = format.getDate();
-		    return year + "/" + month + "/" + date;
-		}
     		/*체크박스 변환 */
     	 	$(".chk_all").change(function(){
     	 		 chk = $(this).is(":checked");//.attr('checked');
@@ -103,11 +95,11 @@
 	    				{	
 	    					mem_point = Number(item.mem_point);
 	    				}
-	    			console.log(item.pos_no);
+	    			
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td></td>");
-	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":item.bas_rental,"ret_date":item.bas_return,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
+	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
 	    			$(td2).append(input);
 	    			$(input).click(function(){
 	    					  $(".chk_all").prop("checked", false);	
@@ -157,7 +149,7 @@
 	    				td3=$("<td></td>");
     					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
     					$(td3).append(product_img);
-    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+    					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_career+"년");
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
@@ -195,9 +187,9 @@
     							sum = sum +price_node;
     						}
     					else{
-    						sum =sum - price_node;
-    					}
-    					 $("#sum_price").text("주문금액: "+sum+"원"); 
+    							sum =sum - price_node;
+    						}
+    						 $("#sum_price").text("주문금액: "+sum+"원"); 
     				});
     			});
     			/*  */
@@ -225,21 +217,19 @@
     		  		JumunVo ={"jumun":jumun1,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no};
     		  		
     		  	 	var json_data = JSON.stringify(JumunVo);
-    		  		console.log(json_data); 
+    		  	
 	  		
     		  		if(jumun1.length == 0)
 		  			{
 		  				alert("물품을 선택해주세요.");
 		  			}
     		  		
-					console.log("ajax전:"+jumun1)
-					console.log(jumun1)
+					
     		  		 $.ajax({url:"/jumunInsert.do",type:"post",traditional:true,contentType: 'application/json',data:json_data,success:function(data){
-    		  				 alert(data);
     		  			 if(data === 1)
 
     		  				{
-    		  				location.href="basket";
+    		  				location.href="orders";
 
     		  				} 
     		  			} 
@@ -278,10 +268,11 @@
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
+			    					
 			    						tr.remove();
-			    						all_amount -= amount;
 			    						sum -= price;
-			    						$("#sum_price").text("주문금액:"+sum+"원");
+		    							all_amount -= amount;
+		    							$("#sum_price").text("주문금액: "+sum+"원"); 
 			    						}
 			    				}})
 		 	    			}
@@ -368,11 +359,6 @@
             </div>
         
 <!--    //table-->
-		<input tpye="text" id="pos_no">
-		<input tpye="text" id="det_amount">
-		<input tpye="text" id="det_price">
-		<input tpye="text" id="det_rental">
-		<input tpye="text" id="det_return">
           <!--    content_footer-->
        <div id='content_footer'>
             <div class="container" style="color: white">

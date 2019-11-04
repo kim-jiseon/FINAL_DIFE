@@ -78,7 +78,6 @@
 	    					
 	    					mem_point = Number(item.mem_point);
 	    				}
-	    			console.log(item.pos_no);
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td></td>").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});

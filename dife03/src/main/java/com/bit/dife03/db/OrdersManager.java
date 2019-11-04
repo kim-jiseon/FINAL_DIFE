@@ -2,7 +2,6 @@ package com.bit.dife03.db;
 
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -11,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bit.dife03.vo.BasketVo;
+import com.bit.dife03.vo.JumunVo;
 import com.bit.dife03.vo.OrdersDetailVo;
 import com.bit.dife03.vo.OrdersVo;
 
@@ -58,24 +58,26 @@ public class OrdersManager {
 		session.close();
 		return re;
 	}
-
-	public static int insertJumun(String mem_no, int ord_price, int ord_amount, ArrayList<OrdersDetailVo> list) {
+	//insertJumun
+	public static int insertJumun(JumunVo jumun) {
 		int re = 0;
 		int r =0;
-		System.out.println("insert"+mem_no);
-		System.out.println("insert"+ord_price);
-		System.out.println("insert"+ord_amount);
 		SqlSession session = factory.openSession();
         OrdersVo ordersVo = new OrdersVo();
-        ordersVo.setOrd_price(ord_price);
-        ordersVo.setMem_no(mem_no);
-        ordersVo.setOrd_amount(ord_amount);
+        ordersVo.setOrd_price(jumun.getOrd_price());
+        ordersVo.setMem_no(jumun.getMem_no());
+        ordersVo.setOrd_amount(jumun.getOrd_amount());
         re += session.insert("orders.insertOrders", ordersVo);
         String ord_no = session.selectOne("orders.MaxOrd");
-       
+       ArrayList<OrdersDetailVo> list = (ArrayList<OrdersDetailVo>) jumun.getJumun();
         for(OrdersDetailVo vo:list)
         {
             vo.setOrd_no(ord_no);
+            vo.setDet_price(vo.getDet_price());
+            vo.setDet_amount(vo.getDet_amount());
+            vo.setDet_rental(vo.getDet_rental());
+            vo.setDet_return(vo.getDet_return());
+            vo.setPos_no(vo.getPos_no());
             re +=session.insert("orders.insertOrdersDetail", vo);
         }
          

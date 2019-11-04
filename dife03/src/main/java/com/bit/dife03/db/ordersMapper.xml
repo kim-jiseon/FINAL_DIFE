@@ -18,18 +18,16 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
 	</delete>
   <!-- orders insert 및 ordersDetail insert transaction -->
   	<insert id="insertOrders">
-
-
-  	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0);
-
-
+  	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0)
   	</insert>
   	<insert id="insertOrdersDetail">
-  	insert into ordersdetail values('OD'||lpad(seq_ord.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{det_price},#{det_return},0);
+  	insert into ordersdetail values('OD'||lpad(seq_ord.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{det_price},TO_DATE(#{det_rental},'YYYY/MM/DD') ,TO_DATE(#{det_return},'YYYY/MM/DD') ,0)
   	</insert>
   	<!--  select maxno -->
-  	<select id="MaxOrd" resultType="String">
+  	<select id="MaxOrd" resultType="java.lang.String">
   	select max(ord_no) from orders
   	</select>
+  	<!-- select OrdersDetail -->
+  	<!-- <select id="" resultType=""></select>  -->
 
 </mapper>
