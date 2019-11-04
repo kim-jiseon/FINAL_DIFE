@@ -159,7 +159,9 @@
 <body>
 
     <div id="wrap" class="animated fadeIn">
-       <!-- header -->
+
+          <!-- header -->
+
         <jsp:include page="header.jsp"></jsp:include>
         <!-- //header -->
 
@@ -275,8 +277,9 @@
                     </li>
                 </ul>
                  <div class="delete-btn-area">
-					<a href="javascript:void(0)" id="order" class="a_btn">결제하기</a>
 					<a href="javascript:void(0)" id="orderCancle" class="a_btn">주문취소</a>
+					<a href="payKG" id="order" class="a_btn">결제하기</a>
+
 				</div>
        </div>
     </div>

@@ -19,7 +19,9 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
   <!-- orders insert 및 ordersDetail insert transaction -->
   	<insert id="insertOrders">
 
+
   	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0);
+
 
   	</insert>
   	<insert id="insertOrdersDetail">

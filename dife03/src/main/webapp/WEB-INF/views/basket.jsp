@@ -325,7 +325,6 @@
          <jsp:include page="header.jsp"></jsp:include>
        <!-- header -->
 
-        <!-- //header -->
         <!-- //contents -->
         <div id="contents">
         <!-- 세션 영역        -->
