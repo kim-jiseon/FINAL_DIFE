@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,27 @@ public class PilotController {
 
 	public void setDao(PilotDao dao) {
 		this.dao = dao;
+	}
+	
+	@RequestMapping(value = "/pilot_reservation", method = RequestMethod.POST)
+	public ModelAndView pilot_reservation(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		String res_time = request.getParameter("res-time");
+		int num = Integer.parseInt(request.getParameter("num"));
+		String res_textarea = request.getParameter("res-textarea");
+		System.out.println("시간: "+res_time+", 인원:"+num+", 내용:"+res_textarea);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
+	public ModelAndView pilot_popup(String date) {
+		ModelAndView mav = new ModelAndView();
+		String startDate = date.substring(0, date.indexOf("-")-1);
+		String endDate = date.substring(date.indexOf("-")+2);
+		System.out.println("시작:"+startDate+", 끝:"+endDate);
+		mav.addObject("startDate", startDate);
+		mav.addObject("endDate", endDate);
+		return mav;
 	}
 	
 	@RequestMapping("/pilot")
