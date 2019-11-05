@@ -39,8 +39,4 @@ public class BoardController {
 		mav.addObject("list", dao.listAll());
 		return mav;
 	}
-	
-	
-	
-
 }
