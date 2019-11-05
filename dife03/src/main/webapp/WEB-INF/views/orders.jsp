@@ -27,7 +27,6 @@
 	$(function() {
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
-
 		if (mem_id != '' && mem_id != null) {
 			//var login = $("#category-2").find("a:first").html();
 			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -205,7 +204,7 @@
           <!--    content_footer-->
        <div id='content_footer'>
             <div class="container">
-                <span>결제 방식</span><br>
+<!--                 <span>결제 방식</span><br> -->
 <!--
                 <div class="">
                    <span>결제 수단</span>
@@ -218,20 +217,21 @@
                 </div>
 -->
                 <ul class="payment_container" >
-                    <li>
+                    <!-- <li>
                     <span>결제 수단</span>
                         <input type="radio" class="payment" checked="checked" name="payment"><label style="padding: 0px 10px;">카드</label>
                         <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">무통장</label>
                         <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">카카오페이</label>
-                    </li>
+                    </li> -->
                     
-                    <li id="payment_style">결제 안내
-                        <select>
+                    <li id="payment_style">결제 안내<br>
+                       <!--  <select>
                             <option>은행선택</option>
                         </select>
                         <select>
+                        
                             <option>일시불</option>
-                        </select>
+                        </select> -->
                     </li>
                     <li>
                         <span>총 금액</span><span>430000원</span>

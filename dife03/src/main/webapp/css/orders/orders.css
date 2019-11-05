@@ -93,9 +93,14 @@ textarea{
 .payment_container > li > span{
     font-size:18px;
     padding: 10px;
+    float:left;
+}
+.payment_container > li{
+	float:left;
 }
 #payment_style{
-    font-size: 18px;
+    font-size: 25px;
+    font-weight:1000;
 }
 
 }
