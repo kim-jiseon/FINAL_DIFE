@@ -229,6 +229,7 @@
                             <option>은행선택</option>
                         </select>
                         <select>
+                        
                             <option>일시불</option>
                         </select> -->
                     </li>
