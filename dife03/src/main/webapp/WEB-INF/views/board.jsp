@@ -118,6 +118,5 @@ $(function(){
 		<jsp:include page="footer.jsp"></jsp:include>
 		<!-- //footer -->
 	</div>
-
 </body>
 </html>
