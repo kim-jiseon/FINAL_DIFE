@@ -34,6 +34,8 @@ public class PilotController {
 	
 	@Autowired
 	private PilotDao dao;
+	
+	private PilReservationVo resVo;
 
 	public void setDao(PilotDao dao) {
 		this.dao = dao;
@@ -47,31 +49,53 @@ public class PilotController {
 		String[] res_time = request.getParameterValues("res-time");
 		int num = Integer.parseInt(request.getParameter("num"));
 		String res_textarea = request.getParameter("res-textarea");
-		System.out.println("시간: "+res_time[0]+","+res_time[1]+", 인원:"+num+", 내용:"+res_textarea);
+		
+		String con_time = "";
+		for (String str : res_time) {
+			con_time += str+"/";
+		}
+		System.out.println("시간: "+con_time+", 인원:"+num+", 내용:"+res_textarea);
+//		resVo.setCon_time(con_time);
+//		resVo.setCon_attend(num);
+//		resVo.setCon_purpose(res_textarea);
+//		System.out.println(vo.toString());
 		return mav;
 	}
 	
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
-	public void pilot_popup() {
-		
+	public ModelAndView pilot_popup(String startDate, String endDate) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("시작:"+startDate+"끝:"+endDate);
+		mav.addObject("startDate", startDate);
+		mav.addObject("endDate", endDate);
+		return mav;
 	}
 	
 	//팝업창으로 vo 전송하기
 	@ResponseBody
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.POST)
-	public ModelAndView pilot_popup(@RequestBody PilReservationVo vo) {
-		ModelAndView mav = new ModelAndView();
-		DateFormat date = new SimpleDateFormat("yyyy/MM/dd");
-		
-		String startDate = date.format(vo.getCon_start());
-		String endDate = date.format(vo.getCon_end());
-		System.out.println("시작:"+startDate+", 끝:"+endDate);
+	public String pilot_popup(@RequestBody PilReservationVo vo) {
+		//ModelAndView mav = new ModelAndView();
+		String str = "";
+//		DateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+//		
+//		String startDate = date.format(vo.getCon_start());
+//		String endDate = date.format(vo.getCon_end());
+//		System.out.println("시작:"+startDate+", 끝:"+endDate);
 		System.out.println(vo.toString());
 		
-		mav.addObject("startDate", startDate);
-		mav.addObject("endDate", endDate);
-		mav.addObject("vo", vo);
-		return mav;
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			str = mapper.writeValueAsString(vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		System.out.println("str:"+str);
+//		mav.addObject("startDate", startDate);
+//		mav.addObject("endDate", endDate);
+//		mav.addObject("vo", vo);
+		return str;
 	}
 	
 	
