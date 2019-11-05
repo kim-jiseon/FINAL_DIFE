@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,26 +125,9 @@ document.onkeydown = evt => {
 </head>
 <body>
 	<div id="wrap" class="animated fadeIn">
-		<!-- header -->
-		<div id="header">
-          <div id="header-top">
-             <div id="category">
-                  <span id="category-1" class="animated fadeInUp">
-                      <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
-                      <a href="drone" class="cl-effect-1">드론</a>
-                      <a href="pilot" class="cl-effect-1">파일럿</a>
-                      <a href="#" class="cl-effect-1">지역 및 날씨</a>
-                      <a href="#" class="cl-effect-1">고객지원</a>
-                      <a href="board" class="cl-effect-1">커뮤니티</a>
-                  </span>
-                  <span id="category-2" class="animated fadeInUp">
-                      <a id="sign" class="cl-effect-1"></a>
-                      <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
-                      <a href="basket" class="cl-effect-1">RESERVATION</a>
-				</span>
-              </div>
-          </div>
-      </div>
+       <!-- header -->
+       <jsp:include page="header.jsp"></jsp:include>
+        <!-- //header -->
 		
 		<!-- 드론 상세 상단 -->
 		<div id="contents">
@@ -342,27 +326,9 @@ document.onkeydown = evt => {
 			
 			<!-- 질문, 후기게시판 불러오는지? -->
 		
-			<div id="footer">
-		        <div id="footer-nav">
-		            <div class="container"></div>
-		        </div>
-		        <div id="footer-info">
-		            <div class="container">
-		            <ul class="info">
-		                <li>
-		                    <dl>
-		                        <dd class="txt" style="font-size: 14px; color: #a4a4a4">회사소개</dd>
-		                        <dd class="txt">(주)비트캠프:DIFE</dd>
-		                        <dd class="txt">서울특별시 마포구 백범로 23 구프라자 3층</dd>
-		                        <dd class="txt">02-707-1480</dd>
-		                        <dd class="txt"><a href="#" style="color: #a4a4a4;">고객센터</a></dd>
-		                        <dd class="txt"><a href="#" style="color: #a4a4a4;">이용안내</a></dd>
-		                    </dl>
-		                </li>
-		            </ul>
-		            </div>
-		        </div>
-		    </div>
+			<!-- footer -->
+	      		<jsp:include page="footer.jsp"></jsp:include>
+	        <!-- //footer -->
 	    </div>
     </div>
   </body>
