@@ -1,6 +1,7 @@
 package com.bit.dife03.db;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -26,10 +27,11 @@ public class DroneManager {
 	}
 	
 	// 드론 페이지 초기화면
-	public static List<DroneVo> selectAll_dro() {
+	public static List<DroneVo> sel_droAll(HashMap map) {
 		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();		
-		list =  session.selectList("drone.selectAll_dro");
+		list =  session.selectList("drone.sel_droAll");
+		System.out.println(list);
 		session.close();
 		return list;
 	}
@@ -42,18 +44,23 @@ public class DroneManager {
 		return list;
 	}
 	
-	// 드론 개수 카운트
-	public static int get_droCount1() {
+	// 드론수 카운트
+	public static int get_droCount(HashMap map) {
 		int re = 0;
 		SqlSession session = factory.openSession();
-		re = session.selectOne("drone.get_droCount1");
-		// calendar 출력값이 null 로 표시되는지 확인한 후 mapper 작성하기
-		System.out.println(re);
+		re = session.selectOne("drone.get_droCount");
+		//System.out.println(re);
 		session.close();
 		return re;
 	}
-	
-	
+/*
+	// 페이징처리
+	public static int droListPage(HashMap map) {
+		SqlSession session = factory.openSession();
+		List<DroneVo> list = session.selectList("drone.page_droList", map);
+		session.close();
+		return list;
+	}
 	
 	// 보류
 	// 바로 주문하기는 따로 페이지 만들어서 제이쿼리로 실행해야됨

@@ -186,9 +186,10 @@ $(function() {
                    </span>
                 </div>
             </div>
+            
 	        <!-- header-nav -->
 	        <div id="header-nav">
-	            <ul class="search">	            
+	            <ul name="search" class="search">	            
                     <div class="block">
                         <div id="calendar" name="calendar">
                           	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
