@@ -1,23 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 
-<link rel="icon" type="image/png" href="http://example.com/myicon.png">
- -->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- 
-<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
- -->
+ <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <!-- 기본 링크 -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
@@ -27,19 +19,14 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- datepicker -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link href="css/datepicker/datepicker.min.css" rel="stylesheet"
-	type="text/css">
+<link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
 <script src="js/datepicker/datepicker.js"></script>
 <!-- Include language -->
 <script src="js/datepicker/i18n/datepicker-ko.js"></script>
-
+<!-- fontawesome -->
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-<!--
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  -->
 <script type="text/javascript">
 $(function() {
-	
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
 	alert(mem_id);
@@ -55,6 +42,11 @@ $(function() {
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
+	
+	// 드론, 대여점, 가격 배열에 넣기
+	
+	
+	
 	var itemsPerPage = 8;
           
     /* ī�װ�(�ø����) ���콺 hover */
@@ -62,7 +54,7 @@ $(function() {
         $(this).removeClass("hover");
     });
     
-    /* ī�װ�(�ø����,����) Ŭ�� �� �������� */
+    /* ī�װ�(�ø����,����) Ŭ�� �� �������� 
     var searchSp = document.getElementById("search1");
     var listSp = document.getElementById("sub-menu");
     
@@ -74,7 +66,7 @@ $(function() {
         else{
             listSp.style.display = "none";
         }
-    });
+    })*/
            
 /* 
             // ����¡ ó�� : ��������ư �߰�
@@ -136,7 +128,7 @@ $(function() {
         $("#calendar").datepicker();*/
         
         })
-    </script>
+</script>
 </head>
 
 <body>
@@ -160,12 +152,12 @@ $(function() {
                    </span>
                 </div>
             </div>
-        
+        <!-- header-nav -->
         <div id="header-nav">
                 <ul class="search">
                     <div class="block">
-                        <div id="calendar">
-                           대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
+                        <div id="calendar" name="calendar">
+                          	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
@@ -178,63 +170,63 @@ $(function() {
                        			var picker = new Pikaday({ field: document.getElementById('datepicker') });
                        	</script> -->
                        	
-                    <li class="search1">시리즈명<i class="fa fa-plane"></i>
+                    <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
-                            <ul id="sub-menu">
-                                <li class="hover-dro">매빅<i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <ul name="sub_series_01" id="sub-menu">
+                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>MAVIC 2 PRO</li>
-                                            <li>MAVIC PRO</li>
-                                            <li>MAVIC 2 ENTERPRISE UNIVERSAL</li>
-                                            <li>MAVIC 2 ENTERPRISE DUAL</li>
-                                            <li>MAVIC AIR</li>
+                                        <ul name="sub_series_02">
+                                            <li>매빅 2 PRO</li>
+                                            <li>매빅 PRO</li>
+                                            <li>매빅 2 엔터프라이즈 유니버셜</li>
+                                            <li>매빅 2 엔터프라이즈 듀얼</li>
+                                            <li>매빅 AIR</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">비밥<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>BEBOP 2 SINGLE</li>
-                                            <li>BEBOP 2+SKY CONTROLLER</li>
+                                        <ul name="sub_series_02">
+                                            <li>비밥 2 SINGLE</li>
+                                            <li>비밥 2+SKY CONTROLLER</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">스파크<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li name="hover-dro" class="hover-dro">스파크<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>MINI SPARK</li>
+                                        <ul name="sub_series_02">
+                                            <li>스파크 미니</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">인스파이어<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">인스파이어<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>INSPIRE 1V2 1인</li>
-                                            <li>INSPIRE 1V2 2인</li>
-                                            <li>INSPIRE 1 PRO 1인</li>
-                                            <li>INSPIRE 1 PRO 2인</li>
-                                            <li>INSPIRE 2 ZENMUSE X5S 1인</li>
-                                            <li>INSPIRE 2 ZENMUSE X5S 2인</li>
+                                        <ul name="sub_series_02">
+                                            <li>인스파이어 1V2 1인</li>
+                                            <li>인스파이어 1V2 2인</li>
+                                            <li>인스파이어 1 PRO 1인</li>
+                                            <li>인스파이어 1 PRO 2인</li>
+                                            <li>인스파이어 2 ZENMUSE X5S 1인</li>
+                                            <li>인스파이어 2 ZENMUSE X5S 2인</li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="hover-dro">팬텀<i class="fa fa-angle-right" aria-hidden="true"></i>
+                                <li class="hover-dro">팬텀<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
-                                        <ul>
-                                            <li>PHANTOM 4</li>
-                                            <li>PHANTOM 4 PRO</li>
-                                            <li>PHANTOM 3 ADVANCED</li>
-                                            <li>PHANTOM 3 PROFESSIONAL</li>
+                                        <ul name="sub_series_02">
+                                            <li>팬텀 4</li>
+                                            <li>팬텀 4 PRO</li>
+                                            <li>팬텀 3 ADVANCED</li>
+                                            <li>팬텀 3 PROFESSIONAL</li>
                                         </ul>
                                     </div>
                                 </li>                                             
                             </ul>
                         </div>
                     </li>
-                    <li class="search1">가격<i class="fa fa-tags"></i>
+                    <li name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
-                            <ul id="sub-menu">
+                            <ul name="sub_price" id="sub-menu">
                                 <li class="hover-dro">~ 10만원</li>
                                 <li class="hover-dro">10 ~ 20만원</li>
                                 <li class="hover-dro">20만원 ~</li>
@@ -243,9 +235,11 @@ $(function() {
                     </li>                  
                     <button id="btnSch">검색</button>             
                 </ul>
-        </div>
+        	</div>
+        <!-- //header-nav -->
         </div>
           <!-- //header -->
+          
         <!-- contents -->
         <div id="contents">
         	<div class="container">
@@ -262,7 +256,7 @@ $(function() {
                                   <h2><span>MAVIC</span> 2 PRO</h2>
                                 </div>
                               </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>		              
 	                </div>
 	                <div class="block">
@@ -276,7 +270,7 @@ $(function() {
                                       <h2><span>MAVIC</span> PRO</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>       
 	                </div>
 	              <div class="block">
@@ -290,7 +284,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 4</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>
 	                <div class="block">
@@ -304,7 +298,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 4 PRO</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>              
 	                </div>
 	          
@@ -320,7 +314,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 3 ADVANCED</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>           
 	                </div>                
 	                <div class="block">	                
@@ -334,7 +328,7 @@ $(function() {
                                         <h2><span>PHANTOM</span> 3 PROFESSIONAL</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>               
 	                </div>	                
 	                <div class="block">
@@ -348,7 +342,7 @@ $(function() {
                                         <h2><span>SPARK</span> MINI</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>             
 	                </div>	                
 	                <div class="block">
@@ -362,7 +356,7 @@ $(function() {
                                         <h2><span>MAVIC</span> 2 ENTERPRISE UNIVERSAL</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>
 	                
@@ -378,7 +372,7 @@ $(function() {
                                         <h2><span>MAVIC</span> 2 ENTERPRISE DUAL</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>          
 	                </div>                
 	                <div class="block">
@@ -392,7 +386,7 @@ $(function() {
                                         <h2><span>MAVIC</span> AIR</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>	                
 	                <div class="block">
@@ -406,7 +400,7 @@ $(function() {
                                         <h2><span>INSPIRE</span> 1V2 1인</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>            
 	                </div>	                
 	                <div class="block">
@@ -420,31 +414,31 @@ $(function() {
                                         <h2><span>INSPIRE</span> 1V2 2인</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>           
 	                </div>
 	                
-	                <!-- 4��° �ܶ� -->
-	                <!--<div class="block">
+	                <!-- 다음페이지 -->
+	                <div class="block">
 	                    <figure class="block">
-                            <img src="img/drone/D0013.png" alt="�ν����̾�1PRO 1��"/>
+                            <img src="img/drone/D0013.png" alt="인스파이어 1 PRO 1인"/>
                                 <figcaption>
-                                    <p>�ν����̾� 1 ���� �������. PIX4D 15�� �����̿�� ����!<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
+                                    <p>4K(UHD) 화질의 영상, 1200만 화소, 흔들림을 잡아주는 더욱 안정된 전문 항공촬영 2인 조종 패키지<span> / 100,000<i class="fas fa-won-sign"></i></span></p>
                                       <!-- <p>DJI</p><br>
                                       <p>270,000��</p> -->
-                                   <!-- <div class="heading">
-                                        <h2><span>INSPIRE</span> 1PRO 1��</h2>
+                                  	<div class="heading">
+                                        <h2><span>INSPIRE</span> 1PRO 1인</h2>
                                     </div>
                                 </figcaption>
-                            <a href="drone_dt.html"></a>
+                            <a href="droneDetail.jsp"></a>
                         </figure>           
-	                </div> -->
+	                </div>
 				</div>
 		
 		
 				<!-- 페이징 -->
 					<div class="btnPaging">
-                        <ul class="pagination">
+                        <ul class="pagination" style="font-size: 17px;">
                             <li>
                                 <a href="#"><i class="fas fa-arrow-left"></i></a>
                                 <a href="#">1</a>
@@ -460,6 +454,7 @@ $(function() {
             <!-- //container -->
 		</div>
 		<!-- //contents -->
+		
 		<!-- footer -->
 		<div id="footer">
 			<div id="footer-nav">

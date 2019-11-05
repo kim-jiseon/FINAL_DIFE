@@ -39,7 +39,120 @@
 			//$("#category-2").append(login);
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
-	})
+		//로그인 로그아웃 end
+		
+		/* 날자를 포맷하기위한 function */
+    	function date_to_str(format)
+		{
+		    var year = format.getFullYear();
+		    var month = format.getMonth() + 1;
+		    if(month<10) month = '0' + month;
+		    var date = format.getDate();
+		    if(date<10) date = '0' + date;
+		    return year + "-" + month + "-" + date;
+		}
+		/*총금액 처리를 위한 변수  */
+    	var final_sum = 0;
+   	 	var sum= 0;
+   	 	var all_amount= 0;
+	 	var mem_point= 1;
+	 	var reserve_fund=0;
+		/*list를 처리하는 function*/
+        function getList(){ 
+        	$.ajax({url:"/basketList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
+     			$("#table_content").empty();
+     			if(mem_id == '' || mem_id == null){
+     				var result = confirm("로그인이 필요합니다.");
+     				if(result){
+     				    location.href="/signIn";
+     				}else{
+     				    location.href="/main";
+     				}
+    			}
+	    		$.each(data,function(idx,item){
+	    			
+	    			var rental = new Date(item.bas_rental);
+	    			var re_date = new Date(item.bas_return);
+	    			if(idx == 1)
+	    				{
+	    					
+	    					mem_point = Number(item.mem_point);
+	    				}
+	    			tr=$("<tr></tr>");
+	    			var td1=$("<td></td>").html(item.bas_no);
+	    			var td2=$("<td></td>").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
+	    			var td3;
+	    			var td4;
+	    			var td5;
+	    			var td6;
+	    			var product_img;
+	    			var p1;
+	    			var p2;
+	    			var p3;
+	    			var p4;
+	    			var p5;
+	    			var p6;
+	    			rental = date_to_str(rental);
+	    			re_date=date_to_str(re_date);
+	    			/* sum 할인률 및 하단 정보 관련 처리 */
+	    			sum +=Number(item.bas_price);
+	    			all_amount += Number(item.bas_amount);
+	    			reserve_fund += Number(item.point);
+	    			/*  */
+	    			if(item.dro_name !== null)
+	    				{
+	    					
+	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+	    					$(td2).append(product_img);
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+	    					td3=$("<td></td>");
+	    					$(td3).append(p1,p2);
+	    					td4=$("<td></td>");
+	    					p3 = $("<p></p>").html(item.bas_price);
+	    					$(td4).append(p3);
+	    					p4= $("<p></p>").html(item.bas_amount);
+	    					td5=$("<td></td>");
+	    					$(td5).append(p4);
+	    					td6=$("<td></td>");
+	    					p5=$("<p></p>").html(item.bas_price);
+	    					p6=$("<p></p>").html(item.point);
+	    					$(td6).append(p5,p6);
+	    				
+	    				}
+	    			else
+	    				{
+	    				product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+    					$(td2).append(product_img);
+    					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_career+"년");
+    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+    					td3=$("<td></td>");
+    					$(td3).append(p1,p2);
+    					td4=$("<td></td>");
+    					p3 = $("<p></p>").html(item.bas_price);
+    					$(td4).append(p3);
+    					p4= $("<p></p>").html(item.bas_amount);
+    					td5=$("<td></td>");
+    					$(td5).append(p4);
+    					td6=$("<td></td>");
+    					p5=$("<p></p>").html(item.bas_price);
+    					p6=$("<p></p>").html(item.point);
+    					$(td6).append(p5,p6);
+	    				}
+	    			$(tr).append(td1,td2,td3,td4,td5,td6);
+	    			$("#table_content").append(tr);
+	    			}); 
+	    		/* foreach종료 */
+	    	}})
+    	/*ajax 종료  */
+    	    }    
+			/* getList종료 */
+			getList();
+	});	
+		
+    			
+     		
+	
 </script>
 </head>
 <body>
@@ -78,147 +191,8 @@
                             <th scope="col">수량</th>
                             <th scope="col">주문금액<br/>(적립예정)</th>
                         </thead>
-                              <tbody>
-                            <td>1</td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span>드론/시리즈명/구매일</span><br>
-                                <span>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">150000</span>
-                                <br>120000
-                            </td>
-                            <td>
-                                <span>수량</span>
-                            </td>
-                            
-                            <td>
-                                <span>120000</span><br>
-                                4500
-                            </td>
-                           
-                        </tbody>
-                        
-                        
-                            <tbody>
-                            <td>2</td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span>드론/시리즈명/구매일</span><br>
-                                <span>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span>
-                            </td>
-                            
-                            <td>
-                                <span>90000</span><br>
-                                5740
-                            </td>
-                         
-                        </tbody>
-                        
-                        
-                            <tbody>
-                            <td>3</td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span>드론/시리즈명/구매일</span><br>
-                                <span>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">200000</span><br>180000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span>
-                            </td>
-                            
-                            <td>
-                                <span>180000</span><br>
-                                9700
-                            </td>
-                            
-
-                        </tbody>
-                        
-                        
-                            <tbody>
-                            <td>4</td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span>드론/시리즈명/구매일</span><br>
-                                <span>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                                
-                            </td>
-                            <td>
-                                <span>수량</span>
-                            </td>
-                            
-                            <td>
-                                <span>90000</span><br>
-                                5740
-                            </td>
-
-                        </tbody>
-             
-                            <tbody>
-                            <td>5</td>
-                            <td>
-                                <div class="product_img">
-                                    <img src="img/drone.png" width="62" height="68">
-                                    
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <span>드론/시리즈명/구매일</span><br>
-                                <span>대여일:2019/09/05 반납일:2019/09/09</span>
-                            </td>
-                            <td>
-                                <span class="txt_origin_price">100000</span><br>90000
-                            </td>
-                            <td>
-                                <span>수량</span>
-                            </td>
-                            
-                            <td>
-                                <span>90000</span><br>
-                                5740
-                            </td>
-                        </tbody>
+                         <tbody id="table_content">
+                      		</tbody>
                     </table>
               
                 
@@ -302,6 +276,7 @@
                     </li>
                 </ul>
                  <div class="delete-btn-area">
+					<a href="javascript:void(0)" id="orderCancle" class="a_btn">주문취소</a>
 					<a href="payKG" id="order" class="a_btn">결제하기</a>
 				</div>
        </div>
