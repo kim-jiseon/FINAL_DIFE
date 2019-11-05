@@ -20,12 +20,12 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
   	<insert id="insertOrders">
 
 
-  	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0);
+  	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0)
 
 
   	</insert>
   	<insert id="insertOrdersDetail">
-  	insert into ordersdetail values('OD'||lpad(seq_ord.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{det_price},#{det_return},0);
+  	insert into ordersdetail values('OD'||lpad(seq_ord.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{det_price},#{det_return},0)
   	</insert>
   	<!--  select maxno -->
   	<select id="MaxOrd" resultType="String">
