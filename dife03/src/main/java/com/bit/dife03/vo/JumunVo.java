@@ -45,11 +45,7 @@ public class JumunVo {
 		this.ord_amount = ord_amount;
 		this.ord_price = ord_price;
 	}
-	@Override
-	public String toString() {
-		return "JumunVo [jumun=" + jumun + ", mem_no=" + mem_no + ", ord_amount=" + ord_amount + ", ord_price="
-				+ ord_price + "]";
-	}
+
 
 	
 	

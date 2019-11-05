@@ -1,14 +1,14 @@
 package com.bit.dife03.dao;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.bit.dife03.db.OrdersManager;
 import com.bit.dife03.vo.BasketVo;
-import com.bit.dife03.vo.OrdersDetailVo;
+import com.bit.dife03.vo.JumunVo;
+
 
 @Repository
 public class OrdersDao {
@@ -21,9 +21,9 @@ public class OrdersDao {
 	{
 		return OrdersManager.delBas(bas_no);
 	}
-	public int insertJumun(String mem_no, int ord_price, int ord_amount, ArrayList<OrdersDetailVo> list) {
+	public int insertJumun(JumunVo jumun) {
 		// TODO Auto-generated method stub
-		return OrdersManager.insertJumun(mem_no,ord_price,ord_amount,list);
+		return OrdersManager.insertJumun(jumun);
 	}
 	public String getMaxOrd()
 	{
