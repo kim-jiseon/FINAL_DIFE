@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,102 +55,19 @@
 							<td>조회수</td>
 							<td>답변유무</td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>공지사항</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>1</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>공지사항</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>2</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>공지사항</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
+						<c:forEach var="b" items="${list }">
+							<tr>
+								<td>${b.boa_no }</td>
+								<td>
+									<c:if test="${b.boa_level > 0 }">
+										<c:forEach begin="1" end="${b.boa_level }">
+											&nbsp;&nbsp;
+										</c:forEach>
+									</c:if>
+									<a href="detailBoard.do?no=${b.boa_no }">${b.boa_title }</a>
+								</td>
+							</tr>
+						</c:forEach>
 					</table>
 					<a class="btn btn-default pull-right"
 						style="width: 70px; font-size: 15px; background-color: #231F20; color: white">글쓰기</a>
