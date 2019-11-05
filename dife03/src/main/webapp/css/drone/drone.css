@@ -4,13 +4,16 @@
 }
 
 #header-nav{
-	font-family: 'Nanum Gothic', sans-serif !important;
     height: 50px;
     line-height: 50px;
-    background-color: #7EBDC2;
+    background-color: #383A3F;
     vertical-align: middle;
 }
-/* 캘린더 */
+
+svg{
+	padding-left: 10px;
+}
+/* 달력 */
 #block{
     color: white;
     height: 180px;
@@ -22,9 +25,6 @@
 }
 
 /* 검색 */
-svg{
-	padding-left: 10px;
-}
 .search{
     font-size: 15px;
     display: inline-flex;
@@ -34,29 +34,28 @@ svg{
 }
 #calendar,.search1{
     padding: 0px 10px;
-    font-size: 15px;
+    font-size: 16px;
 }
 #btnSch{
-   
+    width: 120px;
     padding: 5px;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: 700;
     margin-top: 7px;
 }
 
 .search li{
     width: 180px;
 }
-/*
-.search .fa{
+.search  .fa{
     margin-left: 10px;
     margin-top: 4px;
 }
-*/
 .sub-menu-1{
     display: none;
 }
 .sub-menu-2 li{
-    font-size: 14px;
+    font-size: 13px;
 }
 
 ul li:hover .sub-menu-1 {
@@ -74,7 +73,7 @@ ul li:hover .sub-menu-1 ul{
 }
 ul li:hover .sub-menu-1 ul li{
     width: 200px;
-    border-bottom: 0.5px dotted #7EBDC2;
+    border-bottom: 0.5px dotted #383A3F;
     text-align: left;
 }
 ul li:hover .sub-menu-1 ul li:last-child{
@@ -82,9 +81,9 @@ ul li:hover .sub-menu-1 ul li:last-child{
 }
 ul li:hover .sub-menu-1 ul li:hover{
     color: #fff;    
-    text-shadow: 0 0 2px #7EBDC2, 0 0 2px #7EBDC2, 0 0 2px #7EBDC2, 0 0 2px #7EBDC2;
+    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;
 }
-.fa angle-right{
+.fas fa-angle-right{
     float: right;
 }
 .sub-menu-2{
@@ -263,12 +262,7 @@ figcaption p span{
 .btnPaging li {
     text-align: center;    
 }
-.pagination > li > a{
-	font-size: 14px; 
-	font-weight: 700;
-	padding: 10px;
-	margin: 0px 5px;
-}
+
 /* 드론 비교하는건 여기서 설정하시면 됩니다. */
 #footer-nav{
 	
