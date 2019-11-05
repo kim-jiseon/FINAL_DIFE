@@ -25,7 +25,7 @@
 		
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
-		alert(mem_id);
+//		alert(mem_id);
 		if(mem_id != '' && mem_id != null){
 			//var login = $("#category-2").find("a:first").html();
 			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
