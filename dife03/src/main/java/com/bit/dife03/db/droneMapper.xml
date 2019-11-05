@@ -5,12 +5,9 @@
 <mapper namespace="drone">
   	<!-- 회원/비회원 꼭 나눠야하는 명령문은?? -->  	
   	
-  	<!-- 최초 전체 목록, 검색결과 -->
+  	<!-- 최초 전체 목록 -->
 	<select id="sel_droAll" resultType="droneVo">
 	    select d.dro_no, dro_photo, dro_name, dro_series, pos_price from drone d, possesion p where d.dro_no=p.dro_no order by d.first_time
-		<if test="">
-		
-		</if>
 	</select>
 	
 	<!-- 전체 레코드 수 집계는 1,2 중 결정할 예정 -->
