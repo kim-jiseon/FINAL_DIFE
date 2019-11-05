@@ -85,22 +85,23 @@ select{
     
 textarea{
     border-radius: 2px;
-    width: 1000px;
+    width: 1050px;
     margin: 10px;
     padding: 10px;
     line-height: 22px;
 }
-.payment_container > li > span{
+.payment_container > li > div{
     font-size:18px;
-    padding: 10px;
-    float:left;
+    
+}
+.payment_container {
+	text-align: left;
 }
 .payment_container > li{
-	float:left;
+	
 }
-#payment_style{
-    font-size: 25px;
-    font-weight:1000;
+.payment_style{
+    padding-left: 15px;
 }
 
 }
