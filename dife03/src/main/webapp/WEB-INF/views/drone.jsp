@@ -95,7 +95,7 @@ $(function() {
             	nowPage = totalPage;
             }
         }
-    });          
+    })         
 /*    
     function getItems(nowPage, itemsPerPage){
 		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
@@ -128,7 +128,7 @@ $(function() {
      /* 카테고리(시리즈명) 마우스 hover */
      $(".hover").mouseleave(function () {
          $(this).removeClass("hover");
-     });    
+     })    
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
@@ -165,7 +165,7 @@ $(function() {
         });
         $("#calendar").datepicker();
         */
-        })
+	})
 </script>
 </head>
 
