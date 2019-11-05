@@ -42,7 +42,7 @@ $(function() {
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
-
+	
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
 	
@@ -79,7 +79,7 @@ $(function() {
 			
 		}
 	})*/
-	
+		
     /* 페이징처리 및 전체 목록 */     
     $.getJSON("get_droCount", function(data) {
         var totalItem = Number(data);
@@ -190,10 +190,9 @@ $(function() {
                    </span>
                 </div>
             </div>
-
-        <!-- header-nav -->
-        <div id="header-nav">
-             <ul class="search">
+            
+	        <!-- header-nav -->
+	        <div id="header-nav">
 	            <ul name="search" class="search">	            
                     <div class="block">
                         <div id="calendar" name="calendar">
@@ -213,7 +212,6 @@ $(function() {
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fas fa-angle-right"></i>
                             <c:forEach var="d" items="${list }">
                                 <li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
@@ -278,16 +276,7 @@ $(function() {
                             </ul>
                         </div>
                     </li>
-                    <li name="price" class="search1">가격<i class="fas fa-tags"></i>
-                        <div class="sub-menu-1">
-                            <ul name="sub_price" id="sub-menu">
-                                <li class="hover-dro">~ 10만원</li>
-                                <li class="hover-dro">10 ~ 20만원</li>
-                                <li class="hover-dro">20만원 ~</li>
-                            </ul>
-                        </div>
-                    </li>                  
-                    <button id="btnSch">검색</button>             
+                    <button id="btnSch">검색</button>
                 </ul>
         	</div>
         <!-- //header-nav -->

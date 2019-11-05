@@ -18,26 +18,15 @@ public class DroneDao {
 	public Object sel_droDetail(String pos_no) {
 		return DroneManager.sel_droDetail(pos_no);
 	}
-/*
+
 	public int get_droCount(HashMap map) {
 		// TODO Auto-generated method stub
-		return DroneManager.get_droCount();
 		return DroneManager.get_droCount(map);
-
 	}
-
-
-	public Object droListPage(HashMap map) {
-		// TODO Auto-generated method stub
-		return DroneManager.droListPage(map);
-	}	
-	
-
 /*
 	public int droListPage(HashMap map) {
 		// TODO Auto-generated method stub
 		return DroneManager.droListPage(map);
 	}
 	*/
-
 }
