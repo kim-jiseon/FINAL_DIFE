@@ -27,7 +27,7 @@ public class DroneManager {
 	}
 	
 	// 드론 페이지 초기화면
-	public static List<DroneVo> sel_droAll() {
+	public static List<DroneVo> sel_droAll(HashMap map) {
 		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();		
 		list =  session.selectList("drone.sel_droAll");
@@ -43,9 +43,10 @@ public class DroneManager {
 		list = session.selectList("drone.sel_droDetail", pos_no);
 		return list;
 	}
-	
-	// 드론 개수 카운트
-	public static int get_droCount() {
+
+	// 드론수 카운트
+	public static int get_droCount(HashMap map) {
+
 		int re = 0;
 		SqlSession session = factory.openSession();
 		re = session.selectOne("drone.get_droCount");
@@ -54,8 +55,10 @@ public class DroneManager {
 		return re;
 	}
 
+/*
 	// 페이징처리
-	public static Object droListPage(HashMap map) {
+	public static int droListPage(HashMap map) {
+>>>>>>> refs/heads/lje
 		SqlSession session = factory.openSession();
 		List<DroneVo> list = session.selectList("drone.page_droList", map);
 		session.close();
