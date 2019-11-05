@@ -41,10 +41,41 @@ $(function(){
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
+	//날짜 변환 메소드
+	var day = "";
+	function calendar(day){
+		var yyyy = day.substr(0,4);
+		var mm = day.substr(5,2);
+		var dd = day.substr(8,2);
+
+		var cal = (yyyy+"-"+mm+"-"+dd);
+		return cal;
+	}
+	
 	//파일럿과 상담하기 버튼 활성화
 	$("#pil_btn").click(function(){
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
+		var array = date.split(" - ");
+
+		var pil_no = "${info.pil_no}";
+		var con_sort = "${info.pil_cateInfo}";
+		var con_loc = "${info.pil_locInfo}";
+		
+		//날짜형으로 바꾸기
+		day = array[0];
+		var cal = calendar(day);
+		var con_start = cal;
+		
+		day = array[1];
+		var cal = calendar(day);
+		var con_end = cal;
+
+		data = {"pil_no":pil_no, "con_sort":con_sort, "con_loc":con_loc, "con_start":con_start, "con_end":con_end};
+
+		console.log(data);
+		
+		//로그인 및 날짜 선택
 		if (mem_id == '' || mem_id == null) {
 			alert("로그인을 해주세요.");
 			location.href="/signIn";
@@ -53,7 +84,16 @@ $(function(){
 				alert("날짜를 선택해주세요.");
 			}
 			else{
-				var pop = window.open("/pilot_popup?date="+date,"pop","width = 840, height = 650");	
+		  	 	var json_data = JSON.stringify(data);
+		  	 	$.ajax({type:"post",
+		  	 			url:"/pilot_popup",
+		  	 			data:json_data,
+		  	 			dataType:"json",
+		  	 			contentType:"application/json;charset=UTF-8",
+		  	 			success:function(r){
+		  	 				alert("성공");
+		  	 				//var pop = window.open("/pilot_popup","pop","width = 840, height = 650");
+		  	 			}})
 			}
 		}
 	})
@@ -139,6 +179,11 @@ $(function(){
                    </div>
             </div>
         </div>
+        <!-- 
+        <input type="hidden" id="pil_no" value="${info.pil_no }">
+        <input type="hidden" id="con_sort" value="${info.pil_cateInfo }">
+        <input type="hidden" id="con_loc" value="${info.pil_locInfo }">
+         -->
         <!-- //contents -->
 
         <!-- footer -->
