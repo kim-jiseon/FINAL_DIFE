@@ -1,9 +1,6 @@
 package com.bit.dife03.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,32 +31,9 @@ public class PilotController {
 	
 	@Autowired
 	private PilotDao dao;
-	
-	private PilReservationVo resVo;
 
 	public void setDao(PilotDao dao) {
 		this.dao = dao;
-	}
-	
-	//파일럿 예약 관련
-	@ResponseBody
-	@RequestMapping(value = "/pilot_reservation", method = RequestMethod.POST)
-	public ModelAndView pilot_reservation(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
-		String[] res_time = request.getParameterValues("res-time");
-		int num = Integer.parseInt(request.getParameter("num"));
-		String res_textarea = request.getParameter("res-textarea");
-		
-		String con_time = "";
-		for (String str : res_time) {
-			con_time += str+"/";
-		}
-		System.out.println("시간: "+con_time+", 인원:"+num+", 내용:"+res_textarea);
-//		resVo.setCon_time(con_time);
-//		resVo.setCon_attend(num);
-//		resVo.setCon_purpose(res_textarea);
-//		System.out.println(vo.toString());
-		return mav;
 	}
 	
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
