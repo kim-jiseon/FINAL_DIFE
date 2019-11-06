@@ -29,6 +29,14 @@ public class PilotManager {
 			System.out.println(e.getMessage());
 		}
 	}
+	//예약상담번호 
+	public static int sel_nextNo() {
+		int no = 0;
+		SqlSession session = factory.openSession();
+		no = session.selectOne("pilot.sel_nextNo");
+		session.close();
+		return no;
+	}
 	
 	//레코드 수
 	public static int sel_pil_cnt(HashMap map) {

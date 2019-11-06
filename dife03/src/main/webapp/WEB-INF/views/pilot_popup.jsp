@@ -19,13 +19,13 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
+	//인원수 출력문
 	for (var i = 1; i <= 10; i++) {
 		var option = $("<option></option>").attr("value",i).html(i);
 		$("#num").append(option);
 	}
 	
 	//날짜 변환 메소드
-	
 	function calendar(day){
 		var yyyy = day.substr(0,4);
 		var mm = day.substr(5,2);
@@ -35,6 +35,7 @@ $(function(){
 		return cal;
 	}
 	
+	//상담신청하기
 	$("#res-submit").click(function(){
 		//var data = $("#res-form").serialize();
 		var con_start = "${startDate}";
@@ -49,9 +50,13 @@ $(function(){
 		})
 		con_time = con_time.substring(0, con_time.lastIndexOf("/"));
 		console.log(con_time);
+		
 		var con_attend = $("select[name=num]").val();
 		var con_purpose = $("#res-textarea").val();
-		var data = {"con_start":con_start,"con_end":con_end,"con_time":con_time,"con_attend":con_attend,"con_purpose":con_purpose};
+		
+		//vo로 저장될 data값
+		var data = {"con_start":con_start,"con_end":con_end,"con_time":con_time,"con_attend":con_attend,"mem_no":"${mem_no}",
+				"con_purpose":con_purpose,"pil_no":"${pil_no}","con_sort":"${con_sort}","con_loc":"${con_loc}"};
 		console.log("data:"+data);
 		
 		var json_data = JSON.stringify(data);
@@ -61,6 +66,7 @@ $(function(){
   	 			dataType:"json",
   	 			contentType:"application/json;charset=UTF-8",
   	 			success:function(r){
+  	 				alert("상담이 신청되었습니다.");
   	 				window.close();
   	 			}})
   	 			

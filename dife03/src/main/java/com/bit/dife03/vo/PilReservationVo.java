@@ -3,7 +3,7 @@ package com.bit.dife03.vo;
 import java.util.Date;
 
 public class PilReservationVo {
-	private String con_no;
+	private int con_no;
 	private int con_sort;
 	private String pil_no;
 	private String mem_no;
@@ -13,11 +13,12 @@ public class PilReservationVo {
 	private String con_loc;
 	private Date con_start;
 	private Date con_end;
+	
 	public PilReservationVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PilReservationVo(String con_no, int con_sort, String pil_no, String mem_no, String con_time, int con_attend,
+	public PilReservationVo(int con_no, int con_sort, String pil_no, String mem_no, String con_time, int con_attend,
 			String con_purpose, String con_loc, Date con_start, Date con_end) {
 		super();
 		this.con_no = con_no;
@@ -31,10 +32,10 @@ public class PilReservationVo {
 		this.con_start = con_start;
 		this.con_end = con_end;
 	}
-	public String getCon_no() {
+	public int getCon_no() {
 		return con_no;
 	}
-	public void setCon_no(String con_no) {
+	public void setCon_no(int con_no) {
 		this.con_no = con_no;
 	}
 	public int getCon_sort() {
@@ -97,6 +98,5 @@ public class PilReservationVo {
 				+ mem_no + ", con_time=" + con_time + ", con_attend=" + con_attend + ", con_purpose=" + con_purpose
 				+ ", con_loc=" + con_loc + ", con_start=" + con_start + ", con_end=" + con_end + "]";
 	}
-	
 	
 }

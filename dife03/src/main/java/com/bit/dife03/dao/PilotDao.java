@@ -10,6 +10,11 @@ import com.bit.dife03.vo.PilListVo;
 
 @Repository
 public class PilotDao {
+	//예약상담번호
+	public int sel_nextNo() {
+		return PilotManager.sel_nextNo();
+	}
+	
 	//전체 레코드수
 	public int sel_pil_cnt(HashMap map) {
 		return PilotManager.sel_pil_cnt(map);

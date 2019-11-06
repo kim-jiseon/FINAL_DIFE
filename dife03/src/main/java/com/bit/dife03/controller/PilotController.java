@@ -63,11 +63,15 @@ public class PilotController {
 	}
 	
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
-	public ModelAndView pilot_popup(String startDate, String endDate) {
+	public ModelAndView pilot_popup(String startDate, String endDate, String pil_no, int con_sort, String con_loc) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("시작:"+startDate+"끝:"+endDate);
+		System.out.println(pil_no+","+con_sort+","+con_loc);
 		mav.addObject("startDate", startDate);
 		mav.addObject("endDate", endDate);
+		mav.addObject("pil_no", pil_no);
+		mav.addObject("con_sort", con_sort);
+		mav.addObject("con_loc", con_loc);
 		return mav;
 	}
 	
@@ -75,15 +79,11 @@ public class PilotController {
 	@ResponseBody
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.POST)
 	public String pilot_popup(@RequestBody PilReservationVo vo) {
-		//ModelAndView mav = new ModelAndView();
 		String str = "";
-//		DateFormat date = new SimpleDateFormat("yyyy/MM/dd");
-//		
-//		String startDate = date.format(vo.getCon_start());
-//		String endDate = date.format(vo.getCon_end());
-//		System.out.println("시작:"+startDate+", 끝:"+endDate);
+		int no = dao.sel_nextNo();
+		System.out.println("PR000"+no);
+		vo.setCon_no(no);
 		System.out.println(vo.toString());
-		
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			str = mapper.writeValueAsString(vo);
@@ -91,10 +91,6 @@ public class PilotController {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
-		System.out.println("str:"+str);
-//		mav.addObject("startDate", startDate);
-//		mav.addObject("endDate", endDate);
-//		mav.addObject("vo", vo);
 		return str;
 	}
 	
