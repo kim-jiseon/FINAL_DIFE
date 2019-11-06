@@ -75,6 +75,7 @@ public class DroneController {
 		mav.addObject("pageStr", pageStr);
 		return mav;
 
+
 	}
 /*		
 
@@ -107,6 +108,11 @@ public class DroneController {
 	@ResponseBody    
 	@RequestMapping("get_droCountList")
 
+	}	
+/*
+	@RequestMapping(value = "get_droCountList")
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+=======
 	}	
 /*
 	@RequestMapping(value = "get_droCountList")
