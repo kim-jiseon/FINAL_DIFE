@@ -46,11 +46,11 @@ $(function() {
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
 	
-<<<<<<< HEAD
+
 	var itemsPerPage = 12;
 	var nowPage = 1;
 	          
-=======
+
 	/* 시리즈명 및 드론명, 가격 */
 /*	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
 	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
