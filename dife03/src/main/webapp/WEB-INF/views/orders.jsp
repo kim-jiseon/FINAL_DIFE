@@ -50,15 +50,24 @@
 		    if(date<10) date = '0' + date;
 		    return year + "-" + month + "-" + date;
 		}
+		/* 주문번호 날자 뽑기 */
+		function orders_date(ord_date){
+			
+			  	var year = ord_date.getFullYear();
+			    var month = ord_date.getMonth() + 1;
+			    if(month<10) month = '0' + month;
+			    var date = ord_date.getDate();
+			    if(date<10) date = '0' + date;
+			    return year+""+month+""+date;
+		}
 		/*총금액 처리를 위한 변수  */
-    	var final_sum = 0;
    	 	var sum= 0;
-   	 	var all_amount= 0;
-	 	var mem_point= 1;
+		var ord_no;
+	 	var mem_point= 0;
 	 	var reserve_fund=0;
 		/*list를 처리하는 function*/
         function getList(){ 
-        	$.ajax({url:"/basketList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
+        	$.ajax({url:"/ordersList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
      			$("#table_content").empty();
      			if(mem_id == '' || mem_id == null){
      				var result = confirm("로그인이 필요합니다.");
@@ -68,18 +77,22 @@
      				    location.href="/main";
      				}
     			}
+     			var i = 1;
 	    		$.each(data,function(idx,item){
 	    			
-	    			var rental = new Date(item.bas_rental);
-	    			var re_date = new Date(item.bas_return);
+	    			var rental = new Date(item.det_rental);
+	    			var re_date = new Date(item.det_return);
+	    			var ord_date = new Date(item.ord_date);
+	    			var ord_no_str = orders_date(ord_date)+"";
+	    			 ord_no_str +="P0000"+i;
 	    			if(idx == 1)
 	    				{
-	    					
+	    					ord_no =  item.ord_no;
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			tr=$("<tr></tr>");
-	    			var td1=$("<td></td>").html(item.bas_no);
-	    			var td2=$("<td></td>").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
+	    			var td1=$("<td></td>").html(ord_no_str);  
+	    			var td2=$("<td></td>");
 	    			var td3;
 	    			var td4;
 	    			var td5;
@@ -94,8 +107,7 @@
 	    			rental = date_to_str(rental);
 	    			re_date=date_to_str(re_date);
 	    			/* sum 할인률 및 하단 정보 관련 처리 */
-	    			sum +=Number(item.bas_price);
-	    			all_amount += Number(item.bas_amount);
+	    			sum +=Number(item.det_price);
 	    			reserve_fund += Number(item.point);
 	    			/*  */
 	    			if(item.dro_name !== null)
@@ -108,38 +120,38 @@
 	    					td3=$("<td></td>");
 	    					$(td3).append(p1,p2);
 	    					td4=$("<td></td>");
-	    					p3 = $("<p></p>").html(item.bas_price);
+	    					p3 = $("<p></p>").html(item.det_price);
 	    					$(td4).append(p3);
-	    					p4= $("<p></p>").html(item.bas_amount);
+	    					p4= $("<p></p>").html(item.det_amount);
 	    					td5=$("<td></td>");
 	    					$(td5).append(p4);
 	    					td6=$("<td></td>");
-	    					p5=$("<p></p>").html(item.bas_price);
+	    					p5=$("<p></p>").html(item.det_price);
 	    					p6=$("<p></p>").html(item.point);
 	    					$(td6).append(p5,p6);
-	    				
 	    				}
 	    			else
 	    				{
-	    				product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+	    				product_img=$("<img/>").attr({"src":"img/"+item.pil_portphoto,"width":"62","height":"68"});
     					$(td2).append(product_img);
     					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_career+"년");
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td3=$("<td></td>");
     					$(td3).append(p1,p2);
     					td4=$("<td></td>");
-    					p3 = $("<p></p>").html(item.bas_price);
+    					p3 = $("<p></p>").html(item.det_price);
     					$(td4).append(p3);
-    					p4= $("<p></p>").html(item.bas_amount);
+    					p4= $("<p></p>").html(item.det_amount);
     					td5=$("<td></td>");
     					$(td5).append(p4);
     					td6=$("<td></td>");
-    					p5=$("<p></p>").html(item.bas_price);
+    					p5=$("<p></p>").html(item.det_price);
     					p6=$("<p></p>").html(item.point);
     					$(td6).append(p5,p6);
 	    				}
 	    			$(tr).append(td1,td2,td3,td4,td5,td6);
 	    			$("#table_content").append(tr);
+	    			i++;
 	    			}); 
 	    		/* foreach종료 */
 	    	}})
@@ -147,6 +159,27 @@
     	    }    
 			/* getList종료 */
 			getList();
+			/* sum값*/
+			$("#pay_sum").html("총금액&nbsp;&nbsp;"+sum+"원");
+			//체크 됐을때 값 전달 이벤트..
+			$(".agree").click(function(){
+		   	 		 chk = $(this).is(":checked");//.attr('checked');
+		   	         if(chk) {
+		   	        	$("#orderCancle").click(function(){
+		   	        		$("#agree_select").empty();
+		   					
+		   				});
+		   	        	
+		   	        	$("#order").click(function(){
+		   	        		$("#agree_select").empty();
+		   	        	});
+		   	         }
+		   	         else {
+		   	        	$("#agree_select").html("동의를 확인해주세요.").css({font-color:"red"});
+		   	         }
+			
+		
+   	 	});
 	});	
 		
     			
@@ -188,7 +221,7 @@
                             <th scope="col">상품명</th>
                             <th scope="col">판매가</th>
                             <th scope="col">수량</th>
-                            <th scope="col">주문금액<br/>(적립예정)</th>
+                            <th scope="col">주문금액<br/></th>
                         </thead>
                          <tbody id="table_content">
                       		</tbody>
@@ -272,10 +305,11 @@
 ② "오롬 온라인 쇼핑몰"은 제1항의 사유로 서비스의 제공이 일시적으로 중단됨으로 인하여 이용자 또는 제3자가 입은 손해에 대하여 배상합니다. 단, "오롬 온라인 쇼핑몰"이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.
 ③ 사업종목의 전환, 사업의 포기, 업체간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 "오롬 온라인 쇼핑몰"은 제8조에 정한 방법으로 이용자에게 통지하고 당초 "오롬 온라인 쇼핑몰"에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, "오롬 온라인 쇼핑몰"이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 포인트 등을 "오롬 온라인 쇼핑몰"에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.</textarea>
                     
-                    <br><span class="payment_style">주문자 동의&nbsp;&nbsp; <input type="checkbox" checked="checked"><label>동의</label></span>
+                    <br><p class="payment_style">주문자 동의&nbsp;&nbsp; <input type="checkbox" checked="checked" class="agree"><label>동의</label></p>
+                    <p id="agree_select"></p>
                     </li>
                     <li class="payment_style">
-                        <div>총금액&nbsp;&nbsp; 430000원</div>
+                        <div id="pay_sum"> </div>
                     </li>
                 </ul>
                  <div class="delete-btn-area">
