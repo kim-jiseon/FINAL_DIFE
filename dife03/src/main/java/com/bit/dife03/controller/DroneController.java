@@ -75,9 +75,18 @@ public class DroneController {
 		mav.addObject("pageStr", pageStr);
 		return mav;
 
+
+
+
+
 	}
+
 		
 /*
+=======
+/*		
+
+>>>>>>> refs/heads/master
 	// 모델앤뷰로 변경하기
 	@ResponseBody
 	@RequestMapping("/sel_droAll")
@@ -111,6 +120,14 @@ public class DroneController {
 /*
 	@RequestMapping(value = "get_droCountList")
 >>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+<<<<<<< HEAD
+=======
+=======
+	}	
+/*
+	@RequestMapping(value = "get_droCountList")
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+>>>>>>> refs/heads/master
 	public String get_droCountList(int nowPage, int perPage) {
 		String str_dro = "";
 		int start = (nowPage-1)*perPage+1;
