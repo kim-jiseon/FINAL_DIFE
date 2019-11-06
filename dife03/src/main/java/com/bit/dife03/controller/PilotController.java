@@ -75,7 +75,7 @@ public class PilotController {
 		return mav;
 	}
 	
-	//팝업창으로 vo 전송하기
+	//예약상담 insert
 	@ResponseBody
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.POST)
 	public String pilot_popup(@RequestBody PilReservationVo vo) {
@@ -84,9 +84,10 @@ public class PilotController {
 		System.out.println("PR000"+no);
 		vo.setCon_no(no);
 		System.out.println(vo.toString());
+		int re = dao.insertPilRes(vo);
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			str = mapper.writeValueAsString(vo);
+			str = mapper.writeValueAsString(re);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());

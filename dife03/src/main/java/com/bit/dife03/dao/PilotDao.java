@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.dife03.db.PilotManager;
 import com.bit.dife03.vo.PilListVo;
+import com.bit.dife03.vo.PilReservationVo;
 
 @Repository
 public class PilotDao {
@@ -28,6 +29,11 @@ public class PilotDao {
 	//파일럿 리스트 셀렉
 	public List<PilListVo> sel_pil(HashMap map){
 		return PilotManager.sel_pil(map);
+	}
+	//예약 상담 insert
+	public int insertPilRes(PilReservationVo vo) {
+		// TODO Auto-generated method stub
+		return PilotManager.insertPilRes(vo);
 	}
 	
 	/*

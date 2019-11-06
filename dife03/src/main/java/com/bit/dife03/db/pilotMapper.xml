@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pilot">
+<!-- 예약상담 insert -->
+<insert id="insertPilRes">
+	insert into condition values(#{con_no},#{con_sort},#{pil_no},#{mem_no},#{con_time},#{con_attend},#{con_purpose},#{con_loc},#{con_start},#{con_end})
+</insert>
 <!-- 예약상담 번호 -->
 <select id="sel_nextNo" resultType="java.lang.Integer">
 	select nvl(max(con_no), 1) from condition
