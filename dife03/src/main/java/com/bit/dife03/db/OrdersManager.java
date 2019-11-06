@@ -3,8 +3,11 @@ package com.bit.dife03.db;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -17,6 +20,7 @@ import com.bit.dife03.vo.OrdersVo;
 public class OrdersManager {
 
 	public static SqlSessionFactory factory;
+	
 	static {
 		try {
 			System.out.println("static 진입");

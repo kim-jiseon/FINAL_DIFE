@@ -7,7 +7,7 @@
   	
   	<!-- 최초 전체 목록 -->
 	<select id="sel_droAll" resultType="droneVo">
-		select * from drone where dro_no in ( select dro_no from possesion where dro_no is not null )
+		select * from drone where dro_no in ( select dro_no from possesion where dro_no is not null ) order by first_time desc
 	</select>
 	
 	<!-- 전체 레코드 수 집계 -->

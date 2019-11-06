@@ -1,12 +1,16 @@
 package com.bit.dife03.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.PilotDao;
+import com.bit.dife03.vo.PilReservationVo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -34,27 +39,43 @@ public class PilotController {
 		this.dao = dao;
 	}
 	
+	//파일럿 예약 관련
+	@ResponseBody
 	@RequestMapping(value = "/pilot_reservation", method = RequestMethod.POST)
 	public ModelAndView pilot_reservation(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		String res_time = request.getParameter("res-time");
+		String[] res_time = request.getParameterValues("res-time");
 		int num = Integer.parseInt(request.getParameter("num"));
 		String res_textarea = request.getParameter("res-textarea");
-		System.out.println("시간: "+res_time+", 인원:"+num+", 내용:"+res_textarea);
+		System.out.println("시간: "+res_time[0]+","+res_time[1]+", 인원:"+num+", 내용:"+res_textarea);
 		return mav;
 	}
 	
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
-	public ModelAndView pilot_popup(String date) {
+	public void pilot_popup() {
+		
+	}
+	
+	//팝업창으로 vo 전송하기
+	@ResponseBody
+	@RequestMapping(value = "/pilot_popup", method = RequestMethod.POST)
+	public ModelAndView pilot_popup(@RequestBody PilReservationVo vo) {
 		ModelAndView mav = new ModelAndView();
-		String startDate = date.substring(0, date.indexOf("-")-1);
-		String endDate = date.substring(date.indexOf("-")+2);
+		DateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+		
+		String startDate = date.format(vo.getCon_start());
+		String endDate = date.format(vo.getCon_end());
 		System.out.println("시작:"+startDate+", 끝:"+endDate);
+		System.out.println(vo.toString());
+		
 		mav.addObject("startDate", startDate);
 		mav.addObject("endDate", endDate);
+		mav.addObject("vo", vo);
 		return mav;
 	}
 	
+	
+	//파일럿 목록페이지+페이징처리
 	@RequestMapping("/pilot")
 	public ModelAndView paging(@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM,
 								@RequestParam(value = "category", defaultValue = "2") String category,
@@ -164,6 +185,7 @@ public class PilotController {
 //		return str;
 //	}
 	
+	//파일럿 상세페이지
 	@RequestMapping("/pilotDetail")
 	public ModelAndView pilotDetail(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();

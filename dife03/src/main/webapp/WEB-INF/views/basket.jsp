@@ -84,7 +84,12 @@
      		$.ajax({url:"/basketList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
      			$("#table_content").empty();
      			if(mem_id == '' || mem_id == null){
-    				location.href("/signIn");
+     				var result = confirm("로그인이 필요합니다.");
+     				if(result){
+     				    location.href="/signIn";
+     				}else{
+     				    location.href="/main";
+     				}
     			}
 	    		$.each(data,function(idx,item){
 	    			var rental = new Date(item.bas_rental);
