@@ -109,7 +109,7 @@ $(function(){
 	            <select id="num" name="num">
 	            </select>
 	            &nbsp;&nbsp;명
-	            <span class="res-info">*10이상 단체는 상담창에 입력해주세요.</span>
+	            <span class="res-info">*10명이상 단체는 상담창에 입력해주세요.</span>
 	        </td>
 	    </tr>
 	    <tr>
