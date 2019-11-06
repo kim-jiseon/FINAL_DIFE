@@ -27,7 +27,6 @@
 	$(function() {
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
-
 		if (mem_id != '' && mem_id != null) {
 			//var login = $("#category-2").find("a:first").html();
 			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -205,7 +204,7 @@
           <!--    content_footer-->
        <div id='content_footer'>
             <div class="container">
-                <span>결제 방식</span><br>
+<!--                 <span>결제 방식</span><br> -->
 <!--
                 <div class="">
                    <span>결제 수단</span>
@@ -218,25 +217,24 @@
                 </div>
 -->
                 <ul class="payment_container" >
-                    <li>
+                    <!-- <li>
                     <span>결제 수단</span>
                         <input type="radio" class="payment" checked="checked" name="payment"><label style="padding: 0px 10px;">카드</label>
                         <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">무통장</label>
                         <input type="radio" class="payment"  name="payment"><label style="padding: 0px 10px;">카카오페이</label>
-                    </li>
+                    </li> -->
                     
-                    <li id="payment_style">결제 안내
-                        <select>
+                    <li class="payment_style" style="font-size: 25px; font-weight: 700;">결제 안내
+                       <!--  <select>
                             <option>은행선택</option>
                         </select>
                         <select>
+                        
                             <option>일시불</option>
-                        </select>
+                        </select> -->
                     </li>
+                    
                     <li>
-                        <span>총 금액</span><span>430000원</span>
-                    </li>
-                    <li><span>주문자 동의</span> <input type="checkbox" checked="checked"><label>동의</label><br>
                         <textarea rows="10%" cols="100%">제1조(목적)
 
 이 약관은 'DIFE(주)'(전자거래 사업자)이 운영하는 DIFE(주) 온라인 쇼핑몰(이하 "DIFE 온라인 쇼핑몰"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버몰과 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다. ※ 「PC통신등을 이용하는 전자거래에 대해서도 그 성질에 반하지 않는한 이 약관을 준용합니다」
@@ -273,6 +271,11 @@
 ① "오롬 온라인 쇼핑몰"은 컴퓨터 등 정보통신설비의 보수점검·교체 및 고장, 통신의 두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다.
 ② "오롬 온라인 쇼핑몰"은 제1항의 사유로 서비스의 제공이 일시적으로 중단됨으로 인하여 이용자 또는 제3자가 입은 손해에 대하여 배상합니다. 단, "오롬 온라인 쇼핑몰"이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.
 ③ 사업종목의 전환, 사업의 포기, 업체간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 "오롬 온라인 쇼핑몰"은 제8조에 정한 방법으로 이용자에게 통지하고 당초 "오롬 온라인 쇼핑몰"에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, "오롬 온라인 쇼핑몰"이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 포인트 등을 "오롬 온라인 쇼핑몰"에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.</textarea>
+                    
+                    <br><span class="payment_style">주문자 동의&nbsp;&nbsp; <input type="checkbox" checked="checked"><label>동의</label></span>
+                    </li>
+                    <li class="payment_style">
+                        <div>총금액&nbsp;&nbsp; 430000원</div>
                     </li>
                 </ul>
                  <div class="delete-btn-area">
@@ -286,7 +289,7 @@
 
 
 
-        <!-- footer -->ㅋ
+        <!-- footer -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>

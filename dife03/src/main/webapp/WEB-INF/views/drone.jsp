@@ -43,14 +43,56 @@ $(function() {
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
-	// 드론, 대여점 배열에 넣기
+	/* 한 페이지에 보여질 상품수량 */
+	var itemsPerPage = 8;
 	
+<<<<<<< HEAD
 	var itemsPerPage = 12;
 	var nowPage = 1;
 	          
+=======
+	/* 시리즈명 및 드론명, 가격 */
+/*	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
+	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
+		'비밥 2 SINGLE','비밥 2+SKY CONTROLLER',
+		'스파크 미니',
+		'인스파이어 1V2 1인','인스파이어 1V2 2인','인스파이어 1 PRO 1인','인스파이어 1 PRO 2인','인스파이어 2 ZENMUSE X5S 1인','인스파이어 2 ZENMUSE X5S 2인',
+		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL'];	*/
+	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
+	
+/*	$.each(series_arr, function(idx, ser){
+		var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
+		$("#hover_dro_01").append(search_droSer);
+	})
+	$.each(dName_arr, function(idx, dName){
+		var search_dName = $("<li></li>").attr({"value":dName_arr[idx], "idx":idx}).html(dName_arr[idx]);
+		$("#sub_series_02").append(search_dName);
+	})	*/
+	$.each(price_arr, function(idx, prc){
+		var search_droPrc = $("<li></li>")attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
+		$("#sub_price").append(search_droPrc);
+	})
+	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
+	$("#price").click(function(data){
+		if(data.equals('~ 10만원')){
+			
+		}
+		if(data.equals('10 ~ 20만원')){
+					
+		}
+		if(data.equals('20만원 ~')){
+			
+		}
+	})*/
+		
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
     /* 페이징처리 및 전체 목록 */     
+<<<<<<< HEAD
     $.get("get_droCount", function(data) {
     	
+=======
+    $.getJSON("get_droCount", function(data) {
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
         for (var i = 1; i <= totalPage; i++) {
@@ -64,36 +106,40 @@ $(function() {
             	nowPage = totalPage;
             }
         }
-    });          
-    
+    })         
+/*    
     function getItems(nowPage, itemsPerPage){
 		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
 		$("#contents").empty();
 		$("#contents").hide(500);
+		
 	    // 전체 목록
-	    // 컨트롤러에서 모델앤뷰로 바꾼후 $.get 으로 변경하기
-	    $.getJSON("droListPage",{nowPage:nowPage,perPage:itemsPerPage},function(data){
-	     	//var arr = data;
-	     	$.each(data, function(idx, item){
-	     		//console.log(item.dro_name);
-	     		var div = $("<div></div>").addClass("item");
-				var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
-				var dro_info = $("<p></p>").html(item.dro_info);
-				var dro_price = $("<p></p>").html(item.dro_price);
-				var dro_series = $("<h2></h2>").html(item.dro_series);
-				
-				$(div).append(dro_photo,dro_info,dro_price,dro_series);
-				$("#contents").append(div);
-	       	})           	
-	    });
-      	$("#contents").show(500);
-     }
-     getItems(1,itemsPerPage);
+	    $.get("droListPage",{nowPage:nowPage,perPage:itemsPerPage},function(data){
+	     	//var arr = eval(data);
+*/
+	// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
+	$.ajax({url:"", success:function(data){
+		var dro_list = eval(data);
+		
+		$.each(dro_list, function(idx, item){
+     		//console.log(item.dro_name);
+     		var div = $("<div></div>").addClass("item");
+			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
+			var dro_info = $("<p></p>").html(item.dro_info);
+			var dro_price = $("<p></p>").html(item.dro_price);
+			var dro_series = $("<h2></h2>").html(item.dro_series);
+			
+			$(div).append(dro_photo,dro_info,dro_price,dro_series);
+			$("#contents").append(div);
+       	})
+	}})
+	     	           	
+     //getItems(1,itemsPerPage);
      
      /* 카테고리(시리즈명) 마우스 hover */
      $(".hover").mouseleave(function () {
          $(this).removeClass("hover");
-     });    
+     })    
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
@@ -130,7 +176,7 @@ $(function() {
         });
         $("#calendar").datepicker();
         */
-        })
+	})
 </script>
 </head>
 
@@ -155,9 +201,10 @@ $(function() {
                    </span>
                 </div>
             </div>
-        <!-- header-nav -->
-        <div id="header-nav">
-                <ul class="search">
+            
+	        <!-- header-nav -->
+	        <div id="header-nav">
+	            <ul name="search" class="search">	            
                     <div class="block">
                         <div id="calendar" name="calendar">
                           	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
@@ -176,17 +223,19 @@ $(function() {
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                                <li name="hover_dro_01" class="hover-dro">매빅<i class="fas fa-angle-right"></i>
+                            <c:forEach var="d" items="${list }">
+                                <li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>매빅 2 PRO</li>
-                                            <li>매빅 PRO</li>
+                                        <ul id="sub_series_02" name="sub_series_02">
+                                            <li>${d.dro_name }</li>
+                                            <!-- <li>매빅 PRO</li>
                                             <li>매빅 2 엔터프라이즈 유니버셜</li>
                                             <li>매빅 2 엔터프라이즈 듀얼</li>
-                                            <li>매빅 AIR</li>
+                                            <li>매빅 AIR</li> -->
                                         </ul>
                                     </div>
                                 </li>
+                                <!-- 
                                 <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
                                         <ul name="sub_series_02">
@@ -223,20 +272,22 @@ $(function() {
                                             <li>팬텀 3 PROFESSIONAL</li>
                                         </ul>
                                     </div>
-                                </li>                                             
+                                </li> -->
+                            </c:forEach>                                             
                             </ul>
                         </div>
                     </li>
-                    <li name="price" class="search1">가격<i class="fas fa-tags"></i>
+                    
+                    <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
-                            <ul name="sub_price" id="sub-menu">
-                                <li class="hover-dro">~ 10만원</li>
+                            <ul name="sub_price" id="sub_price">
+                                <!-- <li class="hover-dro">~ 10만원</li>
                                 <li class="hover-dro">10 ~ 20만원</li>
-                                <li class="hover-dro">20만원 ~</li>
+                                <li class="hover-dro">20만원 ~</li> -->
                             </ul>
                         </div>
-                    </li>                  
-                    <button id="btnSch">검색</button>             
+                    </li>
+                    <button id="btnSch">검색</button>
                 </ul>
         	</div>
         <!-- //header-nav -->
@@ -247,9 +298,9 @@ $(function() {
         <div id="contents">
         	<div class="container">
 				<div id="drone-grid">
-					<!-- 1번째 단락 -->
+					<!-- 드론 정렬 -->
 	                <div class="block">
-                        <c:forEach var="d" items="${list }">
+	                <c:forEach var="d" items="${list }">
                         <figure id="block" class="block">
                             <img id="dro_photo" class="dro-list-img" src="img/drone/${d.dro_photo }" alt="${d.dro_name }"/>
                               <figcaption>
@@ -259,23 +310,23 @@ $(function() {
                                 </div>
                               </figcaption>
                               <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
-                        </figure>
-                    </c:forEach>		             
+                        </figure> 
+                    </c:forEach>                     		             
 	                </div>
-	               </div>
-				<!-- 페이징 -->
+	              </div>
+					<!-- 페이징 -->
 					<div class="btnPaging">
-                        <ul class="pagination" style="font-size: 17px;">
-                            <li>
-                                <a href="#"><i class="fas fa-arrow-left"></i></a>
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#"><i class="fas fa-arrow-right"></i></a>
-                            </li>
-                        </ul>
+                       <ul class="pagination" style="font-size: 17px;">
+                           <li>
+                               <a href="#"><i class="fas fa-arrow-left"></i></a>
+                               <a href="#">1</a>
+                               <a href="#">2</a>
+                               <a href="#">3</a>
+                               <a href="#">4</a>
+                               <a href="#">5</a>
+                               <a href="#"><i class="fas fa-arrow-right"></i></a>
+                           </li>
+                       </ul>
                     </div>
             	</div>
             <!-- //container -->

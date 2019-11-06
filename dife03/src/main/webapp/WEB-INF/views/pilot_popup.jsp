@@ -23,12 +23,20 @@ $(function(){
 		var option = $("<option></option>").attr("value",i).html(i);
 		$("#num").append(option);
 	}
-
+	$("#res-submit").click(function(){
+		var data = $("#res-form").serialize();
+		var vo = "${vo}";
+		console.log("vo:"+vo);
+		$.post("/pilot_reservation",data,function(r){
+			alert("상담이 신청되었습니다./n"+"신청내역은 '마이페이지-게시글관리'에서 확인하실 수 있습니다.");
+			window.close();	
+		})
+	})
 })
 </script>
 </head>
 <body>
-<form id="res-form" action="/pilot_reservation" method="post">
+<form id="res-form">
 	<h3 id="res-title">예약 상담</h3>
 	<table id="res-table">
         <colgroup>
@@ -53,18 +61,6 @@ $(function(){
 	        <td>인원</td>
 	        <td>
 	            <select id="num" name="num">
-	            <!-- 
-	                <option value="1">1</option>
-	                <option value="2">2</option>
-	                <option value="3">3</option>
-	                <option value="4">4</option>
-	                <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                     -->
 	            </select>
 	            &nbsp;&nbsp;명
 	            <span class="res-info">*10이상 단체는 상담창에 입력해주세요.</span>
@@ -75,7 +71,7 @@ $(function(){
 	        <td><textarea rows="10%" cols="65%" id="res-textarea" name="res-textarea"></textarea></td>
 	    </tr>
 	</table>
-	<button id="res-submit" type="submit">상담 신청하기</button>
+	<button id="res-submit" type="button">상담 신청하기</button>
 </form>
 </body>
 </html>
