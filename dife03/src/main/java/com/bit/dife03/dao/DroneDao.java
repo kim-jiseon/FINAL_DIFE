@@ -26,6 +26,7 @@ public class DroneDao {
 
 	public Object droListPage(HashMap map) {
 		// TODO Auto-generated method stub
+		
 		return DroneManager.droListPage(map);
 	}	
 	

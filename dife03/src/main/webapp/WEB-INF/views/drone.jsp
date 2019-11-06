@@ -46,9 +46,11 @@ $(function() {
 	// 드론, 대여점 배열에 넣기
 	
 	var itemsPerPage = 12;
+	var nowPage = 1;
 	          
     /* 페이징처리 및 전체 목록 */     
     $.get("get_droCount", function(data) {
+    	
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
         for (var i = 1; i <= totalPage; i++) {
