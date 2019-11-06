@@ -7,7 +7,7 @@
   	
   	<!-- 최초 전체 목록 -->
 	<select id="sel_droAll" resultType="droneVo">
-		select * from drone where dro_no in ( select dro_no from possesion where dro_no is not null ) order by first_time desc
+		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) order by first_time desc
 	</select>
 	
 	<!-- 전체 레코드 수 집계 -->
@@ -17,11 +17,16 @@
 		where A.rn between #{start} and #{end} -->
 	</select>
 	
-	<!-- 페이징처리 -->
+	<!-- 시리즈명 중복제거하여 출력 -->
+	<select id="get_droSearch" resultType="droneVo">
+		select distinct dro_series, dro_name from drone
+	</select>
+	
+	<!-- 페이징처리 
 	<select id="page_droList" resultType="droneVo">
 		select * from ( select rownum rn, dro_no from possesion where dro_no is not null )A 
 		where A.rn between #{start} and #{end}
-	</select>
+	</select>-->
   	
   	<!-- 상세페이지 -->  	
   	<select id="sel_droDetail" resultType="droneVo">

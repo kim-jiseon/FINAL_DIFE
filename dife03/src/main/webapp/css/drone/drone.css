@@ -119,7 +119,6 @@ ul li:hover .sub-menu-1 ul li:hover{
 }
 
 /* 상품이미지 */
-
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 figure.block {
   font-family: 'Raleway', Arial, sans-serif;
@@ -149,6 +148,12 @@ figure.block img {
   position: relative;
   opacity: 0.9;
 }
+
+#contents .block {
+	width: 300px;
+	height: 450px;
+}
+
 figure.block figcaption {
   position: absolute;
   top: 45%;
