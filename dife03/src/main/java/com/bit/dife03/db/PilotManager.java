@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bit.dife03.vo.PilListVo;
+import com.bit.dife03.vo.PilReservationVo;
 
 public class PilotManager {
 	public static SqlSessionFactory factory;
@@ -28,6 +29,14 @@ public class PilotManager {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
+	}
+	//예약상담번호 
+	public static int sel_nextNo() {
+		int no = 0;
+		SqlSession session = factory.openSession();
+		no = session.selectOne("pilot.sel_nextNo");
+		session.close();
+		return no;
 	}
 	
 	//레코드 수
@@ -85,5 +94,19 @@ public class PilotManager {
 				sql2 = sql2.replaceFirst("\\?", "'"+value+"'");
 			}
 		System.out.println("sql:"+sql2);
+	}
+	//예약상담 insert
+	public static int insertPilRes(PilReservationVo vo) {
+		// TODO Auto-generated method stub
+		int re = 0;
+		SqlSession session = factory.openSession();
+		re = session.insert("pilot.insertPilRes", vo);
+		if (re <= 0) {
+			session.rollback();
+		}else {
+			session.commit();
+		}
+		session.close();
+		return re;
 	}
 }
