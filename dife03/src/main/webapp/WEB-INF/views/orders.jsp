@@ -175,7 +175,8 @@
 		   	        	});
 		   	         }
 		   	         else {
-		   	        	$("#agree_select").html("동의를 확인해주세요.").css({font-color:"red"});
+		   	        	$("#agree_select").html("동의를 확인해주세요.");
+		   	        	
 		   	         }
 			
 		
