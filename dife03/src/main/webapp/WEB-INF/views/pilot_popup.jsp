@@ -23,14 +23,54 @@ $(function(){
 		var option = $("<option></option>").attr("value",i).html(i);
 		$("#num").append(option);
 	}
+	
+	//날짜 변환 메소드
+	
+	function calendar(day){
+		var yyyy = day.substr(0,4);
+		var mm = day.substr(5,2);
+		var dd = day.substr(8,2);
+
+		var cal = (yyyy+"-"+mm+"-"+dd);
+		return cal;
+	}
+	
 	$("#res-submit").click(function(){
-		var data = $("#res-form").serialize();
-		var vo = "${vo}";
-		console.log("vo:"+vo);
+		//var data = $("#res-form").serialize();
+		var con_start = "${startDate}";
+		var con_end = "${endDate}";
+		
+		con_start = calendar(con_start);
+		con_end = calendar(con_end);
+		
+		var con_time = "";
+		$("input[name=res-time]:checked").each(function(){
+			con_time += $(this).val()+"/";
+		})
+		con_time = con_time.substring(0, con_time.lastIndexOf("/"));
+		console.log(con_time);
+		var con_attend = $("select[name=num]").val();
+		var con_purpose = $("#res-textarea").val();
+		var data = {"con_start":con_start,"con_end":con_end,"con_time":con_time,"con_attend":con_attend,"con_purpose":con_purpose};
+		console.log("data:"+data);
+		
+		var json_data = JSON.stringify(data);
+  	 	$.ajax({type:"post",
+  	 			url:"/pilot_popup",
+  	 			data:json_data,
+  	 			dataType:"json",
+  	 			contentType:"application/json;charset=UTF-8",
+  	 			success:function(r){
+  	 				window.close();
+  	 			}})
+  	 			
+  	 			/*
 		$.post("/pilot_reservation",data,function(r){
-			alert("상담이 신청되었습니다./n"+"신청내역은 '마이페이지-게시글관리'에서 확인하실 수 있습니다.");
+			//alert("상담이 신청되었습니다."+"신청내역은 '마이페이지-게시글관리'에서 확인하실 수 있습니다.");
 			window.close();	
 		})
+		*/
+		
 	})
 })
 </script>

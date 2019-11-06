@@ -57,12 +57,16 @@ $(function(){
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
+		var con_start = array[0];
+		var con_end = array[1];
 
+		console.log(con_start);
 		var pil_no = "${info.pil_no}";
 		var con_sort = "${info.pil_cateInfo}";
 		var con_loc = "${info.pil_locInfo}";
 		
 		//날짜형으로 바꾸기
+		/*
 		day = array[0];
 		var cal = calendar(day);
 		var con_start = cal;
@@ -72,7 +76,9 @@ $(function(){
 		var con_end = cal;
 
 		data = {"pil_no":pil_no, "con_sort":con_sort, "con_loc":con_loc, "con_start":con_start, "con_end":con_end};
-
+		*/
+		
+		var data = {"pil_no":pil_no, "con_sort":con_sort, "con_loc":con_loc};
 		console.log(data);
 		
 		//로그인 및 날짜 선택
@@ -91,8 +97,8 @@ $(function(){
 		  	 			dataType:"json",
 		  	 			contentType:"application/json;charset=UTF-8",
 		  	 			success:function(r){
-		  	 				alert("성공");
-		  	 				//var pop = window.open("/pilot_popup","pop","width = 840, height = 650");
+		  	 				console.log(r);
+		  	 				var pop = window.open("/pilot_popup?startDate="+con_start+"&endDate="+con_end,"pop","width = 840, height = 650");
 		  	 			}})
 			}
 		}
