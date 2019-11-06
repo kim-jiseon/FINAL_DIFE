@@ -27,8 +27,7 @@ public class DroneVo {
 	private String first;
 	private Date first_time;
 	private String last;
-	private Date last_time;
-	
+	private Date last_time;	
 	public DroneVo(String dro_no, String dro_name, String dro_series, String dro_series_no, String dro_made,
 			String dro_photo, String dro_info, String dro_content, String dro_conphoto_01, String dro_conphoto_02,
 			int dro_price, String dro_series_md, Date bas_rental, Date bas_return, String ren_no, String ren_name,
