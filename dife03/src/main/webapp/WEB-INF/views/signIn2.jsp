@@ -179,7 +179,7 @@ $(function() {
             	         // res.properties.nickname으로도 접근 가능 )
 
             	             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
-
+  
             	           }
 
             	         });
