@@ -240,21 +240,6 @@ figcaption p span{
     height: 500px;
 }
 
-/* 상품정보 */
-.content2 .block .name{
-    color: #fff;
-    font-weight: bold;
-}
-.content2 .block .item{
-    font-size: 13px;
-    color: #fff;
-    padding: 5px 0px 5px 0px;
-}
-.content2 .block a img{
-    width: 250px;
-    height: 260px;
-}
-
 /* 페이징처리 */
 .btnPaging{
     padding: 10px;
