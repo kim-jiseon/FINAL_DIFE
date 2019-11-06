@@ -1,6 +1,8 @@
 package com.bit.dife03.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.DroneDao;
+import com.bit.dife03.vo.DroneVo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -71,12 +74,76 @@ public class DroneController {
 		System.out.println("마지막 레코드 : "+end);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", dao.sel_droAll(map));
+		
+		List<DroneVo> list = dao.sel_droAll(map);
+		//System.out.println("시리즈 목록입니다.");
+		for(DroneVo d:list) {
+			//System.out.println(d.getDro_series());
+			String str = "";
+			/*str = "<li></li>";
+			if() {
+				
+			}*/
+		}
+		//System.out.println("시리즈 목록 끝입니다.");
+
+		mav.addObject("list", list);
 		mav.addObject("pageStr", pageStr);
 		return mav;
+
+
+
+
+
+	}
+
+		
+/*
+=======
+/*		
+
+>>>>>>> refs/heads/master
+	// 모델앤뷰로 변경하기
+	@ResponseBody
+	@RequestMapping("/sel_droAll")
+	public String sel_droAll() {
+		String str_dro = "";
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			str_dro = mapper.writeValueAsString(dao.sel_droAll());
+			System.out.println(str_dro);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str_dro;
+	}
+/*
+	// 페이징처리 : 드랍박스.스프링.0904	
+	@ResponseBody
+	@RequestMapping("get_droCount")
+	public String get_droCount() {
+		
+		String str_dro = "";
+		str_dro = dao.get_droCount()+"";
+		return str_dro;
+	}
+	
+	@ResponseBody    
+	@RequestMapping("get_droCountList")
+
 	}	
 /*
 	@RequestMapping(value = "get_droCountList")
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+<<<<<<< HEAD
+=======
+=======
+	}	
+/*
+	@RequestMapping(value = "get_droCountList")
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+>>>>>>> refs/heads/master
 	public String get_droCountList(int nowPage, int perPage) {
 		String str_dro = "";
 		int start = (nowPage-1)*perPage+1;
@@ -88,6 +155,7 @@ public class DroneController {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str_dro = mapper.writeValueAsString(dao.droListPage(map));
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
@@ -109,8 +177,6 @@ public class DroneController {
 		}
 		return str_drodt;
 	}
-	
-	
 	
 /*	
 	@ResponseBody

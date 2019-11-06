@@ -119,7 +119,6 @@ ul li:hover .sub-menu-1 ul li:hover{
 }
 
 /* 상품이미지 */
-
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 figure.block {
   font-family: 'Raleway', Arial, sans-serif;
@@ -149,6 +148,12 @@ figure.block img {
   position: relative;
   opacity: 0.9;
 }
+
+#contents .block {
+	width: 300px;
+	height: 450px;
+}
+
 figure.block figcaption {
   position: absolute;
   top: 45%;
@@ -238,21 +243,6 @@ figcaption p span{
 .block img{
     width: 300px;
     height: 500px;
-}
-
-/* 상품정보 */
-.content2 .block .name{
-    color: #fff;
-    font-weight: bold;
-}
-.content2 .block .item{
-    font-size: 13px;
-    color: #fff;
-    padding: 5px 0px 5px 0px;
-}
-.content2 .block a img{
-    width: 250px;
-    height: 260px;
 }
 
 /* 페이징처리 */

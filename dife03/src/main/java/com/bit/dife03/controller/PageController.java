@@ -59,14 +59,13 @@ public class PageController {
 	public void payment() {
 		
 	}
-
-	@RequestMapping("/payCacao")
-	public void pay() {
-		
-	}
 	
 	@RequestMapping("/payKG")
 	public void paykg() {
+		
+	}
+	@RequestMapping("/signIn2")
+	public void signIn2() {
 		
 	}
 	@RequestMapping("/droneDetail")

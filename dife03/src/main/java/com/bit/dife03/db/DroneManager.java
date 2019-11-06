@@ -36,6 +36,15 @@ public class DroneManager {
 		return list;
 	}
 	
+	// 검색 카테고리 불러오기
+	public static List<DroneVo> get_droSearch() {
+		List<DroneVo> list = null;
+		SqlSession session = factory.openSession();
+		list = session.selectList("drone.get_droSearch");
+		session.close();
+		return list;
+	}
+	
 	// 드론 페이지에서 상세 검색 결과
 	public static List<DroneVo> sel_droDetail(String pos_no) {
 		List<DroneVo> list = null;
@@ -59,7 +68,9 @@ public class DroneManager {
 		SqlSession session = factory.openSession();
 		List<DroneVo> list = session.selectList("drone.page_droList", map);
 		session.close();
+		
 		return list;
+		
 	}
 	
 	// 보류

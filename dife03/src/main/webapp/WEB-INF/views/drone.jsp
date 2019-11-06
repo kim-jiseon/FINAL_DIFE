@@ -46,6 +46,52 @@ $(function() {
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
 	
+
+	var itemsPerPage = 12;
+	var nowPage = 1;
+	          
+
+	/* 시리즈명 및 드론명, 가격 */
+	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
+	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
+		'비밥 2 SINGLE','비밥 2+SKY CONTROLLER',
+		'스파크 미니',
+		'인스파이어 1V2 1인','인스파이어 1V2 2인','인스파이어 1 PRO 1인','인스파이어 1 PRO 2인','인스파이어 2 ZENMUSE X5S 1인','인스파이어 2 ZENMUSE X5S 2인',
+		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL'];
+	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~']
+	
+	$.ajax({url:"/drone",success:function(){
+		$.each(series_arr, function(idx, ser){
+			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
+			$("#hover_dro_01").append(search_droSer);
+		})
+		$.each(dName_arr, function(idx, dName){
+			var search_dName = $("<li></li>").attr({"value":dName_arr[idx], "idx":idx}).html(dName_arr[idx]);
+			$("#sub_series_02").append(search_dName);
+		})	
+		$.each(price_arr, function(idx, prc){
+			var search_droPrc = $("<li></li>")attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
+			$("#sub_price").append(search_droPrc);	
+		})
+	})
+	
+	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
+	$("#price").click(function(data){
+		if(data.equals('~ 10만원')){
+			
+		}
+		if(data.equals('10 ~ 20만원')){
+					
+		}
+		if(data.equals('20만원 ~')){
+			
+		}
+	})*/
+	
+	
+	
+		
+
 	/* 시리즈명 및 드론명, 가격 */
 /*	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
 	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
@@ -80,8 +126,25 @@ $(function() {
 		}
 	})*/
 		
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+>>>>>>> refs/heads/master
     /* 페이징처리 및 전체 목록 */     
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/heads/master
+    $.get("get_droCount", function(data) {
+    	
+=======
     $.getJSON("get_droCount", function(data) {
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+<<<<<<< HEAD
+=======
+=======
+    $.getJSON("get_droCount", function(data) {
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+>>>>>>> refs/heads/master
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
         for (var i = 1; i <= totalPage; i++) {
@@ -128,7 +191,7 @@ $(function() {
      /* 카테고리(시리즈명) 마우스 hover */
      $(".hover").mouseleave(function () {
          $(this).removeClass("hover");
-     })    
+     }  
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
@@ -212,18 +275,10 @@ $(function() {
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                            <c:forEach var="d" items="${list }">
-                                <li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul id="sub_series_02" name="sub_series_02">
-                                            <li>${d.dro_name }</li>
-                                            <!-- <li>매빅 PRO</li>
-                                            <li>매빅 2 엔터프라이즈 유니버셜</li>
-                                            <li>매빅 2 엔터프라이즈 듀얼</li>
-                                            <li>매빅 AIR</li> -->
-                                        </ul>
-                                    </div>
-                                </li>
+                            	<c:forEach var="d" items="${list }">
+                                	<li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
+                                	</li>
+                            	</c:forEach>
                                 <!-- 
                                 <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
                                     <div class="sub-menu-2">
@@ -262,7 +317,7 @@ $(function() {
                                         </ul>
                                     </div>
                                 </li> -->
-                            </c:forEach>                                             
+                                                                         
                             </ul>
                         </div>
                     </li>
@@ -288,20 +343,20 @@ $(function() {
         	<div class="container">
 				<div id="drone-grid">
 					<!-- 드론 정렬 -->
+					<c:forEach var="d" items="${list }">
 	                <div class="block">
-	                <c:forEach var="d" items="${list }">
                         <figure id="block" class="block">
                             <img id="dro_photo" class="dro-list-img" src="img/drone/${d.dro_photo }" alt="${d.dro_name }"/>
                               <figcaption>
                               <p id="dro_info" class="dro-list-info">${d.dro_info }<span> / ${d.dro_price }<i class="fas fa-won-sign"></i></span></p>          
                                 <div class="heading">
-                                  <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span> 2 PRO</h2>
+                                  <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span>${d.dro_series_md }</h2>
                                 </div>
                               </figcaption>
                               <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
                         </figure> 
-                    </c:forEach>                     		             
 	                </div>
+	                </c:forEach>
 	              </div>
 					<!-- 페이징 -->
 					<div class="btnPaging">
