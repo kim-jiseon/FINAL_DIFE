@@ -59,7 +59,9 @@ public class DroneManager {
 		SqlSession session = factory.openSession();
 		List<DroneVo> list = session.selectList("drone.page_droList", map);
 		session.close();
+		
 		return list;
+		
 	}
 	
 	// 보류

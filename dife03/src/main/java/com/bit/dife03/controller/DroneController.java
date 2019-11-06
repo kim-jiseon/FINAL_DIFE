@@ -71,12 +71,13 @@ public class DroneController {
 	@ResponseBody
 	@RequestMapping("get_droCount")
 	public String get_droCount() {
+		
 		String str_dro = "";
 		str_dro = dao.get_droCount()+"";
 		return str_dro;
 	}
 	
-	@ResponseBody
+	@ResponseBody    
 	@RequestMapping("get_droCountList")
 	public String get_droCountList(int nowPage, int perPage) {
 		String str_dro = "";
@@ -89,6 +90,7 @@ public class DroneController {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			str_dro = mapper.writeValueAsString(dao.droListPage(map));
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());

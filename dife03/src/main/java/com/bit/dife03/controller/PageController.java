@@ -59,11 +59,6 @@ public class PageController {
 	public void payment() {
 		
 	}
-
-	@RequestMapping("/payCacao")
-	public void pay() {
-		
-	}
 	
 	@RequestMapping("/payKG")
 	public void paykg() {
