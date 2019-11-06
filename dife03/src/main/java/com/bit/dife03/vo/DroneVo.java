@@ -14,6 +14,7 @@ public class DroneVo {
 	private String dro_conphoto_01;
 	private String dro_conphoto_02;
 	private int dro_price;
+	private String dro_series_md;
 	
 	private Date bas_rental;
 	private Date bas_return;
@@ -30,8 +31,8 @@ public class DroneVo {
 	
 	public DroneVo(String dro_no, String dro_name, String dro_series, String dro_series_no, String dro_made,
 			String dro_photo, String dro_info, String dro_content, String dro_conphoto_01, String dro_conphoto_02,
-			int dro_price, Date bas_rental, Date bas_return, String ren_no, String ren_name, String ren_loc,
-			String pos_amount, String first, Date first_time, String last, Date last_time) {
+			int dro_price, String dro_series_md, Date bas_rental, Date bas_return, String ren_no, String ren_name,
+			String ren_loc, String pos_amount, String first, Date first_time, String last, Date last_time) {
 		super();
 		this.dro_no = dro_no;
 		this.dro_name = dro_name;
@@ -44,6 +45,7 @@ public class DroneVo {
 		this.dro_conphoto_01 = dro_conphoto_01;
 		this.dro_conphoto_02 = dro_conphoto_02;
 		this.dro_price = dro_price;
+		this.dro_series_md = dro_series_md;
 		this.bas_rental = bas_rental;
 		this.bas_return = bas_return;
 		this.ren_no = ren_no;
@@ -124,6 +126,12 @@ public class DroneVo {
 	}
 	public void setDro_price(int dro_price) {
 		this.dro_price = dro_price;
+	}
+	public String getDro_series_md() {
+		return dro_series_md;
+	}
+	public void setDro_series_md(String dro_series_md) {
+		this.dro_series_md = dro_series_md;
 	}
 	public Date getBas_rental() {
 		return bas_rental;
