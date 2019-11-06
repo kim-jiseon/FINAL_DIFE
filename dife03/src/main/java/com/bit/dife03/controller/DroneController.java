@@ -1,6 +1,8 @@
 package com.bit.dife03.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.DroneDao;
+import com.bit.dife03.vo.DroneVo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -71,7 +74,20 @@ public class DroneController {
 		System.out.println("마지막 레코드 : "+end);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", dao.sel_droAll(map));
+		
+		List<DroneVo> list = dao.sel_droAll(map);
+		//System.out.println("시리즈 목록입니다.");
+		for(DroneVo d:list) {
+			//System.out.println(d.getDro_series());
+			String str = "";
+			/*str = "<li></li>";
+			if() {
+				
+			}*/
+		}
+		//System.out.println("시리즈 목록 끝입니다.");
+
+		mav.addObject("list", list);
 		mav.addObject("pageStr", pageStr);
 		return mav;
 	}	
@@ -109,8 +125,6 @@ public class DroneController {
 		}
 		return str_drodt;
 	}
-	
-	
 	
 /*	
 	@ResponseBody

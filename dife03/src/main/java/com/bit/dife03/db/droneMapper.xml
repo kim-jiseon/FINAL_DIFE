@@ -7,15 +7,19 @@
   	
   	<!-- 최초 전체 목록 -->
 	<select id="sel_droAll" resultType="droneVo">
-		select * from drone where dro_no in ( select dro_no from possesion where dro_no is not null ) order by first_time desc
+		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) order by first_time desc
 	</select>
-	
 	
 	<!-- 전체 레코드 수 집계 -->
 	<select id="get_droCount" resultType="java.lang.Integer">
 		select count(*) from drone
 		<!-- select count(*) from ( select rownum rn, dro_no from drone )A 		
 		where A.rn between #{start} and #{end} -->
+	</select>
+	
+	<!-- 시리즈명 중복제거하여 출력 -->
+	<select id="get_droSearch" resultType="droneVo">
+		select distinct dro_series, dro_name from drone
 	</select>
 	
 	<!-- 페이징처리 
