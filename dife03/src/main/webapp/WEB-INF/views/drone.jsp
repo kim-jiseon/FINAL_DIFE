@@ -91,8 +91,7 @@ $(function() {
 	
 	
 		
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
-=======
+
 	/* 시리즈명 및 드론명, 가격 */
 /*	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
 	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
@@ -128,17 +127,24 @@ $(function() {
 	})*/
 		
 >>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+>>>>>>> refs/heads/master
     /* 페이징처리 및 전체 목록 */     
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/heads/master
     $.get("get_droCount", function(data) {
     	
 =======
     $.getJSON("get_droCount", function(data) {
 >>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+<<<<<<< HEAD
+=======
 =======
     $.getJSON("get_droCount", function(data) {
 >>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+>>>>>>> refs/heads/master
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
         for (var i = 1; i <= totalPage; i++) {

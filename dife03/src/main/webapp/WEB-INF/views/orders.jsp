@@ -289,7 +289,7 @@
 
 
 
-        <!-- footer -->ㅋ
+        <!-- footer -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>

@@ -92,9 +92,17 @@ public class DroneController {
 		return mav;
 
 
+
+
+
 	}
+
+		
+/*
+=======
 /*		
 
+>>>>>>> refs/heads/master
 	// 모델앤뷰로 변경하기
 	@ResponseBody
 	@RequestMapping("/sel_droAll")
@@ -110,7 +118,7 @@ public class DroneController {
 		}
 		return str_dro;
 	}
-
+/*
 	// 페이징처리 : 드랍박스.스프링.0904	
 	@ResponseBody
 	@RequestMapping("get_droCount")
@@ -128,11 +136,14 @@ public class DroneController {
 /*
 	@RequestMapping(value = "get_droCountList")
 >>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+<<<<<<< HEAD
+=======
 =======
 	}	
 /*
 	@RequestMapping(value = "get_droCountList")
 >>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
+>>>>>>> refs/heads/master
 	public String get_droCountList(int nowPage, int perPage) {
 		String str_dro = "";
 		int start = (nowPage-1)*perPage+1;

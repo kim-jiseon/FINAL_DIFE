@@ -64,6 +64,10 @@ public class PageController {
 	public void paykg() {
 		
 	}
+	@RequestMapping("/signIn2")
+	public void signIn2() {
+		
+	}
 	@RequestMapping("/droneDetail")
 	public void droneDetail() {
 		
