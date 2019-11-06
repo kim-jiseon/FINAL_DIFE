@@ -58,6 +58,9 @@ public class MemberController {
 			mav.setViewName("redirect:/signIn");
 		}
 		else {
+			MemberVo memVo = dao.sel_member(mem_id);
+			session.setAttribute("mem_name", memVo.getMem_name());
+			session.setAttribute("mem_no", memVo.getMem_no());
 			session.setAttribute("mem_id", mem_id);
 			session.setAttribute("mem_pwd", mem_pwd);
 		}
