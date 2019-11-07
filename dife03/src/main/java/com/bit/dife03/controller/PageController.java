@@ -9,6 +9,11 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/mypage_board")
+	public void mypage_board() {
+		
+	}
+	
 	@RequestMapping("/mypage_orders")
 	public void mypage_orders() {
 		
