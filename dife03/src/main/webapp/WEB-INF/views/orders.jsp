@@ -88,6 +88,7 @@
 	    			if(idx == 1)
 	    				{
 	    					ord_no =  item.ord_no;
+	    					alert(ord_no);
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			tr=$("<tr></tr>");
@@ -164,23 +165,30 @@
 			//체크 됐을때 값 전달 이벤트..
 			$(".agree").click(function(){
 		   	 		 chk = $(this).is(":checked");//.attr('checked');
+		   	 		 $("#agree_select").html("동의를 확인해주세요.");
 		   	         if(chk) {
+		   	        	$("#agree_select").hide();
+		   	        	
 		   	        	$("#orderCancle").click(function(){
-		   	        		$("#agree_select").empty();
+		   	        		  $.ajax({url:"",data:{"ord_no":ord_no,"mem_id":mem_id},success:function(){
+		   	        				 
+		   	        		 }}); 
+		   	        		
 		   					
 		   				});
 		   	        	
 		   	        	$("#order").click(function(){
-		   	        		$("#agree_select").empty();
+		   	        		/* 결제페이지로 sum값 전달 */
+		   	        		location.href="payKG?"+sum;
 		   	        	});
 		   	         }
 		   	         else {
-		   	        	$("#agree_select").html("동의를 확인해주세요.");
-		   	        	
+		   	        	$("#agree_select").show(); 	
 		   	         }
 			
 		
    	 	});
+			/*check end  */
 	});	
 		
     			
@@ -306,7 +314,7 @@
 ② "오롬 온라인 쇼핑몰"은 제1항의 사유로 서비스의 제공이 일시적으로 중단됨으로 인하여 이용자 또는 제3자가 입은 손해에 대하여 배상합니다. 단, "오롬 온라인 쇼핑몰"이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.
 ③ 사업종목의 전환, 사업의 포기, 업체간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 "오롬 온라인 쇼핑몰"은 제8조에 정한 방법으로 이용자에게 통지하고 당초 "오롬 온라인 쇼핑몰"에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, "오롬 온라인 쇼핑몰"이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 포인트 등을 "오롬 온라인 쇼핑몰"에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.</textarea>
                     
-                    <br><p class="payment_style">주문자 동의&nbsp;&nbsp; <input type="checkbox" checked="checked" class="agree"><label>동의</label></p>
+                    <br><p class="payment_style">주문자 동의&nbsp;&nbsp; <input type="checkbox"  class="agree"><label>동의</label></p>
                     <p id="agree_select"></p>
                     </li>
                     <li class="payment_style">
@@ -315,7 +323,7 @@
                 </ul>
                  <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="orderCancle" class="a_btn">주문취소</a>
-					<a href="payKG" id="order" class="a_btn">결제하기</a>
+					<a href="#" id="order" class="a_btn">결제하기</a>
 				</div>
        </div>
     </div>
