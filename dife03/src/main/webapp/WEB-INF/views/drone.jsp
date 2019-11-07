@@ -80,6 +80,7 @@ $(function() {
 			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);
 		})
+
 		
 		// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
 		var dro_list = eval(data);
@@ -113,6 +114,7 @@ $(function() {
 	
 	
 		
+
     /* 페이징처리 및 전체 목록 */     
     $.getJSON("get_droCount", function(data) {
         var totalItem = Number(data);
@@ -146,6 +148,7 @@ $(function() {
      $(".hover").mouseleave(function() {
          $(this).removeClass("hover");
      })  
+
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
