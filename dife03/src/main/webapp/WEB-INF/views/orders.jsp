@@ -88,7 +88,7 @@
 	    			if(idx == 1)
 	    				{
 	    					ord_no =  item.ord_no;
-	    					alert(ord_no);
+	    					alert(ord_no+sum);
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			tr=$("<tr></tr>");
@@ -170,8 +170,8 @@
 		   	        	$("#agree_select").hide();
 		   	        	
 		   	        	$("#orderCancle").click(function(){
-		   	        		  $.ajax({url:"",data:{"ord_no":ord_no,"mem_id":mem_id},success:function(){
-		   	        				 
+		   	        		  $.ajax({url:"/delJumun.do",data:{"ord_no":ord_no,"mem_id":mem_id},success:function(data){
+		   	        				 alert("ajax작동");
 		   	        		 }}); 
 		   	        		
 		   					
@@ -179,7 +179,7 @@
 		   	        	
 		   	        	$("#order").click(function(){
 		   	        		/* 결제페이지로 sum값 전달 */
-		   	        		location.href="payKG?"+sum;
+		   	        		location.href="payKG?sum="+sum;
 		   	        	});
 		   	         }
 		   	         else {
@@ -323,7 +323,7 @@
                 </ul>
                  <div class="delete-btn-area">
 					<a href="javascript:void(0)" id="orderCancle" class="a_btn">주문취소</a>
-					<a href="#" id="order" class="a_btn">결제하기</a>
+					<a href="javascript:void(0)" id="order" class="a_btn">결제하기</a>
 				</div>
        </div>
     </div>

@@ -17,11 +17,6 @@
 		where A.rn between #{start} and #{end} -->
 	</select>
 	
-	<!-- 시리즈명 중복제거하여 출력 -->
-	<select id="get_droSearch" resultType="droneVo">
-		select distinct dro_series, dro_name from drone
-	</select>
-	
 	<!-- 페이징처리 
 	<select id="page_droList" resultType="droneVo">
 		select * from ( select rownum rn, dro_no from possesion where dro_no is not null )A 

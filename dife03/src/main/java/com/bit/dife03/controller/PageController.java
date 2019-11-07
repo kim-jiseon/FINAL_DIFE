@@ -9,6 +9,11 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/mypage_board")
+	public void mypage_board() {
+		
+	}
+	
 	@RequestMapping("/mypage_orders")
 	public void mypage_orders() {
 		
@@ -70,6 +75,10 @@ public class PageController {
 	}
 	@RequestMapping("/droneDetail")
 	public void droneDetail() {
+		
+	}
+	@RequestMapping("/testtest02")
+	public void test() {
 		
 	}
 

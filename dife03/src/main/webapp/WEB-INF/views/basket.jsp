@@ -282,11 +282,11 @@
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
-			    					
-			    						tr.remove();
+			    						location.href="basket";
+			    						/* tr.remove();
 			    						sum -= price;
 		    							all_amount -= amount;
-		    							$("#sum_price").text("주문금액: "+sum+"원"); 
+		    							$("#sum_price").text("주문금액: "+sum+"원");  */
 			    						}
 			    				}})
 		 	    			}

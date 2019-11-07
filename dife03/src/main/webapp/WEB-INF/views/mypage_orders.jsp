@@ -62,7 +62,7 @@
                         <nav>
                             <ul>
                                 <li class="mypage-category"><a href="mypage_orders">주문내역<i class="fas fa-angle-right" id="icon"></i></a></li>
-                                <li class="mypage-category"><a href="#">게시글관리<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="#">글관리<i class="fas fa-angle-right" id="icon"></i></a></li>
                                 <li class="mypage-category"><a href="mypage_emoney">적립금 및 쿠폰<i class="fas fa-angle-right" id="icon"></i></a></li>
                                 <li class="mypage-category"><a href="#">개인정보수정<i class="fas fa-angle-right" id="icon"></i></a></li>
                             </ul>
