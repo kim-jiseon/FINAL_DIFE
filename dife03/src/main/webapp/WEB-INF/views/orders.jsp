@@ -183,9 +183,7 @@
 		   	        	});
 		   	         }
 		   	         else {
-		   	        	$("#agree_select").show();
-		   	        	
-		   	        	
+		   	        	$("#agree_select").show(); 	
 		   	         }
 			
 		
