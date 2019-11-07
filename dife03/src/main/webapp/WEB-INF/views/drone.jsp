@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,33 +46,56 @@ $(function() {
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
 	
-
-	var itemsPerPage = 12;
-	var nowPage = 1;
-	          
-
 	/* 시리즈명 및 드론명, 가격 */
-	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
-	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
+	var series_arr = [{'드론파이터':'기본패키지'},
+						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},
+						{'매트리스':'600','600 프로','100','210 RTK'},
+						{'비밥':'2 싱글','2+스카이 컨트롤러'},
+						{'스파크':'미니'},
+						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
+						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
+						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
+					];
+/*	var dName_arr = ['드론파이터 기본패키지',
+		'매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
+		'매트리스 600','매트리스 600 프로','매트리스 100','매트리스 210 RTK',
 		'비밥 2 SINGLE','비밥 2+SKY CONTROLLER',
 		'스파크 미니',
 		'인스파이어 1V2 1인','인스파이어 1V2 2인','인스파이어 1 PRO 1인','인스파이어 1 PRO 2인','인스파이어 2 ZENMUSE X5S 1인','인스파이어 2 ZENMUSE X5S 2인',
-		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL'];
-	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~']
+		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL',
+		'페트론 기본세트','페트론 풀패키지','페트론 드라이브 파워패키지','페트론 V2 프로','페트론 V2 풀패키지','페트론 파워패키지','페트론 카메라 파워패키지',
+		];	*/
+	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
 	
 	$.ajax({url:"/drone",success:function(){
 		$.each(series_arr, function(idx, ser){
 			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
 			$("#hover_dro_01").append(search_droSer);
 		})
-		$.each(dName_arr, function(idx, dName){
+		/*$.each(dName_arr, function(idx, dName){
 			var search_dName = $("<li></li>").attr({"value":dName_arr[idx], "idx":idx}).html(dName_arr[idx]);
 			$("#sub_series_02").append(search_dName);
-		})	
+		})*/	
 		$.each(price_arr, function(idx, prc){
-			var search_droPrc = $("<li></li>")attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
-			$("#sub_price").append(search_droPrc);	
+			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
+			$("#sub_price").append(search_droPrc);
 		})
+
+		
+		// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
+		var dro_list = eval(data);
+		
+		$.each(dro_list, function(idx, item){
+     		//console.log(item.dro_name);
+     		var div = $("<div></div>").addClass("item");
+			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
+			var dro_info = $("<p></p>").html(item.dro_info);
+			var dro_price = $("<p></p>").html(item.dro_price);
+			var dro_series = $("<h2></h2>").html(item.dro_series);
+			
+			$(div).append(dro_photo,dro_info,dro_price,dro_series);
+			$("#contents").append(div);
+       	})
 	}})
 	
 	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
@@ -91,40 +114,6 @@ $(function() {
 	
 	
 		
-
-	/* 시리즈명 및 드론명, 가격 */
-/*	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
-	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
-		'비밥 2 SINGLE','비밥 2+SKY CONTROLLER',
-		'스파크 미니',
-		'인스파이어 1V2 1인','인스파이어 1V2 2인','인스파이어 1 PRO 1인','인스파이어 1 PRO 2인','인스파이어 2 ZENMUSE X5S 1인','인스파이어 2 ZENMUSE X5S 2인',
-		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL'];	*/
-	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
-	
-/*	$.each(series_arr, function(idx, ser){
-		var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
-		$("#hover_dro_01").append(search_droSer);
-	})
-	$.each(dName_arr, function(idx, dName){
-		var search_dName = $("<li></li>").attr({"value":dName_arr[idx], "idx":idx}).html(dName_arr[idx]);
-		$("#sub_series_02").append(search_dName);
-	})	*/
-	$.each(price_arr, function(idx, prc){
-		var search_droPrc = $("<li></li>")attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
-		$("#sub_price").append(search_droPrc);
-	})
-	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
-	$("#price").click(function(data){
-		if(data.equals('~ 10만원')){
-			
-		}
-		if(data.equals('10 ~ 20만원')){
-					
-		}
-		if(data.equals('20만원 ~')){
-			
-		}
-	})*/
 
     /* 페이징처리 및 전체 목록 */     
     $.getJSON("get_droCount", function(data) {
@@ -152,29 +141,14 @@ $(function() {
 	    $.get("droListPage",{nowPage:nowPage,perPage:itemsPerPage},function(data){
 	     	//var arr = eval(data);
 */
-	// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
-	$.ajax({url:"", success:function(data){
-		var dro_list = eval(data);
-		
-		$.each(dro_list, function(idx, item){
-     		//console.log(item.dro_name);
-     		var div = $("<div></div>").addClass("item");
-			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
-			var dro_info = $("<p></p>").html(item.dro_info);
-			var dro_price = $("<p></p>").html(item.dro_price);
-			var dro_series = $("<h2></h2>").html(item.dro_series);
-			
-			$(div).append(dro_photo,dro_info,dro_price,dro_series);
-			$("#contents").append(div);
-       	})
-	}})
 	     	           	
      //getItems(1,itemsPerPage);
      
      /* 카테고리(시리즈명) 마우스 hover */
-     $(".hover").mouseleave(function () {
+     $(".hover").mouseleave(function() {
          $(this).removeClass("hover");
-     } ) 
+     })  
+
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");

@@ -135,11 +135,13 @@ figure.block {
   max-height: 450px;
   width: 100%;
   /*최대한 살리려고 했는데 background색 때문에 부득이하게 조금 변경된 부분이 있습니다.*/
-    background: #000;
+    background-color:#000;
+    background-clip: padding-box;
   color: #fff;
   text-align: center;
   box-shadow: 0 0 px rgba(0, 0, 0, 0.15);
   font-size: 16px;
+  padding-bottom: 10px;
 }
 figure.block * {
   -webkit-box-sizing: border-box;
@@ -152,10 +154,10 @@ figure.block img {
   position: relative;
   opacity: 0.9;
 }
-
 #contents .block {
 	width: 300px;
 	height: 450px;
+	padding-bottom: 10px;
 }
 
 figure.block figcaption {
@@ -247,7 +249,7 @@ figcaption p span{
 }
 .block img{
     width: 300px;
-    height: 500px;
+    height: 420px;
 }
 
 /* 페이징처리 */
