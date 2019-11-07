@@ -26,21 +26,12 @@ public class DroneManager {
 		}
 	}
 	
-	// 드론 페이지 초기화면
+	// 드론 페이지 초기화면 및 검색 카테고리 불러오기
 	public static List<DroneVo> sel_droAll(HashMap map) {
 		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();		
 		list =  session.selectList("drone.sel_droAll");
-		System.out.println(list);
-		session.close();
-		return list;
-	}
-	
-	// 검색 카테고리 불러오기
-	public static List<DroneVo> get_droSearch() {
-		List<DroneVo> list = null;
-		SqlSession session = factory.openSession();
-		list = session.selectList("drone.get_droSearch");
+		//System.out.println(list);
 		session.close();
 		return list;
 	}
@@ -68,9 +59,7 @@ public class DroneManager {
 		SqlSession session = factory.openSession();
 		List<DroneVo> list = session.selectList("drone.page_droList", map);
 		session.close();
-		
 		return list;
-		
 	}
 	
 	// 보류
