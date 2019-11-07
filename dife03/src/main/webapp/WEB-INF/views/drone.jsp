@@ -73,7 +73,7 @@ $(function() {
 			var search_droPrc = $("<li></li>")attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);	
 		})
-	})
+	}})
 	
 	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
 	$("#price").click(function(data){
@@ -125,26 +125,9 @@ $(function() {
 			
 		}
 	})*/
-		
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
->>>>>>> refs/heads/master
+
     /* 페이징처리 및 전체 목록 */     
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> refs/heads/master
-    $.get("get_droCount", function(data) {
-    	
-=======
     $.getJSON("get_droCount", function(data) {
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
-<<<<<<< HEAD
-=======
-=======
-    $.getJSON("get_droCount", function(data) {
->>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
->>>>>>> refs/heads/master
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
         for (var i = 1; i <= totalPage; i++) {
@@ -191,7 +174,7 @@ $(function() {
      /* 카테고리(시리즈명) 마우스 hover */
      $(".hover").mouseleave(function () {
          $(this).removeClass("hover");
-     }  
+     } ) 
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");

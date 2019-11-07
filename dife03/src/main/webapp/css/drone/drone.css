@@ -120,6 +120,10 @@ ul li:hover .sub-menu-1 ul li:hover{
 
 /* 상품이미지 */
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+/*간격 조정은 이거로 하시면 되요!*/
+.block{
+	margin-bottom: 50px;
+}
 figure.block {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
@@ -219,6 +223,7 @@ figure.block a {
   bottom: 0;
   position: absolute;
   z-index: 1;
+  margin: 5px;
 }
 figure.block:hover img,
 figure.block.hover img {
