@@ -1,59 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-    <title>layout</title>
-    <!-- 웹폰트 -->
-     <!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
-     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <!-- fadeIn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/mypage/mypage.css">
-    <link rel="stylesheet" href="css/mypage/mypage_board.css">
-    <!-- 제이쿼리 플러그인 -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <script type="text/javascript">
-    $(function(){
-    	//로그인 로그아웃 전환
-    	var mem_id = "${mem_id}";
-    	alert(mem_id);
-    	if(mem_id != '' && mem_id != null){
-    		//var login = $("#category-2").find("a:first").html();
-    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-    		//$("#category-2").append(logout);
-    		$("#sign").attr("href","logout").html("LOGOUT");
-    	}
-    	if(mem_id == '' || mem_id == null){
-    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-    		//$("#category-2").append(login);
-    		$("#sign").attr("href","signIn").html("LOGIN");
-    	}
-    	
-    	//탭전환
-    	$('dt').css("background-color","#2f6064");
-         $('dt').click(function() {
-        	 $(this).attr("idx","1");
-        	 $(this).next().removeAttr();
-             $('dd').addClass('hidden');
-             $(this).next().removeClass('hidden'); 
-             if ($(this).attr() == 1) {
-            	 $(this).css("background-color","#7EBDC2");
-			}else{
-				$('dt').css("background-color","#2f6064");
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<title>DIFE.com</title>
+<!-- 웹폰트 -->
+<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
+<!-- fadeIn -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/mypage/mypage.css">
+<link rel="stylesheet" href="css/mypage/mypage_board.css">
+<!-- 제이쿼리 플러그인 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//로그인 로그아웃 전환
+		var mem_id = "${mem_id}";
+		alert(mem_id);
+		if (mem_id != '' && mem_id != null) {
+			//var login = $("#category-2").find("a:first").html();
+			$("#sign").attr("href", "logout").html("LOGOUT");
+		}
+		if (mem_id == '' || mem_id == null) {
+			$("#sign").attr("href", "signIn").html("LOGIN");
+		}
+
+		//탭전환
+		$('dt').css("background-color", "#2f6064");
+		$('dt').click(function() {
+			$(this).attr("idx", "1");
+			$(this).next().removeAttr();
+			$('dd').addClass('hidden');
+			$(this).next().removeClass('hidden');
+			if ($(this).attr() == 1) {
+				$(this).css("background-color", "#7EBDC2");
 			}
-             
-         })    
-    })
-    </script>
+		})
+	})
+</script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
@@ -99,20 +94,22 @@
                                        </tr>
                                    </thead>
                                    <tbody>
-                                       <tr>
+                                       <!-- <tr>
                                            <td>PR0001</td>
                                            <td>2019/11/01</td>
                                            <td><a href="#">제주 웨딩 촬영합니다.</a></td>
                                            <td>홍길동</td>
                                            <td>2019/11/11 - 2019/11/14</td>
-                                       </tr>
+                                       </tr> -->
+                                   <c:forEach var="vo" items=${list }>
                                        <tr>
-                                           <td>PR0001</td>
-                                           <td>2019/11/01</td>
-                                           <td><a href="#">기초반 강의 진행합니다.</a></td>
-                                           <td>강감찬</td>
-                                           <td>2019/11/11 - 2019/11/14</td>
+                                           <td>${vo.con_no }</td>
+                                           <td>${vo.con_regDate }</td>
+                                           <td><a href="#">${vo.pil_title }</a></td>
+                                           <td>${vo.mem_name }</td>
+                                           <td>${vo.con_start } - ${vo.con_end }</td>
                                        </tr>
+                                    </c:forEach>
                                    </tbody>
                                </table>
                            </dd>
@@ -133,6 +130,5 @@
          <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
-
 </body>
 </html>

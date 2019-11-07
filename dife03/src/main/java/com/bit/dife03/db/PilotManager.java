@@ -30,6 +30,15 @@ public class PilotManager {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	//예약상담 select
+	public static List<PilReservationVo> sel_pilRes(String mem_no) {
+		List<PilReservationVo> list = null;
+		SqlSession session = factory.openSession();
+		list = session.selectList("pilot.sel_pilRes", mem_no);
+		session.close();
+		return list;
+	}
 	//예약상담번호 
 	public static int sel_nextNo() {
 		int no = 0;

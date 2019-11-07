@@ -36,14 +36,23 @@ public class PilotController {
 		this.dao = dao;
 	}
 	
+	//예약상담 select
+	@RequestMapping("/mypage_board")
+	public ModelAndView sel_pilRes(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		String mem_no = (String) session.getAttribute("mem_no");
+		mav.addObject("list", dao.sel_pilRes(mem_no));
+		return mav;
+	}
+	//예약상담 팝업창
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
-	public ModelAndView pilot_popup(String startDate, String endDate, String pil_no, int con_sort, String con_loc) {
+	public ModelAndView pilot_popup(String startDate, String endDate, String list_no, int con_sort, String con_loc) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("시작:"+startDate+"끝:"+endDate);
-		System.out.println(pil_no+","+con_sort+","+con_loc);
+		System.out.println(list_no+","+con_sort+","+con_loc);
 		mav.addObject("startDate", startDate);
 		mav.addObject("endDate", endDate);
-		mav.addObject("pil_no", pil_no);
+		mav.addObject("list_no", list_no);
 		mav.addObject("con_sort", con_sort);
 		mav.addObject("con_loc", con_loc);
 		return mav;
