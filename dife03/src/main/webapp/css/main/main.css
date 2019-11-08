@@ -38,7 +38,7 @@
     }
 }
 
-@media (min-width:376px){
+@media (min-width:1200px){
 /*헤더 고정(sticky header)*/
     .sticky {
       position: fixed;
