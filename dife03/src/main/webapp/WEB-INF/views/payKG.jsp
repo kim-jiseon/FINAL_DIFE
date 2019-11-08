@@ -7,7 +7,7 @@
 //    String address = (String)request.getAttribute("address");
 //    int totalPrice = (int)request.getAttribute("sum");  
       String sum = request.getParameter("sum");
-
+ 
 String name = "홍길동";
 String email = "nada_red@naver.com";
 String phone ="010-5940-4530";
