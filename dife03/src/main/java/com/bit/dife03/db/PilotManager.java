@@ -1,6 +1,8 @@
 package com.bit.dife03.db;
 
 import java.io.Reader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,16 @@ public class PilotManager {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	//예약상담 select
+	public static List<PilReservationVo> sel_pilRes(String mem_no) {
+		List<PilReservationVo> list = null;
+		SqlSession session = factory.openSession();
+		list = session.selectList("pilot.sel_pilRes", mem_no);
+		System.out.println(list);
+		session.close();
+		return list;
 	}
 	//예약상담번호 
 	public static int sel_nextNo() {
