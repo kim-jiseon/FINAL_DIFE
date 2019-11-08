@@ -16,7 +16,7 @@ where c.list_no = pl.list_no and mem_no = #{mem_no}
 </insert>
 <!-- 예약상담 번호 -->
 <select id="sel_nextNo" resultType="java.lang.Integer">
-	select nvl(max(con_no), 1) from condition
+	select nvl(max(con_no), 1)+1 from condition
 </select>
 <!-- 전체 레코드 수 출력 -->
 <select id="sel_pil_cnt" resultType="java.lang.Integer">

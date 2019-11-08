@@ -1,6 +1,8 @@
 package com.bit.dife03.db;
 
 import java.io.Reader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +38,7 @@ public class PilotManager {
 		List<PilReservationVo> list = null;
 		SqlSession session = factory.openSession();
 		list = session.selectList("pilot.sel_pilRes", mem_no);
+		System.out.println(list);
 		session.close();
 		return list;
 	}
