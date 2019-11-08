@@ -181,8 +181,8 @@ $(function() {
         });
       
     </script>
-    
-    	<script>
+     
+    	<script>  
             function init() {
                 gapi.load('auth2', function() { 
                     var gauth = gapi.auth2.init({
