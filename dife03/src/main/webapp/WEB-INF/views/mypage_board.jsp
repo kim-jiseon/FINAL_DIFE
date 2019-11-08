@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,15 +38,9 @@
 		}
 
 		//탭전환
-		$('dt').css("background-color", "#2f6064");
 		$('dt').click(function() {
-			$(this).attr("idx", "1");
-			$(this).next().removeAttr();
 			$('dd').addClass('hidden');
 			$(this).next().removeClass('hidden');
-			if ($(this).attr() == 1) {
-				$(this).css("background-color", "#7EBDC2");
-			}
 		})
 	})
 </script>
@@ -60,13 +55,7 @@
         <div id="contents">
             <div class="container">
                <div  class="mypage-grid">
-                <div id="mypage-top" class="mypage-top">
-                    <div class="mypage-top-nav"><img src="img/pilot/visit_cnt.png" id="mem-img">
-                        <span id="mem-name">${mem_id } 님</span>
-                    </div>
-                    <div class="mypage-top-nav">적립<i class="fas fa-angle-right" id="arrow"></i></div>
-                    <div class="mypage-top-nav">쿠폰<i class="fas fa-angle-right" id="arrow"></i></div>
-                </div>
+                <jsp:include page="mypage.jsp"></jsp:include>
                 <div id="mypage-bottom" class="mypage-grid-nav">
                     <div id="mypage-bottom-left">
                         <nav>
@@ -88,26 +77,19 @@
                                        <tr>
                                            <td>번호</td>
                                            <td>신청일</td>
-                                           <td width=50%>신청목록</td>
+                                           <td width=45%>신청목록</td>
                                            <td>파일럿</td>
                                            <td width=20%>예약일</td>
                                        </tr>
                                    </thead>
                                    <tbody>
-                                       <!-- <tr>
-                                           <td>PR0001</td>
-                                           <td>2019/11/01</td>
-                                           <td><a href="#">제주 웨딩 촬영합니다.</a></td>
-                                           <td>홍길동</td>
-                                           <td>2019/11/11 - 2019/11/14</td>
-                                       </tr> -->
-                                   <c:forEach var="vo" items=${list }>
+                                   <c:forEach var="vo" items="${list }">
                                        <tr>
                                            <td>${vo.con_no }</td>
-                                           <td>${vo.con_regDate }</td>
+                                           <td><fmt:formatDate value="${vo.con_regDate }" pattern="yyyy/MM/dd"/></td>
                                            <td><a href="#">${vo.pil_title }</a></td>
                                            <td>${vo.mem_name }</td>
-                                           <td>${vo.con_start } - ${vo.con_end }</td>
+                                           <td><fmt:formatDate value="${vo.con_start }" pattern="yyyy/MM/dd"/> - <fmt:formatDate value="${vo.con_end }" pattern="yyyy/MM/dd"/></td>
                                        </tr>
                                     </c:forEach>
                                    </tbody>
