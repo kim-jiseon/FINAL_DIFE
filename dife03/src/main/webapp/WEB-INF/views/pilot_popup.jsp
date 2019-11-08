@@ -56,7 +56,7 @@ $(function(){
 		
 		//vo로 저장될 data값
 		var data = {"con_start":con_start,"con_end":con_end,"con_time":con_time,"con_attend":con_attend,"mem_no":"${mem_no}",
-				"con_purpose":con_purpose,"pil_no":"${pil_no}","con_sort":"${con_sort}","con_loc":"${con_loc}"};
+				"con_purpose":con_purpose,"list_no":"${list_no}","con_sort":"${con_sort}","con_loc":"${con_loc}"};
 		console.log("data:"+data);
 		
 		var json_data = JSON.stringify(data);

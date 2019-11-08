@@ -54,13 +54,7 @@
         <div id="contents">
             <div class="container">
                <div  class="mypage-grid">
-                <div id="mypage-top" class="mypage-top">
-                    <div class="mypage-top-nav"><img src="img/pilot/visit_cnt.png" id="mem-img">
-                        <span id="mem-name">${mem_id } 님</span>
-                    </div>
-                    <div class="mypage-top-nav">적립<i class="fas fa-angle-right" id="arrow"></i></div>
-                    <div class="mypage-top-nav">쿠폰<i class="fas fa-angle-right" id="arrow"></i></div>
-                </div>
+                <jsp:include page="mypage.jsp"></jsp:include>
                 <div id="mypage-bottom" class="mypage-grid-nav">
                     <div id="mypage-bottom-left">
                         <nav>

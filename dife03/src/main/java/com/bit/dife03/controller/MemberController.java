@@ -50,6 +50,9 @@ public class MemberController {
 		String referer = (String) session.getAttribute("redirectURI");
 		String URI = referer.substring(referer.lastIndexOf("/")+1);
 		System.out.println("URI"+URI);
+		if(URI.equals("signIn")){
+			URI = "main";
+		}
 		ModelAndView mav = new ModelAndView("redirect:/"+URI);
 
 		int re = dao.isMember(mem_id, mem_pwd);

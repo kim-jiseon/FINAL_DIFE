@@ -11,6 +11,10 @@ import com.bit.dife03.vo.PilReservationVo;
 
 @Repository
 public class PilotDao {
+	//예약신청 select
+	public List<PilReservationVo> sel_pilRes(String mem_no){
+		return PilotManager.sel_pilRes(mem_no);
+	}
 	//예약상담번호
 	public int sel_nextNo() {
 		return PilotManager.sel_nextNo();
