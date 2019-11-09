@@ -30,6 +30,7 @@ public class DroneController {
 	public void setDao(DroneDao dao) {
 		this.dao = dao;
 	}
+	
 	@Autowired
 	private DroneVo vo;
 	public void setVo(DroneVo vo) {
