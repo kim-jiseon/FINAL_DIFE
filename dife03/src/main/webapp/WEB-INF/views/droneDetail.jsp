@@ -45,6 +45,18 @@ $(function() {
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
+	
 	/* 대여점 및 수량 */
     var rental_arr = ['대여점선택','잠실점','서귀포점','해운대점','둔산점','강릉점','부산점','대구점','울산점','여수점','목포점','오산점','속초점','포항점','김포점'];
     var amount_arr = ['수량선택','1','2','3','4','5개 이상(별도 문의)'];
@@ -338,10 +350,12 @@ document.onkeydown = evt => {
 			
 			<!-- 질문, 후기게시판 불러오는지? -->
 		
-			<!-- footer -->
+		
+	    </div>
+    </div>
+    	<!-- footer -->
 	      		<jsp:include page="footer.jsp"></jsp:include>
 	        <!-- //footer -->
-	    </div>
     </div>
   </body>
 </html>

@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- 링크 -->
 <link href="css/reset.css" rel="stylesheet">
 <link href="css/pilot/pilot_popup.css" rel="stylesheet">
@@ -56,7 +53,7 @@ $(function(){
 		
 		//vo로 저장될 data값
 		var data = {"con_start":con_start,"con_end":con_end,"con_time":con_time,"con_attend":con_attend,"mem_no":"${mem_no}",
-				"con_purpose":con_purpose,"pil_no":"${pil_no}","con_sort":"${con_sort}","con_loc":"${con_loc}"};
+				"con_purpose":con_purpose,"list_no":"${list_no}","con_sort":"${con_sort}","con_loc":"${con_loc}"};
 		console.log("data:"+data);
 		
 		var json_data = JSON.stringify(data);
@@ -72,11 +69,10 @@ $(function(){
   	 			
   	 			/*
 		$.post("/pilot_reservation",data,function(r){
-			//alert("상담이 신청되었습니다."+"신청내역은 '마이페이지-게시글관리'에서 확인하실 수 있습니다.");
+			//alert("상담이 신청되었습니다.\n신청내역은 '마이페이지-내글 관리'에서 확인하실 수 있습니다.");
 			window.close();	
 		})
 		*/
-		
 	})
 })
 </script>
@@ -106,9 +102,7 @@ $(function(){
 	    <tr>
 	        <td>인원</td>
 	        <td>
-	            <select id="num" name="num">
-	            </select>
-	            &nbsp;&nbsp;명
+	            <select id="num" name="num"></select>&nbsp;&nbsp;명
 	            <span class="res-info">*10명이상 단체는 상담창에 입력해주세요.</span>
 	        </td>
 	    </tr>

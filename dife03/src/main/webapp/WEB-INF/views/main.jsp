@@ -20,57 +20,30 @@
 <link rel="stylesheet" href="css/swiper/swiper.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
 <script type="text/javascript">
 	$(function() {
-		
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
 		alert(mem_id);
 		if(mem_id != '' && mem_id != null){
-			//var login = $("#category-2").find("a:first").html();
-			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-			//$("#category-2").append(logout);
 			$("#sign").attr("href","logout").html("LOGOUT");
 		}
 		if(mem_id == '' || mem_id == null){
-			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-			//$("#category-2").append(login);
 			$("#sign").attr("href","signIn").html("LOGIN");
 		}
-		
-		
-		/*
-		var swiper = $(".swiper-container").find("ul");
-		//var slide_img = $(".swiper-slide").find("img");
-		
-		var layerWidth = $(swiper).children().outerWidth();
-		var layerHeight = $(swiper).children().outerHeight();
-		var layerLength = $(swiper).children().length;
-
-		var interval;
-		
-		interval = setInterval(function(){
-			slide()
-			},5000);
-		
-		function slide(){
-			$(swiper).css("width", layerWidth*layerLength + "px");
-			$(swiper).css("height", layerHeight+"px");
-		
-			$(swiper).animate({left:"-"+layerWidth+"px"},1500,function(){
-				
-				$(this).append("<li class='swiper-slide'>" + $(this).find("li:first").html() + "</li>");
-				//뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
-				$(this).find("li:first").remove();
-				//다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
-				$(this).css("left", 0);
-				//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
-			 });    
-			} 
-		
-		 */
-
-	})
+		//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
+	}) 
 </script>
 </head>
 <body>
@@ -218,6 +191,7 @@
     </div>
        <!-- Swiper JS -->
     <script src="js/swiper/swiper.min.js"></script>
+
      <!-- Initialize Swiper -->
     <script>
     var swiper = new Swiper('.swiper-container', {
