@@ -30,7 +30,16 @@ $(function(){
 		if (mem_id == '' || mem_id == null) {
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
-
+		
+		//마이페이지 이동
+		$("#mypage").click(function(){
+			var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}
+		})
+		 
 		//지역 검색
 		var arr = [ '선택', '서울', '인천', '경기', '세종', '강원', '대구', '대전', '광주', '울산', '부산', '제주' ];
 		$.each(arr, function(idx, loc) {
@@ -63,7 +72,7 @@ $(function(){
                     </span>
                      <span id="category-2" class="animated fadeInUp">
                         <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
+                        <a href="mypage_orders" class="cl-effect-1" id="mypage">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>

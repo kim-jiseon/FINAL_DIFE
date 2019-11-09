@@ -338,10 +338,12 @@ document.onkeydown = evt => {
 			
 			<!-- 질문, 후기게시판 불러오는지? -->
 		
-			<!-- footer -->
+		
+	    </div>
+    </div>
+    	<!-- footer -->
 	      		<jsp:include page="footer.jsp"></jsp:include>
 	        <!-- //footer -->
-	    </div>
     </div>
   </body>
 </html>

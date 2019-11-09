@@ -22,22 +22,15 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 	$(function() {
-		
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
 		alert(mem_id);
 		if(mem_id != '' && mem_id != null){
-			//var login = $("#category-2").find("a:first").html();
-			//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-			//$("#category-2").append(logout);
 			$("#sign").attr("href","logout").html("LOGOUT");
 		}
 		if(mem_id == '' || mem_id == null){
-			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-			//$("#category-2").append(login);
 			$("#sign").attr("href","signIn").html("LOGIN");
 		}
-		
 		
 		/*
 		var swiper = $(".swiper-container").find("ul");
@@ -67,9 +60,7 @@
 				//이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
 			 });    
 			} 
-		
 		 */
-
 	})
 </script>
 </head>
