@@ -97,7 +97,7 @@
 	    			if(idx == 1)
 	    				{
 	    					ord_no =  item.ord_no;
-	    					alert(ord_no);
+	    					alert(ord_no+sum);
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			tr=$("<tr></tr>");
