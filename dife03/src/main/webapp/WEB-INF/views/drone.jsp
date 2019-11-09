@@ -55,7 +55,8 @@ $(function() {
 						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
 						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
 						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
-					];
+					];	
+					
 /*	var dName_arr = ['드론파이터 기본패키지',
 		'매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
 		'매트리스 600','매트리스 600 프로','매트리스 100','매트리스 210 RTK',
@@ -80,6 +81,7 @@ $(function() {
 			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);
 		})
+	}})
 
 		
 		// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
@@ -95,8 +97,8 @@ $(function() {
 			
 			$(div).append(dro_photo,dro_info,dro_price,dro_series);
 			$("#contents").append(div);
-       	})
-	}})
+	       	})
+		}})
 	
 	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
 	$("#price").click(function(data){
@@ -115,7 +117,7 @@ $(function() {
 	
 		
 
-    /* 페이징처리 및 전체 목록 */     
+    /* 페이징처리 및 전체 목록      
     $.getJSON("get_droCount", function(data) {
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
@@ -130,7 +132,7 @@ $(function() {
             	nowPage = totalPage;
             }
         }
-    })         
+    }) */       
 /*    
     function getItems(nowPage, itemsPerPage){
 		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
