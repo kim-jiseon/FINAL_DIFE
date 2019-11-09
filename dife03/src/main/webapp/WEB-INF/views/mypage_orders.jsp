@@ -37,6 +37,18 @@
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
     	}
+    	
+    	//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
     })
     </script>
 </head>

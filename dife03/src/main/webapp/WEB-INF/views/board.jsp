@@ -28,7 +28,6 @@
 $(function(){
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
-	
 	if(mem_id != '' && mem_id != null){
 		//var login = $("#category-2").find("a:first").html();
 		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -40,6 +39,18 @@ $(function(){
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
+	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
 })
 </script>
 </head>

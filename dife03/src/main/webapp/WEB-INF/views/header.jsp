@@ -4,17 +4,6 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	$("#mypage").click(function(){
-		var mem_id = "${mem_id}";
-		if(mem_id == null || mem_id == ''){
-			alert("로그인을 해주세요.");
-			location.href="signIn";
-		}
-	})
-})
-</script>
 </head>
 <body>
     <div id="wrap" class="animated fadeIn">
@@ -32,7 +21,7 @@ $(function(){
                     </span>
                      <span id="category-2" class="animated fadeInUp">
                         <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1" id="mypage">MYPAGE</a>
+                        <a class="cl-effect-1" id="mypage">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
