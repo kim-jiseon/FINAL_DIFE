@@ -30,7 +30,7 @@
 $(function() {
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
-	alert(mem_id);
+	//alert(mem_id);
 	if(mem_id != '' && mem_id != null){
 		//var login = $("#category-2").find("a:first").html();
 		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -54,21 +54,20 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-
 	
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
 	
-	/* 시리즈명 및 드론명, 가격 */
+	/* 시리즈명 및 드론명, 가격 
 	var series_arr = [{'드론파이터':'기본패키지'},
-						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},
-						{'매트리스':'600','600 프로','100','210 RTK'},
-						{'비밥':'2 싱글','2+스카이 컨트롤러'},
+						{'매빅':'2 PRO'},{'매빅':'PRO'},{'매빅':'2 엔터프라이즈 유니버셜'},{'매빅':'2 엔터프라이즈 듀얼'},{'매빅':'AIR'},
+						{'매트리스':'600',{'매트리스':'600 프로'},{'매트리스':'100'},{'매트리스':'210 RTK'},
+						{'비밥':'2 싱글'},{'비밥':'2+스카이 컨트롤러'},
 						{'스파크':'미니'},
-						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
-						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
-						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
-					];	
+						{'인스파이어':'1V2 1인'},{'인스파이어':'1V2 2인'},{'인스파이어':'1 PRO 1인'},{'인스파이어':'1 PRO 2인'},{'인스파이어':'2 ZENMUSE X5S 1인'},{'인스파이어':'2 ZENMUSE X5S 2인'},
+						{'팬텀':'4'},{'팬텀':'4 PRO'},{'팬텀':'3 ADVANCED'},{'팬텀':'3 PROFESSIONAL'},
+						{'페트론':'베이직'},{'페트론':'풀패키지'},{'페트론':'드라이브 파워패키지'},{'페트론':'V2 프로'},{'페트론':'V2 풀패키지'},{'페트론':'파워패키지'},{'페트론':'카메라 파워패키지'}
+					];	*/
 					
 /*	var dName_arr = ['드론파이터 기본패키지',
 		'매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
@@ -81,7 +80,7 @@ $(function() {
 		];	*/
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
 	
-	$.ajax({url:"/drone",success:function(){
+	$.ajax({url:"/droAll",success:function(){
 		$.each(series_arr, function(idx, ser){
 			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
 			$("#hover_dro_01").append(search_droSer);
@@ -96,40 +95,22 @@ $(function() {
 		})
 	}})
 
+	
+	// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
+	var dro_list = eval(data);
+	
+	$.each(dro_list, function(idx, item){
+    		//console.log(item.dro_name);
+    		var div = $("<div></div>").addClass("item");
+		var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
+		var dro_info = $("<p></p>").html(item.dro_info);
+		var dro_price = $("<p></p>").html(item.dro_price);
+		var dro_series = $("<h2></h2>").html(item.dro_series);
 		
-		// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
-		var dro_list = eval(data);
-		
-		$.each(dro_list, function(idx, item){
-     		//console.log(item.dro_name);
-     		var div = $("<div></div>").addClass("item");
-			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
-			var dro_info = $("<p></p>").html(item.dro_info);
-			var dro_price = $("<p></p>").html(item.dro_price);
-			var dro_series = $("<h2></h2>").html(item.dro_series);
-			
-			$(div).append(dro_photo,dro_info,dro_price,dro_series);
-			$("#contents").append(div);
-	       	})
-		}})
+		$(div).append(dro_photo,dro_info,dro_price,dro_series);
+		$("#contents").append(div);
+    })
 	
-	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
-	$("#price").click(function(data){
-		if(data.equals('~ 10만원')){
-			
-		}
-		if(data.equals('10 ~ 20만원')){
-					
-		}
-		if(data.equals('20만원 ~')){
-			
-		}
-	})*/
-	
-	
-	
-		
-
     /* 페이징처리 및 전체 목록      
     $.getJSON("get_droCount", function(data) {
         var totalItem = Number(data);
@@ -203,7 +184,6 @@ $(function() {
 	})
 </script>
 </head>
-
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
@@ -325,7 +305,7 @@ $(function() {
                                   <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span>${d.dro_series_md }</h2>
                                 </div>
                               </figcaption>
-                              <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
+                              <a href="droneDetail?dro_no=${d.dro_no }"></a>                           
                         </figure> 
 	                </div>
 	                </c:forEach>
