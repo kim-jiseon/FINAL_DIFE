@@ -36,6 +36,18 @@
 		if (mem_id == '' || mem_id == null) {
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
+		
+		//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
 
 		//탭전환
 		$('dt').click(function() {
@@ -61,7 +73,7 @@
                         <nav>
                             <ul>
                                 <li class="mypage-category"><a href="mypage_orders">주문내역<i class="fas fa-angle-right" id="icon"></i></a></li>
-                                <li class="mypage-category"><a href="#">글관리<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="mypage_board">내글 관리<i class="fas fa-angle-right" id="icon"></i></a></li>
                                 <li class="mypage-category"><a href="mypage_emoney">적립금 및 쿠폰<i class="fas fa-angle-right" id="icon"></i></a></li>
                                 <li class="mypage-category"><a href="#">개인정보수정<i class="fas fa-angle-right" id="icon"></i></a></li>
                             </ul>

@@ -28,18 +28,24 @@
 $(function(){
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
-	
 	if(mem_id != '' && mem_id != null){
-		//var login = $("#category-2").find("a:first").html();
-		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-		//$("#category-2").append(logout);
 		$("#sign").attr("href","logout").html("LOGOUT");
 	}
 	if(mem_id == '' || mem_id == null){
-		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
+	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
 
 	//파일럿과 상담하기 버튼 활성화
 	$("#pil_btn").click(function(){
@@ -70,8 +76,6 @@ $(function(){
 			}
 		}
 	})
-	
-	
 });
 </script>
 </head>
@@ -106,7 +110,7 @@ $(function(){
 								data-multiple-dates-separator=" - " data-language="ko"
 								class="datepicker-here" style="width:200px; height: 25px;"/>
                         </div>
-                    <a href="#"><button id="pil_btn">파일럿과 상담하기</button></a>
+                    <button id="pil_btn">파일럿과 상담하기</button>
                   </div>
                   </div><hr>
                    <div id="grid">
@@ -150,19 +154,13 @@ $(function(){
                            </li>
                        </ul>
                    </div>
-            </div>
-        </div>
-        <!-- 
-        <input type="hidden" id="pil_no" value="${info.pil_no }">
-        <input type="hidden" id="con_sort" value="${info.pil_cateInfo }">
-        <input type="hidden" id="con_loc" value="${info.pil_locInfo }">
-         -->
+            	</div>
+        	</div>
         <!-- //contents -->
 
         <!-- footer -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
-
 </body>
 </html>
