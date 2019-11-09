@@ -9,10 +9,10 @@ public class PageController {
 		
 	}
 	
-//	@RequestMapping("/mypage_board")
-//	public void mypage_board() {
-//		
-//	}
+	@RequestMapping("/board_insert")
+	public void board_insert() {
+		
+	}
 	
 	@RequestMapping("/mypage_orders")
 	public void mypage_orders() {
@@ -33,18 +33,12 @@ public class PageController {
 	public void admin_update() {
 		
 	}
-
 	
 	@RequestMapping("/drone")
 	public void drone() {
 		
 	}
 
-//	@RequestMapping("/droneDetail")
-//	public void droneDetail() {
-//		
-//	}
-	
 	@RequestMapping("/basket")
 	public void basket() {
 		
@@ -77,17 +71,4 @@ public class PageController {
 	public void droneDetail() {
 		
 	}
-
-
-//	
-//	@RequestMapping("/signIn")
-//	public void signIn() {
-//		
-//	}
-//	
-//	@RequestMapping("/signUp")
-//	public void signUp() {
-//		
-//	}
-
 }

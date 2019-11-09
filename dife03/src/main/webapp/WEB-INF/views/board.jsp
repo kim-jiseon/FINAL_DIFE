@@ -167,7 +167,7 @@ $(function(){
 						</tr>
 					</table>
 					<a class="btn btn-default pull-right"
-						style="width: 70px; font-size: 15px; background-color: #231F20; color: white">글쓰기</a>
+						style="width: 100px; font-size: 15px; background-color: #7EBDC2; color: white; border: none;" href="board_insert">글쓰기</a>
 					<div class="text-center">
 						<ul class="pagination" style="padding-left: 50px;">
 							<li><a href="#">이전</a></li>
@@ -187,7 +187,7 @@ $(function(){
 						</select> <input type="text" class="search-query" placeholder="검색어"
 							style="width: 350px; height: 29px;">
 						<button type="submit"
-							style="width: 100px; height: 29px; border-radius: 5px; background-color: #231F20; color: white">검색</button>
+							style="width: 100px; height: 29px; border-radius: 5px; background-color: #7EBDC2; color: white">검색</button>
 					</div>
 				</div>
 			</div>
