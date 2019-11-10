@@ -26,7 +26,7 @@ public class DroneController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/drone")
+	@RequestMapping("/droAll")
 	public String sel_droAll(HashMap map, HttpSession session) {
 		String str = "";
 

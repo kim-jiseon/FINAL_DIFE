@@ -57,7 +57,7 @@ $(function() {
 					
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
 	
-	$.ajax({url:"/drone",success:function(data){
+	$.ajax({url:"/droAll",success:function(data){
 		//var series_arr = 
 	    $.each(series_arr, function(idx, ser){
 			var sch_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
