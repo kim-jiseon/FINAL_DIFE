@@ -16,7 +16,6 @@
 		<!-- select count(*) from ( select rownum rn, dro_no from drone )A 		
 		where A.rn between #{start} and #{end} -->
 	</select>
-	
 	<!-- 페이징처리 
 	<select id="page_droList" resultType="droneVo">
 		select * from ( select rownum rn, dro_no from possesion where dro_no is not null )A 
