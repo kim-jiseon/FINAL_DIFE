@@ -28,23 +28,39 @@
 $(function(){
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
-	
 	if(mem_id != '' && mem_id != null){
-		//var login = $("#category-2").find("a:first").html();
-		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-		//$("#category-2").append(logout);
 		$("#sign").attr("href","logout").html("LOGOUT");
 	}
 	if(mem_id == '' || mem_id == null){
-		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
+
 	//파일럿과 상담하기 버튼 활성화
 	$("#pil_btn").click(function(){
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
+		var array = date.split(" - ");
+		var con_start = array[0];
+		var con_end = array[1];
+
+		console.log(con_start);
+		var list_no = "${info.list_no}";
+		var con_sort = "${info.pil_cateInfo}";
+		var con_loc = "${info.pil_locInfo}";
+		
+		//로그인 및 날짜 선택
 		if (mem_id == '' || mem_id == null) {
 			alert("로그인을 해주세요.");
 			location.href="/signIn";
@@ -53,12 +69,13 @@ $(function(){
 				alert("날짜를 선택해주세요.");
 			}
 			else{
-				var pop = window.open("/pilot_popup?date="+date,"pop","width = 840, height = 650");	
+				var pop = window.open(
+						"/pilot_popup?startDate="+con_start+"&endDate="+con_end+"&list_no="+list_no+"&con_sort="+con_sort+"&con_loc="+con_loc,
+						"pop",
+						"width = 840, height = 650");
 			}
 		}
 	})
-	
-	
 });
 </script>
 </head>
@@ -93,7 +110,7 @@ $(function(){
 								data-multiple-dates-separator=" - " data-language="ko"
 								class="datepicker-here" style="width:200px; height: 25px;"/>
                         </div>
-                    <a href="#"><button id="pil_btn">파일럿과 상담하기</button></a>
+                    <button id="pil_btn">파일럿과 상담하기</button>
                   </div>
                   </div><hr>
                    <div id="grid">
@@ -137,14 +154,13 @@ $(function(){
                            </li>
                        </ul>
                    </div>
-            </div>
-        </div>
+            	</div>
+        	</div>
         <!-- //contents -->
 
         <!-- footer -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
-
 </body>
 </html>

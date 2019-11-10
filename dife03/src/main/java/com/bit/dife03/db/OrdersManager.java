@@ -2,21 +2,27 @@ package com.bit.dife03.db;
 
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bit.dife03.vo.BasketVo;
 import com.bit.dife03.vo.JumunVo;
+import com.bit.dife03.vo.OrdersDetailPageVo;
 import com.bit.dife03.vo.OrdersDetailVo;
 import com.bit.dife03.vo.OrdersVo;
 
 public class OrdersManager {
 
 	public static SqlSessionFactory factory;
+	
 	static {
 		try {
 			System.out.println("static 진입");
@@ -28,6 +34,7 @@ public class OrdersManager {
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
+			
 		}
 	}
 	//orders max값
@@ -69,6 +76,7 @@ public class OrdersManager {
         ordersVo.setOrd_amount(jumun.getOrd_amount());
         re += session.insert("orders.insertOrders", ordersVo);
         String ord_no = session.selectOne("orders.MaxOrd");
+        System.out.println(ord_no);
        ArrayList<OrdersDetailVo> list = (ArrayList<OrdersDetailVo>) jumun.getJumun();
         for(OrdersDetailVo vo:list)
         {
@@ -94,4 +102,18 @@ public class OrdersManager {
          
         return r;
 	}
+	public static List<OrdersDetailPageVo> ordersList(String mem_id) {
+		// TODO Auto-generated method stub
+		List<OrdersDetailPageVo> list = null;
+		SqlSession session = factory.openSession();
+		HashMap map = new HashMap();
+		String ord_no = session.selectOne("orders.MaxOrd");
+		map.put("mem_id", mem_id);
+		map.put("ord_no",ord_no);
+		list = session.selectList("orders.detailList", map);
+		session.close();
+		System.out.println("LIST:select 종료");
+		return list;
+	}
+	
 }

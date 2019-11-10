@@ -52,4 +52,12 @@ public class MemberManager {
 		session.close();
 		return re;
 	}
+	public static MemberVo sel_member(String mem_id) {
+		// TODO Auto-generated method stub
+		MemberVo memVo = new MemberVo();
+		SqlSession session = factory.openSession();
+		memVo = session.selectOne("member.sel_member", mem_id);
+		session.close();
+		return memVo;
+	}
 }

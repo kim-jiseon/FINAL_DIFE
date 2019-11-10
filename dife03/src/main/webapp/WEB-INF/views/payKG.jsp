@@ -5,13 +5,14 @@
 //    String email = (String)request.getAttribute("email");
 //    String phone = (String)request.getAttribute("phone");
 //    String address = (String)request.getAttribute("address");
-//    int totalPrice = (int)request.getAttribute("totalPrice");  
-
+//    int totalPrice = (int)request.getAttribute("sum");  
+      String sum = request.getParameter("sum");
+ 
 String name = "홍길동";
 String email = "nada_red@naver.com";
 String phone ="010-5940-4530";
 String address = "서울시 마포구 백범로";
-int totalPrice = 1500;
+int totalPrice = Integer.parseInt(sum);
 %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,6 @@ int totalPrice = 1500;
 <title>Insert title here</title>    
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
 </head>
 <body>
     <script>

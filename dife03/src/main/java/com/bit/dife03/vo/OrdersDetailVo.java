@@ -75,5 +75,4 @@ public class OrdersDetailVo {
 	public OrdersDetailVo() {
 		// TODO Auto-generated constructor stub
 	}
-	
 }

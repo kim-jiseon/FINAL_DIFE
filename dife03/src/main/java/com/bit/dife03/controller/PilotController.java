@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.PilotDao;
+import com.bit.dife03.vo.PilReservationVo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -34,27 +36,50 @@ public class PilotController {
 		this.dao = dao;
 	}
 	
-	@RequestMapping(value = "/pilot_reservation", method = RequestMethod.POST)
-	public ModelAndView pilot_reservation(HttpServletRequest request) {
+	//예약상담 select
+	@RequestMapping("/mypage_board")
+	public ModelAndView sel_pilRes(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		String res_time = request.getParameter("res-time");
-		int num = Integer.parseInt(request.getParameter("num"));
-		String res_textarea = request.getParameter("res-textarea");
-		System.out.println("시간: "+res_time+", 인원:"+num+", 내용:"+res_textarea);
+		String mem_no = (String) session.getAttribute("mem_no");
+		mav.addObject("list", dao.sel_pilRes(mem_no));
 		return mav;
 	}
-	
+	//예약상담 팝업창
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
-	public ModelAndView pilot_popup(String date) {
+	public ModelAndView pilot_popup(String startDate, String endDate, String list_no, int con_sort, String con_loc) {
 		ModelAndView mav = new ModelAndView();
-		String startDate = date.substring(0, date.indexOf("-")-1);
-		String endDate = date.substring(date.indexOf("-")+2);
-		System.out.println("시작:"+startDate+", 끝:"+endDate);
+		System.out.println("시작:"+startDate+"끝:"+endDate);
+		System.out.println(list_no+","+con_sort+","+con_loc);
 		mav.addObject("startDate", startDate);
 		mav.addObject("endDate", endDate);
+		mav.addObject("list_no", list_no);
+		mav.addObject("con_sort", con_sort);
+		mav.addObject("con_loc", con_loc);
 		return mav;
 	}
 	
+	//예약상담 insert
+	@ResponseBody
+	@RequestMapping(value = "/pilot_popup", method = RequestMethod.POST)
+	public String pilot_popup(@RequestBody PilReservationVo vo) {
+		String str = "";
+		int no = dao.sel_nextNo();
+		System.out.println("PR000"+no);
+		vo.setCon_no(no);
+		System.out.println(vo.toString());
+		int re = dao.insertPilRes(vo);
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			str = mapper.writeValueAsString(re);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str;
+	}
+	
+	
+	//파일럿 목록페이지+페이징처리
 	@RequestMapping("/pilot")
 	public ModelAndView paging(@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM,
 								@RequestParam(value = "category", defaultValue = "2") String category,
@@ -164,6 +189,7 @@ public class PilotController {
 //		return str;
 //	}
 	
+	//파일럿 상세페이지
 	@RequestMapping("/pilotDetail")
 	public ModelAndView pilotDetail(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();

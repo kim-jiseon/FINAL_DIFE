@@ -1,11 +1,19 @@
 package com.bit.dife03.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PageController {
 	@RequestMapping("/main")
 	public void main() {
+		
+	}
+	
+	@RequestMapping("/board_insert")
+	public void board_insert() {
 		
 	}
 	
@@ -28,18 +36,12 @@ public class PageController {
 	public void admin_update() {
 		
 	}
-
 	
 	@RequestMapping("/drone")
 	public void drone() {
 		
 	}
 
-//	@RequestMapping("/droneDetail")
-//	public void droneDetail() {
-//		
-//	}
-	
 	@RequestMapping("/basket")
 	public void basket() {
 		
@@ -59,18 +61,21 @@ public class PageController {
 	public void payment() {
 		
 	}
-
-	@RequestMapping("/payCacao")
-	public void pay() {
-		
-	}
 	
 	@RequestMapping("/payKG")
 	public void paykg() {
 		
 	}
+	@RequestMapping("/signIn2")
+	public void signIn2() {
+		
+	}
 	@RequestMapping("/droneDetail")
 	public void droneDetail() {
+		
+	}
+	@RequestMapping("/testtest02")
+	public void test() {
 		
 	}
 
@@ -85,5 +90,6 @@ public class PageController {
 //	public void signUp() {
 //		
 //	}
+
 
 }

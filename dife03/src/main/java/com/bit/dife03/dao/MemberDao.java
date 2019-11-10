@@ -20,4 +20,7 @@ public class MemberDao {
 	public int isMember(String mem_id, String mem_pwd) {
 		return MemberManager.isMember(mem_id, mem_pwd);
 	}
+	public MemberVo sel_member(String mem_id) {
+		return MemberManager.sel_member(mem_id);
+	}
 }

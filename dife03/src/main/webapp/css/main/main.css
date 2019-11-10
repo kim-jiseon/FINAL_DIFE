@@ -38,7 +38,7 @@
     }
 }
 
-@media (min-width:376px){
+@media (min-width:1200px){
 /*헤더 고정(sticky header)*/
     .sticky {
       position: fixed;
@@ -62,7 +62,7 @@
         width: 100px;
         height: auto;
         float: left;
-        margin: 20px 0px;
+        margin: 15px 0px;
     }
     
     #category-1{

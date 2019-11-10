@@ -152,12 +152,14 @@ public class OrdersController {
 		
 		ObjectMapper ob = new ObjectMapper();
 		try {
-		str =	ob.writeValueAsString(dao.basketList(mem_id));
+		str =	ob.writeValueAsString(dao.ordersList(mem_id));
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			}
 		}
-		}
+		System.out.println(str);
 		return str;
 	}
+	
 }

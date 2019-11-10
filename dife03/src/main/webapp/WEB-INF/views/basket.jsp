@@ -11,9 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>layout</title>
     <!-- 웹폰트 -->
-     <!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- fadeIn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -40,6 +37,19 @@
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
     	}
+    	
+    	//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
+    	
     	var bas_no;
     	var btn_del;
     	 var chk;
@@ -47,6 +57,7 @@
     	 var final_sum = 0;
     	 var sum= 0;
     	 var all_amount= 0;
+    	 var final_amount =0;
     	 var mem_point= 1;
     	 var reserve_fund=0;
     	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
@@ -64,10 +75,12 @@
     	 		 chk = $(this).is(":checked");//.attr('checked');
     	         if(chk) {$("input:checkbox[name=cart_no]").prop('checked', true);
     	         sum=final_sum;
+    	         all_amount=final_amount;
     	         $("#sum_price").text("주문금액: "+sum+"원");
     	         }
     	         else {$("input:checkbox[name=cart_no]").prop('checked',false);
     	         sum=0;
+    	         all_amount = 0;
     	         $("#sum_price").text("주문금액: 0원");
     	         }
     	 	});
@@ -84,9 +97,15 @@
      		$.ajax({url:"/basketList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
      			$("#table_content").empty();
      			if(mem_id == '' || mem_id == null){
-    				location.href("/signIn");
+     				var result = confirm("로그인이 필요합니다.");
+     				if(result){
+     				    location.href="/signIn";
+     				}else{
+     				    location.href="/main";
+     				}
     			}
 	    		$.each(data,function(idx,item){
+	    			var i = 1;
 	    			var rental = new Date(item.bas_rental);
 	    			var re_date = new Date(item.bas_return);
 	    			rental = date_to_str(rental);
@@ -95,7 +114,6 @@
 	    				{	
 	    					mem_point = Number(item.mem_point);
 	    				}
-	    			
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td></td>");
@@ -167,13 +185,16 @@
     					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
     					$(td8).append(btn_del);
 	    				}
+	    			all_amount += i;
 	    			$(tr).append(td1,td2,td3,td4,td5,td6,td7,td8);
 	    			$("#table_content").append(tr);
 	    			}); 
 	    		/* foreach종료 */
 	    		/*가격처리*/
+	    		
     			$("#sum_price").text("주문금액: "+sum+"원");
     			final_sum=sum;
+    			final_amount= all_amount;
     	
     			/*  */
     			
@@ -185,10 +206,13 @@
     					if($(this).is(":checked"))
     						{
     							sum = sum +price_node;
+    							all_amount += 1;
     						}
     					else{
     							sum =sum - price_node;
+    							all_amount -= 1;
     						}
+    					console.log(all_amount);
     						 $("#sum_price").text("주문금액: "+sum+"원"); 
     				});
     			});
@@ -207,13 +231,13 @@
     					mem_no = $(this).attr("mem_no");
     					ren_date = $(this).attr("ren_date");
     					ret_date = $(this).attr("ret_date");
-       				 	all_amount += amount;
        				 	orders_sum += price;
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
     		  			jumun1.push(jumunlist);
     		  			/*리스트 데이터값 넣어주기  */
         			/*  */
     				})
+    				alert(all_amount);
     		  		JumunVo ={"jumun":jumun1,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no};
     		  		
     		  	 	var json_data = JSON.stringify(JumunVo);
@@ -268,11 +292,11 @@
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
-			    					
-			    						tr.remove();
+			    						location.href="basket";
+			    						/* tr.remove();
 			    						sum -= price;
 		    							all_amount -= amount;
-		    							$("#sum_price").text("주문금액: "+sum+"원"); 
+		    							$("#sum_price").text("주문금액: "+sum+"원");  */
 			    						}
 			    				}})
 		 	    			}

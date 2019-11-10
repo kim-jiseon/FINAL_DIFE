@@ -9,9 +9,15 @@ public class DroneVo {
 	private String dro_series_no;
 	private String dro_made;
 	private String dro_photo;
+	private String dro_info;
+	private String dro_content;
+	private String dro_conphoto_01;
+	private String dro_conphoto_02;
+	private int dro_price;
+	private String dro_series_md;
+	
 	private Date bas_rental;
 	private Date bas_return;
-	private int pos_price;
 	
 	private String ren_no;
 	private String ren_name;
@@ -21,9 +27,10 @@ public class DroneVo {
 	private String first;
 	private Date first_time;
 	private String last;
-	private Date last_time;
+	private Date last_time;	
 	public DroneVo(String dro_no, String dro_name, String dro_series, String dro_series_no, String dro_made,
-			String dro_photo, Date bas_rental, Date bas_return, int pos_price, String ren_no, String ren_name,
+			String dro_photo, String dro_info, String dro_content, String dro_conphoto_01, String dro_conphoto_02,
+			int dro_price, String dro_series_md, Date bas_rental, Date bas_return, String ren_no, String ren_name,
 			String ren_loc, String pos_amount, String first, Date first_time, String last, Date last_time) {
 		super();
 		this.dro_no = dro_no;
@@ -32,9 +39,14 @@ public class DroneVo {
 		this.dro_series_no = dro_series_no;
 		this.dro_made = dro_made;
 		this.dro_photo = dro_photo;
+		this.dro_info = dro_info;
+		this.dro_content = dro_content;
+		this.dro_conphoto_01 = dro_conphoto_01;
+		this.dro_conphoto_02 = dro_conphoto_02;
+		this.dro_price = dro_price;
+		this.dro_series_md = dro_series_md;
 		this.bas_rental = bas_rental;
 		this.bas_return = bas_return;
-		this.pos_price = pos_price;
 		this.ren_no = ren_no;
 		this.ren_name = ren_name;
 		this.ren_loc = ren_loc;
@@ -84,6 +96,42 @@ public class DroneVo {
 	public void setDro_photo(String dro_photo) {
 		this.dro_photo = dro_photo;
 	}
+	public String getDro_info() {
+		return dro_info;
+	}
+	public void setDro_info(String dro_info) {
+		this.dro_info = dro_info;
+	}
+	public String getDro_content() {
+		return dro_content;
+	}
+	public void setDro_content(String dro_content) {
+		this.dro_content = dro_content;
+	}
+	public String getDro_conphoto_01() {
+		return dro_conphoto_01;
+	}
+	public void setDro_conphoto_01(String dro_conphoto_01) {
+		this.dro_conphoto_01 = dro_conphoto_01;
+	}
+	public String getDro_conphoto_02() {
+		return dro_conphoto_02;
+	}
+	public void setDro_conphoto_02(String dro_conphoto_02) {
+		this.dro_conphoto_02 = dro_conphoto_02;
+	}
+	public int getDro_price() {
+		return dro_price;
+	}
+	public void setDro_price(int dro_price) {
+		this.dro_price = dro_price;
+	}
+	public String getDro_series_md() {
+		return dro_series_md;
+	}
+	public void setDro_series_md(String dro_series_md) {
+		this.dro_series_md = dro_series_md;
+	}
 	public Date getBas_rental() {
 		return bas_rental;
 	}
@@ -95,12 +143,6 @@ public class DroneVo {
 	}
 	public void setBas_return(Date bas_return) {
 		this.bas_return = bas_return;
-	}
-	public int getPos_price() {
-		return pos_price;
-	}
-	public void setPos_price(int pos_price) {
-		this.pos_price = pos_price;
 	}
 	public String getRen_no() {
 		return ren_no;

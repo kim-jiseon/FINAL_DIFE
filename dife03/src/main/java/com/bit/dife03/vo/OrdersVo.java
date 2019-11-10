@@ -58,5 +58,4 @@ public class OrdersVo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 }

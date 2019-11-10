@@ -27,7 +27,6 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script type="text/javascript">
     $(function(){
-    	
     	//로그인 로그아웃 전환
     	var mem_id = "${mem_id}";
     	if(mem_id != '' && mem_id != null){
@@ -40,7 +39,6 @@
     		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
-    		
     	}
     	var bas_no;
     	var btn_del;
@@ -51,8 +49,7 @@
     	 var all_amount= 0;
     	 var mem_point= 1;
     	 var reserve_fund=0;
-    	 
-    	/* 날자를 포맷하기위한 function */
+    	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
     	function date_to_str(format)
 		{
 		    var year = format.getFullYear();
@@ -87,18 +84,23 @@
      		$.ajax({url:"/basketList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
      			$("#table_content").empty();
      			if(mem_id == '' || mem_id == null){
-    				location.href("/signIn");
+     				var result = confirm("로그인이 필요합니다.");
+     				if(result){
+     				    location.href="/signIn";
+     				}else{
+     				    location.href="/main";
+     				}
     			}
 	    		$.each(data,function(idx,item){
-	    			
 	    			var rental = new Date(item.bas_rental);
 	    			var re_date = new Date(item.bas_return);
+	    			rental = date_to_str(rental);
+	    			re_date=date_to_str(re_date);
 	    			if(idx == 1)
-	    				{
-	    					
+	    				{	
 	    					mem_point = Number(item.mem_point);
 	    				}
-	    			console.log(item.pos_no);
+	    			
 	    			tr=$("<tr></tr>");
 	    			var td1=$("<td></td>").html(item.bas_no);
 	    			var td2=$("<td></td>");
@@ -120,11 +122,8 @@
 	    			var p4;
 	    			var p5;
 	    			var p6;
-	    			rental = date_to_str(rental);
-	    			re_date=date_to_str(re_date);
 	    			/* sum 할인률 및 하단 정보 관련 처리 */
 	    			sum +=Number(item.bas_price);
-	    			all_amount += Number(item.bas_amount);
 	    			reserve_fund += Number(item.point);
 	    			/*  */
 	    			if(item.dro_name !== null)
@@ -149,14 +148,13 @@
 	    					td8 = $("<td></td>");
 	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
 	    					$(td8).append(btn_del);	
-	    					hidden1 = $("<input type='hidden' name='pos_no'>")
 	    				}
 	    			else
 	    				{
 	    				td3=$("<td></td>");
     					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
     					$(td3).append(product_img);
-    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
+    					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_career+"년");
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
@@ -187,7 +185,6 @@
     			/* check node 처리 */
     			
     			$("input[name='cart_no']").click(function(){
-    				
     				$(this).each(function(){
     					 price_node=Number($(this).attr("price"));
     					if($(this).is(":checked"))
@@ -195,20 +192,16 @@
     							sum = sum +price_node;
     						}
     					else{
-    						sum =sum - price_node;
-    					}
-    					
-    					 $("#sum_price").text("주문금액: "+sum+"원"); 
-    					
-    					
+    							sum =sum - price_node;
+    						}
+    						 $("#sum_price").text("주문금액: "+sum+"원"); 
     				});
-    				
     			});
     			/*  */
     			
     			/*insert orders,ordersdetail 처리*/
     	    	$("#order").click(function(){
-    	    		var jumun = new Array();
+    	    		var jumun1 = new Array();
 					orders_sum = 0;
 				
     		  		$("input[name='cart_no']:checked").each(function(){
@@ -219,44 +212,33 @@
     					mem_no = $(this).attr("mem_no");
     					ren_date = $(this).attr("ren_date");
     					ret_date = $(this).attr("ret_date");
-    					
-    					 console.log("수량:"+amount);
-    					 console.log("합계: "+sum);
-       				  	 console.log("총 수량:"+all_amount);
-       				  	 console.log(reserve_fund);
-       				 	 console.log("포인트: "+mem_point);
-
        				 	all_amount += amount;
        				 	orders_sum += price;
     		  			jumunlist={"pos_no":pos_no,"det_rental":ren_date,"det_return":ret_date,"det_amount":amount,"det_price":price};	
-    		  			jumun.push(jumunlist);
-
+    		  			jumun1.push(jumunlist);
+    		  			/*리스트 데이터값 넣어주기  */
+        			/*  */
     				})
-    		  		JumunVo ={"jumun":jumun,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no}
-    		  		console.log(JumunVo);
+    		  		JumunVo ={"jumun":jumun1,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no};
+    		  		
+    		  	 	var json_data = JSON.stringify(JumunVo);
+    		  	
 	  		
-    		  		if(jumun.length == 0)
+    		  		if(jumun1.length == 0)
 		  			{
 		  				alert("물품을 선택해주세요.");
 		  			}
-    		  		else{
-
-    		  			 $.ajax({url:"/jumunInsert.do",type:"post",dataType:"json",data:{"JumunVo":JumunVo},success:function(data){
-    		  				 alert("ajax통신");
+    		  		
+					
+    		  		 $.ajax({url:"/jumunInsert.do",type:"post",traditional:true,contentType: 'application/json',data:json_data,success:function(data){
     		  			 if(data === 1)
 
     		  				{
-    		  				location.href="basket";
+    		  				location.href="orders";
 
     		  				} 
-
-    		  				} 
+    		  			} 
     		  		}) 
-    		  		}
-    		  		console.log("jumun:"+jumun);
-    		  	
-    		  		
-    		  	
     	    	});
     	    	/* orders insert,ordersdetial insert end */
 
@@ -291,10 +273,11 @@
 			    				$.ajax({url:"/deleteBasket.do",dataType:"json",data:{"bas_no":bas_no},success:function(data){
 			    					if(data == "1")
 			    						{
+			    					
 			    						tr.remove();
-			    						all_amount -= amount;
 			    						sum -= price;
-			    						$("#sum_price").text("주문금액:"+sum+"원");
+		    							all_amount -= amount;
+		    							$("#sum_price").text("주문금액: "+sum+"원"); 
 			    						}
 			    				}})
 		 	    			}
@@ -322,6 +305,7 @@
     			});
 
     			/*  */
+    	
     			/* 초기 page 변수값 설정 */
     			$("#sum_price").text("주문금액: "+final_sum+"원");
     			/*  */
@@ -337,7 +321,6 @@
          <jsp:include page="header.jsp"></jsp:include>
        <!-- header -->
 
-        <!-- //header -->
         <!-- //contents -->
         <div id="contents">
         <!-- 세션 영역        -->

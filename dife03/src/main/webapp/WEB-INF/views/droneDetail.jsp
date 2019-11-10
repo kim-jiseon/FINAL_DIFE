@@ -45,6 +45,30 @@ $(function() {
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
+	
+	/* 대여점 및 수량 */
+    var rental_arr = ['대여점선택','잠실점','서귀포점','해운대점','둔산점','강릉점','부산점','대구점','울산점','여수점','목포점','오산점','속초점','포항점','김포점'];
+    var amount_arr = ['수량선택','1','2','3','4','5개 이상(별도 문의)'];
+	$.each(rental_arr, function(idx, loc){
+		var search_droLoc = $("<option></option>").attr({"value":rental_arr[idx], "idx":idx}).html(rental_arr[idx]);
+		$("#operR").append(search_droLoc);
+	})
+	$.each(amount_arr, function(idx, amt){
+		var search_droAmt = $("<option></option>").attr({"value":amount_arr[idx], "idx":idx}).html(amount_arr[idx]);
+		$("#operA").append(search_droAmt);
+	})
+	
 	/* 마우스 hover 시 확대 효과 */
     var scale = $('.scale');
     var zoom = scale.data('zoom');
@@ -52,9 +76,10 @@ $(function() {
     $('.img').on('mousemove',magnify).prepend('<div class="magnifier"></div>').children('.magnifier').css({
         "backgroun":"url('"+scale.attr('src')+"')no-repeat","background-size":scale.width()*zoom+"px "+scale.height()*zoom+"px"
     });
+    
     /*
     var magnifier = $('.magnifier');
-    function magnify(e){
+    function magnify(e){ㅁ샤ㅐㅜ
         // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
         var mouseX = e.pageX - $(this).offset().left;
         var mouseY = e.pageY - $(this).offset().top;
@@ -125,8 +150,8 @@ document.onkeydown = evt => {
 </head>
 <body>
 	<div id="wrap" class="animated fadeIn">
-       <!-- header -->
-       <jsp:include page="header.jsp"></jsp:include>
+		<!-- header -->
+    		<jsp:include page="header.jsp"></jsp:include>
         <!-- //header -->
 		
 		<!-- 드론 상세 상단 -->
@@ -185,7 +210,7 @@ document.onkeydown = evt => {
 							<li name="droD_ren"><p>대여점 : 
 								<span id="opr">
 									<select id="operR" name="operR" style="width: 150px; height: 30px;">
-										<option value="R0001">파주점</option>
+										<!-- <option value="R0001">파주점</option>
 										<option value="R0002">잠실점</option>
 										<option value="R0003">서귀포점</option>
 										<option value="R0004">해운대점</option>
@@ -199,19 +224,18 @@ document.onkeydown = evt => {
 										<option value="R0012">오산점</option>
 										<option value="R0013">속초점</option>
 										<option value="R0014">포항점</option>
-										<option value="R0015">김포점</option>
+										<option value="R0015">김포점</option> -->
 									</select>
 								</span>
 							</p></li>
 							<li name="droD_amount"><p>수    량 :							 
 								<span id="opa">
 									<select id="operA" name="operA" style="width: 150px; height: 30px;">
-										<option value="amt1">1</option>
+										<!-- <option value="amt1">1</option>
 										<option value="amt2">2</option>
 										<option value="amt3">3</option>
 										<option value="amt4">4</option>
-										<option value="amt5">5</option>
-										<option value="amt0">6개 이상(별도 문의)</option>
+										<option value="amt5">5개 이상(별도 문의)</option> -->
 										<!-- 5개 이상 옵션선택 시 대여수량 따로 기재 or 문의글 남기도록 유도? -->
 									</select>
 								</span>
@@ -326,10 +350,12 @@ document.onkeydown = evt => {
 			
 			<!-- 질문, 후기게시판 불러오는지? -->
 		
-			<!-- footer -->
+		
+	    </div>
+    </div>
+    	<!-- footer -->
 	      		<jsp:include page="footer.jsp"></jsp:include>
 	        <!-- //footer -->
-	    </div>
     </div>
   </body>
 </html>

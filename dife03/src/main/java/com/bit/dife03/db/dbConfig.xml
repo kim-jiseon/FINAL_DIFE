@@ -6,6 +6,7 @@
 <properties resource="com/bit/dife03/db/db.properties"/>
 <typeAliases>
 	<typeAlias type="com.bit.dife03.vo.PilListVo" alias="pilListVo"/>
+	<typeAlias type="com.bit.dife03.vo.PilReservationVo" alias="reservationVo"/>
 	<typeAlias type="com.bit.dife03.vo.MemberVo" alias="memberVo"/>
 	<typeAlias type="com.bit.dife03.vo.AdminVo" alias="adminVo"/>
 	<typeAlias type="com.bit.dife03.vo.BoardVo" alias="boardVo"/>
@@ -14,6 +15,7 @@
 	<typeAlias type="com.bit.dife03.vo.OrdersVo" alias="orderVo"/>
 	<typeAlias type="com.bit.dife03.vo.OrdersDetailVo" alias="ordersDetailVo"/>
 	<typeAlias type="com.bit.dife03.vo.JumunVo" alias="jumunVo"/>
+	<typeAlias type="com.bit.dife03.vo.OrdersDetailPageVo" alias="ordersDetailPageVo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">
