@@ -31,11 +31,11 @@ public class DroneController {
 		this.dao = dao;
 	}
 	
-	@Autowired
-	private DroneVo vo;
-	public void setVo(DroneVo vo) {
-		this.vo = vo;
-	}
+//	@Autowired
+//	private DroneVo vo;
+//	public void setVo(DroneVo vo) {
+//		this.vo = vo;
+//	}
 	
 	@ResponseBody
 	@RequestMapping("/")
