@@ -76,7 +76,7 @@
 	 	var reserve_fund=0;
 		/*list를 처리하는 function*/
         function getList(){ 
-        	$.ajax({url:"/ordersList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
+        	$.ajax({url:"/ordersDetailList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
      			$("#table_content").empty();
      			if(mem_id == '' || mem_id == null){
      				var result = confirm("로그인이 필요합니다.");
