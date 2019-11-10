@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -55,6 +54,23 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
+<<<<<<< HEAD
+=======
+	
+	/* 한 페이지에 보여질 상품수량 */
+	var itemsPerPage = 8;
+	
+	/* 시리즈명 및 드론명, 가격 */
+	var series_arr = [{'드론파이터':'기본패키지'},
+						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},
+						{'매트리스':'600','600 프로','100','210 RTK'},
+						{'비밥':'2 싱글','2+스카이 컨트롤러'},
+						{'스파크':'미니'},
+						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
+						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
+						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
+					];	
+>>>>>>> refs/heads/lje01
 					
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
 	
