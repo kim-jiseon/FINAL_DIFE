@@ -30,6 +30,34 @@ public class DroneController {
 	public void setDao(DroneDao dao) {
 		this.dao = dao;
 	}
+	
+	@ResponseBody
+	   @RequestMapping("/droAll")
+	   public String sel_droAll(HashMap map, HttpSession session) {
+	      String str = "";
+	      
+	      ObjectMapper om = new ObjectMapper();
+	      String keyword = null;
+	      
+	      try {
+	         str = om.writeValueAsString(dao.sel_droAll(map));
+	         
+	      }catch (Exception e) {
+	         // TODO: handle exception
+	         System.out.println(e.getMessage());
+	      }
+	      return str;
+	   }
+	
+	@RequestMapping("/drone")
+	public ModelAndView sel_dro(HashMap map) {
+		ModelAndView mav = new ModelAndView();
+		List<DroneVo> list = dao.sel_droAll(map);
+		mav.addObject("list", list);
+		return mav;
+	}
+	
+	/*
 	@ResponseBody
 	@RequestMapping(value = "/drone", method = RequestMethod.GET)
 	public ModelAndView sel_droAll(@RequestParam(value = "search", defaultValue = "")String search, 			
@@ -98,6 +126,7 @@ public class DroneController {
 		mav.addObject("pageStr", pageStr);
 		return mav;
 	}	
+	*/
 /*
 	@RequestMapping(value = "get_droCountList")
 	public String get_droCountList(int nowPage, int perPage) {
