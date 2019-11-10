@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.DroneDao;
 import com.bit.dife03.vo.DroneVo;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class DroneController {
