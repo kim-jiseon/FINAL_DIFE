@@ -8,9 +8,6 @@
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>layout</title>
 <!-- 웹폰트 -->
-<!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
@@ -39,6 +36,18 @@
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
 		//로그인 로그아웃 end
+		
+		//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
 		
 		/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
@@ -88,7 +97,7 @@
 	    			if(idx == 1)
 	    				{
 	    					ord_no =  item.ord_no;
-	    					alert(ord_no);
+	    					alert(ord_no+sum);
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			tr=$("<tr></tr>");

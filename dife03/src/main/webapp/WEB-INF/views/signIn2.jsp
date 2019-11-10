@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
- <!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -21,8 +19,7 @@
 <link rel="stylesheet" href="css/layout.css">
 
 <meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-<link rel="stylesheet" href="css/member/signIn.css">
+<meta name="google-signin-client_id" content="1057012925211-n6i1vbvadth6hp6c25hrv4759nr9u70p.apps.googleusercontent.com">
 <link rel="stylesheet" type="text/css" href="css/member/util.css">
 <link rel="stylesheet" type="text/css" href="css/member/log.css">
 
@@ -38,7 +35,6 @@
 $(function() {
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
-	
 	if(mem_id != '' && mem_id != null){
 		//var login = $("#category-2").find("a:first").html();
 		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -50,6 +46,18 @@ $(function() {
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
+	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
 	
 	
 	$("#btn").click(function(){
@@ -81,10 +89,10 @@ $(function() {
 		<!-- contents -->
 		
 										<!-- 로그인 폼 -->
-											<div class="limiter">
+	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" id="login-form" action="signIn" method="post">
 					<span class="login100-form-title p-b-26">
 						Welcome DIFE!
 					</span>
@@ -93,7 +101,7 @@ $(function() {
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input class="input100" type="text" name="email">
+						<input class="input100" type="text" name="mem_id" id="mem_id">
 						<span class="focus-input100" data-placeholder="아이디" style="text-align: left"></span>
 					</div>
 
@@ -101,23 +109,24 @@ $(function() {
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" name="pass">
+						<input class="input100" type="password" name="mem_pwd" id="mem_pwd">
 						<span class="focus-input100" data-placeholder="비밀번호" style="text-align: left"></span>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								로그인
+							<button class="login100-form-btn" type="submit">
+						<!--  	<a id="btn" type="submit">로그인</a>		-->	
+					              	로그인					
 							</button>
 						</div>
 					</div>
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								회원가입
+							<button class="login100-form-btn">							 
+							  <a href="signUp" style="color: white">회원가입</a>								
 							</button>
 						</div>
 					</div>
@@ -126,15 +135,15 @@ $(function() {
 						<div class="login100-form-bgbtn" style="background: #f7e600"></div>
 							<button class="login100-form-btn">
 							  <a id="kakao-login-btn"></a>
-                              <a href="http://developers.kakao.com/logout"></a>
+                             <a href="http://developers.kakao.com/logout"></a>
 							</button>
 						</div>
 					</div>
-					<div class="container-login100-form-btn" style="border: black">
+					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn" >
-						<div class="login100-form-bgbtn" style="background: #ffffff" ></div>
-							<button class="login100-form-btn" style="border: black">
-							  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="white" ></div>
+						<div class="login100-form-bgbtn" style="background: #4285f4" ></div>
+							<button class="login100-form-btn" style="border: dark">
+							  <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 							</button>
 						</div>
 					</div>			
@@ -153,46 +162,52 @@ $(function() {
 	</div>
 	
 	<script type='text/javascript'>
-        //<![CDATA[
+     
         // 사용할 앱의 JavaScript 키를 설정해 주세요.
         Kakao.init('2419a41da13d5ceaf615799022f751d9');
         // 카카오 로그인 버튼을 생성합니다.
         Kakao.Auth.createLoginButton({
             container: '#kakao-login-btn',
             success: function (authObj) {
-            	Kakao.API.request({
-
+            	     // alert(JSON.stringify(authObj));
+            	       Kakao.API.request({
             	       url: '/v1/user/me',
-
             	       success: function(res) {
-
             	             alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
-
             	             alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
-
-            	             console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
-
-            	             console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
-
-            	             console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
-
-            	         // res.properties.nickname으로도 접근 가능 )
-
-            	             console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
-  
+            	         //    console.log(res.id);
+            	         //    console.log(res.kaccount_email);
+            	          //   console.log(res.properties['nickname']);//<---- (properties에 있는 nickname 접근 
+            	          //   res.properties.nickname으로도 접근 가능 )
+            	         //    console.log(authObj.access_token);
             	           }
-
             	         });
             },
             fail: function (err) {
                 alert(JSON.stringify(err));
             }
         });
-      //]]>
+      
     </script>
+     
+    	<script>  
+            function init() {
+                gapi.load('auth2', function() { 
+                    var gauth = gapi.auth2.init({
+                        client_id: '1057012925211-n6i1vbvadth6hp6c25hrv4759nr9u70p.apps.googleusercontent.com'
+                    });
+                    
+                    gauth.then(function(){
+                        console.log('init success');
+                    }, function(){
+                        console.error('init fail');
+                    })
+                });
+            }
+        </script>
 
 	<div id="dropDownSelect1"></div>
-											<!--//로그인 폼 -->
+			<!--//로그인 폼 -->
 										
 			<!-- //contents -->
 

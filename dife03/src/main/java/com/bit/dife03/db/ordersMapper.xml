@@ -29,7 +29,7 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
   	</select>
   	<!-- select OrdersDetail -->
 	<select id="detailList" resultType="ordersDetailPageVo">
- 	select ord_no,ord_amount,ord_price,det_amount,det_price,det_rental,det_return,mem_point,dro_name,dro_series,dro_photo,mem_name,pil_career,pil_portphoto,ord_date from (select B.*,dro_no,pil_no from 
+ 	select ord_no,ord_amount,ord_price,det_amount,det_price,det_rental,det_return,mem_point,dro_name,dro_series,dro_photo,mem_name,pil_career,pil_profile,ord_date from (select B.*,dro_no,pil_no from 
 (select o.ord_no,ord_amount,ord_price,det_amount,det_price,det_rental,det_return,pos_no,mem_point,ord_date from (select ord_no,ord_amount,ord_price,mem_point,ord_date  
 from orders o,member m where o.mem_no=m.mem_no and ord_pay_state = 0 
 and ord_no =#{ord_no} 
@@ -37,7 +37,7 @@ and m.mem_no=(select mem_no from member where mem_id=#{mem_id})
 ) A,ordersdetail o where o.ord_no = A.ord_no and det_rental_stat =0
 ) B,
 possesion p where p.pos_no=B.pos_no) 
-ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_portphoto from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
+ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_profile from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
   	</select> 
   	<!-- select ord_page -->
   <!-- 	<select id="ord_list" resultType="ordersPageVo">

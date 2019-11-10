@@ -13,6 +13,7 @@
 svg{
 	padding-left: 10px;
 }
+
 /* 달력 */
 #block{
     color: white;
@@ -81,8 +82,10 @@ ul li:hover .sub-menu-1 ul li:last-child{
 }
 ul li:hover .sub-menu-1 ul li:hover{
     color: #fff;    
-    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;
+    text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
+/*    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
 }
+
 .fas fa-angle-right{
     float: right;
 }
@@ -156,8 +159,8 @@ figure.block img {
 }
 #contents .block {
 	width: 300px;
-	height: 450px;
-	padding-bottom: 10px;
+	height: 420px;
+	padding-bottom: 0px;
 }
 
 figure.block figcaption {
@@ -246,6 +249,10 @@ figure.block.hover p {
 }
 figcaption p span{
     font-weight: bold;
+}
+#dro-md{
+	font-weight: normal;
+	font-size: 17px;
 }
 .block img{
     width: 300px;
