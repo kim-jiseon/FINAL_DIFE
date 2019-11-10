@@ -24,15 +24,117 @@ public class DroneController {
 	public void setDao(DroneDao dao) {
 		this.dao = dao;
 	}
-	
 	@ResponseBody
 	@RequestMapping("/droAll")
 	public String sel_droAll(HashMap map, HttpSession session) {
 		String str = "";
 
+		//String str_schS = "";
+		//String str_schP = "";		
+		
 		ObjectMapper om = new ObjectMapper();
 		String keyword = null;
+		/*
+		if(session.getAttribute("String") != null) {
+			keyword = (String)session.getAttribute(dao.);
+		}
+		if(keyword != null && !keyword.equals("")) {
+			map.put("calendar", session.getAttribute(calendar));
+			map.put("sub_series_02",session.getAttribute(sub_series_02));
+			map.put("sub_price", session.getAttribute(sub_price));
+			
+			session.setAttribute("calendar", calendar);
+			session.setAttribute("sub_series_02", sub_series_02);
+			session.setAttribute("sub_price", sub_price);
+		}
 		
+		String droStr = "";
+		for(int i=1; i<= .length; i++) {
+			droStr = droStr+"<li>"+ i +"'>"+ i +"</li>"+"&nbsp;&nbsp;";
+		}
+		*/
+		try {
+			str = om.writeValueAsString(dao.sel_droAll(map));
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+		return str;
+	}
+/*		
+	@RequestMapping(value = "/drone", method = RequestMethod.GET)
+	public ModelAndView sel_droAll(@RequestParam(value = "search", defaultValue = "")String search, 			
+			@RequestParam(value = "calendar", defaultValue = "")String calendar,
+			@RequestParam(value = "sub_series_02", defaultValue = "")String sub_series_02,
+			@RequestParam(value = "sub_price", defaultValue = "") String sub_price,
+			@RequestParam(value = "sortDro", defaultValue = "") String sortDro,
+			@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM,			
+			HttpSession session) {
+		
+		HashMap map = new HashMap();
+>>>>>>> refs/heads/l1
+		String keyword = null;
+		
+<<<<<<< HEAD
+=======
+		if(session.getAttribute(search) != null) {
+			keyword = (String)session.getAttribute(search);
+		}
+		if(keyword != null && !keyword.equals("")) {
+			map.put("calendar", session.getAttribute(calendar));
+			map.put("sub_series_02",session.getAttribute(sub_series_02));
+			map.put("sub_price", session.getAttribute(sub_price));
+			
+			session.setAttribute("calendar", calendar);
+			session.setAttribute("sub_series_02", sub_series_02);
+			session.setAttribute("sub_price", sub_price);
+		}
+		map.put("sortDro", sortDro);
+		
+		totalRecord = dao.get_droCount(map);
+		totalPage = (int)Math.ceil( totalRecord/(double)pageSIZE );
+		
+		String pageStr = "";
+		for(int i=1; i<=totalPage; i++) {
+			pageStr = pageStr+"<a href='drone.do?pageNUM="+ i +"'>"+ i +"</a>"+"&nbsp;&nbsp;";
+		}
+		int start = (pageNUM-1) * pageSIZE+1;
+		int end = start + pageSIZE-1;
+		
+		map.put("start", start);
+		map.put("end", end);
+		
+		System.out.println("시작 레코드 : "+start);
+		System.out.println("마지막 레코드 : "+end);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		List<DroneVo> list = dao.sel_droAll(map);
+		//System.out.println("시리즈 목록입니다.");
+		for(DroneVo d:list) {
+			//System.out.println(d.getDro_series());
+			String str = "";
+			
+		}
+		//System.out.println("시리즈 목록 끝입니다.");
+
+		mav.addObject("list", list);
+		mav.addObject("pageStr", pageStr);
+		return mav;
+	}	*/
+/*
+	@RequestMapping(value = "get_droCountList")
+	public String get_droCountList(int nowPage, int perPage) {
+		String str_dro = "";
+		int start = (nowPage-1)*perPage+1;
+		int end = start+perPage-1;
+		
+		HashMap map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		ObjectMapper mapper = new ObjectMapper();
+>>>>>>> refs/heads/l1
 		try {
 			str = om.writeValueAsString(dao.sel_droAll(map));
 			
