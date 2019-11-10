@@ -37,6 +37,17 @@
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
     	}
+    	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
+    	function date_to_str(format)
+		{
+		    var year = format.getFullYear();
+		    var month = format.getMonth() + 1;
+		    if(month<10) month = '0' + month;
+		    var date = format.getDate();
+		    if(date<10) date = '0' + date;
+		    return year + "-" + month + "-" + date;
+		}
+    	
     })
     </script>
 </head>
