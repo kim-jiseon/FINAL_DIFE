@@ -16,7 +16,11 @@
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
                         <a href="#" class="cl-effect-1">고객지원</a>
+<<<<<<< HEAD
+                        <a href="#" class="cl-effect-1">커뮤니티</a>
+=======
                         <a href="board" class="cl-effect-1">커뮤니티</a>
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
                     </span>
                      <span id="category-2" class="animated fadeInUp">
                         <a id="sign" class="cl-effect-1"></a>
