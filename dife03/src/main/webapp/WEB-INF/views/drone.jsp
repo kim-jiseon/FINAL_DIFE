@@ -54,17 +54,6 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-	
-	/* 시리즈명 및 드론명, 가격 
-	var series_arr = [{'드론파이터':'기본패키지'},
-						{'매빅':'2 PRO'},{'매빅':'PRO'},{'매빅':'2 엔터프라이즈 유니버셜'},{'매빅':'2 엔터프라이즈 듀얼'},{'매빅':'AIR'},
-						{'매트리스':'600',{'매트리스':'600 프로'},{'매트리스':'100'},{'매트리스':'210 RTK'},
-						{'비밥':'2 싱글'},{'비밥':'2+스카이 컨트롤러'},
-						{'스파크':'미니'},
-						{'인스파이어':'1V2 1인'},{'인스파이어':'1V2 2인'},{'인스파이어':'1 PRO 1인'},{'인스파이어':'1 PRO 2인'},{'인스파이어':'2 ZENMUSE X5S 1인'},{'인스파이어':'2 ZENMUSE X5S 2인'},
-						{'팬텀':'4'},{'팬텀':'4 PRO'},{'팬텀':'3 ADVANCED'},{'팬텀':'3 PROFESSIONAL'},
-						{'페트론':'베이직'},{'페트론':'풀패키지'},{'페트론':'드라이브 파워패키지'},{'페트론':'V2 프로'},{'페트론':'V2 풀패키지'},{'페트론':'파워패키지'},{'페트론':'카메라 파워패키지'}
-					];	*/
 					
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
 	
@@ -93,20 +82,6 @@ $(function() {
 			$("#contents").append(div);
 	    })
 	}})
-	
-	   
-/*    
-    function getItems(nowPage, itemsPerPage){
-		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
-		$("#contents").empty();
-		$("#contents").hide(500);
-		
-	    // 전체 목록
-	    $.get("droListPage",{nowPage:nowPage,perPage:itemsPerPage},function(data){
-	     	//var arr = eval(data);
-*/
-	     	           	
-     //getItems(1,itemsPerPage);
      
      /* 카테고리(시리즈명) 마우스 hover */
      $(".hover").mouseleave(function() {
@@ -192,45 +167,6 @@ $(function() {
                                 	<li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
                                 	</li>
                             	</c:forEach>
-                                <!-- 
-                                <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>비밥 2 SINGLE</li>
-                                            <li>비밥 2+SKY CONTROLLER</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li name="hover-dro" class="hover-dro">스파크<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>스파크 미니</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="hover-dro">인스파이어<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>인스파이어 1V2 1인</li>
-                                            <li>인스파이어 1V2 2인</li>
-                                            <li>인스파이어 1 PRO 1인</li>
-                                            <li>인스파이어 1 PRO 2인</li>
-                                            <li>인스파이어 2 ZENMUSE X5S 1인</li>
-                                            <li>인스파이어 2 ZENMUSE X5S 2인</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="hover-dro">팬텀<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>팬텀 4</li>
-                                            <li>팬텀 4 PRO</li>
-                                            <li>팬텀 3 ADVANCED</li>
-                                            <li>팬텀 3 PROFESSIONAL</li>
-                                        </ul>
-                                    </div>
-                                </li> -->
-                                                                         
                             </ul>
                         </div>
                     </li>
@@ -238,9 +174,6 @@ $(function() {
                     <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_price" id="sub_price">
-                                <!-- <li class="hover-dro">~ 10만원</li>
-                                <li class="hover-dro">10 ~ 20만원</li>
-                                <li class="hover-dro">20만원 ~</li> -->
                             </ul>
                         </div>
                     </li>
@@ -249,7 +182,7 @@ $(function() {
         	</div>
         <!-- //header-nav -->
         </div>
-          <!-- //header -->
+        <!-- //header -->
           
         <!-- contents -->
         <div id="contents">
