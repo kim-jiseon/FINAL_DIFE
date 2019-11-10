@@ -30,7 +30,6 @@ public class DroneController {
 	public void setDao(DroneDao dao) {
 		this.dao = dao;
 	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/drone", method = RequestMethod.GET)
 	public ModelAndView sel_droAll(@RequestParam(value = "search", defaultValue = "")String search, 			

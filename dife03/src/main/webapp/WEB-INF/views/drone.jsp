@@ -54,7 +54,6 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-
 	
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
