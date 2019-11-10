@@ -250,6 +250,10 @@ figure.block.hover p {
 figcaption p span{
     font-weight: bold;
 }
+#dro-md{
+	font-weight: normal;
+	font-size: 17px;
+}
 .block img{
     width: 300px;
     height: 420px;
