@@ -48,11 +48,11 @@ $(function() {
 	
 	/* 시리즈명 및 드론명, 가격 */
 	var series_arr = ['매빅','비밥','스파크','인스파이어','팬텀'];
-	var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
+	/*var dName_arr = ['매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
 		'비밥 2 SINGLE','비밥 2+SKY CONTROLLER',
 		'스파크 미니',
 		'인스파이어 1V2 1인','인스파이어 1V2 2인','인스파이어 1 PRO 1인','인스파이어 1 PRO 2인','인스파이어 2 ZENMUSE X5S 1인','인스파이어 2 ZENMUSE X5S 2인',
-		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL'];
+		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL'];*/
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~']
 	
 	$.ajax({url:"/drone",success:function(){
@@ -60,15 +60,15 @@ $(function() {
 			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
 			$("#hover_dro_01").append(search_droSer);
 		})
-		$.each(dName_arr, function(idx, dName){
+	/*	$.each(dName_arr, function(idx, dName){
 			var search_dName = $("<li></li>").attr({"value":dName_arr[idx], "idx":idx}).html(dName_arr[idx]);
 			$("#sub_series_02").append(search_dName);
-		})	
+		})	*/
 		$.each(price_arr, function(idx, prc){
 			var search_droPrc = $("<li></li>")attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);	
 		})
-	})
+	}})
 	
 	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
 	$("#price").click(function(data){
@@ -86,7 +86,7 @@ $(function() {
 	
 	
 		
-    /* 페이징처리 및 전체 목록 */     
+    /* 페이징처리 및 전체 목록     
     $.getJSON("get_droCount", function(data) {
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
@@ -101,7 +101,7 @@ $(function() {
             	nowPage = totalPage;
             }
         }
-    })         
+    })     */     
 /*    
     function getItems(nowPage, itemsPerPage){
 		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
@@ -113,7 +113,7 @@ $(function() {
 	     	//var arr = eval(data);
 */
 	// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
-	$.ajax({url:"", success:function(data){
+/*	$.ajax({url:"", success:function(data){
 		var dro_list = eval(data);
 		
 		$.each(dro_list, function(idx, item){
@@ -296,7 +296,7 @@ $(function() {
                                   <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span>${d.dro_series_md }</h2>
                                 </div>
                               </figcaption>
-                              <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
+                              <a href="droneDetail?dro_no=${d.dro_no }"></a>                           
                         </figure> 
 	                </div>
 	                </c:forEach>
