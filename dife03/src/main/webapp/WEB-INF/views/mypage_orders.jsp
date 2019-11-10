@@ -82,7 +82,7 @@
                                     <li>주문상태&nbsp;&nbsp;&nbsp; 반납완료</li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>    
                         <div class="mypage-orders-list">
                             <a href="ordersDetail"><div class="mypage-orders-title">[2019.10.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
                             <div class="mypage-orders-info">
