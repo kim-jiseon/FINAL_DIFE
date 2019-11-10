@@ -41,6 +41,10 @@ $(function(){
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
+	$("#select").change(function(){
+		alert($(this).val());
+		alert($(this).children("option:selected").text());
+	})
 })
 </script>
 </head>
@@ -56,10 +60,10 @@ $(function(){
 		<div id="contents">
 			<div id="content1">
 				<div class="container">
-					<select id="select" style="width: 100px; height: 30px;">
-						<option>공지사항</option>
-						<option>문의게시판</option>
-						<option>후기게시판</option>
+					<select id="select" name="boa_sort" style="width: 100px; height: 30px;">
+						<option value="전체" selected="selected">전체게시판</option>
+						<option value="문의">문의게시판</option>
+						<option value="후기">후기게시판</option>
 					</select>
 					<table class="table table-striped">
 						<tr style="font-size: 15px; font-weight: bold;">
@@ -81,6 +85,10 @@ $(function(){
 									</c:if>
 									<a href="detailBoard.do?no=${b.boa_no }">${b.boa_title }</a>
 								</td>
+								<td>${b.last }</td>
+								<td>${b.regdate }</td>
+								<td>${b.boa_view }</td>
+								<td>${b.boa_answer }</td>
 							</tr>
 						</c:forEach>
 					</table>
