@@ -85,6 +85,7 @@ ul li:hover .sub-menu-1 ul li:hover{
     text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
 /*    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
 }
+
 .fas fa-angle-right{
     float: right;
 }

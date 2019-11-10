@@ -54,98 +54,39 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-	
-	/* 한 페이지에 보여질 상품수량 */
-	var itemsPerPage = 8;
-	
-	/* 시리즈명 및 드론명, 가격 
-	var series_arr = [{'드론파이터':'기본패키지'},
-						{'매빅':'2 PRO'},{'매빅':'PRO'},{'매빅':'2 엔터프라이즈 유니버셜'},{'매빅':'2 엔터프라이즈 듀얼'},{'매빅':'AIR'},
-						{'매트리스':'600',{'매트리스':'600 프로'},{'매트리스':'100'},{'매트리스':'210 RTK'},
-						{'비밥':'2 싱글'},{'비밥':'2+스카이 컨트롤러'},
-						{'스파크':'미니'},
-						{'인스파이어':'1V2 1인'},{'인스파이어':'1V2 2인'},{'인스파이어':'1 PRO 1인'},{'인스파이어':'1 PRO 2인'},{'인스파이어':'2 ZENMUSE X5S 1인'},{'인스파이어':'2 ZENMUSE X5S 2인'},
-						{'팬텀':'4'},{'팬텀':'4 PRO'},{'팬텀':'3 ADVANCED'},{'팬텀':'3 PROFESSIONAL'},
-						{'페트론':'베이직'},{'페트론':'풀패키지'},{'페트론':'드라이브 파워패키지'},{'페트론':'V2 프로'},{'페트론':'V2 풀패키지'},{'페트론':'파워패키지'},{'페트론':'카메라 파워패키지'}
-					];	*/
 					
-/*	var dName_arr = ['드론파이터 기본패키지',
-		'매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
-		'매트리스 600','매트리스 600 프로','매트리스 100','매트리스 210 RTK',
-		'비밥 2 SINGLE','비밥 2+SKY CONTROLLER',
-		'스파크 미니',
-		'인스파이어 1V2 1인','인스파이어 1V2 2인','인스파이어 1 PRO 1인','인스파이어 1 PRO 2인','인스파이어 2 ZENMUSE X5S 1인','인스파이어 2 ZENMUSE X5S 2인',
-		'팬텀 4','팬텀 4 PRO','팬텀 3 ADVANCED','팬텀 3 PROFESSIONAL',
-		'페트론 기본세트','페트론 풀패키지','페트론 드라이브 파워패키지','페트론 V2 프로','페트론 V2 풀패키지','페트론 파워패키지','페트론 카메라 파워패키지',
-		];	*/
-		
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
 	
-	$.ajax({url:"/droAll",success:function(){
-		$.each(series_arr, function(idx, ser){
-			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
+	$.ajax({url:"/droAll",success:function(data){
+		//var series_arr = 
+	    $.each(series_arr, function(idx, ser){
+			var sch_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
 			$("#hover_dro_01").append(search_droSer);
 		})
-		/*$.each(dName_arr, function(idx, dName){
-			var search_dName = $("<li></li>").attr({"value":dName_arr[idx], "idx":idx}).html(dName_arr[idx]);
-			$("#sub_series_02").append(search_dName);
-		})*/	
 		$.each(price_arr, function(idx, prc){
 			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);
 		})
+		
+		/* 드론목록 */		
+		var dro_list = eval(data);
+		$.each(dro_list, function(idx, item){
+	   		//console.log(item.dro_name);
+	   		var div = $("<div></div>").addClass("item");
+			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
+			var dro_info = $("<p></p>").html(item.dro_info);
+			var dro_price = $("<p></p>").html(item.dro_price);
+			var dro_series = $("<h2></h2>").html(item.dro_series);
+			
+			$(div).append(dro_photo,dro_info,dro_price,dro_series);
+			$("#contents").append(div);
+	    })
 	}})
-
-	
-	// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
-	var dro_list = eval(data);
-	
-	$.each(dro_list, function(idx, item){
-    		//console.log(item.dro_name);
-    		var div = $("<div></div>").addClass("item");
-		var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
-		var dro_info = $("<p></p>").html(item.dro_info);
-		var dro_price = $("<p></p>").html(item.dro_price);
-		var dro_series = $("<h2></h2>").html(item.dro_series);
-		
-		$(div).append(dro_photo,dro_info,dro_price,dro_series);
-		$("#contents").append(div);
-    })
-	
-    /* 페이징처리 및 전체 목록      
-    $.getJSON("get_droCount", function(data) {
-        var totalItem = Number(data);
-        var totalPage = Math.ceil(totalItem / itemsPerPage);
-        for (var i = 1; i <= totalPage; i++) {
-            var addPage = $("<li/>").html(i).attr("dataPage", i);
-            $("#btnPaging").append(addPage);
-            $(addPage).click(function() {
-                var nowPage = $(this).attr("dataPage");
-                getItems(nowPage, itemsPerPage);
-            });            
-            if(totalPage < nowPage){
-            	nowPage = totalPage;
-            }
-        }
-    }) */       
-/*    
-    function getItems(nowPage, itemsPerPage){
-		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
-		$("#contents").empty();
-		$("#contents").hide(500);
-		
-	    // 전체 목록
-	    $.get("droListPage",{nowPage:nowPage,perPage:itemsPerPage},function(data){
-	     	//var arr = eval(data);
-*/
-	     	           	
-     //getItems(1,itemsPerPage);
      
      /* 카테고리(시리즈명) 마우스 hover */
      $(".hover").mouseleave(function() {
          $(this).removeClass("hover");
      })  
-
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
@@ -218,12 +159,6 @@ $(function() {
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
                         </div>
                     </div>
-             
-						<!-- <input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="�뿩���� �����ϼ��� :D">
-               				<script src="pikaday.js"></script>
-                   			<script>
-                       			var picker = new Pikaday({ field: document.getElementById('datepicker') });
-                       	</script> -->
                        	
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
@@ -232,45 +167,6 @@ $(function() {
                                 	<li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
                                 	</li>
                             	</c:forEach>
-                                <!-- 
-                                <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>비밥 2 SINGLE</li>
-                                            <li>비밥 2+SKY CONTROLLER</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li name="hover-dro" class="hover-dro">스파크<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>스파크 미니</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="hover-dro">인스파이어<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>인스파이어 1V2 1인</li>
-                                            <li>인스파이어 1V2 2인</li>
-                                            <li>인스파이어 1 PRO 1인</li>
-                                            <li>인스파이어 1 PRO 2인</li>
-                                            <li>인스파이어 2 ZENMUSE X5S 1인</li>
-                                            <li>인스파이어 2 ZENMUSE X5S 2인</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="hover-dro">팬텀<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>팬텀 4</li>
-                                            <li>팬텀 4 PRO</li>
-                                            <li>팬텀 3 ADVANCED</li>
-                                            <li>팬텀 3 PROFESSIONAL</li>
-                                        </ul>
-                                    </div>
-                                </li> -->
-                                                                         
                             </ul>
                         </div>
                     </li>
@@ -278,9 +174,6 @@ $(function() {
                     <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_price" id="sub_price">
-                                <!-- <li class="hover-dro">~ 10만원</li>
-                                <li class="hover-dro">10 ~ 20만원</li>
-                                <li class="hover-dro">20만원 ~</li> -->
                             </ul>
                         </div>
                     </li>
@@ -289,7 +182,7 @@ $(function() {
         	</div>
         <!-- //header-nav -->
         </div>
-          <!-- //header -->
+        <!-- //header -->
           
         <!-- contents -->
         <div id="contents">
@@ -310,22 +203,8 @@ $(function() {
                         </figure> 
 	                </div>
 	                </c:forEach>
-	              </div>
-					<!-- 페이징 -->
-					<div class="btnPaging">
-                       <ul class="pagination" style="font-size: 17px;">
-                           <li>
-                               <a href="#"><i class="fas fa-arrow-left"></i></a>
-                               <a href="#">1</a>
-                               <a href="#">2</a>
-                               <a href="#">3</a>
-                               <a href="#">4</a>
-                               <a href="#">5</a>
-                               <a href="#"><i class="fas fa-arrow-right"></i></a>
-                           </li>
-                       </ul>
-                    </div>
-            	</div>
+	        	</div>
+			</div>
             <!-- //container -->
 		</div>
 		<!-- //contents -->
