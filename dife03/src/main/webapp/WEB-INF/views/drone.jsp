@@ -58,7 +58,7 @@ $(function() {
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
 	
-	/* 시리즈명 및 드론명, 가격 */
+	/* 시리즈명 및 드론명, 가격 
 	var series_arr = [{'드론파이터':'기본패키지'},
 						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},
 						{'매트리스':'600','600 프로','100','210 RTK'},
@@ -67,7 +67,11 @@ $(function() {
 						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
 						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
 						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
+<<<<<<< HEAD
 					];	
+=======
+					];	*/
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 					
 /*	var dName_arr = ['드론파이터 기본패키지',
 		'매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
@@ -79,8 +83,18 @@ $(function() {
 		'페트론 기본세트','페트론 풀패키지','페트론 드라이브 파워패키지','페트론 V2 프로','페트론 V2 풀패키지','페트론 파워패키지','페트론 카메라 파워패키지',
 		];	*/
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
+<<<<<<< HEAD
 	
 	$.ajax({url:"/drone",success:function(){
+=======
+
+		
+
+
+	$.ajax({url:"/droAll",success:function(data){
+		//검색
+		/*
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 		$.each(series_arr, function(idx, ser){
 			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
 			$("#hover_dro_01").append(search_droSer);
@@ -93,7 +107,11 @@ $(function() {
 			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);
 		})
+<<<<<<< HEAD
 	}})
+=======
+		*/
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 
 		
 		// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
@@ -101,16 +119,45 @@ $(function() {
 		
 		$.each(dro_list, function(idx, item){
      		//console.log(item.dro_name);
+<<<<<<< HEAD
      		var div = $("<div></div>").addClass("item");
 			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
 			var dro_info = $("<p></p>").html(item.dro_info);
 			var dro_price = $("<p></p>").html(item.dro_price);
 			var dro_series = $("<h2></h2>").html(item.dro_series);
+=======
+     		var block = $("<div></div>").addClass("block");
+     		var figure = $("<figure></figure>").addClass("block").attr("id", "block");
+     		var figcaption = $("<figcaption></figcaption>");
+			var dro_photo = $("<img/>").attr({"alt":item.dro_name, "src":"img/drone/"+item.dro_photo, width:"300", height:"450"}).addClass("dro-list-img");
+			var won = $("<i></i>").addClass("fas fa-won-sign");
+			var dro_price = $("<span></span>").html(" / "+item.dro_price);
+			var dro_info = $("<p></p>").addClass("dro-list-info").attr("id","dro_info").html(item.dro_info);
+			var heading = $("<div></div>").addClass("heading");
+			var dro_series = $("<span></span>").addClass("dro-list-series").attr("id","dro_series").html(item.dro_series);
+			var md = $("<div></div>").attr("id","dro-md").html(item.dro_series_md);
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 			
+<<<<<<< HEAD
 			$(div).append(dro_photo,dro_info,dro_price,dro_series);
 			$("#contents").append(div);
 	       	})
 		}})
+=======
+			var h2 = $("<h2></h2>").append(dro_series, md);
+			var a = $("<a></a>").attr("href","droneDetail?dro_no="+item.dro_no);
+			
+			$(heading).append(h2);
+			$(dro_info).append(won, dro_price);
+			$(figcaption).append(dro_info, heading);
+			$(figure).append(dro_photo, figcaption, a);
+			$(block).append(figure);
+
+			$("#drone-grid").append(block);
+	       	})
+		}})
+		
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 	
 	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
 	$("#price").click(function(data){
@@ -313,7 +360,7 @@ $(function() {
         <div id="contents">
         	<div class="container">
 				<div id="drone-grid">
-					<!-- 드론 정렬 -->
+					<!-- 드론 정렬 
 					<c:forEach var="d" items="${list }">
 	                <div class="block">
                         <figure id="block" class="block">
@@ -321,13 +368,19 @@ $(function() {
                               <figcaption>
                               <p id="dro_info" class="dro-list-info">${d.dro_info }<span> / ${d.dro_price }<i class="fas fa-won-sign"></i></span></p>          
                                 <div class="heading">
-                                  <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span>${d.dro_series_md }</h2>
+                                  <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span>
+                                  <p id="dro-md">${d.dro_series_md }</p>
+                                  </h2>
                                 </div>
                               </figcaption>
                               <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
                         </figure> 
 	                </div>
 	                </c:forEach>
+<<<<<<< HEAD
+=======
+	                -->
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
 	              </div>
 					<!-- 페이징 -->
 					<div class="btnPaging">

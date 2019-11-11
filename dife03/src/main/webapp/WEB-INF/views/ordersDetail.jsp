@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +39,35 @@
 			//$("#category-2").append(login);
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
+
+		/* 현재날자 뽑아오는 function */
+/* 		function currentDate()
+		{
+			 var date = new Date();
+			    var year = date.getFullYear();
+			    var month = date.getMonth()+1
+			    var day = date.getDate();
+			    if(month < 10){
+			        month = "0"+month;
+			    }
+			    if(day < 10){
+			        day = "0"+day;
+			    }
+			 	
+			   return year+""+month+""+day;
+		} */
+		
+			var currentdate=$("#od_date").text();
+			currentdate = currentdate.replace(/-/gi,"");
+			var ord_no = "${ord_no}";
+			ord_no = currentdate + ord_no;
+			/*주문번호  */
+			$("#ordersDetail-number").text("주문번호"+ord_no);
+			$("#currentdate").text(ord_no);
+			var price =$("#ord_price").text();
+			price = Number(price) * 0.01;
+			$("#point").text(price);
+
 		
 		//마이페이지 이동
 		$("#mypage").click(function(){
@@ -84,7 +116,8 @@
                     <div id="mypage-bottom-right">
                        <div id="mypage-orders">
                            <span>주문 상세 내역</span>
-                           <span id="ordersDetail-number">주문번호 156928405958</span>
+                           	 <span id="ordersDetail-number">주문번호</span>
+                          <!--  <span id="ordersDetail-number">주문번호 156928405958</span> -->
                         </div><hr id="hr">
                         <div class="mypage-orders-list">
                            <div class="detail">
@@ -106,17 +139,33 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbody">
+                                <c:forEach items="${detailList}" var="dl">
+                                <c:if test="${dl.dro_name != null }">
                                     <tr>
                                         <td class="detail-product">
-                                            <img src="img/main/drone2_cnt.png" class="detail-img">
-                                            <span class="img-name">MAVIC pro</span>
+                                            <img src='img/drone/"+${dl.dro_photo}+"' class="detail-img">
+                                            <span class="img-name">${dl.dro_name }</span>
                                         </td>
-                                        <td>25,000원</td>
-                                        <td>2019-11-04</td>
-                                        <td>2019-11-06</td>
+                                        <td>${dl.det_price }</td>
+                                        <td><fmt:formatDate value="${dl.det_rental}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${dl.det_return}" pattern="yyyy-MM-dd"/></td>
                                         <td style="color: #7EBDC2; font-weight: 600;">결제완료</td>
                                     </tr>
-                                    <tr>
+                                    </c:if>
+                                    <c:if test="${dl.dro_name == null }">
+                                      <tr>
+                                        <td class="detail-product">
+                                            <img src='img/drone/"+${dl.pil_portphoto}+"' class="detail-img">
+                                            <span class="img-name">${dl.mem_name }</span>
+                                        </td>
+                                        <td>${dl.det_price }</td>
+                                        <td><fmt:formatDate value="${dl.det_rental}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${dl.det_return}" pattern="yyyy-MM-dd"/></td>
+                                        <td style="color: #7EBDC2; font-weight: 600;">결제완료</td>
+                                    </tr>
+                                    </c:if>
+                                    </c:forEach>
+                                  <!--   <tr>
                                         <td class="detail-product">
                                             <img src="img/main/drone2_cnt.png" class="detail-img">
                                             <span class="img-name">MAVIC pro</span>
@@ -125,7 +174,7 @@
                                         <td>2019-11-04</td>
                                         <td>2019-11-06</td>
                                         <td style="color: #7EBDC2; font-weight: 600;">결제완료</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                             </div>
@@ -136,30 +185,32 @@
                                      <col width="20%">
                                      <col>
                                     </colgroup>
-                                    <tr class="detail-tr">
+                              <!--       <tr class="detail-tr">
                                         <td class="td">총주문금액</td>
                                         <td>55,900원</td>
-                                    </tr>
-                                    <tr class="detail-tr">
+                                    </tr> -->
+                                   <!--  <tr class="detail-tr">
                                         <td class="td">쿠폰할인</td>
                                         <td>10%</td>
                                     </tr>
                                     <tr class="detail-tr">
                                         <td class="td">적립금 사용</td>
                                         <td>-</td>
-                                    </tr>
+                                    </tr> -->
+                                    <c:forEach items="${orderList}" var="ol">
                                     <tr class="detail-tr">
                                         <td class="td">결제금액</td>
-                                        <td>55,000원</td>
+                                        <td id="ord_price">${ol.ord_price }</td>
                                     </tr>
                                     <tr class="detail-tr">
                                         <td class="td">적립금액</td>
-                                        <td>200원</td>
+                                        <td id="point"></td>
                                     </tr>
                                     <tr class="detail-tr">
                                         <td class="td">결제방법</td>
                                         <td>카카오페이</td>
                                     </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                             <div class="detail">
@@ -169,19 +220,22 @@
                                      <col width="20%">
                                      <col>
                                     </colgroup>
+                                     <c:forEach items="${orderList}" var="ol">
                                     <tr class="detail-tr">
                                         <td class="td">주문번호</td>
-                                        <td>156928405958</td>
+                                        <td id="currentdate"></td>
                                     </tr>
                                     <tr class="detail-tr">
                                         <td class="td">주문자명</td>
-                                        <td>홍길동</td>
+                                        <td>${ol.mem_name}</td>
                                     </tr>
                                     <tr class="detail-tr">
                                         <td class="td">결제일시</td>
-                                        <td>2019-11-01</td>
+                                        <td id="od_date"><fmt:formatDate value="${ol.ord_date}" pattern="yyyy-MM-dd"/></td>
                                     </tr>
+                                    </c:forEach>
                                 </table>
+                                
                             </div>
                         </div>
                         </div>
