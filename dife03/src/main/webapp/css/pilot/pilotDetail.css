@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /* 중앙 컨텐츠 */
 #grid{
     display: grid;
@@ -31,7 +30,7 @@
 }
 #block1 .pil-name{
     color: #a4a4a4;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     padding: 20px;
 }
@@ -85,7 +84,7 @@
 }
 .pil-information{
     font-size: 15px;
-	padding: 5px 20px;
+	padding: 7px 20px;
 }
 
 /*포트폴리오*/
@@ -104,4 +103,5 @@
 /* 강좌 정보 */
 #pil-intro{
 	padding-top: 70px;
+	font-weight: 600;
 }

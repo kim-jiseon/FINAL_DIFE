@@ -8,7 +8,6 @@
 	select c.*, pil_title,(select mem_name from member where mem_no in (select mem_no from pilot where pil_no in (select pil_no from pil_list where list_no in (select list_no from condition where mem_no=#{mem_no})))) mem_name
 from condition c, pil_list pl 
 where c.list_no = pl.list_no and mem_no = #{mem_no}
-	
 </select>
 <!-- 예약상담 insert -->
 <insert id="insertPilRes">
@@ -18,6 +17,7 @@ where c.list_no = pl.list_no and mem_no = #{mem_no}
 <select id="sel_nextNo" resultType="java.lang.Integer">
 	select nvl(max(con_no), 1)+1 from condition
 </select>
+
 <!-- 전체 레코드 수 출력 -->
 <select id="sel_pil_cnt" resultType="java.lang.Integer">
 	select count(list_no) from pil_list
@@ -41,9 +41,8 @@ where c.list_no = pl.list_no and mem_no = #{mem_no}
     where p.pil_no = pl.pil_no and p.mem_no = m.mem_no and 
     pl.list_no = #{info}
 </select>
-
 <!-- 파일럿 검색조건 1가지 -->
-<select id="sel_pil" resultType="pilListVo">
+<select id="sel_pil2" resultType="pilListVo">
    select A.* from (select rownum n, m.mem_name, pl.* from pil_list pl, member m, pilot p 
     where p.pil_no = pl.pil_no and p.mem_no = m.mem_no
 
@@ -65,5 +64,29 @@ where c.list_no = pl.list_no and mem_no = #{mem_no}
     </if>
      ) A where A.n between #{start} and #{end}
 </select>
- 
+
+<!-- 파일럿 검색조건 1가지 -->
+<select id="sel_pil" resultType="pilListVo">
+select m.mem_name, pl.* from pil_list pl, member m, pilot p 
+    where p.pil_no = pl.pil_no and p.mem_no = m.mem_no
+
+   <!-- 지역으로만 검색 -->
+     <if test="category == 2 and !location.equals('선택')">
+		and pil_locInfo like '%' || #{location} || '%'
+    </if>
+    <!-- 카테고리로만 검색 -->
+    <if test="category != 2 and location.equals('선택')">
+		and pil_cateInfo = #{category}
+    </if>
+    <!-- 지역 및 카테고리 검색 -->
+    <if test="category != 2 and !location.equals('선택')">
+    	and pil_cateInfo = #{category} and  pil_locInfo like '%' || #{location} || '%' 
+    </if>
+    <!-- 검색조건 없을 시 -->
+    <if test="category == 2 and location.equals('선택')">
+    	and pl.pil_no in (select pil_no from possesion where pil_no is not null)
+    </if>
+</select>
+
+
 </mapper>
