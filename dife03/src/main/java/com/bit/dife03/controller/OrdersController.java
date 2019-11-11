@@ -5,18 +5,22 @@ package com.bit.dife03.controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.client.support.HttpRequestWrapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.OrdersDao;
 import com.bit.dife03.vo.BasketVo;
@@ -49,7 +53,6 @@ public class OrdersController {
 		
 		if(mem_id != null)
 		{
-		
 		ObjectMapper ob = new ObjectMapper();
 		try {
 		str =	ob.writeValueAsString(dao.basketList(mem_id));
@@ -64,12 +67,9 @@ public class OrdersController {
 	public String getDate(long time) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.sss");  //<--millisecond는 "sss"가 아니라 "SSS"로 해야 정확하게 보존된다.
-
 		            long timeInMillis =time;
-
 		            Date timeInDate = new Date(timeInMillis); 
 		            String timeInFormat = sdf.format(timeInDate);
-
 		            return timeInFormat;
 	}
 	//
@@ -94,13 +94,14 @@ public class OrdersController {
 	@ResponseBody
 	@RequestMapping(value="/deleteListBasket.do",method = RequestMethod.POST)
 	public int deleteListBasket(HttpSession session,
-	     @RequestParam(value = "checkList[]") List<String> chArr, BasketVo bas) {
+	     @RequestParam(value = "checkList[]") List<String> chArr, BasketVo bas,HttpServletRequest request) {
 		/*
 		 * MemberVo member = (MemberVo)session.getAttribute("mem_id"); String mem_id =
 		 * member.getMem_id();
 		 */
-		System.out.println("진입");
-		  	String member1= "hong";
+		String member1= null;
+			member1 = (String)request.getAttribute("mem_id");
+
 		  	int result = 0;
 		  	String bas_no = "";
 	 
@@ -137,13 +138,12 @@ public class OrdersController {
 		jumun.setOrd_amount(ord_amount);
 		jumun.setOrd_price(ord_price);
 		re=dao.insertJumun(jumun);
-
 		return re;
 	}
 	//주문상세 리스트
 	@ResponseBody
-	@RequestMapping("/ordersList.do")
-	public String listOrders(String mem_id)
+	@RequestMapping("/ordersDetailList.do")
+	public String listDetailOrders(String mem_id)
 	{	
 		String str="";
 		
@@ -158,8 +158,48 @@ public class OrdersController {
 			e.printStackTrace();
 			}
 		}
-		System.out.println(str);
 		return str;
 	}
+	@ResponseBody
+	@RequestMapping("/ordersList.do")
+	public String listOrders(HttpServletRequest request)
+	{
+		String str="";
+		String mem_id= null;
+		 mem_id =(String)request.getAttribute("mem_id");
+		if(mem_id != null)
+		{
+		ObjectMapper ob = new ObjectMapper();
+		try {
+			str = ob.writeValueAsString(dao.ordList(mem_id));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
+		System.out.println(str);
+		
+		return str;
+	}
+	@RequestMapping("/ordersDetail.do")
+	public ModelAndView ordersDetail(HttpServletRequest request,String ord_no) {
+		System.out.println("컨트롤러진입");
+		 ModelAndView mav = new ModelAndView();
+		 String mem_id = null;
+		/* mem_id= (String)request.getAttribute("mem_id"); */
+		 mem_id = "hong";
+		 ord_no = "O000067";
+		 HashMap map = new HashMap();
+		 if(mem_id != null && ord_no !=null)
+		 {
+		 map.put("mem_id", mem_id);
+		 map.put("ord_no", ord_no);
+		 mav.addObject("detailList", dao.ordersDetail(map));
+		 mav.addObject("orderList",dao.mem_order(map));
+		 mav.addObject("ord_no", dao.mem_order_no(map));
+		 }
+		 return mav;
+	}
+	
 	
 }

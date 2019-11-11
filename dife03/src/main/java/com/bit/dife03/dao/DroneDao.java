@@ -23,7 +23,6 @@ public class DroneDao {
 		// TODO Auto-generated method stub
 		return DroneManager.get_droCount(map);
 	}
-	
 /*
 	public int droListPage(HashMap map) {
 		// TODO Auto-generated method stub

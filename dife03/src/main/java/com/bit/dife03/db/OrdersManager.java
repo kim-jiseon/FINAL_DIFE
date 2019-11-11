@@ -115,5 +115,33 @@ public class OrdersManager {
 		System.out.println("LIST:select 종료");
 		return list;
 	}
+	//개인의 상품한 상품에 대한 리스트
+	public static List<OrdersDetailPageVo> ordersDetail(HashMap map) {
+		// TODO Auto-generated method stub
+		System.out.println("ordersdetail:진입");
+		List<OrdersDetailPageVo> list = null;
+		SqlSession session = factory.openSession();
+		list = session.selectList("orders.ordersHistory", map);
+		session.close();
+		return list;
+	}
+	//주문자의 정보
+	public static List<OrdersVo> mem_order(HashMap map) {
+		// TODO Auto-generated method stub
+		List<OrdersVo> list = null;
+		SqlSession session = factory.openSession();
+		list = session.selectList("orders.mem_orders",map);
+		session.close();
+		return list;
+	}
+	public static String mem_order_no(HashMap map) {
+		// TODO Auto-generated method stub
+		String r= null;
+		 SqlSession session = factory.openSession();
+		 r = session.selectOne("orders.mem_ordes_no",map);
+		 session.close();
+		return r;
+	}
+	
 	
 }

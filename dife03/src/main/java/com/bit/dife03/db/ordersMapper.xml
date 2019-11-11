@@ -39,5 +39,40 @@ and m.mem_no=(select mem_no from member where mem_id=#{mem_id})
 possesion p where p.pos_no=B.pos_no) 
 ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_profile from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
   	</select> 
+  	<!-- select ord_page -->
+  <!-- 	<select id="ord_list" resultType="ordersPageVo">
+  	select ord_no,ord_amount,ord_price,dro_name,dro_photo,mem_name,pil_career,pil_portphoto,det_rental_stat from (select B.*,dro_no,pil_no from 
+(select o.ord_no,ord_amount,ord_price,det_rental_stat,pos_no from (select ord_no,ord_amount,ord_price,mem_point  
+from (select * from orders where mem_no = (select mem_no from member where mem_id='hong' ) and ord_date between 
+add_months(sysdate,-1) and sysdate) o,member m where o.mem_no=m.mem_no and ord_pay_state = 0 
 
+and m.mem_no=(select mem_no from member where mem_id='hong')
+) A,ordersdetail o where o.ord_no = A.ord_no
+) B,
+possesion p where p.pos_no=B.pos_no) 
+ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_portphoto from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
+  	</select> -->
+  	<!-- 주문디테일의 상품정보들 -->
+<select id="ordersHistory" resultType="ordersDetailPageVo">
+	select det_amount,det_price,det_rental,det_return,mem_point,dro_name,dro_series,dro_photo,mem_name,pil_career,pil_portphoto,ord_date from (select B.*,dro_no,pil_no from 
+	(select o.ord_no,ord_amount,ord_price,det_amount,det_price,det_rental,det_return,pos_no,mem_point,ord_date from (select ord_no,ord_amount,ord_price,mem_point,ord_date  
+	from orders o,member m where o.mem_no=m.mem_no and ord_pay_state = 0
+	<!-- 주문정보 0을 1로 바꿔줘야 결제완료. -->
+	and ord_no =#{ord_no} 
+	and m.mem_no=(select mem_no from member where mem_id=#{mem_id})
+	) A,ordersdetail o where o.ord_no = A.ord_no
+	) B,
+	possesion p where p.pos_no=B.pos_no) 
+	ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_portphoto from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
+</select>
+	<!-- 주문자의 정보 -->
+<select id="mem_orders" resultType="ordersVo">
+	select mem_name,ord_no,ord_amount,ord_price,ord_date,ord_pay_state from member m, 
+	(select * from orders where mem_no = (select mem_no from member where mem_id =#{mem_id})) o where m.mem_no = o.mem_no and ord_no = #{ord_no}
+</select>
+<!-- 주문자의 주문번호 -->
+<select id="mem_ordes_no" resultType="java.lang.String">
+	select ord_no from member m, 
+	(select * from orders where mem_no = (select mem_no from member where mem_id =#{mem_id})) o where m.mem_no = o.mem_no and ord_no = #{ord_no}
+</select>
 </mapper>
