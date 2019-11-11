@@ -43,10 +43,22 @@ $(function() {
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+	})
+	
 	/* 한 페이지에 보여질 상품수량 */
 	var itemsPerPage = 8;
 	
-	/* 시리즈명 및 드론명, 가격 */
+	/* 시리즈명 및 드론명, 가격 
 	var series_arr = [{'드론파이터':'기본패키지'},
 						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},
 						{'매트리스':'600','600 프로','100','210 RTK'},
@@ -55,7 +67,8 @@ $(function() {
 						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
 						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
 						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
-					];
+					];	*/
+					
 /*	var dName_arr = ['드론파이터 기본패키지',
 		'매빅 2 PRO','매빅 PRO','매빅 2 엔터프라이즈 유니버셜','매빅 2 엔터프라이즈 듀얼','매빅 AIR',
 		'매트리스 600','매트리스 600 프로','매트리스 100','매트리스 210 RTK',
@@ -66,36 +79,53 @@ $(function() {
 		'페트론 기본세트','페트론 풀패키지','페트론 드라이브 파워패키지','페트론 V2 프로','페트론 V2 풀패키지','페트론 파워패키지','페트론 카메라 파워패키지',
 		];	*/
 	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
-	
-	$.ajax({url:"/drone",success:function(){
+
+		
+
+
+	$.ajax({url:"/droAll",success:function(data){
+		//검색
+		/*
 		$.each(series_arr, function(idx, ser){
 			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
 			$("#hover_dro_01").append(search_droSer);
 		})
-		/*$.each(dName_arr, function(idx, dName){
-			var search_dName = $("<li></li>").attr({"value":dName_arr[idx], "idx":idx}).html(dName_arr[idx]);
-			$("#sub_series_02").append(search_dName);
-		})*/	
 		$.each(price_arr, function(idx, prc){
 			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);
 		})
+		*/
+
 		
 		// 수정 및 컨트롤러, dao, manager, mapper 모두 확인수정!
 		var dro_list = eval(data);
 		
 		$.each(dro_list, function(idx, item){
      		//console.log(item.dro_name);
-     		var div = $("<div></div>").addClass("item");
-			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
-			var dro_info = $("<p></p>").html(item.dro_info);
-			var dro_price = $("<p></p>").html(item.dro_price);
-			var dro_series = $("<h2></h2>").html(item.dro_series);
+     		var block = $("<div></div>").addClass("block");
+     		var figure = $("<figure></figure>").addClass("block").attr("id", "block");
+     		var figcaption = $("<figcaption></figcaption>");
+			var dro_photo = $("<img/>").attr({"alt":item.dro_name, "src":"img/drone/"+item.dro_photo, width:"300", height:"450"}).addClass("dro-list-img");
+			var won = $("<i></i>").addClass("fas fa-won-sign");
+			var dro_price = $("<span></span>").html(" / "+item.dro_price);
+			var dro_info = $("<p></p>").addClass("dro-list-info").attr("id","dro_info").html(item.dro_info);
+			var heading = $("<div></div>").addClass("heading");
+			var dro_series = $("<span></span>").addClass("dro-list-series").attr("id","dro_series").html(item.dro_series);
+			var md = $("<div></div>").attr("id","dro-md").html(item.dro_series_md);
 			
-			$(div).append(dro_photo,dro_info,dro_price,dro_series);
-			$("#contents").append(div);
-       	})
-	}})
+			var h2 = $("<h2></h2>").append(dro_series, md);
+			var a = $("<a></a>").attr("href","droneDetail?dro_no="+item.dro_no);
+			
+			$(heading).append(h2);
+			$(dro_info).append(won, dro_price);
+			$(figcaption).append(dro_info, heading);
+			$(figure).append(dro_photo, figcaption, a);
+			$(block).append(figure);
+
+			$("#drone-grid").append(block);
+	       	})
+		}})
+		
 	
 	/* 가격별로 보여주는건 mapper에서 sql문으로 설정하기
 	$("#price").click(function(data){
@@ -113,7 +143,8 @@ $(function() {
 	
 	
 		
-    /* 페이징처리 및 전체 목록 */     
+
+    /* 페이징처리 및 전체 목록      
     $.getJSON("get_droCount", function(data) {
         var totalItem = Number(data);
         var totalPage = Math.ceil(totalItem / itemsPerPage);
@@ -128,7 +159,7 @@ $(function() {
             	nowPage = totalPage;
             }
         }
-    })         
+    }) */       
 /*    
     function getItems(nowPage, itemsPerPage){
 		// 해당페이지를 열었을때 기존 값들을 비워 초기화해준다.
@@ -146,6 +177,7 @@ $(function() {
      $(".hover").mouseleave(function() {
          $(this).removeClass("hover");
      })  
+
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
@@ -193,7 +225,7 @@ $(function() {
             <div id="header-top">
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
-                        <a href="main"><img src="img/logo/logo_white.png" id="logo"></a>
+                        <a href="main"><img src="img/logo/DIFE_logo3.png" id="logo"></a>
                         <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
@@ -202,7 +234,7 @@ $(function() {
                     </span>
                      <span id="category-2" class="animated fadeInUp">
                         <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1">MYPAGE</a>
+                        <a href="mypage_orders" class="cl-effect-1" id="mypage">MYPAGE</a>
                         <a href="basket" class="cl-effect-1">RESERVATION</a>
                    </span>
                 </div>
@@ -296,7 +328,7 @@ $(function() {
         <div id="contents">
         	<div class="container">
 				<div id="drone-grid">
-					<!-- 드론 정렬 -->
+					<!-- 드론 정렬 
 					<c:forEach var="d" items="${list }">
 	                <div class="block">
                         <figure id="block" class="block">
@@ -304,13 +336,16 @@ $(function() {
                               <figcaption>
                               <p id="dro_info" class="dro-list-info">${d.dro_info }<span> / ${d.dro_price }<i class="fas fa-won-sign"></i></span></p>          
                                 <div class="heading">
-                                  <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span>${d.dro_series_md }</h2>
+                                  <h2><span id="dro_series" class="dro-list-series">${d.dro_series }</span>
+                                  <p id="dro-md">${d.dro_series_md }</p>
+                                  </h2>
                                 </div>
                               </figcaption>
                               <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
                         </figure> 
 	                </div>
 	                </c:forEach>
+	                -->
 	              </div>
 					<!-- 페이징 -->
 					<div class="btnPaging">
