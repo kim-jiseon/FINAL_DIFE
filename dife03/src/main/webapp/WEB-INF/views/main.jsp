@@ -31,8 +31,6 @@
 		
 		//마이페이지 이동
 		$("#mypage").click(function(){
-			console.log("클릭");
-			//var mem_id = "${mem_id}";
 			if(mem_id == null || mem_id == ''){
 				alert("로그인을 해주세요.");
 				location.href="signIn";
@@ -40,6 +38,38 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
+		
+		/*
+		<div class="grid-cell2">
+          				<div class="sns-top">
+          				<img alt="" src="img/main/photo1.jpg" class="user-photo">
+          				</div>
+          				<div class="sns-bottom">
+          				    <div class="user-info">
+          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p>
+          				      </div>
+          				    <div class="user-like">
+                                <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
+                                <!-- 
+                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
+                                -->
+                                <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
+          				    </div>
+          				</div>
+          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
+        </div>
+		*/
+		
+		//게시판 조회수 순으로 4개 띄우기
+		/* -> select * from board where boa_sort like '%후기%' and rownum <5 order by boa_view desc;
+		$.ajax({url:"",success:function(data){
+			val list = eval(data);
+			$.each(list, function(idx, item){
+				
+			})
+		}})
+		*/
 	}) 
 </script>
 </head>
@@ -115,6 +145,7 @@
           	<!-- sns 화면 -->
           	<div id="contents-sns">
           		<div class="grid-sns">
+          		<!-- ajax 구현 -->
           			<div class="grid-cell2">
           				<div class="sns-top">
           				<img alt="" src="img/main/photo1.jpg" class="user-photo">
