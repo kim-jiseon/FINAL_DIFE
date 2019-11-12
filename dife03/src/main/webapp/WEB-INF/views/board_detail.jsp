@@ -87,8 +87,8 @@ $(function(){
 			                <textarea name="board-teaxtarea" id="board-textarea" cols="50" rows="10">좋아용~</textarea>
 			            </div>
 			            <div id="board-detail-re">
-			                 <p><span>강감찬님&nbsp;&nbsp;&nbsp;</span><span>오~~</span></p>
-			                <p><span>임수정님&nbsp;&nbsp;&nbsp;</span><span>잘찍었네요!</span></p>
+			                 <p><span>강감찬&nbsp;&nbsp;&nbsp;</span><span>오~~</span></p>
+			                <p><span>임수정&nbsp;&nbsp;&nbsp;</span><span>잘찍었네요!</span></p>
 			            </div>
 			            <div style="text-align: center;">
                             <input type="text" id="board-re" placeholder="댓글을 입력해주세요.">
