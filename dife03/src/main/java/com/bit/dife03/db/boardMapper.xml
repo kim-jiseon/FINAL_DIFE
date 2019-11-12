@@ -6,7 +6,7 @@
 
   <!-- 게시판 모두보기 -->
   <select id="selectAll" resultType="boardVo">
-      select boa_no, mem_no, boa_title, boa_contents, boa_pwd, boa_rating, (select to_char(boa_regdate, 'yyyy-mm-dd') from board) regdate, 
+      select boa_no, (select mem_name from member m, board b where m.mem_no=b.mem_no) mem_no, boa_title, boa_contents, boa_pwd, boa_rating, (select to_char(boa_regdate, 'yyyy-mm-dd') from board) regdate, 
 	boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
 	from board 
 	<if test="boa_sort != null and boa_sort !=''">
@@ -22,4 +22,21 @@
 	</if>
 	order by boa_ref desc, boa_step
   </select>
+  
+  <!-- 게시판 등록 -->
+  <insert id="insert">
+  	insert into board values(seq_boa.nextval, #{mem_no}, #{boa_title}, #{boa_contents}, #{boa_pwd}, #{boa_rating}, sysdate, 0, 'y', #{boa_sort}, 'y', #{boa_fname}, #{boa_ref}, #{boa_level}, #{boa_step}, #{mem_no}, sysdate, #{mem_no}, sysdate)
+  </insert>
+  
+  <select id="nextNo" resultType="java.lang.Integer">
+  	select nvl(max(boa_no),0)+1 from board
+  </select>
+  
+  <select id="getBoard" resultType="boardVo">
+  	select * from board where boa_no=#{boa_no}
+  </select>
+  
+  <update id="updateStep">
+  	update board set boa_step = boa_step+1 where boa_ref=#{boa_ref} and boa_step > #{boa_step}
+  </update>
 </mapper>

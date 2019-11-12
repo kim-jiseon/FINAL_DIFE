@@ -16,5 +16,21 @@ public class BoardDao {
 		// TODO Auto-generated method stub
 		return BoardManager.listBoard();
 	}
+	
+	public int insert(BoardVo vo) {
+		return BoardManager.insert(vo);
+	}
+	
+	public int getNextNo() {
+		return BoardManager.getNextNo();
+	}
+	
+	public BoardVo getBoard(int boa_no) {
+		return BoardManager.getBoard(boa_no);
+	}
 
+	public void updateStep(int boa_ref, int boa_step) {
+		BoardManager.updateStep(boa_ref, boa_step);
+	}
+	
 }

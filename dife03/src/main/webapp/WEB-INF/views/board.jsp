@@ -40,7 +40,11 @@ $(function(){
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> refs/heads/dife
 	//마이페이지 이동
 	$("#mypage").click(function(){
 		console.log("클릭");
@@ -51,13 +55,17 @@ $(function(){
 		}else{
 			$("#mypage").attr("href","mypage_orders");
 		}
+<<<<<<< HEAD
 	})
 
 	$("#select").change(function(){
 		alert($(this).val());
 		alert($(this).children("option:selected").text());
 
+=======
+>>>>>>> refs/heads/dife
 	})
+	
 })
 </script>
 </head>
@@ -97,15 +105,15 @@ $(function(){
 									</c:if>
 									<a href="detailBoard.do?no=${b.boa_no }">${b.boa_title }</a>
 								</td>
-								<td>${b.last }</td>
+								<td>${b.mem_no }</td>
 								<td>${b.regdate }</td>
 								<td>${b.boa_view }</td>
 								<td>${b.boa_answer }</td>
 							</tr>
 						</c:forEach>
 					</table>
-					<a class="btn btn-default pull-right"
-						style="width: 100px; font-size: 15px; background-color: #7EBDC2; color: white; border: none;" href="board_insert">글쓰기</a>
+					<a href="/board_insert" class="btn btn-default pull-right"
+						style="width: 70px; font-size: 15px; background-color: #231F20; color: white">글쓰기</a>
 					<div class="text-center">
 						<ul class="pagination" style="padding-left: 50px;">
 							<li><a href="#">이전</a></li>
@@ -125,7 +133,7 @@ $(function(){
 						</select> <input type="text" class="search-query" placeholder="검색어"
 							style="width: 350px; height: 29px;">
 						<button type="submit"
-							style="width: 100px; height: 29px; border-radius: 5px; background-color: #7EBDC2; color: white">검색</button>
+							style="width: 100px; height: 29px; border-radius: 5px; background-color: #231F20; color: white">검색</button>
 					</div>
 				</div>
 			</div>
