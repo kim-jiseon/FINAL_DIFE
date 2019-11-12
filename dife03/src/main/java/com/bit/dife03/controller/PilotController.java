@@ -84,6 +84,48 @@ public class PilotController {
 		return str;
 	}
 	
+	//파일럿 전체 리스트 출력(ajax)
+		@ResponseBody
+		@RequestMapping(value = "/selectPil_list", method = RequestMethod.GET)
+		public String selectPil_list(String category, String location, @RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
+			String str = "";
+			HashMap map = new HashMap();
+			map.put("category", category);
+			map.put("location", location);
+			
+			totalRecord = dao.sel_pil_cnt(map);
+			totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);
+			System.out.println("전체 페이지수: "+totalPage);
+			System.out.println("pageNUM:"+pageNUM);
+			
+			//해당페이지의 시작글번호, 끝번호
+			int start = (pageNUM-1)*pageRecord+1;
+			int end = start+pageRecord-1;
+			
+			map.put("start", start);
+			map.put("end", end);
+			
+			System.out.println(category+","+location+", start: "+start+", end: "+end);
+			try {
+				ObjectMapper mapper = new ObjectMapper();
+				str = mapper.writeValueAsString(dao.selectPil_list(map));
+				System.out.println("controller"+str);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("예외발생"+e.getMessage());
+			}
+			return str;
+		}
+		
+		//파일럿 상세페이지
+		@RequestMapping("/pilotDetail")
+		public ModelAndView pilotDetail(HttpServletRequest request) {
+			ModelAndView mav = new ModelAndView();
+			int info = Integer.parseInt(request.getParameter("info"));
+			mav.addObject("info",dao.sel_pil_detail(info));
+			//System.out.println("번호:"+info);
+			return mav;
+		}
 	
 //	//파일럿 목록페이지+페이징처리
 //	@RequestMapping("/pilot")
@@ -150,61 +192,4 @@ public class PilotController {
 //		
 //		return mav;
 //	}
-	
-//	@ResponseBody
-//	@RequestMapping("/sel_pil")
-//	public String sel_pil(String category, String location) {
-//		String str = "";
-//		try {
-//			ObjectMapper mapper = new ObjectMapper();
-//			str = mapper.writeValueAsString(dao.sel_pil(category, location));
-//			System.out.println("select: "+str);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			System.out.println(e.getMessage());
-//		}
-//		return str;
-//	}
-	
-	//파일럿 전체 리스트 출력(ajax)
-	@ResponseBody
-	@RequestMapping(value = "/selectPil_list", method = RequestMethod.GET)
-	public String selectPil_list(String category, String location, @RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
-		String str = "";
-		HashMap map = new HashMap();
-		map.put("category", category);
-		map.put("location", location);
-		
-		totalRecord = dao.sel_pil_cnt(map);
-		totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);
-		System.out.println("전체 페이지수"+totalPage);
-		
-		//해당페이지의 시작글번호, 끝번호
-		int start = (pageNUM-1)*pageRecord+1;
-		int end = start+pageRecord-1;
-		
-		map.put("start", start);
-		map.put("end", end);
-		
-		System.out.println(category+","+location+", start: "+start+", end: "+end);
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			str = mapper.writeValueAsString(dao.selectPil_list(map));
-			System.out.println("controller"+str);
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("예외발생"+e.getMessage());
-		}
-		return str;
-	}
-	
-	//파일럿 상세페이지
-	@RequestMapping("/pilotDetail")
-	public ModelAndView pilotDetail(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
-		int info = Integer.parseInt(request.getParameter("info"));
-		mav.addObject("info",dao.sel_pil_detail(info));
-		//System.out.println("번호:"+info);
-		return mav;
-	}
 }
