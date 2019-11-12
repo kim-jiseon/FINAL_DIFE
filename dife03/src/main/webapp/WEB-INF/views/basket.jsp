@@ -165,7 +165,7 @@
 	    			else
 	    				{
 	    				td3=$("<td></td>");
-    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+    					product_img=$("<img/>").attr({"src":"img/"+item.pil_profile,"width":"62","height":"68"});
     					$(td3).append(product_img);
     					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_career+"년");
     					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
