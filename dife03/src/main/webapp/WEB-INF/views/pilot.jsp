@@ -53,10 +53,6 @@ $(function(){
 			$("#pil-location").append(search_loc);
 		})
 
-		//검색 고정
-/* 		$("#pil-category").val($("#hidden-category").val());
-		$("#pil-location").val($("#hidden-location").val()); */
-
 		var search = "";
 		var pageNUM = 1;
 		var isEnd = false;
@@ -71,10 +67,12 @@ $(function(){
 				contentType:"application/json;charset=UTF-8",
 				success:function(data){
 					var len = data.length;
+					//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
 					if(len < 5){
 						isEnd = true;
+					}else{
+						isEnd = false;
 					}
-					//var list = eval(data);
 					$.each(data, function(idx, item){
 						var li = $("<li></li>");
 						var ul = $("<ul></ul>").addClass("pil-list");
@@ -104,8 +102,7 @@ $(function(){
 			var maxHeight = $(document).height();
 			var currentScroll = $(window).scrollTop() + $(window).height();
 			
-			if(currentScroll +50 > maxHeight){
-				
+			if(currentScroll+50 > maxHeight){
 				if(isEnd == true){
 		    		return;
 		    	}else{
@@ -118,8 +115,9 @@ $(function(){
 		//검색버튼 클릭시
      	$("#pil-search-btn").click(function(){
     		$(".pilot-container").empty();
-    		search = {"category":$("#pil-category").val(), "location":$("#pil-location").val(), "pageNUM":pageNUM};
+    		pageNUM = 1;
     		selectAll(search);
+    		//페이지가 다시 로딩되는 것을 방지한다.
     		return false;
 	    })
 })
@@ -217,7 +215,5 @@ function myFunction() {
   }
 }
 </script>
-<input type="hidden" value="${category }" id="hidden-category">
-<input type="hidden" value="${location }" id="hidden-location">
 </body>
 </html>

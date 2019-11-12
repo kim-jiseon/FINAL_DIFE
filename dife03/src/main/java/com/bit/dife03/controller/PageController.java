@@ -12,6 +12,11 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/board_detail")
+	public void board_detail() {
+		
+	}
+	
 	@RequestMapping("/board_insert")
 	public void board_insert() {
 		
