@@ -188,7 +188,13 @@
 		   	        	
 		   	        	$("#order").click(function(){
 		   	        		/* 결제페이지로 sum값 전달 */
-		   	        		location.href="payKG?sum="+sum;
+		   	        		$.ajax({url:"/delBasket.do",success:function(data){
+		   	        			if(data === "1")
+		   	        				{
+		   	        			location.href="payKG?sum="+sum;
+		   	        				}
+		   	        		}})
+		   	        		
 		   	        	});
 		   	         }
 		   	         else {

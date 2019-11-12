@@ -14,6 +14,7 @@ public class BasketVo {
 	private String dro_series;
 	private String pil_career;
 	private String pil_loc;
+	private String pil_profile;
 	private String dro_photo;
 	private int pos_price;
 	private int point;
@@ -22,6 +23,12 @@ public class BasketVo {
 	private String mem_no;
 	
 	
+	public String getPil_profile() {
+		return pil_profile;
+	}
+	public void setPil_profile(String pil_profile) {
+		this.pil_profile = pil_profile;
+	}
 	public String getMem_no() {
 		return mem_no;
 	}
