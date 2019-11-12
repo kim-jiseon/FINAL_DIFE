@@ -172,6 +172,7 @@ public class OrdersManager {
 		{
 			r=1;
 			session.commit();
+			
 		}
 		else
 		{
