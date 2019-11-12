@@ -12,6 +12,11 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/support")
+	public void support() {
+		
+	}
+	
 	@RequestMapping("/board_detail")
 	public void board_detail() {
 		

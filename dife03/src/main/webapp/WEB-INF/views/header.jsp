@@ -16,7 +16,7 @@
                         <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
                         <a href="#" class="cl-effect-1">지역 및 날씨</a>
-                        <a href="#" class="cl-effect-1">고객지원</a>
+                        <a href="support" class="cl-effect-1">고객지원</a>
                         <a href="board" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
