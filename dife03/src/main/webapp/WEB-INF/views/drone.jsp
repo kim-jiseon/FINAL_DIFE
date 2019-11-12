@@ -103,10 +103,6 @@ $(function() {
 			var heading = $("<div></div>").addClass("heading");
 			var dro_series = $("<span></span>").addClass("dro-list-series").attr("id","dro_series").html(item.dro_series);
 			var md = $("<div></div>").attr("id","dro-md").html(item.dro_series_md);
-
-			//$(div).append(dro_photo,dro_info,dro_price,dro_series);
-			//$("#contents").append(div);
-		
 			var h2 = $("<h2></h2>").append(dro_series, md);
 			var a = $("<a></a>").attr("href","droneDetail?dro_no="+item.dro_no);
 			
@@ -197,64 +193,17 @@ $(function() {
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" style="width:180px; height: 25px;"/>
                         </div>
-                    </div>
-             
-						<!-- <input type="text" id="datepicker" style="width: 150px; height: 27px; border-radius: 5px; margin-top: auto; margin-bottom: auto;" placeholder="�뿩���� �����ϼ��� :D">
-               				<script src="pikaday.js"></script>
-                   			<script>
-                       			var picker = new Pikaday({ field: document.getElementById('datepicker') });
-                       	</script> -->
-                       	
+                    </div>                      	
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
                             	<c:forEach var="d" items="${list }">
                                 	<li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
                                 	</li>
-                            	</c:forEach>
-                                <!-- 
-                                <li name="hover-dro" class="hover-dro">비밥<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>비밥 2 SINGLE</li>
-                                            <li>비밥 2+SKY CONTROLLER</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li name="hover-dro" class="hover-dro">스파크<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>스파크 미니</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="hover-dro">인스파이어<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>인스파이어 1V2 1인</li>
-                                            <li>인스파이어 1V2 2인</li>
-                                            <li>인스파이어 1 PRO 1인</li>
-                                            <li>인스파이어 1 PRO 2인</li>
-                                            <li>인스파이어 2 ZENMUSE X5S 1인</li>
-                                            <li>인스파이어 2 ZENMUSE X5S 2인</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="hover-dro">팬텀<i class="fas fa-angle-right"></i>
-                                    <div class="sub-menu-2">
-                                        <ul name="sub_series_02">
-                                            <li>팬텀 4</li>
-                                            <li>팬텀 4 PRO</li>
-                                            <li>팬텀 3 ADVANCED</li>
-                                            <li>팬텀 3 PROFESSIONAL</li>
-                                        </ul>
-                                    </div>
-                                </li> -->
-                                                                         
+                            	</c:forEach>                                                
                             </ul>
                         </div>
-                    </li>
-                    
+                    </li>                    
                     <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_price" id="sub_price">
@@ -269,7 +218,7 @@ $(function() {
         	</div>
         <!-- //header-nav -->
         </div>
-          <!-- //header -->
+        <!-- //header -->
           
         <!-- contents -->
         <div id="contents">
