@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <!-- 기본 링크 -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
@@ -20,18 +18,17 @@
 <link rel="stylesheet" href="css/swiper/swiper.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-
 <script type="text/javascript">
 	$(function() {
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
-		alert(mem_id);
 		if(mem_id != '' && mem_id != null){
 			$("#sign").attr("href","logout").html("LOGOUT");
 		}
 		if(mem_id == '' || mem_id == null){
 			$("#sign").attr("href","signIn").html("LOGIN");
 		}
+		
 		//마이페이지 이동
 		$("#mypage").click(function(){
 			console.log("클릭");
@@ -49,7 +46,26 @@
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
-       <jsp:include page="header.jsp"></jsp:include>
+        <div id="header">
+            <div id="header-top">
+               <div id="category">
+                    <span id="category-1" class="animated fadeInUp">
+                        <a href="main"><img src="img/logo/DIFE_logo3.png" id="logo"></a>
+                        <a href="drone" class="cl-effect-1">드론</a>
+                        <a href="pilot" class="cl-effect-1">파일럿</a>
+                        <a href="#" class="cl-effect-1">지역 및 날씨</a>
+                        <a href="#" class="cl-effect-1">고객지원</a>
+                        <a href="board" class="cl-effect-1">커뮤니티</a>
+                    </span>
+                     <span id="category-2" class="animated fadeInUp">
+                        <a id="sign" class="cl-effect-1"></a>
+                        <a class="cl-effect-1" id="mypage">MYPAGE</a>
+                        <a href="basket" class="cl-effect-1">RESERVATION</a>
+                   </span>
+                </div>
+            </div>
+            <div id="header-nav"></div>
+        </div>
         <!-- //header -->
 
         <!-- contents -->
@@ -189,29 +205,43 @@
         <!-- //footer -->
         
     </div>
-       <!-- Swiper JS -->
+    <!-- 헤더 효과 -->
+	<script>
+		window.onscroll = function() {
+			myFunction()
+		};
+
+		var header = document.getElementById("header");
+		var sticky = header.offsetTop;
+
+		function myFunction() {
+			if (window.pageYOffset > sticky) {
+				header.classList.add("sticky");
+			} else {
+				header.classList.remove("sticky");
+			}
+		}
+	</script>
+	<!-- Swiper JS -->
     <script src="js/swiper/swiper.min.js"></script>
-
      <!-- Initialize Swiper -->
-    <script>
-    var swiper = new Swiper('.swiper-container', {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  </script>
-
-    
+	<script>
+		var swiper = new Swiper('.swiper-container', {
+			spaceBetween : 30,
+			centeredSlides : true,
+			autoplay : {
+				delay : 3000,
+				disableOnInteraction : false,
+			},
+			pagination : {
+				el : '.swiper-pagination',
+				clickable : true,
+			},
+			navigation : {
+				nextEl : '.swiper-button-next',
+				prevEl : '.swiper-button-prev',
+			},
+		});
+	</script>
 </body>
 </html>

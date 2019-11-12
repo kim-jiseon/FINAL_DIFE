@@ -14,7 +14,7 @@
   
   <!-- 회원가입 -->
   <insert id="in_member">
-  	insert into member values('M'||lpad(seq_mem.nextval,4,0),1,#{mem_id},#{mem_pwd},#{mem_pwd_check},#{mem_name},#{mem_birth},#{mem_gender},#{mem_tel},#{mem_email},#{mem_fname},#{mem_name},sysdate,#{mem_name},sysdate)
+  	insert into member values('M'||lpad(seq_mem.nextval,4,0),1,#{mem_id},#{mem_pwd},#{mem_pwd_check},#{mem_name},#{mem_birth},#{mem_gender},#{mem_tel},#{mem_email},#{mem_fname},#{mem_name},sysdate,#{mem_name},sysdate,0)
   </insert>
   
   <!-- 로그인 -->

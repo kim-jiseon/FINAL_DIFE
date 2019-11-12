@@ -21,7 +21,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
-	//로그인 로그아웃 전환
+		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
 		//alert(mem_id);
 		if (mem_id != '' && mem_id != null) {
@@ -54,8 +54,74 @@ $(function(){
 		})
 
 		//검색 고정
-		$("#pil-category").val($("#hidden-category").val());
-		$("#pil-location").val($("#hidden-location").val());
+/* 		$("#pil-category").val($("#hidden-category").val());
+		$("#pil-location").val($("#hidden-location").val()); */
+
+		var search = "";
+		var pageNUM = 1;
+		var isEnd = false;
+		
+		//전체 페이지 출력 메소드
+		function selectAll(search){
+			search = {"category":$("#pil-category").val(), "location":$("#pil-location").val(), "pageNUM":pageNUM};
+			$.ajax({type: "get",
+				url:"selectPil_list",
+				data: search,
+				dataType: "json",
+				contentType:"application/json;charset=UTF-8",
+				success:function(data){
+					var len = data.length;
+					if(len < 5){
+						isEnd = true;
+					}
+					//var list = eval(data);
+					$.each(data, function(idx, item){
+						var li = $("<li></li>");
+						var ul = $("<ul></ul>").addClass("pil-list");
+						
+						var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_photo);
+						var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail?info="+item.list_no,"id":"pil-list-title"});
+						
+						var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
+						var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
+						var info = $("<dd></dd>").html("강의 정보: "+item.pil_info).attr("id","pil-info").addClass("pil-list-info");
+						var star = $("<dd></dd>").html("별점: "+item.pil_star+".0").attr("id","pil-star").addClass("pil-list-info");
+						var dd_img = $("<dd></dd>").append(img);
+						var dd_title = $("<dd></dd>").addClass("pil-list-title").append(title);
+						
+						$(li).append(dd_img, dd_title, name, loc, info, star);
+						$(ul).append(li);
+						$(".pilot-container").append(ul);
+					})
+			}})
+		}
+
+    	//전체 페이지 출력
+		selectAll(search);
+	    		
+		//무한스크롤
+		$(window).scroll(function(){
+			var maxHeight = $(document).height();
+			var currentScroll = $(window).scrollTop() + $(window).height();
+			
+			if(currentScroll +50 > maxHeight){
+				
+				if(isEnd == true){
+		    		return;
+		    	}else{
+		    		pageNUM++;
+		    		selectAll(search);
+		    	}
+			}
+		})
+    	
+		//검색버튼 클릭시
+     	$("#pil-search-btn").click(function(){
+    		$(".pilot-container").empty();
+    		search = {"category":$("#pil-category").val(), "location":$("#pil-location").val(), "pageNUM":pageNUM};
+    		selectAll(search);
+    		return false;
+	    })
 })
 </script>
 </head>
@@ -105,6 +171,7 @@ $(function(){
         <div id="contents">
             <div class="container">
                 <div class="pilot-container">
+                <!-- 
              	<c:forEach var="p" items="${list }">
 	             	<ul class="pil-list">
 	                    <li>
@@ -117,15 +184,17 @@ $(function(){
 	                    </li>
 	                </ul>
              	</c:forEach>
+             	 -->
                  </div>
                  
-                 <!-- 페이징처리 -->
+                 <!-- 페이징처리 
                  <div id="pilot-paging">
                      <span class="inner_paging">
               			${page }
                      </span>
                  </div>
-                 <!-- //페이징처 -->
+                 -->
+                 <!-- //페이징처리 -->
             </div>
         </div>
         <!-- //contents -->

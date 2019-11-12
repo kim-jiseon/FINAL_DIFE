@@ -40,8 +40,7 @@ $(function(){
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
-<<<<<<< HEAD
-	
+
 	//마이페이지 이동
 	$("#mypage").click(function(){
 		console.log("클릭");
@@ -52,11 +51,12 @@ $(function(){
 		}else{
 			$("#mypage").attr("href","mypage_orders");
 		}
-=======
+	})
+
 	$("#select").change(function(){
 		alert($(this).val());
 		alert($(this).children("option:selected").text());
->>>>>>> refs/heads/dife
+
 	})
 })
 </script>
@@ -66,7 +66,6 @@ $(function(){
 
 		<!-- header -->
 		<jsp:include page="header.jsp"></jsp:include>
-
 		<!-- //header -->
 
 		<!-- contents -->
