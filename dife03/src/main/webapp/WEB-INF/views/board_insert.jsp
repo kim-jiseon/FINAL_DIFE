@@ -66,17 +66,20 @@ $(function(){
 			<div class="container">
 			    <div id="board-title">글 작성</div>
 			    <div id="board-input">
-			        <form action="" id="input-form">
-                       <select name="input-select" id="input-select">
+			        <form action="board_insert" id="input-form" method="post" enctype="multipart/form-data">
+                       <select name="boa_sort" id="input-select">
                            <option value="문의게시판">문의게시판</option>
                            <option value="후기게시판">후기게시판</option>
                        </select>
                        <span id="input-span">
-                        <input type="text" id="input-title" name="input-title" placeholder="제목을 입력해주세요."><br>
-			            <input type="text" id="input-name" name="input-name" placeholder="이름"><input type="password" id="input-pwd" name="input-pwd" placeholder="암호"><input type="text" id="input-star" name="input-star" placeholder="평점">
+                        <input type="hidden" name="boa_no" value="${boa_no }">
+                        <input type="text" id="input-title" name="boa_title" placeholder="제목을 입력해주세요."><br>
+			            <input type="text" id="input-name" value="${mem_name }">
+			            <input type="password" id="input-pwd" name="boa_pwd" placeholder="암호">
+			            <input type="text" id="input-star" name="boa_rating" placeholder="평점">
 			            </span><br>
-			            <textarea name="input-text" id="input-text" cols="30" rows="10" placeholder="내용을 작성해주세요."></textarea><br>
-			            <input type="file" id="input-file" name="input-file" style="background-color: #e0e0e0; margin: 5px 20px; width: 94%">
+			            <textarea id="input-text" name="boa_contents" cols="30" rows="10" placeholder="내용을 작성해주세요."></textarea><br>
+			            <input type="file" id="upload" name="upload" style="background-color: #e0e0e0; margin: 5px 20px; width: 94%">
 			            <button type="submit" id="submit" class="input-btn" style="margin-right: 20px;">작성완료</button>
 			            <button type="reset" id="reset" class="input-btn">취소</button>
 			        </form>

@@ -1,3 +1,4 @@
+/*
 package com.bit.dife03.controller;
 
 import java.util.ArrayList;
@@ -65,6 +66,7 @@ public class DroneController {
 			droStr = droStr+"<li>"+ i +"'>"+ i +"</li>"+"&nbsp;&nbsp;";
 		}
 		*/
+/*
 		try {
 			str = om.writeValueAsString(dao.sel_droAll(map));
 			
@@ -74,8 +76,7 @@ public class DroneController {
 		}
 		return str;
 	}
-	
-/*
+
 	@ResponseBody
 	@RequestMapping(value = "/drone", method = RequestMethod.GET)
 	public ModelAndView sel_droAll(@RequestParam(value = "search", defaultValue = "")String search, 			
@@ -144,7 +145,7 @@ public class DroneController {
 		mav.addObject("pageStr", pageStr);
 		return mav;
 	}
-*/		
+		
 /*
 	@RequestMapping(value = "get_droCountList")
 	public String get_droCountList(int nowPage, int perPage) {
@@ -185,5 +186,6 @@ public class DroneController {
 	@RequestMapping()
 	public int in_droOrder() {
 	}
-*/
+
 }
+*/

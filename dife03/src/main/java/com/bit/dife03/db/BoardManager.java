@@ -36,4 +36,39 @@ public class BoardManager {
     	session.close();
     	return list;	
     }
+    
+    public static int getNextNo() {
+    	SqlSession session = factory.openSession();
+    	int boa_no = session.selectOne("board.nextNo");
+    	session.close();
+    	return boa_no;
+    }
+    
+    public static int insert(BoardVo vo) {
+    	int re = 0;
+    	SqlSession session = factory.openSession(true);
+    	re = session.insert("board.insert", vo);
+    	session.close();
+    	return re;
+    }
+    
+    public static BoardVo getBoard(int boa_no) {
+    	BoardVo vo = null;
+    	HashMap map = new HashMap();
+    	map.put("boa_no", boa_no);
+    	SqlSession session = factory.openSession();
+    	vo = session.selectOne("board.getBoard", map);
+    	session.close();
+    	return vo;
+    }
+    
+    public static void updateStep(int boa_ref, int boa_step) {
+    	HashMap map = new HashMap();
+    	map.put("boa_ref", boa_ref);
+    	map.put("boa_step", boa_step);
+    	SqlSession session = factory.openSession(true);
+    	session.update("board.updateStep", map);
+    	session.close();
+    	return;
+    }
 }
