@@ -35,5 +35,6 @@
     <mapper resource="com/bit/dife03/db/boardMapper.xml"/>
     <mapper resource="com/bit/dife03/db/ordersMapper.xml"/>
     <mapper resource="com/bit/dife03/db/droneMapper.xml"/>
+    <mapper resource="com/bit/dife03/db/mainMapper.xml"/>
   </mappers>
 </configuration>

@@ -131,6 +131,7 @@
     #contents{
         height: auto;
         margin: 0px 0px;
+        background-color: #f2f2f2;
     }
     /*슬라이드 배너*/
     .swiper-slide > a > img{
@@ -150,7 +151,7 @@
 		margin: 100px 0px;
         padding: 70px 100px;
 		color: #343434;
-        background-color: #e1e1e1;
+        
 	}
 	
 	.grid-wiget{
