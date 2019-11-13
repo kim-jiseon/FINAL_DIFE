@@ -1,7 +1,9 @@
 @charset "UTF-8";
+/*
 body{
     overflow-y: hidden;
 }
+*/
 #header-nav{
     height: 50px;
     /*background-color: #1F2124;*/
@@ -97,7 +99,9 @@ ul{
 .content1 li{
     margin: 10px;
 }
-
+.search .block {
+	margin: 10px;
+}
 /* 상단 상품가격,선택칸 *//*
 .grid #block1{
 	display: grid;
@@ -133,18 +137,16 @@ ul{
 li{
 	text-align: center;	
 }
-
 #block2 p{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #000;
 }
-
 .text-danger{
     color: red;
 }
-
 .control-label{
-    color: #fff;
+    color: #000;
 }
 
 /* 캘린더 */
@@ -181,10 +183,24 @@ li{
 	margin-top: 10px;
 }
 
-.content2 .block{
-	display: inline-block;
-	margin-top: 150px;
-	padding: 0px;
+/* 마우스오버 시 이미지 확대 */
+.scale {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out; /* 부드러운 모션을 위해 추가 */
+}
+.scale:hover {
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+}
+.img {
+    overflow:hidden;
 }
 
 /* 컨테이너 */
@@ -192,9 +208,13 @@ li{
     width: auto;
     margin: 0 auto;
     height: auto;
-    background: #000;
+    background: #fff;
 }
-
+.content2 .block{
+	display: block;
+	margin-top: 700px;
+	padding: 0px;
+}
 #footer {
     text-align: center;
     height: 180px;

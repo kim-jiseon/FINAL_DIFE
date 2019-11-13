@@ -150,6 +150,7 @@ $(function() {
 	           </div>
 	       </section>-->
 	       <div id="header-nav">
+	       <div class="container">
 			<div class="content1">
 				<div class="grid">
 					<div id="block1">
@@ -184,7 +185,7 @@ $(function() {
 		                </ul>
 						<hr>
 						<!-- 제이쿼리 사용 -->
-						<li name="droD_ren"><p>대여점 : 
+						<li><p>대여점 : 
 							<span id="opr">
 								<select id="operR" name="operR" style="width: 150px; height: 30px;">
 								</select>
@@ -192,7 +193,7 @@ $(function() {
 							</p>
 						</li>
 						<!-- 제이쿼리 사용 -->
-						<li name="droD_amount"><p>수    량 :							 
+						<li><p>수    량 :							 
 							<span id="opa">
 								<select id="operA" name="operA" style="width: 150px; height: 30px;">
 								</select>
@@ -222,6 +223,8 @@ $(function() {
 					</div>		
 				</div>
 			</div>
+			</div>
+			</div>
 			<hr>
 
 			<!-- 드론 상세 정보 -->
@@ -240,7 +243,9 @@ $(function() {
 			<!-- footer -->
       		<jsp:include page="footer.jsp"></jsp:include>
 	        <!-- //footer -->
-	    </div>
+	    
+	    
+    </div>
     </div>
   </body>
 </html>

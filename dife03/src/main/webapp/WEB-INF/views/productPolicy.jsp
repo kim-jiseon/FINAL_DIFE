@@ -4,14 +4,16 @@
 <html>
 <head> 
 <!-- 기본 css 링크 -->
-<link rel="stylesheet" href="css/policy/policy.css">  
+<link rel="stylesheet" href="css/policy/policy.css">
+<!-- fontawesome -->
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 </head>
 <body>
     <!-- <div id="wrap" class="animated fadeIn"> -->
        <!-- product policy -->
         <div class="product-policy">
             <div class="titleArea">
-               <h3>상품결제</h3>
+               <h3><i class="fa fa-credit-card" aria-hidden="true"></i>	상품결제</h3>
                <p class="move_line"></p>
 	           	<p class="info-policy">
 	            	- 고액결제의 경우 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다.<br>
@@ -24,7 +26,7 @@
             <br>
             <br>
             <div class="titleArea">
-               <h3>배송</h3>
+               <h3><i class="fa fa-plane" aria-hidden="true"></i>	배송</h3>
                <p class="move_line"></p>
 	           	<p class="info-policy">
 	            	- 현재 A/S 서비스에 관련한 부품 교체만 가능하며 추후 대여 제품에 대한 배송서비스도 시행될 예정입니다.		
@@ -34,7 +36,7 @@
             <br>
             <br>
             <div class="titleArea">
-               <h3>A/S 안내</h3>
+               <h3><i class="fa fa-cube" aria-hidden="true"></i>	A/S 안내</h3>
                <p class="move_line"></p>
 	           	<p class="info-policy">
 	            	- DIFE에서 구매하신 제품들은 출고시 초기불량을 제외한 어떠한 경우에도 무료 A/S는 불가하며, 모든 상품은 유상 A/S 처리가 됩니다. (초기불량 제외)<br>
@@ -47,7 +49,7 @@
             <br>
             <br>
             <div class="titleArea">
-               <h3>교환 및 반품</h3>
+               <h3><i class="fa fa-fire" aria-hidden="true"></i>	교환 및 반품</h3>
                <p class="move_line"></p>
 	           	<p class="info-policy">
 	            	<strong>교환 및 반품이 가능한 경우</strong>
@@ -67,7 +69,7 @@
             <br>
             <br>
             <div class="titleArea">
-               <h3>환불</h3>
+               <h3><i class="fa fa-heartbeat" aria-hidden="true"></i>	환불</h3>
                <p class="move_line"></p>
 	           	<p class="info-policy">
 	            	환불시 반품 확인여부를 확인한 후 3영업일 이내에 결제 금액을 환불해 드립니다.<br>
