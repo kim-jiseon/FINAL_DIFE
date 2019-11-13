@@ -30,7 +30,7 @@
 $(function() {
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
-	alert(mem_id);
+	//alert(mem_id);
 	if(mem_id != '' && mem_id != null){
 		//var login = $("#category-2").find("a:first").html();
 		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -65,31 +65,33 @@ $(function() {
 						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
 						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
 					];	*/
+	/*var series_arr = [
+		'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
+	];*/
+	var price_arr = [
+		'~ 10만원','10 ~ 20만원','20만원 ~'
+	];
 
-	var price_arr = ['~ 10만원','10 ~ 20만원','20만원 ~'];
-
+	/* 검색 카테고리 */				
 	$.ajax({url:"/droAll",success:function(data){
-		/*
+		var series_arr = eval(data);
+		
+		// 시리즈명
 		$.each(series_arr, function(idx, ser){
 			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
 			$("#hover_dro_01").append(search_droSer);
 		})
-		*/
 		
-		/* 검색 카테고리 시리즈명 */
-		
-		/* 검색 카테고리 가격 */
+		// 가격
 		$.each(price_arr, function(idx, prc){
 			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
 			$("#sub_price").append(search_droPrc);
 		})
-		
-		/* 상품 전체 목록 */
+		// 상품 전체 목록
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
-     		//console.log(item.dro_name);
      		var div = $("<div></div>").addClass("item");
-			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo,width:"300",height:"450"});
+			var fname = $("<img/>").attr({"src":"img/drone/"+item.dro_photo, width:"300", height:"450"});
 			var dro_info = $("<p></p>").html(item.dro_info);
 			var dro_price = $("<p></p>").html(item.dro_price);
 			var dro_series = $("<h2></h2>").html(item.dro_series);
@@ -113,15 +115,26 @@ $(function() {
 			$(block).append(figure);
 
 			$("#drone-grid").append(block);
+			
+			/* 상품 클릭 시 해당 상세페이지로 이동
+			$("#drone-grid").click(function(){
+				console.log("드론 상세페이지로 이동");
+				location.href="droneDetail";
+			}) */
 	    })
 	}})
+
+	/* 검색 고정 */
+		$("#datepicker").val($("#hidden-datepicker").val());
+		$("#sub-menu").val($("#hidden-series").val());
+		$("#sub_price").val($("#hidden-price").val());
 		
     /* 무한스크롤 적용 예정 */     
 
-    /* 카테고리(시리즈명) 마우스 hover */
+    /* 카테고리(시리즈명) 마우스 hover 
     $(".hover").mouseleave(function() {
         $(this).removeClass("hover");
-    })  
+    })  */
      
      /*	카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
@@ -191,7 +204,7 @@ $(function() {
                           	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
-                                            class="datepicker-here" style="width:180px; height: 25px;"/>
+                                            class="datepicker-here" name="datepicker" id="datepicker" style="width:180px; height: 25px;"/>
                         </div>
                     </div>                      	
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
@@ -237,7 +250,7 @@ $(function() {
                                   </h2>
                                 </div>
                               </figcaption>
-                              <a href="droneDetail.jsp?dro_no=${d.dro_no }"></a>                           
+                              <a href="droneDetail?dro_no=${d.dro_no }"></a>                           
                         </figure> 
 	                </div>
 	                </c:forEach>
@@ -270,5 +283,8 @@ $(function() {
 		</div>
 		<!-- //footer -->
 	</div>
+	<input type="hidden" value="${datepicker }" id="hidden-datepicker">
+	<input type="hidden" value="${sub_series_01 }" id="hidden-series">
+	<input type="hidden" value="${sub_price }" id="hidden-price">
 </body>
 </html>

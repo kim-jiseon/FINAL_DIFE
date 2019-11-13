@@ -25,7 +25,8 @@ public class DroneManager {
 			System.out.println(e.getMessage());
 		}
 	}
-	// 드론 페이지 초기화면 및 검색 카테고리 불러오기
+	
+	/* 드론 페이지 초기화면 및 검색 카테고리 불러오기 */
 	public static List<DroneVo> sel_droAll(HashMap map) {
 		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();		
@@ -35,15 +36,7 @@ public class DroneManager {
 		return list;
 	}
 	
-	// 드론 페이지에서 상세 검색 결과
-	public static List<DroneVo> sel_droDetail(String pos_no) {
-		List<DroneVo> list = null;
-		SqlSession session = factory.openSession();
-		list = session.selectList("drone.sel_droDetail", pos_no);
-		return list;
-	}
-	
-	// 드론수 카운트
+	/* 드론수 카운트 */
 	public static int get_droCount(HashMap map) {
 		int re = 0;
 		SqlSession session = factory.openSession();
@@ -52,18 +45,27 @@ public class DroneManager {
 		session.close();
 		return re;
 	}
-/*
-	// 페이징처리
-	public static int droListPage(HashMap map) {
+
+	/* 드론 상세정보
+	public static Object sel_droCon(String dro_no) {
+		// TODO Auto-generated method stub
+		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();
-		List<DroneVo> list = session.selectList("drone.page_droList", map);
+		list = session.selectList("drone.sel_droDetail", dro_no);
 		session.close();
 		return list;
+	} */
+
+	/* 드론 페이지에서 상세 검색 결과 */
+	public static DroneVo sel_droDetail(String dro_no) {
+		// TODO Auto-generated method stub
+		DroneVo droInfo = null;
+		SqlSession session = factory.openSession();
+		droInfo = session.selectOne("drone.sel_droDetail", dro_no);
+		session.close();
+		return droInfo;
 	}
-	
-	// 보류
-	// 바로 주문하기는 따로 페이지 만들어서 제이쿼리로 실행해야됨
-	// 드론 상세페이지에서 주문하기
+
 /*	public static int in_droOrder(OrdersVo o) {
 		int re = 0;
 		SqlSession session = factory.openSession(true);

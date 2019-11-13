@@ -15,17 +15,11 @@
 		select count(*) from drone
 		<!-- select count(*) from ( select rownum rn, dro_no from drone )A 		
 		where A.rn between #{start} and #{end} -->
-	</select>
-	<!-- 페이징처리 
-	<select id="page_droList" resultType="droneVo">
-		select * from ( select rownum rn, dro_no from possesion where dro_no is not null )A 
-		where A.rn between #{start} and #{end}
-	</select>-->
+	</select>	
   	
   	<!-- 상세페이지 -->  	
-  	<select id="sel_droDetail" resultType="droneVo">
-		select d.*, dl.* from drone d, dro_list dl, possesion p, rental r 
-		where d.dro_no=p.dro_no and r.ren_no=p.ren_no 
+	<select id="sel_droDetail" resultType="droneVo">
+		select d.* from drone d, possesion p where d.dro_no=p.dro_no and d.dro_no = #{dro_no} 
 	</select>
 	
 	<!-- 대여일, 반납일 추가해서 수정예정 -->
@@ -33,5 +27,5 @@
 	<insert id="in_droBasket">
 		insert into orders values(#{droD_name},#{droD_price},#{droD_series},#{droD_made},#{droD_ren},#{droD_amount})
 	</insert>
-  
+	
 </mapper>

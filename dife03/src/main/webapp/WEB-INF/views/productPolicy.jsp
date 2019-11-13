@@ -20,6 +20,9 @@
 					- 주문시 입력한 입금자명과 실제입금자의 성명이 반드시 일치하여야 하며, 7일 이내로 입금을 하셔야 하며 입금되지 않은 주문은 자동취소 됩니다.   		
 	            </p>
             </div>
+            <br>
+            <br>
+            <br>
             <div class="titleArea">
                <h3>배송</h3>
                <p class="move_line"></p>
@@ -27,6 +30,9 @@
 	            	- 현재 A/S 서비스에 관련한 부품 교체만 가능하며 추후 대여 제품에 대한 배송서비스도 시행될 예정입니다.		
 	            </p>
             </div>
+            <br>
+            <br>
+            <br>
             <div class="titleArea">
                <h3>A/S 안내</h3>
                <p class="move_line"></p>
@@ -37,6 +43,9 @@
 					- 부품 공급이 원활하지 않은 경우 A/S 기간이 다소 늘어날 수 있습니다. 이점 양지 하시길 바랍니다.
 	            </p>
             </div>
+            <br>
+            <br>
+            <br>
             <div class="titleArea">
                <h3>교환 및 반품</h3>
                <p class="move_line"></p>
@@ -54,6 +63,9 @@
 						※ 구매 후 조종미숙 또는 비행이 부적합한 환경에서의 무리한 비행으로 발생하는 문제에 대하여서는 판매자의 책임이 없음을 알려드립니다.
 	            </p>
             </div>
+            <br>
+            <br>
+            <br>
             <div class="titleArea">
                <h3>환불</h3>
                <p class="move_line"></p>
