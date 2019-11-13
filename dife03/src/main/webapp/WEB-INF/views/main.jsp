@@ -62,14 +62,15 @@
 		*/
 		
 		//게시판 조회수 순으로 4개 띄우기
-		/* -> select * from board where boa_sort like '%후기%' and rownum <5 order by boa_view desc;
-		$.ajax({url:"",success:function(data){
+		
+		/* $.ajax({url:"/main",success:function(data){
 			val list = eval(data);
-			$.each(list, function(idx, item){
+			alert("성공");
+				$.each(list, function(idx, item){
 				
-			})
-		}})
-		*/
+				}) 
+		}}) */
+		
 	}) 
 </script>
 </head>
