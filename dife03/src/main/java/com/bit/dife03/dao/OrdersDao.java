@@ -48,8 +48,20 @@ public class OrdersDao {
 		// TODO Auto-generated method stub
 		return OrdersManager.mem_order(map);
 	}
-	public Object mem_order_no(HashMap map) {
+	public int mem_ord_max(String mem_id) {
+		// TODO Auto-generated method stub
+		return OrdersManager.mem_ord_max(mem_id);
+	}
+	public String mem_order_no(HashMap map) {
 		// TODO Auto-generated method stub
 		return OrdersManager.mem_order_no(map);
+	}
+	public List<OrdersVo> mem_ord_list(HashMap map) {
+		// TODO Auto-generated method stub
+		return OrdersManager.mem_ord_list(map);
+	}
+	public String allDelBas(String mem_id) {
+		// TODO Auto-generated method stub
+		return OrdersManager.allDelBas(mem_id);
 	}
 }

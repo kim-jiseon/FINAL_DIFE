@@ -62,6 +62,10 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
+		
+		//검색 고정
+		$("#pil-category").val($("#hidden-category").val());
+		$("#pil-location").val($("#hidden-location").val());
 
     })
     </script>
@@ -122,6 +126,13 @@
                         
                     </div>
                 </div>
+                 <!-- 페이징처리 -->
+                 <div id="pilot-paging">
+                     <span class="inner_paging">
+              			${page }
+                     </span>
+                 </div>
+                 <!-- //페이징처 -->
             </div>
             </div>
         </div>
@@ -129,6 +140,8 @@
 
         <!-- footer -->
          <jsp:include page="footer.jsp"></jsp:include>
+        <input type="hidden" value="${category }" id="hidden-category">
+		<input type="hidden" value="${location }" id="hidden-location">
         <!-- //footer -->
     </div>
 

@@ -102,6 +102,7 @@ public class OrdersManager {
          
         return r;
 	}
+	//상품 정보에 대한 리스트인데 가져오는 데이터 컬럼 수가 다름.
 	public static List<OrdersDetailPageVo> ordersList(String mem_id) {
 		// TODO Auto-generated method stub
 		List<OrdersDetailPageVo> list = null;
@@ -125,7 +126,7 @@ public class OrdersManager {
 		session.close();
 		return list;
 	}
-	//주문자의 정보
+	//주문자의 특정 주문정보
 	public static List<OrdersVo> mem_order(HashMap map) {
 		// TODO Auto-generated method stub
 		List<OrdersVo> list = null;
@@ -134,6 +135,7 @@ public class OrdersManager {
 		session.close();
 		return list;
 	}
+	//특정 주문의 주문 번호
 	public static String mem_order_no(HashMap map) {
 		// TODO Auto-generated method stub
 		String r= null;
@@ -141,6 +143,42 @@ public class OrdersManager {
 		 r = session.selectOne("orders.mem_ordes_no",map);
 		 session.close();
 		return r;
+	}
+	//주문번호 max count
+	public static int mem_ord_max(String mem_id) {
+		int r= 0;
+		 SqlSession session = factory.openSession();
+		 r = session.selectOne("orders.mem_ord_count",mem_id);
+		 session.close();
+		return r;
+	}
+	//특정 맴버의 모든 주문리스트
+	public static List<OrdersVo> mem_ord_list(HashMap map) {
+		List<OrdersVo> list = null;
+		SqlSession session = factory.openSession();
+		list = session.selectList("orders.mem_order_list",map);
+		session.close();
+		return list;
+	}
+	//모든 정보 삭제.
+	public static String allDelBas(String mem_id) {
+		int re=0;
+		int r= 0;
+		String str="";
+		SqlSession session = factory.openSession();
+		re += session.delete("orders.allDelBas",mem_id);
+		re += session.update("orders.",mem_id);
+		if(re ==2)
+		{
+			r=1;
+			session.commit();
+			
+		}
+		else
+		{
+			session.rollback();
+		}
+		return str+r;
 	}
 	
 	

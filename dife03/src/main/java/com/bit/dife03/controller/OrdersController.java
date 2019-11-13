@@ -37,7 +37,14 @@ import com.google.gson.reflect.TypeToken;
 
 @Controller
 public class OrdersController {
-	
+		//한페이지 당 게시글 수
+		int pageRecord = 5;
+		
+		//총 게시글 수
+		int totalRecord = 0;
+		
+		//전체페이지수 (default=1)
+		int totalPage = 1;
 	
 	@Autowired
 	private OrdersDao dao;
@@ -162,24 +169,67 @@ public class OrdersController {
 	}
 	@ResponseBody
 	@RequestMapping("/ordersList.do")
-	public String listOrders(HttpServletRequest request)
-	{
-		String str="";
-		String mem_id= null;
-		 mem_id =(String)request.getAttribute("mem_id");
-		if(mem_id != null)
-		{
-		ObjectMapper ob = new ObjectMapper();
-		try {
-			str = ob.writeValueAsString(dao.ordList(mem_id));
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-		System.out.println(str);
+	public ModelAndView paging(@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM,
+								@RequestParam(value = "month", defaultValue = "2") int month ,
+								HttpSession session,
+								HttpServletRequest req) {
 		
-		return str;
+		ModelAndView mav = new ModelAndView();
+		HashMap map = new HashMap();
+		String mem_id = null;
+		System.out.println("지역:"+month);
+		System.out.println("카테고리:"+pageNUM);
+		mem_id =(String)req.getAttribute("mem_id");
+		if(mem_id !=null)
+		{
+			mav.addObject("category", month);
+			session.setAttribute("category", month);
+			map.put("mem_id",mem_id);
+			map.put("month", month);
+			
+			totalRecord = dao.mem_ord_max(mem_id);
+			totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);
+			System.out.println("전체 페이지수"+totalPage);
+			
+			//해당페이지의 시작글번호, 끝번호
+			int start = (pageNUM-1)*pageRecord+1;
+			int end = start+pageRecord-1;
+			
+			System.out.println("start: "+start);
+			System.out.println("end: "+end);
+			
+			map.put("start", start);
+			map.put("end", end);
+			
+			mav.addObject("list", dao.mem_ord_list(map));
+			
+			//보고있는 페이지의 번호가 전체 페이지보다 클 떄
+			if(totalPage < pageNUM) {
+				pageNUM = totalPage;
+			}
+			//시작페이지 및 끝페이지 번호 구하기(1~5/6~10/... 5단위로 보여주기)
+			int pageCount = 5;
+			int startPage = ((pageNUM-1)/pageCount)*pageCount+1;
+			int endPage = startPage+pageCount-1;
+			//끝페이지가 총페이지 수보다 크게 계산될 때
+			if(endPage > totalPage) {
+				endPage = totalPage;
+			}
+		
+			String page = "";
+			
+			if(startPage > 1) {
+				page = page +"<a href='ordersList.do?category="+month+"&pageNUM="+(pageNUM-1)+"' class='link-page-prev'>이전</a>";
+			}
+			for (int i = startPage; i <= endPage; i++) {
+				page = page + "<a href='ordersList.do?category="+month+"&pageNUM="+i+"' class='link-page'>"+i+"</a>";
+			}
+			if (endPage < totalPage) {
+				page = page + "<a href='ordersList.do?category="+month+"&pageNUM="+(endPage+1)+"' class='link-page-next'>다음</a>";
+			}
+			mav.addObject("page", page);
+		}
+		return mav;
 	}
 	@RequestMapping("/ordersDetail.do")
 	public ModelAndView ordersDetail(HttpServletRequest request,String ord_no) {
@@ -200,6 +250,21 @@ public class OrdersController {
 		 }
 		 return mav;
 	}
-	
+	//장바구니 전체 삭제 및 주문 번호 0 -> 1로 변경
+	@ResponseBody
+	@RequestMapping("/delBasket.do")
+	public String allDelBas(HttpServletRequest request)
+	{
+		String mem_id = (String)request.getAttribute("mem_id");
+		String str= "";
+		ObjectMapper ob = new ObjectMapper();
+		try {
+		str +=	ob.writeValueAsString(dao.allDelBas(mem_id));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return str;
+	}
 	
 }

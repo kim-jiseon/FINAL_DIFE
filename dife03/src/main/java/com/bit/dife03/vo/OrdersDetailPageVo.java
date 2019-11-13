@@ -15,7 +15,7 @@ public class OrdersDetailPageVo {
 	private String dro_photo;
 	private String mem_name;
 	private String pil_career;
-	private String pil_portphoto;
+	private String pil_profile;
 	private Date ord_date;
 	
 	
@@ -97,17 +97,19 @@ public class OrdersDetailPageVo {
 	public void setPil_career(String pil_career) {
 		this.pil_career = pil_career;
 	}
-	public String getPil_portphoto() {
-		return pil_portphoto;
-	}
-	public void setPil_portphoto(String pil_portphoto) {
-		this.pil_portphoto = pil_portphoto;
-	}
+	
 
 	
+	public String getPil_profile() {
+		return pil_profile;
+	}
+	public void setPil_profile(String pil_profile) {
+		this.pil_profile = pil_profile;
+	}
+
 	public OrdersDetailPageVo(String ord_no, int ord_price, int det_amount, int det_price, Date det_rental,
 			Date det_return, int mem_point, String dro_name, String dro_series, String dro_photo, String mem_name,
-			String pil_career, String pil_portphoto, Date ord_date) {
+			String pil_career, String pil_profile, Date ord_date) {
 		super();
 		this.ord_no = ord_no;
 		this.ord_price = ord_price;
@@ -121,7 +123,7 @@ public class OrdersDetailPageVo {
 		this.dro_photo = dro_photo;
 		this.mem_name = mem_name;
 		this.pil_career = pil_career;
-		this.pil_portphoto = pil_portphoto;
+		this.pil_profile = pil_profile;
 		this.ord_date = ord_date;
 	}
 	public OrdersDetailPageVo() {
