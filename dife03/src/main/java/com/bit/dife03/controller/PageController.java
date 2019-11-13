@@ -70,10 +70,12 @@ public class PageController {
 	public void signIn2() {
 		
 	}
-	@RequestMapping("/droneDetail")
-	public void droneDetail() {
-		
-	}
+	
+//	@RequestMapping("/droneDetail")
+//	public void droneDetail() {
+//		
+//	}
+	
 	@RequestMapping("/testtest02")
 	public void test() {
 		
