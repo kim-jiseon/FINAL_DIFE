@@ -50,7 +50,7 @@ $(function(){
 		var con_end = array[1];
 
 		console.log(con_start);
-		var pil_no = "${info.pil_no}";
+		var list_no = "${info.list_no}";
 		var con_sort = "${info.pil_cateInfo}";
 		var con_loc = "${info.pil_locInfo}";
 		
@@ -64,7 +64,7 @@ $(function(){
 			}
 			else{
 				var pop = window.open(
-						"/pilot_popup?startDate="+con_start+"&endDate="+con_end+"&pil_no="+pil_no+"&con_sort="+con_sort+"&con_loc="+con_loc,
+						"/pilot_popup?startDate="+con_start+"&endDate="+con_end+"&list_no="+list_no+"&con_sort="+con_sort+"&con_loc="+con_loc,
 						"pop",
 						"width = 840, height = 650");
 			}

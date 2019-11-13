@@ -156,8 +156,8 @@ figure.block img {
 }
 #contents .block {
 	width: 300px;
-	height: 450px;
-	padding-bottom: 10px;
+	height: 420px;
+	padding-bottom: 0px;
 }
 
 figure.block figcaption {

@@ -40,7 +40,7 @@ int totalPrice = Integer.parseInt(sum);
             buyer_tel : '<%=phone%>',
             buyer_addr : '<%=address%>',
             buyer_postcode : '123-456',
-            //m_redirect_url : 'http://www.naver.com'
+            m_redirect_url : 'http://localhost:8089/main'
         }, function(rsp) {
             if ( rsp.success ) {
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
