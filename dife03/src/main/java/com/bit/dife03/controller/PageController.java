@@ -77,8 +77,12 @@ public class PageController {
 	public void droneDetail() {
 		
 	}
-	@RequestMapping("/testtest02")
-	public void test() {
+	@RequestMapping("/paySuccess")
+	public void paysuccess() {
+		
+	}
+	@RequestMapping("/cacaotest")
+	public void cacaotest() {
 		
 	}
 
