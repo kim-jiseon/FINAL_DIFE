@@ -38,6 +38,19 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
+		
+/* 		<div class="grid-cell1">
+                            <img src="img/main/group.png">
+          		            <p>방문자 수</p>
+          				    <h1>888명</h1>
+          			    </div> */
+		
+		//메인화면 카운트
+		$.ajax({url:"/main_cnt",success:function(data){
+			$("#mem_cnt").html(data.mem_cnt+"명");
+			$("#pil_cnt").html(data.pil_cnt+"명");
+			$("#dro_cnt").html(data.dro_cnt+"대");
+		}})
 
 		//게시판 조회수 순으로 4개 띄우기: 사진은 추후 DB업데이트 예정
 		$.ajax({url:"/main_board",success:function(data){
@@ -107,17 +120,17 @@
           			    <div class="grid-cell1">
                             <img src="img/main/group.png">
           		            <p>방문자 수</p>
-          				    <h1>888명</h1>
+          				    <h1 id="mem_cnt"></h1>
           			    </div>
           			    <div class="grid-cell1">
                             <img src="img/main/cap.png">
                             <p>파일럿 수</p>
-                            <h1>54명</h1>
+                            <h1 id="pil_cnt"></h1>
           			    </div>
                         <div class="grid-cell1">
                             <img src="img/main/drone%202.png">
                             <p>드론 수</p>
-                            <h1>10981대</h1>
+                            <h1 id="dro_cnt"></h1>
                         </div>
                         <div class="grid-cell1">
                         	<img src="img/main/wheather.png">

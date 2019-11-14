@@ -1,7 +1,10 @@
 package com.bit.dife03.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,10 +27,19 @@ public class MainController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/main_cnt")
+	public HashMap<String, Integer> sel_cnt() {
+		//String str = "";
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map = dao.sel_cnt();
+		return map;
+	}
+	
+	
+	@ResponseBody
 	@RequestMapping("/main_board")
 	public String sel_board() {
 		String str = "";
-		System.out.println("controller작동");
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			str = mapper.writeValueAsString(dao.sel_board());
