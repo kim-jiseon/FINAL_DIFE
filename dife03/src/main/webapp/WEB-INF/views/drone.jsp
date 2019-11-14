@@ -120,12 +120,6 @@ $(function() {
 			$(block).append(figure);
 
 			$("#drone-grid").append(block);
-			
-			/* 상품 클릭 시 전달값 상태유지하면서 해당 상세페이지로 이동
-			$("#drone-grid").click(function(){
-				console.log("드론 상세페이지로 이동");
-				location.href="droneDetail";
-			}) */
 	    })
 	}})
 
