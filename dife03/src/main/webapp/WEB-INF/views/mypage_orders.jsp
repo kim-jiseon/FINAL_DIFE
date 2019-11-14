@@ -37,6 +37,36 @@
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
     	}
+
+    	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
+    	function date_to_str(format)
+		{
+		    var year = format.getFullYear();
+		    var month = format.getMonth() + 1;
+		    if(month<10) month = '0' + month;
+		    var date = format.getDate();
+		    if(date<10) date = '0' + date;
+		    return year + "-" + month + "-" + date;
+		}
+    	
+
+    	
+    	//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
+		
+		//검색 고정
+		$("#pil-category").val($("#hidden-category").val());
+		$("#pil-location").val($("#hidden-location").val());
+
     })
     </script>
 </head>
@@ -44,6 +74,7 @@
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
         <jsp:include page="header.jsp"></jsp:include>
+
         <!-- //header -->
 
         <!-- contents -->
@@ -107,4 +138,78 @@
     </div>
 
 </body>
+
+        <!-- //header -->
+
+        <!-- contents -->
+        <div id="contents">
+            <div class="container">
+               <div  class="mypage-grid">
+                <jsp:include page="mypage.jsp"></jsp:include>
+                <div id="mypage-bottom" class="mypage-grid-nav">
+                    <div id="mypage-bottom-left">
+                        <nav>
+                            <ul>
+                                <li class="mypage-category"><a href="mypage_orders">주문내역<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="mypage_board">내글 관리<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="mypage_emoney">적립금 및 쿠폰<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="#">개인정보수정<i class="fas fa-angle-right" id="icon"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="mypage-bottom-right">
+                       <div id="mypage-orders">
+                           <span>주문내역</span>
+                           <span>
+                               <select name="mypage-orders-date" id="mypage-orders-date">
+                                   <option value="1개월">전체</option>
+                                   <option value="1개월">1개월</option>
+                                   <option value="1개월">3개월</option>
+                               </select>
+                           </span>
+                        </div><hr id="hr">
+                        <div class="mypage-orders-list">
+                            <a href="ordersDetail"><div class="mypage-orders-title">[2019.07.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
+                            <div class="mypage-orders-info">
+                                <ul>
+                                    <li>주문번호&nbsp;&nbsp;&nbsp; 156928405958</li>
+                                    <li>결제금액&nbsp;&nbsp;&nbsp; 55,000 원</li>
+                                    <li>주문상태&nbsp;&nbsp;&nbsp; 반납완료</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mypage-orders-list">
+                            <a href="ordersDetail"><div class="mypage-orders-title">[2019.10.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
+                            <div class="mypage-orders-info">
+                                <ul>
+                                    <li>주문번호&nbsp;&nbsp;&nbsp; 1569888755958</li>
+                                    <li>결제금액&nbsp;&nbsp;&nbsp; 55,000 원</li>
+                                    <li>주문상태&nbsp;&nbsp;&nbsp; 대여중</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                 <!-- 페이징처리 -->
+                 <div id="pilot-paging">
+                     <span class="inner_paging">
+              			${page }
+                     </span>
+                 </div>
+                 <!-- //페이징처 -->
+            </div>
+            </div>
+        </div>
+        <!-- //contents -->
+
+        <!-- footer -->
+         <jsp:include page="footer.jsp"></jsp:include>
+        <input type="hidden" value="${category }" id="hidden-category">
+		<input type="hidden" value="${location }" id="hidden-location">
+        <!-- //footer -->
+    </div>
+
+</body>
+
 </html>

@@ -16,6 +16,10 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
 	<delete id="delBas">
 		delete basket where bas_no=#{bas_no}
 	</delete>
+	<!-- 회원이 주문시 장바구니 정보삭제 -->
+	<delete id="allDelBas">
+		delete basket where mem_no = (select mem_no from member where mem_id=#{mem_id})
+	</delete>
   <!-- orders insert 및 ordersDetail insert transaction -->
   	<insert id="insertOrders">
   	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0)
@@ -39,5 +43,54 @@ and m.mem_no=(select mem_no from member where mem_id=#{mem_id})
 possesion p where p.pos_no=B.pos_no) 
 ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_profile from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
   	</select> 
+  	<!-- select ord_page -->
+  <!-- 	<select id="ord_list" resultType="ordersPageVo">
+  	select ord_no,ord_amount,ord_price,dro_name,dro_photo,mem_name,pil_career,pil_portphoto,det_rental_stat from (select B.*,dro_no,pil_no from 
+(select o.ord_no,ord_amount,ord_price,det_rental_stat,pos_no from (select ord_no,ord_amount,ord_price,mem_point  
+from (select * from orders where mem_no = (select mem_no from member where mem_id='hong' ) and ord_date between 
+add_months(sysdate,-1) and sysdate) o,member m where o.mem_no=m.mem_no and ord_pay_state = 0 
 
+and m.mem_no=(select mem_no from member where mem_id='hong')
+) A,ordersdetail o where o.ord_no = A.ord_no
+) B,
+possesion p where p.pos_no=B.pos_no) 
+ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_portphoto from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
+  	</select> -->
+  	<!-- 주문디테일의 상품정보들 -->
+<select id="ordersHistory" resultType="ordersDetailPageVo">
+	select det_amount,det_price,det_rental,det_return,mem_point,dro_name,dro_series,dro_photo,mem_name,pil_career,pil_portphoto,ord_date from (select B.*,dro_no,pil_no from 
+	(select o.ord_no,ord_amount,ord_price,det_amount,det_price,det_rental,det_return,pos_no,mem_point,ord_date from (select ord_no,ord_amount,ord_price,mem_point,ord_date  
+	from orders o,member m where o.mem_no=m.mem_no and ord_pay_state = 0
+	<!-- 주문정보 0을 1로 바꿔줘야 결제완료. -->
+	and ord_no =#{ord_no} 
+	and m.mem_no=(select mem_no from member where mem_id=#{mem_id})
+	) A,ordersdetail o where o.ord_no = A.ord_no
+	) B,
+	possesion p where p.pos_no=B.pos_no) 
+	ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_no,mem_name,pil_career,pil_portphoto from pilot p,member m where p.mem_no = m.mem_no) p on (ps.pil_no=p.pil_no)
+</select>
+	<!-- 주문자의 특정 주문정보 -->
+<select id="mem_orders" resultType="ordersVo">
+	select mem_name,ord_no,ord_amount,ord_price,ord_date,ord_pay_state from member m, 
+	(select * from orders where mem_no = (select mem_no from member where mem_id =#{mem_id})) o where m.mem_no = o.mem_no and ord_no = #{ord_no}
+</select>
+	<!-- 주문자의 특정 주문번호 -->
+<select id="mem_ordes_no" resultType="java.lang.String">
+	select ord_no from member m, 
+	(select * from orders where mem_no = (select mem_no from member where mem_id =#{mem_id})) o where m.mem_no = o.mem_no and ord_no = #{ord_no}
+</select>
+	<!-- 주문 리스트 출력 -->
+ <select id="mem_order_list" resultType="ordersVo">
+	select ord_no,ord_amount,ord_price,ord_date from (select rownum a,o.* from orders o where mem_no = (select mem_no from member where mem_id=#{mem_id} ) and ord_date between 
+	add_months(sysdate,#{month}) and sysdate and ord_pay_state = 0) B where B.a between #{start} and #{end};
+</select> 
+	<!-- 해당 회원의 총 주문건수 -->
+	<select id="mem_ord_count" resultType="java.lang.Integer">
+		select count(ord_no) from orders where mem_no = (select mem_no from member where mem_id=#{mem_id})
+	</select>
+	<!-- 결제 완료시 해당 주문 번호를 0 -> 1로 update -->
+	<update id="ord_update">
+	update orders set ord_pay_state=0 where mem_no = (select mem_no from member where mem_id=#{mem_id})
+	</update>
+	<!-- 주문시 해당 회원의 장바구니 리스트 삭제. -->
 </mapper>

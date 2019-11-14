@@ -45,101 +45,89 @@ $(function() {
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
 	
-	/* 대여점 및 수량 */
-    var rental_arr = ['대여점선택','잠실점','서귀포점','해운대점','둔산점','강릉점','부산점','대구점','울산점','여수점','목포점','오산점','속초점','포항점','김포점'];
-    var amount_arr = ['수량선택','1','2','3','4','5개 이상(별도 문의)'];
-	$.each(rental_arr, function(idx, loc){
-		var search_droLoc = $("<option></option>").attr({"value":rental_arr[idx], "idx":idx}).html(rental_arr[idx]);
-		$("#operR").append(search_droLoc);
-	})
-	$.each(amount_arr, function(idx, amt){
-		var search_droAmt = $("<option></option>").attr({"value":amount_arr[idx], "idx":idx}).html(amount_arr[idx]);
-		$("#operA").append(search_droAmt);
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
 	})
 	
-	/* 마우스 hover 시 확대 효과 */
-    var scale = $('.scale');
-    var zoom = scale.data('zoom');
-    
-    $('.img').on('mousemove',magnify).prepend('<div class="magnifier"></div>').children('.magnifier').css({
-        "backgroun":"url('"+scale.attr('src')+"')no-repeat","background-size":scale.width()*zoom+"px "+scale.height()*zoom+"px"
-    });
-    
-    /*
-    var magnifier = $('.magnifier');
-    function magnify(e){ㅁ샤ㅐㅜ
-        // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
-        var mouseX = e.pageX - $(this).offset().left;
-        var mouseY = e.pageY - $(this).offset().top;
-        // 컨테이너 밖으로 마우스가 벗어나면 돋보기를 없앤다.
-        if(mouseX < $(this).width() && mouseY < $(this).height() && mouseX > 0 && mouseY > 0){
-            magnifier.fadeIn(100);
-        }
-        else{
-            magnifier.fadeOut(100);
-        }
-        
-        // 돋보기가 존재할 때
-        if(magnifier.is(":visible")){
-            // 마우스 좌표 확대될 이미지 좌표를 일치시킨다.
-            var rx = -(mouseX * zoom - magnifier.width() /2 );
-            var ry = -(mouseY * zoom - magnifier.height() /2 );
-
-          //돋보기를 마우스 위치에 따라 움직인다.
-          //돋보기의 width, height 절반을 마우스 좌표에서 차감해 마우스와 돋보기 위치를 일치시킨다.
-          var px = mouseX - magnifier.width() / 2;
-          var py = mouseY - magnifier.height() / 2;
-
-          //적용
-          magnifier.css({
-            left: px,
-            top: py,
-            backgroundPosition: rx + "px " + ry + "px"
-          });
-        }
-      }
-    
-    const body = document.querySelector("body");
-const modal = document.querySelector(".modal");
-const modalButton = document.querySelector(".modal-button");
-const closeButton = document.querySelector(".close-button");
-const scrollDown = document.querySelector(".scroll-down");
-let isOpened = false;
-
-const openModal = () => {
-  modal.classList.add("is-open");
-  body.style.overflow = "hidden";
-};
-
-const closeModal = () => {
-  modal.classList.remove("is-open");
-  body.style.overflow = "initial";
-};
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > window.innerHeight / 3 && !isOpened) {
-    isOpened = true;
-    scrollDown.style.display = "none";
-    openModal();
-  }
-});
-
-modalButton.addEventListener("click", openModal);
-closeButton.addEventListener("click", closeModal);
-
-document.onkeydown = evt => {
-  evt = evt || window.event;
-  evt.keyCode === 27 ? closeModal() : false;
-};
-*/
-
-});
+    /* 대여점 및 수량 목록 불러오기 */
+    var rental_arr = [
+    	'선택','잠실','서귀포','해운대','둔산','강릉','부산','대구','울산','여수','목포','오산','속초','포항','김포'
+    ];
+	var amount_arr = [
+		'선택','1','2','3','4','5개 이상(별도 문의)'
+	];
+	
+   	// 대여점
+   	$.each(rental_arr,function(idx, ren){
+   		var search_droRen = $("<option></option>").attr({"value":rental_arr[idx], "idx":idx}).html(rental_arr[idx]);
+   		$("#operR").append(search_droRen);
+   	})
+   	// 수량
+   	$.each(amount_arr, function(idx, amt){
+   		var search_droAmt = $("<option></option>").attr({"value":amount_arr[idx], "idx":idx}).html(amount_arr[idx]);
+   		$("#operA").append(search_droAmt);
+   	})
+   	
+   	/* 주문 및 장바구니 : 로그인 후 가능 */
+   	$("#btnOrder").click(function(){
+   		console.log("드론 주문하기");
+   		if(mem_id == null || mem_id == ''){
+   			alert("로그인을 해주세요.");
+   			location.href("signIn");
+   		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+   	})
+   	$("#btnBasket").click(function(){
+   		console.log("드론 장바구니에 추가");
+   		if(mem_id == null || mem_id == ''){
+   			alert("로그인을 해주세요.");
+   			location.href("signIn");
+   		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+   	})
+   	
+   	/* 상세정보 불러오기
+   	$.ajax({url:"/droDtCon", success:function(data){
+   		var dro_arr = eval(data);
+   		$.each(dro_arr, function(idx, item){
+   			var div_01 = $("<div></div>").attr("id", "block1");
+   			var ul_01 = $("<ul></ul>");
+   			var li_01 = $("<li></li>").addClass("img").attr("id", "border");
+   			var img_01 = $("<img/>").attr({"alt":item.dro_conphoto_01, "src":"img/drone/"+item.dro_conphoto_01, width:"450", height:"490"}).addClass("scale");
+   			var div_02 = $("<div></div>").attr("id", "block2");
+   			//var ul_02 = $("<ul></ul>").attr({color:"black" font-size:"20px"});
+   			var li_02 = $("<li></li>");
+   			var name = $("<p></p>").html(item.dro_name);
+   			var hr = $("<hr>");
+   			var price = $("<p></p>").html(item.dro_price);
+   			var series = $("<p></p>").html(item.dro_series);
+   			var made = $("<p></p>").html(item.dro_made);
+   			
+   			var ul_03 = $("<ul></ul>").addClass("search");
+   			var div_03 = $("<div></div>").addClass("block");
+   			var div_04 = $("<div></div>").attr("id", "calendar");
+   			
+   			var ul_02 = $("<ul></ul>").attr({color:"black", font-size:"20px"}).append(li_02, name, hr, li_02, price, hr, li_02, series, li_02, made);
+   			$(block2).append(ul_02);
+   		})
+   	}}) */
+})
 </script>
 </head>
 <body>
 	<div id="wrap" class="animated fadeIn">
-		<!-- header -->
-    		<jsp:include page="header.jsp"></jsp:include>
+    	<!-- header -->
+    	<jsp:include page="header.jsp"></jsp:include>
         <!-- //header -->
 		
 		<!-- 드론 상세 상단 -->
@@ -162,27 +150,28 @@ document.onkeydown = evt => {
 	           </div>
 	       </section>-->
 	       <div id="header-nav">
+	       <div class="container">
 			<div class="content1">
 				<div class="grid">
 					<div id="block1">
 						<ul>
 							<li>
 								<li id="border" class="img">
-									<img class="scale" src="img/drone/D0001.png" width="450" height="490">
+									<img class="scale" src="img/drone/${dtInfo.dro_conphoto_01 }" width="450" height="490">
 								</li>
                             </li>
                         </ul>
 					</div>
-					
 					<div id="block2">
 						<ul style="color: black; font-size: 20px;">
-							<li name="droD_name"><p>드론명 : <strong>매빅PRO</strong></p></li>
+							<li name="droD_name"><p>드론명 : <strong>${dtInfo.dro_name }</strong></p></li>
 							<hr>	
-							<li name="droD_price"><p>가격 : <strong>200,000원</strong></p></li>
+							<li name="droD_price"><p>가격 : <strong>${dtInfo.dro_price }원</strong></p></li>
 							<hr>
-							<li name="droD_series"><p>시리즈명 : <strong>MAVIC</strong></p></li>
-							<li name="droD_made"><p>제조사명 : <strong>DJI</strong></p></li>
-							<hr>
+							<li name="droD_series"><p>시리즈명 : <strong>${dtInfo.dro_series }</strong></p></li>
+							<li name="droD_made"><p>제조사명 : <strong>${dtInfo.dro_made }</strong></p></li>
+						</ul>	
+						<hr>
 						<!-- 캘린더 선택 시 위에 대여일과 반납일을 선택하세요. 문구뜨도록 설정하기 -->
 						<!-- 캘린더 -->	
 		                <ul class="search">
@@ -194,154 +183,73 @@ document.onkeydown = evt => {
 		                        </div>
 		                    </div>
 		                </ul>
-							<hr>
-							<li name="droD_ren"><p>대여점 : 
+						<hr>
+						<!-- 제이쿼리 사용 -->
+						<ul>
+							<li><p>대여점 : 
 								<span id="opr">
 									<select id="operR" name="operR" style="width: 150px; height: 30px;">
-										<!-- <option value="R0001">파주점</option>
-										<option value="R0002">잠실점</option>
-										<option value="R0003">서귀포점</option>
-										<option value="R0004">해운대점</option>
-										<option value="R0005">둔산점</option>
-										<option value="R0006">강릉점</option>
-										<option value="R0007">부산점</option>
-										<option value="R0008">대구점</option>
-										<option value="R0009">울산점</option>
-										<option value="R0010">여수점</option>
-										<option value="R0011">목포점</option>
-										<option value="R0012">오산점</option>
-										<option value="R0013">속초점</option>
-										<option value="R0014">포항점</option>
-										<option value="R0015">김포점</option> -->
 									</select>
 								</span>
-							</p></li>
-							<li name="droD_amount"><p>수    량 :							 
-								<span id="opa">
-									<select id="operA" name="operA" style="width: 150px; height: 30px;">
-										<!-- <option value="amt1">1</option>
-										<option value="amt2">2</option>
-										<option value="amt3">3</option>
-										<option value="amt4">4</option>
-										<option value="amt5">5개 이상(별도 문의)</option> -->
-										<!-- 5개 이상 옵션선택 시 대여수량 따로 기재 or 문의글 남기도록 유도? -->
-									</select>
-								</span>
-							</p></li>
-							<hr>
-							
-							<!-- 캘린더 -->						
-							<!--<div id="form-group1">
-                                 <span class="control-label" for="datepicker"><strong style="color: white;">대여일 : </strong><span class="text-danger">*</span>
-                                 <!-- <div class="col-xs-1"> -->
-                                     <!-- <input id="datepicker1" type="text" name="mem_birth">
-                                 <!-- </div> --> 
-                                <!-- </span> 
-                            </div> -->
-                                 
-							<!--<div id="form-group2">
-                                 <span class="control-label" for="datepicker"><strong style="color: white;">반납일 : </strong><span class="text-danger">*</span>
-                                 <!-- <div class="col-xs-1"> --> 
-                                    <!-- <input id="datepicker2" type="text" name="mem_birth">
-                                 <!-- </div> --> 
-                                <!-- </span> 
-                            </div> 
-							
-                            <!--  
-                            <li>							
-							<div>
-								<span id="calendar" class="search1"><strong>대여일 : </strong></span>
-								<input type="text" id="datepicker1" style="width: 150px; height: 30px;">
-	               				<script src="pikaday.js"></script>
-	                   			<script>
-	                       			var picker = new Pikaday({ field: document.getElementById('datepicker') });
-	                       		</script>
-	                       	</div>	
-                       		</li>
-							<li>       							
-							<div>
-								<span id="calendar" class="search1"><strong>반납일 : </strong></span>
-								<input type="text" id="datepicker2" style="width: 150px; height: 30px;">
-	               				<script src="pikaday.js"></script>
-	                   			<script>
-	                       			var picker = new Pikaday({ field: document.getElementById('datepicker') });
-	                       		</script>
-	                       	</div>
-                       		</li>
-                       		-->
-                       		 
-							<li>						
-							<a href="payment.html">
-								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>주문하기</strong></button>
-							</a>
-							</li>
-							<li>
-							<!-- * modal : 다른 소스로 변경할 예정 -->
-							<!-- 장바구니 담기 클릭시 모달 -->	                                             
-	                       <!--    <div class="scroll-down">SCROLL DOWN
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <path d="M16 3C8.832031 3 3 8.832031 3 16s5.832031 13 13 13 13-5.832031 13-13S23.167969 3 16 3zm0 2c6.085938 0 11 4.914063 11 11 0 6.085938-4.914062 11-11 11-6.085937 0-11-4.914062-11-11C5 9.914063 9.914063 5 16 5zm-1 4v10.28125l-4-4-1.40625 1.4375L16 23.125l6.40625-6.40625L21 15.28125l-4 4V9z"/> 
-</svg></div>
-<div class="container"></div>
-
-<div class="modal">
-  <div class="modal-container">
-    <div class="modal-left">
-      <h1 class="modal-title">장바구니 담기 완료 ◀:D</h1>
-      <p class="modal-desc">장바구니로 이동하시겠습니까?</p>
-      
-      <div class="modal-buttons">
-        <button class="input-button-1">예</button>
-        <button class="input-button-2">아니오</button>
-      </div>  
-    </div>
-    <div class="modal-right">
-      <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="장바구니 담기 성공">
-    </div>
-    <button class="icon-button close-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
-</svg>
-      </button>
-  </div>
-  <button class="modal-button">Click here to login</button>
-</div> -->
-	                       <button id="btnBasket" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>장바구니 담기</strong>                               
-                            </button>
-                            <!-- * modal 추가 예정 -->
-                            <script>
-                                $("#btnBasket").click(function(){
-                                    alert("장바구니에 담았어요!")
-                                });   
-                            </script>
-	                           						 
-							                                                                  
-	                        </li>
-							<li>
-							<a href="drone.html">
-								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>쇼핑 계속하기</strong></button>
-							</a>
+								</p>
 							</li>
 						</ul>
+						<!-- 제이쿼리 사용 -->
+						<ul>
+							<li><p>수    량 :							 
+								<span id="opa">
+									<select id="operA" name="operA" style="width: 150px; height: 30px;">
+									</select>
+								</span>
+							</p>
+							</li>
+						</ul>
+						<hr>
+						<li>
+							<a href="payment?dro_no=${dtInfo.dro_no }">						
+							<button id="btnOrder" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
+								<strong>주문하기</strong>
+							</button>
+							</a>
+						</li>
+						<li>
+	                       	<a href="basket?dro_no=${dtInfo.dro_no }">
+	                       	<button id="btnBasket" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>장바구니 담기</strong>                               
+                            </button>
+                            </a>
+                            <!-- * modal 추가 예정 -->
+                        </li>
+						<li>
+							<a href="drone?dro_no=${dtInfo.dro_no }">
+								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>쇼핑 계속하기</strong>
+								</button>
+							</a>
+						</li>
 					</div>		
 				</div>
 			</div>
-			<hr>
+			</div>
+			</div>
 			
-			<!-- 추가한 컬럼 추가하기 -->
 			<!-- 드론 상세 정보 -->
 			<div class="content2">
 				<div class="block">
-					<img src="img/drone/dro_dt.png">
+					<img id="dro_conphoto_02" class="dro-dt-img" src="img/drone/${dtInfo.dro_conphoto_02 }">
 				</div>
-			</div>
+			</div> 
+			
+			<!-- 상품 정책 -->
+       		<jsp:include page="productPolicy.jsp"></jsp:include>
+	        <!-- //product policy -->
 			
 			<!-- 질문, 후기게시판 불러오는지? -->
 		
 			<!-- footer -->
-	      		<jsp:include page="footer.jsp"></jsp:include>
+      		<jsp:include page="footer.jsp"></jsp:include>
 	        <!-- //footer -->
-	    </div>
+	    
+	    
+    </div>
     </div>
   </body>
 </html>

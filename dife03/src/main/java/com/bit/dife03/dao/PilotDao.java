@@ -29,20 +29,16 @@ public class PilotDao {
 	public PilListVo sel_pil_detail(int info) {
 		return PilotManager.sel_pil_detail(info);
 	}
-	
-	//파일럿 리스트 셀렉
-	public List<PilListVo> sel_pil(HashMap map){
-		return PilotManager.sel_pil(map);
-	}
+
 	//예약 상담 insert
 	public int insertPilRes(PilReservationVo vo) {
 		// TODO Auto-generated method stub
 		return PilotManager.insertPilRes(vo);
 	}
 	
-	/*
+	//파일럿 전체 리스트 출력(ajax)
 	public List<PilListVo> selectPil_list(HashMap map){
 		return PilotManager.selectPil_list(map);
 	}
-	*/
+	
 }

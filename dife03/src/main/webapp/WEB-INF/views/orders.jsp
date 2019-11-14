@@ -8,9 +8,6 @@
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>layout</title>
 <!-- 웹폰트 -->
-<!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
@@ -40,6 +37,18 @@
 		}
 		//로그인 로그아웃 end
 		
+		//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
+		
 		/* 날자를 포맷하기위한 function */
     	function date_to_str(format)
 		{
@@ -67,7 +76,7 @@
 	 	var reserve_fund=0;
 		/*list를 처리하는 function*/
         function getList(){ 
-        	$.ajax({url:"/ordersList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
+        	$.ajax({url:"/ordersDetailList.do",async : false,data:{"mem_id":mem_id},dataType:"json",success:function(data){
      			$("#table_content").empty();
      			if(mem_id == '' || mem_id == null){
      				var result = confirm("로그인이 필요합니다.");
@@ -179,7 +188,13 @@
 		   	        	
 		   	        	$("#order").click(function(){
 		   	        		/* 결제페이지로 sum값 전달 */
-		   	        		location.href="payKG?sum="+sum;
+		   	        		$.ajax({url:"/delBasket.do",success:function(data){
+		   	        			if(data === "1")
+		   	        				{
+		   	        			location.href="payKG?sum="+sum;
+		   	        				}
+		   	        		}})
+		   	        		
 		   	        	});
 		   	         }
 		   	         else {

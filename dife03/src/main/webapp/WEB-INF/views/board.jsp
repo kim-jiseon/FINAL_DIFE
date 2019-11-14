@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,6 @@
 $(function(){
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
-	
 	if(mem_id != '' && mem_id != null){
 		//var login = $("#category-2").find("a:first").html();
 		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -40,6 +40,32 @@ $(function(){
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
+<<<<<<< HEAD
+
+=======
+	
+>>>>>>> refs/heads/dife
+	//마이페이지 이동
+	$("#mypage").click(function(){
+		console.log("클릭");
+		//var mem_id = "${mem_id}";
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+<<<<<<< HEAD
+	})
+
+	$("#select").change(function(){
+		alert($(this).val());
+		alert($(this).children("option:selected").text());
+
+=======
+>>>>>>> refs/heads/dife
+	})
+	
 })
 </script>
 </head>
@@ -48,17 +74,16 @@ $(function(){
 
 		<!-- header -->
 		<jsp:include page="header.jsp"></jsp:include>
-
 		<!-- //header -->
 
 		<!-- contents -->
 		<div id="contents">
 			<div id="content1">
 				<div class="container">
-					<select id="select" style="width: 100px; height: 30px;">
-						<option>공지사항</option>
-						<option>문의게시판</option>
-						<option>후기게시판</option>
+					<select id="select" name="boa_sort" style="width: 100px; height: 30px;">
+						<option value="전체" selected="selected">전체게시판</option>
+						<option value="문의">문의게시판</option>
+						<option value="후기">후기게시판</option>
 					</select>
 					<table class="table table-striped">
 						<tr style="font-size: 15px; font-weight: bold;">
@@ -69,104 +94,25 @@ $(function(){
 							<td>조회수</td>
 							<td>답변유무</td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>공지사항</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>1</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>공지사항</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>2</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>공지사항</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>문의게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>답변완료</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>후기게시판</td>
-							<td>관리자</td>
-							<td>2019.09.17</td>
-							<td>3</td>
-							<td>미답변</td>
-						</tr>
+						<c:forEach var="b" items="${list }">
+							<tr>
+								<td>${b.boa_no }</td>
+								<td>
+									<c:if test="${b.boa_level > 0 }">
+										<c:forEach begin="1" end="${b.boa_level }">
+											&nbsp;&nbsp;
+										</c:forEach>
+									</c:if>
+									<a href="detailBoard.do?no=${b.boa_no }">${b.boa_title }</a>
+								</td>
+								<td>${b.mem_no }</td>
+								<td>${b.regdate }</td>
+								<td>${b.boa_view }</td>
+								<td>${b.boa_answer }</td>
+							</tr>
+						</c:forEach>
 					</table>
-					<a class="btn btn-default pull-right"
+					<a href="/board_insert" class="btn btn-default pull-right"
 						style="width: 70px; font-size: 15px; background-color: #231F20; color: white">글쓰기</a>
 					<div class="text-center">
 						<ul class="pagination" style="padding-left: 50px;">
@@ -200,6 +146,5 @@ $(function(){
 		<jsp:include page="footer.jsp"></jsp:include>
 		<!-- //footer -->
 	</div>
-
 </body>
 </html>

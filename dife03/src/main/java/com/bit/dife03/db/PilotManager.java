@@ -42,6 +42,7 @@ public class PilotManager {
 		session.close();
 		return list;
 	}
+
 	//예약상담번호 
 	public static int sel_nextNo() {
 		int no = 0;
@@ -51,13 +52,27 @@ public class PilotManager {
 		return no;
 	}
 	
+	//예약상담 insert
+	public static int insertPilRes(PilReservationVo vo) {
+		int re = 0;
+		SqlSession session = factory.openSession();
+		re = session.insert("pilot.insertPilRes", vo);
+		if (re <= 0) {
+			session.rollback();
+		}else {
+			session.commit();
+		}
+		session.close();
+		return re;
+	}
+	
 	//레코드 수
 	public static int sel_pil_cnt(HashMap map) {
 		int cnt = 0;
 		SqlSession session = factory.openSession();
 		cnt = session.selectOne("pilot.sel_pil_cnt", map);
 		session.close();
-		System.out.println(cnt);
+		System.out.println("전체 레코드 수: "+cnt);
 		return cnt;
 	}
 	
@@ -70,27 +85,15 @@ public class PilotManager {
 		System.out.println("detail:"+infoVo.toString());
 		return infoVo;
 	}
-	
-	//파일럿 리스트
-	public static List<PilListVo> sel_pil(HashMap map){
-		List<PilListVo> list = null;
-		String id = "pilot.sel_pil";
-		sqlTest(map, id);
-		//SqlSession session = factory.openSession();
-		list = session.selectList(id, map);
-		session.close();
-		return list;
-	}
-	
-	/*
+
+	//파일럿 전체 리스트 출력(ajax)
 	public static List<PilListVo> selectPil_list(HashMap map) {
 		List<PilListVo> list = null;
 		SqlSession session = factory.openSession();
-		list = session.selectList("pilot.selectPil_list", map);
+		list = session.selectList("pilot.sel_pil2",map);
 		session.close();
 		return list;
 	}
-	*/
 	
 	//쿼리문 콘솔 출력 메소드
 	public static void sqlTest(Map map, String id) {
@@ -106,19 +109,5 @@ public class PilotManager {
 				sql2 = sql2.replaceFirst("\\?", "'"+value+"'");
 			}
 		System.out.println("sql:"+sql2);
-	}
-	//예약상담 insert
-	public static int insertPilRes(PilReservationVo vo) {
-		// TODO Auto-generated method stub
-		int re = 0;
-		SqlSession session = factory.openSession();
-		re = session.insert("pilot.insertPilRes", vo);
-		if (re <= 0) {
-			session.rollback();
-		}else {
-			session.commit();
-		}
-		session.close();
-		return re;
 	}
 }

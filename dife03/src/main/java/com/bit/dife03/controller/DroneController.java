@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,56 @@ public class DroneController {
 		this.dao = dao;
 	}
 	
+	@RequestMapping("/drone")
+	public ModelAndView sel_dro(HashMap map) {
+		ModelAndView mav = new ModelAndView();
+		List<DroneVo> list = dao.sel_droAll(map);
+		mav.addObject("list", list);
+		return mav;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/droAll")
+	public String sel_droAll(HashMap map, HttpSession session) {
+	String str = "";
+	ObjectMapper om = new ObjectMapper();
+	  
+	try {
+		str = om.writeValueAsString(dao.sel_droAll(map));
+	}catch (Exception e) {
+		// TODO: handle exception
+		System.out.println(e.getMessage());
+	    }
+	    return str;
+	}
+	
+	@RequestMapping("/droneDetail")
+	public ModelAndView sel_droDetail(String dro_no, HttpServletRequest request) {
+		System.out.println("dro no:"+dro_no);
+		ModelAndView mav = new ModelAndView();
+		String dtInfo = request.getParameter("dro_no");
+		mav.addObject("dtInfo", dao.sel_droDetail(dro_no));
+		//System.out.println("상세번호 : "+dtInfo);
+		return mav;
+	}
+	
+	/*
+	@ResponseBody
+	@RequestMapping("/droDtCon")
+	public String sel_droDetail(String dro_no) {
+	String str = "";
+	ObjectMapper om = new ObjectMapper();
+	  
+	try {
+		str = om.writeValueAsString(dao.sel_droDetail(dro_no));
+	}catch (Exception e) {
+		// TODO: handle exception
+		System.out.println(e.getMessage());
+	    }
+	    return str;
+	}
+	*/
+	/*
 	@ResponseBody
 	@RequestMapping(value = "/drone", method = RequestMethod.GET)
 	public ModelAndView sel_droAll(@RequestParam(value = "search", defaultValue = "")String search, 			
@@ -99,6 +150,7 @@ public class DroneController {
 		mav.addObject("pageStr", pageStr);
 		return mav;
 	}	
+	*/
 /*
 	@RequestMapping(value = "get_droCountList")
 	public String get_droCountList(int nowPage, int perPage) {
