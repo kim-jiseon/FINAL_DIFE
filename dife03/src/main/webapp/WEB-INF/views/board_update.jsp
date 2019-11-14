@@ -64,21 +64,22 @@ $(function(){
 		<!-- contents -->
 		<div id="contents">
 			<div class="container">
-			    <div id="board-title">글 작성</div>
+			    <div id="board-title">글 수정</div>
 			    <div id="board-input">
-			        <form action="board_insert" id="input-form" method="post" enctype="multipart/form-data">
+			        <form action="board_update" id="input-form" method="post" enctype="multipart/form-data">
                        <select name="boa_sort" id="input-select">
                            <option value="문의게시판">문의게시판</option>
                            <option value="후기게시판">후기게시판</option>
                        </select>
                        <span id="input-span">
-                        <input type="hidden" name="boa_no" value="${boa_no }">
-                        <input type="text" id="input-title" name="boa_title" placeholder="제목을 입력해주세요."><br>
+                        <input type="hidden" name="boa_no" value="${b.boa_no }">
+                        <input type="text" id="input-title" name="boa_title" value="${b.boa_title }" placeholder="제목을 입력해주세요."><br>
 			            <input type="text" id="input-name" value="${mem_name }" readonly="readonly">
 			            <input type="password" id="input-pwd" name="boa_pwd" placeholder="암호">
-			            <input type="text" id="input-star" name="boa_rating" placeholder="평점">
+			            <input type="text" id="input-star" name="boa_rating" value="${b.boa_rating }" placeholder="평점">
 			            </span><br>
-			            <textarea id="input-text" name="boa_contents" cols="30" rows="10" placeholder="내용을 작성해주세요."></textarea><br>
+			            <textarea id="input-text" name="boa_contents" cols="30" rows="10" placeholder="내용을 작성해주세요.">${b.boa_contents }</textarea><br>
+			            <input type="hidden" name="boa_fname" value="${b.boa_fname }">
 			            <input type="file" id="upload" name="upload" style="background-color: #e0e0e0; margin: 5px 20px; width: 94%">
 			            <button type="submit" id="submit" class="input-btn" style="margin-right: 20px;">작성완료</button>
 			            <button type="reset" id="reset" class="input-btn">취소</button>

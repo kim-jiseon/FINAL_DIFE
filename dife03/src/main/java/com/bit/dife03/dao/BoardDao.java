@@ -32,5 +32,8 @@ public class BoardDao {
 	public void updateStep(int boa_ref, int boa_step) {
 		BoardManager.updateStep(boa_ref, boa_step);
 	}
+	public int update(BoardVo vo) {
+		return BoardManager.updateBoard(vo);
+	}
 	
 }
