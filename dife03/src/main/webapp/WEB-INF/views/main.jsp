@@ -39,9 +39,8 @@
 			}
 		})
 
-		//게시판 조회수 순으로 4개 띄우기: 사진은 추후 DB업데이트 예
+		//게시판 조회수 순으로 4개 띄우기: 사진은 추후 DB업데이트 예정
 		$.ajax({url:"/main_board",success:function(data){
-			alert("성공");
 			 var list = eval(data);
 				$.each(list, function(idx, item){
 					console.log(item.boa_fname+","+item.mem_fname+","+item.mem_name+","+item.boa_view)
