@@ -27,7 +27,7 @@ public class DroneManager {
 	}
 	
 	/* 드론 페이지 초기화면 및 검색 카테고리 불러오기 */
-	public static List<DroneVo> sel_droAll(HashMap map) {
+	public static List<DroneVo> sel_droAll() {
 		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();		
 		list =  session.selectList("drone.sel_droAll");

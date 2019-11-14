@@ -33,21 +33,27 @@ public class DroneController {
 	}
 	
 	@RequestMapping("/drone")
-	public ModelAndView sel_dro(HashMap map) {
+	public ModelAndView sel_dro() {
 		ModelAndView mav = new ModelAndView();
-		List<DroneVo> list = dao.sel_droAll(map);
+		List<DroneVo> list = dao.sel_droAll();
 		mav.addObject("list", list);
 		return mav;
 	}
 	
 	@ResponseBody
 	@RequestMapping("/droAll")
-	public String sel_droAll(HashMap map, HttpSession session) {
+	public String sel_droAll(HttpSession session) {
 	String str = "";
+	DroneVo vo = new DroneVo();
+	int series = Integer.parseInt(vo.getDro_series());
+	System.out.println(series);
 	ObjectMapper om = new ObjectMapper();
 	  
 	try {
-		str = om.writeValueAsString(dao.sel_droAll(map));
+		str = om.writeValueAsString(dao.sel_droAll());
+		if(series > 1) {
+			
+		}
 	}catch (Exception e) {
 		// TODO: handle exception
 		System.out.println(e.getMessage());
