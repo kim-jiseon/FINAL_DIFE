@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
     <title>DIFE.com</title>
     <!-- 웹폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- fadeIn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="css/reset.css">
@@ -22,6 +22,7 @@
     $(function(){
     	//로그인 로그아웃 전환
     	var mem_id = "${mem_id}";
+
     	if(mem_id != '' && mem_id != null){
     		//var login = $("#category-2").find("a:first").html();
     		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
@@ -58,22 +59,20 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
-		
 	 	var month = 12;
 		var pageNUM = 1;
 		var isEnd = false;
-		var search = "";
 		
 		//전체 페이지 출력 메소드
-		function selectAll(search){ 
+	/* 	function selectAll(search){ */
 			search = {"month":month,"pageNUM":pageNUM,"mem_id":mem_id};
-			//console.log("month"+month+"pageNUM"+pageNUM+"mem_id"+mem_id);
 			$.ajax({type: "get",
 				url:"ordersList.do",
 				data: search,
 				dataType: "json",
 				contentType:"application/json;charset=UTF-8",
 				success:function(data){
+				
 					var len = data.length;
 					//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
 					if(len < 5){
@@ -81,12 +80,11 @@
 					}else{
 						isEnd = false;
 					}
-					console.log(data);
 					$.each(data, function(idx, item){
 						var date = new Date(item.ord_date);
 						var ord_date = date_to_str(date);
 						var list_div = $('<div></div>').addClass("mypage-orders-list");
-						var a = $("<a href=ordersDetail.do?ord_no="+item.ord_no+"><div class='mypage-orders-title'>["+ord_date+"] &nbsp;주문번호: "+item.ord_no+"&nbsp;&nbsp;/&nbsp; 상세: "+item.ord_amount+" 건<i class='fas fa-angle-right' id='icon'></i></div></a><hr>")
+						var a = $("<a href=ordersDetail.do?ord_no="+item.ord_no+"&mem_id="+mem_id+"><div class='mypage-orders-title'>["+ord_date+"] &nbsp;주문번호: "+item.ord_no+"&nbsp;&nbsp;/&nbsp; 상세: "+item.ord_amount+" 건<i class='fas fa-angle-right' id='icon'></i></div></a><hr>")
 						var info_div=$('<div></div>').addClass("mypage-orders-info");
 						var ul=$("<ul></ul>")
 						var li =$("<li></li>").html("결제금액&nbsp;&nbsp;&nbsp;"+item.ord_price+"원")
@@ -97,7 +95,7 @@
 						$("#mypage-bottom-right").append(list_div);
 					}) 
 			}})
-		 } 
+		/* } */
 
     	//전체 페이지 출력
 		selectAll(search);
@@ -136,6 +134,7 @@
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
         <jsp:include page="header.jsp"></jsp:include>
+
         <!-- //header -->
 
         <!-- contents -->
@@ -199,4 +198,6 @@
     </div>
 
 </body>
+
+
 </html>

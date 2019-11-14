@@ -207,12 +207,11 @@ public class OrdersController {
 		return str;
 	}
 	@RequestMapping("/ordersDetail.do")
-	public ModelAndView ordersDetail(HttpServletRequest request, String ord_no) {
+	public ModelAndView ordersDetail(String mem_id, String ord_no) {
 		System.out.println("컨트롤러진입");
 		 ModelAndView mav = new ModelAndView();
-		 String mem_id = null;
-		 mem_id= (String)request.getAttribute("mem_id");
-		 ord_no = "O000067";
+		 System.out.println(mem_id);
+		 System.out.println(ord_no);
 		 HashMap map = new HashMap();
 		 if(mem_id != null && ord_no != null)
 		 {
