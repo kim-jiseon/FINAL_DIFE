@@ -2,14 +2,12 @@
 #header{
     height: 120px;
 }
-
 #header-nav{
     height: 50px;
     line-height: 50px;
     background-color: #383A3F;
     vertical-align: middle;
 }
-
 svg{
 	padding-left: 10px;
 }
@@ -44,7 +42,6 @@ svg{
     font-weight: 700;
     margin-top: 7px;
 }
-
 .search li{
     width: 180px;
 }
@@ -58,7 +55,9 @@ svg{
 .sub-menu-2 li{
     font-size: 13px;
 }
-
+.search1 {
+	cursor: pointer;
+}
 ul li:hover .sub-menu-1 {
     display: block;
     position: absolute;
@@ -73,7 +72,7 @@ ul li:hover .sub-menu-1 ul{
     margin: 5px;
 }
 ul li:hover .sub-menu-1 ul li{
-    width: 200px;
+    width: 190px;
     border-bottom: 0.5px dotted #383A3F;
     text-align: left;
 }
@@ -81,11 +80,14 @@ ul li:hover .sub-menu-1 ul li:last-child{
     border-bottom: none;
 }
 ul li:hover .sub-menu-1 ul li:hover{
-    color: #fff;    
-    text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
-/*    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
+    color: #383A3F;    
+    font-weight: bold;
+    background-color: #FFF9C4;
+    -moz-border-radius: 10px; /* 모서리 둥글게 */  
+	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
+/*  text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
+    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
 }
-
 .fas fa-angle-right{
     float: right;
 }

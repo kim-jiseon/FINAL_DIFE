@@ -69,22 +69,25 @@ $(function() {
 		'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
 	];*/
 	var price_arr = [
-		'~ 10만원','10 ~ 20만원','20만원 ~'
+		'10만원 이하','10만원 ~ 20만원','20만원 이상'
 	];
-
+	
 	/* 검색 카테고리 */				
 	$.ajax({url:"/droAll",success:function(data){
-		var series_arr = eval(data);
+		var series_arr = eval(data);	
 		
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
-			var search_droSer = $("<li></li>").attr({"value":series_arr[idx], "idx":idx}).html(series_arr[idx]);
-			$("#hover_dro_01").append(search_droSer);
+			var search_droSer = $("<li></li>").attr({"id":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
+			var icon = $("<i></i>").addClass("fas fa-angle-right");
+			$(search_droSer).append(icon);
+			$("#sub_series_01").append(search_droSer);
 		})
-		
 		// 가격
 		$.each(price_arr, function(idx, prc){
 			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
+			var icon = $("<i></i>").addClass("fas fa-angle-right");
+			$(search_droPrc).append(icon);
 			$("#sub_price").append(search_droPrc);
 		})
 		// 상품 전체 목록
@@ -116,7 +119,7 @@ $(function() {
 
 			$("#drone-grid").append(block);
 			
-			/* 상품 클릭 시 해당 상세페이지로 이동
+			/* 상품 클릭 시 전달값 상태유지하면서 해당 상세페이지로 이동
 			$("#drone-grid").click(function(){
 				console.log("드론 상세페이지로 이동");
 				location.href="droneDetail";
@@ -124,19 +127,11 @@ $(function() {
 	    })
 	}})
 
-	/* 검색 고정 */
-		$("#datepicker").val($("#hidden-datepicker").val());
-		$("#sub-menu").val($("#hidden-series").val());
-		$("#sub_price").val($("#hidden-price").val());
 		
     /* 무한스크롤 적용 예정 */     
 
-    /* 카테고리(시리즈명) 마우스 hover 
-    $(".hover").mouseleave(function() {
-        $(this).removeClass("hover");
-    })  */
-     
-     /*	카테고리(시리즈명,가격) 클릭 시 상태유지
+/*    
+     카테고리(시리즈명,가격) 클릭 시 상태유지
      var searchSp = document.getElementById("search1");
      var listSp = document.getElementById("sub-menu"); 
      listSp.style.display = "none";
@@ -147,7 +142,7 @@ $(function() {
          else{
              listSp.style.display = "none";
          }
-     }); */
+     }) */
             
             /*
             // selectRentalDate
@@ -171,6 +166,11 @@ $(function() {
         });
         $("#calendar").datepicker();
         */
+
+	/* 검색 고정 */
+		$("#datepicker").val($("#hidden-datepicker").val());
+		$("#sub-menu").val($("#hidden-series").val());
+		$("#sub_price").val($("#hidden-price").val());
 	})
 </script>
 </head>
@@ -204,32 +204,31 @@ $(function() {
                           	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
                                 <input type="text" data-range="true"
                                             data-multiple-dates-separator=" - " data-language="ko"
-                                            class="datepicker-here" name="datepicker" id="datepicker" style="width:180px; height: 25px;"/>
+                                            class="datepicker-here" placeholder="     대여일 ~ 반납일 선택" name="datepicker" id="datepicker" style="width:180px; height: 25px;"/>
                         </div>
                     </div>                      	
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                            	<c:forEach var="d" items="${list }">
+                            	<!-- <c:forEach var="d" items="${list }"> -->
                                 	<li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
                                 	</li>
-                            	</c:forEach>                                                
+                            	<!-- </c:forEach> -->
                             </ul>
                         </div>
                     </li>                    
+                    </li>
+                    <!-- 제이쿼리 사용 -->
                     <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_price" id="sub_price">
-                                <!-- <li class="hover-dro">~ 10만원</li>
-                                <li class="hover-dro">10 ~ 20만원</li>
-                                <li class="hover-dro">20만원 ~</li> -->
                             </ul>
                         </div>
                     </li>
                     <button id="btnSch">검색</button>
                 </ul>
         	</div>
-        <!-- //header-nav -->
+        	<!-- //header-nav -->
         </div>
         <!-- //header -->
           
