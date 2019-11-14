@@ -185,20 +185,25 @@ $(function() {
 		                </ul>
 						<hr>
 						<!-- 제이쿼리 사용 -->
-						<li><p>대여점 : 
-							<span id="opr">
-								<select id="operR" name="operR" style="width: 150px; height: 30px;">
-								</select>
-							</span>
-							</p>
-						</li>
+						<ul>
+							<li><p>대여점 : 
+								<span id="opr">
+									<select id="operR" name="operR" style="width: 150px; height: 30px;">
+									</select>
+								</span>
+								</p>
+							</li>
+						</ul>
 						<!-- 제이쿼리 사용 -->
-						<li><p>수    량 :							 
-							<span id="opa">
-								<select id="operA" name="operA" style="width: 150px; height: 30px;">
-								</select>
-							</span>
-						</p></li>
+						<ul>
+							<li><p>수    량 :							 
+								<span id="opa">
+									<select id="operA" name="operA" style="width: 150px; height: 30px;">
+									</select>
+								</span>
+							</p>
+							</li>
+						</ul>
 						<hr>
 						<li>
 							<a href="payment?dro_no=${dtInfo.dro_no }">						
@@ -225,8 +230,7 @@ $(function() {
 			</div>
 			</div>
 			</div>
-			<hr>
-
+			
 			<!-- 드론 상세 정보 -->
 			<div class="content2">
 				<div class="block">
