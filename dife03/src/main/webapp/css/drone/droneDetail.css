@@ -86,15 +86,15 @@ ul{
 	display: grid;
 	float: left;
 	width: 500px;
-    margin-top: 100px;
-	margin-left: 250px;
+    margin-top: 50px;
+	margin-left: 170px;
 }
 .content1 #block2{
 	display: grid;
 	float: right;
 	width: 500px;
-    margin-top: 150px;
-	margin-right: 250px;
+    margin-top: 80px;
+	margin-right: 170px;
 }
 .content1 li{
     margin: 10px;
@@ -212,8 +212,9 @@ li{
 }
 .content2 .block{
 	display: block;
-	margin-top: 700px;
+	margin-top: 600px;
 	padding: 0px;
+	border-top: 1px dotted #a4a4a4;
 }
 #footer {
     text-align: center;
