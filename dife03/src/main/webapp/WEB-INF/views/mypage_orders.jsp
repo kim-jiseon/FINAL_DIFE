@@ -62,19 +62,20 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
-	 	var month = 0;
+	 	var month = 12;
 		var pageNUM = 1;
 		var isEnd = false;
 		
 		//전체 페이지 출력 메소드
-		function selectAll(search){
-			search = {"month":month,"pageNUM":pageNUM};
+	/* 	function selectAll(search){ */
+			search = {"month":month,"pageNUM":pageNUM,"mem_id":mem_id};
 			$.ajax({type: "get",
-				url:"/ordersList.do",
+				url:"ordersList.do",
 				data: search,
 				dataType: "json",
 				contentType:"application/json;charset=UTF-8",
 				success:function(data){
+					alert("ajax토신");
 					var len = data.length;
 					//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
 					if(len < 5){
@@ -83,15 +84,22 @@
 						isEnd = false;
 					}
 					$.each(data, function(idx, item){
-						Date date = new Date(item.ord_date);
+						var date = new Date(item.ord_date);
 						var ord_date = date_to_str(date);
-						console.log(ord_date);
-						var div = '<div class="mypage-orders-list"><div>'
-						var a = `<a href="ordersDetail"><div class="mypage-orders-title">[2019.07.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>`
-						
-					})
+						alert(ord_date);
+						var list_div = $('<div></div>').addClass("mypage-orders-list");
+						var a = $(`<a href="ordersDetail.do?ord_no=${item.ord_no}"><div class="mypage-orders-title">[${ord_date}] 주문번호: ${item.ord_no} 상세:${item.ord_amount}건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>`)
+						var info_div=$('<div></div>').addClass("mypage-orders-info");
+						var ul=$("<ul></ul>")
+						var li =$("<li></li>").html("결제금액&nbsp;&nbsp;&nbsp;"+item.ord_price)
+						var li2 =$("<li></li>").html("주문상태&nbsp;&nbsp;&nbsp; 결제완료")
+						$(ul).append(li,li2);
+						$(info_div).append(ul);
+						$(list_div).append(a,info_div);
+						$("#mypage-bottom-right").append(list_div);
+					}) 
 			}})
-		}
+		/* } */
 
     	//전체 페이지 출력
 		selectAll(search);
@@ -195,77 +203,5 @@
 
 </body>
 
-        <!-- //header -->
-
-        <!-- contents -->
-        <div id="contents">
-            <div class="container">
-               <div  class="mypage-grid">
-                <jsp:include page="mypage.jsp"></jsp:include>
-                <div id="mypage-bottom" class="mypage-grid-nav">
-                    <div id="mypage-bottom-left">
-                        <nav>
-                            <ul>
-                                <li class="mypage-category"><a href="mypage_orders">주문내역<i class="fas fa-angle-right" id="icon"></i></a></li>
-                                <li class="mypage-category"><a href="mypage_board">내글 관리<i class="fas fa-angle-right" id="icon"></i></a></li>
-                                <li class="mypage-category"><a href="mypage_emoney">적립금 및 쿠폰<i class="fas fa-angle-right" id="icon"></i></a></li>
-                                <li class="mypage-category"><a href="#">개인정보수정<i class="fas fa-angle-right" id="icon"></i></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div id="mypage-bottom-right">
-                       <div id="mypage-orders">
-                           <span>주문내역</span>
-                           <span>
-                               <select name="mypage-orders-date" id="mypage-orders-date">
-                                   <option value="0">전체</option>
-                                   <option value="1">1개월</option>
-                                   <option value="3">3개월</option>
-                               </select>
-                           </span>
-                        </div><hr id="hr">
-                        <div class="mypage-orders-list">
-                            <a href="ordersDetail"><div class="mypage-orders-title">[2019.07.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
-                            <div class="mypage-orders-info">
-                                <ul>
-                                    <li>주문번호&nbsp;&nbsp;&nbsp; 156928405958</li>
-                                    <li>결제금액&nbsp;&nbsp;&nbsp; 55,000 원</li>
-                                    <li>주문상태&nbsp;&nbsp;&nbsp; 반납완료</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mypage-orders-list">
-                            <a href="ordersDetail"><div class="mypage-orders-title">[2019.10.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
-                            <div class="mypage-orders-info">
-                                <ul>
-                                    <li>주문번호&nbsp;&nbsp;&nbsp; 1569888755958</li>
-                                    <li>결제금액&nbsp;&nbsp;&nbsp; 55,000 원</li>
-                                    <li>주문상태&nbsp;&nbsp;&nbsp; 대여중</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                 <!-- 페이징처리 -->
-                 <div id="pilot-paging">
-                     <span class="inner_paging">
-              			${page }
-                     </span>
-                 </div>
-                 <!-- //페이징처 -->
-            </div>
-            </div>
-        </div>
-        <!-- //contents -->
-
-        <!-- footer -->
-         <jsp:include page="footer.jsp"></jsp:include>
-        <input type="hidden" value="${category }" id="hidden-category">
-		<input type="hidden" value="${location }" id="hidden-location">
-        <!-- //footer -->
-    </div>
-
-</body>
 
 </html>

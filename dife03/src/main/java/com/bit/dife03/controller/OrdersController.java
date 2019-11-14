@@ -169,17 +169,19 @@ public class OrdersController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "/ordersList.do", method = RequestMethod.GET)
-	public String selectOrdList(HttpServletRequest req,@RequestParam(value = "month", defaultValue = "0") int month,@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
+	public String selectOrdList(String mem_id,@RequestParam(value = "month", defaultValue = "12") int month,@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
+	System.out.println("controller"+"진입");
 		String str = "";
-		String mem_id=null;
+		
 		HashMap map = new HashMap();
-		map.put("category", month);
+		map.put("month", month);
 		System.out.println(month);
-		mem_id=(String)req.getAttribute("mem_id");
 		if(mem_id != null)
 		{
 			map.put("mem_id",mem_id);
+			System.out.println("memid:" + mem_id);
 			totalRecord = dao.mem_ord_max(mem_id);
+			System.out.println(totalRecord);
 			totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);
 			System.out.println("전체 페이지수: "+totalPage);
 			System.out.println("pageNUM:"+pageNUM);
@@ -201,6 +203,7 @@ public class OrdersController {
 				System.out.println("예외발생"+e.getMessage());
 			}
 		}
+		System.out.println("ㅓ-json:"+str);
 		return str;
 	}
 	@RequestMapping("/ordersDetail.do")
