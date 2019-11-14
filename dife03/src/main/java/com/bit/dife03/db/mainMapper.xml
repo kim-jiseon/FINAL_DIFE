@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main">
-<select id="sel_board" resultType="boardVo">
-	select * from board where boa_sort like '%후기%' and rownum <![CDATA[<=]]> 4  order by boa_view desc
+<select id="sel_board" resultType="mainVo">
+	select mem_name, mem_fname, boa_fname, boa_view from board b, member m where b.mem_no = m.mem_no and boa_sort like '%후기%' and rownum <![CDATA[<=]]> 4  order by boa_view desc
 </select>
 </mapper>

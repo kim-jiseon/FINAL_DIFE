@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.bit.dife03.vo.BoardVo;
+import com.bit.dife03.vo.MainVo;
 
 public class MainManager {
 	public static SqlSessionFactory factory;
@@ -24,8 +25,9 @@ public class MainManager {
 		}
 	}
 	
-	public static List<BoardVo> sel_board(){
-		List<BoardVo> list = null;
+	public static List<MainVo> sel_board(){
+		List<MainVo> list = null;
+		System.out.println("manager작동");
 		SqlSession session = factory.openSession();
 		list = session.selectList("main.sel_board");
 		session.close();

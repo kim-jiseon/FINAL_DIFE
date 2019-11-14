@@ -38,39 +38,24 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
-		
-		/*
-		<div class="grid-cell2">
-          				<div class="sns-top">
-          				<img alt="" src="img/main/photo1.jpg" class="user-photo">
-          				</div>
-          				<div class="sns-bottom">
-          				    <div class="user-info">
-          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p>
-          				      </div>
-          				    <div class="user-like">
-                                <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
-                                <!-- 
-                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
-                                -->
-                                <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
-          				    </div>
-          				</div>
-          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
-        </div>
-		*/
-		
-		//게시판 조회수 순으로 4개 띄우기
-		
-		/* $.ajax({url:"/main",success:function(data){
-			val list = eval(data);
+
+		//게시판 조회수 순으로 4개 띄우기: 사진은 추후 DB업데이트 예
+		$.ajax({url:"/main_board",success:function(data){
 			alert("성공");
+			 var list = eval(data);
 				$.each(list, function(idx, item){
-				
-				}) 
-		}}) */
-		
+					console.log(item.boa_fname+","+item.mem_fname+","+item.mem_name+","+item.boa_view)
+					var user_photo = $("<img/>").addClass("user-photo").attr("src","img/board/"+item.boa_fname);
+					var user_profile = $("<img/>").addClass("user-profile").attr("src","img/member/"+item.mem_fname);
+					var user_name = $("<p></p>").addClass("user-name").html(item.mem_name);
+					var like_count = $("<p></p>").addClass("like-count").html(item.boa_view+" Likes");
+					var like_count_img = $("<img/>").addClass("user-like-count").attr("src","img/main/instagram-heart-pink.png");
+					
+					$("#sns-top-"+(idx+1)).append(user_photo);
+					$("#user-info-"+(idx+1)).append(user_profile,user_name);
+					$("#count-"+(idx+1)).append(like_count_img,like_count);
+				})
+		}})
 	}) 
 </script>
 </head>
@@ -148,13 +133,13 @@
           		<div class="grid-sns">
           		<!-- ajax 구현 -->
           			<div class="grid-cell2">
-          				<div class="sns-top">
-          				<img alt="" src="img/main/photo1.jpg" class="user-photo">
+          				<div class="sns-top" id="sns-top-1">
+          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
           				</div>
           				<div class="sns-bottom">
-          				    <div class="user-info">
-          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p>
+          				    <div class="user-info" id="user-info-1">
+          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p> -->
           				      </div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
@@ -164,17 +149,17 @@
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
+          				<div class="count" id="count-1"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
           			</div>
           			
           			<div class="grid-cell2">
-          				<div class="sns-top">
-          				<img alt="" src="img/main/photo2.jpg" class="user-photo">
+          				<div class="sns-top" id="sns-top-2">
+          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
           				</div>
           				<div class="sns-bottom">
-          				    <div class="user-info">
-          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p>
+          				    <div class="user-info" id="user-info-2">
+          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p> -->
           				      </div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
@@ -184,17 +169,17 @@
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
+          				<div class="count" id="count-2"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
           			</div>
           			
           			<div class="grid-cell2">
-          				<div class="sns-top">
-          				<img alt="" src="img/main/photo3.jpg" class="user-photo">
+          				<div class="sns-top" id="sns-top-3">
+          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
           				</div>
           				<div class="sns-bottom">
-          				    <div class="user-info">
-          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p>
+          				    <div class="user-info" id="user-info-3">
+          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p> -->
           				      </div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
@@ -204,17 +189,17 @@
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
+          				<div class="count" id="count-3"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
           			</div>
           			
           			<div class="grid-cell2">
-          				<div class="sns-top">
-          				<img alt="" src="img/main/photo4.jpg" class="user-photo">
+          				<div class="sns-top" id="sns-top-4">
+          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
           				</div>
           				<div class="sns-bottom">
-          				    <div class="user-info">
-          				        <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p>
+          				    <div class="user-info" id="user-info-4">
+          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
+          				        <p class="user-name">username</p> -->
           				      </div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
@@ -224,7 +209,7 @@
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count"><img src="img/main/instagram-heart-pink.png" alt="" class="user-like-count"><p class="like-count">2019 Likes</p></div>
+          				<div class="count" id="count-4"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
           			</div>
           			
           		</div>

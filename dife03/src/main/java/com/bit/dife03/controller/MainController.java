@@ -23,19 +23,20 @@ public class MainController {
 		
 	}
 	
-//	@ResponseBody
-//	@RequestMapping("/main")
-//	public String sel_board() {
-//		String str = "";
-//		try {
-//			ObjectMapper mapper = new ObjectMapper();
-//			str = mapper.writeValueAsString(dao.sel_board());
-//			System.out.println("string:"+str);
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			System.out.println("예외:"+e.getMessage());
-//		}
-//		return str;
-//	}
+	@ResponseBody
+	@RequestMapping("/main_board")
+	public String sel_board() {
+		String str = "";
+		System.out.println("controller작동");
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			str = mapper.writeValueAsString(dao.sel_board());
+			System.out.println("string:"+str);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("예외:"+e.getMessage());
+		}
+		return str;
+	}
 	
 }
