@@ -86,6 +86,7 @@
 					$.each(data, function(idx, item){
 						var date = new Date(item.ord_date);
 						var ord_date = date_to_str(date);
+						
 						alert(ord_date);
 						var list_div = $('<div></div>').addClass("mypage-orders-list");
 						var a = $(`<a href="ordersDetail.do?ord_no=${item.ord_no}"><div class="mypage-orders-title">[${ord_date}] 주문번호: ${item.ord_no} 상세:${item.ord_amount}건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>`)
