@@ -115,7 +115,7 @@
 	    					mem_point = Number(item.mem_point);
 	    				}
 	    			tr=$("<tr></tr>");
-	    			var td1=$("<td></td>").html(item.bas_no);
+	    			var td1=$("<td></td>").html(item.bas_no).css({"font-size":"17px","font-weight":"bold"});
 	    			var td2=$("<td></td>");
 	    			var input=$("<input type='checkbox' name='cart_no' checked='checked' class='cart_no' data-cartNum="+item.bas_no+">").attr({"pos_no":item.pos_no,"mem_no":item.mem_no,"ren_date":rental,"ret_date":re_date,"point":item.point,"amount":item.bas_amount,"price":item.bas_price});
 	    			$(td2).append(input);
@@ -144,19 +144,19 @@
 	    					td3=$("<td></td>");
 	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td3).append(product_img);
-	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series);
-	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).css({"font-size":"18px","font-weight":"bold"});
+	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).css({"font-size":"17px","font-weight":"bold"});
 	    					td4=$("<td></td>");
 	    					$(td4).append(p1,p2);
 	    					td5=$("<td></td>");
-	    					p3 = $("<p></p>").html(item.bas_price);
+	    					p3 = $("<p></p>").html(item.bas_price).css({"font-size":"17px","font-weight":"bold"});
 	    					$(td5).append(p3);
-	    					p4= $("<p></p>").html(item.bas_amount);
+	    					p4= $("<p></p>").html(item.bas_amount).css({"font-size":"17px","font-weight":"bold"});
 	    					td6=$("<td></td>");
 	    					$(td6).append(p4);
 	    					td7=$("<td></td>");
-	    					p5=$("<p></p>").html(item.bas_price);
-	    					p6=$("<p></p>").html(item.point);
+	    					p5=$("<p></p>").html(item.bas_price).css({"font-size":"20px","font-weight":"bold"});
+	    					p6=$("<p></p>").html(item.point).css({"font-size":"15px","font-weight":"bold"});
 	    					$(td7).append(p5,p6);
 	    					td8 = $("<td></td>");
 	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
@@ -167,19 +167,19 @@
 	    				td3=$("<td></td>");
     					product_img=$("<img/>").attr({"src":"img/"+item.pil_profile,"width":"62","height":"68"});
     					$(td3).append(product_img);
-    					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_career+"년");
-    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date);
+    					p1=$("<p></p>").html(item.mem_name+"/"+item.pil_career+"년").css({"font-size":"20px","font-weight":"bold"});
+    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).css({"font-size":"17px","font-weight":"bold"});
     					td4=$("<td></td>");
     					$(td4).append(p1,p2);
     					td5=$("<td></td>");
-    					p3 = $("<p></p>").html(item.bas_price);
+    					p3 = $("<p></p>").html(item.bas_price).css({"font-size":"17px","font-weight":"bold"});
     					$(td5).append(p3);
-    					p4= $("<p></p>").html(item.bas_amount);
+    					p4= $("<p></p>").html(item.bas_amount).css({"font-size":"17px","font-weight":"bold"});
     					td6=$("<td></td>");
     					$(td6).append(p4);
     					td7=$("<td></td>");
-    					p5=$("<p></p>").html(item.bas_price);
-    					p6=$("<p></p>").html(item.point);
+    					p5=$("<p></p>").html(item.bas_price).css({"font-size":"20px","font-weight":"bold"});
+    					p6=$("<p></p>").html(item.point).css({"font-size":"15px","font-weight":"bold"});
     					$(td7).append(p5,p6);
     					td8 = $("<td></td>");
     					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
@@ -361,14 +361,14 @@
                                  <col>
                              </colgroup>
 			<thead>
-                            <th>번호</th>
-                            <th style="cursor: pointer"><input type="checkbox" class="chk_all" checked='checked'></th>
-                            <th></th>
-                            <th>상품명</th>
-                            <th>판매가</th>
-                            <th>수량</th>
-                            <th>주문금액&nbsp;(적립금)</th>
-                            <th>주문관리</th>
+                            <th style="cursor: pointer; font-size:25px;">번호</th>
+                            <th style="cursor: pointer; font-size:25px;"><input type="checkbox" class="chk_all" checked='checked'></th>
+                            <th style="font-size:25px;"></th>
+                           	<th style="font-size:25px;">상품명</th>
+                            <th style="font-size:25px;">판매가</th>
+                            <th style="font-size:25px;">수량</th>
+                            <th style="font-size:20px; font-weight:1200">주문금액&nbsp;(적립금)</th>
+                            <th style="font-size:25px;">주문관리</th>
                         </thead>
                         <tbody id="table_content">
                       		</tbody>

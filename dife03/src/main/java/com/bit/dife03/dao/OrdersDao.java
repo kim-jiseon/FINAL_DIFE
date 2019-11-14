@@ -60,7 +60,7 @@ public class OrdersDao {
 		// TODO Auto-generated method stub
 		return OrdersManager.mem_ord_list(map);
 	}
-	public String allDelBas(String mem_id) {
+	public int allDelBas(String mem_id) {
 		// TODO Auto-generated method stub
 		return OrdersManager.allDelBas(mem_id);
 	}

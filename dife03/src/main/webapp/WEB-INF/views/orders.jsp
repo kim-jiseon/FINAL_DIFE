@@ -188,10 +188,12 @@
 		   	        	
 		   	        	$("#order").click(function(){
 		   	        		/* 결제페이지로 sum값 전달 */
-		   	        		$.ajax({url:"/delBasket.do",success:function(data){
-		   	        			if(data === "1")
-		   	        				{
-		   	        			location.href="payKG?sum="+sum;
+		   	        		$.ajax({url:"/delBasket.do",data:{"mem_id":mem_id},success:function(data){
+		   	        		console.log(data)
+		   	   				console.log(typeof(data))
+		   	        			if(data == "1")
+		   	        				{	
+		   	        					location.href="payKG?sum="+sum;
 		   	        				}
 		   	        		}})
 		   	        		

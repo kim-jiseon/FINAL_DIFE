@@ -168,79 +168,50 @@ public class OrdersController {
 		return str;
 	}
 	@ResponseBody
-	@RequestMapping("/ordersList.do")
-	public ModelAndView paging(@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM,
-								@RequestParam(value = "month", defaultValue = "2") int month ,
-								HttpSession session,
-								HttpServletRequest req) {
-		
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping(value = "/ordersList.do", method = RequestMethod.GET)
+	public String selectOrdList(HttpServletRequest req,@RequestParam(value = "month", defaultValue = "0") int month,@RequestParam(value = "pageNUM", defaultValue = "1") int pageNUM) {
+		String str = "";
+		String mem_id=null;
 		HashMap map = new HashMap();
-		String mem_id = null;
-		System.out.println("지역:"+month);
-		System.out.println("카테고리:"+pageNUM);
-		mem_id =(String)req.getAttribute("mem_id");
-		if(mem_id !=null)
+		map.put("category", month);
+		mem_id=(String)req.getAttribute("mem_id");
+		if(mem_id != null)
 		{
-			mav.addObject("category", month);
-			session.setAttribute("category", month);
-			map.put("mem_id",mem_id);
-			map.put("month", month);
 			
+			map.put("mem_id",mem_id);
 			totalRecord = dao.mem_ord_max(mem_id);
 			totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);
-			System.out.println("전체 페이지수"+totalPage);
+			System.out.println("전체 페이지수: "+totalPage);
+			System.out.println("pageNUM:"+pageNUM);
 			
 			//해당페이지의 시작글번호, 끝번호
 			int start = (pageNUM-1)*pageRecord+1;
 			int end = start+pageRecord-1;
 			
-			System.out.println("start: "+start);
-			System.out.println("end: "+end);
-			
 			map.put("start", start);
 			map.put("end", end);
 			
-			mav.addObject("list", dao.mem_ord_list(map));
-			
-			//보고있는 페이지의 번호가 전체 페이지보다 클 떄
-			if(totalPage < pageNUM) {
-				pageNUM = totalPage;
+			System.out.println(month+", start: "+start+", end: "+end);
+			try {
+				ObjectMapper mapper = new ObjectMapper();
+				str = mapper.writeValueAsString(dao.mem_ord_list(map));
+				System.out.println("controller"+str);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("예외발생"+e.getMessage());
 			}
-			//시작페이지 및 끝페이지 번호 구하기(1~5/6~10/... 5단위로 보여주기)
-			int pageCount = 5;
-			int startPage = ((pageNUM-1)/pageCount)*pageCount+1;
-			int endPage = startPage+pageCount-1;
-			//끝페이지가 총페이지 수보다 크게 계산될 때
-			if(endPage > totalPage) {
-				endPage = totalPage;
-			}
-		
-			String page = "";
-			
-			if(startPage > 1) {
-				page = page +"<a href='ordersList.do?category="+month+"&pageNUM="+(pageNUM-1)+"' class='link-page-prev'>이전</a>";
-			}
-			for (int i = startPage; i <= endPage; i++) {
-				page = page + "<a href='ordersList.do?category="+month+"&pageNUM="+i+"' class='link-page'>"+i+"</a>";
-			}
-			if (endPage < totalPage) {
-				page = page + "<a href='ordersList.do?category="+month+"&pageNUM="+(endPage+1)+"' class='link-page-next'>다음</a>";
-			}
-			mav.addObject("page", page);
 		}
-		return mav;
+		return str;
 	}
 	@RequestMapping("/ordersDetail.do")
-	public ModelAndView ordersDetail(HttpServletRequest request,String ord_no) {
+	public ModelAndView ordersDetail(HttpServletRequest request, String ord_no) {
 		System.out.println("컨트롤러진입");
 		 ModelAndView mav = new ModelAndView();
 		 String mem_id = null;
-		/* mem_id= (String)request.getAttribute("mem_id"); */
-		 mem_id = "hong";
+		 mem_id= (String)request.getAttribute("mem_id");
 		 ord_no = "O000067";
 		 HashMap map = new HashMap();
-		 if(mem_id != null && ord_no !=null)
+		 if(mem_id != null && ord_no != null)
 		 {
 		 map.put("mem_id", mem_id);
 		 map.put("ord_no", ord_no);
@@ -251,20 +222,21 @@ public class OrdersController {
 		 return mav;
 	}
 	//장바구니 전체 삭제 및 주문 번호 0 -> 1로 변경
+	//원래 결제시에 0->1로 변경해야하는데 시간 관계상 일단 주문시 결제완료로 변경 업데이트..
 	@ResponseBody
 	@RequestMapping("/delBasket.do")
-	public String allDelBas(HttpServletRequest request)
-	{
-		String mem_id = (String)request.getAttribute("mem_id");
-		String str= "";
-		ObjectMapper ob = new ObjectMapper();
-		try {
-		str +=	ob.writeValueAsString(dao.allDelBas(mem_id));
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public int allDelBas(HttpServletRequest request,String mem_id)
+	{	int r= 0;
+		/*
+		 * String mem_id=null; mem_id = (String)request.getAttribute("mem_id");
+		 */
+		System.out.println("회원 아이디:"+mem_id);
+		if(mem_id !=null)
+		{
+			r= dao.allDelBas(mem_id);
 		}
-		return str;
+		System.out.println(r);
+		return r;
 	}
 	
 }
