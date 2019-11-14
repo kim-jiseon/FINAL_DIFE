@@ -5,6 +5,7 @@
 <configuration>
 <properties resource="com/bit/dife03/db/db.properties"/>
 <typeAliases>
+	<typeAlias type="com.bit.dife03.vo.MainVo" alias="mainVo"/>
 	<typeAlias type="com.bit.dife03.vo.PilListVo" alias="pilListVo"/>
 	<typeAlias type="com.bit.dife03.vo.PilReservationVo" alias="reservationVo"/>
 	<typeAlias type="com.bit.dife03.vo.MemberVo" alias="memberVo"/>
