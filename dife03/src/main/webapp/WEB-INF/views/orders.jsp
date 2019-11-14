@@ -183,7 +183,7 @@
 		   	        				 alert("ajax작동");
 		   	        		 }}); 
 		   	        		
-		   					
+		   					   
 		   				});
 		   	        	
 		   	        	$("#order").click(function(){
