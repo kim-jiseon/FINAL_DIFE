@@ -131,7 +131,7 @@
     #contents{
         height: auto;
         margin: 0px 0px;
-        background-color: #f2f2f2;
+        background-color: #f7f8f9;
     }
     /*슬라이드 배너*/
     .swiper-slide > a > img{
@@ -149,19 +149,18 @@
 	#contents-wiget{
 		height: 200px;
 		margin: 100px 0px;
-        padding: 70px 100px;
+        padding: 70px 25px;
 		color: #343434;
-        
 	}
 	
 	.grid-wiget{
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
-		/*grid-gap: 3.5vw;*/
+		grid-gap: 3.5vw;
 	}
 	
 	.grid-cell1{
-		height: 200px;
+		height: 240px;
         padding: 10px;
 		text-align:center;
 	}
