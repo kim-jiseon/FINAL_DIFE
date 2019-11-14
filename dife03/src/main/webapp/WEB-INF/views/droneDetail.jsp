@@ -77,54 +77,53 @@ $(function() {
    	})
    	
    	/* 주문 및 장바구니 : 로그인 후 가능 */
-   	$.ajax({url:"/droRental",success:function(data){
-   		// 주문하기
-   	   	$("#btnOrder").click(function(){
-   	   		console.log("드론 주문하기");
-   	  		//datepicker값 가져오기
-   			var date = $(".datepicker-here").val();
-   			var array = date.split(" - ");
-   			var con_start = array[0];
-   			var con_end = array[1];
-
-   			console.log(con_start);
-   			var dro_no = "${dtInfo.dro_no}";
-   			var ren_no = "${dtInfo.ren_no}";
-   			var pos_amount = "${dtInfo.pos_amount}";
+   	// 장바구니 담기
+	$("#btnBasket").click(function(){
+		//datepicker값 가져오기
+		var date = $(".datepicker-here").val();
+		var array = date.split(" - ");
+		var con_start = array[0];
+		var con_end = array[1];
+		// 장바구니 페이지에 담을 값
+		var dro_no = "${dtInfo.dro_no}";
+		var ren_no = "${dtInfo.ren_no}";
+		var pos_amount = $("#operA").val();
+		var bas_price = "${dtInfo.dro_price}"
+		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id}
+   	   	
+		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
+   	   		alert("ajax통신");
    			
+   	   		/*if(mem_id == null || mem_id == ''){
+   	   			alert("로그인을 해주세요.");
+   	   			location.href="/signIn";
+   	   		}
+   	   		else{
+   				$("#mypage").attr("href","mypage_orders");
+   			}*/
+   	 	}})
+   	})	
+   	// 주문하기
+	$("#btnOrder").click(function(){
+		//datepicker값 가져오기
+		var date = $(".datepicker-here").val();
+		var array = date.split(" - ");
+		var con_start = array[0];
+		var con_end = array[1];
+		// 주문 페이지에 담을 값
+		var pos_amount = $("#operA").val();
+		var dro_price = "${dtInfo.dro_price}";
+		var data = {"ord_amount" : pos_amount, "ord_price":dro_price,"ord_date":con_start}
+		
+		$.ajax({url:"/droRental", traditional:true, contentType:'application/json', data:data, success:function(data){
    	   		if(mem_id == null || mem_id == ''){
    	   			alert("로그인을 해주세요.");
    	   			location.href="/signIn";
    	   		}else{
    				$("#mypage").attr("href","orders");
    			}
-   	   	})
-	}})   	
-	$.ajax({url:"/droBasket",success:function(data){
-   	   	// 장바구니 담기
-   	   	$("#btnBasket").click(function(){
-   	   		console.log("드론 장바구니에 추가");
-   	   		//datepicker값 가져오기
-   			var date = $(".datepicker-here").val();
-   			var array = date.split(" - ");
-   			var con_start = array[0];
-   			var con_end = array[1];
-
-   			console.log(con_start);
-   			var dro_no = "${dtInfo.dro_no}";
-   			var ren_no = "${dtInfo.ren_no}";
-   			var pos_amount = "${dtInfo.pos_amount}";
-   			
-   	   		if(mem_id == null || mem_id == ''){
-   	   			alert("로그인을 해주세요.");
-   	   			location.href="/signIn";
-   	   		}
-   	   		else{
-   				$("#mypage").attr("href","mypage_orders");
-   			}
-   	   	})
-	}})
-   	
+		}})
+	})   	
    	
    	/* 상세정보 불러오기
    	$.ajax({url:"/droDtCon", success:function(data){
@@ -243,7 +242,8 @@ $(function() {
 							</a>
 						</li>
 						<li>
-	                       	<a href="basket?dro_no=${dtInfo.dro_no }">
+							<!-- 버튼 클릭 시 해당페이지로 자동이동하지 않도록 설정 -->
+	                       	<a href="javascript:void(0)">
 	                       	<button id="btnBasket" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
 	                       		<strong>장바구니 담기</strong>                               
                             </button>
@@ -251,7 +251,7 @@ $(function() {
                             <!-- * modal 추가 예정 -->
                         </li>
 						<li>
-							<a href="drone?dro_no=${dtInfo.dro_no }">
+							<a href="javascript:void(0)">
 								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>쇼핑 계속하기</strong>
 								</button>
 							</a>
