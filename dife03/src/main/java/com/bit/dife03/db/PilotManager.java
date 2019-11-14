@@ -42,7 +42,7 @@ public class PilotManager {
 		session.close();
 		return list;
 	}
-	
+
 	//예약상담번호 
 	public static int sel_nextNo() {
 		int no = 0;

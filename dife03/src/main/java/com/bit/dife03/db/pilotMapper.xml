@@ -8,6 +8,7 @@
 	select c.*, pil_title,(select mem_name from member where mem_no in (select mem_no from pilot where pil_no in (select pil_no from pil_list where list_no in (select list_no from condition where mem_no=#{mem_no})))) mem_name
 from condition c, pil_list pl 
 where c.list_no = pl.list_no and mem_no = #{mem_no}
+
 </select>
 <!-- 예약상담 insert -->
 <insert id="insertPilRes">

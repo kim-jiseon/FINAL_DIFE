@@ -36,11 +36,13 @@ public class PilotController {
 		this.dao = dao;
 	}
 	
+
 	@RequestMapping("/pilot")
 	public void pilot() {
 		
 	}
 	
+
 	//예약상담 select
 	@RequestMapping("/mypage_board")
 	public ModelAndView sel_pilRes(HttpSession session) {
@@ -49,7 +51,7 @@ public class PilotController {
 		mav.addObject("list", dao.sel_pilRes(mem_no));
 		return mav;
 	}
-	
+
 	//예약상담 팝업창
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
 	public ModelAndView pilot_popup(String startDate, String endDate, String list_no, int con_sort, String con_loc) {

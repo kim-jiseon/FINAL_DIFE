@@ -36,6 +36,7 @@
 		if (mem_id == '' || mem_id == null) {
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
+
 		
 		//마이페이지 이동
 		$("#mypage").click(function(){
@@ -48,6 +49,7 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
+
 
 		//탭전환
 		$('dt').click(function() {
