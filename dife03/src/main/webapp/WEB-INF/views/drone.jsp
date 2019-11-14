@@ -65,23 +65,23 @@ $(function() {
 						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
 						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
 					];	*/
-	/*var series_arr = [
+	var series_arr = [
 		'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
-	];*/
+	];
 	var price_arr = [
 		'10만원 이하','10만원 ~ 20만원','20만원 이상'
 	];
 	
 	/* 검색 카테고리 */				
 	$.ajax({url:"/droAll",success:function(data){
-		var series_arr = eval(data);	
+		//var series_arr = "${dtInfo.dro_series}";	
 		
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
-			var search_droSer = $("<li></li>").attr({"id":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
+			var search_droSer = $("<li></li>").attr({"id":"hover_dro_01", "name":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
 			var icon = $("<i></i>").addClass("fas fa-angle-right");
 			$(search_droSer).append(icon);
-			$("#sub_series_01").append(search_droSer);
+			$("#sub-menu").append(search_droSer);
 		})
 		// 가격
 		$.each(price_arr, function(idx, prc){
@@ -103,6 +103,9 @@ $(function() {
      		var figcaption = $("<figcaption></figcaption>");
 			var dro_photo = $("<img/>").attr({"alt":item.dro_name, "src":"img/drone/"+item.dro_photo, width:"300", height:"450"}).addClass("dro-list-img");
 			var won = $("<i></i>").html(" / ").addClass("fas fa-won-sign");
+			var line = $("<span></span>").html(" / ");
+			// won 사이즈 키워야됨. css에서 안됨.
+			var won = $("<i></i>").attr({"font-size":"20px"}).addClass("fas fa-won-sign");
 			var dro_price = $("<span></span>").html(item.dro_price);
 			var dro_info = $("<p></p>").addClass("dro-list-info").attr("id","dro_info").html(item.dro_info);
 			var heading = $("<div></div>").addClass("heading");
@@ -122,7 +125,106 @@ $(function() {
 	}})
 
 		
-    /* 무한스크롤 적용 예정 */     
+    /* 무한스크롤 적용 예정 */   
+    
+    /* 챗봇형식으로 상품비교 */
+    $(function() {
+  		var INDEX = 0; 
+  		$("#chat-submit").click(function(e) {
+		    e.preventDefault();
+		    var msg = $("#chat-input").val(); 
+		    if(msg.trim() == ''){
+		      return false;
+	    }
+    	generate_message(msg, 'self');
+    	var buttons = [
+	        {
+	          name: 'Existing User',
+	          value: 'existing'
+	        },
+	        {
+	          name: 'New User',
+	          value: 'new'
+	        }
+      	];
+    	setTimeout(function() {      
+      		generate_message(msg, 'user');  
+    		}, 1000)
+  		})
+  
+  		function generate_message(msg, type) {
+		    INDEX++;
+		    var str="";
+		    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+		    str += "          <span class=\"msg-avatar\">";
+		    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+		    str += "          <\/span>";
+		    str += "          <div class=\"cm-msg-text\">";
+		    str += msg;
+		    str += "          <\/div>";
+		    str += "        <\/div>";
+		    $(".chat-logs").append(str);
+		    $("#cm-msg-"+INDEX).hide().fadeIn(300);
+		    if(type == 'self'){
+		     	$("#chat-input").val(''); 
+		    }    
+    		$(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
+		}  
+  
+  		function generate_button_message(msg, buttons){    
+	    /* Buttons should be object array 
+	      [
+	        {
+	          name: 'Existing User',
+	          value: 'existing'
+	        },
+	        {
+	          name: 'New User',
+	          value: 'new'
+	        }
+	      ]
+	    */
+	    INDEX++;
+	    var btn_obj = buttons.map(function(button) {
+	       return  "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\""+button.value+"\">"+button.name+"<\/a><\/li>";
+	    }).join('');
+	    var str="";
+	    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
+	    str += "          <span class=\"msg-avatar\">";
+	    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+	    str += "          <\/span>";
+	    str += "          <div class=\"cm-msg-text\">";
+	    str += msg;
+	    str += "          <\/div>";
+	    str += "          <div class=\"cm-msg-button\">";
+	    str += "            <ul>";   
+	    str += btn_obj;
+	    str += "            <\/ul>";
+	    str += "          <\/div>";
+	    str += "        <\/div>";
+	    $(".chat-logs").append(str);
+	    $("#cm-msg-"+INDEX).hide().fadeIn(300);   
+	    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
+	    $("#chat-input").attr("disabled", true);
+	  }
+  
+	  $(document).delegate(".chat-btn", "click", function() {
+	    var value = $(this).attr("chat-value");
+	    var name = $(this).html();
+	    $("#chat-input").attr("disabled", false);
+	    generate_message(name, 'self');
+	  })
+  
+	  $("#chat-circle").click(function() {    
+	    $("#chat-circle").toggle('scale');
+	    $(".chat-box").toggle('scale');
+	  })
+	  
+	  $(".chat-box-toggle").click(function() {
+	    $("#chat-circle").toggle('scale');
+	    $(".chat-box").toggle('scale');
+	  })
+	})
 
 /*    
      카테고리(시리즈명,가격) 클릭 시 상태유지
@@ -196,19 +298,21 @@ $(function() {
                     <div class="block">
                         <div id="calendar" name="calendar">
                           	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
-                                <input type="text" data-range="true"
+                             	<input type="text" data-range="true" 
                                             data-multiple-dates-separator=" - " data-language="ko"
-                                            class="datepicker-here" placeholder="     대여일 ~ 반납일 선택" name="datepicker" id="datepicker" style="width:180px; height: 25px;"/>
+                                            class="datepicker-here" placeholder="대여일, 반납일을 선택하세요." name="datepicker" id="datepicker" style="width:250px; height: 30px;"/>
                         </div>
+<<<<<<< HEAD
                     </div>                      	
+=======
+                    </div>
+                    <!-- 검색창처럼 인풋에 선택한 카테고리 값을 받을까 -->   	
+>>>>>>> refs/heads/lje1111
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
-                            	<!-- <c:forEach var="d" items="${list }"> -->
-                                	<li id="hover_dro_01" name="hover_dro_01" class="hover-dro">${d.dro_series }<i class="fas fa-angle-right"></i>
-                                	</li>
-                            	<!-- </c:forEach> -->
                             </ul>
+                            <!-- <input type="text" name="set-series" style="width:200px; height: 30px;"/> -->
                         </div>
                     </li>                    
                     </li>
@@ -249,7 +353,8 @@ $(function() {
 	                </c:forEach>
 	                -->
 	              </div>
-            	</div>
+				</div>
+            </div>
             <!-- //container -->
 		</div>
 		<!-- //contents -->
@@ -258,7 +363,40 @@ $(function() {
 		<div id="footer">
 			<div id="footer-nav">
 				<!-- 드론 비교하는 건 footer-nav에서 만들면 될거 같습니다!! css도 footer-nav 높이 설정하셔서 하시면 될거 같아요. -->
-				<div id="compareChatDrone"></div>
+				<div id="compareChatDrone">
+					
+					<div id="center-text">
+	    				<h2>ChatBox UI</h2>
+	    				<p>Message send and scroll to bottom enabled </p>
+	  				</div> 
+					<div id="body"> 
+						<div id="chat-circle" class="btn btn-raised">
+	        				<div id="chat-overlay">
+	        				</div>
+			    				<i class="fas fa-hat-wizard">speaker_phone</i>
+						</div>
+	  				<div class="chat-box">
+	    				<div class="chat-box-header">
+	      					ChatBot
+	      					<span class="chat-box-toggle">
+	      						<i class="material-icons">close</i>
+	      					</span>
+	    				</div>
+	    				<div class="chat-box-body">
+	      					<div class="chat-box-overlay">   
+	      					</div>
+      						<div class="chat-logs">
+      						</div><!--chat-log -->
+	    				</div>
+	    				<div class="chat-input">      
+	      					<form>
+	        					<input type="text" id="chat-input" placeholder="Send a message..."/>
+	      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+	      					</form>      
+	    				</div>
+	  				</div>
+	  				
+				</div>
 			</div>
 			<div id="footer-info">
 				(주)비트캠프:DIFE

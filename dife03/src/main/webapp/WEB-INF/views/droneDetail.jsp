@@ -208,7 +208,7 @@ $(function() {
 		                        <div id="calendar" name="calendar">
 		                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
 		                        	<input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ko"
-		                            class="datepicker-here" placeholder="   대여일 ~ 반납일 선택" style="width:180px; height: 25px;"/>               
+		                            		class="datepicker-here" placeholder="대여일 ~ 반납일 선택" style="width:180px; height: 25px;"/>               
 		                        </div>
 		                    </div>
 		                </ul>
