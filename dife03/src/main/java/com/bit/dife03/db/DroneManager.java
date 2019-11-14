@@ -66,6 +66,26 @@ public class DroneManager {
 		return droInfo;
 	}
 
+	/* 주문 */
+	public static int in_droRental(String dro_no) {
+		// TODO Auto-generated method stub
+		int re = 0;
+		SqlSession session = factory.openSession();
+		re = session.insert("drone.in_droRental", dro_no);
+		session.close();
+		return re;
+	}
+
+	/* 장바구니 */
+	public static int in_droBasket(String dro_no) {
+		// TODO Auto-generated method stub
+		int re = 0;
+		SqlSession session = factory.openSession();
+		re = session.insert("drone.in_droBasket", dro_no);
+		session.close();
+		return re;
+	}
+
 /*	public static int in_droOrder(OrdersVo o) {
 		int re = 0;
 		SqlSession session = factory.openSession(true);

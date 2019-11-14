@@ -77,24 +77,54 @@ $(function() {
    	})
    	
    	/* 주문 및 장바구니 : 로그인 후 가능 */
-   	$("#btnOrder").click(function(){
-   		console.log("드론 주문하기");
-   		if(mem_id == null || mem_id == ''){
-   			alert("로그인을 해주세요.");
-   			location.href("signIn");
-   		}else{
-			$("#mypage").attr("href","mypage_orders");
-		}
-   	})
-   	$("#btnBasket").click(function(){
-   		console.log("드론 장바구니에 추가");
-   		if(mem_id == null || mem_id == ''){
-   			alert("로그인을 해주세요.");
-   			location.href("signIn");
-   		}else{
-			$("#mypage").attr("href","mypage_orders");
-		}
-   	})
+   	$.ajax({url:"/droRental",success:function(data){
+   		// 주문하기
+   	   	$("#btnOrder").click(function(){
+   	   		console.log("드론 주문하기");
+   	  		//datepicker값 가져오기
+   			var date = $(".datepicker-here").val();
+   			var array = date.split(" - ");
+   			var con_start = array[0];
+   			var con_end = array[1];
+
+   			console.log(con_start);
+   			var dro_no = "${dtInfo.dro_no}";
+   			var ren_no = "${dtInfo.ren_no}";
+   			var pos_amount = "${dtInfo.pos_amount}";
+   			
+   	   		if(mem_id == null || mem_id == ''){
+   	   			alert("로그인을 해주세요.");
+   	   			location.href="/signIn";
+   	   		}else{
+   				$("#mypage").attr("href","orders");
+   			}
+   	   	})
+	}})   	
+	$.ajax({url:"/droBasket",success:function(data){
+   	   	// 장바구니 담기
+   	   	$("#btnBasket").click(function(){
+   	   		console.log("드론 장바구니에 추가");
+   	   		//datepicker값 가져오기
+   			var date = $(".datepicker-here").val();
+   			var array = date.split(" - ");
+   			var con_start = array[0];
+   			var con_end = array[1];
+
+   			console.log(con_start);
+   			var dro_no = "${dtInfo.dro_no}";
+   			var ren_no = "${dtInfo.ren_no}";
+   			var pos_amount = "${dtInfo.pos_amount}";
+   			
+   	   		if(mem_id == null || mem_id == ''){
+   	   			alert("로그인을 해주세요.");
+   	   			location.href="/signIn";
+   	   		}
+   	   		else{
+   				$("#mypage").attr("href","mypage_orders");
+   			}
+   	   	})
+	}})
+   	
    	
    	/* 상세정보 불러오기
    	$.ajax({url:"/droDtCon", success:function(data){
@@ -214,7 +244,8 @@ $(function() {
 						</li>
 						<li>
 	                       	<a href="basket?dro_no=${dtInfo.dro_no }">
-	                       	<button id="btnBasket" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>장바구니 담기</strong>                               
+	                       	<button id="btnBasket" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
+	                       		<strong>장바구니 담기</strong>                               
                             </button>
                             </a>
                             <!-- * modal 추가 예정 -->

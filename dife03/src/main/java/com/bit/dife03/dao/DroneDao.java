@@ -20,12 +20,20 @@ public class DroneDao {
 	}
 
 	public int get_droCount(HashMap map) {
-		// TODO Auto-generated method stub
 		return DroneManager.get_droCount(map);
+	}
+	
+	public int in_droRental(String dro_no) {
+		return DroneManager.in_droRental(dro_no);
 	}
 /*
 	public Object sel_droCon(String dro_no) {
 		// TODO Auto-generated method stub
 		return DroneManager.sel_droCon(dro_no);
 	}*/
+
+	public int in_droBasket(String dro_no) {
+		// TODO Auto-generated method stub
+		return DroneManager.in_droBasket(dro_no);
+	}
 }

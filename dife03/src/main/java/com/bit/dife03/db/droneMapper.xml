@@ -19,13 +19,22 @@
   	
   	<!-- 상세페이지 -->  	
 	<select id="sel_droDetail" resultType="droneVo">
-		select d.* from drone d, possesion p where d.dro_no=p.dro_no and d.dro_no = #{dro_no} 
+		select d.*, p.*, r.* from drone d, possesion p, rental r where d.dro_no=p.dro_no and p.ren_no=r.ren_no and d.dro_no = #{dro_no} 
 	</select>
 	
 	<!-- 대여일, 반납일 추가해서 수정예정 -->
+	<!-- 주문 -->
+	<insert id="in_droRenO">
+		insert into orders values('O'||lpad(seq_det.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0)
+	</insert>
+	<!-- 주문상세 -->	
+	<insert id="in_droRenOD">
+		insert into ordersdetail values('OD'||lpad(seq_det.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{det_price},TO_DATE(#{det_rental},'YYYY/MM/DD') ,TO_DATE(#{det_return},'YYYY/MM/DD') ,0) 
+	</insert>
+	
 	<!-- 장바구니담기 -->
 	<insert id="in_droBasket">
-		insert into orders values(#{droD_name},#{droD_price},#{droD_series},#{droD_made},#{droD_ren},#{droD_amount})
+		insert into bakset values('BS'||lpad(seq_det.nextval,6,0),#{pos_no},#{mem_no},#{bas_amount},#{bas_price},TO_DATE(#{bas_rental},'YYYY/MM/DD'),TO_DATE(#{bas_return},'YYYY/MM/DD'),sysdate) 
 	</insert>
 	
 </mapper>

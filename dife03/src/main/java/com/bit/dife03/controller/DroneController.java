@@ -3,12 +3,14 @@ package com.bit.dife03.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.DroneDao;
 import com.bit.dife03.vo.DroneVo;
+import com.bit.dife03.vo.JumunVo;
+import com.bit.dife03.vo.OrdersDetailVo;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 @Controller
 public class DroneController {
@@ -40,20 +46,19 @@ public class DroneController {
 		return mav;
 	}
 	
+	/* 전체 목록 불러오기 */
 	@ResponseBody
 	@RequestMapping("/droAll")
 	public String sel_droAll(HttpSession session) {
 	String str = "";
-	DroneVo vo = new DroneVo();
-	int series = Integer.parseInt(vo.getDro_series());
-	System.out.println(series);
-	ObjectMapper om = new ObjectMapper();
+	//DroneVo vo = new DroneVo();
+	//int series = Integer.parseInt(vo.getDro_series());
+	//System.out.println(series);
+	ObjectMapper mapper = new ObjectMapper();
 	  
 	try {
-		str = om.writeValueAsString(dao.sel_droAll());
-		if(series > 1) {
-			
-		}
+		str = mapper.writeValueAsString(dao.sel_droAll());
+		
 	}catch (Exception e) {
 		// TODO: handle exception
 		System.out.println(e.getMessage());
@@ -61,6 +66,7 @@ public class DroneController {
 	    return str;
 	}
 	
+	/* 상세페이지 */
 	@RequestMapping("/droneDetail")
 	public ModelAndView sel_droDetail(String dro_no, HttpServletRequest request) {
 		System.out.println("dro no:"+dro_no);
@@ -69,6 +75,34 @@ public class DroneController {
 		mav.addObject("dtInfo", dao.sel_droDetail(dro_no));
 		//System.out.println("상세번호 : "+dtInfo);
 		return mav;
+	}
+	
+	/* 주문 */
+	/*	@ResponseBody
+	@RequestMapping(value = "/droRental", method = RequestMethod.POST)
+	public int in_droRental(String dro_no) throws Exception {
+		int re = 0;
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		String mem_no = (String)param.get("mem_no");
+		int ord_price=(int)param.get("ord_price");
+		int ord_amount=(int)param.get("ord_amount");
+		
+	
+		re = dao.
+		
+		return re;
+	}
+*/	
+	/* 장바구니 */
+	@ResponseBody
+	@RequestMapping("/droBasket")
+	public int in_droBasket(String dro_no) throws Exception {
+		int re = 0;
+		
+		
+		
+		return re;
 	}
 	
 	/*
