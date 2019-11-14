@@ -64,27 +64,28 @@ $(function(){
 		<!-- contents -->
 		<div id="contents">
 			<div class="container">
-               <div id="drone-detail"><i class="fas fa-angle-right" id="icon"></i> 후기 게시판</div>
+               <div id="board-detail"><i class="fas fa-angle-right" id="icon"></i>게시판 상세보기</div>
                 <div id="board-detail-href">
-                   <a href="#">수정</a>
+                   <a href="board_update?boa_no=${b.boa_no }">수정</a>
                    <a href="#">삭제</a>
-                    <a href="#">목록</a>
+                    <a href="board">목록</a>
                 </div>
+                <input type="hidden" value="${b.boa_no }">
 			    <div id="board-wrapper">
 			        <div id="board-img" class="board-input">
-			            <img src="img/drone/D0001.png" id="board-detail-img">
+			            <img src="img/${b.boa_fname }" id="board-detail-img">
 			        </div>
 			        <div id="board-text" class="board-input">
 			            <div id="board-detail-title">
-			                <span>드론사용 후기 남겨요!</span>
+			                <span>${boa_title }</span>
 			            </div>
 			            <div id="board-detail-info">
-			                 <span>작성자: 홍길동&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			                 <span>등록일: 2019/10/11&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			                 <span>별점: 4.0</span>
+			                 <span>작성자: ${b.mem_no }&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			                 <span>등록일: ${b.regdate }&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			                 <span>별점: ${b.boa_rating }</span>
 			            </div>
 			            <div>
-			                <textarea name="board-teaxtarea" id="board-textarea" cols="50" rows="10">좋아용~</textarea>
+			                <textarea readonly="readonly" id="board-textarea" cols="50" rows="10">${b.boa_contents }</textarea>
 			            </div>
 			            <div id="board-detail-re">
 			                 <p><span>강감찬&nbsp;&nbsp;&nbsp;</span><span>오~~</span></p>

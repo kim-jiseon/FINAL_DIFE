@@ -71,4 +71,12 @@ public class BoardManager {
     	session.close();
     	return;
     }
+    
+    public static int updateBoard(BoardVo vo) {
+    	int re = 0;
+    	SqlSession session = factory.openSession(true);
+    	re = session.update("board.updateBoard", vo);
+    	session.close();
+    	return re;
+    }
 }

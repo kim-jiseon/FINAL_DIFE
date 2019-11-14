@@ -1,5 +1,6 @@
 package com.bit.dife03.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,7 +34,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("/board")
-	public ModelAndView list(HttpServletRequest request, HttpSession session) {
+	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", dao.listAll());
 		
@@ -58,7 +59,7 @@ public class BoardController {
 		
 		int pno = vo.getBoa_no();
 		if(pno != 0) {
-			BoardVo b = dao.getBoard(boa_no);
+			BoardVo b = dao.getBoard(pno);
 			boa_ref = b.getBoa_ref();
 			boa_step = b.getBoa_step();
 			boa_level = b.getBoa_level();
@@ -96,6 +97,63 @@ public class BoardController {
 			mav.addObject("msg", msg);
 		}
 		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/board_detail", method = RequestMethod.GET)
+	public ModelAndView detail(int boa_no) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("b", dao.getBoard(boa_no));
+		return mav;
+	}
+	
+	@RequestMapping(value = "/board_update", method = RequestMethod.GET)
+	public ModelAndView updateForm(int boa_no) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("b", dao.getBoard(boa_no));
+		return mav;
+	}
+	
+	@RequestMapping(value = "/board_update", method = RequestMethod.POST)
+	public ModelAndView updateSubmit(BoardVo vo, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView("redirect:/board");
+		
+		String path = request.getRealPath("img");
+		String oldFname= vo.getBoa_fname();
+		String boa_fname = null;
+		
+		MultipartFile upload = vo.getUpload();
+		
+		if(upload != null) {
+			System.out.println("사진수정");
+			try {
+				byte []data = upload.getBytes();
+				boa_fname = upload.getOriginalFilename();
+				vo.setBoa_fname(boa_fname);
+				
+				FileOutputStream fos = new FileOutputStream(path+"/"+boa_fname);
+				fos.write(data);
+				fos.close();
+				
+			}catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		int re = dao.update(vo);
+		String msg = "";
+		System.out.println("수정결과:"+re);
+		if(re != 1) {
+			msg = "게시판 수정에 실패하였습니다.";
+		}
+		else {
+			if(boa_fname != null && !boa_fname.equals("")) {
+				File file = new File(path+"/"+oldFname);
+				file.delete();
+			}
+		}
+		mav.addObject("msg", msg);
 		return mav;
 	}
 }

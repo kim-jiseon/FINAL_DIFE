@@ -40,11 +40,7 @@ $(function(){
 		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
 	}
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> refs/heads/dife
 	//마이페이지 이동
 	$("#mypage").click(function(){
 		console.log("클릭");
@@ -55,15 +51,12 @@ $(function(){
 		}else{
 			$("#mypage").attr("href","mypage_orders");
 		}
-<<<<<<< HEAD
 	})
 
 	$("#select").change(function(){
 		alert($(this).val());
 		alert($(this).children("option:selected").text());
 
-=======
->>>>>>> refs/heads/dife
 	})
 	
 })
@@ -103,7 +96,7 @@ $(function(){
 											&nbsp;&nbsp;
 										</c:forEach>
 									</c:if>
-									<a href="detailBoard.do?no=${b.boa_no }">${b.boa_title }</a>
+									<a href="board_detail?boa_no=${b.boa_no }">${b.boa_title }</a>
 								</td>
 								<td>${b.mem_no }</td>
 								<td>${b.regdate }</td>
