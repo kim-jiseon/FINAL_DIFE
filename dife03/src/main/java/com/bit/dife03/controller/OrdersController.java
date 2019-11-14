@@ -174,10 +174,10 @@ public class OrdersController {
 		String mem_id=null;
 		HashMap map = new HashMap();
 		map.put("category", month);
+		System.out.println(month);
 		mem_id=(String)req.getAttribute("mem_id");
 		if(mem_id != null)
 		{
-			
 			map.put("mem_id",mem_id);
 			totalRecord = dao.mem_ord_max(mem_id);
 			totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);

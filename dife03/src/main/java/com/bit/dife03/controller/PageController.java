@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
-	@RequestMapping("/main")
-	public void main() {
-		
-	}
+	/*
+	 * @RequestMapping("/main") public void main() {
+	 * 
+	 * }
+	 */
 	
 //	@RequestMapping("/mypage_board")
 //	public void mypage_board() {
@@ -38,10 +39,10 @@ public class PageController {
 	}
 
 	
-	@RequestMapping("/drone")
-	public void drone() {
-		
-	}
+//	@RequestMapping("/drone")
+//	public void drone() {
+//		
+//	}
 
 //	@RequestMapping("/droneDetail")
 //	public void droneDetail() {
@@ -76,10 +77,12 @@ public class PageController {
 	public void signIn2() {
 		
 	}
-	@RequestMapping("/droneDetail")
-	public void droneDetail() {
-		
-	}
+
+	/*
+	 * @RequestMapping("/droneDetail") public void droneDetail() {
+	 * 
+	 * }
+	 */
 	@RequestMapping("/paySuccess")
 	public void paysuccess() {
 		

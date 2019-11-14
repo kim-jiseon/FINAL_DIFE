@@ -46,7 +46,7 @@
 		    if(month<10) month = '0' + month;
 		    var date = format.getDate();
 		    if(date<10) date = '0' + date;
-		    return year + "-" + month + "-" + date;
+		    return year + "." + month + "." + date;
 		}
     	
 
@@ -83,22 +83,12 @@
 						isEnd = false;
 					}
 					$.each(data, function(idx, item){
-						var li = $("<li></li>");
-						var ul = $("<ul></ul>").addClass("pil-list");
+						Date date = new Date(item.ord_date);
+						var ord_date = date_to_str(date);
+						console.log(ord_date);
+						var div = '<div class="mypage-orders-list"><div>'
+						var a = `<a href="ordersDetail"><div class="mypage-orders-title">[2019.07.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>`
 						
-						var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_photo);
-						var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail?info="+item.list_no,"id":"pil-list-title"});
-						
-						var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
-						var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
-						var info = $("<dd></dd>").html("강의 정보: "+item.pil_info).attr("id","pil-info").addClass("pil-list-info");
-						var star = $("<dd></dd>").html("별점: "+item.pil_star+".0").attr("id","pil-star").addClass("pil-list-info");
-						var dd_img = $("<dd></dd>").append(img);
-						var dd_title = $("<dd></dd>").addClass("pil-list-title").append(title);
-						
-						$(li).append(dd_img, dd_title, name, loc, info, star);
-						$(ul).append(li);
-						$(".pilot-container").append(ul);
 					})
 			}})
 		}
@@ -170,7 +160,7 @@
                                </select>
                            </span>
                         </div><hr id="hr">
-                        <div class="mypage-orders-list">
+                  <!--       <div class="mypage-orders-list">
                             <a href="ordersDetail"><div class="mypage-orders-title">[2019.07.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
                             <div class="mypage-orders-info">
                                 <ul>
@@ -189,7 +179,7 @@
                                     <li>주문상태&nbsp;&nbsp;&nbsp; 대여중</li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                         
                     </div>
                 </div>
