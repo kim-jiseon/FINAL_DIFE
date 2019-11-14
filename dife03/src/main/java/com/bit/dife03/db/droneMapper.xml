@@ -36,5 +36,9 @@
 	<insert id="in_droBasket">
 		insert into bakset values('BS'||lpad(seq_det.nextval,6,0),#{pos_no},#{mem_no},#{bas_amount},#{bas_price},TO_DATE(#{bas_rental},'YYYY/MM/DD'),TO_DATE(#{bas_return},'YYYY/MM/DD'),sysdate) 
 	</insert>
+	<!-- 드론 관련 상품번호 불러오기 basket insert용 -->
+	<select id="sel_pos_no" resultType="java.lang.String">
+		select pos_no where dro_no=#{dro_no}
+	</select>
 	
 </mapper>

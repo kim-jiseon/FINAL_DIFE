@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.dife03.dao.DroneDao;
+import com.bit.dife03.vo.BasketVo;
 import com.bit.dife03.vo.DroneVo;
 import com.bit.dife03.vo.JumunVo;
 import com.bit.dife03.vo.OrdersDetailVo;
@@ -97,10 +98,26 @@ public class DroneController {
 	/* 장바구니 */
 	@ResponseBody
 	@RequestMapping("/droBasket")
-	public int in_droBasket(String dro_no) throws Exception {
+	public int in_droBasket(@RequestParam(value = "bas_return") String bas_return,
+							@RequestParam(value = "bas_rental") String bas_rental,
+							@RequestParam(value = "bas_price") int bas_price,
+							@RequestParam(value = "bas_amount") int bas_amount,
+							String mem_id) {
 		int re = 0;
+		System.out.println(bas_return);
+		System.out.println(bas_rental);
+		System.out.println(bas_price);
+		System.out.println(bas_amount);
+		System.out.println(mem_id);
 		
+		ObjectMapper mapper = new ObjectMapper();
 		
+		if(mem_id != null)
+		{
+			
+		}
+		//pos_no 관련 뽑아오는 매퍼 파일.
+		//re = mapper.writeValueAsString(dao.sel_pos_no());
 		
 		return re;
 	}
