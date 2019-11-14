@@ -62,10 +62,76 @@
 				$("#mypage").attr("href","mypage_orders");
 			}
 		})
+	 	var month = 0;
+		var pageNUM = 1;
+		var isEnd = false;
 		
-		//검색 고정
-		$("#pil-category").val($("#hidden-category").val());
-		$("#pil-location").val($("#hidden-location").val());
+		//전체 페이지 출력 메소드
+		function selectAll(search){
+			search = {"month":month,"pageNUM":pageNUM};
+			$.ajax({type: "get",
+				url:"/ordersList.do",
+				data: search,
+				dataType: "json",
+				contentType:"application/json;charset=UTF-8",
+				success:function(data){
+					var len = data.length;
+					//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
+					if(len < 5){
+						isEnd = true;
+					}else{
+						isEnd = false;
+					}
+					$.each(data, function(idx, item){
+						var li = $("<li></li>");
+						var ul = $("<ul></ul>").addClass("pil-list");
+						
+						var img = $("<img/>").addClass("pil-list-img").attr("src","img/pilot/"+item.pil_photo);
+						var title = $("<a></a>").html(item.pil_title).attr({"href":"pilotDetail?info="+item.list_no,"id":"pil-list-title"});
+						
+						var name = $("<dd></dd>").html("강사명: "+item.mem_name).attr("id","pil-name").addClass("pil-list-info");
+						var loc = $("<dd></dd>").html("지역: "+item.pil_locInfo).attr("id","pil-loc").addClass("pil-list-info");
+						var info = $("<dd></dd>").html("강의 정보: "+item.pil_info).attr("id","pil-info").addClass("pil-list-info");
+						var star = $("<dd></dd>").html("별점: "+item.pil_star+".0").attr("id","pil-star").addClass("pil-list-info");
+						var dd_img = $("<dd></dd>").append(img);
+						var dd_title = $("<dd></dd>").addClass("pil-list-title").append(title);
+						
+						$(li).append(dd_img, dd_title, name, loc, info, star);
+						$(ul).append(li);
+						$(".pilot-container").append(ul);
+					})
+			}})
+		}
+
+    	//전체 페이지 출력
+		selectAll(search);
+	    		
+		//무한스크롤
+		$(window).scroll(function(){
+			var maxHeight = $(document).height();
+			var currentScroll = $(window).scrollTop() + $(window).height();
+			
+			if(currentScroll+50 > maxHeight){
+				if(isEnd == true){
+		    		return;
+		    	}else{
+		    		pageNUM++;
+		    		selectAll(search);
+		    	}
+			}
+		})
+    	//select 클릭시.
+		$("#mypage-orders-date").change(function(){
+			
+			$(".mypage-orders-list").empty();
+			pageNUM = 1;
+			selectAll(search);
+			//val을 변수로 담고 그 변수를 보내준다.
+			month =Number($(this).val());
+			/* console.log(month);
+			console.log(typeof(month)) */
+			return false
+		})
 
     })
     </script>
@@ -97,9 +163,9 @@
                            <span>주문내역</span>
                            <span>
                                <select name="mypage-orders-date" id="mypage-orders-date">
-                                   <option value="1개월">전체</option>
-                                   <option value="1개월">1개월</option>
-                                   <option value="1개월">3개월</option>
+                                   <option value="0">전체</option>
+                                   <option value="1">1개월</option>
+                                   <option value="3">3개월</option>
                                </select>
                            </span>
                         </div><hr id="hr">

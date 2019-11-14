@@ -161,14 +161,18 @@ public class OrdersManager {
 		return list;
 	}
 	//모든 정보 삭제.
-	public static String allDelBas(String mem_id) {
+	public static int allDelBas(String mem_id) {
 		int re=0;
 		int r= 0;
-		String str="";
+		int bas_count=0;
+		
 		SqlSession session = factory.openSession();
+		bas_count = session.selectOne("orders.max_bas",mem_id);
 		re += session.delete("orders.allDelBas",mem_id);
-		re += session.update("orders.",mem_id);
-		if(re ==2)
+		System.out.println("트랜잭션del:"+re);
+		re += session.update("orders.ord_update",mem_id);
+		System.out.println("트랜잭션:update"+re);
+		if(re >=(bas_count+1))
 		{
 			r=1;
 			session.commit();
@@ -178,7 +182,7 @@ public class OrdersManager {
 		{
 			session.rollback();
 		}
-		return str+r;
+		return r;
 	}
 	
 	

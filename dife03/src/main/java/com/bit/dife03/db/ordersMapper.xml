@@ -92,5 +92,8 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
 	<update id="ord_update">
 	update orders set ord_pay_state=0 where mem_no = (select mem_no from member where mem_id=#{mem_id})
 	</update>
-	<!-- 주문시 해당 회원의 장바구니 리스트 삭제. -->
+	<!-- 특정 회원의 바스켓 count(*) -->
+	<select id="max_bas" resultType="java.lang.Integer">
+		select count(*) from basket where mem_no = (select mem_no from member where mem_id=#{mem_id})
+	</select>
 </mapper>
