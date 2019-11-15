@@ -36,7 +36,6 @@
 		if (mem_id == '' || mem_id == null) {
 			$("#sign").attr("href", "signIn").html("LOGIN");
 		}
-
 		
 		//마이페이지 이동
 		$("#mypage").click(function(){
@@ -50,11 +49,36 @@
 			}
 		})
 
-
 		//탭전환
 		$('dt').click(function() {
 			$('dd').addClass('hidden');
 			$(this).next().removeClass('hidden');
+		})
+		
+		
+/* 		     <c:forEach var="vo" items="${list }">
+                                       <tr>
+                                           <td>${vo.con_no }</td>
+                                           <td><fmt:formatDate value="${vo.con_regDate }" pattern="yyyy/MM/dd"/></td>
+                                           <td><a href="#" id="pil_title">${vo.pil_title }</a></td>
+                                           <td>${vo.mem_name }</td>
+                                           <td><fmt:formatDate value="${vo.con_start }" pattern="yyyy/MM/dd"/> - <fmt:formatDate value="${vo.con_end }" pattern="yyyy/MM/dd"/></td>
+                                       </tr>
+                                       <input type="hidden" value="${vo.pil_title }" id="title">
+                                       <input type="hidden" value="${vo.con_start }" id="con_start">
+                                       <input type="hidden" value="${vo.con_end }" id="con_end">
+                                       <input type="hidden" value="${vo.con_time }" id="con_time">
+                                       <input type="hidden" value="${vo.con_attend }" id="con_attend">
+                                       <input type="hidden" value="${vo.con_purpose }" id="con_purpose">
+                                    </c:forEach> */
+		//팝업창 띄우기
+		$("#pil_title").click(function(){
+			var pil_title = $("#title").val();
+			console.log(pil_title);
+			var pop = window.open(
+					"/pilot_reservationPop",
+					"pop",
+					"width = 750, height = 650");
 		})
 	})
 </script>
@@ -101,10 +125,16 @@
                                        <tr>
                                            <td>${vo.con_no }</td>
                                            <td><fmt:formatDate value="${vo.con_regDate }" pattern="yyyy/MM/dd"/></td>
-                                           <td><a href="#">${vo.pil_title }</a></td>
+                                           <td><a href="#" id="pil_title">${vo.pil_title }</a></td>
                                            <td>${vo.mem_name }</td>
                                            <td><fmt:formatDate value="${vo.con_start }" pattern="yyyy/MM/dd"/> - <fmt:formatDate value="${vo.con_end }" pattern="yyyy/MM/dd"/></td>
                                        </tr>
+                                       <input type="hidden" value="${vo.pil_title }" id="title">
+                                       <input type="hidden" value="${vo.con_start }" id="con_start">
+                                       <input type="hidden" value="${vo.con_end }" id="con_end">
+                                       <input type="hidden" value="${vo.con_time }" id="con_time">
+                                       <input type="hidden" value="${vo.con_attend }" id="con_attend">
+                                       <input type="hidden" value="${vo.con_purpose }" id="con_purpose">
                                     </c:forEach>
                                    </tbody>
                                </table>

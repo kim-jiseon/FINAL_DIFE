@@ -42,6 +42,11 @@ public class PilotController {
 		
 	}
 	
+	//상담확인
+	@RequestMapping("/pilot_reservationPop")
+	public void pilot_reservationPop() {
+		
+	}
 
 	//예약상담 select
 	@RequestMapping("/mypage_board")

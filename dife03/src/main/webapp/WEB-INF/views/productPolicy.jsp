@@ -9,7 +9,6 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> 
 </head>
 <body>
-    <!-- <div id="wrap" class="animated fadeIn"> -->
        <!-- product policy -->
         <div class="product-policy">
             <div class="titleArea">
@@ -79,20 +78,5 @@
             </div>
         </div>
         <!-- //product policy -->
-	
-<script>
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById("header");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-</script>
 </body>
 </html>
