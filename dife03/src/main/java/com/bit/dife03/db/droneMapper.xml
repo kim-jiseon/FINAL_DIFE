@@ -22,23 +22,27 @@
 		select d.*, p.*, r.* from drone d, possesion p, rental r where d.dro_no=p.dro_no and p.ren_no=r.ren_no and d.dro_no = #{dro_no} 
 	</select>
 	
-	<!-- 대여일, 반납일 추가해서 수정예정 -->
-	<!-- 주문 -->
-	<insert id="in_droRenO">
-		insert into orders values('O'||lpad(seq_det.nextval,6,0),#{mem_no},#{ord_amount},#{ord_price},sysdate,0)
-	</insert>
-	<!-- 주문상세 -->	
-	<insert id="in_droRenOD">
-		insert into ordersdetail values('OD'||lpad(seq_det.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{det_price},TO_DATE(#{det_rental},'YYYY/MM/DD') ,TO_DATE(#{det_return},'YYYY/MM/DD') ,0) 
-	</insert>
 	
 	<!-- 장바구니담기 -->
 	<insert id="in_droBasket">
-		insert into bakset values('BS'||lpad(seq_det.nextval,6,0),#{pos_no},#{mem_no},#{bas_amount},#{bas_price},TO_DATE(#{bas_rental},'YYYY/MM/DD'),TO_DATE(#{bas_return},'YYYY/MM/DD'),sysdate) 
+		insert into basket values('BS'||lpad(seq_det.nextval,6,0),#{pos_no},#{mem_no},#{bas_amount},#{bas_price},TO_DATE(#{bas_rental},'YYYY/MM/DD'),TO_DATE(#{bas_return},'YYYY/MM/DD'),sysdate) 
 	</insert>
 	<!-- 드론 관련 상품번호 불러오기 basket insert용 -->
 	<select id="sel_pos_no" resultType="java.lang.String">
-		select pos_no where dro_no=#{dro_no}
+		select pos_no from possesion where dro_no=(select dro_no from drone where dro_no = #{dro_no})
 	</select>
+	<!-- 장바구니용 회원 주 식별자 뽑기 basket insert용 -->
+	<select id="sel_mem_no" resultType="java.lang.String">
+		select mem_no from member where mem_id=#{mem_id}
+	</select>
+	
+	<!-- orders insert 및 ordersDetail insert transaction -->
+  	<insert id="insertOrders">
+  	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},1,#{ord_price},sysdate,0)
+  	</insert>
+  	<insert id="insertOrdersDetail">
+  	insert into ordersdetail values('OD'||lpad(seq_det.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{ord_price},TO_DATE(#{det_rental},'YYYY/MM/DD') ,TO_DATE(#{det_return},'YYYY/MM/DD') ,0)
+  	</insert>
+		
 	
 </mapper>

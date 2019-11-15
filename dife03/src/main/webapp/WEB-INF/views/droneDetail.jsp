@@ -89,10 +89,10 @@ $(function() {
 		var ren_no = "${dtInfo.ren_no}";
 		var pos_amount = $("#operA").val();
 		var bas_price = "${dtInfo.dro_price}"
-		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id}
+		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
    	   	
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
-   	   		alert("ajax통신");
+			
    			
    	   		/*if(mem_id == null || mem_id == ''){
    	   			alert("로그인을 해주세요.");
@@ -104,26 +104,31 @@ $(function() {
    	 	}})
    	})	
    	// 주문하기
-	$("#btnOrder").click(function(){
+		$("#btnOrder").click(function(){
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
 		var con_start = array[0];
 		var con_end = array[1];
-		// 주문 페이지에 담을 값
+		// 장바구니 페이지에 담을 값
+		var dro_no = "${dtInfo.dro_no}";
+		var ren_no = "${dtInfo.ren_no}";
 		var pos_amount = $("#operA").val();
-		var dro_price = "${dtInfo.dro_price}";
-		var data = {"ord_amount" : pos_amount, "ord_price":dro_price,"ord_date":con_start}
-		
-		$.ajax({url:"/droRental", traditional:true, contentType:'application/json', data:data, success:function(data){
-   	   		if(mem_id == null || mem_id == ''){
+		var bas_price = "${dtInfo.dro_price}"
+		var data = {"det_amount" : pos_amount,"ord_price" : bas_price,"det_rental" : con_start, "det_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
+   	   	
+		$.ajax({url:"/droOrder", traditional:true, contentType:'application/json', data:data, success:function(data){	
+			
+   			
+   	   		/*if(mem_id == null || mem_id == ''){
    	   			alert("로그인을 해주세요.");
    	   			location.href="/signIn";
-   	   		}else{
-   				$("#mypage").attr("href","orders");
-   			}
-		}})
-	})   	
+   	   		}
+   	   		else{
+   				$("#mypage").attr("href","mypage_orders");
+   			}*/
+   	 	}})
+   	})	
    	
    	/* 상세정보 불러오기
    	$.ajax({url:"/droDtCon", success:function(data){
@@ -235,7 +240,7 @@ $(function() {
 						</ul>
 						<hr>
 						<li>
-							<a href="payment?dro_no=${dtInfo.dro_no }">						
+							<a href="javascript:void(0)">						
 							<button id="btnOrder" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
 								<strong>주문하기</strong>
 							</button>
@@ -251,8 +256,9 @@ $(function() {
                             <!-- * modal 추가 예정 -->
                         </li>
 						<li>
-							<a href="javascript:void(0)">
-								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;"><strong>쇼핑 계속하기</strong>
+							<a href="drone?dro_no=${dro_no }">
+								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
+									<strong>쇼핑 계속하기</strong>
 								</button>
 							</a>
 						</li>

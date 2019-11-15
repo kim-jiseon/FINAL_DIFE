@@ -77,12 +77,58 @@ public class DroneManager {
 	}
 
 	/* 장바구니 */
-	public static int in_droBasket(String dro_no) {
-		// TODO Auto-generated method stub
+	public static int insertBasket(HashMap map) {
 		int re = 0;
 		SqlSession session = factory.openSession();
-		re = session.insert("drone.in_droBasket", dro_no);
+		String pos_no= null;
+		pos_no = session.selectOne("drone.sel_pos_no",map);
+		System.out.println(pos_no);
+		map.put("pos_no", pos_no);
+		String mem_no = session.selectOne("drone.sel_mem_no",map);
+		map.put("mem_no",mem_no );
+		System.out.println("mem_no:"+mem_no);
+		re = session.insert("drone.in_droBasket", map);
+		System.out.println("re:"+re);
+		if(re==1)	
+		{
+		session.commit();
+		}
+		else {
+			session.rollback();
+		}
 		session.close();
+		return re;
+	}
+
+	public static int insertOrder(HashMap map) {
+		// TODO Auto-generated method stub
+		int re = 0;
+		int r =0;
+		SqlSession session = factory.openSession();
+		String pos_no= null;
+		pos_no = session.selectOne("drone.sel_pos_no",map);
+		System.out.println(pos_no);
+		map.put("pos_no", pos_no);
+		String mem_no = session.selectOne("drone.sel_mem_no",map);
+		map.put("mem_no",mem_no );
+		System.out.println("mem_no:"+mem_no);
+		r += session.insert("drone.insertOrders", map);
+		String ord_no = session.selectOne("orders.MaxOrd");
+		map.put("ord_no",ord_no);
+		System.out.println(ord_no);
+		r += session.insert("drone.insertOrdersDetail", map);
+		System.out.println("r:"+r);
+		if(r==2)	
+		{
+			re =1;
+			session.commit();
+		}
+		else
+		{
+			session.rollback();
+		}
+		session.close();
+		System.out.println(re);
 		return re;
 	}
 
