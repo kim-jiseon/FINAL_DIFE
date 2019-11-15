@@ -16,7 +16,6 @@
 	height: auto;
 }
 /* 검색 */
-
 #pil-search > select{
     width: 200px;
     height: 30px;
@@ -26,6 +25,12 @@
 
 #pil-search-btn{
    margin-bottom: 2.5px;
+   border-radius: 30px;
+   font-size: 17px;
+   font-weight: 700;
+   width: 120px;
+   padding: 5px;
+   margin-left: 10px;
 }
 
 .container > ul > li > dd{
