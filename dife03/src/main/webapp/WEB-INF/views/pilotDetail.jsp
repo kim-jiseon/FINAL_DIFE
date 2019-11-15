@@ -72,7 +72,7 @@ $(function(){
 				var pop = window.open(
 						"/pilot_popup?startDate="+con_start+"&endDate="+con_end+"&list_no="+list_no+"&con_sort="+con_sort+"&con_loc="+con_loc,
 						"pop",
-						"width = auto, height = 650");
+						"width = 820, height = 650");
 			}
 		}
 	})

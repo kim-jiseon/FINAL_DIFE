@@ -33,12 +33,19 @@ public class PilotManager {
 		}
 	}
 	
+	public static PilReservationVo sel_pilResOne(HashMap map) {
+		PilReservationVo vo = new PilReservationVo();
+		SqlSession session = factory.openSession();
+		vo = session.selectOne("pilot.sel_pilRes", map);
+		session.close();
+		return vo;
+	}
+	
 	//예약상담 select
-	public static List<PilReservationVo> sel_pilRes(String mem_no) {
+	public static List<PilReservationVo> sel_pilRes(HashMap map) {
 		List<PilReservationVo> list = null;
 		SqlSession session = factory.openSession();
-		list = session.selectList("pilot.sel_pilRes", mem_no);
-		System.out.println(list);
+		list = session.selectList("pilot.sel_pilRes", map);
 		session.close();
 		return list;
 	}

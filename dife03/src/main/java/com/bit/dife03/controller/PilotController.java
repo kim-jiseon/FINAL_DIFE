@@ -35,27 +35,56 @@ public class PilotController {
 	public void setDao(PilotDao dao) {
 		this.dao = dao;
 	}
-	
 
 	@RequestMapping("/pilot")
 	public void pilot() {
 		
 	}
 	
-	//상담확인
-	@RequestMapping("/pilot_reservationPop")
-	public void pilot_reservationPop() {
-		
-	}
-
-	//예약상담 select
-	@RequestMapping("/mypage_board")
-	public ModelAndView sel_pilRes(HttpSession session) {
+	//상담확인 창
+	@RequestMapping(value = "/pilot_reservationPop", method = RequestMethod.GET)
+	public ModelAndView pilot_reservationPop(int con_no, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		String mem_no = (String) session.getAttribute("mem_no");
-		mav.addObject("list", dao.sel_pilRes(mem_no));
+		HashMap map = new HashMap();
+		map.put("mem_no", session.getAttribute("mem_no"));
+		map.put("con_no", con_no);
+		mav.addObject("vo", dao.sel_pilResOne(map));
 		return mav;
 	}
+
+	//내글관리 페이지 이동-> get post 로 나누어 ?
+	@RequestMapping("/mypage_board")
+	public void mypage_board() {
+		
+	}
+	
+	//내글관리-파일럿상담 
+	@ResponseBody
+	@RequestMapping("/board_select")
+	public String sel_pilRes(HttpSession session) {
+		String str = "";
+		HashMap map = new HashMap();
+		map.put("mem_no", session.getAttribute("mem_no"));
+		map.put("con_no", null);
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			str = mapper.writeValueAsString(dao.sel_pilRes(map));
+			System.out.println("mypage_board:"+str);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("에러"+e.getMessage());
+		}
+		return str;
+	}
+	
+//	//예약상담 select(jstl)
+//	@RequestMapping("/mypage_board")
+//	public ModelAndView sel_pilRes(HttpSession session) {
+//		ModelAndView mav = new ModelAndView();
+//		String mem_no = (String) session.getAttribute("mem_no");
+//		mav.addObject("list", dao.sel_pilRes(mem_no));
+//		return mav;
+//	}
 
 	//예약상담 팝업창
 	@RequestMapping(value = "/pilot_popup", method = RequestMethod.GET)
