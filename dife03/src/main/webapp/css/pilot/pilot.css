@@ -33,9 +33,7 @@
    margin-left: 10px;
 }
 
-.container > ul > li > dd{
-    
-}
+
 /* 파일럿 목록 */
 .pilot-container{
 	margin-top: 30px;
@@ -66,7 +64,6 @@
 	font-size:14px;
     padding: 0px 0px 0px 170px;
 }
-
 
 /*페이징*/
 #pilot-paging{
