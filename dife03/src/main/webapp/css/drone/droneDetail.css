@@ -17,6 +17,7 @@
 	width: 500px;
     margin-top: 50px;
 	margin-left: 170px;
+	margin-bottom: 100px;
 }
 .content1 #block2{
 	display: grid;
@@ -24,6 +25,7 @@
 	width: 500px;
     margin-top: 80px;
 	margin-right: 170px;
+	margin-bottom: 100px;
 }
 .content1 li{
     margin: 10px;
@@ -142,9 +144,9 @@ input {
     height: auto;
     background: #fff;
 }
-.content2 .block{
+.content2 .block img{
 	display: block;
-	margin-top: 0px;
+	margin-top: 600px;
 	padding: 0px;
 	border-top: 1px dotted #a4a4a4;
 }
