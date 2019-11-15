@@ -16,15 +16,9 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 $(function(){
-	//날짜 변환 메소드
-	function calendar(day){
-		var yyyy = day.substr(0,4);
-		var mm = day.substr(5,2);
-		var dd = day.substr(8,2);
-
-		var cal = (yyyy+"-"+mm+"-"+dd);
-		return cal;
-	}
+	$("#res-submit").click(function(){
+		window.close();
+	})
 })
 </script>
 </head>
@@ -38,19 +32,23 @@ $(function(){
         </colgroup>
 	    <tr id="res-date">
 	        <td>날짜</td>
-	        <td>${startDate } - ${endDate }</td>
+	        <td>${vo.con_start_str } - ${vo.con_end_str }</td>
+	    </tr>
+	    <tr>
+	        <td>신청내역</td>
+	        <td>${vo.pil_title }</td>
 	    </tr>
 	    <tr>
 	        <td>시간</td>
-	        <td>${con_time }</td>
+	        <td>${vo.con_time }</td>
 	    </tr>
 	    <tr>
 	        <td>인원</td>
-	        <td>${con_attend }</td>
+	        <td>${vo.con_attend }&nbsp; 명</td>
 	    </tr>
 	    <tr>
 	        <td>상담내용</td>
-	        <td><textarea rows="10%" cols="65%" id="res-textarea" name="res-textarea">${con_purpose }</textarea></td>
+	        <td><textarea rows="10%" cols="65%" id="res-textarea" name="res-textarea">${vo.con_purpose }</textarea></td>
 	    </tr>
 	</table>
 	<button id="res-submit" type="button">닫기</button>

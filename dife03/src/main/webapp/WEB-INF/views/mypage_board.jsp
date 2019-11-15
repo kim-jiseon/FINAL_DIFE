@@ -28,7 +28,6 @@
 	$(function() {
 		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
-		alert(mem_id);
 		if (mem_id != '' && mem_id != null) {
 			//var login = $("#category-2").find("a:first").html();
 			$("#sign").attr("href", "logout").html("LOGOUT");
@@ -54,32 +53,37 @@
 			$('dd').addClass('hidden');
 			$(this).next().removeClass('hidden');
 		})
-		
-		
-/* 		     <c:forEach var="vo" items="${list }">
-                                       <tr>
-                                           <td>${vo.con_no }</td>
-                                           <td><fmt:formatDate value="${vo.con_regDate }" pattern="yyyy/MM/dd"/></td>
-                                           <td><a href="#" id="pil_title">${vo.pil_title }</a></td>
-                                           <td>${vo.mem_name }</td>
-                                           <td><fmt:formatDate value="${vo.con_start }" pattern="yyyy/MM/dd"/> - <fmt:formatDate value="${vo.con_end }" pattern="yyyy/MM/dd"/></td>
-                                       </tr>
-                                       <input type="hidden" value="${vo.pil_title }" id="title">
-                                       <input type="hidden" value="${vo.con_start }" id="con_start">
-                                       <input type="hidden" value="${vo.con_end }" id="con_end">
-                                       <input type="hidden" value="${vo.con_time }" id="con_time">
-                                       <input type="hidden" value="${vo.con_attend }" id="con_attend">
-                                       <input type="hidden" value="${vo.con_purpose }" id="con_purpose">
-                                    </c:forEach> */
-		//팝업창 띄우기
-		$("#pil_title").click(function(){
-			var pil_title = $("#title").val();
-			console.log(pil_title);
-			var pop = window.open(
-					"/pilot_reservationPop",
-					"pop",
-					"width = 750, height = 650");
-		})
+                    
+		$.ajax({url:"/board_select",success:function(data){
+			var list = eval(data);
+			console.log(list);
+			$.each(list, function(idx, item){
+				console.log(item.pil_title+", "+item.con_start_str+", "+item.con_end_str+", "+item.con_time+", "+item.con_attend+", "+item.con_purpose);
+				var tr = $("<tr></tr>");
+				var con_no = $("<td></td>").html(item.con_no);
+				var con_regDate = $("<td></td>").html(item.con_regDate_str);
+				var pil_title = $("<td></td>").append($("<a></a>").attr({"id":"pil_title"}).html(item.pil_title));
+				var mem_name = $("<td></td>").html(item.mem_name);
+				var start_end = $("<td></td>").html(item.con_start_str+" - "+item.con_end_str);
+				
+				tr.append(con_no,con_regDate,pil_title,mem_name,start_end);
+				$("#tbody").append(tr);
+				
+				var json = {"pil_title":item.pil_title,"con_start_str":item.con_start_str,"con_end_str":item.con_end_str,"con_time":item.con_time,"con_attend":item.con_attend,"con_purpose":item.con_purpose};
+				var json_data = JSON.stringify(json);
+					
+				})
+				
+				//팝업창 띄우기
+				var a = $("tbody").find("tr");
+				$(a).click(function(){
+					var con_no = $(this).find("td:first").html();
+						 var pop = window.open(
+								"/pilot_reservationPop?con_no="+con_no,
+								"pop",
+								"width = 820, height = 650");
+				})
+			}})             				
 	})
 </script>
 </head>
@@ -120,8 +124,8 @@
                                            <td width=20%>예약일</td>
                                        </tr>
                                    </thead>
-                                   <tbody>
-                                   <c:forEach var="vo" items="${list }">
+                                   <tbody id="tbody">
+                                   <%-- <c:forEach var="vo" items="${list }">
                                        <tr>
                                            <td>${vo.con_no }</td>
                                            <td><fmt:formatDate value="${vo.con_regDate }" pattern="yyyy/MM/dd"/></td>
@@ -135,7 +139,7 @@
                                        <input type="hidden" value="${vo.con_time }" id="con_time">
                                        <input type="hidden" value="${vo.con_attend }" id="con_attend">
                                        <input type="hidden" value="${vo.con_purpose }" id="con_purpose">
-                                    </c:forEach>
+                                    </c:forEach> --%>
                                    </tbody>
                                </table>
                            </dd>
