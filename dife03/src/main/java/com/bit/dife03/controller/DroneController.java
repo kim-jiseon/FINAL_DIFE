@@ -78,23 +78,6 @@ public class DroneController {
 		return mav;
 	}
 	
-	/* 주문 */
-	/*	@ResponseBody
-	@RequestMapping(value = "/droRental", method = RequestMethod.POST)
-	public int in_droRental(String dro_no) throws Exception {
-		int re = 0;
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		
-		String mem_no = (String)param.get("mem_no");
-		int ord_price=(int)param.get("ord_price");
-		int ord_amount=(int)param.get("ord_amount");
-		
-	
-		re = dao.
-		
-		return re;
-	}
-*/	
 	/* 장바구니 */
 	@ResponseBody
 	@RequestMapping("/droBasket")
@@ -102,26 +85,61 @@ public class DroneController {
 							@RequestParam(value = "bas_rental") String bas_rental,
 							@RequestParam(value = "bas_price") int bas_price,
 							@RequestParam(value = "bas_amount") int bas_amount,
-							String mem_id) {
+							String mem_id,
+							String dro_no){
 		int re = 0;
 		System.out.println(bas_return);
 		System.out.println(bas_rental);
 		System.out.println(bas_price);
 		System.out.println(bas_amount);
 		System.out.println(mem_id);
+		System.out.println(dro_no);
+		HashMap map = new HashMap();
 		
-		ObjectMapper mapper = new ObjectMapper();
-		
-		if(mem_id != null)
-		{
-			
+		if(mem_id != null && dro_no != null)
+		{	
+			map.put("bas_return", bas_return);
+			map.put("bas_rental", bas_rental);
+			map.put("bas_price", bas_price);
+			map.put("bas_amount", bas_amount);
+			map.put("mem_id", mem_id);
+			map.put("dro_no",dro_no);
+			re = dao.insertBasket(map);
 		}
-		//pos_no 관련 뽑아오는 매퍼 파일.
-		//re = mapper.writeValueAsString(dao.sel_pos_no());
-		
 		return re;
 	}
 	
+	/* 주문 */
+	@ResponseBody
+	@RequestMapping("/droOrder")
+	public int in_orders(@RequestParam(value = "det_return") String det_return,
+							@RequestParam(value = "det_rental") String det_rental,
+							@RequestParam(value = "ord_price") int ord_price,
+							@RequestParam(value = "det_amount") int det_amount,
+							String mem_id,
+							String dro_no){
+		int re = 0;
+		System.out.println(det_return);
+		System.out.println(det_rental);
+		System.out.println(ord_price);
+		System.out.println(det_amount);
+		System.out.println(mem_id);
+		System.out.println(dro_no);
+		HashMap map = new HashMap();
+		
+		if(mem_id != null && dro_no != null)
+		{	
+			map.put("det_return", det_return);
+			map.put("det_rental", det_rental);
+			map.put("ord_price", ord_price);
+			map.put("det_amount", det_amount);
+			map.put("mem_id", mem_id);
+			map.put("dro_no",dro_no);
+			re = dao.insertOrder(map);
+		}
+		return re;
+	}
+
 	/*
 	@ResponseBody
 	@RequestMapping("/droDtCon")

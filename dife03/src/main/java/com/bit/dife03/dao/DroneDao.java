@@ -30,10 +30,20 @@ public class DroneDao {
 	public Object sel_droCon(String dro_no) {
 		// TODO Auto-generated method stub
 		return DroneManager.sel_droCon(dro_no);
-	}*/
+	}
 
 	public int in_droBasket(String dro_no) {
 		// TODO Auto-generated method stub
 		return DroneManager.in_droBasket(dro_no);
+	}*/
+
+	public int insertBasket(HashMap map) {
+		// TODO Auto-generated method stub
+		return DroneManager.insertBasket(map);
+	}
+
+	public int insertOrder(HashMap map) {
+		// TODO Auto-generated method stub
+		return DroneManager.insertOrder(map);
 	}
 }
