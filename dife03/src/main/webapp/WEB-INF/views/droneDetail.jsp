@@ -9,7 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
-<link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" /> -->
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <!-- 기본 css 링크 -->
@@ -92,8 +93,6 @@ $(function() {
 		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
    	   	
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
-			
-   			
    	   		/*if(mem_id == null || mem_id == ''){
    	   			alert("로그인을 해주세요.");
    	   			location.href="/signIn";
@@ -129,32 +128,6 @@ $(function() {
    			}*/
    	 	}})
    	})	
-   	
-   	/* 상세정보 불러오기
-   	$.ajax({url:"/droDtCon", success:function(data){
-   		var dro_arr = eval(data);
-   		$.each(dro_arr, function(idx, item){
-   			var div_01 = $("<div></div>").attr("id", "block1");
-   			var ul_01 = $("<ul></ul>");
-   			var li_01 = $("<li></li>").addClass("img").attr("id", "border");
-   			var img_01 = $("<img/>").attr({"alt":item.dro_conphoto_01, "src":"img/drone/"+item.dro_conphoto_01, width:"450", height:"490"}).addClass("scale");
-   			var div_02 = $("<div></div>").attr("id", "block2");
-   			//var ul_02 = $("<ul></ul>").attr({color:"black" font-size:"20px"});
-   			var li_02 = $("<li></li>");
-   			var name = $("<p></p>").html(item.dro_name);
-   			var hr = $("<hr>");
-   			var price = $("<p></p>").html(item.dro_price);
-   			var series = $("<p></p>").html(item.dro_series);
-   			var made = $("<p></p>").html(item.dro_made);
-   			
-   			var ul_03 = $("<ul></ul>").addClass("search");
-   			var div_03 = $("<div></div>").addClass("block");
-   			var div_04 = $("<div></div>").attr("id", "calendar");
-   			
-   			var ul_02 = $("<ul></ul>").attr({color:"black", font-size:"20px"}).append(li_02, name, hr, li_02, price, hr, li_02, series, li_02, made);
-   			$(block2).append(ul_02);
-   		})
-   	}}) */
 })
 </script>
 </head>
@@ -256,7 +229,7 @@ $(function() {
                             <!-- * modal 추가 예정 -->
                         </li>
 						<li>
-							<a href="drone?dro_no=${dro_no }">
+							<a href="drone?dro_no=${dtInfo.dro_no }">
 								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
 									<strong>쇼핑 계속하기</strong>
 								</button>
