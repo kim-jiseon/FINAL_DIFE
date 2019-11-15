@@ -54,7 +54,6 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-
 	/* 시리즈명 및 드론명
 	var series_arr = [{'드론파이터':'기본패키지'},
 						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},

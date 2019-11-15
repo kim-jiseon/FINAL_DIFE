@@ -96,15 +96,13 @@ ul li:hover .sub-menu-1 ul li:hover{
 /*
 .fas fa-angle-right:hover {
     margin-top: 20px;
-	color: #383A3F;
-	
-	-webkit-transform:scale(1.5); /* Safari and Chrome */
-  	-moz-transform:scale(1.5); /* Firefox */
-  	-ms-transform:scale(1.5); /* IE 9 */
-  	-o-transform:scale(1.5); /* Opera */
-   	transform:scale(1.5);	/* 1.5배 사이즈 증가 */
-}
-*/
+	color: #383A3F; */
+/*	-webkit-transform:scale(1.5); /* Safari and Chrome */
+/*  	-moz-transform:scale(1.5); /* Firefox */
+/*  	-ms-transform:scale(1.5); /* IE 9 */
+/*  	-o-transform:scale(1.5); /* Opera */
+/*   	transform:scale(1.5);	/* 1.5배 사이즈 증가 */
+
 .sub-menu-2 {
     display: none;
     color: white;
