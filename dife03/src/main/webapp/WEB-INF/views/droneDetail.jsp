@@ -80,6 +80,14 @@ $(function() {
    	/* 주문 및 장바구니 : 로그인 후 가능 */
    	// 장바구니 담기
 	$("#btnBasket").click(function(){
+		if(mem_id == null || mem_id == ''){
+   			alert("로그인을 해주세요.");
+   			location.href="/signIn";
+   		}
+   		else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+		
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
@@ -93,17 +101,19 @@ $(function() {
 		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
    	   	
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
-   	   		/*if(mem_id == null || mem_id == ''){
+   	   		location.href="/basket";
+   	 	}})
+   	})	
+   	// 주문하기
+		$("#btnOrder").click(function(){
+			if(mem_id == null || mem_id == ''){
    	   			alert("로그인을 해주세요.");
    	   			location.href="/signIn";
    	   		}
    	   		else{
    				$("#mypage").attr("href","mypage_orders");
-   			}*/
-   	 	}})
-   	})	
-   	// 주문하기
-		$("#btnOrder").click(function(){
+   			}
+			
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
@@ -117,15 +127,7 @@ $(function() {
 		var data = {"det_amount" : pos_amount,"ord_price" : bas_price,"det_rental" : con_start, "det_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
    	   	
 		$.ajax({url:"/droOrder", traditional:true, contentType:'application/json', data:data, success:function(data){	
-			
-   			
-   	   		/*if(mem_id == null || mem_id == ''){
-   	   			alert("로그인을 해주세요.");
-   	   			location.href="/signIn";
-   	   		}
-   	   		else{
-   				$("#mypage").attr("href","mypage_orders");
-   			}*/
+   	   		location.href="/orders";
    	 	}})
    	})	
 })
