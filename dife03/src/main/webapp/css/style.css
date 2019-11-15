@@ -87,3 +87,8 @@
         background-color: white;
     }
 }
+
+/* 클릭 시 파란테두리 삭제 */
+input, button:focus {
+   outline: none;
+}

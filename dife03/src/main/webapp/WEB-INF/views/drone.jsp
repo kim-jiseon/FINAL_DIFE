@@ -302,12 +302,9 @@ $(function() {
                                             data-multiple-dates-separator=" - " data-language="ko"
                                             class="datepicker-here" placeholder="대여일, 반납일을 선택하세요." name="datepicker" id="datepicker" style="width:250px; height: 30px;"/>
                         </div>
-<<<<<<< HEAD
                     </div>                      	
-=======
                     </div>
                     <!-- 검색창처럼 인풋에 선택한 카테고리 값을 받을까 -->   	
->>>>>>> refs/heads/lje1111
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
                             <ul name="sub_series_01" id="sub-menu">
