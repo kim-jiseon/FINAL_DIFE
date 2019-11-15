@@ -63,7 +63,6 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
 	select det_amount,det_price,det_rental,det_return,mem_point,dro_name,dro_series,dro_photo,mem_name,pil_career,pil_profile,ord_date from (select B.*,dro_no,pil_no from 
 	(select o.ord_no,ord_amount,ord_price,det_amount,det_price,det_rental,det_return,pos_no,mem_point,ord_date from (select ord_no,ord_amount,ord_price,mem_point,ord_date  
 	from orders o,member m where o.mem_no=m.mem_no and ord_pay_state = 0
-	
 	<!-- 주문정보 0을 1로 바꿔줘야 결제완료. -->
 	and ord_no =#{ord_no} 
 	and m.mem_no=(select mem_no from member where mem_id=#{mem_id})
