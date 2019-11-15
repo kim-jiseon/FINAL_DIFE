@@ -80,6 +80,14 @@ $(function() {
    	/* 주문 및 장바구니 : 로그인 후 가능 */
    	// 장바구니 담기
 	$("#btnBasket").click(function(){
+		if(mem_id == null || mem_id == ''){
+   			alert("로그인을 해주세요.");
+   			location.href="/signIn";
+   		}
+   		else{
+			$("#mypage").attr("href","mypage_orders");
+		}
+		
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
@@ -93,19 +101,19 @@ $(function() {
 		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
    	   	
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
-			
-   			
-   	   		/*if(mem_id == null || mem_id == ''){
-   	   			alert("로그인을 해주세요.");
-   	   			location.href="/signIn";
-   	   		}
-   	   		else{
-   				$("#mypage").attr("href","mypage_orders");
-   			}*/
+   	   		location.href="/basket";
    	 	}})
    	})	
    	// 주문하기
-		$("#btnOrder").click(function(){
+	$("#btnOrder").click(function(){
+		if(mem_id == null || mem_id == ''){
+   	   		alert("로그인을 해주세요.");
+   	   		location.href="/signIn";
+   	   	}
+   	   	else{
+   			$("#mypage").attr("href","mypage_orders");
+   		}
+			
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
@@ -119,43 +127,9 @@ $(function() {
 		var data = {"det_amount" : pos_amount,"ord_price" : bas_price,"det_rental" : con_start, "det_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
    	   	
 		$.ajax({url:"/droOrder", traditional:true, contentType:'application/json', data:data, success:function(data){	
-			
-   			
-   	   		/*if(mem_id == null || mem_id == ''){
-   	   			alert("로그인을 해주세요.");
-   	   			location.href="/signIn";
-   	   		}
-   	   		else{
-   				$("#mypage").attr("href","mypage_orders");
-   			}*/
+   	   		location.href="/orders";
    	 	}})
    	})	
-   	
-   	/* 상세정보 불러오기
-   	$.ajax({url:"/droDtCon", success:function(data){
-   		var dro_arr = eval(data);
-   		$.each(dro_arr, function(idx, item){
-   			var div_01 = $("<div></div>").attr("id", "block1");
-   			var ul_01 = $("<ul></ul>");
-   			var li_01 = $("<li></li>").addClass("img").attr("id", "border");
-   			var img_01 = $("<img/>").attr({"alt":item.dro_conphoto_01, "src":"img/drone/"+item.dro_conphoto_01, width:"450", height:"490"}).addClass("scale");
-   			var div_02 = $("<div></div>").attr("id", "block2");
-   			//var ul_02 = $("<ul></ul>").attr({color:"black" font-size:"20px"});
-   			var li_02 = $("<li></li>");
-   			var name = $("<p></p>").html(item.dro_name);
-   			var hr = $("<hr>");
-   			var price = $("<p></p>").html(item.dro_price);
-   			var series = $("<p></p>").html(item.dro_series);
-   			var made = $("<p></p>").html(item.dro_made);
-   			
-   			var ul_03 = $("<ul></ul>").addClass("search");
-   			var div_03 = $("<div></div>").addClass("block");
-   			var div_04 = $("<div></div>").attr("id", "calendar");
-   			
-   			var ul_02 = $("<ul></ul>").attr({color:"black", font-size:"20px"}).append(li_02, name, hr, li_02, price, hr, li_02, series, li_02, made);
-   			$(block2).append(ul_02);
-   		})
-   	}}) */
 })
 </script>
 </head>
