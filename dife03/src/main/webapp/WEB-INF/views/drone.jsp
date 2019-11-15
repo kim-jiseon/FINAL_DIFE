@@ -425,7 +425,6 @@ $(function() {
 		<!-- //footer -->
 	</div>
 	<!-- //wrap -->
-	
 	<input type="hidden" value="${datepicker }" id="hidden-datepicker">
 	<input type="hidden" value="${sub_series_01 }" id="hidden-series">
 	<input type="hidden" value="${sub_price }" id="hidden-price">
