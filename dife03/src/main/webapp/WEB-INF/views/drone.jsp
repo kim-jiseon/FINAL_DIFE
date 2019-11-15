@@ -273,6 +273,7 @@ $(function() {
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
         <div id="header">
+        	<!-- header-top -->
             <div id="header-top">
                <div id="category">
                     <span id="category-1" class="animated fadeInUp">
@@ -290,35 +291,35 @@ $(function() {
                    </span>
                 </div>
             </div>
+            <!-- header-top end -->
             
 	        <!-- header-nav -->
 	        <div id="header-nav">
 	            <ul name="search" class="search">	            
                     <div class="block">
-                        <div id="calendar" name="calendar">
-                          	 대여일<i class="far fa-calendar-check"></i>&nbsp;&nbsp;
-                             	<input type="text" data-range="true" 
-                                            data-multiple-dates-separator=" - " data-language="ko"
-                                            class="datepicker-here" placeholder="대여일, 반납일을 선택하세요." name="datepicker" id="datepicker" style="width:250px; height: 30px;"/>
+                        <div id="calendar" name="calendar">대여일
+                          	 <i class="far fa-calendar-check"></i>&nbsp;&nbsp;
+                             <input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ko" class="datepicker-here"
+                              placeholder="대여일, 반납일을 선택하세요." name="datepicker" id="datepicker" style="width:250px; height: 30px;"/>
                         </div>
                     </div>                      	
-                    </div>
+                    
                     <!-- 검색창처럼 인풋에 선택한 카테고리 값을 받을까 -->   	
                     <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
                         <div class="sub-menu-1">
-                            <ul name="sub_series_01" id="sub-menu">
-                            </ul>
+                            <ul name="sub_series_01" id="sub-menu"></ul>
                             <!-- <input type="text" name="set-series" style="width:200px; height: 30px;"/> -->
                         </div>
                     </li>                    
-                    </li>
+                
                     <!-- 제이쿼리 사용 -->
                     <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
                         <div class="sub-menu-1">
-                            <ul name="sub_price" id="sub_price">
-                            </ul>
+                            <ul name="sub_price" id="sub_price"></ul>
                         </div>
                     </li>
+                    
+                    <!-- 검색버튼 -->
                     <button id="btnSch">검색</button>
                 </ul>
         	</div>
@@ -328,6 +329,7 @@ $(function() {
           
         <!-- contents -->
         <div id="contents">
+        	<!-- container -->
         	<div class="container">
 				<div id="drone-grid">
 					<!-- 드론 정렬 
@@ -349,67 +351,80 @@ $(function() {
 	                </c:forEach>
 	                -->
 	              </div>
-				</div>
-            </div>
+			</div>
             <!-- //container -->
 		</div>
 		<!-- //contents -->
 		
 		<!-- footer -->
 		<div id="footer">
+			<!-- footer-nav -->
 			<div id="footer-nav">
-				<!-- 드론 비교하는 건 footer-nav에서 만들면 될거 같습니다!! css도 footer-nav 높이 설정하셔서 하시면 될거 같아요. -->
+				<!-- compareChatDrone -->
 				<div id="compareChatDrone">
-					
+					<!-- center-text -->
 					<div id="center-text">
 	    				<h2>ChatBox UI</h2>
 	    				<p>Message send and scroll to bottom enabled </p>
-	  				</div> 
-					<div id="body"> 
-						<div id="chat-circle" class="btn btn-raised">
-	        				<div id="chat-overlay">
-	        				</div>
-			    				<i class="fas fa-hat-wizard">speaker_phone</i>
-						</div>
-	  				<div class="chat-box">
-	    				<div class="chat-box-header">
-	      					ChatBot
-	      					<span class="chat-box-toggle">
-	      						<i class="material-icons">close</i>
-	      					</span>
-	    				</div>
-	    				<div class="chat-box-body">
-	      					<div class="chat-box-overlay">   
-	      					</div>
-      						<div class="chat-logs">
-      						</div><!--chat-log -->
-	    				</div>
-	    				<div class="chat-input">      
-	      					<form>
-	        					<input type="text" id="chat-input" placeholder="Send a message..."/>
-	      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
-	      					</form>      
-	    				</div>
 	  				</div>
-	  				
+	  				<!-- center-text end --> 
+	  				<!-- body -->
+					<div id="body"> 
+						<!-- chat-circle -->
+						<div id="chat-circle" class="btn btn-raised">
+	        				<div id="chat-overlay"></div>
+			    			<i class="fas fa-hat-wizard">speaker_phone</i>
+						</div>
+						<!-- chat-circle end -->
+						<!-- chat-box -->
+	  					<div class="chat-box">
+	  						<!-- chat-box-header -->
+		    				<div class="chat-box-header">
+		      					ChatBot
+		      					<span class="chat-box-toggle">
+		      						<i class="material-icons">close</i>
+		      					</span>
+		    				</div>
+		    				<!-- chat-box-header end -->
+		    				<!-- chat-box-body -->
+		    				<div class="chat-box-body">
+		      					<div class="chat-box-overlay"></div>
+	      						<div class="chat-logs"></div>
+	      						<!-- chat-log -->
+		    				</div>
+		    				<!-- chat-box-body end -->
+		    				<!-- chat-input -->
+		    				<div class="chat-input">      
+		      					<form>
+		        					<input type="text" id="chat-input" placeholder="Send a message..."/>
+		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+		      					</form>      
+		    				</div>
+		    				<!-- chat-input end -->
+	  					</div>
+	  					<!-- chat-box end -->
+					</div>
+					<!-- body end -->
 				</div>
+				<!-- compareChatDrone end -->
 			</div>
+			<!-- footer-nav end -->
+			
+			<!-- footer-info -->
 			<div id="footer-info">
 				(주)비트캠프:DIFE
 				<div id="footer_info1">
 					<p>서울특별시 마포구 백범로 23 구프라자 3층</p>
 					<p>02-707-1480</p>
-					<p>
-						<a href="#">고객센터</a>
-					</p>
-					<p>
-						<a href="#">이용안내</a>
-					</p>
+					<p><a href="#">고객센터</a></p>
+					<p><a href="#">이용안내</a></p>
 				</div>
 			</div>
+			<!-- footer-info end -->
 		</div>
 		<!-- //footer -->
 	</div>
+	<!-- //wrap -->
 	<input type="hidden" value="${datepicker }" id="hidden-datepicker">
 	<input type="hidden" value="${sub_series_01 }" id="hidden-series">
 	<input type="hidden" value="${sub_price }" id="hidden-price">
