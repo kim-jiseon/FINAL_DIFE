@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <!-- 기본 링크 -->
@@ -89,6 +89,18 @@ $(function() {
 			$(search_droPrc).append(icon);
 			$("#sub_price").append(search_droPrc);
 		})
+		
+		/* 카테고리값 선택 시 해당값만 출력 */
+		// 가격
+		$("#sub_price").click(function(){
+			var selectPrice = $("hover_dro_01").val(price_arr);
+			
+			//alert(selectPrice);
+			$("#price").on('change', function(){
+				$("#price").empty().append($sub_price.find('li').clone());
+			})
+		})
+		
 		// 상품 전체 목록
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
