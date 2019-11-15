@@ -9,8 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" /> -->
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" /> -->
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <!-- 기본 css 링크 -->
@@ -105,15 +105,15 @@ $(function() {
    	 	}})
    	})	
    	// 주문하기
-	$("#btnOrder").click(function(){
-		if(mem_id == null || mem_id == ''){
-   	   		alert("로그인을 해주세요.");
-   	   		location.href="/signIn";
-   	   	}
-   	   	else{
-   			$("#mypage").attr("href","mypage_orders");
-   		}
-			
+		$("#btnOrder").click(function(){
+			if(mem_id == null || mem_id == ''){
+   	   			alert("로그인을 해주세요.");
+   	   			location.href="/signIn";
+   	   		}
+   	   		else{
+   				$("#mypage").attr("href","mypage_orders");
+   			}
+
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
@@ -245,7 +245,7 @@ $(function() {
                         
                         <!-- 쇼핑계속하기 버튼 -->
 						<li>
-							<a href="drone?dro_no=${dro_no }">
+							<a href="drone?dro_no=${dtInfo.dro_no }">
 								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
 									<strong>쇼핑 계속하기</strong>
 								</button>

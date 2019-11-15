@@ -95,7 +95,7 @@ public class DroneController {
 		System.out.println(mem_id);
 		System.out.println(dro_no);
 		HashMap map = new HashMap();
-		
+		bas_price = bas_price * bas_amount;
 		if(mem_id != null && dro_no != null)
 		{	
 			map.put("bas_return", bas_return);
@@ -126,7 +126,7 @@ public class DroneController {
 		System.out.println(mem_id);
 		System.out.println(dro_no);
 		HashMap map = new HashMap();
-		
+		ord_price = ord_price * det_amount;
 		if(mem_id != null && dro_no != null)
 		{	
 			map.put("det_return", det_return);
