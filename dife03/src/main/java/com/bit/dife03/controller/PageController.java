@@ -28,6 +28,11 @@ public class PageController {
 		
 	}
 	
+	@RequestMapping("/support")
+	public void support() {
+		
+	}
+	
 	@RequestMapping("/admin_update")
 	public void admin_update() {
 		
