@@ -257,7 +257,7 @@
 		border-radius: 45px;
 		padding-right: 40px;
 		padding-left: 40px;
-		color: #5865C3;
+		color: #7EBDC2;
 	}
 	#chat-overlay {
 		background: rgba(255, 255, 255, 0.1);
@@ -270,6 +270,7 @@
 		display: none;
 	}
 	.chat-box {
+		z-index: 999;
 		display: none;
 		background: #efefef;
 		position: fixed;
@@ -288,7 +289,7 @@
 		cursor: pointer;
 	}
 	.chat-box-header {
-		background: #5A5EB9;
+		background: #7EBDC2;
 		height: 70px;
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
@@ -319,13 +320,13 @@
 	}
 	#chat-input {
 		background: #f4f7f9;
-		width: 100%;
+		width: 330px;
 		position: relative;
 		height: 47px;
 		padding-top: 10px;
-		padding-right: 50px;
+		padding-right: 10px;
 		padding-bottom: 10px;
-		padding-left: 15px;
+		padding-left: 10px;
 		border: none;
 		resize: none;
 		outline: none;
@@ -359,7 +360,7 @@
 		box-shadow: none;
 		border: none;
 		border-radius: 50%;
-		color: #5A5EB9;
+		color: #7EBDC2;
 		width: 35px;
 		height: 35px;
 	}
@@ -377,7 +378,7 @@
 		background-color: #F5F5F5;
 	}
 	.chat-logs::-webkit-scrollbar-thumb {
-		background-color: #5A5EB9;
+		background-color: #7EBDC2;
 	}
 	@media only screen and (max-width: 500px) {
 		.chat-logs {
@@ -415,7 +416,7 @@
 	.chat-msg.self>.cm-msg-text {
 		float: right;
 		margin-right: 10px;
-		background: #5A5EB9;
+		background: #7EBDC2;
 		color: white;
 	}
 	.cm-msg-button>ul>li {

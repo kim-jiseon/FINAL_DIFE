@@ -40,7 +40,7 @@ public class MemberController {
 	@RequestMapping(value = "/signIn", method = RequestMethod.GET)
 	public void signInInsertForm(HttpServletRequest request) {
 		String referer = request.getHeader("referer");
-		System.out.println(referer);
+		System.out.println("여기"+referer);
 		request.getSession().setAttribute("redirectURI", referer);
 	}
 	//로그인시
