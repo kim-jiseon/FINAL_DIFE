@@ -1,3 +1,4 @@
+
 package com.bit.dife03.controller;
 
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,6 @@ public class PageController {
 	public void mypage_orders() {
 		
 	}
-<<<<<<< Upstream, based on origin/master
 	
 	@RequestMapping("/mypage_emoney")
 	public void mypage_emoney() {
@@ -37,20 +37,6 @@ public class PageController {
 	public void admin_update() {
 		
 	}
-=======
-	@RequestMapping("/droneDetail")
-	public void droneDetail() {
-		
-	}
-	@RequestMapping("/paySuccess")
-	public void paysuccess() {
-		
-	}
-	@RequestMapping("/location")
-	public void location() {
-		
-	}
->>>>>>> 59a99da loacation test
 
 	
 //	@RequestMapping("/drone")

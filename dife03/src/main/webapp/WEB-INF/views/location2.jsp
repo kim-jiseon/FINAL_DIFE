@@ -12,13 +12,15 @@
      -->
      <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
     <!-- fadeIn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/mypage/mypage.css">
+    <link rel="stylesheet" href="css/mypage/mypage_orders.css">
+   
     <link rel="stylesheet" href="css/locWea/location.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-
-    
+   
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
@@ -38,19 +40,23 @@
     		//$("#category-2").append(login);
     		$("#sign").attr("href","signIn").html("LOGIN");
     	}
-    	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
-    	function date_to_str(format)
-		{
-		    var year = format.getFullYear();
-		    var month = format.getMonth() + 1;
-		    if(month<10) month = '0' + month;
-		    var date = format.getDate();
-		    if(date<10) date = '0' + date;
-		    return year + "." + month + "." + date;
-		}
+    	    	
     	
-    	
-    	
+    	//마이페이지 이동
+		$("#mypage").click(function(){
+			console.log("클릭");
+			//var mem_id = "${mem_id}";
+			if(mem_id == null || mem_id == ''){
+				alert("로그인을 해주세요.");
+				location.href="signIn";
+			}else{
+				$("#mypage").attr("href","mypage_orders");
+			}
+		})
+	 	var month = 12;
+		var pageNUM = 1;
+		var isEnd = false;
+		
     </script>
  </head>
 <body>
@@ -63,7 +69,36 @@
         <!-- contents -->
         <div id="contents">
             <div class="container">
-           		<form name="fboardlist" id="fboardlist" action="" method="post">
+               <div  class="mypage-grid">
+               <div id="mypage-top" class="mypage-top">
+						
+	</div>
+                <div id="mypage-bottom" class="mypage-grid-nav">
+                    <div id="mypage-bottom-left">
+                        <nav>
+                            <ul>
+                                <li class="mypage-category"><a href="mypage_orders">서울/경기<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="#">강원/충청<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="mypage_emoney">전라/경산<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="#">제 주<i class="fas fa-angle-right" id="icon"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="mypage-bottom-right">
+                       <div id="mypage-orders">
+                           <span>추천 비행지역</span>
+                           <span>
+                               <select name="mypage-orders-date" id="mypage-orders-date">
+                                   <option value="1개월">인기순</option>
+                                   <option value="1개월">최신순</option>
+                                   <option value="1개월">제목순</option>
+                               </select>
+                           </span>
+                        </div><hr id="hr">
+                         <div class="mypage-orders-list">
+                            <a href="ordersDetail"><div class="mypage-orders-title">영월군 금방아민박 캠프장<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
+                            <div class="mypage-orders-info">
+                                <form name="fboardlist" id="fboardlist" action="" method="post">
 <div class="list_place" id="updates">
    <div class="li_block">
     <div class="thumbnail">
@@ -85,6 +120,22 @@
    </div>
 </div>
 </form>
+                            </div>
+                        </div>    
+                        <div class="mypage-orders-list">
+                            <a href="ordersDetail"><div class="mypage-orders-title">[2019.10.14] MAVIC-PRO 외 1건<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
+                            <div class="mypage-orders-info">
+                                <ul>
+                                    <li>주문번호&nbsp;&nbsp;&nbsp; 1569888755958</li>
+                                    <li>결제금액&nbsp;&nbsp;&nbsp; 55,000 원</li>
+                                    <li>주문상태&nbsp;&nbsp;&nbsp; 대여중</li>
+                                </ul>
+                            </div>
+                        </div> 
+                        
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
         <!-- //contents -->
