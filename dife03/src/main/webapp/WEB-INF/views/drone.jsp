@@ -65,30 +65,44 @@ $(function() {
 		];
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
-			var search_droSer = $("<li></li>").attr({"id":"hover_dro_01", "name":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
+			var search_droSer = $("<option></option>").attr({"id":"hover_dro_01", "name":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
 			var icon = $("<i></i>").addClass("fas fa-angle-right");
 			$(search_droSer).append(icon);
-			$("#sub-menu").append(search_droSer);
+			$("#sub-menu-s").append(search_droSer);
 		})
 		// 가격
 		$.each(price_arr, function(idx, prc){
-			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
+			var search_droPrc = $("<option></option>").attr({"id":"hover_dro_02", "name":"hover_dro_02", "value":price_arr[idx], "idx":idx}).html(price_arr[idx]).addClass("hover-dro").html(price_arr[idx]);
 			var icon = $("<i></i>").addClass("fas fa-angle-right");
 			$(search_droPrc).append(icon);
-			$("#sub_price").append(search_droPrc);
+			$("#sub-menu-p").append(search_droPrc);
 		})
 		
-		/* 카테고리값 선택 시 해당값만 출력 */
-		// 가격
-		$("#sub_price").click(function(){
-			var selectPrice = $("hover_dro_01").val(price_arr);
-			
-			//alert(selectPrice);
-			$("#price").on('change', function(){
-				$("#price").empty().append($sub_price.find('li').clone());
+		/* 카테고리값 선택 시 해당값만 복제 후 고정 
+		// 시리즈명
+		$("#sub-menu").click(function(){
+			var selectSeries = $("hover_dro_01").val(series_arr);
+			//alert(selectSeries);
+			$(".hover-dro").click('change', function(){
+				var setS = $(this).html(data.dro_series);
+				//alert(setS);
+				$("#series").empty().append(setS).clone();
+				//$("#series>search_droSer[value="+'<c:out value="${param.series_arr}"/>'+"]").attr("selected","selected");			
 			})
 		})
-		// 상품 전체 목록
+		// 가격
+		$("#sub_price").click(function(){
+			var selectPrice = $("hover_dro_02").val(price_arr);
+			//alert(selectPrice);
+			$(".hover-dro").click('change', function(){
+				var setP = $(this).html(data.dro_price);
+				//alert(setP);
+				$("#price").empty().append(setP).clone();
+								
+			})
+		}) */
+		
+		/* 상품 전체 목록 */
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
      		var div = $("<div></div>").addClass("item");
@@ -266,22 +280,24 @@ $(function() {
                               placeholder="대여일, 반납일을 선택하세요." name="datepicker" id="datepicker" style="width:250px; height: 30px;"/>
                         </div>
                     </div>                      	
-                    
-                    <!-- 검색창처럼 인풋에 선택한 카테고리 값을 받을까 -->   	
-                    <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
-                        <div class="sub-menu-1">
-                            <ul name="sub_series_01" id="sub-menu"></ul>
-                            <!-- <input type="text" name="set-series" style="width:200px; height: 30px;"/> -->
-                        </div>
-                    </li>                    
-                
                     <!-- 제이쿼리 사용 -->
-                    <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
-                        <div class="sub-menu-1">
-                            <ul name="sub_price" id="sub_price"></ul>
-                        </div>
-                    </li>
-                    
+                    <form action="drone" id="drone-nav">
+	                   	<span id="dro-search">
+	                    	<span id="series" name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
+	                        	<select name="sub_series_01" id="sub-menu-s">
+	                        	</select>
+	                            <!-- <ul name="sub_series_01" id="sub-menu"></ul> -->
+	                    	</span>
+	                    </span>
+	                    <!-- 제이쿼리 사용 -->
+	                    <span id="dro-search">
+	                        <span id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
+	                            <select name="sub_series_02" id="sub-menu-p">
+	                        	</select>
+	                            <!-- <ul name="sub_price" id="sub_price"></ul> -->
+	                        </span>
+	                    </span>
+                    </form>
                     <!-- 검색버튼 -->
                     <button id="btnSch">검색</button>
                 </ul>
@@ -325,12 +341,6 @@ $(function() {
 			<div id="footer-nav">
 				<!-- compareChatDrone -->
 				<div id="compareChatDrone">
-					<!-- center-text
-					<div id="center-text">
-	    				<h2>ChatBox UI</h2>
-	    				<p>Message send and scroll to bottom enabled </p>
-	  				</div> -->
-	  				<!-- center-text end --> 
 	  				<!-- body -->
 					<div id="body"> 
 						<!-- chat-circle -->
