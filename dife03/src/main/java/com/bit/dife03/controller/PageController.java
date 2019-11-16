@@ -13,6 +13,11 @@ public class PageController {
 //		
 //	}
 	
+	@RequestMapping("/intro")
+	public void intro() {
+		
+	}
+	
 	@RequestMapping("/mypage_orders")
 	public void mypage_orders() {
 		

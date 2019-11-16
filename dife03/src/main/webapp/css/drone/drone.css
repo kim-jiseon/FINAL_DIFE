@@ -53,8 +53,8 @@ svg{
     margin-top: 4px;
 }
 #drone-nav {
-	margin-left: 10px;
-	margin-right: 50px;
+	margin-left: 0px;
+	margin-right: 40px;
 }
 /*
 .sub-menu-1{
@@ -117,7 +117,7 @@ ul li:hover .sub-menu-1 ul li:hover{
 /*  	-ms-transform:scale(1.5); /* IE 9 */
 /*  	-o-transform:scale(1.5); /* Opera */
 /*   	transform:scale(1.5);	/* 1.5배 사이즈 증가 */
-
+/*
 .sub-menu-2 {
     display: none;
     color: white;
@@ -130,6 +130,7 @@ ul li:hover .sub-menu-1 ul li:hover{
     margin-left: 210px;
     background-color: white;
 }
+*/
 input {
 	border: none;
 	border-radius: 30px;
@@ -288,7 +289,7 @@ figcaption p span{
     height: 420px;
 }
 /*
-.fas fa-won-sign {
+.fa-won-sign fa-w-18 {
 	font-size: 20px;
 }
 */
