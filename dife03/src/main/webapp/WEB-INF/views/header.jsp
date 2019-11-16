@@ -6,7 +6,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-    <div id="wrap" class="animated fadeIn">
+
        <!-- header -->
         <div id="header">
             <div id="header-top">
@@ -29,7 +29,7 @@
             <div id="header-nav"></div>
         </div>
         <!-- //header -->
-         </div>
+
 <script>
 window.onscroll = function() {myFunction()};
 
