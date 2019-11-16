@@ -342,7 +342,7 @@ figcaption p span{
   cursor:pointer;
 }
 .chat-box-header {
-  background: #5A5EB9;
+  background: #7EBDC2;
   height:70px;
   border-top-left-radius:5px;
   border-top-right-radius:5px; 
@@ -412,7 +412,7 @@ figcaption p span{
   box-shadow:none;
   border:none;
   border-radius:50%;
-  color:#5A5EB9;
+  color:#7EBDC2;
   width:35px;
   height:35px;  
 }
@@ -433,7 +433,7 @@ figcaption p span{
 }
 .chat-logs::-webkit-scrollbar-thumb
 {
-	background-color: #5A5EB9;
+	background-color: #7EBDC2;
 }
 
 @media only screen and (max-width: 500px) {
@@ -473,7 +473,7 @@ figcaption p span{
 .chat-msg.self > .cm-msg-text {  
   float:right;
   margin-right:10px;
-  background: #5A5EB9;
+  background: #7EBDC2;
   color:white;
 }
 .cm-msg-button>ul>li {
