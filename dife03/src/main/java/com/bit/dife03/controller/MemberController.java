@@ -115,8 +115,8 @@ public class MemberController {
 		System.out.println(path);
 		MultipartFile file = vo.getUpload();
 		String mem_fname = file.getOriginalFilename();
-		vo.setMem_fname(mem_fname);
-
+//		vo.setMem_fname(mem_fname);
+		vo.setMem_fname("member.png");
 		try {
 			byte data[] = file.getBytes();
 			FileOutputStream fos = new FileOutputStream(path+"/"+mem_fname);
@@ -152,7 +152,6 @@ public class MemberController {
 		
 		ServiceSMSSoapProxy sendsms = new ServiceSMSSoapProxy();
 		try{
-		
 		String senderPhone= "01025598279";
 		String receivePhone= mem_tel;
 		String smsContent= "다음의 인증번호를 입력해주세요.["+str+"]";
@@ -163,7 +162,6 @@ public class MemberController {
 		}catch(Exception e){
 		System.out.println("Exception in main:" +e);
 		}
-		
 		return str;
 	}
 }

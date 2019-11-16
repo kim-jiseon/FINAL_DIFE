@@ -338,11 +338,10 @@ $(function() {
 						<!-- chat-circle -->
 						<!-- <div id="chat-circle" class="btn btn-raised"> -->
 						<img id="chat-circle" class="btn btn-raised alt="챗봇아이콘" src="img/chatbot.png">
-	        				<div id="chat-overlay">
-	        				</div>
+	        				<div id="chat-overlay"></div>
 			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
-						</div>
 						<!-- chat-circle end -->
+						
 						<!-- chat-box -->
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
@@ -353,6 +352,7 @@ $(function() {
 		      					</span>
 		    				</div>
 		    				<!-- chat-box-header end -->
+		    				
 		    				<!-- chat-box-body -->
 		    				<div class="chat-box-body">
 		      					<div class="chat-box-overlay"></div>
@@ -360,6 +360,7 @@ $(function() {
 	      						<!-- chat-log -->
 		    				</div>
 		    				<!-- chat-box-body end -->
+		    				
 		    				<!-- chat-input -->
 		    				<div class="chat-input">      
 		      					<form>
@@ -390,6 +391,7 @@ $(function() {
 			<!-- footer-info end -->
 		</div>
 		<!-- //footer -->
+		
 	</div>
 	<!-- //wrap -->
 	<input type="hidden" value="${datepicker }" id="hidden-datepicker">
