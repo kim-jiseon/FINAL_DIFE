@@ -30,6 +30,7 @@ public class MemberManager {
 		SqlSession session = factory.openSession(true);
 		re = session.insert("member.in_member", vo);
 		session.close();
+		System.out.println("성공"+re);
 		return re;
 	}
 	// 아이디 중복확인

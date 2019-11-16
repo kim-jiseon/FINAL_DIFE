@@ -115,6 +115,7 @@ public class MemberController {
 		System.out.println(path);
 		MultipartFile file = vo.getUpload();
 		String mem_fname = file.getOriginalFilename();
+		//회원사진을 등록하는 곳이 없는데 어떻게??
 		vo.setMem_fname(mem_fname);
 
 		try {
@@ -152,7 +153,6 @@ public class MemberController {
 		
 		ServiceSMSSoapProxy sendsms = new ServiceSMSSoapProxy();
 		try{
-		
 		String senderPhone= "01025598279";
 		String receivePhone= mem_tel;
 		String smsContent= "다음의 인증번호를 입력해주세요.["+str+"]";
@@ -163,7 +163,6 @@ public class MemberController {
 		}catch(Exception e){
 		System.out.println("Exception in main:" +e);
 		}
-		
 		return str;
 	}
 }
