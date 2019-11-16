@@ -338,18 +338,22 @@ $(function() {
 	        				<div id="chat-overlay">
 	        				</div>
 						</div>
+	        				<div id="chat-overlay"></div>
+			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
 						<!-- chat-circle end -->
+						
 						<!-- chat-box -->
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
 		    				<div class="chat-box-header">
 		      					2개의 상품을 비교해보세요!<br>
-		      					Drag on 
+		      					Drag onto this space.
 		      					<span class="chat-box-toggle">
 		      						<i class="material-icons">X</i>
 		      					</span>
 		    				</div>
 		    				<!-- chat-box-header end -->
+		    				
 		    				<!-- chat-box-body -->
 		    				<div class="chat-box-body">
 		      					<div class="chat-box-overlay"></div>
@@ -357,6 +361,7 @@ $(function() {
 	      						<!-- chat-log -->
 		    				</div>
 		    				<!-- chat-box-body end -->
+		    				
 		    				<!-- chat-input -->
 		    				<div class="chat-input">      
 		      					<form>
@@ -387,6 +392,7 @@ $(function() {
 			<!-- footer-info end -->
 		</div>
 		<!-- //footer -->
+		
 	</div>
 	<!-- //wrap -->
 	<input type="hidden" value="${datepicker }" id="hidden-datepicker">
