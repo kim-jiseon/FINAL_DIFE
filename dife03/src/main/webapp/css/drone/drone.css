@@ -11,9 +11,6 @@
 svg{
 	padding-left: 10px;
 }
-.svg-inline--fa.fa-w-18 {
-	width: 25px;
-}
 
 /* 달력 */
 #block{
@@ -308,18 +305,13 @@ html, body {
 }
 #chat-circle {
   position: fixed;
-  bottom: 50px;
-  right: 50px;
-  background: #5A5EB9;
-  width: 80px;
-  height: 80px;  
-  border-radius: 50%;
+  bottom: 20px;
+  right: 20px;
+  width: 180px;
+  height: 140px;
   color: white;
-  padding: 28px;
   cursor: pointer;
-  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
-
 .btn#my-btn {
      background: white;
     padding-top: 13px;

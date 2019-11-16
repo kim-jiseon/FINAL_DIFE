@@ -54,26 +54,15 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-	/* 시리즈명 및 드론명
-	var series_arr = [{'드론파이터':'기본패키지'},
-						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},
-						{'매트리스':'600','600 프로','100','210 RTK'},
-						{'비밥':'2 싱글','2+스카이 컨트롤러'},
-						{'스파크':'미니'},
-						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
-						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
-						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
-					];	*/
-	var series_arr = [
-		'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
-	];
-	var price_arr = [
-		'10만원 이하','10만원 ~ 20만원','20만원 이상'
-	];
 	
 	/* 검색 카테고리 */				
 	$.ajax({url:"/droAll",success:function(data){
-		//var series_arr = "${dtInfo.dro_series}";	
+		var series_arr = [
+			'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
+		];
+		var price_arr = [
+			'10만원 이하','10만원 ~ 20만원','20만원 이상'
+		];
 		
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
@@ -115,7 +104,6 @@ $(function() {
 			var dro_photo = $("<img/>").attr({"alt":item.dro_name, "src":"img/drone/"+item.dro_photo, width:"300", height:"450"}).addClass("dro-list-img");
 			var won = $("<i></i>").html(" / ").addClass("fas fa-won-sign");
 			var line = $("<span></span>").html(" / ");
-			// won 사이즈 키워야됨. css에서 안됨.
 			var won = $("<i></i>").attr({"font-size":"20px"}).addClass("fas fa-won-sign");
 			var dro_price = $("<span></span>").html(item.dro_price);
 			var dro_info = $("<p></p>").addClass("dro-list-info").attr("id","dro_info").html(item.dro_info);
@@ -237,42 +225,7 @@ $(function() {
 	  })
 	})
 
-/*    
-     카테고리(시리즈명,가격) 클릭 시 상태유지
-     var searchSp = document.getElementById("search1");
-     var listSp = document.getElementById("sub-menu"); 
-     listSp.style.display = "none";
-     searchSp.addEventListener("click",(event){
-         if(listSp.style.display == "none"){
-             listSp.style.display = "block";
-         }
-         else{
-             listSp.style.display = "none";
-         }
-     }) */
-            
-            /*
-            // selectRentalDate
-            // 대여일 캘린더
-            $("#datepicker").dialog({
-            	buttons:{
-            		submit:function(){
-            			var data = $("#header-nav").serialize();
-            			$.ajax({url:"selectRentalDate",type:"POST",data:data,success:function(r){
-            				alert(r);
-            			}});
-            		},
-            		reset:function(){
-            			alert("모두 지움");
-            		},
-            		cancle:function(){
-            			alert("취소");
-            		},
-            	},
-            	modal:false
-        });
-        $("#calendar").datepicker();
-        */
+
 
 	/* 검색 고정 */
 		$("#datepicker").val($("#hidden-datepicker").val());
@@ -383,11 +336,12 @@ $(function() {
 	  				<!-- body -->
 					<div id="body"> 
 						<!-- chat-circle -->
-						<div id="chat-circle" class="btn btn-raised">
+						<!-- <div id="chat-circle" class="btn btn-raised"> -->
+						<img id="chat-circle" class="btn btn-raised alt="챗봇아이콘" src="img/chatbot.png">
 	        				<div id="chat-overlay"></div>
-			    			<i class="fas fa-hat-wizard">speaker_phone</i>
-						</div>
+			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
 						<!-- chat-circle end -->
+						
 						<!-- chat-box -->
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
@@ -398,6 +352,7 @@ $(function() {
 		      					</span>
 		    				</div>
 		    				<!-- chat-box-header end -->
+		    				
 		    				<!-- chat-box-body -->
 		    				<div class="chat-box-body">
 		      					<div class="chat-box-overlay"></div>
@@ -405,6 +360,7 @@ $(function() {
 	      						<!-- chat-log -->
 		    				</div>
 		    				<!-- chat-box-body end -->
+		    				
 		    				<!-- chat-input -->
 		    				<div class="chat-input">      
 		      					<form>
@@ -435,6 +391,7 @@ $(function() {
 			<!-- footer-info end -->
 		</div>
 		<!-- //footer -->
+		
 	</div>
 	<!-- //wrap -->
 	<input type="hidden" value="${datepicker }" id="hidden-datepicker">
