@@ -32,7 +32,7 @@ svg{
     padding: 0px 10px;
 }
 #calendar,.search1{
-    padding: 0px 10px;
+    padding: 0px 20px;
     font-size: 16px;
 }
 #btnSch{
@@ -43,22 +43,31 @@ svg{
     margin-top: 7px;
     border-radius: 30px;
 }
-.search li{
-    width: 180px;
+.search select {
+    width: 200px;
+    height: 30px;
 }
 .search  .fa{
     margin-left: 10px;
+    margin-right: 10px;
     margin-top: 4px;
 }
+#drone-nav {
+	margin-left: 10px;
+	margin-right: 50px;
+}
+/*
 .sub-menu-1{
     display: none;
 }
 .sub-menu-2 li{
     font-size: 13px;
 }
+*/
 .search1 {
 	cursor: pointer;
 }
+/*
 ul li:hover .sub-menu-1 {
     display: block;
     position: absolute;
@@ -86,9 +95,15 @@ ul li:hover .sub-menu-1 ul li:hover{
     font-weight: bold;
     background-color: #FFF9C4;
     -moz-border-radius: 10px; /* 모서리 둥글게 */  
-	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
-/*  text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
-    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
+/*	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
+/*    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;
+}
+*/
+#dro-search > select{
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    margin: 0px 20px 0px 20px;
 }
 .fas fa-angle-right {
     float: right;
