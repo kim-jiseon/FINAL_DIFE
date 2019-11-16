@@ -333,9 +333,9 @@
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
 		    				<div class="chat-box-header">
-		      					ChatBot
+		      					궁금하신 점 문의주세요!
 		      					<span class="chat-box-toggle">
-		      						<i class="material-icons">close</i>
+		      						<i class="material-icons">X</i>
 		      					</span>
 		    				</div>
 		    				<!-- chat-box-header end -->
