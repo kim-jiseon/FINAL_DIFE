@@ -305,15 +305,12 @@ html, body {
 }
 #chat-circle {
   position: fixed;
-  bottom: 50px;
-  right: 50px;
-  width: 200px;
-  height: 162px;
+  bottom: 20px;
+  right: 20px;
+  width: 180px;
+  height: 140px;
   color: white;
   cursor: pointer;
-}
-#chat-circle img {
-	filter: drop-shadow(5px 5px 5px #000);
 }
 .btn#my-btn {
      background: white;
