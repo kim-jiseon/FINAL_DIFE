@@ -11,6 +11,9 @@
 svg{
 	padding-left: 10px;
 }
+.svg-inline--fa.fa-w-18 {
+	width: 25px;
+}
 
 /* 달력 */
 #block{
