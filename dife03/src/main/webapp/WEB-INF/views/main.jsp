@@ -62,7 +62,111 @@
 					$("#count-"+(idx+1)).append(like_count_img,like_count);
 				})
 		}})
-	}) 
+		
+
+	/* 챗봇형식으로 상품비교 */
+		$(function() {
+			var INDEX = 0;
+			$("#chat-submit").click(function(e) {
+				e.preventDefault();
+				var msg = $("#chat-input").val();
+				if (msg.trim() == '') {
+					return false;
+				}
+				generate_message(msg, 'self');
+				var buttons = [ {
+					name : 'Existing User',
+					value : 'existing'
+				}, {
+					name : 'New User',
+					value : 'new'
+				} ];
+				setTimeout(function() {
+					generate_message(msg, 'user');
+				}, 1000)
+			})
+
+			function generate_message(msg, type) {
+				INDEX++;
+				var str = "";
+				str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+				str += "          <span class=\"msg-avatar\">";
+				str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+				str += "          <\/span>";
+				str += "          <div class=\"cm-msg-text\">";
+				str += msg;
+				str += "          <\/div>";
+				str += "        <\/div>";
+				$(".chat-logs").append(str);
+				$("#cm-msg-" + INDEX).hide().fadeIn(300);
+				if (type == 'self') {
+					$("#chat-input").val('');
+				}
+				$(".chat-logs").stop().animate({
+					scrollTop : $(".chat-logs")[0].scrollHeight
+				}, 1000);
+			}
+
+			function generate_button_message(msg, buttons) {
+				/* Buttons should be object array 
+				  [
+				    {
+				      name: 'Existing User',
+				      value: 'existing'
+				    },
+				    {
+				      name: 'New User',
+				      value: 'new'
+				    }
+				  ]
+				 */
+				INDEX++;
+				var btn_obj = buttons
+						.map(
+								function(button) {
+									return "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\""+button.value+"\">"
+											+ button.name + "<\/a><\/li>";
+								}).join('');
+				var str = "";
+				str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
+				str += "          <span class=\"msg-avatar\">";
+				str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+				str += "          <\/span>";
+				str += "          <div class=\"cm-msg-text\">";
+				str += msg;
+				str += "          <\/div>";
+				str += "          <div class=\"cm-msg-button\">";
+				str += "            <ul>";
+				str += btn_obj;
+				str += "            <\/ul>";
+				str += "          <\/div>";
+				str += "        <\/div>";
+				$(".chat-logs").append(str);
+				$("#cm-msg-" + INDEX).hide().fadeIn(300);
+				$(".chat-logs").stop().animate({
+					scrollTop : $(".chat-logs")[0].scrollHeight
+				}, 1000);
+				$("#chat-input").attr("disabled", true);
+			}
+
+			$(document).delegate(".chat-btn", "click", function() {
+				var value = $(this).attr("chat-value");
+				var name = $(this).html();
+				$("#chat-input").attr("disabled", false);
+				generate_message(name, 'self');
+			})
+
+			$("#chat-circle").click(function() {
+				$("#chat-circle").toggle('scale');
+				$(".chat-box").toggle('scale');
+			})
+
+			$(".chat-box-toggle").click(function() {
+				$("#chat-circle").toggle('scale');
+				$(".chat-box").toggle('scale');
+			})
+		})
+	})
 </script>
 </head>
 <body>
@@ -204,10 +308,76 @@
         </div>
         <!-- //contents -->
 
-        <!-- footer -->
-        
-       <jsp:include page="footer.jsp"></jsp:include>
-        <!-- //footer -->
+        		<!-- footer -->
+		<div id="footer">
+			<!-- footer-nav -->
+			<div id="footer-nav">
+				<!-- compareChatDrone -->
+				<div id="compareChatDrone">
+					<!-- center-text -->
+					<div id="center-text">
+	    				<h2>ChatBox UI</h2>
+	    				<p>Message send and scroll to bottom enabled </p>
+	  				</div>
+	  				<!-- center-text end --> 
+	  				<!-- body -->
+					<div id="body"> 
+						<!-- chat-circle -->
+						<!-- <div id="chat-circle" class="btn btn-raised"> -->
+						<img id="chat-circle" class="btn btn-raised alt="챗봇아이콘" src="img/chatbot.png">
+	        				<div id="chat-overlay"></div>
+			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
+						<!-- chat-circle end -->
+						
+						<!-- chat-box -->
+	  					<div class="chat-box">
+	  						<!-- chat-box-header -->
+		    				<div class="chat-box-header">
+		      					ChatBot
+		      					<span class="chat-box-toggle">
+		      						<i class="material-icons">close</i>
+		      					</span>
+		    				</div>
+		    				<!-- chat-box-header end -->
+		    				
+		    				<!-- chat-box-body -->
+		    				<div class="chat-box-body">
+		      					<div class="chat-box-overlay"></div>
+	      						<div class="chat-logs"></div>
+	      						<!-- chat-log -->
+		    				</div>
+		    				<!-- chat-box-body end -->
+		    				
+		    				<!-- chat-input -->
+		    				<div class="chat-input">      
+		      					<form>
+		        					<input type="text" id="chat-input" placeholder="Send a message..."/>
+		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+		      					</form>      
+		    				</div>
+		    				<!-- chat-input end -->
+	  					</div>
+	  					<!-- chat-box end -->
+					</div>
+					<!-- body end -->
+				</div>
+				<!-- compareChatDrone end -->
+			</div>
+			<!-- footer-nav end -->
+			
+			<!-- footer-info -->
+			<div id="footer-info">
+				(주)비트캠프:DIFE
+				<div id="footer_info1">
+					<p>서울특별시 마포구 백범로 23 구프라자 3층</p>
+					<p>02-707-1480</p>
+					<p><a href="#">고객센터</a></p>
+					<p><a href="#">이용안내</a></p>
+				</div>
+			</div>
+			<!-- footer-info end -->
+		</div>
+		<!-- //footer -->
         
     </div>
    
