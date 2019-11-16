@@ -369,7 +369,7 @@ $(function(){
 									<span>회원가입</span>
 								</h1>
 								
-								<form action="signUp.do" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
+								<form action="signUp" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
 									<div class="form-group">
 										<label class="control-label col-sm-3">이메일 
 											<span class="text-danger">*</span>

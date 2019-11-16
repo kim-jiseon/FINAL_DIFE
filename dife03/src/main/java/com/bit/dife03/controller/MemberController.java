@@ -115,9 +115,8 @@ public class MemberController {
 		System.out.println(path);
 		MultipartFile file = vo.getUpload();
 		String mem_fname = file.getOriginalFilename();
-		//회원사진을 등록하는 곳이 없는데 어떻게??
-		vo.setMem_fname(mem_fname);
-
+//		vo.setMem_fname(mem_fname);
+		vo.setMem_fname("member.png");
 		try {
 			byte data[] = file.getBytes();
 			FileOutputStream fos = new FileOutputStream(path+"/"+mem_fname);
