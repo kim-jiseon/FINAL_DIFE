@@ -68,6 +68,12 @@ public class PageController {
 	public void ordersDetail() {
 		
 	}
+	//imgBoard
+	@RequestMapping("/imgBoard")
+	public void home()
+	{
+		
+	}
 	
 	@RequestMapping("/payment")
 	public void payment() {
