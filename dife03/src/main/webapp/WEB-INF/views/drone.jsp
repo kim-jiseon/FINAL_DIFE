@@ -383,9 +383,11 @@ $(function() {
 	  				<!-- body -->
 					<div id="body"> 
 						<!-- chat-circle -->
-						<div id="chat-circle" class="btn btn-raised">
-	        				<div id="chat-overlay"></div>
-			    			<i class="fas fa-hat-wizard">speaker_phone</i>
+						<!-- <div id="chat-circle" class="btn btn-raised"> -->
+						<img id="chat-circle" class="btn btn-raised alt="챗봇아이콘" src="img/chatbot.png">
+	        				<div id="chat-overlay">
+	        				</div>
+			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
 						</div>
 						<!-- chat-circle end -->
 						<!-- chat-box -->
