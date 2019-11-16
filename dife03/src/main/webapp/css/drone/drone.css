@@ -277,32 +277,8 @@ figcaption p span{
 	font-size: 20px;
 }
 */
-/* 페이징처리 */
-.btnPaging{
-    padding: 10px;
-}
-.btnPaging li {
-    text-align: center;    
-}
 
 /* 드론 비교하는건 여기서 설정하시면 됩니다. */
-#footer-nav{
-	
-}
-
-html, body {
-  background: #efefef;      
-  height:100%;  
-}
-#center-text {          
-  display: flex;
-  flex: 1;
-  flex-direction:column; 
-  justify-content: center;
-  align-items: center;  
-  height:100%;
-  
-}
 #chat-circle {
   position: fixed;
   bottom: 20px;
@@ -331,8 +307,6 @@ html, body {
     border-radius: 50%;
     display: none;
 }
-
-
 .chat-box {
   display:none;
   background: #efefef;
@@ -431,25 +405,20 @@ html, body {
   height:370px;
   overflow-y:scroll;
 }
-
 .chat-logs::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #F5F5F5;
 }
-
 .chat-logs::-webkit-scrollbar
 {
 	width: 5px;  
 	background-color: #F5F5F5;
 }
-
 .chat-logs::-webkit-scrollbar-thumb
 {
 	background-color: #5A5EB9;
 }
-
-
 
 @media only screen and (max-width: 500px) {
    .chat-logs {

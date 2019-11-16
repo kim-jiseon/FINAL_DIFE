@@ -63,7 +63,6 @@ $(function() {
 		var price_arr = [
 			'10만원 이하','10만원 ~ 20만원','20만원 이상'
 		];
-		
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
 			var search_droSer = $("<li></li>").attr({"id":"hover_dro_01", "name":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
@@ -89,7 +88,6 @@ $(function() {
 				$("#price").empty().append($sub_price.find('li').clone());
 			})
 		})
-		
 		// 상품 전체 목록
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
@@ -327,29 +325,28 @@ $(function() {
 			<div id="footer-nav">
 				<!-- compareChatDrone -->
 				<div id="compareChatDrone">
-					<!-- center-text -->
+					<!-- center-text
 					<div id="center-text">
 	    				<h2>ChatBox UI</h2>
 	    				<p>Message send and scroll to bottom enabled </p>
-	  				</div>
+	  				</div> -->
 	  				<!-- center-text end --> 
 	  				<!-- body -->
 					<div id="body"> 
 						<!-- chat-circle -->
-						<!-- <div id="chat-circle" class="btn btn-raised"> -->
 						<img id="chat-circle" class="btn btn-raised alt="챗봇아이콘" src="img/chatbot.png">
 	        				<div id="chat-overlay">
 	        				</div>
-			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
 						</div>
 						<!-- chat-circle end -->
 						<!-- chat-box -->
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
 		    				<div class="chat-box-header">
-		      					ChatBot
+		      					2개의 상품을 비교해보세요!<br>
+		      					Drag on 
 		      					<span class="chat-box-toggle">
-		      						<i class="material-icons">close</i>
+		      						<i class="material-icons">X</i>
 		      					</span>
 		    				</div>
 		    				<!-- chat-box-header end -->
@@ -364,7 +361,7 @@ $(function() {
 		    				<div class="chat-input">      
 		      					<form>
 		        					<input type="text" id="chat-input" placeholder="Send a message..."/>
-		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">비교하기</i></button>
 		      					</form>      
 		    				</div>
 		    				<!-- chat-input end -->
