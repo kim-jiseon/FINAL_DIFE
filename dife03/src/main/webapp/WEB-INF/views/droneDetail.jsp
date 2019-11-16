@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/png" href="http://example.com/myicon.png">
+<!-- <link rel="icon" type="image/png" href="http://example.com/myicon.png"> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
@@ -113,7 +113,7 @@ $(function() {
    	   		else{
    				$("#mypage").attr("href","mypage_orders");
    			}
-			
+
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
 		var array = date.split(" - ");
@@ -158,10 +158,13 @@ $(function() {
 	               </ul>
 	           </div>
 	       </section>-->
-	       <div id="header-nav">
-	       <div class="container">
+	      
+		<div class="container">
+	       <!-- content1 -->
 			<div class="content1">
+				<!-- grid -->
 				<div class="grid">
+					<!-- block1 -->
 					<div id="block1">
 						<ul>
 							<li>
@@ -171,6 +174,8 @@ $(function() {
                             </li>
                         </ul>
 					</div>
+					<!-- block1 end -->
+					<!-- block2 -->
 					<div id="block2">
 						<ul style="color: black; font-size: 20px;">
 							<li name="droD_name"><p>드론명 : <strong>${dtInfo.dro_name }</strong></p></li>
@@ -179,10 +184,11 @@ $(function() {
 							<hr>
 							<li name="droD_series"><p>시리즈명 : <strong>${dtInfo.dro_series }</strong></p></li>
 							<li name="droD_made"><p>제조사명 : <strong>${dtInfo.dro_made }</strong></p></li>
-						</ul>	
-						<hr>
+						</ul><hr>
+						
 						<!-- 캘린더 선택 시 위에 대여일과 반납일을 선택하세요. 문구뜨도록 설정하기 -->
 						<!-- 캘린더 -->	
+						<!-- search -->
 		                <ul class="search">
 		                    <div class="block">
 		                        <div id="calendar" name="calendar">
@@ -191,45 +197,53 @@ $(function() {
 		                            		class="datepicker-here" placeholder="대여일 ~ 반납일 선택" style="width:180px; height: 25px;"/>               
 		                        </div>
 		                    </div>
-		                </ul>
-						<hr>
+		                </ul><hr>
+		                <!-- search end -->
+		                
 						<!-- 제이쿼리 사용 -->
 						<ul>
-							<li><p>대여점 : 
-								<span id="opr">
-									<select id="operR" name="operR" style="width: 150px; height: 30px;">
-									</select>
-								</span>
+							<li>
+								<p>대여점 : 
+									<span id="opr">
+										<select id="operR" name="operR" style="width: 150px; height: 30px;"></select>
+									</span>
 								</p>
 							</li>
 						</ul>
 						<!-- 제이쿼리 사용 -->
 						<ul>
-							<li><p>수    량 :							 
-								<span id="opa">
-									<select id="operA" name="operA" style="width: 150px; height: 30px;">
-									</select>
-								</span>
-							</p>
+							<li>
+								<p>수    량 :							 
+									<span id="opa">
+										<select id="operA" name="operA" style="width: 150px; height: 30px;"></select>
+									</span>
+								</p>
 							</li>
-						</ul>
-						<hr>
+						</ul><hr>
+						
+						<!-- 주문하기 버튼 -->
 						<li>
 							<a href="javascript:void(0)">						
-							<button id="btnOrder" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
-								<strong>주문하기</strong>
-							</button>
+								<button id="btnOrder" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
+									<strong>주문하기</strong>
+								</button>
 							</a>
 						</li>
+						<!-- 주문하기 버튼 end -->
+						
+						<!-- 장바구니 버튼 -->
 						<li>
 							<!-- 버튼 클릭 시 해당페이지로 자동이동하지 않도록 설정 -->
 	                       	<a href="javascript:void(0)">
-	                       	<button id="btnBasket" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
-	                       		<strong>장바구니 담기</strong>                               
-                            </button>
+		                       	<button id="btnBasket" type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
+		                       		<strong>장바구니 담기</strong>                               
+	                            </button>
                             </a>
                             <!-- * modal 추가 예정 -->
                         </li>
+                        <!-- 장바구니 버튼 end -->
+                        
+                        <!-- 쇼핑계속하기 버튼 -->
 						<li>
 							<a href="drone?dro_no=${dtInfo.dro_no }">
 								<button type="button" class="btn btn-outline-dark btn-sm" style="width: 150px; height: 30px;">
@@ -237,31 +251,37 @@ $(function() {
 								</button>
 							</a>
 						</li>
-					</div>		
+						<!-- 쇼핑계속하기 버튼 end -->
+					</div>
+					<!-- block2 end -->		
 				</div>
+				<!-- grid end -->
 			</div>
-			</div>
-			</div>
+			<!-- content1 end -->
 			
+			<!-- content2 -->
 			<!-- 드론 상세 정보 -->
 			<div class="content2">
 				<div class="block">
 					<img id="dro_conphoto_02" class="dro-dt-img" src="img/drone/${dtInfo.dro_conphoto_02 }">
 				</div>
-			</div> 
+			</div>
+			<!-- content2 end -->
 			
 			<!-- 상품 정책 -->
        		<jsp:include page="productPolicy.jsp"></jsp:include>
 	        <!-- //product policy -->
 			
 			<!-- 질문, 후기게시판 불러오는지? -->
+			
+		</div>
+		<!-- container end -->
+	</div>
+	<!-- //contents -->
 		
 			<!-- footer -->
       		<jsp:include page="footer.jsp"></jsp:include>
 	        <!-- //footer -->
-	    
-	    
-    </div>
     </div>
   </body>
 </html>

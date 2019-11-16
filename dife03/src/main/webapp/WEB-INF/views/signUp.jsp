@@ -91,7 +91,7 @@ $(function(){
 					else {
 						if(idJ.test(mem_id)) {
 							$("#id_check").text("사용가능한 아이디 입니다.");
-							$("#id_check").css("color", "white");
+							$("#id_check").css("color", "#7EBDC2");
 							$("#signup").attr("disabled", false);
 						}
 						else if(mem_id=="") {
@@ -101,7 +101,7 @@ $(function(){
 						}
 						else {
 							$("#id_check").text("아이디는 소문자와 숫자 4~12자리만 가능합니다.");
-							$("#id_check").css("color", red);
+							$("#id_check").css("color", "red");
 							$("#signup").attr("disabled", true);
 						}
 					}
@@ -369,7 +369,7 @@ $(function(){
 									<span>회원가입</span>
 								</h1>
 								
-								<form action="signUp.do" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
+								<form action="signUp" class="form-horizontal" method="post" id="signup" enctype="multipart/form-data" role="form">
 									<div class="form-group">
 										<label class="control-label col-sm-3">이메일 
 											<span class="text-danger">*</span>

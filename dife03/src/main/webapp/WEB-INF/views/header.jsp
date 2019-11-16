@@ -6,7 +6,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-
        <!-- header -->
         <div id="header">
             <div id="header-top">
@@ -29,7 +28,6 @@
             <div id="header-nav"></div>
         </div>
         <!-- //header -->
-
 <script>
 window.onscroll = function() {myFunction()};
 

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
 <title>DIFE.com</title>
 <!-- 웹폰트 -->
- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <!-- 기본 링크 -->
@@ -54,42 +54,55 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-	/* 시리즈명 및 드론명
-	var series_arr = [{'드론파이터':'기본패키지'},
-						{'매빅':'2 PRO','PRO','2 엔터프라이즈 유니버셜','2 엔터프라이즈 듀얼','AIR'},
-						{'매트리스':'600','600 프로','100','210 RTK'},
-						{'비밥':'2 싱글','2+스카이 컨트롤러'},
-						{'스파크':'미니'},
-						{'인스파이어':'1V2 1인','1V2 2인','1 PRO 1인','1 PRO 2인','2 ZENMUSE X5S 1인','2 ZENMUSE X5S 2인'},
-						{'팬텀':'4','4 PRO','3 ADVANCED','3 PROFESSIONAL'},
-						{'페트론':'베이직','풀패키지','드라이브 파워패키지','V2 프로','V2 풀패키지','파워패키지','카메라 파워패키지'}
-					];	*/
-	var series_arr = [
-		'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
-	];
-	var price_arr = [
-		'10만원 이하','10만원 ~ 20만원','20만원 이상'
-	];
 	
 	/* 검색 카테고리 */				
 	$.ajax({url:"/droAll",success:function(data){
-		//var series_arr = "${dtInfo.dro_series}";	
-		
+		var series_arr = [
+			'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
+		];
+		var price_arr = [
+			'10만원 이하','10만원 ~ 20만원','20만원 이상'
+		];
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
-			var search_droSer = $("<li></li>").attr({"id":"hover_dro_01", "name":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
+			var search_droSer = $("<option></option>").attr({"id":"hover_dro_01", "name":"hover_dro_01", "value":series_arr[idx], "idx":idx}).addClass("hover-dro").html(series_arr[idx]);
 			var icon = $("<i></i>").addClass("fas fa-angle-right");
 			$(search_droSer).append(icon);
-			$("#sub-menu").append(search_droSer);
+			$("#sub-menu-s").append(search_droSer);
 		})
 		// 가격
 		$.each(price_arr, function(idx, prc){
-			var search_droPrc = $("<li></li>").attr({"value":price_arr[idx], "idx":idx}).html(price_arr[idx]);
+			var search_droPrc = $("<option></option>").attr({"id":"hover_dro_02", "name":"hover_dro_02", "value":price_arr[idx], "idx":idx}).html(price_arr[idx]).addClass("hover-dro").html(price_arr[idx]);
 			var icon = $("<i></i>").addClass("fas fa-angle-right");
 			$(search_droPrc).append(icon);
-			$("#sub_price").append(search_droPrc);
+			$("#sub-menu-p").append(search_droPrc);
 		})
-		// 상품 전체 목록
+		
+		/* 카테고리값 선택 시 해당값만 복제 후 고정 
+		// 시리즈명
+		$("#sub-menu").click(function(){
+			var selectSeries = $("hover_dro_01").val(series_arr);
+			//alert(selectSeries);
+			$(".hover-dro").click('change', function(){
+				var setS = $(this).html(data.dro_series);
+				//alert(setS);
+				$("#series").empty().append(setS).clone();
+				//$("#series>search_droSer[value="+'<c:out value="${param.series_arr}"/>'+"]").attr("selected","selected");			
+			})
+		})
+		// 가격
+		$("#sub_price").click(function(){
+			var selectPrice = $("hover_dro_02").val(price_arr);
+			//alert(selectPrice);
+			$(".hover-dro").click('change', function(){
+				var setP = $(this).html(data.dro_price);
+				//alert(setP);
+				$("#price").empty().append(setP).clone();
+								
+			})
+		}) */
+		
+		/* 상품 전체 목록 */
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
      		var div = $("<div></div>").addClass("item");
@@ -103,7 +116,6 @@ $(function() {
 			var dro_photo = $("<img/>").attr({"alt":item.dro_name, "src":"img/drone/"+item.dro_photo, width:"300", height:"450"}).addClass("dro-list-img");
 			var won = $("<i></i>").html(" / ").addClass("fas fa-won-sign");
 			var line = $("<span></span>").html(" / ");
-			// won 사이즈 키워야됨. css에서 안됨.
 			var won = $("<i></i>").attr({"font-size":"20px"}).addClass("fas fa-won-sign");
 			var dro_price = $("<span></span>").html(item.dro_price);
 			var dro_info = $("<p></p>").addClass("dro-list-info").attr("id","dro_info").html(item.dro_info);
@@ -225,42 +237,7 @@ $(function() {
 	  })
 	})
 
-/*    
-     카테고리(시리즈명,가격) 클릭 시 상태유지
-     var searchSp = document.getElementById("search1");
-     var listSp = document.getElementById("sub-menu"); 
-     listSp.style.display = "none";
-     searchSp.addEventListener("click",(event){
-         if(listSp.style.display == "none"){
-             listSp.style.display = "block";
-         }
-         else{
-             listSp.style.display = "none";
-         }
-     }) */
-            
-            /*
-            // selectRentalDate
-            // 대여일 캘린더
-            $("#datepicker").dialog({
-            	buttons:{
-            		submit:function(){
-            			var data = $("#header-nav").serialize();
-            			$.ajax({url:"selectRentalDate",type:"POST",data:data,success:function(r){
-            				alert(r);
-            			}});
-            		},
-            		reset:function(){
-            			alert("모두 지움");
-            		},
-            		cancle:function(){
-            			alert("취소");
-            		},
-            	},
-            	modal:false
-        });
-        $("#calendar").datepicker();
-        */
+
 
 	/* 검색 고정 */
 		$("#datepicker").val($("#hidden-datepicker").val());
@@ -303,22 +280,24 @@ $(function() {
                               placeholder="대여일, 반납일을 선택하세요." name="datepicker" id="datepicker" style="width:250px; height: 30px;"/>
                         </div>
                     </div>                      	
-                    
-                    <!-- 검색창처럼 인풋에 선택한 카테고리 값을 받을까 -->   	
-                    <li name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
-                        <div class="sub-menu-1">
-                            <ul name="sub_series_01" id="sub-menu"></ul>
-                            <!-- <input type="text" name="set-series" style="width:200px; height: 30px;"/> -->
-                        </div>
-                    </li>                    
-                
                     <!-- 제이쿼리 사용 -->
-                    <li id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
-                        <div class="sub-menu-1">
-                            <ul name="sub_price" id="sub_price"></ul>
-                        </div>
-                    </li>
-                    
+                    <form action="drone" id="drone-nav">
+	                   	<span id="dro-search">
+	                    	<span id="series" name="series" class="search1">시리즈명<i class="fas fa-plane"></i>
+	                        	<select name="sub_series_01" id="sub-menu-s">
+	                        	</select>
+	                            <!-- <ul name="sub_series_01" id="sub-menu"></ul> -->
+	                    	</span>
+	                    </span>
+	                    <!-- 제이쿼리 사용 -->
+	                    <span id="dro-search">
+	                        <span id="price" name="price" class="search1">가격<i class="fas fa-tags"></i>
+	                            <select name="sub_series_02" id="sub-menu-p">
+	                        	</select>
+	                            <!-- <ul name="sub_price" id="sub_price"></ul> -->
+	                        </span>
+	                    </span>
+                    </form>
                     <!-- 검색버튼 -->
                     <button id="btnSch">검색</button>
                 </ul>
@@ -362,30 +341,29 @@ $(function() {
 			<div id="footer-nav">
 				<!-- compareChatDrone -->
 				<div id="compareChatDrone">
-					<!-- center-text -->
-					<div id="center-text">
-	    				<h2>ChatBox UI</h2>
-	    				<p>Message send and scroll to bottom enabled </p>
-	  				</div>
-	  				<!-- center-text end --> 
 	  				<!-- body -->
 					<div id="body"> 
 						<!-- chat-circle -->
-						<div id="chat-circle" class="btn btn-raised">
-	        				<div id="chat-overlay"></div>
-			    			<i class="fas fa-hat-wizard">speaker_phone</i>
+						<img id="chat-circle" class="btn btn-raised alt="챗봇아이콘" src="img/chatbot.png">
+	        				<div id="chat-overlay">
+	        				</div>
 						</div>
+	        				<div id="chat-overlay"></div>
+			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
 						<!-- chat-circle end -->
+						
 						<!-- chat-box -->
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
 		    				<div class="chat-box-header">
-		      					ChatBot
+		      					2개의 상품을 비교해보세요!<br>
+		      					Drag onto this space.
 		      					<span class="chat-box-toggle">
-		      						<i class="material-icons">close</i>
+		      						<i class="material-icons">X</i>
 		      					</span>
 		    				</div>
 		    				<!-- chat-box-header end -->
+		    				
 		    				<!-- chat-box-body -->
 		    				<div class="chat-box-body">
 		      					<div class="chat-box-overlay"></div>
@@ -393,11 +371,12 @@ $(function() {
 	      						<!-- chat-log -->
 		    				</div>
 		    				<!-- chat-box-body end -->
+		    				
 		    				<!-- chat-input -->
 		    				<div class="chat-input">      
 		      					<form>
 		        					<input type="text" id="chat-input" placeholder="Send a message..."/>
-		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">비교하기</i></button>
 		      					</form>      
 		    				</div>
 		    				<!-- chat-input end -->
@@ -423,6 +402,7 @@ $(function() {
 			<!-- footer-info end -->
 		</div>
 		<!-- //footer -->
+		
 	</div>
 	<!-- //wrap -->
 	<input type="hidden" value="${datepicker }" id="hidden-datepicker">

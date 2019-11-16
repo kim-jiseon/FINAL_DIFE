@@ -3,27 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-    <title>DIFE.com</title>
-    <!-- 웹폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    <!-- fadeIn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <!-- 기본 css -->
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/pilot/pilotDetail.css">
-    <!-- 제이쿼리 플러그인 -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-        <!-- datepicker -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
-    <script src="js/datepicker/datepicker.js"></script>
-        <!-- Include language -->
-        <script src="js/datepicker/i18n/datepicker-ko.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
+<title>DIFE.com</title>
+<!-- 웹폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<!-- fadeIn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<!-- 기본 css -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/pilot/pilotDetail.css">
+<!-- 제이쿼리 플러그인 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<!-- datepicker -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link href="css/datepicker/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="js/datepicker/datepicker.js"></script>
+<!-- Include language -->
+<script src="js/datepicker/i18n/datepicker-ko.js"></script>
 <script type="text/javascript">
 $(function(){
 	//로그인 로그아웃 전환
@@ -72,7 +72,7 @@ $(function(){
 				var pop = window.open(
 						"/pilot_popup?startDate="+con_start+"&endDate="+con_end+"&list_no="+list_no+"&con_sort="+con_sort+"&con_loc="+con_loc,
 						"pop",
-						"width = auto, height = 650");
+						"width = 820, height = 650");
 			}
 		}
 	})

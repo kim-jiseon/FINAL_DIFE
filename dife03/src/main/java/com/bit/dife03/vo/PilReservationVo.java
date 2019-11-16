@@ -12,8 +12,11 @@ public class PilReservationVo {
 	private String con_purpose;
 	private String con_loc;
 	private Date con_start;
+	private String con_start_str;
+	private String con_end_str;
 	private Date con_end;
 	private Date con_regDate;
+	private String con_regDate_str;
 	private String pil_title;
 	private String mem_name;
 	public PilReservationVo() {
@@ -21,8 +24,8 @@ public class PilReservationVo {
 		// TODO Auto-generated constructor stub
 	}
 	public PilReservationVo(int con_no, int con_sort, String list_no, String mem_no, String con_time, int con_attend,
-			String con_purpose, String con_loc, Date con_start, Date con_end, Date con_regDate, String pil_title,
-			String mem_name) {
+			String con_purpose, String con_loc, Date con_start, String con_start_str, String con_end_str, Date con_end,
+			Date con_regDate, String con_regDate_str, String pil_title, String mem_name) {
 		super();
 		this.con_no = con_no;
 		this.con_sort = con_sort;
@@ -33,8 +36,11 @@ public class PilReservationVo {
 		this.con_purpose = con_purpose;
 		this.con_loc = con_loc;
 		this.con_start = con_start;
+		this.con_start_str = con_start_str;
+		this.con_end_str = con_end_str;
 		this.con_end = con_end;
 		this.con_regDate = con_regDate;
+		this.con_regDate_str = con_regDate_str;
 		this.pil_title = pil_title;
 		this.mem_name = mem_name;
 	}
@@ -92,6 +98,18 @@ public class PilReservationVo {
 	public void setCon_start(Date con_start) {
 		this.con_start = con_start;
 	}
+	public String getCon_start_str() {
+		return con_start_str;
+	}
+	public void setCon_start_str(String con_start_str) {
+		this.con_start_str = con_start_str;
+	}
+	public String getCon_end_str() {
+		return con_end_str;
+	}
+	public void setCon_end_str(String con_end_str) {
+		this.con_end_str = con_end_str;
+	}
 	public Date getCon_end() {
 		return con_end;
 	}
@@ -104,6 +122,12 @@ public class PilReservationVo {
 	public void setCon_regDate(Date con_regDate) {
 		this.con_regDate = con_regDate;
 	}
+	public String getCon_regDate_str() {
+		return con_regDate_str;
+	}
+	public void setCon_regDate_str(String con_regDate_str) {
+		this.con_regDate_str = con_regDate_str;
+	}
 	public String getPil_title() {
 		return pil_title;
 	}
@@ -115,13 +139,6 @@ public class PilReservationVo {
 	}
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
-	}
-	@Override
-	public String toString() {
-		return "PilReservationVo [con_no=" + con_no + ", con_sort=" + con_sort + ", list_no=" + list_no + ", mem_no="
-				+ mem_no + ", con_time=" + con_time + ", con_attend=" + con_attend + ", con_purpose=" + con_purpose
-				+ ", con_loc=" + con_loc + ", con_start=" + con_start + ", con_end=" + con_end + ", con_regDate="
-				+ con_regDate + ", pil_title=" + pil_title + ", mem_name=" + mem_name + "]";
 	}
 	
 }

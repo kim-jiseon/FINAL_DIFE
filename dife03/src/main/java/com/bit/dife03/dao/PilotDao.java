@@ -11,9 +11,13 @@ import com.bit.dife03.vo.PilReservationVo;
 
 @Repository
 public class PilotDao {
+	public PilReservationVo sel_pilResOne(HashMap map) {
+		return PilotManager.sel_pilResOne(map);
+	}
+	
 	//예약신청 select
-	public List<PilReservationVo> sel_pilRes(String mem_no){
-		return PilotManager.sel_pilRes(mem_no);
+	public List<PilReservationVo> sel_pilRes(HashMap map){
+		return PilotManager.sel_pilRes(map);
 	}
 	//예약상담번호
 	public int sel_nextNo() {

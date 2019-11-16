@@ -79,10 +79,10 @@ public class PageController {
 	public void paykg() {
 		
 	}
-	@RequestMapping("/signIn2")
-	public void signIn2() {
-		
-	}
+//	@RequestMapping("/signIn2")
+//	public void signIn2() {
+//		
+//	}
 
 	@RequestMapping("/paySuccess")
 	public void paysuccess() {
