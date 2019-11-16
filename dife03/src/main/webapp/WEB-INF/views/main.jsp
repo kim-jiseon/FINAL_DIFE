@@ -204,10 +204,76 @@
         </div>
         <!-- //contents -->
 
-        <!-- footer -->
-        
-       <jsp:include page="footer.jsp"></jsp:include>
-        <!-- //footer -->
+        		<!-- footer -->
+		<div id="footer">
+			<!-- footer-nav -->
+			<div id="footer-nav">
+				<!-- compareChatDrone -->
+				<div id="compareChatDrone">
+					<!-- center-text -->
+					<div id="center-text">
+	    				<h2>ChatBox UI</h2>
+	    				<p>Message send and scroll to bottom enabled </p>
+	  				</div>
+	  				<!-- center-text end --> 
+	  				<!-- body -->
+					<div id="body"> 
+						<!-- chat-circle -->
+						<!-- <div id="chat-circle" class="btn btn-raised"> -->
+						<img id="chat-circle" class="btn btn-raised alt="챗봇아이콘" src="img/chatbot.png">
+	        				<div id="chat-overlay"></div>
+			    			<!-- <i class="fas fa-hat-wizard">speaker_phone</i> -->
+						<!-- chat-circle end -->
+						
+						<!-- chat-box -->
+	  					<div class="chat-box">
+	  						<!-- chat-box-header -->
+		    				<div class="chat-box-header">
+		      					ChatBot
+		      					<span class="chat-box-toggle">
+		      						<i class="material-icons">close</i>
+		      					</span>
+		    				</div>
+		    				<!-- chat-box-header end -->
+		    				
+		    				<!-- chat-box-body -->
+		    				<div class="chat-box-body">
+		      					<div class="chat-box-overlay"></div>
+	      						<div class="chat-logs"></div>
+	      						<!-- chat-log -->
+		    				</div>
+		    				<!-- chat-box-body end -->
+		    				
+		    				<!-- chat-input -->
+		    				<div class="chat-input">      
+		      					<form>
+		        					<input type="text" id="chat-input" placeholder="Send a message..."/>
+		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+		      					</form>      
+		    				</div>
+		    				<!-- chat-input end -->
+	  					</div>
+	  					<!-- chat-box end -->
+					</div>
+					<!-- body end -->
+				</div>
+				<!-- compareChatDrone end -->
+			</div>
+			<!-- footer-nav end -->
+			
+			<!-- footer-info -->
+			<div id="footer-info">
+				(주)비트캠프:DIFE
+				<div id="footer_info1">
+					<p>서울특별시 마포구 백범로 23 구프라자 3층</p>
+					<p>02-707-1480</p>
+					<p><a href="#">고객센터</a></p>
+					<p><a href="#">이용안내</a></p>
+				</div>
+			</div>
+			<!-- footer-info end -->
+		</div>
+		<!-- //footer -->
         
     </div>
    
