@@ -24,6 +24,83 @@
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+   
+    <script type="text/javascript">
+    $(function(){
+    	function zoom_btn(id){
+    		$("#org_popup_view").attr("src",$("org_img_"+id).attr("src"));
+    		$(".bg_black").fadeIn("fast");
+    		$(".layer_popup").fadeIn("fast");
+    	}
+    	
+    	function close_btn(){
+    		$(".layer_popup").fadeOut("fast");
+    		$(".bg_black").fadeOut("fast");
+    	}
+    	})
+    	
+    	    		
+    </script>
+ </head>
+<body>
+    <div id="wrap" class="animated fadeIn">
+       <!-- header -->
+        <jsp:include page="header.jsp"></jsp:include>
+
+        <!-- 이미지 돋보기 -->
+<div class="layer_popup">
+   <div class="img_orig">
+      <img id="org_popup_view" style="width:500px; alt="이미지">
+      <a href="#" onclick="close_btn(); return false; class="close_btn">
+      </a>
+   </div>
+</div>
+<div class="bg_black"></div>
+
+        <!-- contents -->
+        <div id="contents">
+            <div class="container">
+               <div  class="mypage-grid">
+               <div id="mypage-top" class="mypage-top">
+						
+	</div>
+                <div id="mypage-bottom" class="mypage-grid-nav">
+                    <div id="mypage-bottom-left">
+                        <nav>
+                            <ul>
+                                <li class="mypage-category"><a href="mypage_orders">서울/경기<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="#">강원/충청<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="mypage_emoney">전라/경상<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="#">제 주<i class="fas fa-angle-right" id="icon"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="mypage-bottom-right">
+                       <div id="mypage-orders">
+                           <span>추천 비행지역</span>
+                           <span>
+                               <select name="mypage-orders-date" id="mypage-orders-date">
+                                   <option value="1개월">인기순</option>
+                                   <option value="1개월">최신순</option>
+                                   <option value="1개월">제목순</option>
+                               </select>
+                           </span>
+                        </div><hr id="hr">
+                         <div class="mypage-orders-list">
+                            <a href="ordersDetail"><div class="mypage-orders-title">영월군 금방아민박 캠프장<i class="fas fa-angle-right" id="icon"></i></div></a><hr>
+                            <div class="mypage-orders-info">
+                                <form name="fboardlist" id="fboardlist" action="" method="post">
+<div class="list_place" id="updates" >
+   <div class="li_block" style="position:relative; right:135px;">
+    <div class="thumbnail">
+      <img id="org_img_424" src="https://www.enjoydrone.com/data/file/place/2009634417_VOw0Ly7q_42f54cb3e20c902d61cecf731aa0829bf8e16df4.jpg" 
+      style="position:relative; left:10px;">
+      <a href="#" onclick="zoom_btn('424'); return false;" class="zoom">
+      <img src="https://www.enjoydrone.com/images/common/zoom_ic2.png" alt="크게보기" 
+      style="-webkit-user-select: none; margin; auto;">
+      </a>
+=======
     <script type="text/javascript">
     $(function(){
     	//로그인 로그아웃 전환
@@ -89,6 +166,7 @@
    <div class="li_block">
     <div class="thumbnail">
       <img id="org_img_424" src="https://www.enjoydrone.com/data/file/place/2009634417_VOw0Ly7q_42f54cb3e20c902d61cecf731aa0829bf8e16df4.jpg">
+>>>>>>> refs/heads/master
     </div>
      <div class="txt_area">
       <div class="tit">영월군 금방아민박 캠프장</div>
