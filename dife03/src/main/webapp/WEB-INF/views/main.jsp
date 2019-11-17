@@ -29,18 +29,6 @@
 		if(mem_id == '' || mem_id == null){
 
 			$("#sign").attr("href","signIn").html("LOGIN");
-
-			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-			//$("#category-2").append(login);
-
-
-			$("#sign").attr("href","signIn").html("LOGIN");
-
-
-
-		if(mem_id == '' || mem_id == null){
-
-			$("#sign").attr("href","signIn").html("LOGIN");
 		}
 		
 		//마이페이지 이동

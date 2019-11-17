@@ -22,8 +22,6 @@ public class PageController {
 		
 
 	}
-
-
 	@RequestMapping("/location")
 	public void location() {
 		
