@@ -55,7 +55,7 @@ $(function() {
 		}
 	})
 	
-	/* 검색 카테고리 */				
+	/* 검색 카테고리 활성화 */	
 	$.ajax({url:"/droAll",success:function(data){
 		var series_arr = [
 			'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
@@ -107,172 +107,194 @@ $(function() {
 			$(block).append(figure);
 
 			$("#drone-grid").append(block);
-			})
-		}})
-		/* 카테고리값 선택 시 해당값만 복제 후 고정 
-		// 시리즈명
-		$("#sub-menu").click(function(){
-			var selectSeries = $("hover_dro_01").val(series_arr);
-			//alert(selectSeries);
-			$(".hover-dro").click('change', function(){
-				var setS = $(this).html(data.dro_series);
-				//alert(setS);
-				$("#series").empty().append(setS).clone();
-				//$("#series>search_droSer[value="+'<c:out value="${param.series_arr}"/>'+"]").attr("selected","selected");			
-			})
 		})
-		// 가격
-		$("#sub_price").click(function(){
-			var selectPrice = $("hover_dro_02").val(price_arr);
-			//alert(selectPrice);
-			$(".hover-dro").click('change', function(){
-				var setP = $(this).html(data.dro_price);
-				//alert(setP);
-				$("#price").empty().append(setP).clone();
-								
-			})
-		}) */
+		// 캘린더
+		// 오늘날짜 구하기
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate();
 		
-		/* 상품 전체 목록 
-		var search = "";
-		var pageNUM = 1;
-		var isEnd = false;
-		
-		function selectAll(search){
-			search = {"calendar":$("#calendar").val(), "sub_series_01":$("#sub-menu-s").val(), "sub_series_02":$("#sub-menu-p").val(), "pageNUM":pageNUM};
-			$.ajax({type: "get",
-				url:"/sel_droList",
-				data: search,
-				dataType: "json",
-				contentType:"application/json;charset=UTF-8",
-				success:function(data){
-					var len = data.length;
-					//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
-					if(len < 5){
-						isEnd = true;
-					}else{
-						isEnd = false;
-					}*/
-				
-		//selectAll();
-		
-    /* 무한스크롤 적용 예정
-    $(window).scroll(function(){
-		var maxHeight = $(document).height();
-		var currentScroll = $(window).scrollTop() + $(window).height();
-		
-		if(currentScroll+50 > maxHeight){
-			if(isEnd == true){
-	    		return;
-	    	}else{
-	    		pageNUM++;
-	    		selectAll(search);
-	    	}
+		if((day+"").length < 2){
+			day = "0"+day;
 		}
-	}) */
-    
-    /* 챗봇형식으로 상품비교 */
-    $(function() {
-  		var INDEX = 0; 
-  		$("#chat-submit").click(function(e) {
-		    e.preventDefault();
-		    var msg = $("#chat-input").val(); 
-		    if(msg.trim() == ''){
-		      return false;
-	    }
-    	generate_message(msg, 'self');
-    	var buttons = [
-	        {
-	          name: 'Existing User',
-	          value: 'existing'
-	        },
-	        {
-	          name: 'New User',
-	          value: 'new'
-	        }
-      	];
-    	setTimeout(function() {      
-      		generate_message(msg, 'user');  
-    		}, 1000)
-  		})
-  
-  		function generate_message(msg, type) {
+		var getToday = year+"/"+month+"/"+day;
+		
+		$("#btnSch").click(function(){
+			//datepicker값 가져오기
+			var date = $(".datepicker-here").val();
+			var array = date.split(" - ");
+			var con_start = array[0];
+			var con_end = array[1];
+			
+			if(getToday > con_start){
+				alert("지난 날짜입니다.\n다시 선택해주세요.");
+				$(".datepicker-here").val("");
+			}
+		})	
+	}})
+			/* 카테고리값 선택 시 해당값만 복제 후 고정 
+			// 시리즈명
+			$("#sub-menu").click(function(){
+				var selectSeries = $("hover_dro_01").val(series_arr);
+				//alert(selectSeries);
+				$(".hover-dro").click('change', function(){
+					var setS = $(this).html(data.dro_series);
+					//alert(setS);
+					$("#series").empty().append(setS).clone();
+					//$("#series>search_droSer[value="+'<c:out value="${param.series_arr}"/>'+"]").attr("selected","selected");			
+				})
+			})
+			// 가격
+			$("#sub_price").click(function(){
+				var selectPrice = $("hover_dro_02").val(price_arr);
+				//alert(selectPrice);
+				$(".hover-dro").click('change', function(){
+					var setP = $(this).html(data.dro_price);
+					//alert(setP);
+					$("#price").empty().append(setP).clone();
+									
+				})
+			}) */
+			
+			/* 상품 전체 목록 
+			var search = "";
+			var pageNUM = 1;
+			var isEnd = false;
+			
+			function selectAll(search){
+				search = {"calendar":$("#calendar").val(), "sub_series_01":$("#sub-menu-s").val(), "sub_series_02":$("#sub-menu-p").val(), "pageNUM":pageNUM};
+				$.ajax({type: "get",
+					url:"/sel_droList",
+					data: search,
+					dataType: "json",
+					contentType:"application/json;charset=UTF-8",
+					success:function(data){
+						var len = data.length;
+						//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
+						if(len < 5){
+							isEnd = true;
+						}else{
+							isEnd = false;
+						}*/
+					
+			//selectAll();
+			
+	    /* 무한스크롤 적용 예정
+	    $(window).scroll(function(){
+			var maxHeight = $(document).height();
+			var currentScroll = $(window).scrollTop() + $(window).height();
+			
+			if(currentScroll+50 > maxHeight){
+				if(isEnd == true){
+		    		return;
+		    	}else{
+		    		pageNUM++;
+		    		selectAll(search);
+		    	}
+			}
+		}) */
+	    
+	    /* 챗봇형식으로 상품비교 */
+	    $(function() {
+	  		var INDEX = 0; 
+	  		$("#chat-submit").click(function(e) {
+			    e.preventDefault();
+			    var msg = $("#chat-input").val(); 
+			    if(msg.trim() == ''){
+			      return false;
+		    }
+	    	generate_message(msg, 'self');
+	    	var buttons = [
+		        {
+		          name: 'Existing User',
+		          value: 'existing'
+		        },
+		        {
+		          name: 'New User',
+		          value: 'new'
+		        }
+	      	];
+	    	setTimeout(function() {      
+	      		generate_message(msg, 'user');  
+	    		}, 1000)
+	  		})
+	  
+	  		function generate_message(msg, type) {
+			    INDEX++;
+			    var str="";
+			    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+			    str += "          <span class=\"msg-avatar\">";
+			    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+			    str += "          <\/span>";
+			    str += "          <div class=\"cm-msg-text\">";
+			    str += msg;
+			    str += "          <\/div>";
+			    str += "        <\/div>";
+			    $(".chat-logs").append(str);
+			    $("#cm-msg-"+INDEX).hide().fadeIn(300);
+			    if(type == 'self'){
+			     	$("#chat-input").val(''); 
+			    }    
+	    		$(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
+			}  
+	  
+	  		function generate_button_message(msg, buttons){    
+		    /* Buttons should be object array 
+		      [
+		        {
+		          name: 'Existing User',
+		          value: 'existing'
+		        },
+		        {
+		          name: 'New User',
+		          value: 'new'
+		        }
+		      ]
+		    */
 		    INDEX++;
+		    var btn_obj = buttons.map(function(button) {
+		       return  "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\""+button.value+"\">"+button.name+"<\/a><\/li>";
+		    }).join('');
 		    var str="";
-		    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+		    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
 		    str += "          <span class=\"msg-avatar\">";
 		    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
 		    str += "          <\/span>";
 		    str += "          <div class=\"cm-msg-text\">";
 		    str += msg;
 		    str += "          <\/div>";
+		    str += "          <div class=\"cm-msg-button\">";
+		    str += "            <ul>";   
+		    str += btn_obj;
+		    str += "            <\/ul>";
+		    str += "          <\/div>";
 		    str += "        <\/div>";
 		    $(".chat-logs").append(str);
-		    $("#cm-msg-"+INDEX).hide().fadeIn(300);
-		    if(type == 'self'){
-		     	$("#chat-input").val(''); 
-		    }    
-    		$(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
-		}  
-  
-  		function generate_button_message(msg, buttons){    
-	    /* Buttons should be object array 
-	      [
-	        {
-	          name: 'Existing User',
-	          value: 'existing'
-	        },
-	        {
-	          name: 'New User',
-	          value: 'new'
-	        }
-	      ]
-	    */
-	    INDEX++;
-	    var btn_obj = buttons.map(function(button) {
-	       return  "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\""+button.value+"\">"+button.name+"<\/a><\/li>";
-	    }).join('');
-	    var str="";
-	    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
-	    str += "          <span class=\"msg-avatar\">";
-	    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
-	    str += "          <\/span>";
-	    str += "          <div class=\"cm-msg-text\">";
-	    str += msg;
-	    str += "          <\/div>";
-	    str += "          <div class=\"cm-msg-button\">";
-	    str += "            <ul>";   
-	    str += btn_obj;
-	    str += "            <\/ul>";
-	    str += "          <\/div>";
-	    str += "        <\/div>";
-	    $(".chat-logs").append(str);
-	    $("#cm-msg-"+INDEX).hide().fadeIn(300);   
-	    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
-	    $("#chat-input").attr("disabled", true);
-	  }
-  
-	  $(document).delegate(".chat-btn", "click", function() {
-	    var value = $(this).attr("chat-value");
-	    var name = $(this).html();
-	    $("#chat-input").attr("disabled", false);
-	    generate_message(name, 'self');
-	  })
-  
-	  $("#chat-circle").click(function() {    
-	    $("#chat-circle").toggle('scale');
-	    $(".chat-box").toggle('scale');
-	  })
+		    $("#cm-msg-"+INDEX).hide().fadeIn(300);   
+		    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
+		    $("#chat-input").attr("disabled", true);
+		  }
 	  
-	  $(".chat-box-toggle").click(function() {
-	    $("#chat-circle").toggle('scale');
-	    $(".chat-box").toggle('scale');
-	  })
-	})
+		  $(document).delegate(".chat-btn", "click", function() {
+		    var value = $(this).attr("chat-value");
+		    var name = $(this).html();
+		    $("#chat-input").attr("disabled", false);
+		    generate_message(name, 'self');
+		  })
+	  
+		  $("#chat-circle").click(function() {    
+		    $("#chat-circle").toggle('scale');
+		    $(".chat-box").toggle('scale');
+		  })
+		  
+		  $(".chat-box-toggle").click(function() {
+		    $("#chat-circle").toggle('scale');
+		    $(".chat-box").toggle('scale');
+		  })
+		})
 
-
-
-	/* 검색 고정 */
+		/* 검색 고정 */
 		$("#datepicker").val($("#hidden-datepicker").val());
 		$("#sub-menu").val($("#hidden-series").val());
 		$("#sub_price").val($("#hidden-price").val());
@@ -389,11 +411,12 @@ $(function() {
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
 		    				<div class="chat-box-header">
-		      					2개의 상품을 비교해보세요!<br>
-		      					Drag onto this space :D
+		      					2개의 상품을 비교해보세요!
 		      					<span class="chat-box-toggle">
 		      						<i class="material-icons">X</i>
 		      					</span>
+		      					<br>
+		      					Drag onto this space :D
 		    				</div>
 		    				<!-- chat-box-header end -->
 		    				
@@ -408,7 +431,7 @@ $(function() {
 		    				<!-- chat-input -->
 		    				<div class="chat-input">      
 		      					<form>
-		        					<input type="text" id="chat-input" placeholder="드론 스펙을 한번에 확인하세요~"/>
+		        					<input type="text" id="chat-input" placeholder="이곳에 드론을 드래그하여 스펙을 확인하세요~"/>
 		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">비교</i></button>
 		      					</form>      
 		    				</div>

@@ -99,7 +99,31 @@ $(function() {
 		var pos_amount = $("#operA").val();
 		var bas_price = "${dtInfo.dro_price}"
 		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
-   	   	
+		// 오늘날짜 구하기
+		var new_date = new Date();
+		var year = new_date.getFullYear();
+		var month = new_date.getMonth()+1;
+		var day = new_date.getDate();
+		
+		if((day+"").length < 2){
+			day = "0"+day;
+		}
+		var getToday = year+"/"+month+"/"+day;
+		
+		if(getToday > con_start){
+			alert("지난 날짜입니다.\n다시 선택해주세요.");
+			$(".datepicker-here").val("");
+		}else if(con_start == null || con_start == '' || con_end == null || con_end == ''){
+			alert("대여일을 선택하세요.");
+		}
+		/*
+		else if(ren_no == null || ren_no == ''){
+			alert("대여점을 선택하세요.");
+		}
+		else if(pos_amount == null || pos_amount == ''){
+			alert("수량을 선택하세요.");
+		}*/
+			
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
    	   		location.href="/basket";
    	 	}})
