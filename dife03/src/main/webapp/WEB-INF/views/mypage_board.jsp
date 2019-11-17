@@ -81,7 +81,7 @@
 						 var pop = window.open(
 								"/pilot_reservationPop?con_no="+con_no,
 								"pop",
-								"width = 820, height = 650");
+								"width = 770, height = 600");
 				})
 			}})             				
 	})

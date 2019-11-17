@@ -19,9 +19,9 @@
     height: auto;
 }
 #board-title{
-    font-size: 22px;
+    font-size: 25px;
     font-weight: 700;
-    padding: 20px;
+    padding: 30px;
 	background-color: #f7f8f9;
 }
 #board-input{
