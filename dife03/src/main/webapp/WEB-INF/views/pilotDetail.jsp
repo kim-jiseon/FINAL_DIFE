@@ -46,6 +46,17 @@ $(function(){
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
+	
+	//오늘날짜 구하기
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth()+1;
+	var day = date.getDate();
+	
+	if((day+"").length < 2){
+		day = "0"+day;
+	}
+	var getToday = year+"/"+month+"/"+day;
 
 	//파일럿과 상담하기 버튼 활성화
 	$("#pil_btn").click(function(){
@@ -54,8 +65,7 @@ $(function(){
 		var array = date.split(" - ");
 		var con_start = array[0];
 		var con_end = array[1];
-
-		console.log(con_start);
+		
 		var list_no = "${info.list_no}";
 		var con_sort = "${info.pil_cateInfo}";
 		var con_loc = "${info.pil_locInfo}";
@@ -69,10 +79,19 @@ $(function(){
 				alert("날짜를 선택해주세요.");
 			}
 			else{
-				var pop = window.open(
-						"/pilot_popup?startDate="+con_start+"&endDate="+con_end+"&list_no="+list_no+"&con_sort="+con_sort+"&con_loc="+con_loc,
-						"pop",
-						"width = 820, height = 650");
+				if(getToday > con_start){
+					alert("지난 날짜입니다.\n다시 선택해주세요.");
+					$(".datepicker-here").val("");
+				}else if(getToday == con_start){
+					alert("당일 예약 상담은 불가합니다.");
+					$(".datepicker-here").val("");
+				}else{
+					var pop = window.open(
+							"/pilot_popup?startDate="+con_start+"&endDate="+con_end+"&list_no="+list_no+"&con_sort="+con_sort+"&con_loc="+con_loc,
+							"pop",
+							"width = 760, height = 600");
+					$(".datepicker-here").val("");
+				}
 			}
 		}
 	})

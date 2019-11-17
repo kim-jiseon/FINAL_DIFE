@@ -23,14 +23,14 @@ public class PageController {
 
 	}
 
-	@RequestMapping("/droneDetail")
-	public void droneDetail() {
-		
-	}
-	@RequestMapping("/paySuccess")
-	public void paySuccess() {
-		
-	}
+//	@RequestMapping("/droneDetail")
+//	public void droneDetail() {
+//		
+//	}
+//	@RequestMapping("/paySuccess")
+//	public void paySuccess() {
+//		
+//	}
 	@RequestMapping("/location")
 	public void location() {
 		

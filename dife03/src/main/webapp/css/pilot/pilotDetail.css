@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.container{
+	margin-bottom: 150px;
+}
 /* 중앙 컨텐츠 */
 #grid{
     display: grid;

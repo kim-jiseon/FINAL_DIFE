@@ -34,7 +34,6 @@ $(function(){
 	
 	//상담신청하기
 	$("#res-submit").click(function(){
-		//var data = $("#res-form").serialize();
 		var con_start = "${startDate}";
 		var con_end = "${endDate}";
 		
@@ -55,24 +54,24 @@ $(function(){
 		var data = {"con_start":con_start,"con_end":con_end,"con_time":con_time,"con_attend":con_attend,"mem_no":"${mem_no}",
 				"con_purpose":con_purpose,"list_no":"${list_no}","con_sort":"${con_sort}","con_loc":"${con_loc}"};
 		console.log("data:"+data);
-		
 		var json_data = JSON.stringify(data);
-  	 	$.ajax({type:"post",
+		
+		if(con_time == null || con_time == ""){
+			alert("시간을 선택해주세요.");
+		}
+		if(con_purpose == null || con_purpose == ""){
+			alert("상담 내용을 입력해주세요.");
+		}else{
+	  	 	$.ajax({type:"post",
   	 			url:"/pilot_popup",
   	 			data:json_data,
   	 			dataType:"json",
   	 			contentType:"application/json;charset=UTF-8",
   	 			success:function(r){
-  	 				alert("상담이 신청되었습니다.");
+  	 				alert("상담이 신청되었습니다. \n신청내역은 '마이페이지-내글 관리'에서 확인하실 수 있습니다.");
   	 				window.close();
   	 			}})
-  	 			
-  	 			/*
-		$.post("/pilot_reservation",data,function(r){
-			//alert("상담이 신청되었습니다.\n신청내역은 '마이페이지-내글 관리'에서 확인하실 수 있습니다.");
-			window.close();	
-		})
-		*/
+		}
 	})
 })
 </script>

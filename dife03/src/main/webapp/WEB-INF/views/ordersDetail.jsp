@@ -86,7 +86,6 @@
 <body>
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
-
         <jsp:include page="header.jsp"></jsp:include>
 
         <!-- //header -->
@@ -97,7 +96,7 @@
                <div  class="mypage-grid">
                 <div id="mypage-top" class="mypage-top">
                     <div class="mypage-top-nav"><img src="img/pilot/visit_cnt.png" id="mem-img">
-                        <span id="mem-name">${mem_id } 님</span>
+                        <span id="mem-name">${mem_name } 님</span>
                     </div>
                     <div class="mypage-top-nav">적립<i class="fas fa-angle-right" id="arrow"></i></div>
                     <div class="mypage-top-nav">쿠폰<i class="fas fa-angle-right" id="arrow"></i></div>
@@ -107,7 +106,7 @@
                         <nav>
                             <ul>
                                 <li class="mypage-category"><a href="mypage_orders">주문내역<i class="fas fa-angle-right" id="icon"></i></a></li>
-                                <li class="mypage-category"><a href="#">게시글관리<i class="fas fa-angle-right" id="icon"></i></a></li>
+                                <li class="mypage-category"><a href="mypage_board">내글관리<i class="fas fa-angle-right" id="icon"></i></a></li>
                                 <li class="mypage-category"><a href="mypage_emoney">적립금 및 쿠폰<i class="fas fa-angle-right" id="icon"></i></a></li>
                                 <li class="mypage-category"><a href="#">개인정보수정<i class="fas fa-angle-right" id="icon"></i></a></li>
                             </ul>

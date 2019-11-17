@@ -230,8 +230,11 @@
     <div id="contents">
         <!-- 세션 영역        -->
         <div id="content-session">
+        	<div id="title">
+                <img src="img/main/drone_main10.PNG" id="support-title-img">
+            </div>
+            <div id="orders-title">주문하기</div>
             <div class="container">
-               <div class="container-top">주문</div>
                 <div class='main-session'>
                   
                 <!--테이블 영역      -->
