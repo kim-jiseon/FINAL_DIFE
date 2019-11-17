@@ -357,10 +357,10 @@ iframe {
   width: 300%;
   height: 100%;
   background: #a64bf4;
-  background: -webkit-linear-gradient(right, #f7e600, #f7e600, #f7e600, #f7e600);
-  background: -o-linear-gradient(right, #f7e600, #f7e600, #f7e600, #f7e600);
-  background: -moz-linear-gradient(right, #f7e600, #f7e600, #f7e600, #f7e600);
-  background: linear-gradient(right, #f7e600, #f7e600, #f7e600, #f7e600);
+  background: -webkit-linear-gradient(right, #323232, #323232, #323232, #323232);
+  background: -o-linear-gradient(right, #323232, #323232, #323232, #323232);
+  background: -moz-linear-gradient(right, #323232, #323232, #323232, #323232);
+  background: linear-gradient(right, #323232, #323232, #323232, #323232);
   top: 0;
   left: -100%;
 
@@ -373,7 +373,7 @@ iframe {
 .login100-form-btn {
   font-size: 15px;
   font-weight:bold;
-  color: #3c1e1e;
+  color: white;
   line-height: 1.2;
   text-transform: uppercase;
 

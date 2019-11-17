@@ -126,7 +126,7 @@ $(function() {
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">							 
-							  <a href="signUp" style="color: #3c1e1e">회원가입</a>								
+							  <a href="signUp" style="color: white">회원가입</a>								
 							</button>
 						</div>
 					</div>
