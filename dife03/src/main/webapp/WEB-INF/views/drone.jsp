@@ -78,31 +78,6 @@ $(function() {
 			$("#sub-menu-p").append(search_droPrc);
 		})
 		
-		/* 카테고리값 선택 시 해당값만 복제 후 고정 
-		// 시리즈명
-		$("#sub-menu").click(function(){
-			var selectSeries = $("hover_dro_01").val(series_arr);
-			//alert(selectSeries);
-			$(".hover-dro").click('change', function(){
-				var setS = $(this).html(data.dro_series);
-				//alert(setS);
-				$("#series").empty().append(setS).clone();
-				//$("#series>search_droSer[value="+'<c:out value="${param.series_arr}"/>'+"]").attr("selected","selected");			
-			})
-		})
-		// 가격
-		$("#sub_price").click(function(){
-			var selectPrice = $("hover_dro_02").val(price_arr);
-			//alert(selectPrice);
-			$(".hover-dro").click('change', function(){
-				var setP = $(this).html(data.dro_price);
-				//alert(setP);
-				$("#price").empty().append(setP).clone();
-								
-			})
-		}) */
-		
-		/* 상품 전체 목록 */
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
      		var div = $("<div></div>").addClass("item");
@@ -132,11 +107,69 @@ $(function() {
 			$(block).append(figure);
 
 			$("#drone-grid").append(block);
-	    })
-	}})
-
+			})
+		}})
+		/* 카테고리값 선택 시 해당값만 복제 후 고정 
+		// 시리즈명
+		$("#sub-menu").click(function(){
+			var selectSeries = $("hover_dro_01").val(series_arr);
+			//alert(selectSeries);
+			$(".hover-dro").click('change', function(){
+				var setS = $(this).html(data.dro_series);
+				//alert(setS);
+				$("#series").empty().append(setS).clone();
+				//$("#series>search_droSer[value="+'<c:out value="${param.series_arr}"/>'+"]").attr("selected","selected");			
+			})
+		})
+		// 가격
+		$("#sub_price").click(function(){
+			var selectPrice = $("hover_dro_02").val(price_arr);
+			//alert(selectPrice);
+			$(".hover-dro").click('change', function(){
+				var setP = $(this).html(data.dro_price);
+				//alert(setP);
+				$("#price").empty().append(setP).clone();
+								
+			})
+		}) */
 		
-    /* 무한스크롤 적용 예정 */   
+		/* 상품 전체 목록 
+		var search = "";
+		var pageNUM = 1;
+		var isEnd = false;
+		
+		function selectAll(search){
+			search = {"calendar":$("#calendar").val(), "sub_series_01":$("#sub-menu-s").val(), "sub_series_02":$("#sub-menu-p").val(), "pageNUM":pageNUM};
+			$.ajax({type: "get",
+				url:"/sel_droList",
+				data: search,
+				dataType: "json",
+				contentType:"application/json;charset=UTF-8",
+				success:function(data){
+					var len = data.length;
+					//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
+					if(len < 5){
+						isEnd = true;
+					}else{
+						isEnd = false;
+					}*/
+				
+		//selectAll();
+		
+    /* 무한스크롤 적용 예정
+    $(window).scroll(function(){
+		var maxHeight = $(document).height();
+		var currentScroll = $(window).scrollTop() + $(window).height();
+		
+		if(currentScroll+50 > maxHeight){
+			if(isEnd == true){
+	    		return;
+	    	}else{
+	    		pageNUM++;
+	    		selectAll(search);
+	    	}
+		}
+	}) */
     
     /* 챗봇형식으로 상품비교 */
     $(function() {

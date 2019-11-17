@@ -132,6 +132,16 @@ public class DroneManager {
 		return re;
 	}
 
+	public static List<DroneVo> sel_droAllList(HashMap map) {
+		// TODO Auto-generated method stub
+		List<DroneVo> list = null;
+		SqlSession session = factory.openSession();		
+		list =  session.selectList("drone.sel_droAllList");
+		//System.out.println(list);
+		session.close();
+		return list;
+	}
+
 /*	public static int in_droOrder(OrdersVo o) {
 		int re = 0;
 		SqlSession session = factory.openSession(true);

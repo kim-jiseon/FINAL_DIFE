@@ -192,7 +192,7 @@ $(function() {
 		                <ul class="search">
 		                    <div class="block">
 		                        <div id="calendar" name="calendar">
-		                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+		                          	 대여일&nbsp;&nbsp;
 		                        	<input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ko"
 		                            		class="datepicker-here" placeholder="대여일 ~ 반납일 선택" style="width:180px; height: 25px;"/>               
 		                        </div>
@@ -203,7 +203,7 @@ $(function() {
 						<!-- 제이쿼리 사용 -->
 						<ul>
 							<li>
-								<p>대여점 : 
+								<p>대여점&nbsp;&nbsp;
 									<span id="opr">
 										<select id="operR" name="operR" style="width: 150px; height: 30px;"></select>
 									</span>
@@ -213,7 +213,7 @@ $(function() {
 						<!-- 제이쿼리 사용 -->
 						<ul>
 							<li>
-								<p>수    량 :							 
+								<p>수&nbsp;&nbsp;량&nbsp;&nbsp;							 
 									<span id="opa">
 										<select id="operA" name="operA" style="width: 150px; height: 30px;"></select>
 									</span>

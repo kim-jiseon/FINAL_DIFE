@@ -33,6 +33,7 @@
 .search .block {
 	margin: 10px;
 }
+
 /* 상단 상품가격,선택칸 *//*
 .grid #block1{
 	display: grid;
@@ -66,7 +67,8 @@
 
 /* 상품선택칸 문자열 */
 li{
-	text-align: center;	
+	text-align: center;
+	list-style: none;	
 }
 #block2 p{
     margin-top: 5px;
@@ -93,6 +95,10 @@ input {
     width: 150px;
     height: 25px;
 }
+#calendar {
+	padding: 0 20px;
+}
+
 /*
 #form-group1 { 
     margin-left: -20px;
