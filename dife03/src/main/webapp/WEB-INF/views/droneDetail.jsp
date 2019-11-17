@@ -80,13 +80,7 @@ $(function() {
    	/* 주문 및 장바구니 : 로그인 후 가능 */
    	// 장바구니 담기
 	$("#btnBasket").click(function(){
-		if(mem_id == null || mem_id == ''){
-   			alert("로그인을 해주세요.");
-   			location.href="/signIn";
-   		}
-   		else{
-			$("#mypage").attr("href","mypage_orders");
-		}
+		
 		
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
@@ -110,19 +104,28 @@ $(function() {
 		}
 		var getToday = year+"/"+month+"/"+day;
 		
-		if(getToday > con_start){
-			alert("지난 날짜입니다.\n다시 선택해주세요.");
-			$(".datepicker-here").val("");
-		}else if(con_start == null || con_start == '' || con_end == null || con_end == ''){
-			alert("대여일을 선택하세요.");
+		if(mem_id == null || mem_id == ''){
+   			alert("로그인을 해주세요.");
+   			location.href="/signIn";
+   		}
+   		else{
+			$("#mypage").attr("href","mypage_orders");
+			if (date == null || date == "") {
+				alert("날짜를 선택해주세요.");
+			}
+			else{
+				if(getToday > con_start){
+					alert("지난 날짜입니다.\n다시 선택해주세요.");
+					$(".datepicker-here").val("");
+				}
+				if(ren_no == null || ren_no == ''){
+					alert("대여점을 선택하세요.");
+				}
+				if(pos_amount == null || pos_amount == ''){
+					alert("수량을 선택하세요.");
+				}
+			}
 		}
-		/*
-		else if(ren_no == null || ren_no == ''){
-			alert("대여점을 선택하세요.");
-		}
-		else if(pos_amount == null || pos_amount == ''){
-			alert("수량을 선택하세요.");
-		}*/
 			
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
    	   		location.href="/basket";
