@@ -303,6 +303,7 @@ figcaption p span{
   height: 140px;
   color: white;
   cursor: pointer;
+  filter: drop-shadow(10px 10px 5px #383A3F);
 }
 .btn#my-btn {
      background: white;
