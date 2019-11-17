@@ -10,9 +10,14 @@
 		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) order by dro_no desc
 	</select>
 	
+  	<!-- 최초 전체 목록 무한스크롤 -->
+	<select id="sel_droAllList" resultType="droneVo">
+		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) order by dro_no desc
+	</select>
+	
 	<!-- 전체 레코드 수 집계 -->
 	<select id="get_droCount" resultType="java.lang.Integer">
-		select count(*) from drone
+		select count(dro_no) from drone
 		<!-- select count(*) from ( select rownum rn, dro_no from drone )A 		
 		where A.rn between #{start} and #{end} -->
 	</select>	

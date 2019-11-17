@@ -15,6 +15,10 @@ public class DroneDao {
 		return DroneManager.sel_droAll();
 	}
 
+	public List<DroneVo> sel_droAllList(HashMap map){
+		return DroneManager.sel_droAllList(map);
+	}
+
 	public DroneVo sel_droDetail(String dro_no) {
 		return DroneManager.sel_droDetail(dro_no);
 	}

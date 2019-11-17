@@ -1,6 +1,7 @@
 package com.bit.dife03.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,10 +29,14 @@ import com.google.gson.reflect.TypeToken;
 
 @Controller
 public class DroneController {
+	//한페이지 당 게시글 수
+	int pageRecord = 5;
 	
-	int pageSIZE = 5;	// 한 페이지 당 보여질 상품수
-	int totalRecord = 0;	// 총 게시할 상품수
-	int totalPage = 2;	// 전체 페이지 수
+	//총 게시글 수
+	int totalRecord = 0;
+	
+	//전체페이지수 (default=1)
+	int totalPage = 1;
 	
 	@Autowired
 	private DroneDao dao;	
@@ -66,6 +71,9 @@ public class DroneController {
 	    }
 	    return str;
 	}
+	
+	/* 드론 전체 리스트 무한스크롤 출력
+	*/
 	
 	/* 상세페이지 */
 	@RequestMapping("/droneDetail")

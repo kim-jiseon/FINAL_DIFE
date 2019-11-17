@@ -23,7 +23,6 @@ public class PageController {
 
 	}
 
-	
 	@RequestMapping("/location")
 	public void location() {
 		
@@ -54,12 +53,13 @@ public class PageController {
 		
 	}
 
-	
+//	DroneController에서 mapping
 //	@RequestMapping("/drone")
 //	public void drone() {
 //		
 //	}
 
+//	DroneController에서 mapping	
 //	@RequestMapping("/droneDetail")
 //	public void droneDetail() {
 //		

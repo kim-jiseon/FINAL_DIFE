@@ -344,10 +344,13 @@
 
         <!-- //contents -->
         <div id="contents">
+        	<div id="title">
+                <img src="img/main/drone_main10.PNG" id="support-title-img">
+            </div>
+            <div id="basket-title">장바구니</div>
         <!-- 세션 영역        -->
         <div id="content-session">
             <div class="container">
-                 <div class="container-top">장바구니</div>
                 <div class='main-session'>
                    <p style="font-size: 20px; font-weight: 700;">상품 목록</p><br>
                 <!--테이블 영역      -->

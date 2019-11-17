@@ -25,12 +25,16 @@
 		if(mem_id != '' && mem_id != null){
 			$("#sign").attr("href","logout").html("LOGOUT");
 		}
+
 		if(mem_id == '' || mem_id == null){
 
 			$("#sign").attr("href","signIn").html("LOGIN");
 
 			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
 			//$("#category-2").append(login);
+
+		if(mem_id == '' || mem_id == null){
+
 			$("#sign").attr("href","signIn").html("LOGIN");
 		}
 		
@@ -69,8 +73,7 @@
 		}})
 		
 
-	/* 챗봇형식으로 상품비교 */
-		$(function() {
+		/* 챗봇형식으로 상품비교 */
 			var INDEX = 0;
 			$("#chat-submit").click(function(e) {
 				e.preventDefault();
@@ -170,7 +173,6 @@
 				$("#chat-circle").toggle('scale');
 				$(".chat-box").toggle('scale');
 			})
-		})
 	})
 </script>
 </head>
@@ -321,8 +323,8 @@
 				<div id="compareChatDrone">
 					<!-- center-text -->
 					<div id="center-text">
-	    				<h2>ChatBox UI</h2>
-	    				<p>Message send and scroll to bottom enabled </p>
+	    				<h2></h2>
+	    				<p></p>
 	  				</div>
 	  				<!-- center-text end --> 
 	  				<!-- body -->
@@ -338,9 +340,9 @@
 	  					<div class="chat-box">
 	  						<!-- chat-box-header -->
 		    				<div class="chat-box-header">
-		      					ChatBot
+		      					궁금하신 점 문의주세요!
 		      					<span class="chat-box-toggle">
-		      						<i class="material-icons">close</i>
+		      						<i class="material-icons">X</i>
 		      					</span>
 		    				</div>
 		    				<!-- chat-box-header end -->

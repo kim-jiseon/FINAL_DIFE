@@ -1,4 +1,3 @@
-<<<<<<< Upstream, based on origin/master
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,8 +45,6 @@
 		    if(date<10) date = '0' + date;
 		    return year + "." + month + "." + date;
 		}
-    	
-
     	
     	//마이페이지 이동
 		$("#mypage").click(function(){
@@ -127,7 +124,6 @@
 			console.log(typeof(month)) */
 			return false
 		})
-
     })
     </script>
 </head>
@@ -135,7 +131,6 @@
     <div id="wrap" class="animated fadeIn">
        <!-- header -->
         <jsp:include page="header.jsp"></jsp:include>
-
         <!-- //header -->
 
         <!-- contents -->
@@ -197,9 +192,5 @@
          <jsp:include page="footer.jsp"></jsp:include>
         <!-- //footer -->
     </div>
-
 </body>
-
-
-
 </html>

@@ -99,7 +99,31 @@ $(function() {
 		var pos_amount = $("#operA").val();
 		var bas_price = "${dtInfo.dro_price}"
 		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
-   	   	
+		// 오늘날짜 구하기
+		var new_date = new Date();
+		var year = new_date.getFullYear();
+		var month = new_date.getMonth()+1;
+		var day = new_date.getDate();
+		
+		if((day+"").length < 2){
+			day = "0"+day;
+		}
+		var getToday = year+"/"+month+"/"+day;
+		
+		if(getToday > con_start){
+			alert("지난 날짜입니다.\n다시 선택해주세요.");
+			$(".datepicker-here").val("");
+		}else if(con_start == null || con_start == '' || con_end == null || con_end == ''){
+			alert("대여일을 선택하세요.");
+		}
+		/*
+		else if(ren_no == null || ren_no == ''){
+			alert("대여점을 선택하세요.");
+		}
+		else if(pos_amount == null || pos_amount == ''){
+			alert("수량을 선택하세요.");
+		}*/
+			
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
    	   		location.href="/basket";
    	 	}})
@@ -192,7 +216,7 @@ $(function() {
 		                <ul class="search">
 		                    <div class="block">
 		                        <div id="calendar" name="calendar">
-		                          	 대여일<i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;&nbsp;
+		                          	 대여일&nbsp;&nbsp;
 		                        	<input type="text" data-range="true" data-multiple-dates-separator=" - " data-language="ko"
 		                            		class="datepicker-here" placeholder="대여일 ~ 반납일 선택" style="width:180px; height: 25px;"/>               
 		                        </div>
@@ -203,7 +227,7 @@ $(function() {
 						<!-- 제이쿼리 사용 -->
 						<ul>
 							<li>
-								<p>대여점 : 
+								<p>대여점&nbsp;&nbsp;
 									<span id="opr">
 										<select id="operR" name="operR" style="width: 150px; height: 30px;"></select>
 									</span>
@@ -213,7 +237,7 @@ $(function() {
 						<!-- 제이쿼리 사용 -->
 						<ul>
 							<li>
-								<p>수    량 :							 
+								<p>수&nbsp;&nbsp;량&nbsp;&nbsp;							 
 									<span id="opa">
 										<select id="operA" name="operA" style="width: 150px; height: 30px;"></select>
 									</span>
