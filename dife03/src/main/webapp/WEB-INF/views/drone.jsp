@@ -127,9 +127,14 @@ $(function() {
 			var con_start = array[0];
 			var con_end = array[1];
 			
-			if(getToday > con_start){
-				alert("지난 날짜입니다.\n다시 선택해주세요.");
-				$(".datepicker-here").val("");
+			if (date == null || date == "") {
+				alert("날짜를 선택해주세요.");
+			}
+			else{
+				if(getToday > con_start){
+					alert("지난 날짜입니다.\n다시 선택해주세요.");
+					$(".datepicker-here").val("");
+				}
 			}
 		})	
 	}})
@@ -225,7 +230,7 @@ $(function() {
 			    var str="";
 			    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
 			    str += "          <span class=\"msg-avatar\">";
-			    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+			    //str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
 			    str += "          <\/span>";
 			    str += "          <div class=\"cm-msg-text\">";
 			    str += msg;
@@ -259,7 +264,7 @@ $(function() {
 		    var str="";
 		    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
 		    str += "          <span class=\"msg-avatar\">";
-		    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+		    //str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
 		    str += "          <\/span>";
 		    str += "          <div class=\"cm-msg-text\">";
 		    str += msg;

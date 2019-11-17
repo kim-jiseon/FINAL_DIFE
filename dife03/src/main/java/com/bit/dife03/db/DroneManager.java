@@ -136,8 +136,8 @@ public class DroneManager {
 		// TODO Auto-generated method stub
 		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();		
-		list =  session.selectList("drone.sel_droAllList");
-		//System.out.println(list);
+		list =  session.selectList("drone.sel_droAll");
+		System.out.println(list);
 		session.close();
 		return list;
 	}
