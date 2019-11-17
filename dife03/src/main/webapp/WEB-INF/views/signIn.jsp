@@ -83,7 +83,6 @@ $(function() {
 
 		<!-- header -->
 		 <jsp:include page="header.jsp"></jsp:include>
-
 		<!-- //header -->
 
 		<!-- contents -->
