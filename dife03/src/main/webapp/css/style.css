@@ -75,7 +75,7 @@
     
     /*footer*/
     #footer-nav{
-        height: 10px;
+        height: auto;
         background-color: white;
     }
     #footer-info{
