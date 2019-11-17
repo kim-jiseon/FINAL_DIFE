@@ -100,7 +100,7 @@
       <img src="https://www.enjoydrone.com/images/common/zoom_ic2.png" alt="크게보기" 
       style="-webkit-user-select: none; margin; auto;">
       </a>
-=======
+
     <script type="text/javascript">
     $(function(){
     	//로그인 로그아웃 전환
@@ -118,7 +118,7 @@
     		$("#sign").attr("href","signIn").html("LOGIN");
     	}
     	    	
-    	
+    }
 		
     </script>
  </head>
@@ -166,7 +166,7 @@
    <div class="li_block">
     <div class="thumbnail">
       <img id="org_img_424" src="https://www.enjoydrone.com/data/file/place/2009634417_VOw0Ly7q_42f54cb3e20c902d61cecf731aa0829bf8e16df4.jpg">
->>>>>>> refs/heads/master
+
     </div>
      <div class="txt_area">
       <div class="tit">영월군 금방아민박 캠프장</div>
