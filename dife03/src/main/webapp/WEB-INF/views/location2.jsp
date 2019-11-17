@@ -100,39 +100,13 @@
       <img src="https://www.enjoydrone.com/images/common/zoom_ic2.png" alt="크게보기" 
       style="-webkit-user-select: none; margin; auto;">
       </a>
-=======
+
     <script type="text/javascript">
     $(function(){
-    	//로그인 로그아웃 전환
-    	var mem_id = "${mem_id}";
-    	alert(mem_id);
-    	if(mem_id != '' && mem_id != null){
-    		//var login = $("#category-2").find("a:first").html();
-    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-    		//$("#category-2").append(logout);
-    		$("#sign").attr("href","logout").html("LOGOUT");
-    	}
-    	if(mem_id == '' || mem_id == null){
-    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-    		//$("#category-2").append(login);
-    		$("#sign").attr("href","signIn").html("LOGIN");
-    	}
-    	    	
     	
-    	//마이페이지 이동
-		$("#mypage").click(function(){
-			console.log("클릭");
-			//var mem_id = "${mem_id}";
-			if(mem_id == null || mem_id == ''){
-				alert("로그인을 해주세요.");
-				location.href="signIn";
-			}else{
-				$("#mypage").attr("href","mypage_orders");
-			}
-		})
-	 	var month = 12;
-		var pageNUM = 1;
-		var isEnd = false;
+    }	
+    	
+    	
 		
     </script>
  </head>
@@ -180,7 +154,7 @@
    <div class="li_block">
     <div class="thumbnail">
       <img id="org_img_424" src="https://www.enjoydrone.com/data/file/place/2009634417_VOw0Ly7q_42f54cb3e20c902d61cecf731aa0829bf8e16df4.jpg">
->>>>>>> refs/heads/master
+
     </div>
      <div class="txt_area">
       <div class="tit">영월군 금방아민박 캠프장</div>
