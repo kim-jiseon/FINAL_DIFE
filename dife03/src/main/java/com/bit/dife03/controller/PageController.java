@@ -23,10 +23,6 @@ public class PageController {
 
 	}
 
-//	@RequestMapping("/droneDetail")
-//	public void droneDetail() {
-//		
-//	}
 //	@RequestMapping("/paySuccess")
 //	public void paySuccess() {
 //		
@@ -61,12 +57,13 @@ public class PageController {
 		
 	}
 
-	
+//	DroneController에서 mapping
 //	@RequestMapping("/drone")
 //	public void drone() {
 //		
 //	}
 
+//	DroneController에서 mapping	
 //	@RequestMapping("/droneDetail")
 //	public void droneDetail() {
 //		

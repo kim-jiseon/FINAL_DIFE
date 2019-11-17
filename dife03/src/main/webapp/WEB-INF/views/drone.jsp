@@ -357,7 +357,7 @@ $(function() {
 	  						<!-- chat-box-header -->
 		    				<div class="chat-box-header">
 		      					2개의 상품을 비교해보세요!<br>
-		      					Drag onto this space.
+		      					Drag onto this space :D
 		      					<span class="chat-box-toggle">
 		      						<i class="material-icons">X</i>
 		      					</span>
@@ -375,8 +375,8 @@ $(function() {
 		    				<!-- chat-input -->
 		    				<div class="chat-input">      
 		      					<form>
-		        					<input type="text" id="chat-input" placeholder="Send a message..."/>
-		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">비교하기</i></button>
+		        					<input type="text" id="chat-input" placeholder="드론 스펙을 한번에 확인하세요~"/>
+		      						<button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">비교</i></button>
 		      					</form>      
 		    				</div>
 		    				<!-- chat-input end -->
