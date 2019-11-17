@@ -1,4 +1,3 @@
-
 package com.bit.dife03.controller;
 
 import org.springframework.stereotype.Controller;
@@ -13,10 +12,34 @@ public class PageController {
 //		
 //	}
 	
+	@RequestMapping("/intro")
+	public void intro() {
+		
+	}
+	
 	@RequestMapping("/mypage_orders")
 	public void mypage_orders() {
 		
+
 	}
+
+	@RequestMapping("/droneDetail")
+	public void droneDetail() {
+		
+	}
+	@RequestMapping("/paySuccess")
+	public void paySuccess() {
+		
+	}
+	@RequestMapping("/location")
+	public void location() {
+		
+	}
+	@RequestMapping("/location2")
+	public void location2() {
+		
+	}
+
 	
 	@RequestMapping("/mypage_emoney")
 	public void mypage_emoney() {
@@ -61,6 +84,12 @@ public class PageController {
 	
 	@RequestMapping("/ordersDetail")
 	public void ordersDetail() {
+		
+	}
+	//imgBoard
+	@RequestMapping("/imgBoard")
+	public void home()
+	{
 		
 	}
 	

@@ -32,7 +32,7 @@ svg{
     padding: 0px 10px;
 }
 #calendar,.search1{
-    padding: 0px 10px;
+    padding: 0px 20px;
     font-size: 16px;
 }
 #btnSch{
@@ -43,22 +43,31 @@ svg{
     margin-top: 7px;
     border-radius: 30px;
 }
-.search li{
-    width: 180px;
+.search select {
+    width: 200px;
+    height: 30px;
 }
 .search  .fa{
     margin-left: 10px;
+    margin-right: 10px;
     margin-top: 4px;
 }
+#drone-nav {
+	margin-left: 0px;
+	margin-right: 40px;
+}
+/*
 .sub-menu-1{
     display: none;
 }
 .sub-menu-2 li{
     font-size: 13px;
 }
+*/
 .search1 {
 	cursor: pointer;
 }
+/*
 ul li:hover .sub-menu-1 {
     display: block;
     position: absolute;
@@ -86,9 +95,15 @@ ul li:hover .sub-menu-1 ul li:hover{
     font-weight: bold;
     background-color: #FFF9C4;
     -moz-border-radius: 10px; /* 모서리 둥글게 */  
-	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
-/*  text-shadow: 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF, 0 0 5px #40C4FF;
-    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;	*/
+/*	-webkit-border-radius: 10px; /* 모서리 둥글게 */  
+/*    text-shadow: 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4, 0 0 2px #a4a4a4;
+}
+*/
+#dro-search > select{
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    margin: 0px 20px 0px 20px;
 }
 .fas fa-angle-right {
     float: right;
@@ -102,7 +117,7 @@ ul li:hover .sub-menu-1 ul li:hover{
 /*  	-ms-transform:scale(1.5); /* IE 9 */
 /*  	-o-transform:scale(1.5); /* Opera */
 /*   	transform:scale(1.5);	/* 1.5배 사이즈 증가 */
-
+/*
 .sub-menu-2 {
     display: none;
     color: white;
@@ -115,6 +130,7 @@ ul li:hover .sub-menu-1 ul li:hover{
     margin-left: 210px;
     background-color: white;
 }
+*/
 input {
 	border: none;
 	border-radius: 30px;
@@ -273,36 +289,12 @@ figcaption p span{
     height: 420px;
 }
 /*
-.fas fa-won-sign {
+.fa-won-sign fa-w-18 {
 	font-size: 20px;
 }
 */
-/* 페이징처리 */
-.btnPaging{
-    padding: 10px;
-}
-.btnPaging li {
-    text-align: center;    
-}
 
 /* 드론 비교하는건 여기서 설정하시면 됩니다. */
-#footer-nav{
-	
-}
-
-html, body {
-  background: #efefef;      
-  height:100%;  
-}
-#center-text {          
-  display: flex;
-  flex: 1;
-  flex-direction:column; 
-  justify-content: center;
-  align-items: center;  
-  height:100%;
-  
-}
 #chat-circle {
   position: fixed;
   bottom: 20px;
@@ -331,8 +323,6 @@ html, body {
     border-radius: 50%;
     display: none;
 }
-
-
 .chat-box {
   display:none;
   background: #efefef;
@@ -352,7 +342,7 @@ html, body {
   cursor:pointer;
 }
 .chat-box-header {
-  background: #5A5EB9;
+  background: #7EBDC2;
   height:70px;
   border-top-left-radius:5px;
   border-top-right-radius:5px; 
@@ -422,7 +412,7 @@ html, body {
   box-shadow:none;
   border:none;
   border-radius:50%;
-  color:#5A5EB9;
+  color:#7EBDC2;
   width:35px;
   height:35px;  
 }
@@ -431,25 +421,20 @@ html, body {
   height:370px;
   overflow-y:scroll;
 }
-
 .chat-logs::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #F5F5F5;
 }
-
 .chat-logs::-webkit-scrollbar
 {
 	width: 5px;  
 	background-color: #F5F5F5;
 }
-
 .chat-logs::-webkit-scrollbar-thumb
 {
-	background-color: #5A5EB9;
+	background-color: #7EBDC2;
 }
-
-
 
 @media only screen and (max-width: 500px) {
    .chat-logs {
@@ -488,7 +473,7 @@ html, body {
 .chat-msg.self > .cm-msg-text {  
   float:right;
   margin-right:10px;
-  background: #5A5EB9;
+  background: #7EBDC2;
   color:white;
 }
 .cm-msg-button>ul>li {

@@ -26,7 +26,16 @@
 			$("#sign").attr("href","logout").html("LOGOUT");
 		}
 		if(mem_id == '' || mem_id == null){
+
 			$("#sign").attr("href","signIn").html("LOGIN");
+
+			//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
+			//$("#category-2").append(login);
+			$("#sign").attr("href","signIn2").html("LOGIN");
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/heads/master
 		}
 		
 		//마이페이지 이동

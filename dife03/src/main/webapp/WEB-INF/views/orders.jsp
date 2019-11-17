@@ -183,7 +183,7 @@
 		   	        				 alert("ajax작동");
 		   	        		 }}); 
 		   	        		
-		   					
+		   					   
 		   				});
 		   	        	
 		   	        	$("#order").click(function(){
@@ -202,7 +202,10 @@
 		   	         else {
 		   	        	$("#agree_select").show(); 	
 		   	         }
-			
+			//주문취소 클릭시
+			$("#orderCancle").click(function(){
+				
+			})
 		
    	 	});
 			/*check end  */

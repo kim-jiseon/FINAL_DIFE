@@ -22,7 +22,9 @@
     <!-- 제이쿼리 플러그인 -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <script type="text/javascript">
+    <!-- 아이콘 -->
+	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script type="text/javascript"> 
     $(function(){
     	//로그인 로그아웃 전환
     	var mem_id = "${mem_id}";

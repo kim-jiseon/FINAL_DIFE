@@ -155,7 +155,7 @@
                                     <c:if test="${dl.dro_name == null }">
                                       <tr>
                                         <td class="detail-product">
-                                            <img src='img/drone/"+${dl.pil_profile}+"' class="detail-img">
+                                            <img src='img/pilot/"+${dl.pil_profile}+"' class="detail-img">
                                             <span class="img-name">${dl.mem_name }</span>
                                         </td>
                                         <td>${dl.det_price }</td>
