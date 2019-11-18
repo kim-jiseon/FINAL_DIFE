@@ -183,6 +183,28 @@ public class OrdersManager {
 		}
 		return r;
 	}
+	//주문취소시 모든 데이터값 삭제
+	public static int delJumun(HashMap map, int list_count) {
+		int r=0;
+		int re=0;
+		SqlSession session = factory.openSession();
+		r += session.delete("orders.delOrdDet",map);
+		r += session.delete("orders.delOrders",map);
+		r += session.delete("orders.allDelBas",map);
+		System.out.println(r);
+		if(r > (list_count+1))
+		{
+			re=1;
+			session.commit();
+			
+		}
+		else
+		{
+			session.rollback();
+		}
+		return re;
+	}
+	
 	
 	
 }

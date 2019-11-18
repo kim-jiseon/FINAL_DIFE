@@ -144,7 +144,7 @@
 	    			if(item.dro_name !== null)
 	    				{
 	    					td3=$("<td></td>");
-	    					product_img=$("<img/>").attr({"src":"img/"+item.dro_photo,"width":"62","height":"68"});
+	    					product_img=$("<img/>").attr({"src":"img/drone/"+item.dro_photo,"width":"62","height":"68"});
 	    					$(td3).append(product_img);
 	    					p1=$("<p></p>").html(item.dro_name+"/"+item.dro_series).css({"font-size":"18px","font-weight":"bold"});
 	    					p2=$("<p></p>").html("대여일:"+rental+"  "+"반납일:"+re_date).css({"font-size":"17px","font-weight":"bold"});
@@ -161,7 +161,7 @@
 	    					p6=$("<p></p>").html(item.point).css({"font-size":"15px","font-weight":"bold"});
 	    					$(td7).append(p5,p6);
 	    					td8 = $("<td></td>");
-	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
+	    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'><i class='fas fa-trash-alt'></i></button>");
 	    					$(td8).append(btn_del);	
 	    				}
 	    			else
@@ -184,7 +184,7 @@
     					p6=$("<p></p>").html(item.point).css({"font-size":"15px","font-weight":"bold"});
     					$(td7).append(p5,p6);
     					td8 = $("<td></td>");
-    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'>삭제</button>");
+    					btn_del= $("<button style='padding: 5px; border-radius: 5px;' class='btn_del'><i class='fas fa-trash-alt'></i></button>");
     					$(td8).append(btn_del);
 	    				}
 	    			all_amount += i;

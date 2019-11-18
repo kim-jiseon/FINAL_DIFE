@@ -97,4 +97,11 @@ ps left outer join drone d on (ps.dro_no= d.dro_no) left outer join (select pil_
 	<select id="max_bas" resultType="java.lang.Integer">
 		select count(*) from basket where mem_no = (select mem_no from member where mem_id=#{mem_id})
 	</select>
+	<!-- orders delete orders detail -->
+	<delete id="delOrders">
+		delete orders where mem_no =(select mem_no from member where mem_id =#{mem_id}) and ord_no=#{ord_no}
+	</delete>
+	<delete id="delOrdDet">
+		delete ordersdetail  where ord_no=#{ord_no}	
+	</delete>
 </mapper>

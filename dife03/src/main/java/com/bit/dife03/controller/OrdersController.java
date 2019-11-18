@@ -240,5 +240,20 @@ public class OrdersController {
 		System.out.println(r);
 		return r;
 	}
+	@ResponseBody
+	@RequestMapping("/delJumun.do")
+	//{"mem_id":mem_id,"ord_no":ord_no,"list_count":
+	public int delJumun(String mem_id,String ord_no,int list_count){
+		int re =0;
+		System.out.println("mem_id:" + mem_id);
+		System.out.println("ord_no:" + ord_no);
+		System.out.println("list_count:" + list_count);
+		HashMap map = new HashMap();
+		map.put("mem_id", mem_id);
+		map.put("ord_no",ord_no);
+		re += dao.delJumun(map,list_count);
+		
+		return re;
+	}
 	
 }
