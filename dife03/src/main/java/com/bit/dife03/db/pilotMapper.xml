@@ -5,6 +5,21 @@
 <mapper namespace="pilot">
 <!-- 예약 상담 select -->
 <select id="sel_pilRes" resultType="reservationVo">
+	select m.mem_name, B.*
+	from member m,
+	(select p.mem_no mem, A.* from pilot p,
+	(select pil_no, pil_title, con_no, con_sort, pl.list_no, c.mem_no, con_time,
+	con_attend, con_purpose, con_loc, to_char(con_start,'yyyy/MM/dd')
+	con_start_str, to_char(con_end,'yyyy/MM/dd') con_end_str,
+	to_char(con_regdate,'yyyy/MM/dd') con_regDate_str
+	from pil_list pl, condition c
+	where pl.list_no = c.list_no and mem_no = #{mem_no}
+	<if test="con_no != null and con_no != ''">
+		and c.con_no = #{con_no}
+	</if>
+   ) A where p.pil_no = A.pil_no) B where m.mem_no = B.mem
+</select>
+<!-- <select id="sel_pilRes" resultType="reservationVo">
 select con_no, con_sort, c.list_no, c.mem_no, con_time, con_attend, con_purpose, con_loc,
 	to_char(con_start,'yyyy/MM/dd') con_start_str, to_char(con_end,'yyyy/MM/dd') con_end_str, to_char(con_regdate,'yyyy/MM/dd') con_regDate_str, pil_title, 
 	(select mem_name from member where mem_no in (select mem_no from pilot where pil_no in (select pil_no from pil_list where list_no in (select list_no from condition where mem_no=#{mem_no})))) mem_name
@@ -13,7 +28,7 @@ where c.list_no = pl.list_no and mem_no = #{mem_no}
 <if test="con_no != null and con_no != ''">
 	and c.con_no = #{con_no}
 </if>
-</select>
+</select> -->
 <!-- 예약상담 insert -->
 <insert id="insertPilRes">
 	insert into condition values(#{con_no},#{con_sort},#{list_no},#{mem_no},#{con_time},#{con_attend},#{con_purpose},#{con_loc},#{con_start},#{con_end},sysdate)
@@ -92,6 +107,5 @@ select m.mem_name, pl.* from pil_list pl, member m, pilot p
     	and pl.pil_no in (select pil_no from possesion where pil_no is not null)
     </if>
 </select>
-
 
 </mapper>
