@@ -56,7 +56,6 @@ $(function() {
 	})
 
 	/* 검색 카테고리 활성화 */	
-	$.ajax({url:"/droAll",success:function(data){
 		var series_arr = [
 			'선택','MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
 		];
