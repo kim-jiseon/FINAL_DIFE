@@ -64,4 +64,8 @@ public class OrdersDao {
 		// TODO Auto-generated method stub
 		return OrdersManager.allDelBas(mem_id);
 	}
+	public int delJumun(HashMap map, int list_count) {
+		// TODO Auto-generated method stub
+		return OrdersManager.delJumun(map,list_count);
+	}
 }
