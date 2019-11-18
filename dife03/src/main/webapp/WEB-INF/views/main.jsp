@@ -24,11 +24,13 @@
 		var mem_id = "${mem_id}";
 		if(mem_id != '' && mem_id != null){
 			$("#sign").attr("href","logout").html("LOGOUT");
+			$("#mypage").show();
 		}
 
 		if(mem_id == '' || mem_id == null){
 
 			$("#sign").attr("href","signIn").html("LOGIN");
+			$("#mypage").hide();
 		}
 		
 		//마이페이지 이동
