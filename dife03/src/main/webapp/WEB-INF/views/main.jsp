@@ -26,9 +26,7 @@
 			$("#sign").attr("href","logout").html("LOGOUT");
 			$("#mypage").show();
 		}
-
 		if(mem_id == '' || mem_id == null){
-
 			$("#sign").attr("href","signIn").html("LOGIN");
 			$("#mypage").hide();
 		}
@@ -67,7 +65,6 @@
 				})
 		}})
 		
-
 		/* 챗봇형식으로 상품비교 */
 			var INDEX = 0;
 			$("#chat-submit").click(function(e) {
@@ -227,84 +224,55 @@
           		<!-- ajax 구현 -->
           			<div class="grid-cell2">
           				<div class="sns-top" id="sns-top-1">
-          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
           				</div>
           				<div class="sns-bottom">
           				    <div class="user-info" id="user-info-1">
-          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p> -->
           				      </div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
-                                <!-- 
-                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
-                                -->
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count" id="count-1"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
+          				<div class="count" id="count-1"></div>
           			</div>
           			
           			<div class="grid-cell2">
           				<div class="sns-top" id="sns-top-2">
-          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
           				</div>
           				<div class="sns-bottom">
           				    <div class="user-info" id="user-info-2">
-          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p> -->
           				      </div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
-                                <!-- 
-                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
-                                -->
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count" id="count-2"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
+          				<div class="count" id="count-2"></div>
           			</div>
           			
           			<div class="grid-cell2">
-          				<div class="sns-top" id="sns-top-3">
-          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
-          				</div>
+          				<div class="sns-top" id="sns-top-3"></div>
           				<div class="sns-bottom">
-          				    <div class="user-info" id="user-info-3">
-          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p> -->
-          				      </div>
+          				    <div class="user-info" id="user-info-3"></div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
-                                <!-- 
-                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
-                                -->
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count" id="count-3"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
+          				<div class="count" id="count-3"></div>
           			</div>
           			
           			<div class="grid-cell2">
-          				<div class="sns-top" id="sns-top-4">
-          				<!-- <img alt="" src="img/main/photo1.jpg" class="user-photo"> -->
-          				</div>
+          				<div class="sns-top" id="sns-top-4"></div>
           				<div class="sns-bottom">
-          				    <div class="user-info" id="user-info-4">
-          				        <!-- <img src="img/pilot/visit_cnt.png" class="user-profile">
-          				        <p class="user-name">username</p> -->
-          				      </div>
+          				    <div class="user-info" id="user-info-4"></div>
           				    <div class="user-like">
                                 <img alt="" src="img/main/instagram-heart.png" class="user-like-btn">
-                                <!-- 
-                                <img alt="" src="img/main/instagram-heart-pink.png" class="user-like-btn"> 
-                                -->
                                 <img alt="" src="img/main/instagram-msg.png" class="user-like-btn"> 
           				    </div>
           				</div>
-          				<div class="count" id="count-4"><!-- <img src="img/main/instagram-heart-pink.png" class="user-like-count"><p class="like-count">2019 Likes</p> --></div>
+          				<div class="count" id="count-4"></div>
           			</div>
-          			
           		</div>
           	</div>
         </div>
@@ -380,29 +348,28 @@
 			<!-- footer-info end -->
 		</div>
 		<!-- //footer -->
-        
     </div>
-   
-	<!-- Swiper JS -->
-    <script src="js/swiper/swiper.min.js"></script>
-     <!-- Initialize Swiper -->
-	<script>
-		var swiper = new Swiper('.swiper-container', {
-			spaceBetween : 30,
-			centeredSlides : true,
-			autoplay : {
-				delay : 3000,
-				disableOnInteraction : false,
-			},
-			pagination : {
-				el : '.swiper-pagination',
-				clickable : true,
-			},
-			navigation : {
-				nextEl : '.swiper-button-next',
-				prevEl : '.swiper-button-prev',
-			},
-		});
-	</script>
+    <!-- //wrap -->
+<!-- Swiper JS -->
+<script src="js/swiper/swiper.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+	var swiper = new Swiper('.swiper-container', {
+		spaceBetween : 30,
+		centeredSlides : true,
+		autoplay : {
+			delay : 3000,
+			disableOnInteraction : false,
+		},
+		pagination : {
+			el : '.swiper-pagination',
+			clickable : true,
+		},
+		navigation : {
+			nextEl : '.swiper-button-next',
+			prevEl : '.swiper-button-prev',
+		},
+	});
+</script>
 </body>
 </html>
