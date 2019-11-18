@@ -26,11 +26,17 @@ public class BoardVo {
 	private String last;
 	private Date last_time;
 	private MultipartFile upload;
+	private String mem_name;
 	
+	public BoardVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public BoardVo(int boa_no, String mem_no, String boa_title, String boa_contents, String boa_pwd, int boa_rating,
 			Date boa_regdate, String regdate, int boa_view, String boa_answer, String boa_sort, String boa_category,
 			String boa_fname, int boa_ref, int boa_level, int boa_step, String first, Date first_time, String last,
-			Date last_time, MultipartFile upload) {
+			Date last_time, MultipartFile upload, String mem_name) {
 		super();
 		this.boa_no = boa_no;
 		this.mem_no = mem_no;
@@ -53,11 +59,7 @@ public class BoardVo {
 		this.last = last;
 		this.last_time = last_time;
 		this.upload = upload;
-	}
-
-	public BoardVo() {
-		super();
-		// TODO Auto-generated constructor stub
+		this.mem_name = mem_name;
 	}
 
 	public int getBoa_no() {
@@ -227,5 +229,14 @@ public class BoardVo {
 	public void setUpload(MultipartFile upload) {
 		this.upload = upload;
 	}
+
+	public String getMem_name() {
+		return mem_name;
+	}
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
+	
 	
 }

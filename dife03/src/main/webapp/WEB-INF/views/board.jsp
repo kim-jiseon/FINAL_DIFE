@@ -50,6 +50,11 @@ $(function(){
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
+	
+	$("#select").change(function(){
+		var boa_sort = $(this).children("option:selected").text();
+		location.href="/board?boa_sort="+boa_sort;
+	})
 })
 </script>
 </head>
@@ -65,9 +70,9 @@ $(function(){
 			<div id="content1">
 				<div class="container">
 					<select id="select" name="boa_sort" style="width: 100px; height: 30px;">
-						<option value="전체" selected="selected">전체게시판</option>
-						<option value="문의">문의게시판</option>
-						<option value="후기">후기게시판</option>
+						<option value="전체게시판">전체게시판</option>
+						<option value="문의게시판">문의게시판</option>
+						<option value="후기게시판">후기게시판</option>
 					</select>
 					<table class="table table-striped">
 						<tr style="font-size: 15px; font-weight: bold;">
@@ -89,7 +94,7 @@ $(function(){
 									</c:if>
 									<a href="board_detail?boa_no=${b.boa_no }">${b.boa_title }</a>
 								</td>
-								<td>${b.mem_no }</td>
+								<td>${b.mem_name }</td>
 								<td>${b.regdate }</td>
 								<td>${b.boa_view }</td>
 								<td>${b.boa_answer }</td>

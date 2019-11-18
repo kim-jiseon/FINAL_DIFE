@@ -33,11 +33,11 @@ public class BoardController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/board")
-	public ModelAndView list() {
+	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	public ModelAndView list(String boa_sort) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", dao.listAll());
-		
+		mav.addObject("list", dao.listAll(boa_sort));
+		System.out.println("종류: "+boa_sort);
 		return mav;
 	}
 	
@@ -56,8 +56,10 @@ public class BoardController {
 		int boa_ref = boa_no;
 		int boa_level = 0;
 		int boa_step = 0;
+		String boa_answer = "";
 		
 		int pno = vo.getBoa_no();
+	
 		if(pno != 0) {
 			BoardVo b = dao.getBoard(pno);
 			boa_ref = b.getBoa_ref();
@@ -66,6 +68,7 @@ public class BoardController {
 			dao.updateStep(boa_ref, boa_step);
 			boa_step++;
 			boa_level++;
+			dao.answerUpdate(pno, boa_answer);
 		}
 		vo.setBoa_no(boa_no);
 		vo.setBoa_ref(boa_ref);
@@ -104,6 +107,7 @@ public class BoardController {
 	public ModelAndView detail(int boa_no) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("b", dao.getBoard(boa_no));
+		dao.updateBoa_view(boa_no);
 		return mav;
 	}
 	
