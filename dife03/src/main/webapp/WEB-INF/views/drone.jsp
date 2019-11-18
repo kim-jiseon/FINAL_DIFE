@@ -55,13 +55,11 @@ $(function() {
 		}
 	})
 	
-	/* 검색 카테고리 */				
-	$.ajax({url:"/droAll",success:function(data){
 		var series_arr = [
-			'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
+			'선택','MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
 		];
 		var price_arr = [
-			'10만원 이하','10만원 ~ 20만원','20만원 이상'
+			'선택','10만원 이하','10만원 ~ 20만원','20만원 이상'
 		];
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
@@ -70,6 +68,7 @@ $(function() {
 			$(search_droSer).append(icon);
 			$("#sub-menu-s").append(search_droSer);
 		})
+
 		// 가격
 		$.each(price_arr, function(idx, prc){
 			var search_droPrc = $("<option></option>").attr({"id":"hover_dro_02", "name":"hover_dro_02", "value":price_arr[idx], "idx":idx}).html(price_arr[idx]).addClass("hover-dro").html(price_arr[idx]);
@@ -78,6 +77,13 @@ $(function() {
 			$("#sub-menu-p").append(search_droPrc);
 		})
 		
+		var series = $("#sub-menu-s").val();
+		var price = $("#sub-menu-p").val();
+		alert(series+price);
+	/* 검색 카테고리 */
+	$.ajax({url:"/droAll",
+		data: {"series":series, "price":price},
+		success:function(data){
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
      		var div = $("<div></div>").addClass("item");
@@ -109,6 +115,22 @@ $(function() {
 			$("#drone-grid").append(block);
 			})
 		}})
+		
+		$("#btnSch").click(function(){
+			series = $("#sub-menu-s").val();
+			price = $("#sub-menu-p").val();
+			$.ajax({
+				url:"/droAll",
+				data: {"series":series, "price":price},
+				success:function(data){
+					alert("성공");
+
+				
+			}})
+			
+		})
+		
+		
 		/* 카테고리값 선택 시 해당값만 복제 후 고정 
 		// 시리즈명
 		$("#sub-menu").click(function(){

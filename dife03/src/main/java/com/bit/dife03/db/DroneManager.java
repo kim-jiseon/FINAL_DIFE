@@ -3,8 +3,11 @@ package com.bit.dife03.db;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -14,6 +17,7 @@ import com.bit.dife03.vo.DroneVo;
 public class DroneManager {
 
 	public static SqlSessionFactory factory;
+	public static SqlSession session;
 	static {
 		try {
 			Reader reader = Resources.getResourceAsReader("com/bit/dife03/db/dbConfig.xml");
@@ -27,11 +31,15 @@ public class DroneManager {
 	}
 	
 	/* 드론 페이지 초기화면 및 검색 카테고리 불러오기 */
-	public static List<DroneVo> sel_droAll() {
+	public static List<DroneVo> sel_droAll(HashMap map) {
 		List<DroneVo> list = null;
-		SqlSession session = factory.openSession();		
-		list =  session.selectList("drone.sel_droAll");
+		String id = "drone.sel_droAll";
+//		SqlSession session = factory.openSession();		
+//		list =  session.selectList("drone.sel_droAll");
+		session = factory.openSession();		
+		list =  session.selectList(id, map);
 		//System.out.println(list);
+		sqlTest(map, id);
 		session.close();
 		return list;
 	}
@@ -148,4 +156,20 @@ public class DroneManager {
 		
 		return re;
 	}*/
+	
+	//쿼리문 콘솔 출력 메소드
+		public static void sqlTest(Map map, String id) {
+			session = factory.openSession();
+			BoundSql sql = session.getConfiguration().getMappedStatement(id).getBoundSql(map);
+			String sql2 = sql.getSql();
+			List<ParameterMapping> paramMapping = sql.getParameterMappings();
+			String value = "";
+				for (ParameterMapping mapping : paramMapping) {
+					String propValue = mapping.getProperty();
+					value = map.get(propValue).toString();
+					System.out.println("value값:"+value);
+					sql2 = sql2.replaceFirst("\\?", "'"+value+"'");
+				}
+			System.out.println("sql:"+sql2);
+		}
 }

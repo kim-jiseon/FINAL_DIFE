@@ -11,8 +11,8 @@ import com.bit.dife03.vo.DroneVo;
 @Repository
 public class DroneDao {
 
-	public List<DroneVo> sel_droAll(){
-		return DroneManager.sel_droAll();
+	public List<DroneVo> sel_droAll(HashMap map){
+		return DroneManager.sel_droAll(map);
 	}
 
 	public List<DroneVo> sel_droAllList(HashMap map){
