@@ -13,8 +13,8 @@ public class PilReservationVo {
 	private String con_loc;
 	private Date con_start;
 	private String con_start_str;
-	private String con_end_str;
 	private Date con_end;
+	private String con_end_str;
 	private Date con_regDate;
 	private String con_regDate_str;
 	private String pil_title;
