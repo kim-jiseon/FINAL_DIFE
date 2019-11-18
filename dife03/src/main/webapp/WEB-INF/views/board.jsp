@@ -30,15 +30,13 @@ $(function(){
 	//로그인 로그아웃 전환
 	var mem_id = "${mem_id}";
 	if(mem_id != '' && mem_id != null){
-		//var login = $("#category-2").find("a:first").html();
-		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-		//$("#category-2").append(logout);
 		$("#sign").attr("href","logout").html("LOGOUT");
+		$("#mypage").show();
 	}
+
 	if(mem_id == '' || mem_id == null){
-		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-		//$("#category-2").append(login);
 		$("#sign").attr("href","signIn").html("LOGIN");
+		$("#mypage").hide();
 	}
 	
 	//마이페이지 이동

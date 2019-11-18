@@ -22,18 +22,15 @@
     $(function(){
     	//로그인 로그아웃 전환
     	var mem_id = "${mem_id}";
+		if(mem_id != '' && mem_id != null){
+			$("#sign").attr("href","logout").html("LOGOUT");
+			$("#mypage").show();
+		}
 
-    	if(mem_id != '' && mem_id != null){
-    		//var login = $("#category-2").find("a:first").html();
-    		//var logout = $("<a></a>").attr("href","logout").addClass("cl-effect-1").html("LOGOUT");
-    		//$("#category-2").append(logout);
-    		$("#sign").attr("href","logout").html("LOGOUT");
-    	}
-    	if(mem_id == '' || mem_id == null){
-    		//var login = $("<a></a>").attr("href","signIn").addClass("cl-effect-1").html("LOGIN");
-    		//$("#category-2").append(login);
-    		$("#sign").attr("href","signIn").html("LOGIN");
-    	}
+		if(mem_id == '' || mem_id == null){
+			$("#sign").attr("href","signIn").html("LOGIN");
+			$("#mypage").hide();
+		}
 
     	/* 날자를 리스트 보여주기위해 포맷하기위한 function */
     	function date_to_str(format)

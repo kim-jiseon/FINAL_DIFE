@@ -22,14 +22,16 @@
 <script type="text/javascript">
 $(function(){
 		//로그인 로그아웃 전환
-		var mem_id = "${mem_id}";
-		//alert(mem_id);
-		if (mem_id != '' && mem_id != null) {
-			$("#sign").attr("href", "logout").html("LOGOUT");
-		}
-		if (mem_id == '' || mem_id == null) {
-			$("#sign").attr("href", "signIn").html("LOGIN");
-		}
+	var mem_id = "${mem_id}";
+	if(mem_id != '' && mem_id != null){
+		$("#sign").attr("href","logout").html("LOGOUT");
+		$("#mypage").show();
+	}
+
+	if(mem_id == '' || mem_id == null){
+		$("#sign").attr("href","signIn").html("LOGIN");
+		$("#mypage").hide();
+	}
 		
 		//마이페이지 이동
 		$("#mypage").click(function(){
