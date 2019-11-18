@@ -57,9 +57,6 @@ public class DroneController {
 	@RequestMapping("/droAll")
 	public String sel_droAll(HttpSession session) {
 	String str = "";
-	//DroneVo vo = new DroneVo();
-	//int series = Integer.parseInt(vo.getDro_series());
-	//System.out.println(series);
 	ObjectMapper mapper = new ObjectMapper();
 	  
 	try {
@@ -82,7 +79,6 @@ public class DroneController {
 		ModelAndView mav = new ModelAndView();
 		String dtInfo = request.getParameter("dro_no");
 		mav.addObject("dtInfo", dao.sel_droDetail(dro_no));
-		//System.out.println("상세번호 : "+dtInfo);
 		return mav;
 	}
 	
@@ -94,16 +90,11 @@ public class DroneController {
 							@RequestParam(value = "bas_price") int bas_price,
 							@RequestParam(value = "bas_amount") int bas_amount,
 							String mem_id,
-							String dro_no){
+							String dro_no,
+							int ren_day){
 		int re = 0;
-		System.out.println(bas_return);
-		System.out.println(bas_rental);
-		System.out.println(bas_price);
-		System.out.println(bas_amount);
-		System.out.println(mem_id);
-		System.out.println(dro_no);
 		HashMap map = new HashMap();
-		bas_price = bas_price * bas_amount;
+		bas_price = bas_price * bas_amount * ren_day;
 		if(mem_id != null && dro_no != null)
 		{	
 			map.put("bas_return", bas_return);
@@ -121,20 +112,15 @@ public class DroneController {
 	@ResponseBody
 	@RequestMapping("/droOrder")
 	public int in_orders(@RequestParam(value = "det_return") String det_return,
-							@RequestParam(value = "det_rental") String det_rental,
-							@RequestParam(value = "ord_price") int ord_price,
-							@RequestParam(value = "det_amount") int det_amount,
+						 @RequestParam(value = "det_rental") String det_rental,
+						 @RequestParam(value = "ord_price") int ord_price,
+						 @RequestParam(value = "det_amount") int det_amount,
 							String mem_id,
-							String dro_no){
+							String dro_no,
+							int ren_day){
 		int re = 0;
-		System.out.println(det_return);
-		System.out.println(det_rental);
-		System.out.println(ord_price);
-		System.out.println(det_amount);
-		System.out.println(mem_id);
-		System.out.println(dro_no);
 		HashMap map = new HashMap();
-		ord_price = ord_price * det_amount;
+		ord_price = ord_price * det_amount * ren_day;
 		if(mem_id != null && dro_no != null)
 		{	
 			map.put("det_return", det_return);
