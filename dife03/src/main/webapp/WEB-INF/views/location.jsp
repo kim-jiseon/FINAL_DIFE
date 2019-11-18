@@ -43,6 +43,18 @@
     		$(".layer_popup").fadeOut("fast");
     		$(".bg_black").fadeOut("fast");
     	}
+    	
+    	//줌인 줌아웃 기능 추기
+    	$(document).ready( function() {
+    		$('#org_img_424').hover(
+    		    function() {
+    		        $(this).animate({ 'zoom': 2.4 }, 400);
+    		    },
+    		    function() {
+    		        $(this).animate({ 'zoom': 1 }, 400);
+    		    });
+    		});
+    	
     	})
     	
     	    		
@@ -57,7 +69,7 @@
 		<div class="layer_popup">
 			<div class="img_orig">
 				<img id="org_popup_view" style="width: 500px;"이미지"> <a
-					href="#" onclick="close_btn(); return false; class="close_btn">
+					href="#" onclick="close_btn(); return false;" class="close_btn">
 				</a>
 			</div>
 		</div>
