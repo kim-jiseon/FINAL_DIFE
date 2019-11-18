@@ -58,6 +58,7 @@ $(function(){
 	})
 	
 })
+
 </script>
 </head>
 <body>
@@ -96,7 +97,7 @@ $(function(){
 									</c:if>
 									<a href="board_detail?boa_no=${b.boa_no }">${b.boa_title }</a>
 								</td>
-								<td>${b.mem_no }</td>
+								<td>${b.first }</td>
 								<td>${b.regdate }</td>
 								<td>${b.boa_view }</td>
 								<td>${b.boa_answer }</td>
