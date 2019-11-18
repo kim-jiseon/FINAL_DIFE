@@ -87,12 +87,25 @@ $(function() {
 		var array = date.split(" - ");
 		var con_start = array[0];
 		var con_end = array[1];
+		var start = con_start.replace('/',"");
+		var end = con_end.replace('/',"");
+		start = start.replace('/',"").substring(6,8);
+		end =end.replace('/',"").substring(6,8);
+		if(start.substring(0,1)==="0")
+			{
+				start.replace("0","");
+			}
+		if(end.substring(0,1)==="0")
+		{
+			start.replace("0","");
+		}
+		var ren_date = (Number(end) - Number(start))
 		// 장바구니 페이지에 담을 값
 		var dro_no = "${dtInfo.dro_no}";
 		var ren_no = "${dtInfo.ren_no}";
 		var pos_amount = $("#operA").val();
 		var bas_price = "${dtInfo.dro_price}"
-		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
+		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no,"ren_day":ren_date}
 		// 오늘날짜 구하기
 		var new_date = new Date();
 		var year = new_date.getFullYear();
@@ -146,15 +159,32 @@ $(function() {
 		var array = date.split(" - ");
 		var con_start = array[0];
 		var con_end = array[1];
+		var start = con_start.replace('/',"");
+		var end = con_end.replace('/',"");
+		start = start.replace('/',"").substring(6,8);
+		end =end.replace('/',"").substring(6,8);
+		if(start.substring(0,1)==="0")
+			{
+				start.replace("0","");
+			}
+		if(end.substring(0,1)==="0")
+		{
+			start.replace("0","");
+		}
+		var ren_date = (Number(end) - Number(start))
+		
+		
+		start = Number(start)
+		end = Number(end)
 		// 장바구니 페이지에 담을 값
 		var dro_no = "${dtInfo.dro_no}";
 		var ren_no = "${dtInfo.ren_no}";
 		var pos_amount = $("#operA").val();
 		var bas_price = "${dtInfo.dro_price}"
-		var data = {"det_amount" : pos_amount,"ord_price" : bas_price,"det_rental" : con_start, "det_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
+		var data = {"det_amount" : pos_amount,"ord_price" : bas_price,"det_rental" : con_start, "det_return":con_end,"mem_id":mem_id,"dro_no":dro_no,"ren_day":ren_date}
    	   	
 		$.ajax({url:"/droOrder", traditional:true, contentType:'application/json', data:data, success:function(data){	
-   	   		location.href="/orders";
+   	   		 location.href="/orders";
    	 	}})
    	})	
 })
