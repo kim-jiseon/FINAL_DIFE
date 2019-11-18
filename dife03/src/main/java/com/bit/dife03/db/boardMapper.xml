@@ -6,22 +6,20 @@
 
   <!-- 게시판 모두보기 -->
   <select id="selectAll" resultType="boardVo">
-      select boa_no, (select mem_name from member m, board b where m.mem_no=b.mem_no) mem_no, boa_title, boa_contents, boa_pwd, boa_rating, (select to_char(boa_regdate, 'yyyy-mm-dd') from board) regdate, 
-	boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
-	from board order by boa_ref desc, boa_step
-	<!-- 
-	<if test="boa_sort != null and boa_sort !=''">
-		<if test="boa_sort == '전체'">
-			where boa_sort='전체'
-		</if>
-		<if test="boa_sort == '문의'">
-			where boa_sort='문의'
-		</if>
-		<if test="boa_sort == '후기'">
-			where boa_sort='후기'
-		</if>
-	</if>
-	 -->
+      select mem_name, B.* 
+      from member m, 
+      (select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
+      boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
+      from board
+      <if test="boa_sort != null and boa_sort !=''">
+      	<if test="boa_sort == '문의'">
+      		where boa_sort like '%문의%'
+      	</if>
+      	<if test="boa_sort == '후기'">
+      		where boa_sort like '%후기%'
+      	</if>
+      </if>
+      ) B where m.mem_no = B.mem_no order by boa_ref desc, boa_step
   </select>
   
   <!-- 게시판 등록 -->
@@ -34,9 +32,9 @@
   </select>
   
   <select id="getBoard" resultType="boardVo">
-  	select boa_no, (select mem_name from member m, board b where m.mem_no=b.mem_no) mem_no, boa_title, boa_contents, boa_pwd, boa_rating, (select to_char(boa_regdate, 'yyyy-mm-dd') from board) regdate, 
-	boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
-	from board where boa_no=#{boa_no}
+  	select mem_name, B.* from member m, (select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
+      boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time from board) B 
+      where m.mem_no = B.mem_no and boa_no=#{boa_no}
   </select>
   
   <update id="updateStep">
