@@ -52,13 +52,6 @@ $(function(){
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-
-	$("#select").change(function(){
-		alert($(this).val());
-		alert($(this).children("option:selected").text());
-
-	})
-	
 })
 </script>
 </head>
