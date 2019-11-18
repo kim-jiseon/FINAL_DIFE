@@ -37,7 +37,6 @@ public class BoardController {
 	public ModelAndView list(String boa_sort) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list", dao.listAll(boa_sort));
-		System.out.println("종류: "+boa_sort);
 		return mav;
 	}
 	
