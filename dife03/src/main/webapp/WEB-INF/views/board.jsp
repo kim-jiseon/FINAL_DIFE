@@ -70,8 +70,9 @@ $(function(){
 			<div id="content1">
 				<div class="container">
 					<select id="select" name="boa_sort" style="width: 100px; height: 30px;">
+						<option>선택하세요</option>
 						<option value="전체게시판">전체게시판</option>
-						<option value="문의게시판" selected="selected">문의게시판</option>
+						<option value="문의게시판">문의게시판</option>
 						<option value="후기게시판">후기게시판</option>
 					</select>
 					<table class="table table-striped">
