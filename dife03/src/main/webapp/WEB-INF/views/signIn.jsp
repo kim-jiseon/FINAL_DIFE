@@ -31,6 +31,7 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <script type="text/javascript">
 $(function() {
 	//로그인 로그아웃 전환
@@ -112,8 +113,8 @@ $(function() {
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" type="submit" id="btn">
+							<div class="login100-form-bgbtn" style="background: #f7e600"></div>
+							<button class="login100-form-btn" type="submit" id="btn" style="color: black">
 						<!--  	<a id="btn" type="submit">로그인</a>		-->	
 					              	로그인					
 							</button>
@@ -121,9 +122,9 @@ $(function() {
 					</div>
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">							 
-							  <a href="signUp" style="color: white">회원가입</a>								
+							<div class="login100-form-bgbtn" style="background: #f7e600"></div>
+							<button class="login100-form-btn" type="submit" id="btn" style="color: black">							 
+							  <a href="signUp" style="color: black">회원가입</a>								
 							</button>
 						</div>
 					</div>
