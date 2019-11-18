@@ -21,7 +21,7 @@
                      <span id="category-2" class="animated fadeInUp">
                         <a id="sign" class="cl-effect-1"></a>
                         <a class="cl-effect-1" id="mypage">MYPAGE</a>
-                        <a href="basket" class="cl-effect-1">RESERVATION</a>
+                        <a href="basket" class="cl-effect-1"><i class="fas fa-shopping-basket"></i></a>
                    </span>
                 </div>
             </div>

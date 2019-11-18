@@ -54,13 +54,14 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-
+	
 	/* 검색 카테고리 활성화 */	
+	$.ajax({url:"/droAll",success:function(data){
 		var series_arr = [
-			'선택','MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
+			'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
 		];
 		var price_arr = [
-			'선택','10만원 이하','10만원 ~ 20만원','20만원 이상'
+			'10만원 이하','10만원 ~ 20만원','20만원 이상'
 		];
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
@@ -69,7 +70,6 @@ $(function() {
 			$(search_droSer).append(icon);
 			$("#sub-menu-s").append(search_droSer);
 		})
-
 		// 가격
 		$.each(price_arr, function(idx, prc){
 			var search_droPrc = $("<option></option>").attr({"id":"hover_dro_02", "name":"hover_dro_02", "value":price_arr[idx], "idx":idx}).html(price_arr[idx]).addClass("hover-dro").html(price_arr[idx]);
@@ -78,13 +78,6 @@ $(function() {
 			$("#sub-menu-p").append(search_droPrc);
 		})
 		
-		var series = $("#sub-menu-s").val();
-		var price = $("#sub-menu-p").val();
-		alert(series+price);
-	/* 검색 카테고리 */
-	$.ajax({url:"/droAll",
-		data: {"series":series, "price":price},
-		success:function(data){
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
      		var div = $("<div></div>").addClass("item");
@@ -324,14 +317,14 @@ $(function() {
                         <a href="main"><img src="img/logo/DIFE_logo3.png" id="logo"></a>
                         <a href="drone" class="cl-effect-1">드론</a>
                         <a href="pilot" class="cl-effect-1">파일럿</a>
-                        <a href="#" class="cl-effect-1">지역 및 날씨</a>
-                        <a href="#" class="cl-effect-1">고객지원</a>
+                        <a href="location" class="cl-effect-1">비행정보</a>
+                        <a href="support" class="cl-effect-1">고객지원</a>
                         <a href="board" class="cl-effect-1">커뮤니티</a>
                     </span>
                      <span id="category-2" class="animated fadeInUp">
                         <a id="sign" class="cl-effect-1"></a>
-                        <a href="mypage_orders" class="cl-effect-1" id="mypage">MYPAGE</a>
-                        <a href="basket" class="cl-effect-1">RESERVATION</a>
+                        <a class="cl-effect-1" id="mypage">MYPAGE</a>
+                        <a href="basket" class="cl-effect-1"><i class="fas fa-shopping-basket"></i></a>
                    </span>
                 </div>
             </div>

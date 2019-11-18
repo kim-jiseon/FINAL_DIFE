@@ -7,34 +7,7 @@
   	
   	<!-- 최초 전체 목록 -->
 	<select id="sel_droAll" resultType="droneVo">
-		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null)
-		<!-- 시리즈명 검색 1가지 -->
-		<if test="!series.equals('선택') and price.equals('선택')">
-			and dro_series like '%' || #{series} || '%'
-		</if>
-		<!-- 가격 검색 1가지 -->
-		<if test="series.equals('선택') and !price.equals('선택')">
-			<!-- 10만원 이하 또는 20만원 이상 -->
-			<if test="price1 lte 100000 or price1 gte 200000">
-				and dro_price ${oper} #{price1}
-			</if>
-			<!-- 10만원 이상 20만원 이하 -->
-			<if test="price1 gte 100000 and price1 lte 200000">
-				and dro_price between 100000 and 200000
-			</if>
-		</if>
-		<!-- 시리즈명 및 가격 검색 -->
-		<if test="!series.equals('선택') and !price.equals('선택')">
-			<!-- 10만원 이하 또는 20만원 이상 -->
-			<if test="price1 lte 100000 or price1 gte 200000">
-				and dro_series like '%' || #{series} || '%' and dro_price ${oper} #{price1}
-			</if>
-			<!-- 10만원 이상 20만원 이하 -->
-			<if test="price1 gte 100000 and price1 lte 200000">
-				and dro_series like '%' || #{series} || '%' and dro_price between 100000 and 200000
-			</if>
-		</if>
-		 order by dro_no desc
+		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) order by dro_no desc
 	</select>
 	
 	<!-- 전체 레코드 수 집계 -->

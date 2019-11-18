@@ -46,10 +46,8 @@ public class DroneController {
 	
 	@RequestMapping("/drone")
 	public ModelAndView sel_dro() {
-		HashMap map = new HashMap();
-		
 		ModelAndView mav = new ModelAndView();
-		List<DroneVo> list = dao.sel_droAll(map);
+		List<DroneVo> list = dao.sel_droAll();
 		mav.addObject("list", list);
 		return mav;
 	}
@@ -57,33 +55,16 @@ public class DroneController {
 	/* 전체 목록 불러오기 */
 	@ResponseBody
 	@RequestMapping("/droAll")
-	public String sel_droAll(HttpSession session, String series, String price) {
+	public String sel_droAll(HttpSession session) {
 	String str = "";
-	System.out.println(series+","+price);
-	HashMap map = new HashMap();
-	int price1 = 0;
-	String oper= "";
-	if(price.equals("10만원 이하")) {
-		price1 = 100000;
-		oper = "<=";
-	}else if(price.equals("10만원 ~ 20만원")) {
-		price1 = 150000;
-	}else if(price.equals("20만원 이상")){
-		price1 = 200000;
-		oper = ">=";
-	}
-	System.out.println("가격:"+price1);
-	map.put("series", series);
-	map.put("price", price);
-	map.put("price1", price1);
-	map.put("oper", oper);
-	
 	//DroneVo vo = new DroneVo();
 	//int series = Integer.parseInt(vo.getDro_series());
 	//System.out.println(series);
 	ObjectMapper mapper = new ObjectMapper();
+	  
 	try {
-		str = mapper.writeValueAsString(dao.sel_droAll(map));
+		str = mapper.writeValueAsString(dao.sel_droAll());
+		
 	}catch (Exception e) {
 		// TODO: handle exception
 		System.out.println(e.getMessage());
