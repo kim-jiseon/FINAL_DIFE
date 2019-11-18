@@ -11,7 +11,7 @@ import com.bit.dife03.vo.BoardVo;
 @Repository
 public class BoardDao {
 
-	
+
 	public List<BoardVo> listAll(String boa_sort) {
 		// TODO Auto-generated method stub
 		return BoardManager.listBoard(boa_sort);
@@ -32,8 +32,20 @@ public class BoardDao {
 	public void updateStep(int boa_ref, int boa_step) {
 		BoardManager.updateStep(boa_ref, boa_step);
 	}
+	
 	public int update(BoardVo vo) {
 		return BoardManager.updateBoard(vo);
 	}
 	
+	public int delete(int boa_no) {
+		return BoardManager.deleteBoard(boa_no);
+	}
+	
+	public void answerUpdate(int boa_no, String boa_answer) {
+		BoardManager.answerUpdate(boa_no, boa_answer);
+	}
+	
+	public int updateBoa_view(int boa_no) {
+		return BoardManager.updateBoa_view(boa_no);
+	}
 }

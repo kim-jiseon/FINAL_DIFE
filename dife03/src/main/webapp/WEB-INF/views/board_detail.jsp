@@ -48,6 +48,14 @@ $(function(){
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
+	
+	$("#delBoard").click(function(){
+		var re = confirm("정말로 삭제할까요?");
+		if(re == true) {
+			var boa_no = $("#boa_no").val();
+			location.href="board_delete?boa_no="+${b.boa_no};
+		}
+	})
 })
 </script>
 </head>
@@ -64,11 +72,12 @@ $(function(){
 			<div class="container">
                <div id="board-detail"><i class="fas fa-angle-right" id="icon"></i>게시판 상세보기</div>
                 <div id="board-detail-href">
+                   <a href="board_insert?boa_no=${b.boa_no }">댓글</a>
                    <a href="board_update?boa_no=${b.boa_no }">수정</a>
-                   <a href="#">삭제</a>
-                    <a href="board">목록</a>
+                   <a href="#" id="delBoard">삭제</a>
+                   <a href="board">목록</a>
                 </div>
-                <input type="hidden" value="${b.boa_no }">
+                <input type="hidden" id="boa_no" value="${b.boa_no }">
 			    <div id="board-wrapper">
 			        <div id="board-img" class="board-input">
 			            <img src="img/${b.boa_fname }" id="board-detail-img">

@@ -79,4 +79,34 @@ public class BoardManager {
     	session.close();
     	return re;
     }
+    
+    public static int deleteBoard(int boa_no) {
+    	int re = 0;
+    	SqlSession session = factory.openSession(true);
+    	HashMap map = new HashMap();
+    	map.put("boa_no", boa_no);
+    	re = session.delete("board.deleteBoard", map);
+    	session.close();
+    	return re;
+    }
+    
+    public static void answerUpdate(int boa_no, String boa_answer) {
+    	HashMap map = new HashMap();
+    	map.put("boa_no", boa_no);
+    	map.put("boa_answer", boa_answer);
+    	SqlSession session = factory.openSession(true);
+    	session.update("board.answerUpdate", map);
+    	session.close();
+    	return;
+    }
+    
+    public static int updateBoa_view(int boa_no) {
+    	int re = 0;
+    	SqlSession session = factory.openSession(true);
+    	HashMap map = new HashMap();
+    	map.put("boa_no", boa_no);
+    	re = session.update("board.updateBoa_view", map);
+    	session.close();
+    	return re;
+    }
 }
