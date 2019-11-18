@@ -37,44 +37,82 @@
 		 order by dro_no desc
 	</select>
 	
-  	<!-- 최초 전체 목록 무한스크롤 -->
-	<select id="sel_droAllList" resultType="droneVo">
-		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) order by dro_no desc
-	</select>
-	
 	<!-- 전체 레코드 수 집계 -->
 	<select id="get_droCount" resultType="java.lang.Integer">
 		select count(dro_no) from drone
 		<!-- select count(*) from ( select rownum rn, dro_no from drone )A 		
 		where A.rn between #{start} and #{end} -->
 	</select>	
+	
+	<!-- 검색 결과 불러오기 -->
+	<select id="sel_droSrc" resultType="droneVo">
+		select D.* from (select rownum rn, p.*, d.* from drone d, possesion p, basket b 
+		where d.dro_no=p.dro_no and p.pos_no=b.pos_no 
+		<choose>
+			<!-- 대여일(반납일 포함)로만 검색 -->
+			<when test="calendar != null and series == null and price == null">
+				where bas_rental >= #{sysdate} and bas_return > bas_rental 
+			</when>
+			<!-- 시리즈명으로만 검색 -->
+			<when test="series != null and calendar == null and price == null">
+				and dro_series=#{series} 
+				<!-- 서브메뉴도 검색 -->
+				<if test="sub_series_01 != null and sub_series_02 != null">
+					and dro_name like substring(#{sub_series_02},1,2) ||'%' 
+				</if>
+			</when>
+			<!-- 가격으로만 검색 -->
+			<when test="price != null and calendar == null and series == null">
+				and pos_price=#{sub_price} 
+			</when>
+			<!-- 대여일(반납일 포함), 시리즈명으로 검색 -->
+			<when test="calendar != null and series != null and price == null">
+				and  bas_rental >= #{sysdate} and bas_return > bas_rental 
+				and dro_series=#{series} 
+			</when>
+			<!-- 대여일(반납일 포함), 가격으로 검색 -->
+			<when test="calendar != null and price != null and series == null">
+				and bas_rental >= #{sysdate} and bas_return > bas_rental 
+				and pos_price=#{sub_price} 
+			</when>
+			<!-- 시리즈명, 가격으로 검색 -->
+			<when test="series != null and price != null and calendar == null">
+				and dro_series=#{series} and pos_price=#{sub_price} 
+			</when>
+			<!-- 모든 조건(대여일(반납일 포함),시리즈명,가격)으로 검색 -->
+			<otherwise>
+				and bas_rental >= #{sysdate} and bas_return > bas_rental 
+				and dro_series=#{series} pos_price and =#{price}
+			</otherwise>
+		</choose>
+		)D where D.rn between #{start} and #{end}
+  	</select>
   	
   	<!-- 상세페이지 -->  	
 	<select id="sel_droDetail" resultType="droneVo">
 		select d.*, p.*, r.* from drone d, possesion p, rental r where d.dro_no=p.dro_no and p.ren_no=r.ren_no and d.dro_no = #{dro_no} 
 	</select>
 	
-	
 	<!-- 장바구니담기 -->
 	<insert id="in_droBasket">
 		insert into basket values('BS'||lpad(seq_det.nextval,6,0),#{pos_no},#{mem_no},#{bas_amount},#{bas_price},TO_DATE(#{bas_rental},'YYYY/MM/DD'),TO_DATE(#{bas_return},'YYYY/MM/DD'),sysdate) 
 	</insert>
+	
 	<!-- 드론 관련 상품번호 불러오기 basket insert용 -->
 	<select id="sel_pos_no" resultType="java.lang.String">
 		select pos_no from possesion where dro_no=(select dro_no from drone where dro_no = #{dro_no})
 	</select>
-	<!-- 장바구니용 회원 주 식별자 뽑기 basket insert용 -->
+	
+	<!-- 장바구니용 회원 주 식별자 불러오기 basket insert용 -->
 	<select id="sel_mem_no" resultType="java.lang.String">
 		select mem_no from member where mem_id=#{mem_id}
 	</select>
 	
 	<!-- orders insert 및 ordersDetail insert transaction -->
   	<insert id="insertOrders">
-  	 insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},1,#{ord_price},sysdate,0)
+  		insert into orders values('O'||lpad(seq_ord.nextval,6,0),#{mem_no},1,#{ord_price},sysdate,0)
   	</insert>
   	<insert id="insertOrdersDetail">
-  	insert into ordersdetail values('OD'||lpad(seq_det.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{ord_price},TO_DATE(#{det_rental},'YYYY/MM/DD') ,TO_DATE(#{det_return},'YYYY/MM/DD') ,0)
+  		insert into ordersdetail values('OD'||lpad(seq_det.nextval,6,0),#{ord_no},#{pos_no},#{det_amount},#{ord_price},TO_DATE(#{det_rental},'YYYY/MM/DD') ,TO_DATE(#{det_return},'YYYY/MM/DD') ,0)
   	</insert>
-		
-	
 </mapper>

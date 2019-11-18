@@ -80,13 +80,7 @@ $(function() {
    	/* 주문 및 장바구니 : 로그인 후 가능 */
    	// 장바구니 담기
 	$("#btnBasket").click(function(){
-		if(mem_id == null || mem_id == ''){
-   			alert("로그인을 해주세요.");
-   			location.href="/signIn";
-   		}
-   		else{
-			$("#mypage").attr("href","mypage_orders");
-		}
+		
 		
 		//datepicker값 가져오기
 		var date = $(".datepicker-here").val();
@@ -99,7 +93,40 @@ $(function() {
 		var pos_amount = $("#operA").val();
 		var bas_price = "${dtInfo.dro_price}"
 		var data = {"bas_amount" : pos_amount,"bas_price" : bas_price,"bas_rental" : con_start, "bas_return":con_end,"mem_id":mem_id,"dro_no":dro_no}
-   	   	
+		// 오늘날짜 구하기
+		var new_date = new Date();
+		var year = new_date.getFullYear();
+		var month = new_date.getMonth()+1;
+		var day = new_date.getDate();
+		
+		if((day+"").length < 2){
+			day = "0"+day;
+		}
+		var getToday = year+"/"+month+"/"+day;
+		
+		if(mem_id == null || mem_id == ''){
+   			alert("로그인을 해주세요.");
+   			location.href="/signIn";
+   		}
+   		else{
+			$("#mypage").attr("href","mypage_orders");
+			if (date == null || date == "") {
+				alert("날짜를 선택해주세요.");
+			}
+			else{
+				if(getToday > con_start){
+					alert("지난 날짜입니다.\n다시 선택해주세요.");
+					$(".datepicker-here").val("");
+				}
+				if(ren_no == null || ren_no == ''){
+					alert("대여점을 선택하세요.");
+				}
+				if(pos_amount == null || pos_amount == ''){
+					alert("수량을 선택하세요.");
+				}
+			}
+		}
+			
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
    	   		location.href="/basket";
    	 	}})

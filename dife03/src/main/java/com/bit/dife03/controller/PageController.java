@@ -22,11 +22,6 @@ public class PageController {
 		
 
 	}
-
-//	@RequestMapping("/paySuccess")
-//	public void paySuccess() {
-//		
-//	}
 	@RequestMapping("/location")
 	public void location() {
 		
