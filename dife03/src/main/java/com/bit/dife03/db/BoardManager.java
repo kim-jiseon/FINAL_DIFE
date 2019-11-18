@@ -29,10 +29,10 @@ public class BoardManager {
         }
     }
     
-    public static List<BoardVo> listBoard(){
+    public static List<BoardVo> listBoard(String boa_sort){
     	List<BoardVo> list = null;
     	SqlSession session = factory.openSession();
-    	list = session.selectList("board.selectAll");
+    	list = session.selectList("board.selectAll", boa_sort);
     	session.close();
     	return list;	
     }

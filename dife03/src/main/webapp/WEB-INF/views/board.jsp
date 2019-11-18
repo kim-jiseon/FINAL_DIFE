@@ -54,6 +54,8 @@ $(function(){
 	$("#select").change(function(){
 		alert($(this).val());
 		alert($(this).children("option:selected").text());
+		var boa_sort = $(this).children("option:selected").text();
+		location.href="/board?boa_sort="+boa_sort;
 
 	})
 	

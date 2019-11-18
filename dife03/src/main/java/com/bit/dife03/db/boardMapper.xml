@@ -12,10 +12,10 @@
 		    boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
 	from board
 	<if test="boa_sort != null and boa_sort !=''">
-		<if test="boa_sort == '문의'">
+		<if test="boa_sort == '문의게시판'">
 			where boa_sort like '%문의%'
 		</if>
-		<if test="boa_sort == '후기'">
+		<if test="boa_sort == '후기게시판'">
 			where boa_sort like '%후기%'
 		</if>
 	</if>
@@ -24,7 +24,14 @@
   
   <!-- 게시판 등록 -->
   <insert id="insert">
-  	insert into board values(seq_boa.nextval, #{mem_no}, #{boa_title}, #{boa_contents}, #{boa_pwd}, #{boa_rating}, sysdate, 0, 'y', #{boa_sort}, 'y', #{boa_fname}, #{boa_ref}, #{boa_level}, #{boa_step}, #{mem_no}, sysdate, #{mem_no}, sysdate)
+  	insert into board values(seq_boa.nextval, #{mem_no}, #{boa_title}, #{boa_contents}, #{boa_pwd}, #{boa_rating}, sysdate, 0,
+  	<if test="boa_sort == '문의게시판'">
+  	 '미답변',
+  	</if>
+  	<if test="boa_sort == '후기게시판'">
+  	 null,
+  	</if>
+  	 #{boa_sort}, #{boa_sort}, #{boa_fname}, #{boa_ref}, #{boa_level}, #{boa_step}, #{mem_no}, sysdate, #{mem_no}, sysdate)
   </insert>
   
   <select id="nextNo" resultType="java.lang.Integer">

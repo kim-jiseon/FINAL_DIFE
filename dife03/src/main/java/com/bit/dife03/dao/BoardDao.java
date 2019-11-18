@@ -12,9 +12,9 @@ import com.bit.dife03.vo.BoardVo;
 public class BoardDao {
 
 	
-	public List<BoardVo> listAll() {
+	public List<BoardVo> listAll(String boa_sort) {
 		// TODO Auto-generated method stub
-		return BoardManager.listBoard();
+		return BoardManager.listBoard(boa_sort);
 	}
 	
 	public int insert(BoardVo vo) {

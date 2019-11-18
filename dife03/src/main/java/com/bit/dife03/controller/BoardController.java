@@ -33,11 +33,11 @@ public class BoardController {
 		this.dao = dao;
 	}
 
-	@RequestMapping("/board")
-	public ModelAndView list() {
+	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	public ModelAndView list(String boa_sort) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", dao.listAll());
-		
+		mav.addObject("list", dao.listAll(boa_sort));
+		System.out.println(boa_sort);
 		return mav;
 	}
 	
