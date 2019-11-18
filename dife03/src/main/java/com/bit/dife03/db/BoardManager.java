@@ -79,4 +79,14 @@ public class BoardManager {
     	session.close();
     	return re;
     }
+    
+    public static int deleteBoard(int boa_no) {
+    	int re = 0;
+    	SqlSession session = factory.openSession(true);
+    	HashMap map = new HashMap();
+    	map.put("boa_no", boa_no);
+    	re = session.delete("board.deleteBoard", map);
+    	session.close();
+    	return re;
+    }
 }

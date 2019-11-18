@@ -156,4 +156,25 @@ public class BoardController {
 		mav.addObject("msg", msg);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/board_delete", method = RequestMethod.GET)
+	public ModelAndView delete(int boa_no, HttpServletRequest request, HttpSession session) {
+		ModelAndView mav = new ModelAndView("redirect:/board");
+		
+		String path = request.getRealPath("img");
+		String oldFname = dao.getBoard(boa_no).getBoa_fname();
+		String msg = "";
+		
+		int re = dao.delete(boa_no);
+		
+		if(re != 1) {
+			msg = "게시물 삭제에 실패하였습니다.";
+		}
+		else {
+			File file = new File(path+"/"+oldFname);
+			file.delete();
+		}
+		mav.addObject("msg", msg);
+		return mav;
+	}
 }
