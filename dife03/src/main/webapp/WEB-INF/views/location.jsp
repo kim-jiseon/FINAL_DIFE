@@ -43,10 +43,23 @@
     		$(".layer_popup").fadeOut("fast");
     		$(".bg_black").fadeOut("fast");
     	}
+    	
+    	//줌인 줌아웃 기능 추기
+    	$(document).ready( function() {
+    		$(".org_img_424").hover(
+    		    function() {
+    		        $(this).animate({ 'zoom': 2.4 }, 400);
+    		    },
+    		    function() {
+    		        $(this).animate({ 'zoom': 1 }, 400);
+    		    });
+    		});
+    	
     	})
     	
-    	    		
+    	    			
     </script>
+   
 </head>
 <body>
 	<div id="wrap" class="animated fadeIn">
@@ -57,7 +70,7 @@
 		<div class="layer_popup">
 			<div class="img_orig">
 				<img id="org_popup_view" style="width: 500px;"이미지"> <a
-					href="#" onclick="close_btn(); return false; class="close_btn">
+					href="#" onclick="close_btn(); return false;" class="close_btn">
 				</a>
 			</div>
 		</div>
@@ -102,7 +115,7 @@
 											<div class="li_block"
 												style="position: relative; right: 135px;">
 												<div class="thumbnail">
-													<img id="org_img_424"
+													<img id="org_img_424" class="org_img_424"
 														src="https://www.enjoydrone.com/data/file/place/2009634417_jkuFqfeB_89981170dfe69065256acf90650d9bd7b902d51b.jpg"
 														style="position: relative; left: 10px;">
 												</div>
@@ -132,7 +145,7 @@
 											<div class="li_block"
 												style="position: relative; right: 135px;">
 												<div class="thumbnail">
-													<img id="org_img_424"
+													<img id="org_img_424" class="org_img_424"
 														src="https://www.enjoydrone.com/data/file/place/2009634417_oUkyG9g3_1c10310a14861e196136faeba65cfeb29f0d30dc.png"
 														style="position: relative; left: 10px;">
 												</div>
@@ -162,7 +175,7 @@
 											<div class="li_block"
 												style="position: relative; right: 135px;">
 												<div class="thumbnail">
-													<img id="org_img_424"
+													<img id="org_img_424" class="org_img_424"
 														src="https://www.enjoydrone.com/data/file/place/2009634417_zwEralyJ_c258a904cb0cf66500c5523166e4aae8781664c3.jpg"
 														style="position: relative; left: 10px;">
 												</div>
@@ -192,7 +205,7 @@
 											<div class="li_block"
 												style="position: relative; right: 135px;">
 												<div class="thumbnail">
-													<img id="org_img_424"
+													<img id="org_img_424" class="org_img_424"
 														src="https://www.enjoydrone.com/data/file/place/2009634417_wpMoChzx_52bce9065c3b958f8b1b30c6726d4afa88ce721c.jpg"
 														style="position: relative; left: 10px;">
 												</div>
@@ -222,7 +235,7 @@
 											<div class="li_block"
 												style="position: relative; right: 135px;">
 												<div class="thumbnail">
-													<img id="org_img_424"
+													<img id="org_img_424" class="org_img_424"
 														src="https://www.enjoydrone.com/data/file/place/2009634417_VOw0Ly7q_42f54cb3e20c902d61cecf731aa0829bf8e16df4.jpg"
 														style="position: relative; left: 10px;">
 												</div>

@@ -5,7 +5,16 @@
 <mapper namespace="board">
 
   <!-- 게시판 모두보기 -->
+ <select id="selectAll" resultType="boardVo">
+  select mem_name, B.* 
+	from member m, 
+	(select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
+		    boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
+	from board) B where m.mem_no = B.mem_no order by boa_no
+  </select>
+  <!--
   <select id="selectAll" resultType="boardVo">
+<<<<<<< HEAD
       select mem_name, B.* 
       from member m, 
       (select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
@@ -21,6 +30,23 @@
       </if>
       ) B where m.mem_no = B.mem_no order by boa_ref desc, boa_step
   </select>
+=======
+    select mem_name, B.* 
+	from member m, 
+	(select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
+		    boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
+	from board
+	<if test="boa_sort != null and boa_sort !=''">
+		<if test="boa_sort == '문의'">
+			where boa_sort like '%문의%'
+		</if>
+		<if test="boa_sort == '후기'">
+			where boa_sort like '%후기%'
+		</if>
+	</if>
+	) B where m.mem_no = B.mem_no order by boa_ref desc, boa_step
+  </select>   -->
+>>>>>>> branch 'master' of https://github.com/kim-jiseon/FINAL_DIFE.git
   
   <!-- 게시판 등록 -->
   <insert id="insert">

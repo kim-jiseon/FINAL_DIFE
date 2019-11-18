@@ -167,7 +167,9 @@ $(function(){
                            <li>
                                <dl>
                                    <dd class="info_det">포트폴리오</dd>
-                                   <dd><img src="img/pilot/${info.pil_portfolio }" class="pil-portfolio"></dd>
+                                   <iframe class="youtube_frame" width="620" height="366" src="https://www.youtube.com/embed/dMuGxhZU5zg" 
+                                   frameborder="0" aloowfullscreen></iframe>
+                             <!--      <dd><img src="img/pilot/${info.pil_portfolio }" class="pil-portfolio"></dd>  --> 
                                    <dd class="info_det" id="pil-intro">강사 소개</dd>
                                    <dd class="pil-information">${info.pil_intro }</dd>
                                    <dd class="info_det" id="pil-intro">강의 정보</dd>
