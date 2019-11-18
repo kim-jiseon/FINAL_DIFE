@@ -26,14 +26,15 @@
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 <script type="text/javascript">
 	$(function() {
-		//로그인 로그아웃 전환
 		var mem_id = "${mem_id}";
-		if (mem_id != '' && mem_id != null) {
-			//var login = $("#category-2").find("a:first").html();
-			$("#sign").attr("href", "logout").html("LOGOUT");
+		if(mem_id != '' && mem_id != null){
+			$("#sign").attr("href","logout").html("LOGOUT");
+			$("#mypage").show();
 		}
-		if (mem_id == '' || mem_id == null) {
-			$("#sign").attr("href", "signIn").html("LOGIN");
+
+		if(mem_id == '' || mem_id == null){
+			$("#sign").attr("href","signIn").html("LOGIN");
+			$("#mypage").hide();
 		}
 		
 		//마이페이지 이동
