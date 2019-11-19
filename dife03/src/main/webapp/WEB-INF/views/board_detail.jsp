@@ -91,6 +91,7 @@ $(function(){
                    <a href="board">목록</a>
                 </div>
                 <input type="hidden" id="boa_no" value="${b.boa_no }">
+                <input type="hidden" id="mem_id" value="${b.mem_id }">     
 			    <div id="board-wrapper">
 			        <div id="board-img" class="board-input">
 			            <img src="img/${b.boa_fname }" id="board-detail-img">

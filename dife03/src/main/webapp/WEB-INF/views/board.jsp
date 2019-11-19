@@ -58,8 +58,12 @@ $(function(){
 			$("#write").attr("href","board_insert");
 		}
 	})
+<<<<<<< HEAD
 	
 	
+=======
+	
+>>>>>>> refs/heads/dife
 	$("#select").change(function(){
 		var boa_sort = $(this).children("option:selected").text();
 		location.href="/board?boa_sort="+boa_sort;

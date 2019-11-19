@@ -155,15 +155,17 @@ public class MemberController {
 		
 		ServiceSMSSoapProxy sendsms = new ServiceSMSSoapProxy();
 		try{
-		String senderPhone= "01025598279";
-		String receivePhone= mem_tel;
-		String smsContent= "다음의 인증번호를 입력해주세요.["+str+"]";
-		String test1 = (smsID+smsPW+receivePhone);
-		CEncrypt encrypt = new CEncrypt("MD5",test1);
-		java.lang.String send=sendsms.sendSMS(smsID,encrypt.getEncryptData(), senderPhone, receivePhone, smsContent);
- 		System.out.println("결과코드:"+send);
-		}catch(Exception e){
-		System.out.println("Exception in main:" +e);
+			String senderPhone = "01025598279";
+			String receivePhone = mem_tel;
+			System.out.println(receivePhone);
+			String smsContent = "다음의 인증번호를 입력해주세요.[" + str + "]";
+			String test1 = (smsID + smsPW + receivePhone);
+			CEncrypt encrypt = new CEncrypt("MD5", test1);
+			java.lang.String send = sendsms.sendSMS(smsID, encrypt.getEncryptData(), senderPhone, receivePhone,
+					smsContent);
+			System.out.println("결과코드:" + send);
+		} catch (Exception e) {
+			System.out.println("Exception in main:" + e);
 		}
 		return str;
 	}

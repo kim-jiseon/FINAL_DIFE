@@ -318,9 +318,9 @@ $(function(){
 		
 	var authNumber;
 	$("#sendAuth").click(function(){
-		var data = {tel:$("#mem_tel").val()};
-		$.post("sendAuthNumber", data, function(data){
-			authNumber = data;
+		var data = {mem_tel:$("#mem_tel").val()};
+		$.post("sendAuthNumber", data, function(r){
+			authNumber = r;
 		});
 	});
 	$("#btnAuth").click(function(){
@@ -440,7 +440,7 @@ $(function(){
 											<span class="text-danger">*</span>
 										</label>
 										<div class="col-md-5 col-sm-8">
-											<input type="text" class="form-control" name="mem_tel" id="mem_tel" placeholder="'-'제외" required="required">
+											<input type="tel" class="form-control" name="mem_tel" id="mem_tel" placeholder="'-'제외" required="required">
 											<button id="sendAuth" type="button">인증번호 전송</button>
 											<div class="check_font" id="tel_check"></div>
 											
