@@ -50,25 +50,32 @@ public class BoardController {
 	public ModelAndView insertSubmit(BoardVo vo, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav= new ModelAndView("redirect:/board");
 		String path = request.getRealPath("img");
+		System.out.println(vo.toString());
+		if(vo.getBoa_sort().equals("문의게시판")) {
+			vo.setBoa_answer("미답변");
+		}else if(vo.getBoa_sort().equals("후기게시판")) {
+			vo.setBoa_answer(" ");
+		}
 		
 		int boa_no = dao.getNextNo();
 		int boa_ref = boa_no;
 		int boa_level = 0;
 		int boa_step = 0;
-		String boa_answer = "";
+//		String boa_answer = "";
 		
 		int pno = vo.getBoa_no();
 	
-		if(pno != 0) {
-			BoardVo b = dao.getBoard(pno);
-			boa_ref = b.getBoa_ref();
-			boa_step = b.getBoa_step();
-			boa_level = b.getBoa_level();
-			dao.updateStep(boa_ref, boa_step);
-			boa_step++;
-			boa_level++;
-			dao.answerUpdate(pno, boa_answer);
-		}
+//		if(pno != 0) {
+//			BoardVo b = dao.getBoard(pno);
+//			boa_ref = b.getBoa_ref();
+//			boa_step = b.getBoa_step();
+//			boa_level = b.getBoa_level();
+//			dao.updateStep(boa_ref, boa_step);
+//			boa_step++;
+//			boa_level++;
+//			dao.answerUpdate(pno, boa_answer);
+//		}
+
 		vo.setBoa_no(boa_no);
 		vo.setBoa_ref(boa_ref);
 		vo.setBoa_level(boa_level);

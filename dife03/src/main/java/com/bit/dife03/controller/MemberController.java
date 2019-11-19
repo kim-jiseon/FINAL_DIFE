@@ -56,6 +56,7 @@ public class MemberController {
 		if(URI.equals("signIn") || URI.equals("signUp")){
 			URI = "main";
 		}
+		
 		ModelAndView mav = new ModelAndView("redirect:/"+URI);
 
 		int re = dao.isMember(mem_id, mem_pwd);
