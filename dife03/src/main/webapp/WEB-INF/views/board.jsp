@@ -94,23 +94,23 @@ $(function(){
 							<td>작성자</td>
 							<td>작성일</td>
 							<td>조회수</td>
-							<td>답변유무</td>
+							<!-- <td>답변유무</td> -->
 						</tr>
 						<c:forEach var="b" items="${list }">
 							<tr>
 								<td>${b.boa_no }</td>
 								<td>
-									<c:if test="${b.boa_level > 0 }">
+									<%-- <c:if test="${b.boa_level > 0 }">
 										<c:forEach begin="1" end="${b.boa_level }">
 											&nbsp;&nbsp;
 										</c:forEach>
-									</c:if>
+									</c:if> --%>
 									<a href="board_detail?boa_no=${b.boa_no }">${b.boa_title }</a>
 								</td>
 								<td>${b.mem_name }</td>
 								<td>${b.regdate }</td>
 								<td>${b.boa_view }</td>
-								<td>${b.boa_answer }</td>
+							<%-- 	<td>${b.boa_answer }</td> --%>
 							</tr>
 						</c:forEach>
 					</table>
