@@ -87,6 +87,8 @@
 											class="fas fa-angle-right" id="icon"></i></a></li>
 								</ul>
 							</nav>
+							<br>
+							<img alt="" src="img/location3.png" style="width:200px;"/>
 						</div>
 						<div id="mypage-bottom-right">
 							<div id="mypage-orders">
