@@ -7,7 +7,20 @@
   	
   	<!-- 최초 전체 목록 -->
 	<select id="sel_droAll" resultType="droneVo">
-		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) order by dro_no desc
+		select * from drone where dro_no in (select dro_no from possesion where dro_no is not null) 
+		<if test="price == 2 and price != 0">
+		and dro_price between #{startPrice} and #{endPrice} 
+		</if>
+		<if test="price== 1 and price != 0">
+		and dro_price &lt; #{endPrice} 
+		</if>
+		<if test="price== 3 and price != 0">
+		and dro_price &gt; #{endPrice} 
+		</if>
+		<if test="!series.equals('선택') ">
+		and dro_series = #{series} 
+		</if>
+		order by dro_no desc
 	</select>
 	
 	<!-- 전체 레코드 수 집계 -->

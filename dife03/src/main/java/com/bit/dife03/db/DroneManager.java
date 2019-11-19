@@ -27,10 +27,10 @@ public class DroneManager {
 	}
 	
 	/* 드론 페이지 초기화면 및 검색 카테고리 불러오기 */
-	public static List<DroneVo> sel_droAll() {
+	public static List<DroneVo> sel_droAll(HashMap map) {
 		List<DroneVo> list = null;
 		SqlSession session = factory.openSession();		
-		list =  session.selectList("drone.sel_droAll");
+		list =  session.selectList("drone.sel_droAll",map);
 		//System.out.println(list);
 		session.close();
 		return list;
@@ -141,6 +141,8 @@ public class DroneManager {
 		session.close();
 		return list;
 	}
+
+
 
 /*	public static int in_droOrder(OrdersVo o) {
 		int re = 0;

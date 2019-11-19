@@ -51,14 +51,12 @@ $(function() {
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-	
-	/* 검색 카테고리 활성화 */	
-	$.ajax({url:"/droAll",success:function(data){
 		var series_arr = [
-			'MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
+			'선택','MAVIC','PHANTOM','SPARK','INSPIRE','BEBOP','PETRONE','DRONE FIGHTER','MATRICE'
 		];
 		var price_arr = [
-			'10만원 이하','10만원 ~ 20만원','20만원 이상'
+			/* '10만원 이하','10만원 ~ 20만원','20만원 이상' */
+			'선택','1000원이하','1000원~2000원','2000원 이상'
 		];
 		// 시리즈명
 		$.each(series_arr, function(idx, ser){
@@ -69,11 +67,35 @@ $(function() {
 		})
 		// 가격
 		$.each(price_arr, function(idx, prc){
-			var search_droPrc = $("<option></option>").attr({"id":"hover_dro_02", "name":"hover_dro_02", "value":price_arr[idx], "idx":idx}).html(price_arr[idx]).addClass("hover-dro").html(price_arr[idx]);
+			var search_droPrc = $("<option></option>").attr({"id":"hover_dro_02", "name":"hover_dro_02", "value":idx, "idx":idx}).html(price_arr[idx]).addClass("hover-dro").html(price_arr[idx]);
 			var icon = $("<i></i>").addClass("fas fa-angle-right");
 			$(search_droPrc).append(icon);
 			$("#sub-menu-p").append(search_droPrc);
 		})
+	
+	
+	var search = "";
+		var pageNUM = 1;
+		var isEnd = false;
+	/* 검색 카테고리 활성화 */	
+	function sel_dro(search){
+		search = {"price":$("#sub-menu-p").val(), "series":$("#sub-menu-s").val(), "pageNUM":pageNUM};
+	$.ajax({url:"/droAll",
+		data:search,
+		dataType: "json",
+		contentType:"application/json;charset=UTF-8",
+		success:function(data){
+		var len = data.length;
+		//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
+		if(len < 8){
+			isEnd = true;
+		}else{
+			isEnd = false;
+		}
+		var date = $(".datepicker-here").val();
+		var array = date.split(" - ");
+		var con_start = array[0];
+		var con_end = array[1];
 		
 		var dro_list = eval(data);
 		$.each(dro_list, function(idx, item){
@@ -105,24 +127,49 @@ $(function() {
 
 			$("#drone-grid").append(block);
 		})
-		// 캘린더
-		// 오늘날짜 구하기
-		var date = new Date();
-		var year = date.getFullYear();
-		var month = date.getMonth()+1;
-		var day = date.getDate();
-		
-		if((day+"").length < 2){
-			day = "0"+day;
-		}
-		var getToday = year+"/"+month+"/"+day;
-		
+			
+	}})
+}
+	// 캘린더
+	// 오늘날짜 구하기
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth()+1;
+	var day = date.getDate();
+	
+	if((day+"").length < 2){
+		day = "0"+day;
+	}
+	var getToday = year+"/"+month+"/"+day;
+	/* ajax end */
+	sel_dro(search)
+		//무한스크롤
+		$(window).scroll(function(){
+			var maxHeight = $(document).height();
+			var currentScroll = $(window).scrollTop() + $(window).height();
+			
+			if(currentScroll+50 > maxHeight){
+				if(isEnd == true){
+		    		return;
+		    	}else{
+		    		pageNUM++;
+		    		sel_dro(search);
+		    	}
+			}
+		})
+		//버튼 search
 		$("#btnSch").click(function(){
 			//datepicker값 가져오기
 			var date = $(".datepicker-here").val();
 			var array = date.split(" - ");
 			var con_start = array[0];
 			var con_end = array[1];
+			console.log(search);
+			$("#drone-grid").empty();
+    		pageNUM = 1;
+    		sel_dro(search);
+    		//페이지가 다시 로딩되는 것을 방지한다.
+    		return false;
 			
 			if (date == null || date == "") {
 				alert("날짜를 선택해주세요.");
@@ -133,73 +180,10 @@ $(function() {
 					$(".datepicker-here").val("");
 				}
 			}
-		})	
-	}})
-			/* 카테고리값 선택 시 해당값만 복제 후 고정 
-			// 시리즈명
-			$("#sub-menu").click(function(){
-				var selectSeries = $("hover_dro_01").val(series_arr);
-				//alert(selectSeries);
-				$(".hover-dro").click('change', function(){
-					var setS = $(this).html(data.dro_series);
-					//alert(setS);
-					$("#series").empty().append(setS).clone();
-					//$("#series>search_droSer[value="+'<c:out value="${param.series_arr}"/>'+"]").attr("selected","selected");			
-				})
-			})
-			// 가격
-			$("#sub_price").click(function(){
-				var selectPrice = $("hover_dro_02").val(price_arr);
-				//alert(selectPrice);
-				$(".hover-dro").click('change', function(){
-					var setP = $(this).html(data.dro_price);
-					//alert(setP);
-					$("#price").empty().append(setP).clone();
-									
-				})
-			}) */
-			
-			/* 상품 전체 목록 
-			var search = "";
-			var pageNUM = 1;
-			var isEnd = false;
-			
-			function selectAll(search){
-				search = {"calendar":$("#calendar").val(), "sub_series_01":$("#sub-menu-s").val(), "sub_series_02":$("#sub-menu-p").val(), "pageNUM":pageNUM};
-				$.ajax({type: "get",
-					url:"/sel_droList",
-					data: search,
-					dataType: "json",
-					contentType:"application/json;charset=UTF-8",
-					success:function(data){
-						var len = data.length;
-						//셀렉된 데이터의 길이가 5보다 작으면 무한스크롤을 정지시킨다.
-						if(len < 5){
-							isEnd = true;
-						}else{
-							isEnd = false;
-						}*/
-					
-			//selectAll();
-			
-	    /* 무한스크롤 적용 예정
-	    $(window).scroll(function(){
-			var maxHeight = $(document).height();
-			var currentScroll = $(window).scrollTop() + $(window).height();
-			
-			if(currentScroll+50 > maxHeight){
-				if(isEnd == true){
-		    		return;
-		    	}else{
-		    		pageNUM++;
-		    		selectAll(search);
-		    	}
-			}
-		}) */
-	    
+		})
 	    /* 챗봇형식으로 상품비교 */
 	    $(function() {
-	  		var INDEX = 0; 
+	  		var INDEX = 0; "C:/Users/choi/Desktop/Microsoft Edge.lnk"
 	  		$("#chat-submit").click(function(e) {
 			    e.preventDefault();
 			    var msg = $("#chat-input").val(); 

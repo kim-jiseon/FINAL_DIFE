@@ -30,7 +30,7 @@ import com.google.gson.reflect.TypeToken;
 @Controller
 public class DroneController {
 	//한페이지 당 게시글 수
-	int pageRecord = 5;
+	int pageRecord = 8;
 	
 	//총 게시글 수
 	int totalRecord = 0;
@@ -45,28 +45,74 @@ public class DroneController {
 	}
 	
 	@RequestMapping("/drone")
-	public ModelAndView sel_dro() {
-		ModelAndView mav = new ModelAndView();
-		List<DroneVo> list = dao.sel_droAll();
-		mav.addObject("list", list);
-		return mav;
+	public void sel_dro() {
+		/*
+		 * ModelAndView mav = new ModelAndView(); List<DroneVo> list = dao.sel_droAll();
+		 * mav.addObject("list", list); return mav;
+		 */
 	}
-	
+	//str = mapper.writeValueAsString(dao.sel_droAll());
 	/* 전체 목록 불러오기 */
 	@ResponseBody
 	@RequestMapping("/droAll")
-	public String sel_droAll(HttpSession session) {
-	String str = "";
-	ObjectMapper mapper = new ObjectMapper();
-	  
-	try {
-		str = mapper.writeValueAsString(dao.sel_droAll());
+	public String sel_droAll(
+			@RequestParam(value = "pageNUM",defaultValue = "1") int pageNum,
+			@RequestParam(value="series",defaultValue = "선택") String series,
+			@RequestParam(value="price",defaultValue = "0") int price
+			) {
+		System.out.println(pageNum);
+		System.out.println("시리즈:"+series);
+		System.out.println("가격:"+price);
+		String str = "";
+		int startPrice=0;
+		int endPrice=0;
+		switch (price) {
+		case 1:
+			endPrice=1000;
+			break;
+		case 2:
+			startPrice=1000;
+			endPrice=2000;
+			break;
+		case 3:
+			endPrice=2000;
+			break;
+
+		}
+		//해당페이지의 시작글번호, 끝번호
+		HashMap map = new HashMap();
+		totalRecord = dao.get_droCount(map);
+		totalPage = (int) Math.ceil(totalRecord/(double)pageRecord);
+		System.out.println("전체 페이지수: "+totalPage);
+		System.out.println("pageNUM:"+pageNum);
 		
-	}catch (Exception e) {
-		// TODO: handle exception
-		System.out.println(e.getMessage());
-	    }
-	    return str;
+		//해당페이지의 시작글번호, 끝번호
+		int start = (pageNum-1)*pageRecord+1;
+		int end = start+pageRecord-1;
+		
+		map.put("start", start);
+		map.put("end", end);
+		map.put("startPrice", startPrice);
+		map.put("endPrice", endPrice);
+		map.put("price",price);
+		map.put("series",series);
+		
+	
+		
+		map.put("start", start);
+		map.put("end", end);
+		
+		System.out.println(series+","+endPrice+", start: "+start+", end: "+end);
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			System.out.println(dao.sel_droAll(map).toString());
+			str = mapper.writeValueAsString(dao.sel_droAll(map));
+			System.out.println("controller"+str);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("예외발생"+e.getMessage());
+		}
+		return str;
 	}
 	
 	/* 드론 전체 리스트 무한스크롤 출력
