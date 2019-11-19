@@ -62,6 +62,7 @@ public class BoardManager {
     	return vo;
     }
     
+    //댓글
     public static void updateStep(int boa_ref, int boa_step) {
     	HashMap map = new HashMap();
     	map.put("boa_ref", boa_ref);

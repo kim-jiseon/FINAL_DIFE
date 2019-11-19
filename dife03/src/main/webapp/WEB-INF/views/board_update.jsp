@@ -61,8 +61,11 @@ $(function(){
 
 		<!-- contents -->
 		<div id="contents">
+		<div id="title">
+				<img src="img/main/drone_main10.PNG" id="support-title-img">
+			</div>
+			<div id="orders-title">게시글 수정</div>
 			<div class="container">
-			    <div id="board-title">글 수정</div>
 			    <div id="board-input">
 			        <form action="board_update" id="input-form" method="post" enctype="multipart/form-data">
                        <select name="boa_sort" id="input-select">
