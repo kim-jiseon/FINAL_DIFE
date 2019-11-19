@@ -101,20 +101,17 @@ public class OrdersController {
 	@ResponseBody
 	@RequestMapping(value="/deleteListBasket.do",method = RequestMethod.POST)
 	public int deleteListBasket(HttpSession session,
-	     @RequestParam(value = "checkList[]") List<String> chArr, BasketVo bas,HttpServletRequest request) {
-		/*
-		 * MemberVo member = (MemberVo)session.getAttribute("mem_id"); String mem_id =
-		 * member.getMem_id();
-		 */
-		String member1= null;
-			member1 = (String)request.getAttribute("mem_id");
+	     @RequestParam(value = "checkList[]") List<String> chArr, BasketVo bas,String mem_id){
+		System.out.println("온다");
+
+
 
 		  	int result = 0;
 		  	String bas_no = "";
 	 
 	 
-	 if(member1 != null) {
-	  bas.setMem_name(member1);
+	 if(mem_id != null) {
+	  bas.setMem_name(mem_id);
 	  
 	  for(String i : chArr) {   
 		  	bas_no = i;

@@ -84,7 +84,7 @@ $(function() {
        
        		<div class="btn_grid">
        		<div class="btn_grid1">
-       		<div>Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+       			
        		</div>
        		<div class="btn_grid2">
        			<input type="text" class="field" name="search" id="search">

@@ -38,22 +38,6 @@
 			$("#mypage").hide();
 		}
 
-		/* 현재날자 뽑아오는 function */
-/* 		function currentDate()
-		{
-			 var date = new Date();
-			    var year = date.getFullYear();
-			    var month = date.getMonth()+1
-			    var day = date.getDate();
-			    if(month < 10){
-			        month = "0"+month;
-			    }
-			    if(day < 10){
-			        day = "0"+day;
-			    }
-			 	
-			   return year+""+month+""+day;
-		} */
 		
 			var currentdate=$("#od_date").text();
 			currentdate = currentdate.replace(/-/gi,"");
@@ -140,7 +124,7 @@
                                 <c:if test="${dl.dro_name != null }">
                                     <tr>
                                         <td class="detail-product">
-                                            <img src='img/drone/"+${dl.dro_photo}+"' class="detail-img">
+                                            <img src='img/drone/${dl.dro_photo}' class="detail-img">
                                             <span class="img-name">${dl.dro_name }</span>
                                         </td>
                                         <td>${dl.det_price }</td>
@@ -162,16 +146,6 @@
                                     </tr>
                                     </c:if>
                                     </c:forEach>
-                                  <!--   <tr>
-                                        <td class="detail-product">
-                                            <img src="img/main/drone2_cnt.png" class="detail-img">
-                                            <span class="img-name">MAVIC pro</span>
-                                        </td>
-                                        <td>30,000원</td>
-                                        <td>2019-11-04</td>
-                                        <td>2019-11-06</td>
-                                        <td style="color: #7EBDC2; font-weight: 600;">결제완료</td>
-                                    </tr> -->
                                 </tbody>
                             </table>
                             </div>
@@ -182,18 +156,6 @@
                                      <col width="20%">
                                      <col>
                                     </colgroup>
-                              <!--       <tr class="detail-tr">
-                                        <td class="td">총주문금액</td>
-                                        <td>55,900원</td>
-                                    </tr> -->
-                                   <!--  <tr class="detail-tr">
-                                        <td class="td">쿠폰할인</td>
-                                        <td>10%</td>
-                                    </tr>
-                                    <tr class="detail-tr">
-                                        <td class="td">적립금 사용</td>
-                                        <td>-</td>
-                                    </tr> -->
                                     <c:forEach items="${orderList}" var="ol">
                                     <tr class="detail-tr">
                                         <td class="td">결제금액</td>
