@@ -81,7 +81,7 @@
     #footer-info{
         height: 130px;
         line-height: 20px;
-        font-size: 14px;
+        font-size: 14px !important;
         font-weight:700;
         color: #323232;
         background-color: white;
