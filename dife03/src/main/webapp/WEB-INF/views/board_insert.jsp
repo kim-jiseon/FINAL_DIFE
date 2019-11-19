@@ -73,12 +73,12 @@ $(function(){
                        </select>
                        <span id="input-span">
                         <input type="hidden" name="boa_no" value="${boa_no }">
-                        <input type="text" id="input-title" name="boa_title" placeholder="제목을 입력해주세요."><br>
+                        <input type="text" id="input-title" name="boa_title" placeholder="제목을 입력해주세요." required="required"><br>
 			            <input type="text" id="input-name" value="${mem_name }" readonly="readonly">
-			            <input type="password" id="input-pwd" name="boa_pwd" placeholder="암호">
-			            <input type="text" id="input-star" name="boa_rating" placeholder="평점">
+			            <input type="password" id="input-pwd" name="boa_pwd" placeholder="암호" required="required">
+			            <input type="number" id="input-star" name="boa_rating" placeholder="평점">
 			            </span><br>
-			            <textarea id="input-text" name="boa_contents" cols="30" rows="10" placeholder="내용을 작성해주세요."></textarea><br>
+			            <textarea id="input-text" name="boa_contents" cols="30" rows="10" placeholder="내용을 작성해주세요." required="required"></textarea><br>
 			            <input type="file" id="upload" name="upload" style="background-color: #e0e0e0; margin: 5px 20px; width: 94%">
 			            <button type="submit" id="submit" class="input-btn" style="margin-right: 20px;">작성완료</button>
 			            <button type="reset" id="reset" class="input-btn">취소</button>
