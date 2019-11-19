@@ -28,10 +28,27 @@ public class DroneVo {
 	private Date first_time;
 	private String last;
 	private Date last_time;	
+	
+	private int endPrice;
+	private int startPrice;
+	
+	public int getEndPrice() {
+		return endPrice;
+	}
+	public void setEndPrice(int endPrice) {
+		this.endPrice = endPrice;
+	}
+	public int getStartPrice() {
+		return startPrice;
+	}
+	public void setStartPrice(int startPrice) {
+		this.startPrice = startPrice;
+	}
 	public DroneVo(String dro_no, String dro_name, String dro_series, String dro_series_no, String dro_made,
 			String dro_photo, String dro_info, String dro_content, String dro_conphoto_01, String dro_conphoto_02,
 			int dro_price, String dro_series_md, Date bas_rental, Date bas_return, String ren_no, String ren_name,
-			String ren_loc, String pos_amount, String first, Date first_time, String last, Date last_time) {
+			String ren_loc, String pos_amount, String first, Date first_time, String last, Date last_time, int endPrice,
+			int startPrice) {
 		super();
 		this.dro_no = dro_no;
 		this.dro_name = dro_name;
@@ -55,6 +72,8 @@ public class DroneVo {
 		this.first_time = first_time;
 		this.last = last;
 		this.last_time = last_time;
+		this.endPrice = endPrice;
+		this.startPrice = startPrice;
 	}
 	public DroneVo() {
 		super();
