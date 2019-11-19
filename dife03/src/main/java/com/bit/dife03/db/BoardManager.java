@@ -91,10 +91,10 @@ public class BoardManager {
     	return re;
     }
     
-    public static void answerUpdate(int boa_no, String boa_answer) {
+    public static void answerUpdate(int boa_no) {
     	HashMap map = new HashMap();
     	map.put("boa_no", boa_no);
-    	map.put("boa_answer", boa_answer);
+    	//map.put("boa_answer", boa_answer);
     	SqlSession session = factory.openSession(true);
     	session.update("board.answerUpdate", map);
     	session.close();

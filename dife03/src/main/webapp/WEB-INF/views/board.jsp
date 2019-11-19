@@ -33,7 +33,6 @@ $(function(){
 		$("#sign").attr("href","logout").html("LOGOUT");
 		$("#mypage").show();
 	}
-
 	if(mem_id == '' || mem_id == null){
 		$("#sign").attr("href","signIn").html("LOGIN");
 		$("#mypage").hide();
@@ -50,7 +49,6 @@ $(function(){
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-
 	
 	$("#write").click(function(){
 		if(mem_id == null || mem_id == ''){
@@ -60,8 +58,6 @@ $(function(){
 			$("#write").attr("href","board_insert");
 		}
 	})
-	
-	
 
 	$("#select").change(function(){
 		var boa_sort = $(this).children("option:selected").text();

@@ -31,7 +31,6 @@ $(function(){
 		$("#sign").attr("href","logout").html("LOGOUT");
 		$("#mypage").show();
 	}
-
 	if(mem_id == '' || mem_id == null){
 		$("#sign").attr("href","signIn").html("LOGIN");
 		$("#mypage").hide();
@@ -53,11 +52,19 @@ $(function(){
 	$("#board-re-btn").click(function(){
 		if(mem_id != '' && mem_id != null){
 			var board_re = $("#board-re").val();
-			var name = $("<span></span>").html("${mem_name}"+"&nbsp;&nbsp;&nbsp;");
-			var re = $("<span></span>").html(board_re);
-			var p = $("<p></p>");
-			$(p).append(name, re);
-			$("#board-detail-re").append(p);
+			$.ajax({type:"post",
+					url:"/board_insert",
+					data: {"mem_no":"${mem_no}","mem_name":"${mem_name}", "boa_contents":board_re, "boa_no":"${b.boa_no}","boa_sort":"${b.boa_sort}"},
+					success:function(data){
+						/* var list = eval(data);
+						$.each(list, function(idx, item){
+							var name = $("<span></span>").html(item.mem_name+"&nbsp;&nbsp;&nbsp;");
+							var re = $("<span></span>").html(itme.boa_contents);
+							var p = $("<p></p>");
+							$(p).append(name, re);
+							$("#board-detail-re").append(p);
+						}) */
+					}})
 		}else{
 			alert("로그인을 해주세요.");
 			location.href="signIn";
@@ -93,6 +100,7 @@ $(function(){
                    <a href="board">목록</a>
                 </div>
                 <input type="hidden" id="boa_no" value="${b.boa_no }">
+                <%-- <input type="hidden" id="mem_id" value="${b.mem_id }"> --%>     
 			    <div id="board-wrapper">
 			        <div id="board-img" class="board-input">
 			            <img src="img/board/${b.boa_fname }" id="board-detail-img">
