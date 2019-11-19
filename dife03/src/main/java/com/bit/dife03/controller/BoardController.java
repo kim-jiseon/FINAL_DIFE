@@ -46,6 +46,7 @@ public class BoardController {
 		mav.addObject("boa_no", boa_no);
 		return mav;
 	}
+	
 	@RequestMapping(value = "/board_insert", method = RequestMethod.POST)
 	public ModelAndView insertSubmit(BoardVo vo, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav= new ModelAndView("redirect:/board");
