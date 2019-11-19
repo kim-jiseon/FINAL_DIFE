@@ -41,8 +41,8 @@ public class BoardDao {
 		return BoardManager.deleteBoard(boa_no);
 	}
 	
-	public void answerUpdate(int boa_no, String boa_answer) {
-		BoardManager.answerUpdate(boa_no, boa_answer);
+	public void answerUpdate(int boa_no) {
+		BoardManager.answerUpdate(boa_no);
 	}
 	
 	public int updateBoa_view(int boa_no) {

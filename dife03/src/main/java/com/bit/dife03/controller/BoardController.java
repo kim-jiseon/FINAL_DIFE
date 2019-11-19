@@ -51,7 +51,7 @@ public class BoardController {
 	public ModelAndView insertSubmit(BoardVo vo, HttpServletRequest request, HttpSession session) {
 		ModelAndView mav= new ModelAndView("redirect:/board");
 		String path = request.getRealPath("img");
-		System.out.println(vo.toString());
+
 		if(vo.getBoa_sort().equals("문의게시판")) {
 			vo.setBoa_answer("미답변");
 		}else if(vo.getBoa_sort().equals("후기게시판")) {
@@ -62,29 +62,44 @@ public class BoardController {
 		int boa_ref = boa_no;
 		int boa_level = 0;
 		int boa_step = 0;
-//		String boa_answer = "";
-		
+
 		int pno = vo.getBoa_no();
 	
-//		if(pno != 0) {
-//			BoardVo b = dao.getBoard(pno);
-//			boa_ref = b.getBoa_ref();
-//			boa_step = b.getBoa_step();
-//			boa_level = b.getBoa_level();
-//			dao.updateStep(boa_ref, boa_step);
-//			boa_step++;
-//			boa_level++;
-//			dao.answerUpdate(pno, boa_answer);
-//		}
+		if(pno != 0) {
+			BoardVo b = dao.getBoard(pno);
+			boa_ref = b.getBoa_ref();
+			boa_step = b.getBoa_step();
+			boa_level = b.getBoa_level();
+			dao.updateStep(boa_ref, boa_step);
+			boa_step++;
+			boa_level++;
+			dao.answerUpdate(pno);
+			
+			vo.setBoa_title("댓글");
+			vo.setBoa_pwd("0000");
+			vo.setBoa_answer("");
+		}
 
 		vo.setBoa_no(boa_no);
 		vo.setBoa_ref(boa_ref);
 		vo.setBoa_level(boa_level);
 		vo.setBoa_step(boa_step);
 		
-		MultipartFile multi = vo.getUpload();
-		String boa_fname = multi.getOriginalFilename();
+		System.out.println(vo.toString());
+//		MultipartFile multi = vo.getUpload();
+		
+//		String boa_fname = multi.getOriginalFilename();
+		MultipartFile multi = null;
+		String boa_fname;
+		if(vo.getUpload() == null) {
+			boa_fname = "";
+		}else {
+			multi = vo.getUpload();
+			boa_fname = multi.getOriginalFilename();
+		}
 		vo.setBoa_fname(boa_fname);
+		
+		System.out.println(boa_fname);
 		
 		try {
 			byte [] data = multi.getBytes();			
@@ -100,7 +115,7 @@ public class BoardController {
 		String mem_no = (String) session.getAttribute("mem_no");
 		vo.setMem_no(mem_no);
 		int re = dao.insert(vo);
-		System.out.println(mem_no);
+		System.out.println(vo.toString());
 		String msg = "";
 		if(re != 1) {
 			msg = "게시물 등록에 실패하였습니다.";
