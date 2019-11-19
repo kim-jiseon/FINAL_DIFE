@@ -48,6 +48,21 @@ $(function(){
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
+
+	//댓글달기
+	$("#board-re-btn").click(function(){
+		if(mem_id != '' && mem_id != null){
+			var board_re = $("#board-re").val();
+			var name = $("<span></span>").html("${mem_name}"+"&nbsp;&nbsp;&nbsp;");
+			var re = $("<span></span>").html(board_re);
+			var p = $("<p></p>");
+			$(p).append(name, re);
+			$("#board-detail-re").append(p);
+		}else{
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}
+	})
 	
 	$("#delBoard").click(function(){
 		var re = confirm("정말로 삭제할까요?");
@@ -69,10 +84,10 @@ $(function(){
 
 		<!-- contents -->
 		<div id="contents">
+			<div id="orders-title">게시글 상세보기</div>
 			<div class="container">
-               <div id="board-detail"><i class="fas fa-angle-right" id="icon"></i>게시판 상세보기</div>
                 <div id="board-detail-href">
-                   <a href="board_insert?boa_no=${b.boa_no }">댓글</a>
+                   <%-- <a href="board_insert?boa_no=${b.boa_no }">댓글</a> --%>
                    <a href="board_update?boa_no=${b.boa_no }">수정</a>
                    <a href="#" id="delBoard">삭제</a>
                    <a href="board">목록</a>
@@ -87,7 +102,7 @@ $(function(){
 			                <span>${boa_title }</span>
 			            </div>
 			            <div id="board-detail-info">
-			                 <span>작성자: ${b.mem_no }&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			                 <span>작성자: ${b.mem_name }&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			                 <span>등록일: ${b.regdate }&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			                 <span>별점: ${b.boa_rating }</span>
 			            </div>
@@ -95,12 +110,10 @@ $(function(){
 			                <textarea readonly="readonly" id="board-textarea" cols="50" rows="10">${b.boa_contents }</textarea>
 			            </div>
 			            <div id="board-detail-re">
-			                 <p><span>강감찬&nbsp;&nbsp;&nbsp;</span><span>오~~</span></p>
-			                <p><span>임수정&nbsp;&nbsp;&nbsp;</span><span>잘찍었네요!</span></p>
 			            </div>
 			            <div style="text-align: center;">
                             <input type="text" id="board-re" placeholder="댓글을 입력해주세요.">
-                            <button type="submit" id="board-re-btn">댓글 쓰기</button>
+                            <button type="button" id="board-re-btn">댓글 쓰기</button>
 			            </div>
 			        </div>
 			    </div>

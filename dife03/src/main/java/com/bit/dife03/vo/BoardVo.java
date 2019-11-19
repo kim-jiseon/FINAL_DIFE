@@ -237,6 +237,17 @@ public class BoardVo {
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
 	}
+
+	@Override
+	public String toString() {
+		return "BoardVo [boa_no=" + boa_no + ", mem_no=" + mem_no + ", boa_title=" + boa_title + ", boa_contents="
+				+ boa_contents + ", boa_pwd=" + boa_pwd + ", boa_rating=" + boa_rating + ", boa_regdate=" + boa_regdate
+				+ ", regdate=" + regdate + ", boa_view=" + boa_view + ", boa_answer=" + boa_answer + ", boa_sort="
+				+ boa_sort + ", boa_category=" + boa_category + ", boa_fname=" + boa_fname + ", boa_ref=" + boa_ref
+				+ ", boa_level=" + boa_level + ", boa_step=" + boa_step + ", first=" + first + ", first_time="
+				+ first_time + ", last=" + last + ", last_time=" + last_time + ", upload=" + upload + ", mem_name="
+				+ mem_name + "]";
+	}
 	
 	
 }
