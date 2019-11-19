@@ -314,8 +314,9 @@
 				    		checkArr.push($(this).attr("data-cartNum"));
 						});
 				  	
-				  		$.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr},success:function(data){
-				  			if(data === 1)
+				  		$.ajax({url:"/deleteListBasket.do",type:"post",data:{"checkList":checkArr,"mem_id":mem_id},success:function(data){
+				  			console.log(typeof(data))
+				  			if(data == "1")
 				  				{
 				  				location.href="basket";  
 				  				}

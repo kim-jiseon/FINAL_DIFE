@@ -39,6 +39,7 @@ public class MemberController {
 	//로그인페이지 이동
 	@RequestMapping(value = "/signIn", method = RequestMethod.GET)
 	public void signInInsertForm(HttpServletRequest request) {
+		System.out.println("로그인페이지");
 		String referer = request.getHeader("referer");
 		System.out.println("여기"+referer);
 		request.getSession().setAttribute("redirectURI", referer);
@@ -46,11 +47,13 @@ public class MemberController {
 	//로그인시
 	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
 	public ModelAndView signInSubmit(String mem_id, String mem_pwd, HttpSession session) {
+		session.removeAttribute("referer");
+		System.out.println("로그인시");
 		//로그인시 이전페이지로 돌아가기: referer
 		String referer = (String) session.getAttribute("redirectURI");
 		String URI = referer.substring(referer.lastIndexOf("/")+1);
 		System.out.println("URI"+URI);
-		if(URI.equals("signIn")){
+		if(URI.equals("signIn") || URI.equals("signUp")){
 			URI = "main";
 		}
 		ModelAndView mav = new ModelAndView("redirect:/"+URI);
@@ -110,7 +113,6 @@ public class MemberController {
 	public ModelAndView signUpInsertSubmit(MemberVo vo, HttpSession session, HttpServletRequest request) {
 		
 		ModelAndView mav = new ModelAndView("redirect:/signIn");
-		
 		String path = request.getRealPath("img");
 		System.out.println(path);
 		MultipartFile file = vo.getUpload();
