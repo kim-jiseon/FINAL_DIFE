@@ -136,7 +136,7 @@ $(function() {
 		}
 			
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
-   	   		location.href="/drone";
+   	   		location.href="/basket";
    	 	}})
    	})	
    	// 주문하기

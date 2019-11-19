@@ -80,7 +80,7 @@ $(function(){
                 <input type="hidden" id="boa_no" value="${b.boa_no }">
 			    <div id="board-wrapper">
 			        <div id="board-img" class="board-input">
-			            <img src="img/${b.boa_fname }" id="board-detail-img">
+			            <img src="img/board/${b.boa_fname }" id="board-detail-img">
 			        </div>
 			        <div id="board-text" class="board-input">
 			            <div id="board-detail-title">
