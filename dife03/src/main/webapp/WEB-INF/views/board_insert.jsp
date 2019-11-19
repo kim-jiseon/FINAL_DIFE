@@ -31,7 +31,6 @@ $(function(){
 		$("#sign").attr("href","logout").html("LOGOUT");
 		$("#mypage").show();
 	}
-
 	if(mem_id == '' || mem_id == null){
 		$("#sign").attr("href","signIn").html("LOGIN");
 		$("#mypage").hide();
@@ -49,7 +48,6 @@ $(function(){
 		}
 	})
 	
-
 	$("#input-select").change(function(){
 		var select_box = $("select[name=boa_sort]").val();
 		console.log(select_box);

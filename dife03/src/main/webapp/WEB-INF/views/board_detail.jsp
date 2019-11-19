@@ -31,7 +31,6 @@ $(function(){
 		$("#sign").attr("href","logout").html("LOGOUT");
 		$("#mypage").show();
 	}
-
 	if(mem_id == '' || mem_id == null){
 		$("#sign").attr("href","signIn").html("LOGIN");
 		$("#mypage").hide();
@@ -48,7 +47,6 @@ $(function(){
 			$("#mypage").attr("href","mypage_orders");
 		}
 	})
-
 	//댓글달기
 	$("#board-re-btn").click(function(){
 		if(mem_id != '' && mem_id != null){
