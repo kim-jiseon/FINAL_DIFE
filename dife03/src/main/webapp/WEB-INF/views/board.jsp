@@ -51,6 +51,16 @@ $(function(){
 		}
 	})
 	
+	$("#write").click(function(){
+		if(mem_id == null || mem_id == ''){
+			alert("로그인을 해주세요.");
+			location.href="signIn";
+		}else{
+			$("#write").attr("href","board_insert");
+		}
+	})
+	
+	
 	$("#select").change(function(){
 		var boa_sort = $(this).children("option:selected").text();
 		location.href="/board?boa_sort="+boa_sort;
@@ -102,7 +112,7 @@ $(function(){
 							</tr>
 						</c:forEach>
 					</table>
-					<a href="/board_insert" class="btn btn-default pull-right"
+					<a id="write" class="btn btn-default pull-right"
 						style="width: 70px; font-size: 15px; background-color: #231F20; color: white">글쓰기</a>
 					<div class="text-center">
 						<ul class="pagination" style="padding-left: 50px;">
