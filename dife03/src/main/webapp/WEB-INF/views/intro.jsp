@@ -21,7 +21,7 @@
 <body>
 	<header>
 		<h1>
-    		<a href="/main"><img alt="메인화면으로 페이지이동" src="img/logo/DIFE_logo1.png" width="180px" style="margin-left: 1350px;"></a>
+     		<a href="/main"><img alt="메인화면으로 페이지이동" src="img/logo/DIFE_logo1.png" width="180px" style="margin-left: 1350px;"></a>
     	</h1>
 	<!-- <video autoplay muted id="difeVideo"> -->
 	<video id="difeVideo" playsinline autoplay loop muted>
