@@ -6,14 +6,9 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, , minimum-scale=1, maximum-scale=1">
-<title>layout</title>
+<title>DIFE.com</title>
 <!-- 웹폰트 -->
-<!-- 
-    <link rel="stylesheet" type="text/css" href="http://api.typolink.co.kr/css?family=RixGo+L:400" />
-     -->
-<link
-	href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <!-- fadeIn -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -22,13 +17,11 @@
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/mypage/mypage.css">
 <link rel="stylesheet" href="css/mypage/mypage_orders.css">
-
 <link rel="stylesheet" href="css/locWea/location.css">
 
 <!-- 제이쿼리 플러그인 -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-
 
 <script type="text/javascript">
     $(function(){
@@ -65,7 +58,6 @@
 	<div id="wrap" class="animated fadeIn">
 		<!-- header -->
 		<jsp:include page="header.jsp"></jsp:include>
-
 		<!-- 이미지 돋보기 -->
 		<div class="layer_popup">
 			<div class="img_orig">

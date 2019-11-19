@@ -37,12 +37,10 @@ $(function() {
 		$("#sign").attr("href","logout").html("LOGOUT");
 		$("#mypage").show();
 	}
-
 	if(mem_id == '' || mem_id == null){
 		$("#sign").attr("href","signIn").html("LOGIN");
 		$("#mypage").hide();
-	}
-	
+	}	
 	//마이페이지 이동
 	$("#mypage").click(function(){
 		console.log("클릭");
@@ -138,7 +136,7 @@ $(function() {
 		}
 			
 		$.ajax({url:"/droBasket", traditional:true, contentType:'application/json', data:data, success:function(data){	
-   	   		location.href="/basket";
+   	   		location.href="/drone";
    	 	}})
    	})	
    	// 주문하기

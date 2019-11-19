@@ -69,6 +69,7 @@ public class BoardController {
 			boa_level++;
 			dao.answerUpdate(pno, boa_answer);
 		}
+
 		vo.setBoa_no(boa_no);
 		vo.setBoa_ref(boa_ref);
 		vo.setBoa_level(boa_level);
