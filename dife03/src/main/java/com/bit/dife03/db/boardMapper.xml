@@ -6,6 +6,13 @@
 
   <!-- 게시판 모두보기 -->
   <select id="selectAll" resultType="boardVo">
+    select mem_name, B.* 
+      from member m, 
+      (select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
+      boa_view, boa_answer, boa_sort, boa_category, boa_fname, boa_ref, boa_level, boa_step, first, first_time, last, last_time 
+      from board) B where m.mem_no = B.mem_no order by boa_no
+  
+    <!-- 
       select mem_name, B.* 
       from member m, 
       (select mem_no, boa_no, boa_title, boa_contents, boa_pwd, boa_rating, to_char(boa_regdate, 'yyyy/MM/dd') regdate, 
@@ -20,6 +27,7 @@
       	</if>
       </if>
       ) B where m.mem_no = B.mem_no order by boa_ref desc, boa_step
+       -->
   </select>
   
   <!-- 게시판 등록 -->

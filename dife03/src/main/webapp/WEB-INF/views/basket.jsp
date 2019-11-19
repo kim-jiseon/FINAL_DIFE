@@ -237,7 +237,7 @@
     		  			/*리스트 데이터값 넣어주기  */
         			/*  */
     				})
-    				alert(all_amount);
+    				//alert(all_amount);
     		  		JumunVo ={"jumun":jumun1,"ord_price":orders_sum,"ord_amount":all_amount,"mem_no":mem_no};
     		  		
     		  	 	var json_data = JSON.stringify(JumunVo);
@@ -379,6 +379,7 @@
                     </table>
                     <div class="delete-btn-area">
                     <span id="sum_price"></span>
+                    <a href="drone" id="drone" class="a_btn">쇼핑계속하기</a>
 					<a href="javascript:void(0)" id="del_chk" class="a_btn">선택삭제</a>
 					<a href="javascript:void(0)" id="order" class="a_btn">주문하기</a>
 				</div>
