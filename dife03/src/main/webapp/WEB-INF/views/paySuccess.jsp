@@ -75,8 +75,8 @@
                             <tbody>
                                <!-- ajax 이용 -->
                                 <tr>
-                                    <td>2019/11/13</td>
-                                    <td>매빅 PRO-4V 드론</td>
+                                    <td>2019/11/20</td>
+                                    <td>매빅 PRO-4V 드론 외</td>
                                     <td><%=sum %> 원</td>
                                 </tr>
                             </tbody>

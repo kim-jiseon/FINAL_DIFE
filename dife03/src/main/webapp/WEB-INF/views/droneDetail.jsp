@@ -94,7 +94,7 @@ $(function() {
 		{
 			start.replace("0","");
 		}
-		var ren_date = (Number(end) - Number(start))
+		var ren_date = (Number(end) - Number(start)) +1
 		// 장바구니 페이지에 담을 값
 		var dro_no = "${dtInfo.dro_no}";
 		var ren_no = "${dtInfo.ren_no}";
@@ -166,7 +166,7 @@ $(function() {
 		{
 			start.replace("0","");
 		}
-		var ren_date = (Number(end) - Number(start))
+		var ren_date = (Number(end) - Number(start)) +1
 		
 		
 		start = Number(start)

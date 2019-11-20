@@ -147,7 +147,7 @@
 
                        <dt id="my-board">게시글 관리</dt>
                            <dd class="hidden">
-                              두번째 탭메뉴 내용은 여기
+                              아직 작성한 게시글이 없습니다.
                            </dd>
                         </dl>
                     </div>

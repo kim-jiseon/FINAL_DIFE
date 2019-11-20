@@ -173,7 +173,7 @@
 			//체크 됐을때 값 전달 이벤트..
 			$(".agree").click(function(){
 		   	 		 chk = $(this).is(":checked");//.attr('checked');
-		   	 		 $("#agree_select").html("동의를 확인해주세요.");
+		   	 		 $("#agree_select").html("&nbsp;&nbsp;동의를 확인해주세요.");
 		   	         if(chk) {
 		   	        	$("#agree_select").hide();
 		   	        
@@ -198,7 +198,6 @@
 			})
 			//orderscancle
 			$("#orderCancle").click(function(){
-				alert(ord_no)
 				 $.ajax({url:"/delJumun.do",data:{"mem_id":mem_id,"ord_no":ord_no,"list_count":list_count},success:function(data){
 					if(data=="1")
 						{

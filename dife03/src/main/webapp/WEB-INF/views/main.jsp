@@ -213,7 +213,7 @@
                         <div class="grid-cell1">
                         	<img src="img/main/wheather.png">
                             <p>날씨</p>
-                            <h1>4℃</h1>
+                            <h1>3℃</h1>
                             <h4>수요일(맑음)</h4>
                         </div>
           	     </div>
