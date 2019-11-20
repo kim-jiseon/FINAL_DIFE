@@ -335,7 +335,6 @@ $(function(){
 			$("#submit").hide();
 		}
 	});
-
 	$("#submit").click(function(){
 		var check = $('input:checkbox[id="agree"]').is(':checked');
 		if(check == false) {
@@ -343,7 +342,11 @@ $(function(){
 			return false;
 		}
 		else
+			{
+			alert("회원가입이 완료되었습니다.")
+			
 			return true;
+			}
 	});
 });
 
